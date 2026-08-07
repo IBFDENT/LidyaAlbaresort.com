@@ -1,26 +1,67 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  /* Brand palette — carried over from the original demo (index_6_2.html) */
+  --color-plum: #32113f;
+  --color-plum-dark: #1b0b20;
+  --color-gold: #c8a96a;
+  --color-gold-light: #e8d8b5;
+  --color-ivory: #f8f5ef;
+  --color-brand-white: #fffdf9;
+  --color-ink: #171717;
+  --color-grey: #8a8682;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --font-display: var(--font-cormorant);
+  --font-body: var(--font-manrope);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --shadow-soft: 0 20px 60px -20px rgba(27, 11, 32, 0.25);
+  --shadow-card: 0 12px 30px -14px rgba(27, 11, 32, 0.18);
+
+  --ease-lidya: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-ivory);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--color-plum-dark);
+}
+
+/* Header blur-on-scroll transition */
+.site-header {
+  transition: all 0.5s var(--ease-lidya);
+}
+
+/* Hero ambient glow behind the headline */
+.hero-glint {
+  background: radial-gradient(
+    600px circle at 30% 40%,
+    rgba(200, 169, 106, 0.25),
+    transparent 60%
+  );
+  mix-blend-mode: screen;
+}
+
+/* Collection card image zoom on hover */
+.cat-card img {
+  transition: transform 0.9s var(--ease-lidya);
+}
+.cat-card:hover img {
+  transform: scale(1.08);
+}
+
+.btn-magnetic {
+  transition: transform 0.35s var(--ease-lidya), background-color 0.35s var(--ease-lidya);
+}
+.btn-magnetic:hover {
+  transform: translateY(-2px);
 }
