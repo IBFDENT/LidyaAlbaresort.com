@@ -43,3 +43,33 @@ export function GemClusterIcon() {
     </svg>
   );
 }
+
+export function ShieldCheckIcon() {
+  return (
+    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.2">
+      <path d="M24 6 L40 12 V22 C40 32 33 40 24 43 C15 40 8 32 8 22 V12 Z" />
+      <path d="M17 24 L22 29 L31 18" />
+    </svg>
+  );
+}
+
+export function GlobeIcon() {
+  return (
+    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.2">
+      <circle cx="24" cy="24" r="18" />
+      <ellipse cx="24" cy="24" rx="8" ry="18" />
+      <path d="M6 24 H42" />
+      <path d="M9 14 H39" />
+      <path d="M9 34 H39" />
+    </svg>
+  );
+}
+
+export function TrendUpIcon() {
+  return (
+    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.2">
+      <path d="M6 34 L18 22 L26 30 L42 12" />
+      <path d="M32 12 H42 V22" />
+    </svg>
+  );
+}
