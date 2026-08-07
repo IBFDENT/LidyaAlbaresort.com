@@ -4,6 +4,12 @@ import { COLLECTIONS, localized } from "@/lib/content";
 
 const dict = getDictionary();
 
+const CATEGORY_LINKS: Partial<Record<string, string>> = {
+  pearls: "/pearls",
+  wedding: "/wedding-rings",
+  diamonds: "/diamonds",
+};
+
 export default function Collections() {
   return (
     <section id="collections" className="py-26">
@@ -20,7 +26,7 @@ export default function Collections() {
           {COLLECTIONS.map((c) => (
             <a
               key={c.id}
-              href="#catalog"
+              href={CATEGORY_LINKS[c.id] ?? "#catalog"}
               className="cat-card group relative block aspect-[3/4] rounded overflow-hidden bg-plum-dark shadow-[0_12px_30px_-14px_rgba(27,11,32,0.18)]"
             >
               <Image
