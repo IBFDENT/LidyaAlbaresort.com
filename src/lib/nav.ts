@@ -32,7 +32,7 @@ export const NAV_ITEMS: NavItem[] = [
       { href: "/wedding-rings", labelKey: "wedding" },
       { href: "/brilliants", labelKey: "brilliants" },
       { href: "/design", labelKey: "design" },
-      { href: "/#catalog", labelKey: "bespoke" },
+      { href: "/bespoke", labelKey: "bespoke" },
     ],
   },
   {

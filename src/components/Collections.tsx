@@ -9,6 +9,7 @@ const CATEGORY_LINKS: Partial<Record<string, string>> = {
   wedding: "/wedding-rings",
   brilliants: "/brilliants",
   design: "/design",
+  bespoke: "/bespoke",
 };
 
 export default function Collections() {

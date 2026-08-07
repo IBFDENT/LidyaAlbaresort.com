@@ -43,10 +43,9 @@ export default function DesignPage() {
         <section className="py-20">
           <div className="mx-auto max-w-[1320px] px-6">
             <div className="max-w-xl mb-14">
-              <span className="block mb-4 text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-gold">
+              <span className="block text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-gold">
                 {t("sectionEyebrow")}
               </span>
-              <h2 className="text-4xl md:text-5xl">{t("sectionTitle")}</h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -69,6 +68,11 @@ export default function DesignPage() {
                       ) : (
                         <PlaceholderImage icon={<Icon />} className="h-full w-full" />
                       )}
+                      <div className="absolute inset-0 flex items-center justify-center bg-plum-dark/25">
+                        <h3 className="text-3xl md:text-4xl uppercase tracking-[0.08em] text-brand-white [text-shadow:0_2px_16px_rgba(0,0,0,0.5)]">
+                          {localized(season.name, LOCALE)}
+                        </h3>
+                      </div>
                     </div>
                     <div className="p-7">
                       <p className="text-sm text-grey leading-relaxed">
