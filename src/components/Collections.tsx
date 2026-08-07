@@ -8,6 +8,7 @@ const CATEGORY_LINKS: Partial<Record<string, string>> = {
   pearls: "/pearls",
   wedding: "/wedding-rings",
   brilliants: "/brilliants",
+  design: "/design",
 };
 
 export default function Collections() {
@@ -26,7 +27,7 @@ export default function Collections() {
           {COLLECTIONS.map((c) => (
             <a
               key={c.id}
-              href={CATEGORY_LINKS[c.id] ?? "#catalog"}
+              href={CATEGORY_LINKS[c.id] ?? "/#catalog"}
               className="cat-card group relative block aspect-[4/3] rounded overflow-hidden bg-plum-dark shadow-[0_12px_30px_-14px_rgba(27,11,32,0.18)]"
             >
               <Image

@@ -18,7 +18,7 @@ export default function Materials() {
           {MATERIALS.map((m) => (
             <a
               key={m.id}
-              href="#catalog"
+              href="/#catalog"
               className="block rounded bg-brand-white px-6 py-7 shadow-[0_12px_30px_-14px_rgba(27,11,32,0.18)] transition-transform hover:-translate-y-1"
             >
               <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-ivory text-gold text-lg">

@@ -23,6 +23,7 @@ type Dict = {
     bespoke: string;
     services: string;
     investment: string;
+    investmentMenu: string;
     brilliants: string;
     about: string;
     boutiques: string;
@@ -102,6 +103,7 @@ export const dictionaries: Record<Locale, Dict> = {
       bespoke: "Bespoke",
       services: "Service",
       investment: "Investmentgold",
+      investmentMenu: "Investment",
       brilliants: "Brilliants",
       about: "Über uns",
       boutiques: "Boutiquen",
@@ -179,6 +181,7 @@ export const dictionaries: Record<Locale, Dict> = {
       bespoke: "Bespoke",
       services: "Services",
       investment: "Investment Gold",
+      investmentMenu: "Investment",
       brilliants: "Brilliants",
       about: "About",
       boutiques: "Boutiques",
@@ -256,6 +259,7 @@ export const dictionaries: Record<Locale, Dict> = {
       bespoke: "Özel Tasarım",
       services: "Hizmetler",
       investment: "Yatırım Altını",
+      investmentMenu: "Yatırım",
       brilliants: "Brilliants",
       about: "Hakkımızda",
       boutiques: "Butikler",
@@ -333,6 +337,7 @@ export const dictionaries: Record<Locale, Dict> = {
       bespoke: "Zákazková výroba",
       services: "Servis",
       investment: "Investičné zlato",
+      investmentMenu: "Investície",
       brilliants: "Brilliants",
       about: "O nás",
       boutiques: "Butiky",
@@ -410,6 +415,7 @@ export const dictionaries: Record<Locale, Dict> = {
       bespoke: "Zakázková výroba",
       services: "Servis",
       investment: "Investiční zlato",
+      investmentMenu: "Investice",
       brilliants: "Brilliants",
       about: "O nás",
       boutiques: "Butiky",
@@ -487,6 +493,7 @@ export const dictionaries: Record<Locale, Dict> = {
       bespoke: "Egyedi készítés",
       services: "Szolgáltatások",
       investment: "Befektetési arany",
+      investmentMenu: "Befektetés",
       brilliants: "Brilliants",
       about: "Rólunk",
       boutiques: "Butikok",
@@ -564,6 +571,7 @@ export const dictionaries: Record<Locale, Dict> = {
       bespoke: "Na zamówienie",
       services: "Serwis",
       investment: "Złoto inwestycyjne",
+      investmentMenu: "Inwestycje",
       brilliants: "Brilliants",
       about: "O nas",
       boutiques: "Butiki",

@@ -65,10 +65,19 @@ export default function Footer() {
           <h5 className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-gold">
             {dict.footer.contact}
           </h5>
-          <div className="mt-4 flex flex-col gap-2 text-sm">
-            <span>Deniz: +90 532 567 27 77</span>
-            <span>Zafer: +90 533 653 40 74</span>
-            <span>albalidya@hotmail.com</span>
+          <div className="mt-4 flex flex-col gap-3 text-sm">
+            <div>
+              <span className="block">Zafer (Victor): +90 532 567 27 77</span>
+              <a href="mailto:albalidya@hotmail.com" className="hover:text-gold">
+                albalidya@hotmail.com
+              </a>
+            </div>
+            <div>
+              <span className="block">Vierka: +90 537 827 8599</span>
+              <a href="mailto:vierakocaker@hotmail.com" className="hover:text-gold">
+                vierakocaker@hotmail.com
+              </a>
+            </div>
           </div>
         </div>
       </div>

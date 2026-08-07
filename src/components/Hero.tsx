@@ -25,7 +25,7 @@ export default function Hero() {
           </p>
           <div className="flex flex-wrap gap-4 mt-9">
             <a
-              href="#collections"
+              href="/#collections"
               className="btn-magnetic inline-flex items-center justify-center rounded-sm bg-gold px-8 py-4 text-[0.78rem] font-semibold uppercase tracking-[0.14em] text-plum-dark hover:bg-gold-light"
             >
               {dict.hero.cta1}

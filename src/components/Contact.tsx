@@ -18,23 +18,9 @@ export default function Contact() {
             <h4 className="text-xl">{dict.contact.team}</h4>
             <div className="mt-4 space-y-2 text-sm">
               <p>
-                Deniz —{" "}
+                Zafer (Victor) —{" "}
                 <a href="tel:+905325672777" className="text-plum-dark hover:text-gold">
                   +90 532 567 27 77
-                </a>
-              </p>
-              <p>
-                Zafer (Victor) —{" "}
-                <a href="tel:+905336534074" className="text-plum-dark hover:text-gold">
-                  +90 533 653 40 74
-                </a>
-              </p>
-              <p>
-                <a
-                  href="mailto:deniztanir@hotmail.com"
-                  className="text-plum-dark hover:text-gold"
-                >
-                  deniztanir@hotmail.com
                 </a>
               </p>
               <p>
@@ -43,6 +29,20 @@ export default function Contact() {
                   className="text-plum-dark hover:text-gold"
                 >
                   albalidya@hotmail.com
+                </a>
+              </p>
+              <p>
+                Vierka —{" "}
+                <a href="tel:+905378278599" className="text-plum-dark hover:text-gold">
+                  +90 537 827 8599
+                </a>
+              </p>
+              <p>
+                <a
+                  href="mailto:vierakocaker@hotmail.com"
+                  className="text-plum-dark hover:text-gold"
+                >
+                  vierakocaker@hotmail.com
                 </a>
               </p>
             </div>
@@ -59,15 +59,15 @@ export default function Contact() {
                 rel="noopener"
                 className="btn-magnetic inline-flex items-center justify-center rounded-sm bg-gold px-5 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-plum-dark hover:bg-gold-light"
               >
-                WhatsApp — Deniz
+                WhatsApp — Zafer
               </a>
               <a
-                href="https://wa.me/905336534074"
+                href="https://wa.me/905378278599"
                 target="_blank"
                 rel="noopener"
                 className="btn-magnetic inline-flex items-center justify-center rounded-sm bg-gold px-5 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-plum-dark hover:bg-gold-light"
               >
-                WhatsApp — Zafer
+                WhatsApp — Vierka
               </a>
               <a
                 href="mailto:albalidya@hotmail.com"
