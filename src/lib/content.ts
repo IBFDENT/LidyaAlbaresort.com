@@ -3,7 +3,7 @@ import type { Locale } from "./i18n";
 type LocalizedText = Partial<Record<Locale, string>>;
 
 export type Collection = {
-  id: "pearls" | "wedding" | "signature" | "diamonds" | "design" | "bespoke";
+  id: "pearls" | "wedding" | "signature" | "brilliants" | "design" | "bespoke";
   image: string;
   name: LocalizedText;
   description: LocalizedText;
@@ -82,26 +82,26 @@ export const COLLECTIONS: Collection[] = [
     },
   },
   {
-    id: "diamonds",
-    image: "/images/collections/diamonds.jpg",
-    catFilter: "diamonds",
+    id: "brilliants",
+    image: "/images/collections/brilliants.jpg",
+    catFilter: "brilliants",
     name: {
-      de: "Brillanten",
-      en: "Diamonds",
-      tr: "Pırlantalar",
-      sk: "Diamanty",
-      cs: "Diamanty",
-      hu: "Gyémántok",
-      pl: "Diamenty",
+      de: "Brilliants",
+      en: "Brilliants",
+      tr: "Brilliants",
+      sk: "Brilliants",
+      cs: "Brilliants",
+      hu: "Brilliants",
+      pl: "Brilliants",
     },
     description: {
-      de: "Brillanten – für Augenblicke von bleibendem Wert.",
-      en: "Diamonds – for moments of lasting value.",
-      tr: "Pırlantalar – kalıcı değere sahip anlar için.",
-      sk: "Diamanty – pre chvíle s trvalou hodnotou.",
-      cs: "Diamanty – pro chvíle s trvalou hodnotou.",
-      hu: "Gyémántok – tartós értékű pillanatokért.",
-      pl: "Diamenty – dla chwil o trwałej wartości.",
+      de: "Brillant-geschliffene Stücke, für maximalen Glanz ausgewählt.",
+      en: "Brilliant-cut pieces, chosen for maximum sparkle.",
+      tr: "Maksimum parıltı için seçilmiş, brilliant kesim parçalar.",
+      sk: "Kúsky s brúsom brilliant, vybrané pre maximálny lesk.",
+      cs: "Kousky s brusem brilliant, vybrané pro maximální lesk.",
+      hu: "Brilliáns csiszolású darabok, a maximális csillogásért válogatva.",
+      pl: "Elementy o szlifie brylantowym, wybrane dla maksymalnego blasku.",
     },
   },
   {

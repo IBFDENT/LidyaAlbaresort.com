@@ -9,6 +9,9 @@ type CategoryHeroProps = {
   icon: ReactNode;
   image?: string;
   imageAlt?: string;
+  /** Set false to skip the placeholder box entirely when there's no image yet
+   *  (single-column layout instead of leaving an empty "photography pending" box). */
+  showPlaceholder?: boolean;
 };
 
 export default function CategoryHero({
@@ -18,11 +21,20 @@ export default function CategoryHero({
   icon,
   image,
   imageAlt,
+  showPlaceholder = true,
 }: CategoryHeroProps) {
+  const hasVisual = Boolean(image) || showPlaceholder;
+
   return (
     <section className="relative pt-32 md:pt-40">
       <div className="mx-auto max-w-[1320px] px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-10 items-center">
+        <div
+          className={
+            hasVisual
+              ? "grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-10 items-center"
+              : "max-w-2xl"
+          }
+        >
           <div>
             <span className="block mb-4 text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-gold">
               {eyebrow}
@@ -42,7 +54,7 @@ export default function CategoryHero({
               />
             </div>
           ) : (
-            <PlaceholderImage icon={icon} className="aspect-[4/3] rounded" />
+            showPlaceholder && <PlaceholderImage icon={icon} className="aspect-[4/3] rounded" />
           )}
         </div>
       </div>

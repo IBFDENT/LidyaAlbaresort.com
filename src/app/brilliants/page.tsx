@@ -26,8 +26,7 @@ export default function BrilliantsPage() {
           title="The Brilliants Collection"
           lead="A signature line built around the brilliant cut itself — the shape prized above all others for the way it captures and returns light. Each piece is chosen for maximum fire and sparkle."
           icon={<GemClusterIcon />}
-          image="/images/brilliants/brilliant-hero.jpg"
-          imageAlt="Loose brilliant-cut diamonds"
+          showPlaceholder={false}
         />
 
         <CategoryGallery

@@ -36,17 +36,19 @@ export default function CategoryGallery({ icon, items }: CategoryGalleryProps) {
   return (
     <section className="py-20">
       <div className="mx-auto max-w-[1320px] px-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[160px] md:auto-rows-[180px] gap-3">
+        <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[220px] md:auto-rows-[280px] gap-2">
           {slots.slice(0, 10).map((item, i) => (
             <div key={i} className={`relative ${MOSAIC_SPANS[i] ?? ""}`}>
               {item.image ? (
-                <Image
-                  src={item.image}
-                  alt={item.alt ?? item.caption ?? ""}
-                  fill
-                  sizes="(min-width: 768px) 25vw, 50vw"
-                  className="rounded object-cover"
-                />
+                <div className="relative h-full w-full overflow-hidden rounded bg-ivory">
+                  <Image
+                    src={item.image}
+                    alt={item.alt ?? item.caption ?? ""}
+                    fill
+                    sizes="(min-width: 768px) 25vw, 50vw"
+                    className="object-contain p-1"
+                  />
+                </div>
               ) : (
                 <PlaceholderImage icon={icon} className="h-full w-full rounded" />
               )}
