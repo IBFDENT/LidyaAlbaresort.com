@@ -26,21 +26,23 @@ export default function BrilliantsPage() {
           title="The Brilliants Collection"
           lead="A signature line built around the brilliant cut itself — the shape prized above all others for the way it captures and returns light. Each piece is chosen for maximum fire and sparkle."
           icon={<GemClusterIcon />}
+          image="/images/brilliants/brilliant-hero.jpg"
+          imageAlt="Loose brilliant-cut diamonds"
         />
 
         <CategoryGallery
           icon={<GemClusterIcon />}
           items={[
-            { caption: "Signature" },
-            {},
-            {},
-            { caption: "Statement" },
-            {},
-            { caption: "Everyday Brilliance" },
-            {},
-            {},
-            { caption: "Limited Edition" },
-            {},
+            { image: "/images/brilliants/brilliant-01.jpg", caption: "Solitaire Ring", alt: "Brilliant-cut solitaire engagement ring" },
+            { image: "/images/brilliants/brilliant-02.jpg", caption: "Stud Earrings", alt: "Brilliant-cut diamond stud earrings" },
+            { image: "/images/brilliants/brilliant-03.jpg", alt: "Six-prong brilliant-cut solitaire ring" },
+            { image: "/images/brilliants/brilliant-04.jpg", caption: "Eternity Band", alt: "Brilliant-cut diamond eternity band" },
+            { image: "/images/brilliants/brilliant-05.jpg", caption: "Pendant", alt: "Brilliant-cut diamond pendant necklace" },
+            { image: "/images/brilliants/brilliant-06.jpg", caption: "Tennis Bracelet", alt: "Brilliant-cut diamond tennis bracelet" },
+            { image: "/images/brilliants/brilliant-07.jpg", alt: "Brilliant-cut diamond eternity band, angled view" },
+            { image: "/images/brilliants/brilliant-08.jpg", alt: "Brilliant-cut diamond pendant with pavé bail" },
+            { image: "/images/brilliants/brilliant-09.jpg", caption: "Teardrop Halo", alt: "Pear-cut diamond halo pendant" },
+            { image: "/images/brilliants/brilliant-10.jpg", caption: "The Set", alt: "Matching brilliant-cut ring, earrings and necklace set" },
           ]}
         />
 
@@ -73,7 +75,7 @@ export default function BrilliantsPage() {
 
         <CategoryCTA
           title="Discover the Brilliants collection"
-          sub="Photography for this collection is being prepared. Book a private appointment at one of our boutiques to view current pieces."
+          sub="Book a private appointment at one of our boutiques to view current pieces in person."
         />
       </main>
       <Footer />
