@@ -3,40 +3,148 @@
 import { useEffect, useState } from "react";
 
 export default function FloatingActions() {
-  const [showTop, setShowTop] = useState(false);
+  const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setShowTop(window.scrollY > 600);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const checkPosition = () => {
+      const scrollTop =
+        window.scrollY ||
+        document.documentElement.scrollTop;
+
+      const viewportHeight = window.innerHeight;
+
+      const documentHeight =
+        document.documentElement.scrollHeight;
+
+      const distanceFromBottom =
+        documentHeight - (scrollTop + viewportHeight);
+
+      /*
+        Floating bar sa schová, keď sme približne
+        900px od úplného konca stránky.
+
+        Footer je veľký, takže týmto zmizne ešte
+        pri jeho hornej časti.
+      */
+      setHidden(distanceFromBottom < 900);
+    };
+
+    checkPosition();
+
+    window.addEventListener("scroll", checkPosition, {
+      passive: true,
+    });
+
+    window.addEventListener("resize", checkPosition);
+
+    return () => {
+      window.removeEventListener("scroll", checkPosition);
+      window.removeEventListener("resize", checkPosition);
+    };
   }, []);
 
   return (
-    <>
-      <a
-        href="https://wa.me/905325672777"
-        target="_blank"
-        rel="noopener"
-        aria-label="WhatsApp"
-        className="fixed bottom-6 left-6 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-transform hover:scale-105"
-      >
-        <svg viewBox="0 0 32 32" width="22" height="22" fill="currentColor">
-          <path d="M16 2C8.3 2 2 8.3 2 16c0 2.6.7 5 2 7.2L2 30l7-2c2.1 1.2 4.5 1.8 7 1.8 7.7 0 14-6.3 14-14S23.7 2 16 2zm7.6 20c-.3.9-1.7 1.7-2.6 1.9-.7.1-1.6.2-4.6-1-3.9-1.6-6.4-5.5-6.6-5.8-.2-.3-1.6-2.1-1.6-4s1-2.8 1.4-3.2c.3-.3.7-.5 1.1-.5h.8c.3 0 .6 0 .9.7.3.8 1.1 2.7 1.2 2.9.1.2.2.4 0 .7-.1.3-.2.4-.4.6l-.6.7c-.2.2-.4.4-.2.8.2.4 1 1.6 2.1 2.6 1.4 1.3 2.6 1.7 3 1.9.4.2.6.1.8-.1l1.2-1.4c.3-.3.5-.3.8-.2l2.5 1.2c.3.1.5.2.6.4.1.2.1.9-.2 1.8z" />
-        </svg>
-      </a>
+    <div
+      className={`fixed bottom-5 left-1/2 z-[60] -translate-x-1/2 transition-all duration-500 ease-out md:bottom-7 ${
+        hidden
+          ? "pointer-events-none translate-y-12 scale-90 opacity-0"
+          : "translate-y-0 scale-100 opacity-100"
+      }`}
+    >
+      <div className="flex items-center gap-1.5 rounded-full border border-brand-white/15 bg-plum-dark/85 p-1.5 shadow-[0_16px_50px_-15px_rgba(27,11,32,0.65)] backdrop-blur-xl">
 
-      {showTop && (
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          aria-label="Scroll to top"
-          className="fixed bottom-6 right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-plum-dark text-brand-white shadow-lg transition-transform hover:scale-105"
+        {/* INSTAGRAM */}
+        <a
+          href="#"
+          aria-label="Instagram"
+          title="Instagram"
+          className="group flex h-10 w-10 items-center justify-center rounded-full text-brand-white/75 transition-all duration-500 hover:-translate-y-1 hover:bg-brand-white/10 hover:text-gold md:h-11 md:w-11"
         >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <line x1="12" y1="19" x2="12" y2="5" />
-            <polyline points="5 12 12 5 19 12" />
+          <svg
+            viewBox="0 0 24 24"
+            width="19"
+            height="19"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <rect
+              x="3"
+              y="3"
+              width="18"
+              height="18"
+              rx="5"
+            />
+
+            <circle
+              cx="12"
+              cy="12"
+              r="4"
+            />
+
+            <circle
+              cx="17.5"
+              cy="6.5"
+              r="0.8"
+              fill="currentColor"
+              stroke="none"
+            />
           </svg>
-        </button>
-      )}
-    </>
+        </a>
+
+        {/* DIVIDER */}
+        <span className="h-5 w-px bg-brand-white/10" />
+
+        {/* WHATSAPP */}
+        <a
+          href="https://wa.me/905325672777"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="WhatsApp"
+          title="WhatsApp"
+          className="group relative flex h-12 w-12 items-center justify-center rounded-full bg-gold text-plum-dark shadow-[0_8px_30px_-10px_rgba(200,169,106,0.8)] transition-all duration-500 hover:-translate-y-1.5 hover:bg-gold-light md:h-13 md:w-13"
+        >
+          <span className="absolute inset-0 rounded-full border border-gold-light/50 transition-transform duration-500 group-hover:scale-110" />
+
+          <svg
+            viewBox="0 0 24 24"
+            width="21"
+            height="21"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M20.2 11.8a8.2 8.2 0 0 1-12.1 7.2L4 20l1.1-3.9A8.2 8.2 0 1 1 20.2 11.8Z" />
+
+            <path d="M9 8.3c.3-.5.6-.5.9-.5h.4c.2 0 .4.1.5.4l.8 1.8c.1.3.1.5-.1.7l-.6.8c-.2.2-.2.4-.1.6.5 1 1.3 1.8 2.3 2.3.2.1.4.1.6-.1l.8-.9c.2-.2.4-.3.7-.1l1.8.8c.3.1.4.3.4.5v.4c0 .4-.2.8-.5 1.1-.5.5-1.2.8-2 .8-1.3 0-3.3-.8-5.1-2.5-1.7-1.7-2.7-3.7-2.7-5 0-.4.1-.8.3-1.1Z" />
+          </svg>
+        </a>
+
+        {/* DIVIDER */}
+        <span className="h-5 w-px bg-brand-white/10" />
+
+        {/* FACEBOOK */}
+        <a
+          href="#"
+          aria-label="Facebook"
+          title="Facebook"
+          className="group flex h-10 w-10 items-center justify-center rounded-full text-brand-white/75 transition-all duration-500 hover:-translate-y-1 hover:bg-brand-white/10 hover:text-gold md:h-11 md:w-11"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            width="18"
+            height="18"
+            fill="currentColor"
+          >
+            <path d="M13.8 21v-8h2.8l.4-3h-3.2V8.1c0-.9.3-1.5 1.6-1.5H17V4a21 21 0 0 0-2.4-.1c-2.4 0-4.1 1.5-4.1 4.2V10H8v3h2.5v8h3.3Z" />
+          </svg>
+        </a>
+
+      </div>
+    </div>
   );
 }

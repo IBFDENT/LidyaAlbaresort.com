@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
+
 import CategoryHero from "@/components/category/CategoryHero";
 import CategoryGallery from "@/components/category/CategoryGallery";
 import CategoryCraft from "@/components/category/CategoryCraft";
 import CategoryCTA from "@/components/category/CategoryCTA";
+
 import { PearlIcon } from "@/components/category/icons";
 
 export const metadata: Metadata = {
@@ -18,7 +21,9 @@ export default function PearlsPage() {
   return (
     <>
       <Header />
+
       <main>
+        {/* HERO */}
         <CategoryHero
           eyebrow="Pearls"
           title="Nature's Most Patient Jewel"
@@ -28,6 +33,7 @@ export default function PearlsPage() {
           imageAlt="Pearl strand necklace with a diamond-set gold clasp"
         />
 
+        {/* COLLECTION GALLERY */}
         <CategoryGallery
           icon={<PearlIcon />}
           items={[
@@ -84,6 +90,7 @@ export default function PearlsPage() {
           ]}
         />
 
+        {/* CRAFT / QUALITY */}
         <CategoryCraft
           eyebrow="What We Look For"
           title="Four qualities that separate a fine pearl from an ordinary one"
@@ -111,12 +118,15 @@ export default function PearlsPage() {
           ]}
         />
 
+        {/* PRIVATE VIEWING CTA */}
         <CategoryCTA
           title="See our pearls in person"
-          sub="Photography for this collection is being prepared. Book a private appointment at one of our boutiques to view current pieces."
+          sub="Experience the lustre, character and beauty of our pearls in person during a private visit to one of our boutiques."
         />
       </main>
+
       <Footer />
+
       <FloatingActions />
     </>
   );

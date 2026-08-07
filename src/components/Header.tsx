@@ -16,42 +16,61 @@ function DesktopNavItem({ item }: { item: NavItem }) {
 
   useEffect(() => {
     function onClickOutside(e: MouseEvent) {
-      if (rootRef.current && !rootRef.current.contains(e.target as Node)) setOpen(false);
+      if (
+        rootRef.current &&
+        !rootRef.current.contains(e.target as Node)
+      ) {
+        setOpen(false);
+      }
     }
+
     document.addEventListener("mousedown", onClickOutside);
-    return () => document.removeEventListener("mousedown", onClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", onClickOutside);
+    };
   }, []);
 
   if (!item.children?.length) {
     return (
-      <Link href={item.href} className="whitespace-nowrap hover:text-gold transition-colors">
+      <Link
+        href={item.href}
+        className="whitespace-nowrap transition-colors duration-300 hover:text-gold"
+      >
         {dict.nav[item.labelKey]}
       </Link>
     );
   }
 
   const openNow = () => {
-    if (closeTimer.current) clearTimeout(closeTimer.current);
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+    }
+
     setOpen(true);
   };
+
   const closeSoon = () => {
-    closeTimer.current = setTimeout(() => setOpen(false), 120);
+    closeTimer.current = setTimeout(() => {
+      setOpen(false);
+    }, 150);
   };
 
   return (
     <div
-      className="relative"
       ref={rootRef}
+      className="relative"
       onMouseEnter={openNow}
       onMouseLeave={closeSoon}
     >
       <button
         type="button"
         aria-expanded={open}
-        onClick={() => setOpen((v) => !v)}
-        className="flex items-center gap-1 whitespace-nowrap hover:text-gold transition-colors"
+        onClick={() => setOpen((value) => !value)}
+        className="flex items-center gap-1.5 whitespace-nowrap transition-colors duration-300 hover:text-gold"
       >
         {dict.nav[item.labelKey]}
+
         <svg
           viewBox="0 0 12 8"
           width="9"
@@ -59,7 +78,9 @@ function DesktopNavItem({ item }: { item: NavItem }) {
           fill="none"
           stroke="currentColor"
           strokeWidth="1.4"
-          className={`transition-transform ${open ? "rotate-180" : ""}`}
+          className={`transition-transform duration-300 ${
+            open ? "rotate-180" : ""
+          }`}
         >
           <path d="M1 1.5L6 6.5L11 1.5" />
         </svg>
@@ -68,17 +89,63 @@ function DesktopNavItem({ item }: { item: NavItem }) {
       {open && (
         <div
           role="menu"
-          className="absolute left-0 top-full mt-3 w-48 overflow-hidden rounded-sm border border-plum-dark/10 bg-brand-white py-1.5 shadow-[0_16px_36px_-12px_rgba(27,11,32,0.28)]"
+          className="
+            absolute
+            left-0
+            top-full
+            mt-4
+            w-[220px]
+            overflow-hidden
+            border
+            border-brand-white/10
+            bg-plum-dark/95
+            shadow-[0_24px_60px_-25px_rgba(0,0,0,0.75)]
+            backdrop-blur-xl
+          "
         >
-          {item.children.map((child, i) => (
+          {item.children.map((child, index) => (
             <Link
-              key={`${child.href}-${i}`}
+              key={`${child.href}-${index}`}
               href={child.href}
               role="menuitem"
-              className="block px-4 py-2 text-[0.78rem] text-plum-dark transition-colors hover:bg-ivory hover:text-gold"
               onClick={() => setOpen(false)}
+              className="
+                group
+                relative
+                block
+                border-b
+                border-brand-white/[0.07]
+                px-5
+                py-4
+                text-[0.68rem]
+                font-semibold
+                uppercase
+                tracking-[0.17em]
+                text-brand-white/75
+                transition-all
+                duration-300
+                last:border-b-0
+                hover:bg-brand-white/[0.04]
+                hover:text-gold
+              "
             >
-              {dict.nav[child.labelKey]}
+              <span className="relative z-10">
+                {dict.nav[child.labelKey]}
+              </span>
+
+              <span
+                className="
+                  absolute
+                  bottom-0
+                  left-0
+                  h-px
+                  w-0
+                  bg-gold
+                  transition-all
+                  duration-500
+                  group-hover:w-full
+                "
+              />
             </Link>
           ))}
         </div>
@@ -93,87 +160,131 @@ export default function Header() {
   const [mobileSubOpen, setMobileSubOpen] = useState<number | null>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40);
+    };
+
     onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+
+    window.addEventListener("scroll", onScroll, {
+      passive: true,
+    });
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   return (
     <header
-      className={`site-header fixed top-0 left-0 right-0 z-50 ${
+      className={`site-header fixed left-0 right-0 top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-ivory/90 backdrop-blur-lg shadow-[0_1px_0_rgba(27,11,32,0.06)] py-3"
-          : "py-6"
+          ? "bg-ivory/94 py-3 shadow-[0_1px_0_rgba(27,11,32,0.08)] backdrop-blur-xl"
+          : "bg-transparent py-5"
       }`}
     >
-      <div className="mx-auto max-w-[1320px] px-6 flex items-center justify-between">
-        <Link href="/#home" aria-label="LIDYA JEWELRY — Home" className="shrink-0">
+      <div className="mx-auto flex max-w-[1440px] items-center justify-between px-6 md:px-10 lg:px-16 xl:px-20">
+        {/* LOGO */}
+        <Link
+          href="/#home"
+          aria-label="LIDYA JEWELRY — Home"
+          className="shrink-0"
+        >
           <Image
-            src="/images/logo.jpg"
+            src="/images/logo.png"
             alt="LIDYA JEWELRY"
-            width={141}
-            height={44}
-            className="h-11 w-auto bg-brand-white px-2 py-1 rounded-sm shadow-sm"
+            width={220}
+            height={90}
             priority
+            className={`w-auto object-contain transition-all duration-500 ${
+              scrolled
+                ? "h-[42px]"
+                : "h-[46px] brightness-[2.8] saturate-0"
+            }`}
           />
         </Link>
 
-        <nav className="hidden xl:flex items-center gap-6 text-[0.72rem] font-medium tracking-wide text-plum-dark shrink-0">
-          {NAV_ITEMS.map((item, i) => (
-            <DesktopNavItem key={`${item.href}-${item.labelKey}-${i}`} item={item} />
+        {/* DESKTOP NAV */}
+        <nav
+          className={`hidden items-center gap-7 text-[0.68rem] font-semibold uppercase tracking-[0.14em] xl:flex ${
+            scrolled
+              ? "text-plum-dark"
+              : "text-brand-white"
+          }`}
+        >
+          {NAV_ITEMS.map((item, index) => (
+            <DesktopNavItem
+              key={`${item.href}-${item.labelKey}-${index}`}
+              item={item}
+            />
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
-          <button
-            aria-label="Search"
-            className="hidden md:flex w-8 h-8 items-center justify-center text-plum-dark hover:text-gold transition-colors"
-          >
-            <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <circle cx="11" cy="11" r="7" />
-              <line x1="21" y1="21" x2="16.65" y2="16.65" />
-            </svg>
-          </button>
-          <button
-            aria-label="Wishlist"
-            className="hidden md:flex relative w-8 h-8 items-center justify-center text-plum-dark hover:text-gold transition-colors"
-          >
-            <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path d="M12 21s-7.5-4.6-10-9.3C.4 8 2 4.5 5.6 4c2-.3 3.7.6 4.9 2.2C11.7 4.6 13.4 3.7 15.4 4c3.6.5 5.2 4 3.6 7.7C16.5 16.4 12 21 12 21z" />
-            </svg>
-          </button>
-
+        {/* RIGHT ACTIONS */}
+        <div className="flex items-center gap-4">
           <LanguageSwitcher />
 
-          <button className="btn-magnetic hidden lg:inline-flex items-center justify-center rounded-sm border border-plum-dark px-5 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-plum-dark hover:bg-plum-dark hover:text-brand-white">
-            {dict.nav.book}
-          </button>
-
-          <button
-            aria-label="Menu"
-            className="flex xl:hidden flex-col gap-[5px] w-[26px]"
-            onClick={() => setMenuOpen((v) => !v)}
+          <Link
+            href="/#contact"
+            className={`hidden items-center justify-center border px-6 py-3 text-[0.64rem] font-semibold uppercase tracking-[0.2em] transition-all duration-500 lg:inline-flex ${
+              scrolled
+                ? "border-plum-dark/40 text-plum-dark hover:bg-plum-dark hover:text-brand-white"
+                : "border-brand-white/45 text-brand-white hover:border-gold hover:bg-gold hover:text-plum-dark"
+            }`}
           >
-            <span className="h-[1.5px] w-full bg-plum-dark" />
-            <span className="h-[1.5px] w-full bg-plum-dark" />
-            <span className="h-[1.5px] w-full bg-plum-dark" />
+            Private Appointment
+          </Link>
+
+          {/* MOBILE MENU BUTTON */}
+          <button
+            type="button"
+            aria-label="Menu"
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((value) => !value)}
+            className="flex w-[28px] flex-col gap-[5px] xl:hidden"
+          >
+            <span
+              className={`h-[1.5px] w-full transition-colors ${
+                scrolled ? "bg-plum-dark" : "bg-brand-white"
+              }`}
+            />
+
+            <span
+              className={`h-[1.5px] w-full transition-colors ${
+                scrolled ? "bg-plum-dark" : "bg-brand-white"
+              }`}
+            />
+
+            <span
+              className={`h-[1.5px] w-full transition-colors ${
+                scrolled ? "bg-plum-dark" : "bg-brand-white"
+              }`}
+            />
           </button>
         </div>
       </div>
 
+      {/* MOBILE MENU */}
       {menuOpen && (
-        <nav className="xl:hidden mx-auto max-w-[1320px] px-6 pt-6 pb-4 flex flex-col gap-1 text-plum-dark">
-          {NAV_ITEMS.map((item, i) => (
-            <div key={`m-${item.href}-${item.labelKey}-${i}`}>
+        <nav className="mx-auto mt-4 max-w-[1440px] border-t border-plum-dark/10 bg-ivory px-6 pb-6 pt-5 text-plum-dark shadow-[0_18px_45px_-25px_rgba(27,11,32,0.3)] md:px-10 lg:px-16 xl:hidden">
+          {NAV_ITEMS.map((item, index) => (
+            <div
+              key={`mobile-${item.href}-${item.labelKey}-${index}`}
+              className="border-b border-plum-dark/10 last:border-b-0"
+            >
               {item.children?.length ? (
                 <>
                   <button
                     type="button"
-                    className="flex w-full items-center justify-between py-2.5 text-sm tracking-wide"
-                    onClick={() => setMobileSubOpen((v) => (v === i ? null : i))}
+                    className="flex w-full items-center justify-between py-4 text-[0.72rem] font-semibold uppercase tracking-[0.16em]"
+                    onClick={() =>
+                      setMobileSubOpen((current) =>
+                        current === index ? null : index
+                      )
+                    }
                   >
                     {dict.nav[item.labelKey]}
+
                     <svg
                       viewBox="0 0 12 8"
                       width="10"
@@ -181,18 +292,21 @@ export default function Header() {
                       fill="none"
                       stroke="currentColor"
                       strokeWidth="1.4"
-                      className={`transition-transform ${mobileSubOpen === i ? "rotate-180" : ""}`}
+                      className={`transition-transform duration-300 ${
+                        mobileSubOpen === index ? "rotate-180" : ""
+                      }`}
                     >
                       <path d="M1 1.5L6 6.5L11 1.5" />
                     </svg>
                   </button>
-                  {mobileSubOpen === i && (
-                    <div className="flex flex-col gap-1 border-l border-plum-dark/10 pl-4 pb-2">
-                      {item.children.map((child, ci) => (
+
+                  {mobileSubOpen === index && (
+                    <div className="mb-3 border-l border-gold/40 pl-5">
+                      {item.children.map((child, childIndex) => (
                         <Link
-                          key={`${child.href}-${ci}`}
+                          key={`${child.href}-${childIndex}`}
                           href={child.href}
-                          className="py-1.5 text-[0.85rem] text-plum-dark/80"
+                          className="block py-2.5 text-[0.7rem] font-medium uppercase tracking-[0.14em] text-plum-dark/65 transition-colors hover:text-gold"
                           onClick={() => setMenuOpen(false)}
                         >
                           {dict.nav[child.labelKey]}
@@ -204,7 +318,7 @@ export default function Header() {
               ) : (
                 <Link
                   href={item.href}
-                  className="block py-2.5 text-sm tracking-wide"
+                  className="block py-4 text-[0.72rem] font-semibold uppercase tracking-[0.16em] transition-colors hover:text-gold"
                   onClick={() => setMenuOpen(false)}
                 >
                   {dict.nav[item.labelKey]}

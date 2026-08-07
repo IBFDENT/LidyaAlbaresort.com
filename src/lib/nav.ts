@@ -36,10 +36,10 @@ export const NAV_ITEMS: NavItem[] = [
     ],
   },
   {
-    href: "/#investment",
+    href: "/investment-gold",
     labelKey: "investmentMenu",
     children: [
-      { href: "/#investment", labelKey: "investment" },
+      { href: "/investment-gold", labelKey: "investment" },
       { href: "/diamonds", labelKey: "diamonds" },
     ],
   },

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { getDictionary, LOCALE } from "@/lib/i18n";
 import { COLLECTIONS, localized } from "@/lib/content";
 
@@ -12,44 +13,159 @@ const CATEGORY_LINKS: Partial<Record<string, string>> = {
   bespoke: "/bespoke",
 };
 
+/*
+  Editorial layout:
+  01 – large landscape
+  02 – tall portrait
+  03 – smaller portrait
+  04 – large landscape
+  05 – medium
+  06 – medium
+
+  These classes are intentionally written statically
+  so Tailwind can detect them during build.
+*/
+const CARD_LAYOUTS = [
+  "md:col-span-7 md:row-span-2 min-h-[520px] lg:min-h-[640px]",
+  "md:col-span-5 md:row-span-2 min-h-[520px] lg:min-h-[640px]",
+  "md:col-span-5 min-h-[420px] lg:min-h-[500px]",
+  "md:col-span-7 min-h-[420px] lg:min-h-[500px]",
+  "md:col-span-6 min-h-[420px] lg:min-h-[500px]",
+  "md:col-span-6 min-h-[420px] lg:min-h-[500px]",
+];
+
 export default function Collections() {
   return (
-    <section id="collections" className="py-26">
-      <div className="mx-auto max-w-[1320px] px-6">
-        <div className="max-w-xl mb-16 text-center mx-auto">
-          <span className="block mb-4 text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-gold">
-            {dict.collections.eyebrow}
-          </span>
-          <h2 className="text-4xl md:text-5xl">{dict.collections.title}</h2>
-          <p className="mt-4 text-grey">{dict.collections.sub}</p>
+    <section
+      id="collections"
+      className="relative overflow-hidden bg-ivory py-24 md:py-32 lg:py-40"
+    >
+      {/* Very subtle decorative background detail */}
+      <div className="pointer-events-none absolute -left-40 top-20 h-[420px] w-[420px] rounded-full bg-gold/5 blur-3xl" />
+
+      <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
+        {/* SECTION INTRO */}
+        <div className="mb-16 grid items-end gap-8 md:mb-20 lg:grid-cols-12 lg:gap-12">
+          <div className="lg:col-span-8">
+            <span className="mb-5 block text-[0.68rem] font-semibold uppercase tracking-[0.32em] text-gold">
+              {dict.collections.eyebrow}
+            </span>
+
+            <h2 className="max-w-[850px] font-display text-5xl leading-[0.95] tracking-[-0.025em] text-plum-dark md:text-6xl lg:text-7xl">
+              {dict.collections.title}
+            </h2>
+          </div>
+
+          <div className="lg:col-span-4 lg:pb-2">
+            <p className="max-w-md text-sm leading-7 text-grey md:text-base">
+              {dict.collections.sub}
+            </p>
+
+            <div className="mt-7 flex items-center gap-4">
+              <span className="h-px w-12 bg-gold" />
+              <span className="text-[0.6rem] font-semibold uppercase tracking-[0.26em] text-plum-dark/55">
+                LIDYA · SINCE 1989
+              </span>
+            </div>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {COLLECTIONS.map((c) => (
-            <a
-              key={c.id}
-              href={CATEGORY_LINKS[c.id] ?? "/#catalog"}
-              className="cat-card group relative block aspect-[4/3] rounded overflow-hidden bg-plum-dark shadow-[0_12px_30px_-14px_rgba(27,11,32,0.18)]"
-            >
-              <Image
-                src={c.image}
-                alt={localized(c.name, LOCALE)}
-                fill
-                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                className="object-cover opacity-80"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-plum-dark/85 via-plum-dark/10 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 p-6">
-                <span className="block text-[0.65rem] uppercase tracking-[0.2em] text-gold">
-                  {dict.nav.collections}
+        {/* EDITORIAL COLLECTION GRID */}
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-12 md:gap-5 lg:gap-6">
+          {COLLECTIONS.map((collection, index) => {
+            const href =
+              CATEGORY_LINKS[collection.id] ?? "/#catalog";
+
+            const layout =
+              CARD_LAYOUTS[index] ??
+              "md:col-span-6 min-h-[420px] lg:min-h-[500px]";
+
+            return (
+              <Link
+                key={collection.id}
+                href={href}
+                className={`cat-card group relative block overflow-hidden bg-plum-dark ${layout}`}
+              >
+                {/* IMAGE */}
+                <Image
+                  src={collection.image}
+                  alt={localized(collection.name, LOCALE)}
+                  fill
+                  sizes="
+                    (min-width: 1280px) 60vw,
+                    (min-width: 768px) 55vw,
+                    100vw
+                  "
+                  className="object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.045]"
+                />
+
+                {/* CINEMATIC GRADIENT */}
+                <div className="absolute inset-0 bg-gradient-to-t from-plum-dark/90 via-plum-dark/12 to-transparent transition-opacity duration-700 group-hover:opacity-90" />
+
+                {/* SUBTLE DARKENING */}
+                <div className="absolute inset-0 bg-plum-dark/5 transition-colors duration-700 group-hover:bg-plum-dark/15" />
+
+                {/* NUMBER */}
+                <span className="absolute right-5 top-5 z-10 text-[0.62rem] font-semibold tracking-[0.22em] text-brand-white/60 md:right-7 md:top-7">
+                  {String(index + 1).padStart(2, "0")}
                 </span>
-                <h3 className="mt-1 text-2xl text-brand-white">{localized(c.name, LOCALE)}</h3>
-                <p className="mt-1 text-sm text-brand-white/75">
-                  {localized(c.description, LOCALE)}
-                </p>
-              </div>
-            </a>
-          ))}
+
+                {/* CONTENT */}
+                <div className="absolute inset-x-0 bottom-0 z-10 p-6 md:p-8 lg:p-10">
+                  <span className="block text-[0.62rem] font-semibold uppercase tracking-[0.24em] text-gold">
+                    {dict.nav.collections}
+                  </span>
+
+                  <div className="mt-3 flex items-end justify-between gap-5">
+                    <div>
+                      <h3 className="font-display text-3xl leading-none text-brand-white md:text-4xl lg:text-[2.8rem]">
+                        {localized(collection.name, LOCALE)}
+                      </h3>
+
+                      <p className="mt-3 max-w-md text-sm leading-6 text-brand-white/70">
+                        {localized(
+                          collection.description,
+                          LOCALE
+                        )}
+                      </p>
+                    </div>
+
+                    {/* ARROW */}
+                    <span className="mb-1 hidden h-11 w-11 shrink-0 items-center justify-center rounded-full border border-brand-white/30 text-brand-white transition-all duration-500 group-hover:border-gold group-hover:bg-gold group-hover:text-plum-dark md:flex">
+                      <svg
+                        viewBox="0 0 24 24"
+                        width="16"
+                        height="16"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.4"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="transition-transform duration-500 group-hover:translate-x-0.5"
+                      >
+                        <path d="M5 12h14" />
+                        <path d="m14 7 5 5-5 5" />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+
+                {/* GOLD HOVER LINE */}
+                <span className="absolute bottom-0 left-0 z-20 h-[2px] w-0 bg-gold transition-all duration-700 group-hover:w-full" />
+              </Link>
+            );
+          })}
+        </div>
+
+        {/* EDITORIAL BRAND BREAK */}
+        <div className="mx-auto mt-24 max-w-[1050px] text-center md:mt-32">
+          <span className="mx-auto mb-8 block h-px w-14 bg-gold" />
+
+          <p className="font-display text-3xl italic leading-tight text-plum-dark md:text-4xl lg:text-5xl">
+            Jewellery shaped by craftsmanship,
+            <span className="text-gold"> character </span>
+            and enduring beauty.
+          </p>
         </div>
       </div>
     </section>
