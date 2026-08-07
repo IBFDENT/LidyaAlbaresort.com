@@ -9,7 +9,7 @@ export type NavItem = {
     | "design"
     | "bespoke"
     | "investment"
-    | "investmentDiamonds"
+    | "brilliants"
     | "services"
     | "about"
     | "boutiques"
@@ -17,17 +17,17 @@ export type NavItem = {
 };
 
 export const NAV_ITEMS: NavItem[] = [
-  { href: "#home", labelKey: "home" },
-  { href: "#collections", labelKey: "collections" },
+  { href: "/#home", labelKey: "home" },
+  { href: "/#collections", labelKey: "collections" },
   { href: "/pearls", labelKey: "pearls" },
   { href: "/wedding-rings", labelKey: "wedding" },
   { href: "/diamonds", labelKey: "diamonds" },
-  { href: "#catalog", labelKey: "design" },
-  { href: "#catalog", labelKey: "bespoke" },
-  { href: "#investment", labelKey: "investment" },
-  { href: "/investment-diamonds", labelKey: "investmentDiamonds" },
-  { href: "#services", labelKey: "services" },
-  { href: "#about", labelKey: "about" },
-  { href: "#boutiques", labelKey: "boutiques" },
-  { href: "#contact", labelKey: "contact" },
+  { href: "/#catalog", labelKey: "design" },
+  { href: "/#catalog", labelKey: "bespoke" },
+  { href: "/#investment", labelKey: "investment" },
+  { href: "/brilliants", labelKey: "brilliants" },
+  { href: "/#services", labelKey: "services" },
+  { href: "/#about", labelKey: "about" },
+  { href: "/#boutiques", labelKey: "boutiques" },
+  { href: "/#contact", labelKey: "contact" },
 ];

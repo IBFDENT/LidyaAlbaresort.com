@@ -31,7 +31,7 @@ const MOSAIC_SPANS = [
 ];
 
 export default function CategoryGallery({ icon, items }: CategoryGalleryProps) {
-  const slots = items ?? Array.from({ length: 10 }, () => ({}));
+  const slots: GalleryItem[] = items ?? Array.from({ length: 10 }, () => ({}));
 
   return (
     <section className="py-20">

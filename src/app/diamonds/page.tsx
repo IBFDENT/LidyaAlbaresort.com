@@ -11,7 +11,7 @@ import { DiamondIcon } from "@/components/category/icons";
 export const metadata: Metadata = {
   title: "Diamonds — LIDYA JEWELRY",
   description:
-    "Diamond jewellery selected for cut, colour, clarity and carat, certified and set by hand at LIDYA JEWELRY.",
+    "Certified diamond jewellery selected for cut, colour, clarity and carat — set by hand at LIDYA JEWELRY, or held loose as a private, portable store of value.",
 };
 
 export default function DiamondsPage() {
@@ -22,7 +22,7 @@ export default function DiamondsPage() {
         <CategoryHero
           eyebrow="Diamonds"
           title="For Moments of Lasting Value"
-          lead="Formed under pressure over billions of years, a diamond has always stood for what endures. We set ours in designs meant to be worn, loved and passed down."
+          lead="Formed under pressure over billions of years, a diamond has always stood for what endures. Every stone we offer is independently graded by GIA or IGI, then set by hand in designs meant to be worn and passed down — or kept loose, as one of the most private and portable ways to hold value."
           icon={<DiamondIcon />}
         />
 
@@ -70,8 +70,8 @@ export default function DiamondsPage() {
         />
 
         <CategoryCTA
-          title="View our diamonds in person"
-          sub="Photography for this collection is being prepared. Book a private appointment at one of our boutiques to view current pieces."
+          title="Speak with us about diamonds"
+          sub="Photography for this collection is being prepared. Book a private appointment to view current pieces, or to discuss certified loose stones for investment purposes."
         />
       </main>
       <Footer />

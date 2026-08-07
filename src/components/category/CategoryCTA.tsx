@@ -12,7 +12,7 @@ export default function CategoryCTA({ title, sub }: CategoryCTAProps) {
           <p className="mt-4 max-w-md mx-auto text-grey">{sub}</p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <a
-              href="#contact"
+              href="/#contact"
               className="btn-magnetic inline-flex items-center justify-center rounded-sm bg-gold px-8 py-4 text-[0.78rem] font-semibold uppercase tracking-[0.14em] text-plum-dark hover:bg-gold-light"
             >
               Book a Private Appointment

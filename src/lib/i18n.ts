@@ -23,7 +23,7 @@ type Dict = {
     bespoke: string;
     services: string;
     investment: string;
-    investmentDiamonds: string;
+    brilliants: string;
     about: string;
     boutiques: string;
     contact: string;
@@ -102,7 +102,7 @@ export const dictionaries: Record<Locale, Dict> = {
       bespoke: "Bespoke",
       services: "Service",
       investment: "Investmentgold",
-      investmentDiamonds: "Investmentdiamanten",
+      brilliants: "Brilliants",
       about: "Über uns",
       boutiques: "Boutiquen",
       contact: "Kontakt",
@@ -179,7 +179,7 @@ export const dictionaries: Record<Locale, Dict> = {
       bespoke: "Bespoke",
       services: "Services",
       investment: "Investment Gold",
-      investmentDiamonds: "Investment Diamonds",
+      brilliants: "Brilliants",
       about: "About",
       boutiques: "Boutiques",
       contact: "Contact",
@@ -256,7 +256,7 @@ export const dictionaries: Record<Locale, Dict> = {
       bespoke: "Özel Tasarım",
       services: "Hizmetler",
       investment: "Yatırım Altını",
-      investmentDiamonds: "Yatırımlık Pırlantalar",
+      brilliants: "Brilliants",
       about: "Hakkımızda",
       boutiques: "Butikler",
       contact: "İletişim",
@@ -333,7 +333,7 @@ export const dictionaries: Record<Locale, Dict> = {
       bespoke: "Zákazková výroba",
       services: "Servis",
       investment: "Investičné zlato",
-      investmentDiamonds: "Investičné diamanty",
+      brilliants: "Brilliants",
       about: "O nás",
       boutiques: "Butiky",
       contact: "Kontakt",
@@ -410,7 +410,7 @@ export const dictionaries: Record<Locale, Dict> = {
       bespoke: "Zakázková výroba",
       services: "Servis",
       investment: "Investiční zlato",
-      investmentDiamonds: "Investiční diamanty",
+      brilliants: "Brilliants",
       about: "O nás",
       boutiques: "Butiky",
       contact: "Kontakt",
@@ -487,7 +487,7 @@ export const dictionaries: Record<Locale, Dict> = {
       bespoke: "Egyedi készítés",
       services: "Szolgáltatások",
       investment: "Befektetési arany",
-      investmentDiamonds: "Befektetési gyémántok",
+      brilliants: "Brilliants",
       about: "Rólunk",
       boutiques: "Butikok",
       contact: "Kapcsolat",
@@ -564,7 +564,7 @@ export const dictionaries: Record<Locale, Dict> = {
       bespoke: "Na zamówienie",
       services: "Serwis",
       investment: "Złoto inwestycyjne",
-      investmentDiamonds: "Diamenty inwestycyjne",
+      brilliants: "Brilliants",
       about: "O nas",
       boutiques: "Butiki",
       contact: "Kontakt",

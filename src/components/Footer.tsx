@@ -26,19 +26,19 @@ export default function Footer() {
             {dict.footer.nav}
           </h5>
           <div className="mt-4 flex flex-col gap-2 text-sm">
-            <Link href="#collections" className="hover:text-gold">
+            <Link href="/#collections" className="hover:text-gold">
               {dict.nav.collections}
             </Link>
-            <Link href="#services" className="hover:text-gold">
+            <Link href="/#services" className="hover:text-gold">
               {dict.nav.services}
             </Link>
-            <Link href="#catalog" className="hover:text-gold">
+            <Link href="/#catalog" className="hover:text-gold">
               {dict.nav.bespoke}
             </Link>
-            <Link href="#boutiques" className="hover:text-gold">
+            <Link href="/#boutiques" className="hover:text-gold">
               {dict.nav.boutiques}
             </Link>
-            <Link href="#contact" className="hover:text-gold">
+            <Link href="/#contact" className="hover:text-gold">
               {dict.nav.contact}
             </Link>
           </div>
