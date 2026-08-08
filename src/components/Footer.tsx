@@ -203,33 +203,89 @@ export default function Footer() {
               Follow LIDYA
             </span>
 
-            <div className="mt-4 flex items-center gap-6">
+            <div className="mt-4 flex flex-wrap items-start gap-6">
+              {/* INSTAGRAM */}
               <a
-                href="#"
+                href="https://www.instagram.com/tanirzafer?igsh=MWs5ZTh5bzA0a3p5Ng=="
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-[0.64rem] font-semibold uppercase tracking-[0.18em] text-brand-white/65 transition-colors hover:text-gold"
               >
                 Instagram
               </a>
 
-              <span className="h-px w-5 bg-brand-white/15" />
+              <span className="mt-[0.45rem] h-px w-5 bg-brand-white/15" />
 
+              {/* FACEBOOK */}
               <a
-                href="#"
+                href="https://www.facebook.com/lidyaalbajewellery/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-[0.64rem] font-semibold uppercase tracking-[0.18em] text-brand-white/65 transition-colors hover:text-gold"
               >
                 Facebook
               </a>
 
-              <span className="h-px w-5 bg-brand-white/15" />
+              <span className="mt-[0.45rem] h-px w-5 bg-brand-white/15" />
 
-              <a
-                href="https://wa.me/905325672777"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[0.64rem] font-semibold uppercase tracking-[0.18em] text-brand-white/65 transition-colors hover:text-gold"
-              >
-                WhatsApp
-              </a>
+              {/* WHATSAPP CHOICE */}
+              <details className="group relative">
+                <summary className="cursor-pointer list-none text-[0.64rem] font-semibold uppercase tracking-[0.18em] text-brand-white/65 transition-colors hover:text-gold [&::-webkit-details-marker]:hidden">
+                  <span className="inline-flex items-center gap-2">
+                    WhatsApp
+
+                    <span className="text-[0.55rem] transition-transform duration-300 group-open:rotate-180">
+                      ▾
+                    </span>
+                  </span>
+                </summary>
+
+                <div className="absolute bottom-full left-0 z-50 mb-3 min-w-[210px] border border-brand-white/15 bg-plum-dark/95 p-2 shadow-2xl backdrop-blur-md">
+                  <a
+                    href="https://wa.me/905325672777"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group/link flex items-center justify-between gap-5 px-4 py-3 transition-colors hover:bg-brand-white/[0.06]"
+                  >
+                    <div>
+                      <span className="block text-[0.55rem] font-semibold uppercase tracking-[0.2em] text-gold">
+                        WhatsApp
+                      </span>
+
+                      <span className="mt-1 block text-sm text-brand-white/80">
+                        Zafer (Victor)
+                      </span>
+                    </div>
+
+                    <span className="text-brand-white/40 transition-all group-hover/link:translate-x-1 group-hover/link:text-gold">
+                      →
+                    </span>
+                  </a>
+
+                  <div className="mx-4 h-px bg-brand-white/10" />
+
+                  <a
+                    href="https://wa.me/905378278599"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group/link flex items-center justify-between gap-5 px-4 py-3 transition-colors hover:bg-brand-white/[0.06]"
+                  >
+                    <div>
+                      <span className="block text-[0.55rem] font-semibold uppercase tracking-[0.2em] text-gold">
+                        WhatsApp
+                      </span>
+
+                      <span className="mt-1 block text-sm text-brand-white/80">
+                        Vierka
+                      </span>
+                    </div>
+
+                    <span className="text-brand-white/40 transition-all group-hover/link:translate-x-1 group-hover/link:text-gold">
+                      →
+                    </span>
+                  </a>
+                </div>
+              </details>
             </div>
           </div>
 
@@ -254,6 +310,7 @@ export default function Footer() {
 
           <div className="flex items-center gap-4">
             <span className="h-px w-8 bg-gold/60" />
+
             <span className="uppercase tracking-[0.22em]">
               Since 1989
             </span>
