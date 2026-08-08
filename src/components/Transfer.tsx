@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Transfer() {
   return (
     <section
@@ -86,7 +88,7 @@ export default function Transfer() {
               selected Alba Hotel.
             </p>
 
-            <div className="mt-7 flex items-center gap-5">
+            <div className="mt-7 flex flex-wrap items-center gap-5">
               <a
                 href="#"
                 className="inline-flex items-center gap-4 text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-brand-white/70 transition-colors hover:text-gold"
@@ -97,9 +99,22 @@ export default function Transfer() {
 
               <span className="h-px w-6 bg-brand-white/15" />
 
-              <span className="text-[0.56rem] font-semibold uppercase tracking-[0.16em] text-brand-white/40">
-                QR available
-              </span>
+              <a
+                href="/images/QR.jpg"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open VIP transfer QR code"
+                title="Open QR code"
+                className="group/qr relative h-14 w-14 shrink-0 overflow-hidden border border-gold/40 bg-brand-white p-1 transition-all duration-300 hover:scale-[1.05] hover:border-gold"
+              >
+                <Image
+                  src="/images/QR.jpg"
+                  alt="VIP transfer QR code"
+                  fill
+                  sizes="56px"
+                  className="object-contain p-1"
+                />
+              </a>
             </div>
           </div>
 
