@@ -431,6 +431,6 @@ export const BOUTIQUES: Boutique[] = [
     address: "Çolaklı, Tilkiler Mevkii, Erhan Demir Blv. No:4, P.K:07600 Manavgat / Türkiye",
   },
   { id: "resort", image: "/images/boutiques/resort.jpg", name: "Hotel Alba Resort" },
-  { id: "royal", image: "/images/boutiques/royal.jpg", name: "Hotel Alba Royal" },
+  { id: "royal", image: "/images/boutiques/royal-v2.jpg", name: "Hotel Alba Royal" },
   { id: "queen", image: "/images/boutiques/queen.jpg", name: "Hotel Alba Queen" },
 ];
