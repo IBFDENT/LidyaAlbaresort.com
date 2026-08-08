@@ -48,9 +48,22 @@ export default function DesignPage() {
 
       <main>
         {/* HERO */}
-        <section className="relative overflow-hidden bg-ivory pt-36 md:pt-40 lg:pt-44">
-          <div className="pointer-events-none absolute -left-40 top-10 h-[500px] w-[500px] rounded-full bg-gold/7 blur-3xl" />
-          <div className="pointer-events-none absolute -right-40 bottom-0 h-[420px] w-[420px] rounded-full bg-gold/5 blur-3xl" />
+        <section className="relative min-h-[820px] overflow-hidden bg-ivory pt-36 md:min-h-[900px] md:pt-40 lg:min-h-[940px] lg:pt-44">
+          {/* HERO IMAGE */}
+          <Image
+            src="/images/design/hero-design.png"
+            alt="LIDYA jewellery collection arranged on natural stone with rings, earrings, bracelets and necklaces"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+
+          {/* LIGHT CINEMATIC OVERLAY */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#F7F3EB]/88 via-[#F7F3EB]/34 to-transparent" />
+
+          {/* SUBTLE AMBIENT LIGHT */}
+          <div className="pointer-events-none absolute -left-40 top-10 h-[500px] w-[500px] rounded-full bg-brand-white/16 blur-3xl" />
 
           <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
             <div className="grid gap-12 pb-20 lg:grid-cols-12 lg:items-end lg:pb-28">
@@ -74,19 +87,21 @@ export default function DesignPage() {
               </div>
 
               <div className="lg:col-span-4 lg:pb-2">
-                <p className="max-w-md text-sm leading-7 text-grey md:text-base">
+                <p className="max-w-md text-sm leading-7 text-[#645E5A] md:text-base">
                   {t("heroLead")}
                 </p>
 
                 <div className="mt-7 flex items-center gap-4">
                   <span className="h-px w-12 bg-gold" />
-                  <span className="text-[0.58rem] font-semibold uppercase tracking-[0.24em] text-plum-dark/45">
+
+                  <span className="text-[0.58rem] font-semibold uppercase tracking-[0.24em] text-plum-dark/50">
                     LIDYA · SINCE 1989
                   </span>
                 </div>
               </div>
             </div>
 
+            {/* HERO STATEMENT */}
             <div className="border-t border-plum-dark/10 py-12 md:py-16">
               <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
                 <div className="lg:col-span-3">
@@ -189,6 +204,7 @@ export default function DesignPage() {
 
                         <div className="absolute bottom-6 left-6 flex items-center gap-4">
                           <span className="h-px w-10 bg-brand-white/60" />
+
                           <span className="text-[0.58rem] font-semibold uppercase tracking-[0.24em] text-brand-white/80">
                             Seasonal Collection
                           </span>
@@ -227,6 +243,7 @@ export default function DesignPage() {
 
                       <div className="mt-8 flex items-center gap-5">
                         <span className="h-px w-10 bg-gold" />
+
                         <span className="text-[0.58rem] font-semibold uppercase tracking-[0.22em] text-plum-dark/45">
                           Designed & handcrafted by LIDYA
                         </span>
@@ -339,6 +356,7 @@ export default function DesignPage() {
       </main>
 
       <Footer />
+
       <FloatingActions />
     </>
   );

@@ -89,7 +89,7 @@ export default function Footer() {
               </Link>
 
               <Link
-                href="/#catalog"
+                href="/bespoke"
                 className="transition-colors hover:text-gold"
               >
                 {dict.nav.bespoke}
@@ -118,10 +118,41 @@ export default function Footer() {
             </h5>
 
             <div className="mt-6 flex flex-col gap-3 text-sm text-brand-white/70">
-              <span>LIDYA JEWELRY — Manavgat</span>
-              <span>Hotel Alba Resort</span>
-              <span>Hotel Alba Royal</span>
-              <span>Hotel Alba Queen</span>
+              <a
+                href="https://www.lidyaalbajewellery.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-gold"
+              >
+                LIDYA JEWELLERY — Manavgat
+              </a>
+
+              <a
+                href="https://www.albahotels.com.tr/en/resort-en/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-gold"
+              >
+                Hotel Alba Resort
+              </a>
+
+              <a
+                href="https://www.albahotels.com.tr/en/royal-en/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-gold"
+              >
+                Hotel Alba Royal
+              </a>
+
+              <a
+                href="https://www.albahotels.com.tr/en/queen-en/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-gold"
+              >
+                Hotel Alba Queen
+              </a>
             </div>
           </div>
 
@@ -132,6 +163,7 @@ export default function Footer() {
             </h5>
 
             <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+              {/* ZAFER */}
               <div>
                 <p
                   className="font-display text-xl"
@@ -155,6 +187,7 @@ export default function Footer() {
                 </a>
               </div>
 
+              {/* VIERKA */}
               <div>
                 <p
                   className="font-display text-xl"
@@ -244,7 +277,7 @@ export default function Footer() {
 
               <span className="mt-[0.45rem] h-px w-5 bg-brand-white/15" />
 
-              {/* WHATSAPP CHOICE */}
+              {/* WHATSAPP */}
               <details className="group relative">
                 <summary className="cursor-pointer list-none text-[0.64rem] font-semibold uppercase tracking-[0.18em] text-brand-white/65 transition-colors hover:text-gold [&::-webkit-details-marker]:hidden">
                   <span className="inline-flex items-center gap-2">
@@ -257,6 +290,7 @@ export default function Footer() {
                 </summary>
 
                 <div className="absolute bottom-full left-0 z-50 mb-3 min-w-[210px] border border-brand-white/15 bg-plum-dark/95 p-2 shadow-2xl backdrop-blur-md">
+                  {/* ZAFER WHATSAPP */}
                   <a
                     href="https://wa.me/905325672777"
                     target="_blank"
@@ -280,6 +314,7 @@ export default function Footer() {
 
                   <div className="mx-4 h-px bg-brand-white/10" />
 
+                  {/* VIERKA WHATSAPP */}
                   <a
                     href="https://wa.me/905378278599"
                     target="_blank"
@@ -305,6 +340,7 @@ export default function Footer() {
             </div>
           </div>
 
+          {/* PRIVATE APPOINTMENT */}
           <div className="md:text-right">
             <Link
               href="/#contact"
@@ -319,12 +355,16 @@ export default function Footer() {
 
       {/* COPYRIGHT */}
       <div className="border-t border-brand-white/10">
-        <div className="mx-auto flex max-w-[1440px] flex-col gap-3 px-6 py-8 text-[0.68rem] text-brand-white/45 sm:flex-row sm:items-center sm:justify-between md:px-10 lg:px-16 xl:px-20">
-          <span>
-            © {year} LIDYA JEWELLERY. {dict.footer.rights}
-          </span>
+        <div className="relative mx-auto max-w-[1440px] px-6 py-8 text-[0.68rem] text-brand-white/45 md:px-10 lg:px-16 xl:px-20">
+          {/* CENTERED COPYRIGHT */}
+          <div className="text-center">
+            <span>
+              © {year} LIDYA JEWELLERY. {dict.footer.rights}
+            </span>
+          </div>
 
-          <div className="flex items-center gap-4">
+          {/* SINCE 1989 */}
+          <div className="mt-4 flex items-center justify-center gap-4 sm:absolute sm:right-6 sm:top-1/2 sm:mt-0 sm:-translate-y-1/2 md:right-10 lg:right-16 xl:right-20">
             <span className="h-px w-8 bg-gold/60" />
 
             <span className="uppercase tracking-[0.22em]">
