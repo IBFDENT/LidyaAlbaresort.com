@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { getDictionary } from "@/lib/i18n";
@@ -6,6 +8,10 @@ const dict = getDictionary();
 
 export default function Footer() {
   const year = new Date().getFullYear();
+
+  const openCookieSettings = () => {
+    window.dispatchEvent(new Event("open-cookie-settings"));
+  };
 
   return (
     <footer
@@ -68,38 +74,23 @@ export default function Footer() {
             </h5>
 
             <div className="mt-6 flex flex-col gap-3 text-sm text-brand-white/70">
-              <Link
-                href="/#collections"
-                className="transition-colors hover:text-gold"
-              >
+              <Link href="/#collections" className="transition-colors hover:text-gold">
                 {dict.nav.collections}
               </Link>
 
-              <Link
-                href="/#services"
-                className="transition-colors hover:text-gold"
-              >
+              <Link href="/#services" className="transition-colors hover:text-gold">
                 {dict.nav.services}
               </Link>
 
-              <Link
-                href="/#catalog"
-                className="transition-colors hover:text-gold"
-              >
+              <Link href="/#catalog" className="transition-colors hover:text-gold">
                 {dict.nav.bespoke}
               </Link>
 
-              <Link
-                href="/#boutiques"
-                className="transition-colors hover:text-gold"
-              >
+              <Link href="/#boutiques" className="transition-colors hover:text-gold">
                 {dict.nav.boutiques}
               </Link>
 
-              <Link
-                href="/#contact"
-                className="transition-colors hover:text-gold"
-              >
+              <Link href="/#contact" className="transition-colors hover:text-gold">
                 {dict.nav.contact}
               </Link>
             </div>
@@ -127,10 +118,7 @@ export default function Footer() {
 
             <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
               <div>
-                <p
-                  className="font-display text-xl"
-                  style={{ color: "#F5EFE6" }}
-                >
+                <p className="font-display text-xl" style={{ color: "#F5EFE6" }}>
                   Zafer (Victor)
                 </p>
 
@@ -150,10 +138,7 @@ export default function Footer() {
               </div>
 
               <div>
-                <p
-                  className="font-display text-xl"
-                  style={{ color: "#F5EFE6" }}
-                >
+                <p className="font-display text-xl" style={{ color: "#F5EFE6" }}>
                   Vierka
                 </p>
 
@@ -180,7 +165,7 @@ export default function Footer() {
               {dict.footer.legal}
             </h5>
 
-            <div className="mt-6 flex flex-col gap-3 text-sm text-brand-white/70">
+            <div className="mt-6 flex flex-col items-start gap-3 text-sm text-brand-white/70">
               <Link href="#" className="transition-colors hover:text-gold">
                 {dict.footer.privacy}
               </Link>
@@ -189,9 +174,13 @@ export default function Footer() {
                 {dict.footer.terms}
               </Link>
 
-              <Link href="#" className="transition-colors hover:text-gold">
+              <button
+                type="button"
+                onClick={openCookieSettings}
+                className="text-left transition-colors hover:text-gold"
+              >
                 {dict.footer.cookies}
-              </Link>
+              </button>
             </div>
           </div>
         </div>
