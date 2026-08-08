@@ -6,13 +6,19 @@ type CraftPoint = {
 type CategoryCraftProps = {
   eyebrow: string;
   title: string;
+  description: string;
   points: CraftPoint[];
+  closingText: string;
+  closingAccent?: string;
 };
 
 export default function CategoryCraft({
   eyebrow,
   title,
+  description,
   points,
+  closingText,
+  closingAccent,
 }: CategoryCraftProps) {
   return (
     <section className="relative overflow-hidden bg-plum-dark py-24 text-brand-white md:py-28 lg:py-32">
@@ -38,12 +44,12 @@ export default function CategoryCraft({
 
           <div className="lg:col-span-4 lg:pb-1">
             <p className="max-w-md text-sm leading-7 text-brand-white/55 md:text-base">
-              Fine pearls reveal their quality through subtle details that only
-              become more important with time.
+              {description}
             </p>
 
             <div className="mt-7 flex items-center gap-4">
               <span className="h-px w-12 bg-gold" />
+
               <span className="text-[0.58rem] font-semibold uppercase tracking-[0.24em] text-brand-white/40">
                 LIDYA · SINCE 1989
               </span>
@@ -88,11 +94,14 @@ export default function CategoryCraft({
             className="font-display text-3xl italic leading-tight md:text-4xl lg:text-5xl"
             style={{ color: "#F5EFE6" }}
           >
-            Beauty is visible.
-            <span style={{ color: "#E8D8B5" }}>
-              {" "}
-              Quality is revealed over time.
-            </span>
+            {closingText}
+
+            {closingAccent && (
+              <span style={{ color: "#E8D8B5" }}>
+                {" "}
+                {closingAccent}
+              </span>
+            )}
           </p>
         </div>
       </div>

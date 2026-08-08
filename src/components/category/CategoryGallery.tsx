@@ -10,6 +10,16 @@ type GalleryItem = {
 type CategoryGalleryProps = {
   icon?: ReactNode;
   items: GalleryItem[];
+
+  eyebrow?: string;
+  title: string;
+  titleAccent?: string;
+  description: string;
+
+  itemLabel: string;
+
+  closingText: string;
+  closingAccent?: string;
 };
 
 const layoutPattern = [
@@ -42,6 +52,13 @@ const layoutPattern = [
 export default function CategoryGallery({
   icon,
   items,
+  eyebrow = "The Collection",
+  title,
+  titleAccent,
+  description,
+  itemLabel,
+  closingText,
+  closingAccent,
 }: CategoryGalleryProps) {
   return (
     <section className="relative overflow-hidden bg-brand-white py-16 md:py-22 lg:py-24">
@@ -57,7 +74,7 @@ export default function CategoryGallery({
               )}
 
               <span className="text-[0.64rem] font-semibold uppercase tracking-[0.32em] text-gold">
-                The Collection
+                {eyebrow}
               </span>
             </div>
 
@@ -65,20 +82,22 @@ export default function CategoryGallery({
               className="mt-6 max-w-[760px] font-display text-4xl leading-[0.96] tracking-[-0.03em] md:text-5xl lg:text-6xl"
               style={{ color: "#1B0B20" }}
             >
-              Pearls in their
-              <span
-                className="block italic"
-                style={{ color: "#C8A96A" }}
-              >
-                most beautiful form.
-              </span>
+              {title}
+
+              {titleAccent && (
+                <span
+                  className="block italic"
+                  style={{ color: "#C8A96A" }}
+                >
+                  {titleAccent}
+                </span>
+              )}
             </h2>
           </div>
 
           <div className="lg:col-span-5 lg:pb-1">
             <p className="max-w-md text-sm leading-7 text-grey md:text-base">
-              From classic strands to contemporary details, every piece is
-              selected for balance, lustre and quiet character.
+              {description}
             </p>
           </div>
         </div>
@@ -122,7 +141,7 @@ export default function CategoryGallery({
                 <figcaption className="mt-5 flex items-start justify-between gap-5 border-t border-plum-dark/10 pt-4">
                   <div>
                     <span className="block text-[0.58rem] font-semibold uppercase tracking-[0.22em] text-gold">
-                      Pearl Collection
+                      {itemLabel}
                     </span>
 
                     <h3
@@ -150,11 +169,14 @@ export default function CategoryGallery({
             className="font-display text-3xl italic leading-tight md:text-4xl lg:text-5xl"
             style={{ color: "#1B0B20" }}
           >
-            No two pearls are identical.
-            <span style={{ color: "#C8A96A" }}>
-              {" "}
-              That is part of their beauty.
-            </span>
+            {closingText}
+
+            {closingAccent && (
+              <span style={{ color: "#C8A96A" }}>
+                {" "}
+                {closingAccent}
+              </span>
+            )}
           </p>
         </div>
       </div>

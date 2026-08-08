@@ -1,17 +1,20 @@
 import type { Metadata } from "next";
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
+
 import CategoryHero from "@/components/category/CategoryHero";
 import CategoryGallery from "@/components/category/CategoryGallery";
 import CategoryCraft from "@/components/category/CategoryCraft";
 import CategoryCTA from "@/components/category/CategoryCTA";
+
 import { GemClusterIcon } from "@/components/category/icons";
 
 export const metadata: Metadata = {
   title: "Brilliants — LIDYA JEWELLERY",
   description:
-    "The Brilliants collection from LIDYA JEWELLERY — signature brilliant-cut pieces chosen for maximum fire and sparkle.",
+    "Discover the Brilliants collection from LIDYA JEWELLERY — brilliant-cut diamond jewellery selected for exceptional light, fire and timeless elegance.",
 };
 
 export default function BrilliantsPage() {
@@ -23,21 +26,32 @@ export default function BrilliantsPage() {
         {/* HERO */}
         <CategoryHero
           eyebrow="Brilliants"
-          title="The Brilliants Collection"
-          lead="A signature line built around the brilliant cut itself — the shape prized above all others for the way it captures and returns light. Each piece is chosen for maximum fire and sparkle."
+          title="Where Light Becomes Jewellery"
+          lead="The brilliant cut was created for one extraordinary purpose — to transform light into fire. Every stone in our collection is selected for the way it comes alive in motion, revealing flashes of brilliance with every movement."
           icon={<GemClusterIcon />}
           image="/images/brilliants/pearlswithbriliants.png"
           imageAlt="Diamond and pearl jewellery from the LIDYA Brilliants collection"
+          collectionLabel="The Brilliants Collection"
+          statementEyebrow="The Art of Light"
+          statementText="Made to catch the light."
+          statementAccent="Created to keep it."
         />
 
-        {/* GALLERY */}
+        {/* COLLECTION GALLERY */}
         <CategoryGallery
           icon={<GemClusterIcon />}
+          eyebrow="The Brilliants Collection"
+          title="Jewellery shaped by"
+          titleAccent="light and brilliance."
+          description="From timeless solitaires to diamond-set bracelets, earrings and pendants, each piece is selected for the way its stones interact with light — elegant at rest, extraordinary in motion."
+          itemLabel="Brilliants Collection"
+          closingText="Every movement catches the light."
+          closingAccent="Every glance reveals something new."
           items={[
             {
               image: "/images/brilliants/brilliant-01.jpg",
               caption: "Solitaire Ring",
-              alt: "Brilliant-cut solitaire engagement ring",
+              alt: "Brilliant-cut solitaire diamond ring",
             },
             {
               image: "/images/brilliants/brilliant-02.jpg",
@@ -47,7 +61,7 @@ export default function BrilliantsPage() {
             {
               image: "/images/brilliants/brilliant-03.jpg",
               caption: "Classic Solitaire",
-              alt: "Six-prong brilliant-cut solitaire ring",
+              alt: "Six-prong brilliant-cut solitaire diamond ring",
             },
             {
               image: "/images/brilliants/brilliant-04.jpg",
@@ -56,7 +70,7 @@ export default function BrilliantsPage() {
             },
             {
               image: "/images/brilliants/brilliant-05.jpg",
-              caption: "Pendant",
+              caption: "Diamond Pendant",
               alt: "Brilliant-cut diamond pendant necklace",
             },
             {
@@ -67,62 +81,66 @@ export default function BrilliantsPage() {
             {
               image: "/images/brilliants/brilliant-07.jpg",
               caption: "Eternity Detail",
-              alt: "Brilliant-cut diamond eternity band, angled view",
+              alt: "Brilliant-cut diamond eternity band shown at an angle",
             },
             {
               image: "/images/brilliants/brilliant-08.jpg",
               caption: "Pavé Pendant",
-              alt: "Brilliant-cut diamond pendant with pavé bail",
+              alt: "Brilliant-cut diamond pendant with pavé-set bail",
             },
             {
               image: "/images/brilliants/brilliant-09.jpg",
               caption: "Teardrop Halo",
-              alt: "Pear-cut diamond halo pendant",
+              alt: "Pear-shaped diamond pendant surrounded by a diamond halo",
             },
             {
               image: "/images/brilliants/brilliant-10.jpg",
               caption: "The Set",
-              alt: "Matching brilliant-cut ring, earrings and necklace set",
+              alt: "Matching diamond ring, earrings and necklace set",
             },
           ]}
         />
 
-        {/* CRAFT */}
+        {/* CRAFT / QUALITY */}
         <CategoryCraft
-          eyebrow="Why Brilliants"
-          title="What sets this collection apart"
+          eyebrow="The Beauty of Brilliance"
+          title="True brilliance begins with the way a diamond meets the light"
+          description="A beautiful diamond is more than its size. Cut, proportion, movement and setting work together to determine how vividly the stone returns light to the eye."
+          closingText="Light reveals the brilliance."
+          closingAccent="Time reveals its value."
           points={[
             {
-              title: "The Cut",
+              title: "Cut",
               description:
-                "Brilliant-cut stones with 57–58 facets, engineered to maximise light return over every other shape.",
+                "The proportions and facets of a brilliant-cut diamond determine how light travels through the stone and returns to the eye. A beautiful cut gives a diamond its unmistakable life.",
             },
             {
-              title: "Selection",
+              title: "Fire",
               description:
-                "Only stones meeting our house standard for fire and scintillation make it into the collection.",
+                "As light moves through the diamond, it separates into flashes of colour. This play of spectral light gives a fine brilliant its captivating fire.",
             },
             {
-              title: "Craftsmanship",
+              title: "Scintillation",
               description:
-                "Set by hand in Manavgat, with settings designed to let the cut do the work.",
+                "The flashes of light and contrast seen as the diamond, the wearer or the light source moves — the quality that makes a stone feel alive rather than simply bright.",
             },
             {
-              title: "Rarity",
+              title: "Setting",
               description:
-                "Small-batch pieces, not mass produced — built to be worn, not just kept.",
+                "A considered setting protects the stone while allowing light to reach it freely. The jewellery should frame the diamond, never compete with it.",
             },
           ]}
         />
 
-        {/* CTA */}
+        {/* PRIVATE VIEWING CTA */}
         <CategoryCTA
-          title="Discover the Brilliants collection"
-          sub="Book a private appointment at one of our boutiques to view current pieces in person."
+          title="Some brilliance has to be seen in person"
+          sub="A photograph can capture a diamond's form, but not the way it comes alive in light. Discover the Brilliants collection during a private visit to one of our boutiques."
         />
       </main>
 
       <Footer />
+
       <FloatingActions />
     </>
   );

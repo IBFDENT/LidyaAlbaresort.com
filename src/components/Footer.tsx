@@ -74,23 +74,38 @@ export default function Footer() {
             </h5>
 
             <div className="mt-6 flex flex-col gap-3 text-sm text-brand-white/70">
-              <Link href="/#collections" className="transition-colors hover:text-gold">
+              <Link
+                href="/#collections"
+                className="transition-colors hover:text-gold"
+              >
                 {dict.nav.collections}
               </Link>
 
-              <Link href="/#services" className="transition-colors hover:text-gold">
+              <Link
+                href="/#services"
+                className="transition-colors hover:text-gold"
+              >
                 {dict.nav.services}
               </Link>
 
-              <Link href="/#catalog" className="transition-colors hover:text-gold">
+              <Link
+                href="/#catalog"
+                className="transition-colors hover:text-gold"
+              >
                 {dict.nav.bespoke}
               </Link>
 
-              <Link href="/#boutiques" className="transition-colors hover:text-gold">
+              <Link
+                href="/#boutiques"
+                className="transition-colors hover:text-gold"
+              >
                 {dict.nav.boutiques}
               </Link>
 
-              <Link href="/#contact" className="transition-colors hover:text-gold">
+              <Link
+                href="/#contact"
+                className="transition-colors hover:text-gold"
+              >
                 {dict.nav.contact}
               </Link>
             </div>
@@ -118,7 +133,10 @@ export default function Footer() {
 
             <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
               <div>
-                <p className="font-display text-xl" style={{ color: "#F5EFE6" }}>
+                <p
+                  className="font-display text-xl"
+                  style={{ color: "#F5EFE6" }}
+                >
                   Zafer (Victor)
                 </p>
 
@@ -138,7 +156,10 @@ export default function Footer() {
               </div>
 
               <div>
-                <p className="font-display text-xl" style={{ color: "#F5EFE6" }}>
+                <p
+                  className="font-display text-xl"
+                  style={{ color: "#F5EFE6" }}
+                >
                   Vierka
                 </p>
 
@@ -166,11 +187,17 @@ export default function Footer() {
             </h5>
 
             <div className="mt-6 flex flex-col items-start gap-3 text-sm text-brand-white/70">
-              <Link href="#" className="transition-colors hover:text-gold">
+              <Link
+                href="/privacy"
+                className="transition-colors hover:text-gold"
+              >
                 {dict.footer.privacy}
               </Link>
 
-              <Link href="#" className="transition-colors hover:text-gold">
+              <Link
+                href="/terms"
+                className="transition-colors hover:text-gold"
+              >
                 {dict.footer.terms}
               </Link>
 
@@ -294,7 +321,7 @@ export default function Footer() {
       <div className="border-t border-brand-white/10">
         <div className="mx-auto flex max-w-[1440px] flex-col gap-3 px-6 py-8 text-[0.68rem] text-brand-white/45 sm:flex-row sm:items-center sm:justify-between md:px-10 lg:px-16 xl:px-20">
           <span>
-            © {year} LIDYA JEWELRY. {dict.footer.rights}
+            © {year} LIDYA JEWELLERY. {dict.footer.rights}
           </span>
 
           <div className="flex items-center gap-4">

@@ -148,13 +148,29 @@ export default function BespokePage() {
 
       <main>
         {/* HERO */}
-        <section className="relative overflow-hidden bg-ivory pt-36 md:pt-40 lg:pt-44">
-          <div className="pointer-events-none absolute -left-40 top-10 h-[520px] w-[520px] rounded-full bg-gold/8 blur-3xl" />
+        <section className="relative min-h-[820px] overflow-hidden bg-ivory pt-36 md:min-h-[900px] md:pt-40 lg:min-h-[940px] lg:pt-44">
+          {/* HERO IMAGE */}
+          <Image
+            src="/images/bespoke/hero-bespoke.png"
+            alt="Bespoke jewellery design process with ring sketch, finished ring and jewellery tools"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-[55%_50%]"
+          />
 
-          <div className="pointer-events-none absolute -right-40 bottom-0 h-[460px] w-[460px] rounded-full bg-gold/5 blur-3xl" />
+          {/* LIGHT CINEMATIC OVERLAY */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#F7F3EB]/88 via-[#F7F3EB]/52 to-[#F7F3EB]/08" />
+
+          {/* VERY SOFT BOTTOM FADE */}
+          <div className="absolute inset-x-0 bottom-0 h-[24%] bg-gradient-to-t from-[#F7F3EB]/35 to-transparent" />
+
+          {/* SUBTLE AMBIENT LIGHT */}
+          <div className="pointer-events-none absolute -left-40 top-10 h-[520px] w-[520px] rounded-full bg-brand-white/25 blur-3xl" />
 
           <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
             <div className="grid gap-12 pb-20 lg:grid-cols-12 lg:items-end lg:pb-28">
+              {/* LEFT */}
               <div className="lg:col-span-8">
                 <div className="flex items-center gap-4">
                   <span className="flex h-10 w-10 items-center justify-center text-gold">
@@ -174,15 +190,16 @@ export default function BespokePage() {
                 </h1>
               </div>
 
+              {/* RIGHT */}
               <div className="lg:col-span-4 lg:pb-2">
-                <p className="max-w-md text-sm leading-7 text-grey md:text-base">
+                <p className="max-w-md text-sm leading-7 text-[#645E5A] md:text-base">
                   {t("heroLead")}
                 </p>
 
                 <div className="mt-7 flex items-center gap-4">
                   <span className="h-px w-12 bg-gold" />
 
-                  <span className="text-[0.58rem] font-semibold uppercase tracking-[0.24em] text-plum-dark/45">
+                  <span className="text-[0.58rem] font-semibold uppercase tracking-[0.24em] text-plum-dark/50">
                     LIDYA ATELIER · SINCE 1989
                   </span>
                 </div>
@@ -406,6 +423,7 @@ export default function BespokePage() {
       </main>
 
       <Footer />
+
       <FloatingActions />
     </>
   );

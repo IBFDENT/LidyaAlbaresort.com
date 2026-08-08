@@ -8,6 +8,11 @@ type CategoryHeroProps = {
   icon?: ReactNode;
   image: string;
   imageAlt: string;
+
+  collectionLabel?: string;
+  statementEyebrow?: string;
+  statementText?: string;
+  statementAccent?: string;
 };
 
 export default function CategoryHero({
@@ -17,10 +22,15 @@ export default function CategoryHero({
   icon,
   image,
   imageAlt,
+
+  collectionLabel = "The Pearl Collection",
+  statementEyebrow = "Quiet luxury",
+  statementText = "Formed slowly by nature.",
+  statementAccent = "Chosen carefully by hand.",
 }: CategoryHeroProps) {
   return (
     <section className="relative overflow-hidden bg-ivory pt-32 md:pt-36 lg:pt-40">
-      {/* subtle ambient pearl glow */}
+      {/* subtle ambient glow */}
       <div className="pointer-events-none absolute -left-40 top-20 h-[520px] w-[520px] rounded-full bg-gold/8 blur-3xl" />
 
       <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
@@ -76,12 +86,12 @@ export default function CategoryHero({
               {/* soft cinematic overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-plum-dark/20 via-transparent to-transparent" />
 
-              {/* category number detail */}
+              {/* COLLECTION LABEL */}
               <div className="absolute bottom-6 left-6 flex items-center gap-4 md:bottom-8 md:left-8">
                 <span className="h-px w-10 bg-brand-white/60" />
 
                 <span className="text-[0.58rem] font-semibold uppercase tracking-[0.24em] text-brand-white/80">
-                  The Pearl Collection
+                  {collectionLabel}
                 </span>
               </div>
 
@@ -97,7 +107,7 @@ export default function CategoryHero({
           <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-3">
               <span className="text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-gold">
-                Quiet luxury
+                {statementEyebrow}
               </span>
             </div>
 
@@ -106,10 +116,11 @@ export default function CategoryHero({
                 className="max-w-[950px] font-display text-3xl italic leading-tight md:text-4xl lg:text-5xl"
                 style={{ color: "#1B0B20" }}
               >
-                Formed slowly by nature.
+                {statementText}
+
                 <span style={{ color: "#C8A96A" }}>
                   {" "}
-                  Chosen carefully by hand.
+                  {statementAccent}
                 </span>
               </p>
             </div>

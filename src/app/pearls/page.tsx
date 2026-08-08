@@ -12,9 +12,9 @@ import CategoryCTA from "@/components/category/CategoryCTA";
 import { PearlIcon } from "@/components/category/icons";
 
 export const metadata: Metadata = {
-  title: "Pearls — LIDYA JEWELRY",
+  title: "Pearls — LIDYA JEWELLERY",
   description:
-    "Akoya, South Sea, Tahitian and freshwater pearls, hand-selected for their lustre and matched with care at LIDYA JEWELRY.",
+    "Discover pearls selected for exceptional lustre, character and harmony at LIDYA JEWELLERY — timeless pieces chosen to be worn and treasured for years.",
 };
 
 export default function PearlsPage() {
@@ -27,7 +27,7 @@ export default function PearlsPage() {
         <CategoryHero
           eyebrow="Pearls"
           title="Nature's Most Patient Jewel"
-          lead="A pearl is the only gem formed by a living creature, grown slowly and in silence over years. We select each one for its lustre, its orient and the quiet confidence it brings to whoever wears it."
+          lead="Created slowly, layer by layer, a pearl carries a beauty no machine can reproduce. No two are ever exactly alike. At LIDYA, we choose pearls for the depth of their lustre, the harmony of their colour and the quiet elegance that reveals itself the moment they meet the skin."
           icon={<PearlIcon />}
           image="/images/pearls/pearl-01.jpg"
           imageAlt="Pearl strand necklace with a diamond-set gold clasp"
@@ -92,36 +92,36 @@ export default function PearlsPage() {
 
         {/* CRAFT / QUALITY */}
         <CategoryCraft
-          eyebrow="What We Look For"
-          title="Four qualities that separate a fine pearl from an ordinary one"
+          eyebrow="The Beauty Is in the Detail"
+          title="What gives a fine pearl its unmistakable presence"
           points={[
             {
               title: "Lustre",
               description:
-                "The sharp, mirror-like reflection on the surface — the single clearest sign of a pearl's quality.",
+                "A fine pearl seems to glow from within. Its surface reflects light with clarity and depth, creating the luminous presence that makes exceptional pearls immediately recognisable.",
             },
             {
               title: "Orient",
               description:
-                "The soft rainbow shimmer beneath the surface, seen only in the finest natural and cultured pearls.",
+                "Beneath the surface, the finest pearls reveal subtle overtones of rose, silver, cream and green. This delicate play of colour gives every pearl its own individual character.",
             },
             {
-              title: "Nacre Depth",
+              title: "Nacre",
               description:
-                "Thicker nacre means a pearl that will keep its glow for generations rather than dulling with age.",
+                "Layer upon layer of nacre creates the depth, softness and lasting beauty of a pearl. Rich nacre gives a pearl the radiance that continues to reveal itself over time.",
             },
             {
-              title: "Matching",
+              title: "Harmony",
               description:
-                "For strands and pairs, our workshop hand-matches every pearl for size, colour and lustre by eye.",
+                "A beautiful strand is never assembled by numbers alone. Pearls are carefully brought together for balance of size, colour, shape and lustre, so the finished piece feels naturally complete.",
             },
           ]}
         />
 
         {/* PRIVATE VIEWING CTA */}
         <CategoryCTA
-          title="See our pearls in person"
-          sub="Experience the lustre, character and beauty of our pearls in person during a private visit to one of our boutiques."
+          title="Discover the beauty of pearls in person"
+          sub="Pearls reveal their true character in movement and light. Visit us privately and experience their lustre, colour and individuality for yourself."
         />
       </main>
 

@@ -1,35 +1,52 @@
 import type { Metadata } from "next";
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
+
 import CategoryHero from "@/components/category/CategoryHero";
 import CategoryGallery from "@/components/category/CategoryGallery";
 import CategoryCraft from "@/components/category/CategoryCraft";
 import CategoryCTA from "@/components/category/CategoryCTA";
+
 import { RingIcon } from "@/components/category/icons";
 
 export const metadata: Metadata = {
-  title: "Wedding Rings — LIDYA JEWELRY",
+  title: "Wedding Rings — LIDYA JEWELLERY",
   description:
-    "Wedding rings crafted in platinum and gold, fitted, engraved and finished by hand at LIDYA JEWELRY since 1989.",
+    "Wedding rings in platinum and 18k gold, selected for comfort, proportion and lasting wear at LIDYA JEWELLERY.",
 };
 
 export default function WeddingRingsPage() {
   return (
     <>
       <Header />
+
       <main>
+        {/* HERO */}
         <CategoryHero
           eyebrow="Wedding Rings"
-          title="A Promise, Made to Last a Lifetime"
-          lead="Worn every day for a lifetime, a wedding ring has to earn its place. We craft ours to fit precisely, wear comfortably and hold their shape and shine for decades to come."
+          title="Made for One Promise. Worn for a Lifetime."
+          lead="A wedding ring becomes part of everyday life — worn through ordinary days, milestones and everything in between. At LIDYA, we focus on proportion, comfort and enduring craftsmanship, so the rings you choose together still feel right years from now."
           icon={<RingIcon />}
           image="/images/wedding-rings/ring-01.jpg"
           imageAlt="A pair of gold wedding rings, one brushed and one set with pavé diamonds"
+          collectionLabel="The Wedding Collection"
+          statementEyebrow="A Lifetime Together"
+          statementText="Chosen together."
+          statementAccent="Worn for a lifetime."
         />
 
+        {/* COLLECTION GALLERY */}
         <CategoryGallery
           icon={<RingIcon />}
+          eyebrow="The Wedding Collection"
+          title="Wedding rings made for"
+          titleAccent="a lifetime together."
+          description="From timeless gold bands to diamond-set and contemporary designs, each pair is chosen with attention to proportion, comfort and the way it feels on the hand."
+          itemLabel="Wedding Collection"
+          closingText="Two rings. One promise."
+          closingAccent="A lifetime still to come."
           items={[
             {
               image: "/images/wedding-rings/ring-01.jpg",
@@ -84,39 +101,46 @@ export default function WeddingRingsPage() {
           ]}
         />
 
+        {/* CRAFT / QUALITY */}
         <CategoryCraft
-          eyebrow="Our Service"
-          title="Fitted, engraved and cared for long after the wedding day"
+          eyebrow="Made to Live With You"
+          title="The details that matter when a ring is worn every day"
+          description="A wedding ring becomes part of everyday life. Comfort, proportion, material and personal detail matter because this is a piece designed to stay with you for years."
+          closingText="Made for the wedding day."
+          closingAccent="Designed for every day after."
           points={[
             {
-              title: "Metal Choice",
+              title: "Proportion",
               description:
-                "Platinum, and 18k white, yellow or rose gold — each with its own weight, tone and durability.",
+                "Width, profile and weight should feel balanced on the hand. The right ring has presence without ever feeling like it is competing with the person wearing it.",
             },
             {
-              title: "Comfort Fit",
+              title: "Comfort",
               description:
-                "An interior curve that sits gently on the finger, designed for rings worn without pause, every day.",
+                "A wedding ring is not made for an occasion alone. Its inner profile, edges and fit are considered for the countless ordinary hours in which it will be worn.",
             },
             {
-              title: "Engraving",
+              title: "Material",
               description:
-                "A date, a name, a private word — engraved inside the band by hand in our workshop.",
+                "Platinum and 18k white, yellow or rose gold each bring a different tone, weight and character. The choice should suit both your style and the way you intend to wear the ring.",
             },
             {
-              title: "Lifetime Sizing",
+              title: "Personal Detail",
               description:
-                "Fingers change over the years. We resize and adjust the rings we make for as long as you own them.",
+                "A date, initials or a private message can turn a beautiful ring into something that belongs only to the two people who chose it.",
             },
           ]}
         />
 
+        {/* PRIVATE VIEWING CTA */}
         <CategoryCTA
-          title="Design your wedding rings together"
-          sub="Photography for this collection is being prepared. Book a private appointment at one of our boutiques to view current pieces."
+          title="Choose the rings you will live with every day"
+          sub="Visit us together for a private appointment and explore proportions, metals, finishes and details until the right pair feels unmistakably yours."
         />
       </main>
+
       <Footer />
+
       <FloatingActions />
     </>
   );
