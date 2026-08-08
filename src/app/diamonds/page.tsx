@@ -128,9 +128,7 @@ function EditorialSection({
                 {/* IMAGE */}
                 <div
                   className={
-                    reverse
-                      ? "lg:order-2 lg:col-span-7"
-                      : "lg:col-span-7"
+                    reverse ? "lg:order-2 lg:col-span-7" : "lg:col-span-7"
                   }
                 >
                   <div className="group relative aspect-[5/4] overflow-hidden bg-[#EEEAE2]">
@@ -169,9 +167,7 @@ function EditorialSection({
                 {/* TEXT */}
                 <div
                   className={
-                    reverse
-                      ? "lg:order-1 lg:col-span-5"
-                      : "lg:col-span-5"
+                    reverse ? "lg:order-1 lg:col-span-5" : "lg:col-span-5"
                   }
                 >
                   <span className="text-[0.58rem] font-semibold tracking-[0.22em] text-gold">
@@ -219,16 +215,28 @@ export default function DiamondsPage() {
 
       <main>
         {/* HERO */}
-        <section className="relative overflow-hidden bg-[#F4F1EB] pt-36 md:pt-40 lg:pt-44">
-          {/* light-like ambient glows */}
-          <div className="pointer-events-none absolute -left-40 top-10 h-[560px] w-[560px] rounded-full bg-brand-white blur-3xl" />
+        <section className="relative min-h-[900px] overflow-hidden bg-plum-dark text-brand-white lg:min-h-screen">
+          {/* HERO IMAGE */}
+          <Image
+            src="/images/diamonds/diamonds-herou.png"
+            alt="Investment diamonds by LIDYA JEWELRY"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+          />
 
-          <div className="pointer-events-none absolute right-[-180px] top-24 h-[500px] w-[500px] rounded-full bg-gold/10 blur-3xl" />
+          {/* HERO OVERLAYS */}
+          <div className="absolute inset-0 bg-gradient-to-r from-plum-dark/68 via-plum-dark/26 to-plum-dark/5" />
+          <div className="absolute inset-0 bg-gradient-to-t from-plum-dark/42 via-transparent to-plum-dark/10" />
 
-          <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
-            <div className="grid gap-12 pb-20 lg:grid-cols-12 lg:items-end lg:pb-28">
+          {/* subtle left-side readability glow */}
+          <div className="pointer-events-none absolute -left-40 top-1/3 h-[620px] w-[620px] rounded-full bg-plum-dark/30 blur-3xl" />
+
+          <div className="relative mx-auto flex min-h-[900px] max-w-[1440px] items-end px-6 pb-16 pt-36 md:px-10 md:pb-20 md:pt-40 lg:min-h-screen lg:px-16 lg:pb-20 lg:pt-44 xl:px-20">
+            <div className="grid w-full gap-12 lg:grid-cols-12 lg:items-end">
               {/* LEFT */}
-              <div className="lg:col-span-8">
+              <div className="lg:col-span-7">
                 <div className="flex items-center gap-4">
                   <span className="flex h-10 w-10 items-center justify-center text-gold">
                     <DiamondIcon />
@@ -240,50 +248,43 @@ export default function DiamondsPage() {
                 </div>
 
                 <h1
-                  className="mt-7 max-w-[1000px] font-display text-5xl leading-[0.91] tracking-[-0.04em] md:text-6xl lg:text-[6rem]"
-                  style={{ color: "#1B0B20" }}
+                  className="mt-7 max-w-[900px] font-display text-5xl leading-[0.91] tracking-[-0.04em] md:text-6xl lg:text-[5.7rem]"
+                  style={{ color: "#F5EFE6" }}
                 >
                   {t("heroTitle")}
                 </h1>
-              </div>
 
-              {/* RIGHT */}
-              <div className="lg:col-span-4 lg:pb-2">
-                <p className="max-w-md text-sm leading-7 text-grey md:text-base">
+                <p className="mt-7 max-w-[620px] text-sm leading-7 text-brand-white/65 md:text-base">
                   {t("heroLead")}
                 </p>
 
                 <div className="mt-7 flex items-center gap-4">
                   <span className="h-px w-12 bg-gold" />
 
-                  <span className="text-[0.58rem] font-semibold uppercase tracking-[0.24em] text-plum-dark/45">
+                  <span className="text-[0.58rem] font-semibold uppercase tracking-[0.24em] text-brand-white/45">
                     LIDYA · SINCE 1989
                   </span>
                 </div>
               </div>
-            </div>
 
-            {/* HERO STATEMENT */}
-            <div className="border-t border-plum-dark/10 py-12 md:py-16">
-              <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
-                <div className="lg:col-span-3">
-                  <span className="text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-gold">
-                    Light perfected
-                  </span>
-                </div>
+              {/* RIGHT */}
+              <div className="lg:col-span-4 lg:col-start-9 lg:pb-2">
+                <span className="text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-gold">
+                  Light perfected
+                </span>
 
-                <div className="lg:col-span-9">
-                  <p
-                    className="max-w-[1050px] font-display text-3xl italic leading-tight md:text-4xl lg:text-5xl"
-                    style={{ color: "#1B0B20" }}
+                <p
+                  className="mt-6 max-w-[470px] font-display text-3xl italic leading-tight md:text-4xl lg:text-[2.65rem]"
+                  style={{ color: "#F5EFE6" }}
+                >
+                  Beauty catches the eye.
+                  <span
+                    className="block"
+                    style={{ color: "#E8D8B5" }}
                   >
-                    Beauty catches the eye.
-                    <span style={{ color: "#C8A96A" }}>
-                      {" "}
-                      Quality withstands scrutiny.
-                    </span>
-                  </p>
-                </div>
+                    Quality withstands scrutiny.
+                  </span>
+                </p>
               </div>
             </div>
           </div>
@@ -472,8 +473,7 @@ export default function DiamondsPage() {
 
             <div className="grid border-t border-plum-dark/10 md:grid-cols-2 lg:grid-cols-5">
               {SUMMARY_POINTS.map((summary, index) => {
-                const Icon =
-                  SUMMARY_ICONS[index % SUMMARY_ICONS.length];
+                const Icon = SUMMARY_ICONS[index % SUMMARY_ICONS.length];
 
                 return (
                   <div
@@ -502,10 +502,7 @@ export default function DiamondsPage() {
         </section>
 
         {/* CTA */}
-        <CategoryCTA
-          title={t("ctaTitle")}
-          sub={t("ctaSub")}
-        />
+        <CategoryCTA title={t("ctaTitle")} sub={t("ctaSub")} />
       </main>
 
       <Footer />

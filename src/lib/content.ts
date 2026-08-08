@@ -427,8 +427,8 @@ export const BOUTIQUES: Boutique[] = [
   {
     id: "manavgat",
     image: "/images/boutiques/manavgat.jpg",
-    name: "LIDYA JEWELRY — Manavgat",
-    address: "Antalya Caddesi No: 48, Manavgat / Antalya / Türkiye",
+    name: "LIDYA JEWELLERY — Manavgat",
+    address: "Çolaklı, Tilkiler Mevkii, Erhan Demir Blv. No:4, P.K:07600 Manavgat / Türkiye",
   },
   { id: "resort", image: "/images/boutiques/resort.jpg", name: "Hotel Alba Resort" },
   { id: "royal", image: "/images/boutiques/royal.jpg", name: "Hotel Alba Royal" },

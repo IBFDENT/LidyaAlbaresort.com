@@ -138,7 +138,7 @@ export default function Footer() {
                   href="tel:+905325672777"
                   className="mt-2 block text-sm text-brand-white/70 transition-colors hover:text-gold"
                 >
-                  +90 532 567 27 77
+                  +905 325 672 777
                 </a>
 
                 <a
@@ -161,7 +161,7 @@ export default function Footer() {
                   href="tel:+905378278599"
                   className="mt-2 block text-sm text-brand-white/70 transition-colors hover:text-gold"
                 >
-                  +90 537 827 8599
+                  +905 378 278 599
                 </a>
 
                 <a

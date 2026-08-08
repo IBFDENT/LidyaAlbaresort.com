@@ -156,10 +156,11 @@ export const SECTION_1_POINTS: ValuePoint[] = [
       hu: "Minden általunk kínált rúd és érme 999,9 finomságú arany — 24 karátos, a világszerte elismert legtisztább szabvány.",
       pl: "Każda oferowana przez nas sztabka i moneta to złoto próby 999,9 — 24 karaty, najczystszy standard uznawany na całym świecie.",
     },
-    image: "/images/investment-gold/purity.jpg",
+    image: "/images/investment-gold/purity.png",
     imageWidth: 350,
     imageHeight: 233,
-    imageAlt: "Five gold bars of increasing size, each stamped 999.9 purity",
+    imageAlt:
+      "Five gold bars of increasing size, each stamped 999.9 purity",
   },
   {
     title: {
@@ -180,10 +181,11 @@ export const SECTION_1_POINTS: ValuePoint[] = [
       hu: "1 grammtól a teljes kilós rúdig elérhető, így akár kis léptékben kezdheti, akár nagyban fektethet be — az érték egyenesen arányos a súllyal.",
       pl: "Dostępne od 1 grama do pełnej sztabki kilogramowej, dzięki czemu możesz zacząć od małych ilości lub inwestować na większą skalę — wartość rośnie wprost proporcjonalnie do wagi.",
     },
-    image: "/images/investment-gold/weight.jpg",
+    image: "/images/investment-gold/weight.png",
     imageWidth: 1536,
     imageHeight: 322,
-    imageAlt: "A full range of gold bars from 1 gram to 1 kilogram, arranged by size",
+    imageAlt:
+      "A full range of gold bars from 1 gram to 1 kilogram, arranged by size",
   },
 ];
 
@@ -207,10 +209,11 @@ export const SECTION_2_POINTS: ValuePoint[] = [
       hu: "Öntött vagy vert rudak 1 g-tól 1 kg-ig, mindegyiken feltüntetve a súly, a finomság és a verde jelzése.",
       pl: "Sztabki lane lub bite od 1 g do 1 kg, każda z wybitą wagą, próbą i znakiem mennicy.",
     },
-    image: "/images/investment-gold/bars.jpg",
+    image: "/images/investment-gold/bars.png",
     imageWidth: 743,
     imageHeight: 234,
-    imageAlt: "Gold bars of different weights, including 10oz, 20oz, 500g and 1 kilo",
+    imageAlt:
+      "Gold bars of different weights, including 10oz, 20oz, 500g and 1 kilo",
   },
   {
     title: {
@@ -231,10 +234,11 @@ export const SECTION_2_POINTS: ValuePoint[] = [
       hu: "Állami érmék, mint a Maple Leaf és az American Eagle — elismertek, kereskedhetők és bárhol a világon könnyen ellenőrizhetők.",
       pl: "Oficjalne monety, takie jak Maple Leaf i American Eagle — uznawane, zbywalne i łatwe do zweryfikowania w każdym miejscu na świecie.",
     },
-    image: "/images/investment-gold/coins.jpg",
+    image: "/images/investment-gold/coins.png",
     imageWidth: 773,
     imageHeight: 234,
-    imageAlt: "Gold coins of increasing size, including Maple Leaf and American Eagle designs",
+    imageAlt:
+      "Gold coins of increasing size, including Maple Leaf and American Eagle designs",
   },
 ];
 
@@ -258,10 +262,11 @@ export const SECTION_3_POINTS: ValuePoint[] = [
       hu: "A kisebb rudakat manipulációbiztos tanúsítványkártyákba zárják, mindegyiken egyedi sorozatszámmal az ellenőrzéshez.",
       pl: "Mniejsze sztabki są zapieczętowane w odpornych na manipulacje kartach probierczych, każda z unikalnym numerem seryjnym umożliwiającym weryfikację.",
     },
-    image: "/images/investment-gold/certified.jpg",
+    image: "/images/investment-gold/certified.png",
     imageWidth: 758,
     imageHeight: 205,
-    imageAlt: "Small gold bars sealed in tamper-evident assay cards, with raw gold nuggets",
+    imageAlt:
+      "Small gold bars sealed in tamper-evident assay cards, with raw gold nuggets",
   },
   {
     title: {
@@ -282,10 +287,11 @@ export const SECTION_3_POINTS: ValuePoint[] = [
       hu: "A nagyobb rudakat védelem és könnyű tárolás céljából dobozba helyezik — készen állva egy széfbe, letéti fiókba vagy magánpáncélterembe.",
       pl: "Większe sztabki są umieszczane w etui dla ochrony i łatwego przechowywania — gotowe do sejfu, skrytki depozytowej lub prywatnego skarbca.",
     },
-    image: "/images/investment-gold/secure.jpg",
+    image: "/images/investment-gold/secure.png",
     imageWidth: 758,
     imageHeight: 205,
-    imageAlt: "Larger gold bars presented in protective cases, from 10oz to 1 kilo",
+    imageAlt:
+      "Larger gold bars presented in protective cases, from 10oz to 1 kilo",
   },
 ];
 

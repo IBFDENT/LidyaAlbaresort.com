@@ -9,42 +9,85 @@ import CategoryCTA from "@/components/category/CategoryCTA";
 import { GemClusterIcon } from "@/components/category/icons";
 
 export const metadata: Metadata = {
-  title: "Brilliants — LIDYA JEWELRY",
+  title: "Brilliants — LIDYA JEWELLERY",
   description:
-    "The Brilliants collection from LIDYA JEWELRY — signature brilliant-cut pieces chosen for maximum fire and sparkle.",
+    "The Brilliants collection from LIDYA JEWELLERY — signature brilliant-cut pieces chosen for maximum fire and sparkle.",
 };
 
-// NOTE for Ferino: hero/craft copy below is a first draft so the page is
-// complete and live — swap in your own positioning once photos arrive.
 export default function BrilliantsPage() {
   return (
     <>
       <Header />
+
       <main>
+        {/* HERO */}
         <CategoryHero
           eyebrow="Brilliants"
           title="The Brilliants Collection"
           lead="A signature line built around the brilliant cut itself — the shape prized above all others for the way it captures and returns light. Each piece is chosen for maximum fire and sparkle."
           icon={<GemClusterIcon />}
-          showPlaceholder={false}
+          image="/images/brilliants/pearlswithbriliants.png"
+          imageAlt="Diamond and pearl jewellery from the LIDYA Brilliants collection"
         />
 
+        {/* GALLERY */}
         <CategoryGallery
           icon={<GemClusterIcon />}
           items={[
-            { image: "/images/brilliants/brilliant-01.jpg", caption: "Solitaire Ring", alt: "Brilliant-cut solitaire engagement ring" },
-            { image: "/images/brilliants/brilliant-02.jpg", caption: "Stud Earrings", alt: "Brilliant-cut diamond stud earrings" },
-            { image: "/images/brilliants/brilliant-03.jpg", alt: "Six-prong brilliant-cut solitaire ring" },
-            { image: "/images/brilliants/brilliant-04.jpg", caption: "Eternity Band", alt: "Brilliant-cut diamond eternity band" },
-            { image: "/images/brilliants/brilliant-05.jpg", caption: "Pendant", alt: "Brilliant-cut diamond pendant necklace" },
-            { image: "/images/brilliants/brilliant-06.jpg", caption: "Tennis Bracelet", alt: "Brilliant-cut diamond tennis bracelet" },
-            { image: "/images/brilliants/brilliant-07.jpg", alt: "Brilliant-cut diamond eternity band, angled view" },
-            { image: "/images/brilliants/brilliant-08.jpg", alt: "Brilliant-cut diamond pendant with pavé bail" },
-            { image: "/images/brilliants/brilliant-09.jpg", caption: "Teardrop Halo", alt: "Pear-cut diamond halo pendant" },
-            { image: "/images/brilliants/brilliant-10.jpg", caption: "The Set", alt: "Matching brilliant-cut ring, earrings and necklace set" },
+            {
+              image: "/images/brilliants/brilliant-01.jpg",
+              caption: "Solitaire Ring",
+              alt: "Brilliant-cut solitaire engagement ring",
+            },
+            {
+              image: "/images/brilliants/brilliant-02.jpg",
+              caption: "Stud Earrings",
+              alt: "Brilliant-cut diamond stud earrings",
+            },
+            {
+              image: "/images/brilliants/brilliant-03.jpg",
+              caption: "Classic Solitaire",
+              alt: "Six-prong brilliant-cut solitaire ring",
+            },
+            {
+              image: "/images/brilliants/brilliant-04.jpg",
+              caption: "Eternity Band",
+              alt: "Brilliant-cut diamond eternity band",
+            },
+            {
+              image: "/images/brilliants/brilliant-05.jpg",
+              caption: "Pendant",
+              alt: "Brilliant-cut diamond pendant necklace",
+            },
+            {
+              image: "/images/brilliants/brilliant-06.jpg",
+              caption: "Tennis Bracelet",
+              alt: "Brilliant-cut diamond tennis bracelet",
+            },
+            {
+              image: "/images/brilliants/brilliant-07.jpg",
+              caption: "Eternity Detail",
+              alt: "Brilliant-cut diamond eternity band, angled view",
+            },
+            {
+              image: "/images/brilliants/brilliant-08.jpg",
+              caption: "Pavé Pendant",
+              alt: "Brilliant-cut diamond pendant with pavé bail",
+            },
+            {
+              image: "/images/brilliants/brilliant-09.jpg",
+              caption: "Teardrop Halo",
+              alt: "Pear-cut diamond halo pendant",
+            },
+            {
+              image: "/images/brilliants/brilliant-10.jpg",
+              caption: "The Set",
+              alt: "Matching brilliant-cut ring, earrings and necklace set",
+            },
           ]}
         />
 
+        {/* CRAFT */}
         <CategoryCraft
           eyebrow="Why Brilliants"
           title="What sets this collection apart"
@@ -72,11 +115,13 @@ export default function BrilliantsPage() {
           ]}
         />
 
+        {/* CTA */}
         <CategoryCTA
           title="Discover the Brilliants collection"
           sub="Book a private appointment at one of our boutiques to view current pieces in person."
         />
       </main>
+
       <Footer />
       <FloatingActions />
     </>

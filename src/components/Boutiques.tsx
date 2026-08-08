@@ -5,11 +5,67 @@ import { BOUTIQUES } from "@/lib/content";
 const dict = getDictionary();
 
 const BOUTIQUE_IMAGE_POSITIONS: Record<string, string> = {
-  manavgat: "object-[50%_38%]",
-  "alba-resort": "object-[58%_42%]",
-  "alba-royal": "object-[50%_48%]",
-  "alba-queen": "object-[50%_56%]",
+  manavgat: "object-[50%_42%]",
+  resort: "object-[58%_48%]",
+  royal: "object-[50%_50%]",
+  queen: "object-[50%_56%]",
 };
+
+const BOUTIQUE_ADDRESSES: Record<string, string> = {
+  manavgat:
+    "Çolaklı, Tilkiler Mevkii · Manavgat / Antalya / Türkiye",
+  resort:
+    "Çolaklı Tourism Centre · Manavgat / Antalya / Türkiye",
+  royal:
+    "Çolaklı Tourism Centre · Manavgat / Antalya / Türkiye",
+  queen:
+    "Çolaklı Tourism Centre · Manavgat / Antalya / Türkiye",
+};
+
+const BOUTIQUE_URLS: Record<string, string> = {
+  manavgat: "https://www.lidyaalbajewellery.com/",
+  resort: "https://www.albahotels.com.tr/en/resort-en/",
+  royal: "https://www.albahotels.com.tr/en/royal-en/",
+  queen: "https://www.albahotels.com.tr/en/queen-en/",
+};
+
+function BoutiqueTitle({
+  id,
+  name,
+}: {
+  id: string;
+  name: string;
+}) {
+  if (id === "manavgat") {
+    return (
+      <>
+        <span className="block">LIDYA JEWELLERY</span>
+        <span className="mt-1 block">Manavgat</span>
+      </>
+    );
+  }
+
+  return <>{name}</>;
+}
+
+function ArrowIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="15"
+      height="15"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M5 12h14" />
+      <path d="m14 7 5 5-5 5" />
+    </svg>
+  );
+}
 
 export default function Boutiques() {
   return (
@@ -59,11 +115,24 @@ export default function Boutiques() {
             const imagePosition =
               BOUTIQUE_IMAGE_POSITIONS[boutique.id] ?? "object-center";
 
+            const address =
+              BOUTIQUE_ADDRESSES[boutique.id] ??
+              boutique.address ??
+              "";
+
+            const url = BOUTIQUE_URLS[boutique.id];
+
+            const servicesText =
+              boutique.id === "manavgat"
+                ? dict.boutiques.servicesLine
+                : "BOUTIQUE · HOTEL · RESERVATIONS";
+
             return (
               <article
                 key={boutique.id}
                 className="group relative min-h-[500px] overflow-hidden bg-plum-dark md:min-h-[540px] lg:min-h-[580px]"
               >
+                {/* IMAGE */}
                 <Image
                   src={boutique.image}
                   alt={boutique.name}
@@ -72,59 +141,70 @@ export default function Boutiques() {
                   className={`object-cover ${imagePosition} transition-transform duration-[1300ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.035]`}
                 />
 
-                {/* Overlays */}
-                <div className="absolute inset-0 bg-gradient-to-t from-plum-dark/94 via-plum-dark/28 to-plum-dark/5" />
+                {/* OVERLAYS */}
+                <div className="absolute inset-0 bg-gradient-to-t from-plum-dark/95 via-plum-dark/28 to-plum-dark/5" />
 
                 <div className="absolute inset-0 bg-plum-dark/5 transition-colors duration-700 group-hover:bg-plum-dark/12" />
 
-                {/* Number */}
+                {/* NUMBER */}
                 <span className="absolute right-6 top-6 z-10 text-[0.62rem] font-semibold tracking-[0.24em] text-brand-white/55 md:right-8 md:top-8">
                   {String(index + 1).padStart(2, "0")}
                 </span>
 
-                {/* Content */}
+                {/* CONTENT */}
                 <div className="absolute inset-x-0 bottom-0 z-10 p-6 md:p-8 lg:p-9">
                   <span className="block text-[0.62rem] font-semibold uppercase tracking-[0.24em] text-gold">
                     Boutique
                   </span>
 
                   <h3
-                    className="mt-3 font-display text-3xl leading-tight md:text-4xl lg:text-[2.65rem]"
+                    className={`mt-3 max-w-[580px] font-display leading-[1.02] tracking-[-0.02em] ${
+                      boutique.id === "manavgat"
+                        ? "text-[2rem] md:text-[2.35rem] lg:text-[2.65rem]"
+                        : "text-3xl md:text-4xl lg:text-[2.65rem]"
+                    }`}
                     style={{ color: "#F5EFE6" }}
                   >
-                    {boutique.name}
+                    <BoutiqueTitle
+                      id={boutique.id}
+                      name={boutique.name}
+                    />
                   </h3>
 
-                  {boutique.address && (
-                    <p className="mt-3 max-w-md text-sm leading-6 text-brand-white/70">
-                      {boutique.address}
+                  {address && (
+                    <p className="mt-4 max-w-[520px] text-[0.82rem] leading-6 text-brand-white/65 md:text-sm">
+                      {address}
                     </p>
                   )}
 
-                  <div className="mt-5 flex items-center justify-between gap-5 border-t border-brand-white/15 pt-5">
-                    <span className="text-[0.6rem] font-semibold uppercase tracking-[0.2em] text-brand-white/55">
-                      {dict.boutiques.servicesLine}
+                  {/* FOOTER */}
+                  <div className="mt-6 flex items-center justify-between gap-5 border-t border-brand-white/15 pt-5">
+                    <span className="text-[0.58rem] font-semibold uppercase tracking-[0.2em] text-brand-white/55 md:text-[0.6rem]">
+                      {servicesText}
                     </span>
 
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-brand-white/25 text-brand-white transition-all duration-500 group-hover:border-gold group-hover:bg-gold group-hover:text-plum-dark">
-                      <svg
-                        viewBox="0 0 24 24"
-                        width="15"
-                        height="15"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.4"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M5 12h14" />
-                        <path d="m14 7 5 5-5 5" />
-                      </svg>
-                    </span>
+                    <a
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={
+                        boutique.id === "manavgat"
+                          ? "Visit LIDYA Jewellery website"
+                          : `Visit ${boutique.name} hotel website`
+                      }
+                      title={
+                        boutique.id === "manavgat"
+                          ? "Visit LIDYA Jewellery"
+                          : `Visit ${boutique.name}`
+                      }
+                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-brand-white/25 text-brand-white transition-all duration-500 hover:translate-x-1 hover:border-gold hover:bg-gold hover:text-plum-dark"
+                    >
+                      <ArrowIcon />
+                    </a>
                   </div>
                 </div>
 
-                {/* Gold hover line */}
+                {/* GOLD HOVER LINE */}
                 <span className="absolute bottom-0 left-0 z-20 h-[2px] w-0 bg-gold transition-all duration-700 group-hover:w-full" />
               </article>
             );

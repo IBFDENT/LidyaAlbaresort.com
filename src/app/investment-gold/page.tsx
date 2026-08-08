@@ -26,7 +26,7 @@ import {
 } from "@/lib/investmentGold";
 
 export const metadata: Metadata = {
-  title: "Investment Gold — LIDYA JEWELRY",
+  title: "Investment Gold — LIDYA JEWELLERY",
   description:
     "999.9 fine gold bars and sovereign coins from 1 gram to a full kilo — certified, sealed and ready to be held as a private, portable store of value.",
 };
@@ -70,7 +70,6 @@ function GoldEditorialSection({
       }
     >
       <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
-        {/* SECTION HEADER */}
         <div className="mb-16 grid gap-8 border-b border-plum-dark/10 pb-10 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-2">
             <span
@@ -101,7 +100,6 @@ function GoldEditorialSection({
           </div>
         </div>
 
-        {/* POINTS */}
         <div className="space-y-20 md:space-y-24 lg:space-y-28">
           {points.map((point, index) => {
             const reverse = index % 2 === 1;
@@ -112,12 +110,9 @@ function GoldEditorialSection({
                 key={`${itemNumber}-${localized(point.title, LOCALE)}`}
                 className="grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-14"
               >
-                {/* IMAGE */}
                 <div
                   className={
-                    reverse
-                      ? "lg:order-2 lg:col-span-7"
-                      : "lg:col-span-7"
+                    reverse ? "lg:order-2 lg:col-span-7" : "lg:col-span-7"
                   }
                 >
                   <div className="group relative aspect-[5/4] overflow-hidden bg-plum-dark">
@@ -125,8 +120,7 @@ function GoldEditorialSection({
                       <Image
                         src={point.image}
                         alt={
-                          point.imageAlt ??
-                          localized(point.title, LOCALE)
+                          point.imageAlt ?? localized(point.title, LOCALE)
                         }
                         fill
                         sizes="(min-width: 1024px) 58vw, 100vw"
@@ -156,12 +150,9 @@ function GoldEditorialSection({
                   </div>
                 </div>
 
-                {/* COPY */}
                 <div
                   className={
-                    reverse
-                      ? "lg:order-1 lg:col-span-5"
-                      : "lg:col-span-5"
+                    reverse ? "lg:order-1 lg:col-span-5" : "lg:col-span-5"
                   }
                 >
                   <span className="text-[0.58rem] font-semibold tracking-[0.22em] text-gold">
@@ -208,15 +199,14 @@ export default function InvestmentGoldPage() {
         {/* HERO */}
         <section className="relative min-h-[760px] overflow-hidden bg-plum-dark pt-32 md:pt-36 lg:min-h-screen lg:pt-40">
           <Image
-            src="/images/investment-gold/hero.jpg"
-            alt="Gold bars arranged on silk fabric"
+            src="/images/investment-gold/investment-gold-hero.png"
+            alt="Fine gold bars and investment coins"
             fill
             priority
             sizes="100vw"
             className="object-cover object-center"
           />
 
-          {/* Cinematic overlay */}
           <div className="absolute inset-0 bg-gradient-to-r from-plum-dark/95 via-plum-dark/65 to-plum-dark/15" />
           <div className="absolute inset-0 bg-gradient-to-t from-plum-dark/80 via-transparent to-plum-dark/20" />
 
@@ -336,7 +326,6 @@ export default function InvestmentGoldPage() {
           </div>
         </section>
 
-        {/* SECTION 1 */}
         <GoldEditorialSection
           eyebrow={t("section1Eyebrow")}
           title={t("section1Title")}
@@ -346,7 +335,6 @@ export default function InvestmentGoldPage() {
           tone="light"
         />
 
-        {/* SECTION 2 */}
         <GoldEditorialSection
           eyebrow={t("section2Eyebrow")}
           title={t("section2Title")}
@@ -356,7 +344,6 @@ export default function InvestmentGoldPage() {
           tone="ivory"
         />
 
-        {/* SECTION 3 */}
         <GoldEditorialSection
           eyebrow={t("section3Eyebrow")}
           title={t("section3Title")}
@@ -370,7 +357,6 @@ export default function InvestmentGoldPage() {
           tone="light"
         />
 
-        {/* TRUST / SECTION 4 */}
         <section className="relative overflow-hidden bg-plum-dark py-24 text-brand-white md:py-28 lg:py-32">
           <div className="pointer-events-none absolute -left-40 top-0 h-[500px] w-[500px] rounded-full bg-gold/8 blur-3xl" />
           <div className="pointer-events-none absolute -right-40 bottom-0 h-[460px] w-[460px] rounded-full bg-gold/5 blur-3xl" />
@@ -443,7 +429,6 @@ export default function InvestmentGoldPage() {
           </div>
         </section>
 
-        {/* SUMMARY */}
         <section className="bg-ivory py-20 md:py-24 lg:py-28">
           <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
             <div className="mb-12 text-center">
@@ -496,7 +481,6 @@ export default function InvestmentGoldPage() {
           </div>
         </section>
 
-        {/* CTA */}
         <CategoryCTA
           title={t("ctaTitle")}
           sub={t("ctaSub")}

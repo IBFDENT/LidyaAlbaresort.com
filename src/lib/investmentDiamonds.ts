@@ -216,10 +216,34 @@ export const FOUR_CS_IMAGES: {
   imageHeight: number;
   imageAlt: string;
 }[] = [
-  { image: "/images/diamonds/four-cs/carat.jpg", imageWidth: 1075, imageHeight: 1005, imageAlt: "Diamond carat weight comparison chart, 0.25ct to 5.00ct" },
-  { image: "/images/diamonds/four-cs/colour.jpg", imageWidth: 1046, imageHeight: 1004, imageAlt: "Diamond colour grading scale from D (colourless) to I (light yellow)" },
-  { image: "/images/diamonds/four-cs/clarity.jpg", imageWidth: 1063, imageHeight: 781, imageAlt: "Diamond clarity grading scale from Flawless to Included" },
-  { image: "/images/diamonds/four-cs/cut.jpg", imageWidth: 1206, imageHeight: 845, imageAlt: "Diamond cut grading scale from Excellent to Poor, showing light performance" },
+  {
+    image: "/images/diamonds/four-cs/carat.jpg",
+    imageWidth: 1075,
+    imageHeight: 1005,
+    imageAlt:
+      "Diamond carat weight comparison chart, 0.25ct to 5.00ct",
+  },
+  {
+    image: "/images/diamonds/four-cs/colour.jpg",
+    imageWidth: 1046,
+    imageHeight: 1004,
+    imageAlt:
+      "Diamond colour grading scale from D (colourless) to I (light yellow)",
+  },
+  {
+    image: "/images/diamonds/four-cs/clarity.jpg",
+    imageWidth: 1063,
+    imageHeight: 781,
+    imageAlt:
+      "Diamond clarity grading scale from Flawless to Included",
+  },
+  {
+    image: "/images/diamonds/four-cs/cut.jpg",
+    imageWidth: 1206,
+    imageHeight: 845,
+    imageAlt:
+      "Diamond cut grading scale from Excellent to Poor, showing light performance",
+  },
 ];
 
 // ---------------------------------------------------------------------------
@@ -335,11 +359,41 @@ export const BEYOND_FOUR_CS_IMAGES: {
   imageHeight: number;
   imageAlt: string;
 }[] = [
-  { image: "/images/diamonds/beyond/fluorescence.jpg", imageWidth: 1536, imageHeight: 1024, imageAlt: "Diamond fluorescence levels under UV light, from none to very strong" },
-  { image: "/images/diamonds/beyond/shape.jpg", imageWidth: 1536, imageHeight: 1024, imageAlt: "Round brilliant diamond compared to fancy shapes: oval, cushion, radiant, emerald, pear, marquise" },
-  { image: "/images/diamonds/beyond/symmetry-polish.jpg", imageWidth: 1536, imageHeight: 1024, imageAlt: "Comparison of excellent versus poor diamond symmetry and polish, and their effect on light return" },
-  { image: "/images/diamonds/beyond/certificate.jpg", imageWidth: 1536, imageHeight: 1024, imageAlt: "Sample diamond grading certificates from GIA, HRD Antwerp and IGI" },
-  { image: "/images/diamonds/beyond/origin.jpg", imageWidth: 1536, imageHeight: 1024, imageAlt: "A diamond's journey from ethical sourcing through cutting, certification and transport to final ownership" },
+  {
+    image: "/images/diamonds/beyond/fluorescence.jpg",
+    imageWidth: 1102,
+    imageHeight: 702,
+    imageAlt:
+      "Diamond fluorescence levels under UV light, from none to very strong",
+  },
+  {
+    image: "/images/diamonds/beyond/shape.jpg",
+    imageWidth: 1097,
+    imageHeight: 887,
+    imageAlt:
+      "Round brilliant diamond compared to fancy shapes: oval, cushion, radiant, emerald, pear, marquise",
+  },
+  {
+    image: "/images/diamonds/beyond/symmetry-polish.jpg",
+    imageWidth: 1090,
+    imageHeight: 812,
+    imageAlt:
+      "Comparison of excellent versus poor diamond symmetry and polish, and their effect on light return",
+  },
+  {
+    image: "/images/diamonds/beyond/certificate.jpg",
+    imageWidth: 1176,
+    imageHeight: 778,
+    imageAlt:
+      "Sample diamond grading certificates from GIA, HRD Antwerp and IGI",
+  },
+  {
+    image: "/images/diamonds/beyond/origin.jpg",
+    imageWidth: 1166,
+    imageHeight: 806,
+    imageAlt:
+      "A diamond's journey from ethical sourcing through cutting, certification and transport to final ownership",
+  },
 ];
 
 // ---------------------------------------------------------------------------
@@ -435,10 +489,34 @@ export const INVESTMENT_PRINCIPLES_IMAGES: {
   imageHeight: number;
   imageAlt: string;
 }[] = [
-  { image: "/images/diamonds/principles/high-quality.jpg", imageWidth: 1536, imageHeight: 1024, imageAlt: "Focus on excellence: D–F colour, IF–VVS1 clarity, Excellent cut" },
-  { image: "/images/diamonds/principles/carat-weight.jpg", imageWidth: 1536, imageHeight: 1024, imageAlt: "Diamond size guide and value retention versus carat weight chart" },
-  { image: "/images/diamonds/principles/certification.jpg", imageWidth: 1536, imageHeight: 1024, imageAlt: "Why certification matters: independent, trusted, globally recognised, better resale value" },
-  { image: "/images/diamonds/principles/liquidity.jpg", imageWidth: 1536, imageHeight: 1024, imageAlt: "Why round diamonds of outstanding quality are easier to resell on the global market" },
+  {
+    image: "/images/diamonds/principles/high-quality.jpg",
+    imageWidth: 1536,
+    imageHeight: 1024,
+    imageAlt:
+      "Focus on excellence: D–F colour, IF–VVS1 clarity, Excellent cut",
+  },
+  {
+    image: "/images/diamonds/principles/carat-weight.jpg",
+    imageWidth: 1090,
+    imageHeight: 812,
+    imageAlt:
+      "Diamond size guide and value retention versus carat weight chart",
+  },
+  {
+    image: "/images/diamonds/principles/certification.jpg",
+    imageWidth: 947,
+    imageHeight: 766,
+    imageAlt:
+      "Why certification matters: independent, trusted, globally recognised, better resale value",
+  },
+  {
+    image: "/images/diamonds/principles/liquidity.jpg",
+    imageWidth: 1536,
+    imageHeight: 1024,
+    imageAlt:
+      "Why round diamonds of outstanding quality are easier to resell on the global market",
+  },
 ];
 
 // ---------------------------------------------------------------------------

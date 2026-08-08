@@ -5,14 +5,14 @@ const dict = getDictionary();
 const contacts = [
   {
     name: "Zafer (Victor)",
-    phone: "+90 532 567 27 77",
+    phone: "+905 325 672 777",
     phoneHref: "tel:+905325672777",
     email: "albalidya@hotmail.com",
     whatsapp: "https://wa.me/905325672777",
   },
   {
     name: "Vierka",
-    phone: "+90 537 827 8599",
+    phone: "+905 378 278 599",
     phoneHref: "tel:+905378278599",
     email: "vierakocaker@hotmail.com",
     whatsapp: "https://wa.me/905378278599",
@@ -21,22 +21,49 @@ const contacts = [
 
 const locations = [
   {
-    name: "LIDYA JEWELRY — Manavgat",
-    detail: "Antalya Caddesi No: 48, Manavgat / Antalya / Türkiye",
+    name: "LIDYA JEWELLERY — Manavgat",
+    detail:
+      "Çolaklı, Tilkiler Mevkii, Erhan Demir Blv. No:4, P.K:07600 Manavgat / Türkiye",
+    url: "https://www.lidyaalbajewellery.com/",
   },
   {
     name: "Hotel Alba Resort",
-    detail: "LIDYA Boutique",
+    detail:
+      "Çolaklı Mahallesi Tilkiler Mevkii Erhan Demir Bulvarı No:3 P.K:07600 Manavgat / Antalya / Türkiye",
+    url: "https://www.albahotels.com.tr/en/resort-en/",
   },
   {
     name: "Hotel Alba Royal",
-    detail: "LIDYA Boutique",
+    detail:
+      "Çolaklı Mahallesi Tilkiler Mevkii Erhan Demir Bulvarı No:3 P.K:07600 Manavgat / Antalya / Türkiye",
+    url: "https://www.albahotels.com.tr/en/royal-en/",
   },
   {
     name: "Hotel Alba Queen",
-    detail: "LIDYA Boutique",
+    detail:
+      "Çolaklı Mahallesi Tilkiler Mevkii Erhan Demir Bulvarı No:3-1 P.K:07600 Manavgat / Antalya / Türkiye",
+    url: "https://www.albahotels.com.tr/en/queen-en/",
   },
 ];
+
+function ArrowIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="14"
+      height="14"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M5 12h14" />
+      <path d="m14 7 5 5-5 5" />
+    </svg>
+  );
+}
 
 export default function Contact() {
   return (
@@ -49,7 +76,6 @@ export default function Contact() {
 
       <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
         <div className="grid gap-8 lg:grid-cols-12 lg:gap-10">
-
           {/* LEFT SIDE */}
           <div className="lg:col-span-7 lg:pr-6">
             <span className="mb-5 block text-[0.68rem] font-semibold uppercase tracking-[0.34em] text-gold">
@@ -162,33 +188,37 @@ export default function Contact() {
 
                 <div className="mt-8 border-t border-brand-white/12">
                   {locations.map((location, index) => (
-                    <div
+                    <a
                       key={location.name}
-                      className="group flex items-center justify-between gap-5 border-b border-brand-white/12 py-4"
+                      href={location.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Visit ${location.name}`}
+                      className="group flex items-center justify-between gap-5 border-b border-brand-white/12 py-4 transition-colors duration-500 hover:bg-brand-white/[0.025]"
                     >
-                      <div className="flex items-start gap-4">
-                        <span className="mt-1 text-[0.56rem] font-semibold tracking-[0.22em] text-gold">
+                      <div className="flex min-w-0 items-start gap-4">
+                        <span className="mt-1 shrink-0 text-[0.56rem] font-semibold tracking-[0.22em] text-gold">
                           {String(index + 1).padStart(2, "0")}
                         </span>
 
-                        <div>
+                        <div className="min-w-0">
                           <h4
-                            className="font-display text-lg md:text-xl"
+                            className="font-display text-lg transition-colors duration-300 group-hover:text-gold-light md:text-xl"
                             style={{ color: "#F5EFE6" }}
                           >
                             {location.name}
                           </h4>
 
-                          <p className="mt-1 text-[0.72rem] leading-5 text-brand-white/40">
+                          <p className="mt-1 max-w-[340px] text-[0.72rem] leading-5 text-brand-white/40">
                             {location.detail}
                           </p>
                         </div>
                       </div>
 
-                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-brand-white/15 text-xs text-brand-white/45 opacity-0 transition-all duration-400 group-hover:translate-x-1 group-hover:border-gold group-hover:text-gold group-hover:opacity-100">
-                        →
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-brand-white/15 text-brand-white/45 transition-all duration-500 group-hover:translate-x-1 group-hover:border-gold group-hover:bg-gold group-hover:text-plum-dark">
+                        <ArrowIcon />
                       </span>
-                    </div>
+                    </a>
                   ))}
                 </div>
 
@@ -215,7 +245,6 @@ export default function Contact() {
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>

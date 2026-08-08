@@ -5,6 +5,7 @@ import Materials from "@/components/Materials";
 import Services from "@/components/Services";
 import About from "@/components/About";
 import Boutiques from "@/components/Boutiques";
+import Transfer from "@/components/Transfer";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
@@ -13,6 +14,7 @@ export default function Home() {
   return (
     <>
       <Header />
+
       <main>
         <Hero />
         <Collections />
@@ -20,8 +22,10 @@ export default function Home() {
         <Services />
         <About />
         <Boutiques />
+        <Transfer />
         <Contact />
       </main>
+
       <Footer />
       <FloatingActions />
     </>

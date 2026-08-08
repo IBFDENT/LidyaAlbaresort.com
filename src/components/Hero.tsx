@@ -13,7 +13,7 @@ export default function Hero() {
       {/* Background image */}
       <Image
         src="/images/hero.jpg"
-        alt="LIDYA Jewelry boutique"
+        alt="LIDYA Jewellery boutique"
         fill
         priority
         sizes="100vw"
@@ -48,7 +48,7 @@ export default function Hero() {
             </span>
 
             <span className="mt-3 block text-6xl font-normal italic tracking-[-0.03em] text-brand-white md:text-7xl lg:text-[7.2rem]">
-              Jewelry
+              Jewellery
             </span>
           </h1>
 
