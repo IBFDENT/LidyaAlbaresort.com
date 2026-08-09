@@ -118,15 +118,12 @@ export default function Footer() {
             </h5>
 
             <div className="mt-6 flex flex-col gap-3 text-sm text-brand-white/70">
-              <a
-                href="https://www.lidyaalbajewellery.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transition-colors hover:text-gold"
-              >
+              {/* MANAVGAT — NO LINK */}
+              <span className="cursor-default text-brand-white/70">
                 LIDYA JEWELLERY — Manavgat
-              </a>
+              </span>
 
+              {/* ALBA RESORT */}
               <a
                 href="https://www.albahotels.com.tr/en/resort-en/"
                 target="_blank"
@@ -136,6 +133,7 @@ export default function Footer() {
                 Hotel Alba Resort
               </a>
 
+              {/* ALBA ROYAL */}
               <a
                 href="https://www.albahotels.com.tr/en/royal-en/"
                 target="_blank"
@@ -145,6 +143,7 @@ export default function Footer() {
                 Hotel Alba Royal
               </a>
 
+              {/* ALBA QUEEN */}
               <a
                 href="https://www.albahotels.com.tr/en/queen-en/"
                 target="_blank"
@@ -176,7 +175,7 @@ export default function Footer() {
                   href="tel:+905325672777"
                   className="mt-2 block text-sm text-brand-white/70 transition-colors hover:text-gold"
                 >
-                  +905 325 672 777
+                  +90 532 567 27 77
                 </a>
 
                 <a
@@ -200,7 +199,7 @@ export default function Footer() {
                   href="tel:+905378278599"
                   className="mt-2 block text-sm text-brand-white/70 transition-colors hover:text-gold"
                 >
-                  +905 378 278 599
+                  +90 537 827 85 99
                 </a>
 
                 <a

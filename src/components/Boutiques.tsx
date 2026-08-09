@@ -22,10 +22,9 @@ const BOUTIQUE_ADDRESSES: Record<string, string> = {
     "Çolaklı Tourism Centre · Manavgat / Antalya / Türkiye",
 };
 
-const BOUTIQUE_URLS: Record<string, string> = {
-  manavgat: "https://www.lidyaalbajewellery.com/",
+const BOUTIQUE_URLS: Partial<Record<string, string>> = {
   resort: "https://www.albahotels.com.tr/en/resort-en/",
-  royal: "https://www.albahotels.com.tr/en/royal-en/",
+  royal: "https://www.lidyaalbajewellery.com/",
   queen: "https://www.albahotels.com.tr/en/queen-en/",
 };
 
@@ -183,24 +182,22 @@ export default function Boutiques() {
                       {servicesText}
                     </span>
 
-                    <a
-                      href={url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={
-                        boutique.id === "manavgat"
-                          ? "Visit LIDYA Jewellery website"
-                          : `Visit ${boutique.name} hotel website`
-                      }
-                      title={
-                        boutique.id === "manavgat"
-                          ? "Visit LIDYA Jewellery"
-                          : `Visit ${boutique.name}`
-                      }
-                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-brand-white/25 text-brand-white transition-all duration-500 hover:translate-x-1 hover:border-gold hover:bg-gold hover:text-plum-dark"
-                    >
-                      <ArrowIcon />
-                    </a>
+                    {url ? (
+                      <a
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Visit ${boutique.name} website`}
+                        title={`Visit ${boutique.name}`}
+                        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-brand-white/25 text-brand-white transition-all duration-500 hover:translate-x-1 hover:border-gold hover:bg-gold hover:text-plum-dark"
+                      >
+                        <ArrowIcon />
+                      </a>
+                    ) : (
+                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-brand-white/10 text-brand-white/20">
+                        <ArrowIcon />
+                      </span>
+                    )}
                   </div>
                 </div>
 

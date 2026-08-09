@@ -5,14 +5,14 @@ const dict = getDictionary();
 const contacts = [
   {
     name: "Zafer (Victor)",
-    phone: "+905 325 672 777",
+    phone: "+90 532 567 27 77",
     phoneHref: "tel:+905325672777",
     email: "albalidya@hotmail.com",
     whatsapp: "https://wa.me/905325672777",
   },
   {
     name: "Vierka",
-    phone: "+905 378 278 599",
+    phone: "+90 537 827 85 99",
     phoneHref: "tel:+905378278599",
     email: "vierakocaker@hotmail.com",
     whatsapp: "https://wa.me/905378278599",
@@ -24,7 +24,6 @@ const locations = [
     name: "LIDYA JEWELLERY — Manavgat",
     detail:
       "Çolaklı, Tilkiler Mevkii, Erhan Demir Blv. No:4, P.K:07600 Manavgat / Türkiye",
-    url: "https://www.lidyaalbajewellery.com/",
   },
   {
     name: "Hotel Alba Resort",
@@ -187,39 +186,68 @@ export default function Contact() {
                 </p>
 
                 <div className="mt-8 border-t border-brand-white/12">
-                  {locations.map((location, index) => (
-                    <a
-                      key={location.name}
-                      href={location.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`Visit ${location.name}`}
-                      className="group flex items-center justify-between gap-5 border-b border-brand-white/12 py-4 transition-colors duration-500 hover:bg-brand-white/[0.025]"
-                    >
-                      <div className="flex min-w-0 items-start gap-4">
-                        <span className="mt-1 shrink-0 text-[0.56rem] font-semibold tracking-[0.22em] text-gold">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
+                  {locations.map((location, index) => {
+                    const content = (
+                      <>
+                        <div className="flex min-w-0 items-start gap-4">
+                          <span className="mt-1 shrink-0 text-[0.56rem] font-semibold tracking-[0.22em] text-gold">
+                            {String(index + 1).padStart(2, "0")}
+                          </span>
 
-                        <div className="min-w-0">
-                          <h4
-                            className="font-display text-lg transition-colors duration-300 group-hover:text-gold-light md:text-xl"
-                            style={{ color: "#F5EFE6" }}
-                          >
-                            {location.name}
-                          </h4>
+                          <div className="min-w-0">
+                            <h4
+                              className={`font-display text-lg md:text-xl ${
+                                location.url
+                                  ? "transition-colors duration-300 group-hover:text-gold-light"
+                                  : ""
+                              }`}
+                              style={{ color: "#F5EFE6" }}
+                            >
+                              {location.name}
+                            </h4>
 
-                          <p className="mt-1 max-w-[340px] text-[0.72rem] leading-5 text-brand-white/40">
-                            {location.detail}
-                          </p>
+                            <p className="mt-1 max-w-[340px] text-[0.72rem] leading-5 text-brand-white/40">
+                              {location.detail}
+                            </p>
+                          </div>
                         </div>
-                      </div>
 
-                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-brand-white/15 text-brand-white/45 transition-all duration-500 group-hover:translate-x-1 group-hover:border-gold group-hover:bg-gold group-hover:text-plum-dark">
-                        <ArrowIcon />
-                      </span>
-                    </a>
-                  ))}
+                        {location.url ? (
+                          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-brand-white/15 text-brand-white/45 transition-all duration-500 group-hover:translate-x-1 group-hover:border-gold group-hover:bg-gold group-hover:text-plum-dark">
+                            <ArrowIcon />
+                          </span>
+                        ) : (
+                          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-brand-white/8 text-brand-white/15">
+                            <ArrowIcon />
+                          </span>
+                        )}
+                      </>
+                    );
+
+                    if (location.url) {
+                      return (
+                        <a
+                          key={location.name}
+                          href={location.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`Visit ${location.name}`}
+                          className="group flex items-center justify-between gap-5 border-b border-brand-white/12 py-4 transition-colors duration-500 hover:bg-brand-white/[0.025]"
+                        >
+                          {content}
+                        </a>
+                      );
+                    }
+
+                    return (
+                      <div
+                        key={location.name}
+                        className="flex cursor-default items-center justify-between gap-5 border-b border-brand-white/12 py-4"
+                      >
+                        {content}
+                      </div>
+                    );
+                  })}
                 </div>
 
                 <div className="mt-8 border-t border-brand-white/12 pt-7">

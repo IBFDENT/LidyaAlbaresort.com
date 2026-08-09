@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { getDictionary } from "@/lib/i18n";
 import { SERVICE_GROUPS } from "@/lib/content";
@@ -145,32 +146,54 @@ Thank you.`;
       <div className="pointer-events-none absolute -right-48 top-10 h-[380px] w-[380px] rounded-full bg-gold/5 blur-3xl" />
 
       <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
-        {/* INTRO */}
-        <div className="mb-10 grid gap-8 lg:mb-14 lg:grid-cols-12 lg:items-end">
-          <div className="lg:col-span-8">
-            <span className="mb-4 block text-[0.66rem] font-semibold uppercase tracking-[0.32em] text-gold">
-              {dict.services.eyebrow}
-            </span>
+        {/* INTRO WITH BACKGROUND IMAGE */}
+        <div className="relative mb-10 overflow-hidden lg:mb-14">
+          {/* BACKGROUND IMAGE */}
+          <Image
+            src="/images/services-intro.png"
+            alt="Jewellery and watch service tools with fine jewellery and watches"
+            fill
+            sizes="(min-width: 1024px) 1440px, 100vw"
+            className="object-cover object-center"
+          />
 
-            <h2
-              className="max-w-[820px] font-display text-4xl leading-[0.96] tracking-[-0.03em] md:text-5xl lg:text-6xl"
-              style={{ color: "#1B0B20" }}
-            >
-              {dict.services.title}
-            </h2>
-          </div>
+          {/* SOFT LEFT READABILITY GRADIENT */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#F8F4ED]/98 via-[#F8F4ED]/74 to-[#F8F4ED]/5" />
 
-          <div className="lg:col-span-4 lg:pb-1">
-            <p className="max-w-md text-sm leading-6 text-grey md:text-[0.95rem]">
-              {dict.services.sub}
-            </p>
+          {/* VERY LIGHT LOWER VEIL */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#F8F4ED]/16 via-transparent to-transparent" />
 
-            <div className="mt-5 flex items-center gap-4">
-              <span className="h-px w-10 bg-gold" />
-
-              <span className="text-[0.58rem] font-semibold uppercase tracking-[0.24em] text-plum-dark/45">
-                PERSONAL SERVICE · SINCE 1989
+          {/* INTRO CONTENT */}
+          <div className="relative z-10 grid min-h-[420px] gap-8 py-12 md:min-h-[470px] md:py-16 lg:min-h-[500px] lg:grid-cols-12 lg:items-end lg:py-20">
+            {/* LEFT */}
+            <div className="lg:col-span-8">
+              <span className="mb-4 block text-[0.66rem] font-semibold uppercase tracking-[0.32em] text-[#A98242]">
+                {dict.services.eyebrow}
               </span>
+
+              <h2
+                className="max-w-[820px] font-display text-4xl leading-[0.96] tracking-[-0.03em] md:text-5xl lg:text-6xl"
+                style={{ color: "#1B0B20" }}
+              >
+                {dict.services.title}
+              </h2>
+            </div>
+
+            {/* RIGHT */}
+            <div className="lg:col-span-4 lg:pb-2">
+              <div className="max-w-md bg-[#F8F4ED]/50 p-5 backdrop-blur-[2px] md:p-6 lg:bg-[#F8F4ED]/44">
+                <p className="text-sm leading-6 text-grey md:text-[0.95rem]">
+                  {dict.services.sub}
+                </p>
+
+                <div className="mt-5 flex items-center gap-4">
+                  <span className="h-px w-10 bg-[#A98242]" />
+
+                  <span className="text-[0.58rem] font-semibold uppercase tracking-[0.24em] text-plum-dark/55">
+                    PERSONAL SERVICE · SINCE 1989
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -408,7 +431,9 @@ Thank you.`;
                       Zafer (Victor)
                     </option>
 
-                    <option value="vierka">Vierka</option>
+                    <option value="vierka">
+                      Vierka
+                    </option>
                   </select>
                 </div>
               </div>
