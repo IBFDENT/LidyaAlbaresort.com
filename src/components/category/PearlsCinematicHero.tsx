@@ -4,8 +4,134 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 import { PearlIcon } from "@/components/category/icons";
+import { useLanguage } from "@/components/LanguageProvider";
+import type { Locale } from "@/lib/i18n";
+
+const PEARLS_HERO_COPY: Record<
+  Locale,
+  {
+    eyebrow: string;
+    title1: string;
+    title2: string;
+    title3: string;
+    description: string;
+    since: string;
+    statementEyebrow: string;
+    statementBefore: string;
+    statementAccent: string;
+    imageAlt: string;
+  }
+> = {
+  en: {
+    eyebrow: "Pearls",
+    title1: "Nature's",
+    title2: "Most Patient",
+    title3: "Jewel",
+    description:
+      "Created slowly, layer by layer, a pearl carries a beauty no machine can reproduce. No two are ever exactly alike. At LIDYA, we choose pearls for the depth of their lustre, the harmony of their colour and the quiet elegance that reveals itself the moment they meet the skin.",
+    since: "LIDYA · SINCE 1989",
+    statementEyebrow: "Quiet luxury",
+    statementBefore: "Formed slowly by nature.",
+    statementAccent: "Chosen carefully by hand.",
+    imageAlt:
+      "LIDYA pearl jewellery collection arranged on champagne silk",
+  },
+
+  de: {
+    eyebrow: "Perlen",
+    title1: "Der Natur",
+    title2: "geduldigstes",
+    title3: "Juwel",
+    description:
+      "Langsam, Schicht für Schicht entstanden, trägt jede Perle eine Schönheit in sich, die keine Maschine nachbilden kann. Keine zwei Perlen sind jemals vollkommen gleich. Bei LIDYA wählen wir Perlen nach der Tiefe ihres Lüsters, der Harmonie ihrer Farbe und jener stillen Eleganz aus, die sich in dem Moment zeigt, in dem sie die Haut berühren.",
+    since: "LIDYA · SEIT 1989",
+    statementEyebrow: "Stiller Luxus",
+    statementBefore: "Langsam von der Natur geformt.",
+    statementAccent: "Sorgfältig von Hand ausgewählt.",
+    imageAlt:
+      "LIDYA Perlenkollektion auf champagnerfarbener Seide arrangiert",
+  },
+
+  tr: {
+    eyebrow: "İnciler",
+    title1: "Doğanın",
+    title2: "En Sabırlı",
+    title3: "Mücevheri",
+    description:
+      "Yavaşça, katman katman oluşan bir inci, hiçbir makinenin taklit edemeyeceği bir güzellik taşır. Hiçbir iki inci birbirinin tamamen aynısı değildir. LIDYA’da incileri; parlaklıklarının derinliğine, renklerinin uyumuna ve tenle buluştukları anda ortaya çıkan zarif karakterlerine göre seçiyoruz.",
+    since: "LIDYA · 1989'DAN BERİ",
+    statementEyebrow: "Sessiz lüks",
+    statementBefore: "Doğa tarafından yavaşça şekillendirildi.",
+    statementAccent: "Özenle elde seçildi.",
+    imageAlt:
+      "Şampanya renkli ipek üzerinde düzenlenmiş LIDYA inci mücevher koleksiyonu",
+  },
+
+  sk: {
+    eyebrow: "Perly",
+    title1: "Prírodný",
+    title2: "zázrak",
+    title3: "trpezlivosti",
+    description:
+      "Perla vzniká pomaly, vrstvu po vrstve, a nesie v sebe krásu, ktorú nedokáže napodobniť žiadny stroj. Žiadne dve perly nie sú úplne rovnaké. V LIDYA vyberáme perly podľa hĺbky ich lesku, harmónie farby a tichej elegancie, ktorá sa naplno ukáže vo chvíli, keď sa dotknú pokožky.",
+    since: "LIDYA · OD ROKU 1989",
+    statementEyebrow: "Nenápadný luxus",
+    statementBefore: "Pomaly formované prírodou.",
+    statementAccent: "Starostlivo vybrané ručne.",
+    imageAlt:
+      "Kolekcia perlových šperkov LIDYA naaranžovaná na šampanskom hodvábe",
+  },
+
+  cs: {
+    eyebrow: "Perly",
+    title1: "Přírodní",
+    title2: "zázrak",
+    title3: "trpělivosti",
+    description:
+      "Perla vzniká pomalu, vrstvu po vrstvě, a nese v sobě krásu, kterou nedokáže napodobit žádný stroj. Žádné dvě perly nejsou zcela stejné. V LIDYA vybíráme perly podle hloubky jejich lesku, harmonie barvy a tiché elegance, která se naplno projeví ve chvíli, kdy se dotknou pokožky.",
+    since: "LIDYA · OD ROKU 1989",
+    statementEyebrow: "Nenápadný luxus",
+    statementBefore: "Pomalu formované přírodou.",
+    statementAccent: "Pečlivě vybírané ručně.",
+    imageAlt:
+      "Kolekce perlových šperků LIDYA naaranžovaná na šampaňském hedvábí",
+  },
+
+  hu: {
+    eyebrow: "Gyöngyök",
+    title1: "A természet",
+    title2: "legtürelmesebb",
+    title3: "ékszere",
+    description:
+      "A gyöngy lassan, rétegről rétegre születik, és olyan szépséget hordoz, amelyet egyetlen gép sem képes reprodukálni. Nincs két teljesen egyforma gyöngy. A LIDYA-nál a gyöngyöket fényük mélysége, színük harmóniája és az a visszafogott elegancia alapján választjuk ki, amely a bőrrel érintkezve válik igazán láthatóvá.",
+    since: "LIDYA · 1989 ÓTA",
+    statementEyebrow: "Csendes luxus",
+    statementBefore: "Lassan formálja a természet.",
+    statementAccent: "Gondosan, kézzel válogatva.",
+    imageAlt:
+      "LIDYA gyöngyékszer-kollekció pezsgőszínű selymen elrendezve",
+  },
+
+  pl: {
+    eyebrow: "Perły",
+    title1: "Najbardziej",
+    title2: "cierpliwy klejnot",
+    title3: "natury",
+    description:
+      "Perła powstaje powoli, warstwa po warstwie, i kryje w sobie piękno, którego nie potrafi odtworzyć żadna maszyna. Nie ma dwóch identycznych pereł. W LIDYA wybieramy perły ze względu na głębię ich połysku, harmonię koloru i subtelną elegancję, która ujawnia się w chwili, gdy dotykają skóry.",
+    since: "LIDYA · OD 1989 ROKU",
+    statementEyebrow: "Dyskretny luksus",
+    statementBefore: "Powoli formowane przez naturę.",
+    statementAccent: "Starannie wybierane ręcznie.",
+    imageAlt:
+      "Kolekcja biżuterii z pereł LIDYA ułożona na jedwabiu w kolorze szampana",
+  },
+};
 
 export default function PearlsCinematicHero() {
+  const { locale } = useLanguage();
+  const copy = PEARLS_HERO_COPY[locale];
+
   const sectionRef = useRef<HTMLElement | null>(null);
   const imageWrapRef = useRef<HTMLDivElement | null>(null);
   const contentRef = useRef<HTMLDivElement | null>(null);
@@ -132,7 +258,9 @@ export default function PearlsCinematicHero() {
     section.addEventListener("pointermove", updatePointer);
     section.addEventListener("pointerleave", resetPointer);
 
-    window.addEventListener("scroll", updateScroll, { passive: true });
+    window.addEventListener("scroll", updateScroll, {
+      passive: true,
+    });
 
     updateScroll();
 
@@ -177,7 +305,7 @@ export default function PearlsCinematicHero() {
       >
         <Image
           src="/images/pearls/hero-pearls.png"
-          alt="LIDYA pearl jewellery collection arranged on champagne silk"
+          alt={copy.imageAlt}
           fill
           priority
           sizes="100vw"
@@ -222,7 +350,7 @@ export default function PearlsCinematicHero() {
               </span>
 
               <span className="text-[0.66rem] font-semibold uppercase tracking-[0.34em] text-gold">
-                Pearls
+                {copy.eyebrow}
               </span>
             </div>
 
@@ -239,7 +367,7 @@ export default function PearlsCinematicHero() {
                   }`}
                   style={{ transitionDelay: "280ms" }}
                 >
-                  Nature&apos;s
+                  {copy.title1}
                 </span>
               </span>
 
@@ -252,7 +380,7 @@ export default function PearlsCinematicHero() {
                   }`}
                   style={{ transitionDelay: "370ms" }}
                 >
-                  Most Patient
+                  {copy.title2}
                 </span>
               </span>
 
@@ -265,7 +393,7 @@ export default function PearlsCinematicHero() {
                   }`}
                   style={{ transitionDelay: "460ms" }}
                 >
-                  Jewel
+                  {copy.title3}
                 </span>
               </span>
             </h1>
@@ -281,18 +409,14 @@ export default function PearlsCinematicHero() {
             style={{ transitionDelay: "590ms" }}
           >
             <p className="max-w-md text-sm leading-7 text-[#645E5A] md:text-base">
-              Created slowly, layer by layer, a pearl carries a beauty no
-              machine can reproduce. No two are ever exactly alike. At LIDYA,
-              we choose pearls for the depth of their lustre, the harmony of
-              their colour and the quiet elegance that reveals itself the
-              moment they meet the skin.
+              {copy.description}
             </p>
 
             <div className="mt-7 flex items-center gap-4">
               <span className="h-px w-12 bg-gold" />
 
               <span className="text-[0.58rem] font-semibold uppercase tracking-[0.24em] text-plum-dark/50">
-                LIDYA · SINCE 1989
+                {copy.since}
               </span>
             </div>
           </div>
@@ -310,7 +434,7 @@ export default function PearlsCinematicHero() {
           <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-3">
               <span className="text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-[#A98242]">
-                Quiet luxury
+                {copy.statementEyebrow}
               </span>
             </div>
 
@@ -319,10 +443,10 @@ export default function PearlsCinematicHero() {
                 className="max-w-[1000px] font-display text-3xl italic leading-tight md:text-4xl lg:text-5xl"
                 style={{ color: "#1B0B20" }}
               >
-                Formed slowly by nature.
+                {copy.statementBefore}
                 <span style={{ color: "#A98242" }}>
                   {" "}
-                  Chosen carefully by hand.
+                  {copy.statementAccent}
                 </span>
               </p>
             </div>

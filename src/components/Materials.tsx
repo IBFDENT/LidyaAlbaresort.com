@@ -1,3 +1,8 @@
+"use client";
+
+import { useLanguage } from "@/components/LanguageProvider";
+import type { Locale } from "@/lib/i18n";
+
 type MaterialKind =
   | "white-gold"
   | "yellow-gold"
@@ -7,70 +12,488 @@ type MaterialKind =
   | "precious-stone"
   | "pearl";
 
-const materials: {
+type MaterialItem = {
   number: string;
   title: string;
   subtitle: string;
   description: string;
   kind: MaterialKind;
-}[] = [
+};
+
+const MATERIALS: Record<Locale, MaterialItem[]> = {
+  en: [
+    {
+      number: "01",
+      title: "White Gold",
+      subtitle: "Cool brilliance",
+      description:
+        "Timeless, elegant and versatile — chosen for its refined luminosity.",
+      kind: "white-gold",
+    },
+    {
+      number: "02",
+      title: "Yellow Gold",
+      subtitle: "Warm heritage",
+      description:
+        "A classic expression of luxury with a rich, unmistakable warmth.",
+      kind: "yellow-gold",
+    },
+    {
+      number: "03",
+      title: "Rose Gold",
+      subtitle: "Soft character",
+      description:
+        "A contemporary tone with a delicate warmth and distinctive presence.",
+      kind: "rose-gold",
+    },
+    {
+      number: "04",
+      title: "Platinum",
+      subtitle: "Pure endurance",
+      description:
+        "Exceptional strength, rarity and a naturally refined white finish.",
+      kind: "platinum",
+    },
+    {
+      number: "05",
+      title: "Diamonds",
+      subtitle: "Enduring brilliance",
+      description:
+        "Selected for exceptional light, precision and lasting emotional value.",
+      kind: "diamond",
+    },
+    {
+      number: "06",
+      title: "Precious Stones",
+      subtitle: "Colour & individuality",
+      description:
+        "Distinctive stones chosen for their depth, colour and unique character.",
+      kind: "precious-stone",
+    },
+    {
+      number: "07",
+      title: "Pearls",
+      subtitle: "Natural elegance",
+      description:
+        "A timeless pleasure, celebrated for softness, lustre and quiet beauty.",
+      kind: "pearl",
+    },
+  ],
+
+  de: [
+    {
+      number: "01",
+      title: "Weißgold",
+      subtitle: "Kühle Brillanz",
+      description:
+        "Zeitlos, elegant und vielseitig — ausgewählt für seine edle Leuchtkraft.",
+      kind: "white-gold",
+    },
+    {
+      number: "02",
+      title: "Gelbgold",
+      subtitle: "Warme Tradition",
+      description:
+        "Ein klassischer Ausdruck von Luxus mit unverwechselbarer Wärme.",
+      kind: "yellow-gold",
+    },
+    {
+      number: "03",
+      title: "Roségold",
+      subtitle: "Sanfter Charakter",
+      description:
+        "Ein moderner Farbton mit feiner Wärme und unverwechselbarer Präsenz.",
+      kind: "rose-gold",
+    },
+    {
+      number: "04",
+      title: "Platin",
+      subtitle: "Pure Beständigkeit",
+      description:
+        "Außergewöhnliche Stärke, Seltenheit und ein natürlich edles Weiß.",
+      kind: "platinum",
+    },
+    {
+      number: "05",
+      title: "Diamanten",
+      subtitle: "Bleibende Brillanz",
+      description:
+        "Ausgewählt für außergewöhnliches Licht, Präzision und bleibenden emotionalen Wert.",
+      kind: "diamond",
+    },
+    {
+      number: "06",
+      title: "Edelsteine",
+      subtitle: "Farbe & Individualität",
+      description:
+        "Ausdrucksstarke Steine, ausgewählt nach Tiefe, Farbe und einzigartigem Charakter.",
+      kind: "precious-stone",
+    },
+    {
+      number: "07",
+      title: "Perlen",
+      subtitle: "Natürliche Eleganz",
+      description:
+        "Zeitlose Schönheit, geschätzt für Sanftheit, Lüster und stille Eleganz.",
+      kind: "pearl",
+    },
+  ],
+
+  tr: [
+    {
+      number: "01",
+      title: "Beyaz Altın",
+      subtitle: "Serin parlaklık",
+      description:
+        "Zamansız, zarif ve çok yönlü — rafine ışıltısı için seçilir.",
+      kind: "white-gold",
+    },
+    {
+      number: "02",
+      title: "Sarı Altın",
+      subtitle: "Sıcak gelenek",
+      description:
+        "Zengin ve ayırt edici sıcaklığıyla lüksün klasik bir ifadesi.",
+      kind: "yellow-gold",
+    },
+    {
+      number: "03",
+      title: "Rose Altın",
+      subtitle: "Yumuşak karakter",
+      description:
+        "Narin sıcaklığa ve kendine özgü bir duruşa sahip çağdaş bir ton.",
+      kind: "rose-gold",
+    },
+    {
+      number: "04",
+      title: "Platin",
+      subtitle: "Saf dayanıklılık",
+      description:
+        "Olağanüstü dayanıklılık, nadirlik ve doğal olarak rafine beyaz görünüm.",
+      kind: "platinum",
+    },
+    {
+      number: "05",
+      title: "Elmaslar",
+      subtitle: "Kalıcı ışıltı",
+      description:
+        "Olağanüstü ışık, hassasiyet ve kalıcı duygusal değer için seçilir.",
+      kind: "diamond",
+    },
+    {
+      number: "06",
+      title: "Değerli Taşlar",
+      subtitle: "Renk & özgünlük",
+      description:
+        "Derinlikleri, renkleri ve benzersiz karakterleri için seçilen özel taşlar.",
+      kind: "precious-stone",
+    },
+    {
+      number: "07",
+      title: "İnciler",
+      subtitle: "Doğal zarafet",
+      description:
+        "Yumuşaklığı, parlaklığı ve sakin güzelliğiyle zamansız bir zarafet.",
+      kind: "pearl",
+    },
+  ],
+
+  sk: [
+    {
+      number: "01",
+      title: "Biele zlato",
+      subtitle: "Chladný lesk",
+      description:
+        "Nadčasové, elegantné a univerzálne — vybrané pre svoj ušľachtilý jas.",
+      kind: "white-gold",
+    },
+    {
+      number: "02",
+      title: "Žlté zlato",
+      subtitle: "Teplá tradícia",
+      description:
+        "Klasické vyjadrenie luxusu s bohatým a nezameniteľným teplým odtieňom.",
+      kind: "yellow-gold",
+    },
+    {
+      number: "03",
+      title: "Ružové zlato",
+      subtitle: "Jemný charakter",
+      description:
+        "Moderný tón s jemným teplom a výraznou osobitosťou.",
+      kind: "rose-gold",
+    },
+    {
+      number: "04",
+      title: "Platina",
+      subtitle: "Čistá odolnosť",
+      description:
+        "Výnimočná pevnosť, vzácnosť a prirodzene elegantný biely vzhľad.",
+      kind: "platinum",
+    },
+    {
+      number: "05",
+      title: "Diamanty",
+      subtitle: "Trvalý lesk",
+      description:
+        "Vyberané pre výnimočnú hru svetla, precíznosť a trvalú emocionálnu hodnotu.",
+      kind: "diamond",
+    },
+    {
+      number: "06",
+      title: "Drahé kamene",
+      subtitle: "Farba & jedinečnosť",
+      description:
+        "Výrazné kamene vybrané pre svoju hĺbku, farbu a jedinečný charakter.",
+      kind: "precious-stone",
+    },
+    {
+      number: "07",
+      title: "Perly",
+      subtitle: "Prirodzená elegancia",
+      description:
+        "Nadčasová krása oceňovaná pre jemnosť, lesk a nenápadnú eleganciu.",
+      kind: "pearl",
+    },
+  ],
+
+  cs: [
+    {
+      number: "01",
+      title: "Bílé zlato",
+      subtitle: "Chladný lesk",
+      description:
+        "Nadčasové, elegantní a univerzální — vybrané pro svůj ušlechtilý jas.",
+      kind: "white-gold",
+    },
+    {
+      number: "02",
+      title: "Žluté zlato",
+      subtitle: "Teplá tradice",
+      description:
+        "Klasické vyjádření luxusu s bohatým a nezaměnitelným teplým odstínem.",
+      kind: "yellow-gold",
+    },
+    {
+      number: "03",
+      title: "Růžové zlato",
+      subtitle: "Jemný charakter",
+      description:
+        "Moderní tón s jemným teplem a výraznou osobitostí.",
+      kind: "rose-gold",
+    },
+    {
+      number: "04",
+      title: "Platina",
+      subtitle: "Čistá odolnost",
+      description:
+        "Výjimečná pevnost, vzácnost a přirozeně elegantní bílý vzhled.",
+      kind: "platinum",
+    },
+    {
+      number: "05",
+      title: "Diamanty",
+      subtitle: "Trvalý lesk",
+      description:
+        "Vybrané pro výjimečnou hru světla, přesnost a trvalou emocionální hodnotu.",
+      kind: "diamond",
+    },
+    {
+      number: "06",
+      title: "Drahé kameny",
+      subtitle: "Barva & jedinečnost",
+      description:
+        "Výrazné kameny vybrané pro svou hloubku, barvu a jedinečný charakter.",
+      kind: "precious-stone",
+    },
+    {
+      number: "07",
+      title: "Perly",
+      subtitle: "Přirozená elegance",
+      description:
+        "Nadčasová krása ceněná pro jemnost, lesk a nenápadnou eleganci.",
+      kind: "pearl",
+    },
+  ],
+
+  hu: [
+    {
+      number: "01",
+      title: "Fehérarany",
+      subtitle: "Hűvös ragyogás",
+      description:
+        "Időtlen, elegáns és sokoldalú — kifinomult fényéért választva.",
+      kind: "white-gold",
+    },
+    {
+      number: "02",
+      title: "Sárgaarany",
+      subtitle: "Meleg hagyomány",
+      description:
+        "A luxus klasszikus kifejezése gazdag, összetéveszthetetlen melegséggel.",
+      kind: "yellow-gold",
+    },
+    {
+      number: "03",
+      title: "Rozéarany",
+      subtitle: "Lágy karakter",
+      description:
+        "Kortárs árnyalat finom melegséggel és jellegzetes megjelenéssel.",
+      kind: "rose-gold",
+    },
+    {
+      number: "04",
+      title: "Platina",
+      subtitle: "Tiszta tartósság",
+      description:
+        "Kivételes szilárdság, ritkaság és természetesen kifinomult fehér felület.",
+      kind: "platinum",
+    },
+    {
+      number: "05",
+      title: "Gyémántok",
+      subtitle: "Tartós ragyogás",
+      description:
+        "Kivételes fényük, pontosságuk és maradandó érzelmi értékük miatt választva.",
+      kind: "diamond",
+    },
+    {
+      number: "06",
+      title: "Drágakövek",
+      subtitle: "Szín & egyediség",
+      description:
+        "Karakteres kövek, amelyeket mélységük, színük és egyedi jellegük miatt választunk.",
+      kind: "precious-stone",
+    },
+    {
+      number: "07",
+      title: "Gyöngyök",
+      subtitle: "Természetes elegancia",
+      description:
+        "Időtlen szépség, amelyet lágysága, fénye és visszafogott eleganciája tesz különlegessé.",
+      kind: "pearl",
+    },
+  ],
+
+  pl: [
+    {
+      number: "01",
+      title: "Białe złoto",
+      subtitle: "Chłodny blask",
+      description:
+        "Ponadczasowe, eleganckie i wszechstronne — wybrane ze względu na szlachetny blask.",
+      kind: "white-gold",
+    },
+    {
+      number: "02",
+      title: "Żółte złoto",
+      subtitle: "Ciepłe dziedzictwo",
+      description:
+        "Klasyczny wyraz luksusu o bogatym i niepowtarzalnym ciepłym odcieniu.",
+      kind: "yellow-gold",
+    },
+    {
+      number: "03",
+      title: "Różowe złoto",
+      subtitle: "Subtelny charakter",
+      description:
+        "Współczesny odcień o delikatnym cieple i wyjątkowej osobowości.",
+      kind: "rose-gold",
+    },
+    {
+      number: "04",
+      title: "Platyna",
+      subtitle: "Czysta trwałość",
+      description:
+        "Wyjątkowa wytrzymałość, rzadkość i naturalnie szlachetna biała barwa.",
+      kind: "platinum",
+    },
+    {
+      number: "05",
+      title: "Diamenty",
+      subtitle: "Trwały blask",
+      description:
+        "Wybrane ze względu na wyjątkową grę światła, precyzję i trwałą wartość emocjonalną.",
+      kind: "diamond",
+    },
+    {
+      number: "06",
+      title: "Kamienie szlachetne",
+      subtitle: "Kolor & indywidualność",
+      description:
+        "Wyraziste kamienie wybrane ze względu na głębię, kolor i unikalny charakter.",
+      kind: "precious-stone",
+    },
+    {
+      number: "07",
+      title: "Perły",
+      subtitle: "Naturalna elegancja",
+      description:
+        "Ponadczasowe piękno cenione za subtelność, połysk i spokojną elegancję.",
+      kind: "pearl",
+    },
+  ],
+};
+
+const MATERIAL_COPY: Record<
+  Locale,
   {
-    number: "01",
-    title: "White Gold",
-    subtitle: "Cool brilliance",
-    description:
-      "Timeless, elegant and versatile — chosen for its refined luminosity.",
-    kind: "white-gold",
+    intro: string;
+    closingBefore: string;
+    closingAccent: string;
+    closingAfter: string;
+  }
+> = {
+  en: {
+    intro:
+      "Precious materials are selected not only for beauty, but for integrity, longevity and the way they become part of a lifetime.",
+    closingBefore: "Beauty begins with the material,",
+    closingAccent: "value",
+    closingAfter: "begins with how it is chosen.",
   },
-  {
-    number: "02",
-    title: "Yellow Gold",
-    subtitle: "Warm heritage",
-    description:
-      "A classic expression of luxury with a rich, unmistakable warmth.",
-    kind: "yellow-gold",
+  de: {
+    intro:
+      "Kostbare Materialien werden nicht nur nach ihrer Schönheit ausgewählt, sondern auch nach Qualität, Beständigkeit und ihrer Fähigkeit, ein Leben lang zu begleiten.",
+    closingBefore: "Schönheit beginnt mit dem Material,",
+    closingAccent: "Wert",
+    closingAfter: "beginnt mit seiner Auswahl.",
   },
-  {
-    number: "03",
-    title: "Rose Gold",
-    subtitle: "Soft character",
-    description:
-      "A contemporary tone with a delicate warmth and distinctive presence.",
-    kind: "rose-gold",
+  tr: {
+    intro:
+      "Değerli malzemeler yalnızca güzellikleri için değil, bütünlükleri, dayanıklılıkları ve yaşamın bir parçası olma biçimleri için seçilir.",
+    closingBefore: "Güzellik malzemeyle başlar,",
+    closingAccent: "değer",
+    closingAfter: "onun nasıl seçildiğiyle başlar.",
   },
-  {
-    number: "04",
-    title: "Platinum",
-    subtitle: "Pure endurance",
-    description:
-      "Exceptional strength, rarity and a naturally refined white finish.",
-    kind: "platinum",
+  sk: {
+    intro:
+      "Vzácne materiály vyberáme nielen pre ich krásu, ale aj pre kvalitu, trvácnosť a schopnosť stať sa súčasťou celého života.",
+    closingBefore: "Krása sa začína materiálom,",
+    closingAccent: "hodnota",
+    closingAfter: "spôsobom, akým je vybraný.",
   },
-  {
-    number: "05",
-    title: "Diamonds",
-    subtitle: "Enduring brilliance",
-    description:
-      "Selected for exceptional light, precision and lasting emotional value.",
-    kind: "diamond",
+  cs: {
+    intro:
+      "Vzácné materiály vybíráme nejen pro jejich krásu, ale také pro kvalitu, trvanlivost a schopnost stát se součástí celého života.",
+    closingBefore: "Krása začíná materiálem,",
+    closingAccent: "hodnota",
+    closingAfter: "způsobem, jakým je vybrán.",
   },
-  {
-    number: "06",
-    title: "Precious Stones",
-    subtitle: "Colour & individuality",
-    description:
-      "Distinctive stones chosen for their depth, colour and unique character.",
-    kind: "precious-stone",
+  hu: {
+    intro:
+      "Az értékes anyagokat nemcsak szépségükért választjuk, hanem minőségükért, tartósságukért és azért is, ahogyan egy élet részévé válhatnak.",
+    closingBefore: "A szépség az anyaggal kezdődik,",
+    closingAccent: "az érték",
+    closingAfter: "pedig a választás módjával.",
   },
-  {
-    number: "07",
-    title: "Pearls",
-    subtitle: "Natural elegance",
-    description:
-      "A timeless pleasure, celebrated for softness, lustre and quiet beauty.",
-    kind: "pearl",
+  pl: {
+    intro:
+      "Szlachetne materiały wybieramy nie tylko ze względu na piękno, lecz także jakość, trwałość i sposób, w jaki stają się częścią życia.",
+    closingBefore: "Piękno zaczyna się od materiału,",
+    closingAccent: "wartość",
+    closingAfter: "od sposobu jego wyboru.",
   },
-];
+};
 
 function MetallicMedallion({
   type,
@@ -115,7 +538,6 @@ function MetallicMedallion({
         border: `1px solid ${style.border}`,
       }}
     >
-      {/* metallic reflection */}
       <span
         className="absolute inset-[2px] rounded-full opacity-80"
         style={{
@@ -124,7 +546,6 @@ function MetallicMedallion({
         }}
       />
 
-      {/* centre highlight */}
       <span
         className="absolute left-1/2 top-1/2 h-[1px] w-[82%] -translate-x-1/2 -translate-y-1/2 rotate-[-28deg] opacity-30"
         style={{ background: "rgba(255,255,255,0.95)" }}
@@ -232,61 +653,16 @@ function BrilliantMark() {
           stroke="rgba(255,255,255,0.75)"
         />
 
-        <polygon
-          points="32,9 40,18 32,32 24,18"
-          fill="#FFFFFF"
-          opacity="0.8"
-        />
+        <polygon points="32,9 40,18 32,32 24,18" fill="#FFFFFF" opacity="0.8" />
+        <polygon points="55,32 46,40 32,32 46,24" fill="#BAC5CC" opacity="0.82" />
+        <polygon points="32,55 24,46 32,32 40,46" fill="#E9EEF1" opacity="0.78" />
+        <polygon points="9,32 18,24 32,32 18,40" fill="#A9B4BC" opacity="0.82" />
+        <polygon points="18,18 32,32 24,18" fill="#CBD4D9" opacity="0.9" />
+        <polygon points="46,18 40,18 32,32" fill="#F7F9FA" opacity="0.95" />
+        <polygon points="46,46 32,32 40,46" fill="#AEB9C0" opacity="0.82" />
+        <polygon points="18,46 24,46 32,32" fill="#F6F8F9" opacity="0.9" />
 
-        <polygon
-          points="55,32 46,40 32,32 46,24"
-          fill="#BAC5CC"
-          opacity="0.82"
-        />
-
-        <polygon
-          points="32,55 24,46 32,32 40,46"
-          fill="#E9EEF1"
-          opacity="0.78"
-        />
-
-        <polygon
-          points="9,32 18,24 32,32 18,40"
-          fill="#A9B4BC"
-          opacity="0.82"
-        />
-
-        <polygon
-          points="18,18 32,32 24,18"
-          fill="#CBD4D9"
-          opacity="0.9"
-        />
-
-        <polygon
-          points="46,18 40,18 32,32"
-          fill="#F7F9FA"
-          opacity="0.95"
-        />
-
-        <polygon
-          points="46,46 32,32 40,46"
-          fill="#AEB9C0"
-          opacity="0.82"
-        />
-
-        <polygon
-          points="18,46 24,46 32,32"
-          fill="#F6F8F9"
-          opacity="0.9"
-        />
-
-        <circle
-          cx="32"
-          cy="32"
-          r="7"
-          fill="#FFFFFF"
-          opacity="0.7"
-        />
+        <circle cx="32" cy="32" r="7" fill="#FFFFFF" opacity="0.7" />
 
         <circle
           cx="32"
@@ -340,12 +716,16 @@ function MaterialSymbol({ kind }: { kind: MaterialKind }) {
 }
 
 export default function Materials() {
+  const { dictionary: dict, locale } = useLanguage();
+
+  const materials = MATERIALS[locale];
+  const copy = MATERIAL_COPY[locale];
+
   return (
     <section
       id="materials"
       className="relative overflow-hidden bg-plum-dark py-24 text-brand-white md:py-32 lg:py-40"
     >
-      {/* Ambient glow */}
       <div className="pointer-events-none absolute -left-40 top-0 h-[500px] w-[500px] rounded-full bg-gold/10 blur-3xl" />
 
       <div className="pointer-events-none absolute -right-48 bottom-0 h-[520px] w-[520px] rounded-full bg-gold/5 blur-3xl" />
@@ -355,40 +735,27 @@ export default function Materials() {
         <div className="mb-16 grid gap-10 lg:mb-24 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-8">
             <span className="mb-7 block text-[0.68rem] font-semibold uppercase tracking-[0.34em] text-gold">
-              Materials & Stones
+              {dict.materials.eyebrow}
             </span>
 
             <h2
-              className="max-w-[850px] font-display leading-[0.93] tracking-[-0.03em]"
-              style={{ color: "#F5EFE6" }}
+              className="max-w-[850px] font-display text-5xl italic leading-[0.93] tracking-[-0.03em] md:text-6xl lg:text-[5.2rem]"
+              style={{ color: "#E8D8B5" }}
             >
-              <span
-                className="block text-5xl md:text-6xl lg:text-[4.8rem]"
-                style={{ color: "#F5EFE6" }}
-              >
-                Chosen for their
-              </span>
-
-              <span
-                className="mt-2 block text-5xl italic md:text-6xl lg:text-[5.2rem]"
-                style={{ color: "#E8D8B5" }}
-              >
-                lasting quality.
-              </span>
+              {dict.materials.title}
             </h2>
           </div>
 
           <div className="lg:col-span-4 lg:pb-2">
             <p className="max-w-md text-sm leading-7 text-brand-white/65 md:text-base">
-              Precious materials are selected not only for beauty, but for
-              integrity, longevity and the way they become part of a lifetime.
+              {copy.intro}
             </p>
 
             <div className="mt-7 flex items-center gap-4">
               <span className="h-px w-12 bg-gold" />
 
               <span className="text-[0.6rem] font-semibold uppercase tracking-[0.26em] text-brand-white/45">
-                LIDYA · SINCE 1989
+                LIDYA · {dict.strip.since}
               </span>
             </div>
           </div>
@@ -401,21 +768,18 @@ export default function Materials() {
               key={material.number}
               className="group relative grid gap-5 border-b border-brand-white/12 py-8 transition-all duration-500 hover:bg-brand-white/[0.035] md:grid-cols-12 md:items-center md:px-4 md:py-10"
             >
-              {/* Hover glow */}
               <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
                 <div className="absolute left-1/4 top-1/2 h-24 w-48 -translate-y-1/2 rounded-full bg-gold/5 blur-3xl" />
 
                 <div className="absolute right-0 top-1/2 h-20 w-20 -translate-y-1/2 rounded-full bg-brand-white/[0.035] blur-2xl" />
               </div>
 
-              {/* Number */}
               <div className="relative md:col-span-1">
                 <span className="text-[0.62rem] font-semibold tracking-[0.24em] text-gold/85">
                   {material.number}
                 </span>
               </div>
 
-              {/* Material name */}
               <div className="relative md:col-span-4">
                 <h3
                   className="font-display text-3xl transition-all duration-500 group-hover:translate-x-1 md:text-4xl"
@@ -425,21 +789,18 @@ export default function Materials() {
                 </h3>
               </div>
 
-              {/* Subtitle */}
               <div className="relative md:col-span-3">
                 <span className="text-[0.66rem] font-semibold uppercase tracking-[0.2em] text-brand-white/45 transition-colors duration-500 group-hover:text-brand-white/70">
                   {material.subtitle}
                 </span>
               </div>
 
-              {/* Description */}
               <div className="relative md:col-span-3">
                 <p className="max-w-md text-sm leading-6 text-brand-white/60 transition-colors duration-500 group-hover:text-brand-white/80">
                   {material.description}
                 </p>
               </div>
 
-              {/* Material symbol */}
               <div className="relative hidden justify-end md:col-span-1 md:flex">
                 <MaterialSymbol kind={material.kind} />
               </div>
@@ -447,7 +808,7 @@ export default function Materials() {
           ))}
         </div>
 
-        {/* Closing statement */}
+        {/* CLOSING STATEMENT */}
         <div className="mx-auto mt-20 max-w-[980px] text-center md:mt-28">
           <span className="mx-auto mb-8 block h-px w-14 bg-gold" />
 
@@ -455,9 +816,11 @@ export default function Materials() {
             className="font-display text-3xl italic leading-tight md:text-4xl lg:text-5xl"
             style={{ color: "#F5EFE6" }}
           >
-            Beauty begins with the material,
-            <span style={{ color: "#E8D8B5" }}> value </span>
-            begins with how it is chosen.
+            {copy.closingBefore}{" "}
+            <span style={{ color: "#E8D8B5" }}>
+              {copy.closingAccent}
+            </span>{" "}
+            {copy.closingAfter}
           </p>
         </div>
       </div>

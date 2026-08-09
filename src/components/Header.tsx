@@ -4,12 +4,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { NAV_ITEMS, type NavItem } from "@/lib/nav";
-import { getDictionary } from "@/lib/i18n";
+import { useLanguage } from "@/components/LanguageProvider";
 import LanguageSwitcher from "./LanguageSwitcher";
 
-const dict = getDictionary();
-
-function DesktopNavItem({ item }: { item: NavItem }) {
+function DesktopNavItem({
+  item,
+  dict,
+}: {
+  item: NavItem;
+  dict: ReturnType<typeof useLanguage>["dictionary"];
+}) {
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -155,6 +159,8 @@ function DesktopNavItem({ item }: { item: NavItem }) {
 }
 
 export default function Header() {
+  const { dictionary: dict } = useLanguage();
+
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [mobileSubOpen, setMobileSubOpen] = useState<number | null>(null);
@@ -184,7 +190,6 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex max-w-[1440px] items-center justify-between px-6 md:px-10 lg:px-16 xl:px-20">
-        {/* LOGO */}
         <Link
           href="/#home"
           aria-label="LIDYA JEWELRY — Home"
@@ -204,7 +209,6 @@ export default function Header() {
           />
         </Link>
 
-        {/* DESKTOP NAV */}
         <nav
           className={`hidden items-center gap-7 text-[0.68rem] font-semibold uppercase tracking-[0.14em] xl:flex ${
             scrolled
@@ -216,11 +220,11 @@ export default function Header() {
             <DesktopNavItem
               key={`${item.href}-${item.labelKey}-${index}`}
               item={item}
+              dict={dict}
             />
           ))}
         </nav>
 
-        {/* RIGHT ACTIONS */}
         <div className="flex items-center gap-4">
           <LanguageSwitcher />
 
@@ -232,10 +236,9 @@ export default function Header() {
                 : "border-brand-white/45 text-brand-white hover:border-gold hover:bg-gold hover:text-plum-dark"
             }`}
           >
-            Private Appointment
+            {dict.nav.book}
           </Link>
 
-          {/* MOBILE MENU BUTTON */}
           <button
             type="button"
             aria-label="Menu"
@@ -264,7 +267,6 @@ export default function Header() {
         </div>
       </div>
 
-      {/* MOBILE MENU */}
       {menuOpen && (
         <nav className="mx-auto mt-4 max-w-[1440px] border-t border-plum-dark/10 bg-ivory px-6 pb-6 pt-5 text-plum-dark shadow-[0_18px_45px_-25px_rgba(27,11,32,0.3)] md:px-10 lg:px-16 xl:hidden">
           {NAV_ITEMS.map((item, index) => (

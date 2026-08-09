@@ -1,8 +1,50 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useLanguage } from "@/components/LanguageProvider";
+import type { Locale } from "@/lib/i18n";
+
+const FLOATING_COPY: Record<
+  Locale,
+  {
+    chooseContact: string;
+    whatsappAria: string;
+  }
+> = {
+  en: {
+    chooseContact: "Choose your contact",
+    whatsappAria: "Choose WhatsApp contact",
+  },
+  de: {
+    chooseContact: "Kontakt auswählen",
+    whatsappAria: "WhatsApp-Kontakt auswählen",
+  },
+  tr: {
+    chooseContact: "İletişim kişisini seçin",
+    whatsappAria: "WhatsApp iletişim kişisini seçin",
+  },
+  sk: {
+    chooseContact: "Vyberte kontaktnú osobu",
+    whatsappAria: "Vyberte WhatsApp kontakt",
+  },
+  cs: {
+    chooseContact: "Vyberte kontaktní osobu",
+    whatsappAria: "Vyberte WhatsApp kontakt",
+  },
+  hu: {
+    chooseContact: "Válasszon kapcsolattartót",
+    whatsappAria: "Válasszon WhatsApp-kapcsolatot",
+  },
+  pl: {
+    chooseContact: "Wybierz osobę kontaktową",
+    whatsappAria: "Wybierz kontakt WhatsApp",
+  },
+};
 
 export default function FloatingActions() {
+  const { locale } = useLanguage();
+  const copy = FLOATING_COPY[locale];
+
   const [hidden, setHidden] = useState(false);
   const [whatsappOpen, setWhatsappOpen] = useState(false);
 
@@ -66,7 +108,7 @@ export default function FloatingActions() {
             </span>
 
             <p className="mt-1 text-xs text-brand-white/55">
-              Choose your contact
+              {copy.chooseContact}
             </p>
           </div>
 
@@ -166,7 +208,6 @@ export default function FloatingActions() {
             </svg>
           </a>
 
-          {/* DIVIDER */}
           <span className="h-5 w-px bg-brand-white/10" />
 
           {/* WHATSAPP */}
@@ -175,7 +216,7 @@ export default function FloatingActions() {
             onClick={() =>
               setWhatsappOpen((current) => !current)
             }
-            aria-label="Choose WhatsApp contact"
+            aria-label={copy.whatsappAria}
             title="WhatsApp"
             aria-expanded={whatsappOpen}
             className="group relative flex h-12 w-12 items-center justify-center rounded-full bg-gold text-plum-dark shadow-[0_8px_30px_-10px_rgba(200,169,106,0.8)] transition-all duration-500 hover:-translate-y-1.5 hover:bg-gold-light md:h-13 md:w-13"
@@ -206,7 +247,6 @@ export default function FloatingActions() {
             </span>
           </button>
 
-          {/* DIVIDER */}
           <span className="h-5 w-px bg-brand-white/10" />
 
           {/* FACEBOOK */}

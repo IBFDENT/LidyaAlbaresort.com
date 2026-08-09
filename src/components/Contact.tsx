@@ -1,6 +1,7 @@
-import { getDictionary } from "@/lib/i18n";
+"use client";
 
-const dict = getDictionary();
+import { useLanguage } from "@/components/LanguageProvider";
+import type { Locale } from "@/lib/i18n";
 
 const contacts = [
   {
@@ -45,6 +46,150 @@ const locations = [
   },
 ];
 
+const CONTACT_COPY: Record<
+  Locale,
+  {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    call: string;
+    email: string;
+    visitUs: string;
+    ourBoutiques: string;
+    locationsIntro: string;
+    visitAria: string;
+    privateTitle: string;
+    privateText: string;
+    privateButton: string;
+  }
+> = {
+  en: {
+    eyebrow: "Contact",
+    title: "We would be glad to hear from you",
+    intro:
+      "Personal assistance for jewellery, service, bespoke enquiries and private appointments.",
+    call: "Call",
+    email: "Email",
+    visitUs: "Visit us",
+    ourBoutiques: "Our boutiques",
+    locationsIntro:
+      "Discover LIDYA in Manavgat and at selected Alba Hotels.",
+    visitAria: "Visit",
+    privateTitle: "Prefer a private consultation?",
+    privateText:
+      "Arrange a personal appointment at a time that suits you.",
+    privateButton: "Private appointment",
+  },
+
+  de: {
+    eyebrow: "Kontakt",
+    title: "Wir freuen uns, von Ihnen zu hören",
+    intro:
+      "Persönliche Beratung zu Schmuck, Service, Maßanfertigungen und privaten Terminen.",
+    call: "Anrufen",
+    email: "E-Mail",
+    visitUs: "Besuchen Sie uns",
+    ourBoutiques: "Unsere Boutiquen",
+    locationsIntro:
+      "Entdecken Sie LIDYA in Manavgat und in ausgewählten Alba Hotels.",
+    visitAria: "Besuchen",
+    privateTitle: "Bevorzugen Sie eine private Beratung?",
+    privateText:
+      "Vereinbaren Sie einen persönlichen Termin zu einer Zeit, die Ihnen passt.",
+    privateButton: "Privattermin",
+  },
+
+  tr: {
+    eyebrow: "İletişim",
+    title: "Sizden haber almaktan memnuniyet duyarız",
+    intro:
+      "Mücevher, servis, özel tasarım talepleri ve özel randevular için kişisel destek.",
+    call: "Ara",
+    email: "E-posta",
+    visitUs: "Bizi ziyaret edin",
+    ourBoutiques: "Butiklerimiz",
+    locationsIntro:
+      "LIDYA’yı Manavgat’ta ve seçili Alba Otellerinde keşfedin.",
+    visitAria: "Ziyaret et",
+    privateTitle: "Özel danışmanlık mı tercih edersiniz?",
+    privateText:
+      "Size uygun bir zamanda kişisel randevu oluşturun.",
+    privateButton: "Özel randevu",
+  },
+
+  sk: {
+    eyebrow: "Kontakt",
+    title: "Radi sa vám ozveme",
+    intro:
+      "Osobná pomoc pri výbere šperkov, servise, zákazkovej výrobe a súkromných termínoch.",
+    call: "Zavolať",
+    email: "E-mail",
+    visitUs: "Navštívte nás",
+    ourBoutiques: "Naše butiky",
+    locationsIntro:
+      "Objavte LIDYA v Manavgate a vo vybraných hoteloch Alba.",
+    visitAria: "Navštíviť",
+    privateTitle: "Uprednostňujete súkromnú konzultáciu?",
+    privateText:
+      "Dohodnite si osobný termín v čase, ktorý vám vyhovuje.",
+    privateButton: "Súkromný termín",
+  },
+
+  cs: {
+    eyebrow: "Kontakt",
+    title: "Rádi se vám ozveme",
+    intro:
+      "Osobní pomoc při výběru šperků, servisu, zakázkové výrobě a soukromých termínech.",
+    call: "Zavolat",
+    email: "E-mail",
+    visitUs: "Navštivte nás",
+    ourBoutiques: "Naše butiky",
+    locationsIntro:
+      "Objevte LIDYA v Manavgatu a ve vybraných hotelech Alba.",
+    visitAria: "Navštívit",
+    privateTitle: "Dáváte přednost soukromé konzultaci?",
+    privateText:
+      "Domluvte si osobní termín v čase, který vám vyhovuje.",
+    privateButton: "Soukromý termín",
+  },
+
+  hu: {
+    eyebrow: "Kapcsolat",
+    title: "Örömmel hallunk Önről",
+    intro:
+      "Személyes segítség ékszerekhez, szervizhez, egyedi igényekhez és privát időpontokhoz.",
+    call: "Hívás",
+    email: "E-mail",
+    visitUs: "Látogasson el hozzánk",
+    ourBoutiques: "Butikjaink",
+    locationsIntro:
+      "Fedezze fel a LIDYA üzleteit Manavgatban és a kiválasztott Alba szállodákban.",
+    visitAria: "Megnyitás",
+    privateTitle: "Privát konzultációt szeretne?",
+    privateText:
+      "Foglaljon személyes időpontot az Önnek megfelelő időpontra.",
+    privateButton: "Privát időpont",
+  },
+
+  pl: {
+    eyebrow: "Kontakt",
+    title: "Chętnie się z Tobą skontaktujemy",
+    intro:
+      "Indywidualna pomoc w zakresie biżuterii, serwisu, zamówień specjalnych i prywatnych spotkań.",
+    call: "Zadzwoń",
+    email: "E-mail",
+    visitUs: "Odwiedź nas",
+    ourBoutiques: "Nasze butiki",
+    locationsIntro:
+      "Odkryj LIDYA w Manavgat oraz w wybranych hotelach Alba.",
+    visitAria: "Odwiedź",
+    privateTitle: "Wolisz prywatną konsultację?",
+    privateText:
+      "Umów osobiste spotkanie w dogodnym dla Ciebie terminie.",
+    privateButton: "Prywatne spotkanie",
+  },
+};
+
 function ArrowIcon() {
   return (
     <svg
@@ -65,12 +210,14 @@ function ArrowIcon() {
 }
 
 export default function Contact() {
+  const { locale } = useLanguage();
+  const copy = CONTACT_COPY[locale];
+
   return (
     <section
       id="contact"
       className="relative overflow-hidden bg-ivory py-20 md:py-24 lg:py-28"
     >
-      {/* Ambient glow */}
       <div className="pointer-events-none absolute -left-44 top-10 h-[400px] w-[400px] rounded-full bg-gold/5 blur-3xl" />
 
       <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
@@ -78,19 +225,18 @@ export default function Contact() {
           {/* LEFT SIDE */}
           <div className="lg:col-span-7 lg:pr-6">
             <span className="mb-5 block text-[0.68rem] font-semibold uppercase tracking-[0.34em] text-gold">
-              {dict.contact.eyebrow}
+              {copy.eyebrow}
             </span>
 
             <h2
               className="max-w-[760px] font-display text-5xl leading-[0.95] tracking-[-0.03em] md:text-6xl lg:text-7xl"
               style={{ color: "#1B0B20" }}
             >
-              {dict.contact.title}
+              {copy.title}
             </h2>
 
             <p className="mt-6 max-w-xl text-sm leading-7 text-grey md:text-base">
-              Personal assistance for jewellery, service, bespoke enquiries
-              and private appointments.
+              {copy.intro}
             </p>
 
             <div className="mt-10 border-t border-plum-dark/10">
@@ -135,7 +281,7 @@ export default function Contact() {
                       href={contact.phoneHref}
                       className="text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-plum-dark transition-colors hover:text-gold"
                     >
-                      Call
+                      {copy.call}
                     </a>
 
                     <span className="h-px w-4 bg-plum-dark/15" />
@@ -155,7 +301,7 @@ export default function Contact() {
                       href={`mailto:${contact.email}`}
                       className="text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-plum-dark transition-colors hover:text-gold"
                     >
-                      Email
+                      {copy.email}
                     </a>
                   </div>
                 </div>
@@ -166,23 +312,22 @@ export default function Contact() {
           {/* RIGHT SIDE */}
           <div className="lg:col-span-5">
             <div className="relative overflow-hidden bg-plum-dark px-7 py-8 md:px-9 md:py-10 lg:px-10 lg:py-11">
-              {/* subtle panel glow */}
               <div className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-gold/10 blur-3xl" />
 
               <div className="relative">
                 <span className="text-[0.62rem] font-semibold uppercase tracking-[0.26em] text-gold">
-                  Visit us
+                  {copy.visitUs}
                 </span>
 
                 <h3
                   className="mt-4 font-display text-4xl leading-tight md:text-5xl"
                   style={{ color: "#F5EFE6" }}
                 >
-                  Our boutiques
+                  {copy.ourBoutiques}
                 </h3>
 
                 <p className="mt-3 max-w-sm text-sm leading-6 text-brand-white/55">
-                  Discover LIDYA in Manavgat and at selected Alba Hotels.
+                  {copy.locationsIntro}
                 </p>
 
                 <div className="mt-8 border-t border-brand-white/12">
@@ -231,7 +376,7 @@ export default function Contact() {
                           href={location.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          aria-label={`Visit ${location.name}`}
+                          aria-label={`${copy.visitAria} ${location.name}`}
                           className="group flex items-center justify-between gap-5 border-b border-brand-white/12 py-4 transition-colors duration-500 hover:bg-brand-white/[0.025]"
                         >
                           {content}
@@ -255,18 +400,18 @@ export default function Contact() {
                     className="font-display text-2xl italic leading-snug md:text-3xl"
                     style={{ color: "#E8D8B5" }}
                   >
-                    Prefer a private consultation?
+                    {copy.privateTitle}
                   </p>
 
                   <p className="mt-2 max-w-sm text-sm leading-6 text-brand-white/50">
-                    Arrange a personal appointment at a time that suits you.
+                    {copy.privateText}
                   </p>
 
                   <a
                     href="tel:+905325672777"
                     className="mt-6 inline-flex w-full items-center justify-between bg-gold px-6 py-4 text-[0.64rem] font-semibold uppercase tracking-[0.2em] text-plum-dark transition-all duration-500 hover:bg-gold-light md:w-auto md:min-w-[260px]"
                   >
-                    Private appointment
+                    {copy.privateButton}
                     <span>→</span>
                   </a>
                 </div>

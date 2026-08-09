@@ -1,12 +1,87 @@
+"use client";
+
+import { useLanguage } from "@/components/LanguageProvider";
+import type { Locale } from "@/lib/i18n";
+
 type CategoryCTAProps = {
   title: string;
   sub: string;
+};
+
+type CategoryCTATranslations = {
+  eyebrow: string;
+  appointment: string;
+  backHome: string;
+  closingBefore: string;
+  closingAccent: string;
+};
+
+const CTA_TEXT: Record<Locale, CategoryCTATranslations> = {
+  en: {
+    eyebrow: "Private Viewing",
+    appointment: "Book a Private Appointment",
+    backHome: "Back to Home",
+    closingBefore: "Some pieces are chosen.",
+    closingAccent: "Others simply feel meant for you.",
+  },
+
+  de: {
+    eyebrow: "Private Besichtigung",
+    appointment: "Privaten Termin vereinbaren",
+    backHome: "Zurück zur Startseite",
+    closingBefore: "Manche Schmuckstücke wählt man.",
+    closingAccent: "Andere fühlen sich einfach wie für Sie gemacht an.",
+  },
+
+  tr: {
+    eyebrow: "Özel Görüşme",
+    appointment: "Özel Randevu Alın",
+    backHome: "Ana Sayfaya Dön",
+    closingBefore: "Bazı parçalar seçilir.",
+    closingAccent: "Bazıları ise sanki sizin için yaratılmış gibi hissettirir.",
+  },
+
+  sk: {
+    eyebrow: "Súkromná prehliadka",
+    appointment: "Dohodnúť súkromné stretnutie",
+    backHome: "Späť na domovskú stránku",
+    closingBefore: "Niektoré šperky si vyberiete.",
+    closingAccent: "Iné jednoducho cítite, že sú stvorené pre vás.",
+  },
+
+  cs: {
+    eyebrow: "Soukromá prohlídka",
+    appointment: "Domluvit soukromou schůzku",
+    backHome: "Zpět na domovskou stránku",
+    closingBefore: "Některé šperky si vyberete.",
+    closingAccent: "U jiných jednoduše cítíte, že jsou stvořené pro vás.",
+  },
+
+  hu: {
+    eyebrow: "Privát bemutató",
+    appointment: "Privát időpont foglalása",
+    backHome: "Vissza a főoldalra",
+    closingBefore: "Vannak ékszerek, amelyeket kiválasztunk.",
+    closingAccent: "Másokról egyszerűen érezzük, hogy nekünk készültek.",
+  },
+
+  pl: {
+    eyebrow: "Prywatna prezentacja",
+    appointment: "Umów prywatne spotkanie",
+    backHome: "Powrót do strony głównej",
+    closingBefore: "Niektóre klejnoty wybieramy.",
+    closingAccent: "Przy innych po prostu czujemy, że zostały stworzone dla nas.",
+  },
 };
 
 export default function CategoryCTA({
   title,
   sub,
 }: CategoryCTAProps) {
+  const { locale } = useLanguage();
+
+  const text = CTA_TEXT[locale];
+
   return (
     <section className="relative overflow-hidden bg-ivory py-20 md:py-24 lg:py-28">
       {/* Ambient detail */}
@@ -17,7 +92,7 @@ export default function CategoryCTA({
           {/* TEXT */}
           <div className="lg:col-span-8">
             <span className="mb-5 block text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-gold">
-              Private Viewing
+              {text.eyebrow}
             </span>
 
             <h2
@@ -38,7 +113,7 @@ export default function CategoryCTA({
               href="/#contact"
               className="inline-flex w-full items-center justify-between bg-gold px-7 py-4 text-[0.66rem] font-semibold uppercase tracking-[0.2em] text-plum-dark transition-all duration-500 hover:bg-gold-light md:w-auto md:min-w-[300px]"
             >
-              Book a Private Appointment
+              {text.appointment}
               <span>→</span>
             </a>
 
@@ -48,7 +123,7 @@ export default function CategoryCTA({
                 className="inline-flex items-center gap-3 text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-plum-dark/55 transition-colors hover:text-gold"
               >
                 <span>←</span>
-                Back to Home
+                {text.backHome}
               </a>
             </div>
           </div>
@@ -62,10 +137,10 @@ export default function CategoryCTA({
             className="font-display text-3xl italic leading-tight md:text-4xl lg:text-5xl"
             style={{ color: "#1B0B20" }}
           >
-            Some pieces are chosen.
+            {text.closingBefore}
             <span style={{ color: "#C8A96A" }}>
               {" "}
-              Others simply feel meant for you.
+              {text.closingAccent}
             </span>
           </p>
         </div>

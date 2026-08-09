@@ -3,7 +3,13 @@ import type { Locale } from "./i18n";
 type LocalizedText = Partial<Record<Locale, string>>;
 
 export type Collection = {
-  id: "pearls" | "wedding" | "signature" | "brilliants" | "design" | "bespoke";
+  id:
+    | "pearls"
+    | "wedding"
+    | "signature"
+    | "brilliants"
+    | "design"
+    | "bespoke";
   image: string;
   name: LocalizedText;
   description: LocalizedText;
@@ -63,13 +69,13 @@ export const COLLECTIONS: Collection[] = [
     image: "/images/collections/signature.jpg",
     catFilter: "signature",
     name: {
-      de: "Signature Style",
+      de: "Signature-Stil",
       en: "Signature Style",
-      tr: "Signature Style",
-      sk: "Signature Style",
-      cs: "Signature Style",
-      hu: "Signature Style",
-      pl: "Signature Style",
+      tr: "İmza Stili",
+      sk: "Charakteristický štýl",
+      cs: "Charakteristický styl",
+      hu: "Jellegzetes stílus",
+      pl: "Charakterystyczny styl",
     },
     description: {
       de: "Eigener, unverwechselbarer Stil.",
@@ -86,13 +92,13 @@ export const COLLECTIONS: Collection[] = [
     image: "/images/collections/brilliants.jpg",
     catFilter: "brilliants",
     name: {
-      de: "Brilliants",
+      de: "Brillanten",
       en: "Brilliants",
-      tr: "Brilliants",
-      sk: "Brilliants",
-      cs: "Brilliants",
-      hu: "Brilliants",
-      pl: "Brilliants",
+      tr: "Pırlantalar",
+      sk: "Brilianty",
+      cs: "Brilianty",
+      hu: "Briliánsok",
+      pl: "Brylanty",
     },
     description: {
       de: "Brillant-geschliffene Stücke, für maximalen Glanz ausgewählt.",
@@ -132,13 +138,13 @@ export const COLLECTIONS: Collection[] = [
     image: "/images/collections/bespoke.jpg",
     catFilter: "bespoke",
     name: {
-      de: "Bespoke",
+      de: "Maßanfertigung",
       en: "Bespoke",
       tr: "Özel Tasarım",
-      sk: "Bespoke",
-      cs: "Bespoke",
-      hu: "Bespoke",
-      pl: "Bespoke",
+      sk: "Na mieru",
+      cs: "Na míru",
+      hu: "Egyedi készítés",
+      pl: "Na zamówienie",
     },
     description: {
       de: "Schmuck nach Ihren Wünschen gefertigt.",
@@ -153,7 +159,14 @@ export const COLLECTIONS: Collection[] = [
 ];
 
 export type Material = {
-  id: "whitegold" | "yellowgold" | "rosegold" | "platinum" | "diamond" | "gem" | "pearl";
+  id:
+    | "whitegold"
+    | "yellowgold"
+    | "rosegold"
+    | "platinum"
+    | "diamond"
+    | "gem"
+    | "pearl";
   icon: string;
   name: LocalizedText;
   description: LocalizedText;
@@ -316,7 +329,10 @@ export const MATERIALS: Material[] = [
   },
 ];
 
-export function localized(text: LocalizedText, locale: Locale): string {
+export function localized(
+  text: LocalizedText,
+  locale: Locale
+): string {
   return text[locale] ?? text.en ?? "";
 }
 
@@ -384,7 +400,11 @@ export const SERVICE_GROUPS: ServiceGroup[] = [
     key: "watch",
     title: { en: "Watch Service" },
     note: { en: "Watch repairs of every kind." },
-    items: ["Watch repairs", "Battery replacement", "Strap or bracelet adjustment"],
+    items: [
+      "Watch repairs",
+      "Battery replacement",
+      "Strap or bracelet adjustment",
+    ],
   },
   {
     letter: "F",
@@ -428,9 +448,22 @@ export const BOUTIQUES: Boutique[] = [
     id: "manavgat",
     image: "/images/boutiques/manavgat.jpg",
     name: "LIDYA JEWELLERY — Manavgat",
-    address: "Çolaklı, Tilkiler Mevkii, Erhan Demir Blv. No:4, P.K:07600 Manavgat / Türkiye",
+    address:
+      "Çolaklı, Tilkiler Mevkii, Erhan Demir Blv. No:4, P.K:07600 Manavgat / Türkiye",
   },
-  { id: "resort", image: "/images/boutiques/resort.jpg", name: "Hotel Alba Resort" },
-  { id: "royal", image: "/images/boutiques/royal-v2.jpg", name: "Hotel Alba Royal" },
-  { id: "queen", image: "/images/boutiques/queen.jpg", name: "Hotel Alba Queen" },
+  {
+    id: "resort",
+    image: "/images/boutiques/resort.jpg",
+    name: "Hotel Alba Resort",
+  },
+  {
+    id: "royal",
+    image: "/images/boutiques/royal-v2.jpg",
+    name: "Hotel Alba Royal",
+  },
+  {
+    id: "queen",
+    image: "/images/boutiques/queen.jpg",
+    name: "Hotel Alba Queen",
+  },
 ];

@@ -1,9 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import { getDictionary, LOCALE } from "@/lib/i18n";
+import { useLanguage } from "@/components/LanguageProvider";
 import { COLLECTIONS, localized } from "@/lib/content";
-
-const dict = getDictionary();
+import type { Locale } from "@/lib/i18n";
 
 const CATEGORY_LINKS: Partial<Record<string, string>> = {
   pearls: "/pearls",
@@ -13,18 +14,6 @@ const CATEGORY_LINKS: Partial<Record<string, string>> = {
   bespoke: "/bespoke",
 };
 
-/*
-  Editorial layout:
-  01 – large landscape
-  02 – tall portrait
-  03 – smaller portrait
-  04 – large landscape
-  05 – medium
-  06 – medium
-
-  These classes are intentionally written statically
-  so Tailwind can detect them during build.
-*/
 const CARD_LAYOUTS = [
   "md:col-span-7 md:row-span-2 min-h-[520px] lg:min-h-[640px]",
   "md:col-span-5 md:row-span-2 min-h-[520px] lg:min-h-[640px]",
@@ -34,7 +23,56 @@ const CARD_LAYOUTS = [
   "md:col-span-6 min-h-[420px] lg:min-h-[500px]",
 ];
 
+const EDITORIAL_COPY: Record<
+  Locale,
+  {
+    before: string;
+    accent: string;
+    after: string;
+  }
+> = {
+  en: {
+    before: "Jewellery shaped by craftsmanship,",
+    accent: "character",
+    after: "and enduring beauty.",
+  },
+  de: {
+    before: "Schmuck geprägt von Handwerkskunst,",
+    accent: "Charakter",
+    after: "und zeitloser Schönheit.",
+  },
+  tr: {
+    before: "Ustalıkla şekillenen mücevherler,",
+    accent: "karakter",
+    after: "ve kalıcı güzellik.",
+  },
+  sk: {
+    before: "Šperky formované remeselným umením,",
+    accent: "charakterom",
+    after: "a trvalou krásou.",
+  },
+  cs: {
+    before: "Šperky formované řemeslným uměním,",
+    accent: "charakterem",
+    after: "a trvalou krásou.",
+  },
+  hu: {
+    before: "Ékszerek, amelyeket a kézművesség,",
+    accent: "karakter",
+    after: "és az időtálló szépség formál.",
+  },
+  pl: {
+    before: "Biżuteria kształtowana przez kunszt,",
+    accent: "charakter",
+    after: "i ponadczasowe piękno.",
+  },
+};
+
 export default function Collections() {
+  const { dictionary: dict, locale } = useLanguage();
+
+  const editorial = EDITORIAL_COPY[locale];
+
   return (
     <section
       id="collections"
@@ -63,8 +101,9 @@ export default function Collections() {
 
             <div className="mt-7 flex items-center gap-4">
               <span className="h-px w-12 bg-gold" />
+
               <span className="text-[0.6rem] font-semibold uppercase tracking-[0.26em] text-plum-dark/55">
-                LIDYA · SINCE 1989
+                LIDYA · {dict.strip.since}
               </span>
             </div>
           </div>
@@ -89,7 +128,7 @@ export default function Collections() {
                 {/* IMAGE */}
                 <Image
                   src={collection.image}
-                  alt={localized(collection.name, LOCALE)}
+                  alt={localized(collection.name, locale)}
                   fill
                   sizes="
                     (min-width: 1280px) 60vw,
@@ -119,13 +158,13 @@ export default function Collections() {
                   <div className="mt-3 flex items-end justify-between gap-5">
                     <div>
                       <h3 className="font-display text-3xl leading-none text-brand-white md:text-4xl lg:text-[2.8rem]">
-                        {localized(collection.name, LOCALE)}
+                        {localized(collection.name, locale)}
                       </h3>
 
                       <p className="mt-3 max-w-md text-sm leading-6 text-brand-white/70">
                         {localized(
                           collection.description,
-                          LOCALE
+                          locale
                         )}
                       </p>
                     </div>
@@ -162,9 +201,11 @@ export default function Collections() {
           <span className="mx-auto mb-8 block h-px w-14 bg-gold" />
 
           <p className="font-display text-3xl italic leading-tight text-plum-dark md:text-4xl lg:text-5xl">
-            Jewellery shaped by craftsmanship,
-            <span className="text-gold"> character </span>
-            and enduring beauty.
+            {editorial.before}{" "}
+            <span className="text-gold">
+              {editorial.accent}
+            </span>{" "}
+            {editorial.after}
           </p>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
 import CookieConsent from "@/components/CookieConsent";
+import { LanguageProvider } from "@/components/LanguageProvider";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -38,8 +39,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${cormorant.variable} ${manrope.variable} antialiased`}>
-        {children}
-        <CookieConsent />
+        <LanguageProvider>
+          {children}
+          <CookieConsent />
+        </LanguageProvider>
       </body>
     </html>
   );

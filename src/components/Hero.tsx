@@ -3,11 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { getDictionary } from "@/lib/i18n";
-
-const dict = getDictionary();
+import { useLanguage } from "@/components/LanguageProvider";
 
 export default function Hero() {
+  const { dictionary: dict } = useLanguage();
+
   const sectionRef = useRef<HTMLElement | null>(null);
   const imageWrapRef = useRef<HTMLDivElement | null>(null);
   const contentRef = useRef<HTMLDivElement | null>(null);
@@ -88,10 +88,6 @@ export default function Hero() {
       const y = pointerCurrent.current.y;
       const scroll = scrollCurrent.current;
 
-      /*
-       * IMAGE
-       * Slightly stronger cinematic depth.
-       */
       const imageX = x * 13;
       const imageY = y * 8 - scroll * 26;
       const imageScale = 1.045 + scroll * 0.018;
@@ -101,10 +97,6 @@ export default function Hero() {
         scale(${imageScale})
       `;
 
-      /*
-       * CONTENT
-       * Counter-movement to create depth.
-       */
       const contentX = x * -4.2;
       const contentY = y * -2.8 - scroll * 7;
 
@@ -112,10 +104,6 @@ export default function Hero() {
         translate3d(${contentX}px, ${contentY}px, 0)
       `;
 
-      /*
-       * LIGHT
-       * More noticeable, but still restrained.
-       */
       const glowX = 50 + x * 8;
       const glowY = 44 + y * 6;
 
@@ -164,7 +152,6 @@ export default function Hero() {
       id="home"
       className="hero relative flex min-h-screen items-end overflow-hidden bg-plum-dark"
     >
-      {/* CINEMATIC BACKGROUND */}
       <div
         ref={imageWrapRef}
         className={`absolute inset-[-3%] will-change-transform transition-[opacity,filter] duration-[1800ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
@@ -188,35 +175,28 @@ export default function Hero() {
         />
       </div>
 
-      {/* CINEMATIC OVERLAYS */}
       <div className="absolute inset-0 bg-plum-dark/20" />
 
       <div className="absolute inset-0 bg-gradient-to-r from-plum-dark/95 via-plum-dark/58 to-plum-dark/8" />
 
       <div className="absolute inset-0 bg-gradient-to-t from-plum-dark/72 via-transparent to-plum-dark/18" />
 
-      {/* EXTRA LOCAL CONTRAST BEHIND TEXT */}
       <div className="absolute inset-y-0 left-0 w-[58%] bg-gradient-to-r from-plum-dark/42 to-transparent" />
 
-      {/* DYNAMIC CINEMATIC LIGHT */}
       <div
         ref={glowRef}
         className="pointer-events-none absolute inset-0 opacity-100 transition-opacity duration-700"
       />
 
-      {/* EXISTING SUBTLE GLINT */}
       <div className="hero-glint pointer-events-none absolute inset-0 opacity-35" />
 
-      {/* VERY SOFT VIGNETTE */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_42%,rgba(27,11,32,0.20)_100%)]" />
 
-      {/* MAIN CONTENT */}
       <div
         ref={contentRef}
         className="relative z-10 mx-auto w-full max-w-[1440px] px-6 pb-20 pt-40 will-change-transform md:px-10 md:pb-24 lg:px-16 lg:pb-28 xl:px-20"
       >
         <div className="max-w-[760px]">
-          {/* EYEBROW */}
           <div className="overflow-hidden">
             <span
               className={`block text-[0.68rem] font-semibold uppercase tracking-[0.34em] text-gold transition-all duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
@@ -230,7 +210,6 @@ export default function Hero() {
             </span>
           </div>
 
-          {/* HEADLINE */}
           <h1 className="mt-8 font-display leading-[0.9]">
             <span className="block overflow-hidden">
               <span
@@ -259,7 +238,6 @@ export default function Hero() {
             </span>
           </h1>
 
-          {/* LEAD */}
           <p
             className={`mt-9 max-w-[520px] font-display text-xl italic leading-relaxed text-brand-white/90 transition-all duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:text-2xl ${
               loaded
@@ -271,7 +249,6 @@ export default function Hero() {
             {dict.hero.lead}
           </p>
 
-          {/* DESCRIPTION */}
           <p
             className={`mt-4 max-w-[680px] text-sm leading-7 text-brand-white/72 transition-all duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:text-base md:whitespace-nowrap ${
               loaded
@@ -283,7 +260,6 @@ export default function Hero() {
             {dict.hero.sub}
           </p>
 
-          {/* ACTIONS */}
           <div
             className={`mt-10 flex flex-wrap items-center gap-x-8 gap-y-5 transition-all duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
               loaded
@@ -307,7 +283,7 @@ export default function Hero() {
               href="/#contact"
               className="group relative inline-flex items-center gap-5 py-3 text-[0.66rem] font-semibold uppercase tracking-[0.2em] text-brand-white"
             >
-              Private appointment
+              {dict.hero.cta2}
 
               <span className="transition-transform duration-500 group-hover:translate-x-1.5">
                 →
@@ -319,7 +295,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ANIMATED SCROLL INDICATOR */}
       <div
         className={`absolute bottom-8 right-6 z-10 hidden items-center gap-4 transition-all duration-[1200ms] md:flex lg:right-12 ${
           loaded

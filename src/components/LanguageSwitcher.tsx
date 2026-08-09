@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { LOCALES, LOCALE, type Locale } from "@/lib/i18n";
+import { LOCALES, type Locale } from "@/lib/i18n";
+import { useLanguage } from "@/components/LanguageProvider";
 
 const FLAGS: Record<Locale, string> = {
   de: "🇩🇪",
@@ -23,14 +24,11 @@ const LOCALE_NAMES: Record<Locale, string> = {
   pl: "Polski",
 };
 
-// NOTE: this switches the *visible flag/dropdown UI* only. Actual per-locale
-// routing/content switching isn't wired yet (LOCALE is a fixed constant in
-// lib/i18n.ts) — that's the next phase once all page copy is fully
-// translated. Selecting a flag here closes the menu but doesn't yet change
-// site content.
 export default function LanguageSwitcher() {
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
+
+  const { locale, setLocale } = useLanguage();
 
   useEffect(() => {
     function onClickOutside(e: MouseEvent) {
@@ -38,16 +36,26 @@ export default function LanguageSwitcher() {
         setOpen(false);
       }
     }
+
     function onKeyDown(e: KeyboardEvent) {
-      if (e.key === "Escape") setOpen(false);
+      if (e.key === "Escape") {
+        setOpen(false);
+      }
     }
+
     document.addEventListener("mousedown", onClickOutside);
     document.addEventListener("keydown", onKeyDown);
+
     return () => {
       document.removeEventListener("mousedown", onClickOutside);
       document.removeEventListener("keydown", onKeyDown);
     };
   }, []);
+
+  function changeLanguage(code: Locale) {
+    setLocale(code);
+    setOpen(false);
+  }
 
   return (
     <div className="relative" ref={rootRef}>
@@ -58,7 +66,7 @@ export default function LanguageSwitcher() {
         onClick={() => setOpen((v) => !v)}
         className="flex h-8 w-8 items-center justify-center rounded-sm text-xl leading-none transition-transform hover:scale-110"
       >
-        <span aria-hidden>{FLAGS[LOCALE]}</span>
+        <span aria-hidden>{FLAGS[locale]}</span>
       </button>
 
       {open && (
@@ -71,14 +79,17 @@ export default function LanguageSwitcher() {
               key={code}
               role="menuitem"
               type="button"
-              onClick={() => setOpen(false)}
+              onClick={() => changeLanguage(code)}
               className={`flex w-full items-center gap-3 px-3.5 py-2 text-left text-[0.78rem] transition-colors hover:bg-ivory ${
-                code === LOCALE ? "text-gold font-semibold" : "text-plum-dark"
+                code === locale
+                  ? "text-gold font-semibold"
+                  : "text-plum-dark"
               }`}
             >
               <span className="text-base leading-none" aria-hidden>
                 {FLAGS[code]}
               </span>
+
               {LOCALE_NAMES[code]}
             </button>
           ))}
