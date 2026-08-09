@@ -212,23 +212,38 @@ export default function Footer() {
             </h5>
 
             <div className="mt-6 flex flex-col gap-3 text-sm text-brand-white/70">
-              <Link href="/#collections" className="transition-colors hover:text-gold">
+              <Link
+                href="/#collections"
+                className="transition-colors hover:text-gold"
+              >
                 {dict.nav.collections}
               </Link>
 
-              <Link href="/#services" className="transition-colors hover:text-gold">
+              <Link
+                href="/#services"
+                className="transition-colors hover:text-gold"
+              >
                 {dict.nav.services}
               </Link>
 
-              <Link href="/bespoke" className="transition-colors hover:text-gold">
+              <Link
+                href="/bespoke"
+                className="transition-colors hover:text-gold"
+              >
                 {dict.nav.bespoke}
               </Link>
 
-              <Link href="/#boutiques" className="transition-colors hover:text-gold">
+              <Link
+                href="/#boutiques"
+                className="transition-colors hover:text-gold"
+              >
                 {dict.nav.boutiques}
               </Link>
 
-              <Link href="/#contact" className="transition-colors hover:text-gold">
+              <Link
+                href="/#contact"
+                className="transition-colors hover:text-gold"
+              >
                 {dict.nav.contact}
               </Link>
             </div>
@@ -333,11 +348,17 @@ export default function Footer() {
             </h5>
 
             <div className="mt-6 flex flex-col items-start gap-3 text-sm text-brand-white/70">
-              <Link href="/privacy" className="transition-colors hover:text-gold">
+              <Link
+                href="/privacy"
+                className="transition-colors hover:text-gold"
+              >
                 {copy.privacy}
               </Link>
 
-              <Link href="/terms" className="transition-colors hover:text-gold">
+              <Link
+                href="/terms"
+                className="transition-colors hover:text-gold"
+              >
                 {copy.terms}
               </Link>
 
@@ -403,10 +424,12 @@ export default function Footer() {
                       <span className="block text-[0.55rem] font-semibold uppercase tracking-[0.2em] text-gold">
                         WhatsApp
                       </span>
+
                       <span className="mt-1 block text-sm text-brand-white/80">
                         Zafer (Victor)
                       </span>
                     </div>
+
                     <span className="text-brand-white/40 transition-all group-hover/link:translate-x-1 group-hover/link:text-gold">
                       →
                     </span>
@@ -424,10 +447,12 @@ export default function Footer() {
                       <span className="block text-[0.55rem] font-semibold uppercase tracking-[0.2em] text-gold">
                         WhatsApp
                       </span>
+
                       <span className="mt-1 block text-sm text-brand-white/80">
                         Vierka
                       </span>
                     </div>
+
                     <span className="text-brand-white/40 transition-all group-hover/link:translate-x-1 group-hover/link:text-gold">
                       →
                     </span>
@@ -454,7 +479,7 @@ export default function Footer() {
         <div className="relative mx-auto max-w-[1440px] px-6 py-8 text-[0.68rem] text-brand-white/45 md:px-10 lg:px-16 xl:px-20">
           <div className="text-center">
             <span>
-              © {year} LIDYA JEWELLERY. {copy.rights}
+              © {year} FraPa Technologies. All rights reserved.
             </span>
           </div>
 

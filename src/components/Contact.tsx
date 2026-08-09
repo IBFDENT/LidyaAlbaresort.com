@@ -216,8 +216,9 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden bg-ivory py-20 md:py-24 lg:py-28"
+      className="relative scroll-mt-28 overflow-hidden bg-ivory py-20 md:py-24 lg:py-28"
     >
+      {/* AMBIENT DETAIL */}
       <div className="pointer-events-none absolute -left-44 top-10 h-[400px] w-[400px] rounded-full bg-gold/5 blur-3xl" />
 
       <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
@@ -239,18 +240,21 @@ export default function Contact() {
               {copy.intro}
             </p>
 
+            {/* CONTACT PEOPLE */}
             <div className="mt-10 border-t border-plum-dark/10">
               {contacts.map((contact, index) => (
                 <div
                   key={contact.name}
-                  className="group grid gap-5 border-b border-plum-dark/10 py-6 transition-colors duration-500 hover:bg-brand-white/60 md:grid-cols-12 md:items-center md:px-2"
+                  className="group grid gap-5 border-b border-plum-dark/10 py-7 transition-colors duration-500 hover:bg-brand-white/60 md:grid-cols-12 md:items-center md:px-2"
                 >
+                  {/* NUMBER */}
                   <div className="md:col-span-1">
                     <span className="text-[0.58rem] font-semibold tracking-[0.22em] text-gold">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                   </div>
 
+                  {/* NAME */}
                   <div className="md:col-span-4">
                     <h3
                       className="font-display text-3xl md:text-[2.2rem]"
@@ -260,6 +264,7 @@ export default function Contact() {
                     </h3>
                   </div>
 
+                  {/* PHONE + EMAIL */}
                   <div className="md:col-span-4">
                     <a
                       href={contact.phoneHref}
@@ -276,32 +281,35 @@ export default function Contact() {
                     </a>
                   </div>
 
-                  <div className="flex flex-wrap items-center gap-4 md:col-span-3 md:justify-end">
+                  {/* ACTIONS */}
+                  <div className="flex flex-col items-center justify-center gap-3 md:col-span-3">
                     <a
                       href={contact.phoneHref}
-                      className="text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-plum-dark transition-colors hover:text-gold"
+                      className="group/action flex w-full max-w-[120px] items-center justify-between gap-4 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-plum-dark transition-colors hover:text-gold"
                     >
-                      {copy.call}
-                    </a>
+                      <span>{copy.call}</span>
 
-                    <span className="h-px w-4 bg-plum-dark/15" />
+                      <span className="h-px w-4 shrink-0 bg-plum-dark/15 transition-all duration-300 group-hover/action:w-6 group-hover/action:bg-gold" />
+                    </a>
 
                     <a
                       href={contact.whatsapp}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-plum-dark transition-colors hover:text-gold"
+                      className="group/action flex w-full max-w-[120px] items-center justify-between gap-4 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-plum-dark transition-colors hover:text-gold"
                     >
-                      WhatsApp
-                    </a>
+                      <span>WhatsApp</span>
 
-                    <span className="h-px w-4 bg-plum-dark/15" />
+                      <span className="h-px w-4 shrink-0 bg-plum-dark/15 transition-all duration-300 group-hover/action:w-6 group-hover/action:bg-gold" />
+                    </a>
 
                     <a
                       href={`mailto:${contact.email}`}
-                      className="text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-plum-dark transition-colors hover:text-gold"
+                      className="group/action flex w-full max-w-[120px] items-center justify-between gap-4 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-plum-dark transition-colors hover:text-gold"
                     >
-                      {copy.email}
+                      <span>{copy.email}</span>
+
+                      <span className="h-px w-4 shrink-0 bg-plum-dark/15 transition-all duration-300 group-hover/action:w-6 group-hover/action:bg-gold" />
                     </a>
                   </div>
                 </div>
@@ -330,6 +338,7 @@ export default function Contact() {
                   {copy.locationsIntro}
                 </p>
 
+                {/* LOCATIONS */}
                 <div className="mt-8 border-t border-brand-white/12">
                   {locations.map((location, index) => {
                     const content = (
@@ -395,6 +404,7 @@ export default function Contact() {
                   })}
                 </div>
 
+                {/* PRIVATE APPOINTMENT */}
                 <div className="mt-8 border-t border-brand-white/12 pt-7">
                   <p
                     className="font-display text-2xl italic leading-snug md:text-3xl"
