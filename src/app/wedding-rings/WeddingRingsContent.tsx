@@ -29,6 +29,7 @@ type WeddingCopy = {
     eyebrow: string;
     title: string;
     description: string;
+    since: string;
     closingText: string;
     closingAccent: string;
     points: {
@@ -84,6 +85,7 @@ const WEDDING_COPY: Record<Locale, WeddingCopy> = {
         "Die Details, die zählen, wenn ein Ring jeden Tag getragen wird",
       description:
         "Ein Trauring wird Teil des täglichen Lebens. Komfort, Proportion, Material und persönliche Details sind wichtig, weil dieser Ring Sie viele Jahre begleiten soll.",
+      since: "LIDYA · SEIT 1989",
       closingText: "Für den Hochzeitstag gemacht.",
       closingAccent: "Für jeden Tag danach gestaltet.",
       points: [
@@ -156,6 +158,7 @@ const WEDDING_COPY: Record<Locale, WeddingCopy> = {
       title: "The details that matter when a ring is worn every day",
       description:
         "A wedding ring becomes part of everyday life. Comfort, proportion, material and personal detail matter because this is a piece designed to stay with you for years.",
+      since: "LIDYA · SINCE 1989",
       closingText: "Made for the wedding day.",
       closingAccent: "Designed for every day after.",
       points: [
@@ -228,6 +231,7 @@ const WEDDING_COPY: Record<Locale, WeddingCopy> = {
       title: "Her gün takılan bir yüzükte önemli olan detaylar",
       description:
         "Bir alyans günlük hayatın parçası olur. Konfor, oran, malzeme ve kişisel detaylar önemlidir; çünkü bu parça yıllar boyunca sizinle kalmak için tasarlanmıştır.",
+      since: "LIDYA · 1989'DAN BERİ",
       closingText: "Düğün günü için yapıldı.",
       closingAccent: "Sonraki her gün için tasarlandı.",
       points: [
@@ -300,6 +304,7 @@ const WEDDING_COPY: Record<Locale, WeddingCopy> = {
       title: "Detaily, na ktorých záleží pri každodennom nosení",
       description:
         "Obrúčka sa stáva súčasťou každodenného života. Pohodlie, proporcie, materiál a osobný detail sú dôležité, pretože tento šperk má zostať s vami celé roky.",
+      since: "LIDYA · OD ROKU 1989",
       closingText: "Vytvorené pre svadobný deň.",
       closingAccent: "Navrhnuté pre každý deň potom.",
       points: [
@@ -372,6 +377,7 @@ const WEDDING_COPY: Record<Locale, WeddingCopy> = {
       title: "Detaily, na kterých záleží při každodenním nošení",
       description:
         "Snubní prsten se stává součástí každodenního života. Pohodlí, proporce, materiál a osobní detail jsou důležité, protože tento šperk má zůstat s vámi celé roky.",
+      since: "LIDYA · OD ROKU 1989",
       closingText: "Vytvořené pro svatební den.",
       closingAccent: "Navržené pro každý den potom.",
       points: [
@@ -444,6 +450,7 @@ const WEDDING_COPY: Record<Locale, WeddingCopy> = {
       title: "A részletek, amelyek mindennapi viselésnél igazán számítanak",
       description:
         "A karikagyűrű a mindennapi élet részévé válik. A kényelem, az arány, az anyag és a személyes részletek azért fontosak, mert ez az ékszer éveken át veletek marad.",
+      since: "LIDYA · 1989 ÓTA",
       closingText: "Az esküvő napjára készül.",
       closingAccent: "Minden utána következő napra tervezve.",
       points: [
@@ -516,6 +523,7 @@ const WEDDING_COPY: Record<Locale, WeddingCopy> = {
       title: "Detale, które mają znaczenie przy codziennym noszeniu",
       description:
         "Obrączka staje się częścią codziennego życia. Wygoda, proporcje, materiał i osobiste detale są ważne, ponieważ to biżuteria zaprojektowana, aby pozostać z Wami przez lata.",
+      since: "LIDYA · OD 1989 ROKU",
       closingText: "Stworzone na dzień ślubu.",
       closingAccent: "Zaprojektowane na każdy kolejny dzień.",
       points: [
@@ -588,6 +596,7 @@ const WEDDING_COPY: Record<Locale, WeddingCopy> = {
       title: "Детали, которые важны при ежедневном ношении",
       description:
         "Обручальное кольцо становится частью повседневной жизни. Комфорт, пропорции, материал и личные детали важны, потому что это украшение остаётся с вами на долгие годы.",
+      since: "LIDYA · С 1989 ГОДА",
       closingText: "Созданы для дня свадьбы.",
       closingAccent: "Продуманы для каждого дня после.",
       points: [
@@ -660,6 +669,7 @@ const WEDDING_COPY: Record<Locale, WeddingCopy> = {
       title: "De details die tellen wanneer een ring elke dag wordt gedragen",
       description:
         "Een trouwring wordt onderdeel van het dagelijks leven. Comfort, verhouding, materiaal en persoonlijke details zijn belangrijk omdat dit een sieraad is dat jarenlang meegaat.",
+      since: "LIDYA · SINDS 1989",
       closingText: "Gemaakt voor de trouwdag.",
       closingAccent: "Ontworpen voor elke dag daarna.",
       points: [
@@ -732,6 +742,7 @@ const WEDDING_COPY: Record<Locale, WeddingCopy> = {
       title: "Detaljerne der betyder noget, når ringen bæres hver dag",
       description:
         "En vielsesring bliver en del af hverdagen. Komfort, proportioner, materiale og personlige detaljer betyder noget, fordi ringen skal følge jer i mange år.",
+      since: "LIDYA · SIDEN 1989",
       closingText: "Skabt til bryllupsdagen.",
       closingAccent: "Designet til hver dag bagefter.",
       points: [
@@ -804,6 +815,7 @@ const WEDDING_COPY: Record<Locale, WeddingCopy> = {
       title: "Yksityiskohdat, joilla on merkitystä päivittäisessä käytössä",
       description:
         "Vihkisormuksesta tulee osa arkea. Mukavuus, mittasuhteet, materiaali ja henkilökohtaiset yksityiskohdat ovat tärkeitä, koska sormus on tarkoitettu kestämään vuosia.",
+      since: "LIDYA · VUODESTA 1989",
       closingText: "Luotu hääpäivää varten.",
       closingAccent: "Suunniteltu jokaiseen päivään sen jälkeen.",
       points: [
@@ -876,6 +888,7 @@ const WEDDING_COPY: Record<Locale, WeddingCopy> = {
       title: "Detaljerna som betyder något när ringen bärs varje dag",
       description:
         "En vigselring blir en del av vardagen. Komfort, proportion, material och personliga detaljer är viktiga eftersom ringen är tänkt att följa er i många år.",
+      since: "LIDYA · SEDAN 1989",
       closingText: "Skapade för bröllopsdagen.",
       closingAccent: "Designade för varje dag därefter.",
       points: [
@@ -948,6 +961,7 @@ const WEDDING_COPY: Record<Locale, WeddingCopy> = {
       title: "Les détails qui comptent lorsqu’une alliance est portée chaque jour",
       description:
         "Une alliance devient une partie de la vie quotidienne. Le confort, les proportions, le matériau et les détails personnels comptent parce que ce bijou est conçu pour rester avec vous pendant des années.",
+      since: "LIDYA · DEPUIS 1989",
       closingText: "Créées pour le jour du mariage.",
       closingAccent: "Pensées pour tous les jours qui suivent.",
       points: [
@@ -1020,6 +1034,7 @@ const WEDDING_COPY: Record<Locale, WeddingCopy> = {
       title: "I dettagli che contano quando un anello viene indossato ogni giorno",
       description:
         "Una fede entra a far parte della vita quotidiana. Comfort, proporzioni, materiale e dettagli personali sono importanti perché questo gioiello è pensato per accompagnarvi per anni.",
+      since: "LIDYA · DAL 1989",
       closingText: "Create per il giorno del matrimonio.",
       closingAccent: "Pensate per ogni giorno successivo.",
       points: [
@@ -1092,6 +1107,7 @@ const WEDDING_COPY: Record<Locale, WeddingCopy> = {
       title: "Los detalles que importan cuando un anillo se lleva cada día",
       description:
         "Una alianza se convierte en parte de la vida cotidiana. La comodidad, las proporciones, el material y los detalles personales importan porque esta pieza está diseñada para acompañaros durante años.",
+      since: "LIDYA · DESDE 1989",
       closingText: "Creadas para el día de la boda.",
       closingAccent: "Diseñadas para todos los días después.",
       points: [
@@ -1141,12 +1157,19 @@ const WEDDING_IMAGES = [
 export default function WeddingRingsContent() {
   const { locale } = useLanguage();
 
-  const copy = WEDDING_COPY[locale];
+  const copy =
+    WEDDING_COPY[locale] ?? WEDDING_COPY.en;
 
   const galleryItems = WEDDING_IMAGES.map((image, index) => ({
     image,
-    caption: copy.gallery.captions[index] ?? copy.gallery.itemLabel,
-    alt: copy.gallery.alts[index] ?? copy.gallery.itemLabel,
+    caption:
+      copy.gallery.captions[index] ??
+      WEDDING_COPY.en.gallery.captions[index] ??
+      copy.gallery.itemLabel,
+    alt:
+      copy.gallery.alts[index] ??
+      WEDDING_COPY.en.gallery.alts[index] ??
+      copy.gallery.itemLabel,
   }));
 
   return (
@@ -1172,6 +1195,7 @@ export default function WeddingRingsContent() {
           eyebrow={copy.craft.eyebrow}
           title={copy.craft.title}
           description={copy.craft.description}
+          since={copy.craft.since}
           closingText={copy.craft.closingText}
           closingAccent={copy.craft.closingAccent}
           points={copy.craft.points}

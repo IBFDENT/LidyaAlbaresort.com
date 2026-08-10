@@ -1477,6 +1477,7 @@ export default function BrilliantsContent() {
           eyebrow={copy.craft.eyebrow}
           title={copy.craft.title}
           description={copy.craft.description}
+          since={copy.hero.since}
           closingText={copy.craft.closingText}
           closingAccent={copy.craft.closingAccent}
           points={copy.craft.points}
