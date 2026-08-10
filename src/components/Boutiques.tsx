@@ -13,7 +13,7 @@ const BOUTIQUE_IMAGE_POSITIONS: Record<string, string> = {
 };
 
 const BOUTIQUE_IMAGES: Partial<Record<string, string>> = {
-  queen: "/Images/boutiques/queen.jpg",
+  queen: "/images/boutiques/queen.jpg",
 };
 
 const BOUTIQUE_ADDRESSES: Record<string, string> = {
