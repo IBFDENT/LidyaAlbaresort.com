@@ -50,10 +50,8 @@ type DiamondImage = {
 type EditorialSectionProps = {
   eyebrow: string;
   title: string;
-  roman: string;
   points: readonly DiamondPoint[];
   images: readonly DiamondImage[];
-  startNumber: number;
   locale: Locale;
   tone?: "white" | "ivory";
   expertiseLabel: string;
@@ -963,10 +961,8 @@ const DIAMOND_COPY: Record<Locale, DiamondCopy> = {
 function EditorialSection({
   eyebrow,
   title,
-  roman,
   points,
   images,
-  startNumber,
   locale,
   tone = "white",
   expertiseLabel,
@@ -983,33 +979,26 @@ function EditorialSection({
     >
       <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
         {/* HEADER */}
-        <div className="mb-16 grid gap-8 border-b border-plum-dark/10 pb-10 lg:grid-cols-12 lg:items-end">
-          <div className="lg:col-span-2">
-            <span
-              className="font-display text-6xl italic leading-none md:text-7xl"
-              style={{ color: "#E8D8B5" }}
-            >
-              {roman}
-            </span>
-          </div>
+        <div className="mx-auto mb-16 max-w-[1000px] border-b border-plum-dark/10 pb-12 text-center">
+          <span className="block text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-gold">
+            {eyebrow}
+          </span>
 
-          <div className="lg:col-span-7">
-            <span className="block text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-gold">
-              {eyebrow}
-            </span>
+          <h2
+            className="mx-auto mt-5 max-w-[900px] font-display text-4xl leading-[0.96] tracking-[-0.03em] md:text-5xl lg:text-6xl"
+            style={{ color: "#1B0B20" }}
+          >
+            {title}
+          </h2>
 
-            <h2
-              className="mt-5 max-w-[860px] font-display text-4xl leading-[0.96] tracking-[-0.03em] md:text-5xl lg:text-6xl"
-              style={{ color: "#1B0B20" }}
-            >
-              {title}
-            </h2>
-          </div>
+          <div className="mt-6 flex items-center justify-center gap-4">
+            <span className="h-px w-10 bg-gold" />
 
-          <div className="lg:col-span-3 lg:text-right">
             <span className="text-[0.58rem] font-semibold uppercase tracking-[0.22em] text-plum-dark/40">
               {expertiseLabel}
             </span>
+
+            <span className="h-px w-10 bg-gold" />
           </div>
         </div>
 
@@ -1018,11 +1007,10 @@ function EditorialSection({
           {points.map((point, index) => {
             const image = images[index];
             const reverse = index % 2 === 1;
-            const number = startNumber + index;
 
             return (
               <article
-                key={`${roman}-${index}`}
+                key={`${localized(point.title, locale)}-${index}`}
                 className="grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-14"
               >
                 {/* IMAGE */}
@@ -1050,16 +1038,14 @@ function EditorialSection({
 
                     <div className="absolute inset-0 bg-gradient-to-t from-plum-dark/30 via-transparent to-transparent" />
 
-                    <span className="absolute right-6 top-6 text-[0.58rem] font-semibold tracking-[0.22em] text-brand-white/80 md:right-8 md:top-8">
-                      {String(number).padStart(2, "0")}
-                    </span>
+                    <div className="absolute bottom-6 left-1/2 flex -translate-x-1/2 items-center gap-4 whitespace-nowrap md:bottom-8">
+                      <span className="h-px w-8 bg-brand-white/60 md:w-10" />
 
-                    <div className="absolute bottom-6 left-6 flex items-center gap-4 md:bottom-8 md:left-8">
-                      <span className="h-px w-10 bg-brand-white/60" />
-
-                      <span className="text-[0.58rem] font-semibold uppercase tracking-[0.24em] text-brand-white/80">
+                      <span className="text-[0.54rem] font-semibold uppercase tracking-[0.22em] text-brand-white/80 md:text-[0.58rem] md:tracking-[0.24em]">
                         {selectionLabel}
                       </span>
+
+                      <span className="h-px w-8 bg-brand-white/60 md:w-10" />
                     </div>
 
                     <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-gold transition-all duration-700 group-hover:w-full" />
@@ -1070,31 +1056,29 @@ function EditorialSection({
                 <div
                   className={
                     reverse
-                      ? "lg:order-1 lg:col-span-5"
-                      : "lg:col-span-5"
+                      ? "text-center lg:order-1 lg:col-span-5"
+                      : "text-center lg:col-span-5"
                   }
                 >
-                  <span className="text-[0.58rem] font-semibold tracking-[0.22em] text-gold">
-                    {String(number).padStart(2, "0")}
-                  </span>
-
                   <h3
-                    className="mt-6 max-w-lg font-display text-4xl leading-[0.98] tracking-[-0.025em] md:text-5xl"
+                    className="mx-auto max-w-lg font-display text-4xl leading-[0.98] tracking-[-0.025em] md:text-5xl"
                     style={{ color: "#1B0B20" }}
                   >
                     {localized(point.title, locale)}
                   </h3>
 
-                  <p className="mt-6 max-w-md text-sm leading-7 text-grey md:text-base">
+                  <p className="mx-auto mt-6 max-w-md text-sm leading-7 text-grey md:text-base">
                     {localized(point.description, locale)}
                   </p>
 
-                  <div className="mt-8 flex items-center gap-5">
+                  <div className="mt-8 flex items-center justify-center gap-5">
                     <span className="h-px w-10 bg-gold" />
 
-                    <span className="text-[0.58rem] font-semibold uppercase tracking-[0.22em] text-plum-dark/45">
+                    <span className="text-[0.56rem] font-semibold uppercase tracking-[0.2em] text-plum-dark/45 md:text-[0.58rem] md:tracking-[0.22em]">
                       {valuesLabel}
                     </span>
+
+                    <span className="h-px w-10 bg-gold" />
                   </div>
                 </div>
               </article>
@@ -1109,18 +1093,9 @@ function EditorialSection({
 export default function InvestmentDiamondsContent() {
   const { locale } = useLanguage();
 
-  /*
-   * Runtime fallback.
-   * Aj keby sa do locale dostala neočakávaná hodnota,
-   * stránka nespadne a použije angličtinu.
-   */
   const copy: DiamondCopy =
     DIAMOND_COPY[locale] ?? DIAMOND_COPY.en;
 
-  /*
-   * DIAMONDS_TEXT má vlastné preklady.
-   * localized() zároveň fallbackuje na EN.
-   */
   const t = (key: string): string => {
     const value = DIAMONDS_TEXT[key];
 
@@ -1131,17 +1106,14 @@ export default function InvestmentDiamondsContent() {
     return localized(value, locale);
   };
 
-  const section2Start = 1 + FOUR_CS.length;
-
-  const section3Start =
-    section2Start + BEYOND_FOUR_CS.length;
-
   return (
     <>
       <Header />
 
       <main>
-        {/* HERO */}
+        {/* =====================================================
+            HERO
+        ====================================================== */}
         <section className="relative min-h-[900px] overflow-hidden bg-plum-dark text-brand-white lg:min-h-screen">
           <Image
             src="/images/diamonds/diamonds-herou.png"
@@ -1158,48 +1130,46 @@ export default function InvestmentDiamondsContent() {
 
           <div className="pointer-events-none absolute -left-40 top-1/3 h-[620px] w-[620px] rounded-full bg-plum-dark/30 blur-3xl" />
 
-          <div className="relative mx-auto flex min-h-[900px] max-w-[1440px] items-end px-6 pb-16 pt-36 md:px-10 md:pb-20 md:pt-40 lg:min-h-screen lg:px-16 lg:pb-20 lg:pt-44 xl:px-20">
-            <div className="grid w-full gap-12 lg:grid-cols-12 lg:items-end">
-              {/* LEFT */}
-              <div className="lg:col-span-7">
-                <div className="flex items-center gap-4">
-                  <span className="flex h-10 w-10 items-center justify-center text-gold">
-                    <DiamondIcon />
-                  </span>
+          <div className="relative mx-auto flex min-h-[900px] max-w-[1440px] items-center justify-center px-6 pb-20 pt-36 md:px-10 md:pt-40 lg:min-h-screen lg:px-16 lg:pt-44 xl:px-20">
+            <div className="mx-auto max-w-[1000px] text-center">
+              <div className="flex items-center justify-center gap-4">
+                <span className="flex h-10 w-10 items-center justify-center text-gold">
+                  <DiamondIcon />
+                </span>
 
-                  <span className="text-[0.66rem] font-semibold uppercase tracking-[0.34em] text-gold">
-                    {t("heroEyebrow")}
-                  </span>
-                </div>
-
-                <h1
-                  className="mt-7 max-w-[900px] font-display text-5xl leading-[0.91] tracking-[-0.04em] md:text-6xl lg:text-[5.7rem]"
-                  style={{ color: "#F5EFE6" }}
-                >
-                  {t("heroTitle")}
-                </h1>
-
-                <p className="mt-7 max-w-[620px] text-sm leading-7 text-brand-white/65 md:text-base">
-                  {t("heroLead")}
-                </p>
-
-                <div className="mt-7 flex items-center gap-4">
-                  <span className="h-px w-12 bg-gold" />
-
-                  <span className="text-[0.58rem] font-semibold uppercase tracking-[0.24em] text-brand-white/45">
-                    {copy.hero.since}
-                  </span>
-                </div>
+                <span className="text-[0.66rem] font-semibold uppercase tracking-[0.34em] text-gold">
+                  {t("heroEyebrow")}
+                </span>
               </div>
 
-              {/* RIGHT */}
-              <div className="lg:col-span-4 lg:col-start-9 lg:pb-2">
+              <h1
+                className="mx-auto mt-7 max-w-[900px] font-display text-5xl leading-[0.91] tracking-[-0.04em] md:text-6xl lg:text-[5.7rem]"
+                style={{ color: "#F5EFE6" }}
+              >
+                {t("heroTitle")}
+              </h1>
+
+              <p className="mx-auto mt-7 max-w-[620px] text-sm leading-7 text-brand-white/65 md:text-base">
+                {t("heroLead")}
+              </p>
+
+              <div className="mt-7 flex items-center justify-center gap-4">
+                <span className="h-px w-12 bg-gold" />
+
+                <span className="text-[0.58rem] font-semibold uppercase tracking-[0.24em] text-brand-white/45">
+                  {copy.hero.since}
+                </span>
+
+                <span className="h-px w-12 bg-gold" />
+              </div>
+
+              <div className="mx-auto mt-14 max-w-[720px] border-t border-brand-white/15 pt-10">
                 <span className="text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-gold">
                   {copy.hero.eyebrowRight}
                 </span>
 
                 <p
-                  className="mt-6 max-w-[470px] font-display text-3xl italic leading-tight md:text-4xl lg:text-[2.65rem]"
+                  className="mx-auto mt-6 max-w-[650px] font-display text-3xl italic leading-tight md:text-4xl lg:text-[2.65rem]"
                   style={{ color: "#F5EFE6" }}
                 >
                   {copy.hero.statement}
@@ -1216,47 +1186,45 @@ export default function InvestmentDiamondsContent() {
           </div>
         </section>
 
-        {/* INTRO */}
+        {/* =====================================================
+            INTRO
+        ====================================================== */}
         <section className="relative overflow-hidden bg-brand-white py-20 md:py-24 lg:py-28">
           <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
-            <div className="grid gap-10 border-b border-plum-dark/10 pb-12 lg:grid-cols-12 lg:items-end">
-              <div className="lg:col-span-8">
-                <span className="text-[0.64rem] font-semibold uppercase tracking-[0.32em] text-gold">
-                  {copy.intro.eyebrow}
-                </span>
+            <div className="mx-auto max-w-[1000px] border-b border-plum-dark/10 pb-12 text-center">
+              <span className="text-[0.64rem] font-semibold uppercase tracking-[0.32em] text-gold">
+                {copy.intro.eyebrow}
+              </span>
 
-                <h2
-                  className="mt-6 max-w-[900px] font-display text-4xl leading-[0.96] tracking-[-0.03em] md:text-5xl lg:text-6xl"
-                  style={{ color: "#1B0B20" }}
+              <h2
+                className="mx-auto mt-6 max-w-[900px] font-display text-4xl leading-[0.96] tracking-[-0.03em] md:text-5xl lg:text-6xl"
+                style={{ color: "#1B0B20" }}
+              >
+                {copy.intro.title}
+
+                <span
+                  className="block italic"
+                  style={{ color: "#C8A96A" }}
                 >
-                  {copy.intro.title}
+                  {copy.intro.titleAccent}
+                </span>
+              </h2>
 
-                  <span
-                    className="block italic"
-                    style={{ color: "#C8A96A" }}
-                  >
-                    {copy.intro.titleAccent}
-                  </span>
-                </h2>
-              </div>
-
-              <div className="lg:col-span-4">
-                <p className="max-w-md text-sm leading-7 text-grey md:text-base">
-                  {copy.intro.description}
-                </p>
-              </div>
+              <p className="mx-auto mt-7 max-w-[650px] text-sm leading-7 text-grey md:text-base">
+                {copy.intro.description}
+              </p>
             </div>
           </div>
         </section>
 
-        {/* FOUR Cs */}
+        {/* =====================================================
+            FOUR Cs
+        ====================================================== */}
         <EditorialSection
           eyebrow={t("fourCsEyebrow")}
           title={t("fourCsTitle")}
-          roman="I"
           points={FOUR_CS}
           images={FOUR_CS_IMAGES}
-          startNumber={1}
           tone="white"
           locale={locale}
           expertiseLabel={copy.editorial.expertiseLabel}
@@ -1264,14 +1232,14 @@ export default function InvestmentDiamondsContent() {
           valuesLabel={copy.editorial.valuesLabel}
         />
 
-        {/* BEYOND 4Cs */}
+        {/* =====================================================
+            BEYOND 4Cs
+        ====================================================== */}
         <EditorialSection
           eyebrow={t("beyondEyebrow")}
           title={t("beyondTitle")}
-          roman="II"
           points={BEYOND_FOUR_CS}
           images={BEYOND_FOUR_CS_IMAGES}
-          startNumber={section2Start}
           tone="ivory"
           locale={locale}
           expertiseLabel={copy.editorial.expertiseLabel}
@@ -1279,14 +1247,14 @@ export default function InvestmentDiamondsContent() {
           valuesLabel={copy.editorial.valuesLabel}
         />
 
-        {/* INVESTMENT PRINCIPLES */}
+        {/* =====================================================
+            INVESTMENT PRINCIPLES
+        ====================================================== */}
         <EditorialSection
           eyebrow={t("principlesEyebrow")}
           title={t("principlesTitle")}
-          roman="III"
           points={INVESTMENT_PRINCIPLES}
           images={INVESTMENT_PRINCIPLES_IMAGES}
-          startNumber={section3Start}
           tone="white"
           locale={locale}
           expertiseLabel={copy.editorial.expertiseLabel}
@@ -1294,65 +1262,62 @@ export default function InvestmentDiamondsContent() {
           valuesLabel={copy.editorial.valuesLabel}
         />
 
-        {/* DARK TRUST SECTION */}
+        {/* =====================================================
+            DARK TRUST SECTION
+        ====================================================== */}
         <section className="relative overflow-hidden bg-plum-dark py-24 text-brand-white md:py-28 lg:py-32">
           <div className="pointer-events-none absolute -left-40 top-0 h-[520px] w-[520px] rounded-full bg-gold/8 blur-3xl" />
 
           <div className="pointer-events-none absolute -right-44 bottom-0 h-[460px] w-[460px] rounded-full bg-brand-white/[0.03] blur-3xl" />
 
           <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
-            <div className="grid gap-10 border-b border-brand-white/12 pb-14 lg:grid-cols-12 lg:items-end">
-              <div className="lg:col-span-8">
-                <span className="mb-5 block text-[0.66rem] font-semibold uppercase tracking-[0.34em] text-gold">
-                  {copy.trust.eyebrow}
-                </span>
+            {/* HEADER */}
+            <div className="mx-auto max-w-[1000px] border-b border-brand-white/12 pb-14 text-center">
+              <span className="mb-5 block text-[0.66rem] font-semibold uppercase tracking-[0.34em] text-gold">
+                {copy.trust.eyebrow}
+              </span>
 
-                <h2
-                  className="max-w-[950px] font-display text-4xl leading-[0.97] tracking-[-0.03em] md:text-5xl lg:text-6xl"
-                  style={{ color: "#F5EFE6" }}
+              <h2
+                className="mx-auto max-w-[950px] font-display text-4xl leading-[0.97] tracking-[-0.03em] md:text-5xl lg:text-6xl"
+                style={{ color: "#F5EFE6" }}
+              >
+                {copy.trust.title}
+
+                <span
+                  className="block italic"
+                  style={{ color: "#E8D8B5" }}
                 >
-                  {copy.trust.title}
+                  {copy.trust.titleAccent}
+                </span>
+              </h2>
 
-                  <span
-                    className="block italic"
-                    style={{ color: "#E8D8B5" }}
-                  >
-                    {copy.trust.titleAccent}
-                  </span>
-                </h2>
-              </div>
-
-              <div className="lg:col-span-4">
-                <p className="max-w-md text-sm leading-7 text-brand-white/55 md:text-base">
-                  {copy.trust.description}
-                </p>
-              </div>
+              <p className="mx-auto mt-7 max-w-[650px] text-sm leading-7 text-brand-white/55 md:text-base">
+                {copy.trust.description}
+              </p>
             </div>
 
+            {/* POINTS */}
             <div className="grid md:grid-cols-3">
               {copy.trust.points.map((item, index) => (
                 <div
                   key={`${index}-${item.title}`}
-                  className="border-b border-brand-white/12 py-9 md:border-r md:px-8 md:first:pl-0 md:last:border-r-0 md:last:pr-0"
+                  className="border-b border-brand-white/12 py-10 text-center md:border-r md:px-8 md:first:pl-0 md:last:border-r-0 md:last:pr-0"
                 >
-                  <span className="text-[0.58rem] font-semibold tracking-[0.22em] text-gold">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-
                   <h3
-                    className="mt-7 font-display text-2xl md:text-3xl"
+                    className="font-display text-2xl md:text-3xl"
                     style={{ color: "#F5EFE6" }}
                   >
                     {item.title}
                   </h3>
 
-                  <p className="mt-4 max-w-sm text-sm leading-7 text-brand-white/60">
+                  <p className="mx-auto mt-4 max-w-sm text-sm leading-7 text-brand-white/60">
                     {item.text}
                   </p>
                 </div>
               ))}
             </div>
 
+            {/* CLOSING */}
             <div className="mx-auto mt-16 max-w-[980px] text-center md:mt-20">
               <span className="mx-auto mb-7 block h-px w-14 bg-gold" />
 
@@ -1371,7 +1336,9 @@ export default function InvestmentDiamondsContent() {
           </div>
         </section>
 
-        {/* SUMMARY */}
+        {/* =====================================================
+            SUMMARY
+        ====================================================== */}
         <section className="bg-ivory py-20 md:py-24 lg:py-28">
           <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
             <div className="mb-12 text-center">
@@ -1402,18 +1369,14 @@ export default function InvestmentDiamondsContent() {
                 return (
                   <div
                     key={`${index}-${localized(summary, locale)}`}
-                    className="group border-b border-plum-dark/10 py-8 md:border-r md:px-6 lg:first:pl-0 lg:last:border-r-0 lg:last:pr-0"
+                    className="group border-b border-plum-dark/10 py-9 text-center md:border-r md:px-6 lg:first:pl-0 lg:last:border-r-0 lg:last:pr-0"
                   >
-                    <div className="flex h-10 w-10 items-center justify-center text-gold">
+                    <div className="mx-auto flex h-10 w-10 items-center justify-center text-gold">
                       <Icon />
                     </div>
 
-                    <span className="mt-8 block text-[0.56rem] font-semibold tracking-[0.22em] text-gold">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-
                     <p
-                      className="mt-4 font-display text-xl leading-snug md:text-2xl"
+                      className="mx-auto mt-6 max-w-[240px] font-display text-xl leading-snug md:text-2xl"
                       style={{ color: "#1B0B20" }}
                     >
                       {localized(summary, locale)}
@@ -1425,7 +1388,9 @@ export default function InvestmentDiamondsContent() {
           </div>
         </section>
 
-        {/* CTA */}
+        {/* =====================================================
+            CTA
+        ====================================================== */}
         <CategoryCTA
           title={t("ctaTitle")}
           sub={t("ctaSub")}

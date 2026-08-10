@@ -636,21 +636,22 @@ export default function Transfer() {
       <div className="pointer-events-none absolute -left-40 top-0 h-[420px] w-[420px] rounded-full bg-gold/8 blur-3xl" />
       <div className="pointer-events-none absolute -right-40 bottom-0 h-[420px] w-[420px] rounded-full bg-gold/5 blur-3xl" />
 
-      <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
+      <div className="relative mx-auto max-w-[1440px] px-5 sm:px-6 md:px-10 lg:px-16 xl:px-20">
         {/* INTRO */}
-        <div className="grid gap-10 border-b border-brand-white/12 pb-12 lg:grid-cols-12 lg:items-end">
+        <div className="grid gap-8 border-b border-brand-white/12 pb-12 text-center lg:grid-cols-12 lg:items-end lg:gap-10 lg:text-left">
           <div className="lg:col-span-8">
             <span className="mb-5 block text-[0.66rem] font-semibold uppercase tracking-[0.32em] text-gold">
               {copy.eyebrow}
             </span>
 
             <h2
-              className="max-w-[900px] font-display text-4xl leading-[0.96] tracking-[-0.03em] md:text-5xl lg:text-6xl"
+              className="mx-auto max-w-[900px] font-display text-4xl leading-[0.96] tracking-[-0.03em] md:text-5xl lg:mx-0 lg:text-6xl"
               style={{ color: "#F5EFE6" }}
             >
               {copy.titleBefore}
+
               <span
-                className="block italic"
+                className="mt-2 block italic"
                 style={{ color: "#E8D8B5" }}
               >
                 {copy.titleAccent}
@@ -659,21 +660,17 @@ export default function Transfer() {
           </div>
 
           <div className="lg:col-span-4">
-            <p className="max-w-md text-sm leading-7 text-brand-white/55 md:text-base">
+            <p className="mx-auto max-w-md text-sm leading-7 text-brand-white/55 md:text-base lg:mx-0">
               {copy.intro}
             </p>
           </div>
         </div>
 
-        {/* 4-STEP JOURNEY */}
+        {/* JOURNEY */}
         <div className="grid md:grid-cols-2 xl:grid-cols-4">
-          {/* 01 — FLIGHTS */}
-          <div className="group border-b border-brand-white/12 py-9 md:border-r md:px-8 md:first:pl-0 xl:min-h-[390px]">
-            <div className="flex items-start justify-between gap-6">
-              <span className="text-[0.58rem] font-semibold tracking-[0.22em] text-gold">
-                01
-              </span>
-
+          {/* FLIGHTS */}
+          <div className="group border-b border-brand-white/12 py-10 text-center md:border-r md:px-8 xl:min-h-[390px] xl:text-left">
+            <div className="flex justify-center xl:justify-end">
               <span className="text-gold/65 transition-all duration-500 group-hover:-translate-y-1 group-hover:text-gold">
                 <PlaneIcon />
               </span>
@@ -686,7 +683,7 @@ export default function Transfer() {
               {copy.flightsTitle}
             </h3>
 
-            <p className="mt-4 max-w-sm text-sm leading-7 text-brand-white/60">
+            <p className="mx-auto mt-4 max-w-sm text-sm leading-7 text-brand-white/60 xl:mx-0">
               {copy.flightsText}
             </p>
 
@@ -694,7 +691,7 @@ export default function Transfer() {
               href="https://www.google.com/travel/flights"
               target="_blank"
               rel="noopener noreferrer"
-              className="group/link mt-7 inline-flex items-center gap-4 text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-brand-white/70 transition-colors hover:text-gold"
+              className="group/link mt-7 inline-flex items-center justify-center gap-4 text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-brand-white/70 transition-colors hover:text-gold xl:justify-start"
             >
               {copy.flightsCta}
 
@@ -704,13 +701,9 @@ export default function Transfer() {
             </a>
           </div>
 
-          {/* 02 — VIP TRANSFER */}
-          <div className="group border-b border-brand-white/12 py-9 md:px-8 xl:min-h-[390px] xl:border-r">
-            <div className="flex items-start justify-between gap-6">
-              <span className="text-[0.58rem] font-semibold tracking-[0.22em] text-gold">
-                02
-              </span>
-
+          {/* VIP TRANSFER */}
+          <div className="group border-b border-brand-white/12 py-10 text-center md:px-8 xl:min-h-[390px] xl:border-r xl:text-left">
+            <div className="flex justify-center xl:justify-end">
               <span className="text-gold/65 transition-all duration-500 group-hover:-translate-y-1 group-hover:text-gold">
                 <CarIcon />
               </span>
@@ -723,7 +716,7 @@ export default function Transfer() {
               {copy.transferTitle}
             </h3>
 
-            <p className="mt-4 max-w-sm text-sm leading-7 text-brand-white/60">
+            <p className="mx-auto mt-4 max-w-sm text-sm leading-7 text-brand-white/60 xl:mx-0">
               {copy.transferText}
             </p>
 
@@ -732,7 +725,7 @@ export default function Transfer() {
                 href="/images/QR.jpg"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group/link inline-flex items-center gap-4 text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-brand-white/70 transition-colors hover:text-gold"
+                className="group/link inline-flex items-center justify-center gap-4 text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-brand-white/70 transition-colors hover:text-gold xl:justify-start"
               >
                 {copy.transferCta}
 
@@ -741,7 +734,7 @@ export default function Transfer() {
                 </span>
               </a>
 
-              <div className="mt-7 flex flex-col items-center">
+              <div className="mt-7 flex flex-col items-center xl:items-start">
                 <span className="mb-4 h-px w-8 bg-gold/30" />
 
                 <a
@@ -750,13 +743,13 @@ export default function Transfer() {
                   rel="noopener noreferrer"
                   aria-label={copy.qrAria}
                   title={copy.qrAria}
-                  className="group/qr relative h-16 w-16 overflow-hidden border border-gold/35 bg-brand-white p-1.5 transition-all duration-500 hover:scale-[1.05] hover:border-gold"
+                  className="group/qr relative h-[72px] w-[72px] overflow-hidden border border-gold/35 bg-brand-white p-1.5 transition-all duration-500 hover:scale-[1.05] hover:border-gold"
                 >
                   <Image
                     src="/images/QR.jpg"
                     alt={copy.qrAlt}
                     fill
-                    sizes="64px"
+                    sizes="72px"
                     className="object-contain p-1.5"
                   />
                 </a>
@@ -768,13 +761,9 @@ export default function Transfer() {
             </div>
           </div>
 
-          {/* 03 — HOTEL STAY */}
-          <div className="group border-b border-brand-white/12 py-9 md:border-r md:px-8 xl:min-h-[390px]">
-            <div className="flex items-start justify-between gap-6">
-              <span className="text-[0.58rem] font-semibold tracking-[0.22em] text-gold">
-                03
-              </span>
-
+          {/* HOTEL STAY */}
+          <div className="group border-b border-brand-white/12 py-10 text-center md:border-r md:px-8 xl:min-h-[390px] xl:text-left">
+            <div className="flex justify-center xl:justify-end">
               <span className="text-gold/65 transition-all duration-500 group-hover:-translate-y-1 group-hover:text-gold">
                 <HotelIcon />
               </span>
@@ -787,18 +776,19 @@ export default function Transfer() {
               {copy.hotelTitle}
             </h3>
 
-            <p className="mt-4 max-w-sm text-sm leading-7 text-brand-white/60">
+            <p className="mx-auto mt-4 max-w-sm text-sm leading-7 text-brand-white/60 xl:mx-0">
               {copy.hotelText}
             </p>
 
-            <div className="mt-6 flex flex-col items-start gap-2.5">
+            <div className="mt-7 flex flex-col items-center gap-3 xl:items-start">
               <a
                 href="https://www.albahotels.com.tr/en/resort-en/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group/hotel inline-flex items-center gap-3 text-[0.61rem] font-semibold uppercase tracking-[0.16em] text-brand-white/65 transition-colors hover:text-gold"
+                className="group/hotel inline-flex items-center justify-center gap-3 text-[0.61rem] font-semibold uppercase tracking-[0.16em] text-brand-white/65 transition-colors hover:text-gold xl:justify-start"
               >
                 Alba Resort
+
                 <span className="transition-transform duration-500 group-hover/hotel:translate-x-1">
                   →
                 </span>
@@ -808,9 +798,10 @@ export default function Transfer() {
                 href="https://www.albahotels.com.tr/en/royal-en/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group/hotel inline-flex items-center gap-3 text-[0.61rem] font-semibold uppercase tracking-[0.16em] text-brand-white/65 transition-colors hover:text-gold"
+                className="group/hotel inline-flex items-center justify-center gap-3 text-[0.61rem] font-semibold uppercase tracking-[0.16em] text-brand-white/65 transition-colors hover:text-gold xl:justify-start"
               >
                 Alba Royal
+
                 <span className="transition-transform duration-500 group-hover/hotel:translate-x-1">
                   →
                 </span>
@@ -820,9 +811,10 @@ export default function Transfer() {
                 href="https://www.albahotels.com.tr/en/queen-en/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group/hotel inline-flex items-center gap-3 text-[0.61rem] font-semibold uppercase tracking-[0.16em] text-brand-white/65 transition-colors hover:text-gold"
+                className="group/hotel inline-flex items-center justify-center gap-3 text-[0.61rem] font-semibold uppercase tracking-[0.16em] text-brand-white/65 transition-colors hover:text-gold xl:justify-start"
               >
                 Alba Queen
+
                 <span className="transition-transform duration-500 group-hover/hotel:translate-x-1">
                   →
                 </span>
@@ -830,13 +822,9 @@ export default function Transfer() {
             </div>
           </div>
 
-          {/* 04 — PRIVATE VISIT */}
-          <div className="group border-b border-brand-white/12 py-9 md:px-8 md:last:pr-0 xl:min-h-[390px]">
-            <div className="flex items-start justify-between gap-6">
-              <span className="text-[0.58rem] font-semibold tracking-[0.22em] text-gold">
-                04
-              </span>
-
+          {/* PRIVATE VISIT */}
+          <div className="group border-b border-brand-white/12 py-10 text-center md:px-8 xl:min-h-[390px] xl:text-left">
+            <div className="flex justify-center xl:justify-end">
               <span className="text-gold/65 transition-all duration-500 group-hover:-translate-y-1 group-hover:text-gold">
                 <BoutiqueIcon />
               </span>
@@ -849,13 +837,13 @@ export default function Transfer() {
               {copy.privateTitle}
             </h3>
 
-            <p className="mt-4 max-w-sm text-sm leading-7 text-brand-white/60">
+            <p className="mx-auto mt-4 max-w-sm text-sm leading-7 text-brand-white/60 xl:mx-0">
               {copy.privateText}
             </p>
 
             <a
               href="/#contact"
-              className="group/link mt-7 inline-flex items-center gap-4 text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-brand-white/70 transition-colors hover:text-gold"
+              className="group/link mt-7 inline-flex items-center justify-center gap-4 text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-brand-white/70 transition-colors hover:text-gold xl:justify-start"
             >
               {copy.privateCta}
 
@@ -866,13 +854,20 @@ export default function Transfer() {
           </div>
         </div>
 
+        {/* JOURNEY LINE — TABLET / DESKTOP */}
         <div className="hidden items-center px-4 pt-7 md:flex">
           <span className="h-2 w-2 rounded-full border border-gold/60" />
+
           <span className="h-px flex-1 bg-gradient-to-r from-gold/35 via-gold/15 to-gold/35" />
+
           <span className="h-2 w-2 rounded-full border border-gold/60" />
+
           <span className="h-px flex-1 bg-gradient-to-r from-gold/35 via-gold/15 to-gold/35" />
+
           <span className="h-2 w-2 rounded-full border border-gold/60" />
+
           <span className="h-px flex-1 bg-gradient-to-r from-gold/35 via-gold/15 to-gold/35" />
+
           <span className="h-2 w-2 rounded-full border border-gold/60" />
         </div>
 
@@ -885,6 +880,7 @@ export default function Transfer() {
             style={{ color: "#F5EFE6" }}
           >
             {copy.closingBefore}
+
             <span style={{ color: "#E8D8B5" }}>
               {" "}
               {copy.closingAccent}

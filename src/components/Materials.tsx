@@ -1181,16 +1181,61 @@ function BrilliantMark() {
           stroke="rgba(255,255,255,0.75)"
         />
 
-        <polygon points="32,9 40,18 32,32 24,18" fill="#FFFFFF" opacity="0.8" />
-        <polygon points="55,32 46,40 32,32 46,24" fill="#BAC5CC" opacity="0.82" />
-        <polygon points="32,55 24,46 32,32 40,46" fill="#E9EEF1" opacity="0.78" />
-        <polygon points="9,32 18,24 32,32 18,40" fill="#A9B4BC" opacity="0.82" />
-        <polygon points="18,18 32,32 24,18" fill="#CBD4D9" opacity="0.9" />
-        <polygon points="46,18 40,18 32,32" fill="#F7F9FA" opacity="0.95" />
-        <polygon points="46,46 32,32 40,46" fill="#AEB9C0" opacity="0.82" />
-        <polygon points="18,46 24,46 32,32" fill="#F6F8F9" opacity="0.9" />
+        <polygon
+          points="32,9 40,18 32,32 24,18"
+          fill="#FFFFFF"
+          opacity="0.8"
+        />
 
-        <circle cx="32" cy="32" r="7" fill="#FFFFFF" opacity="0.7" />
+        <polygon
+          points="55,32 46,40 32,32 46,24"
+          fill="#BAC5CC"
+          opacity="0.82"
+        />
+
+        <polygon
+          points="32,55 24,46 32,32 40,46"
+          fill="#E9EEF1"
+          opacity="0.78"
+        />
+
+        <polygon
+          points="9,32 18,24 32,32 18,40"
+          fill="#A9B4BC"
+          opacity="0.82"
+        />
+
+        <polygon
+          points="18,18 32,32 24,18"
+          fill="#CBD4D9"
+          opacity="0.9"
+        />
+
+        <polygon
+          points="46,18 40,18 32,32"
+          fill="#F7F9FA"
+          opacity="0.95"
+        />
+
+        <polygon
+          points="46,46 32,32 40,46"
+          fill="#AEB9C0"
+          opacity="0.82"
+        />
+
+        <polygon
+          points="18,46 24,46 32,32"
+          fill="#F6F8F9"
+          opacity="0.9"
+        />
+
+        <circle
+          cx="32"
+          cy="32"
+          r="7"
+          fill="#FFFFFF"
+          opacity="0.7"
+        />
 
         <circle
           cx="32"
@@ -1222,7 +1267,11 @@ function PearlMark() {
   );
 }
 
-function MaterialSymbol({ kind }: { kind: MaterialKind }) {
+function MaterialSymbol({
+  kind,
+}: {
+  kind: MaterialKind;
+}) {
   if (
     kind === "white-gold" ||
     kind === "yellow-gold" ||
@@ -1254,20 +1303,23 @@ export default function Materials() {
       id="materials"
       className="relative overflow-hidden bg-plum-dark py-24 text-brand-white md:py-32 lg:py-40"
     >
+      {/* AMBIENT LIGHT */}
       <div className="pointer-events-none absolute -left-40 top-0 h-[500px] w-[500px] rounded-full bg-gold/10 blur-3xl" />
 
       <div className="pointer-events-none absolute -right-48 bottom-0 h-[520px] w-[520px] rounded-full bg-gold/5 blur-3xl" />
 
       <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
-        {/* INTRO */}
-        <div className="mb-16 grid gap-10 lg:mb-24 lg:grid-cols-12 lg:items-end">
+        {/* =====================================================
+            INTRO
+        ====================================================== */}
+        <div className="mb-16 grid gap-10 text-center lg:mb-24 lg:grid-cols-12 lg:items-end lg:text-left">
           <div className="lg:col-span-8">
             <span className="mb-7 block text-[0.68rem] font-semibold uppercase tracking-[0.34em] text-gold">
               {dict.materials.eyebrow}
             </span>
 
             <h2
-              className="max-w-[850px] font-display text-5xl italic leading-[0.93] tracking-[-0.03em] md:text-6xl lg:text-[5.2rem]"
+              className="mx-auto max-w-[850px] font-display text-5xl italic leading-[0.93] tracking-[-0.03em] md:text-6xl lg:mx-0 lg:text-[5.2rem]"
               style={{ color: "#E8D8B5" }}
             >
               {dict.materials.title}
@@ -1275,11 +1327,11 @@ export default function Materials() {
           </div>
 
           <div className="lg:col-span-4 lg:pb-2">
-            <p className="max-w-md text-sm leading-7 text-brand-white/65 md:text-base">
+            <p className="mx-auto max-w-md text-sm leading-7 text-brand-white/65 md:text-base lg:mx-0">
               {copy.intro}
             </p>
 
-            <div className="mt-7 flex items-center gap-4">
+            <div className="mt-7 flex items-center justify-center gap-4 lg:justify-start">
               <span className="h-px w-12 bg-gold" />
 
               <span className="text-[0.6rem] font-semibold uppercase tracking-[0.26em] text-brand-white/45">
@@ -1289,54 +1341,58 @@ export default function Materials() {
           </div>
         </div>
 
-        {/* MATERIALS LIST */}
+        {/* =====================================================
+            MATERIALS LIST
+            numbering removed
+        ====================================================== */}
         <div className="border-t border-brand-white/12">
           {materials.map((material) => (
             <div
-              key={material.number}
-              className="group relative grid gap-5 border-b border-brand-white/12 py-8 transition-all duration-500 hover:bg-brand-white/[0.035] md:grid-cols-12 md:items-center md:px-4 md:py-10"
+              key={`${material.kind}-${material.title}`}
+              className="group relative grid gap-6 border-b border-brand-white/12 py-10 text-center transition-all duration-500 hover:bg-brand-white/[0.035] md:grid-cols-12 md:items-center md:px-4 md:py-10 md:text-left"
             >
+              {/* HOVER LIGHT */}
               <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
                 <div className="absolute left-1/4 top-1/2 h-24 w-48 -translate-y-1/2 rounded-full bg-gold/5 blur-3xl" />
 
                 <div className="absolute right-0 top-1/2 h-20 w-20 -translate-y-1/2 rounded-full bg-brand-white/[0.035] blur-2xl" />
               </div>
 
-              <div className="relative md:col-span-1">
-                <span className="text-[0.62rem] font-semibold tracking-[0.24em] text-gold/85">
-                  {material.number}
-                </span>
-              </div>
-
+              {/* MATERIAL NAME */}
               <div className="relative md:col-span-4">
                 <h3
-                  className="font-display text-3xl transition-all duration-500 group-hover:translate-x-1 md:text-4xl"
+                  className="font-display text-3xl transition-all duration-500 md:text-4xl md:group-hover:translate-x-1"
                   style={{ color: "#F5EFE6" }}
                 >
                   {material.title}
                 </h3>
               </div>
 
+              {/* CHARACTER */}
               <div className="relative md:col-span-3">
                 <span className="text-[0.66rem] font-semibold uppercase tracking-[0.2em] text-brand-white/45 transition-colors duration-500 group-hover:text-brand-white/70">
                   {material.subtitle}
                 </span>
               </div>
 
-              <div className="relative md:col-span-3">
-                <p className="max-w-md text-sm leading-6 text-brand-white/60 transition-colors duration-500 group-hover:text-brand-white/80">
+              {/* DESCRIPTION */}
+              <div className="relative md:col-span-4">
+                <p className="mx-auto max-w-md text-sm leading-6 text-brand-white/60 transition-colors duration-500 group-hover:text-brand-white/80 md:mx-0">
                   {material.description}
                 </p>
               </div>
 
-              <div className="relative hidden justify-end md:col-span-1 md:flex">
+              {/* MATERIAL SYMBOL */}
+              <div className="relative flex justify-center pt-1 md:col-span-1 md:justify-end md:pt-0">
                 <MaterialSymbol kind={material.kind} />
               </div>
             </div>
           ))}
         </div>
 
-        {/* CLOSING STATEMENT */}
+        {/* =====================================================
+            CLOSING STATEMENT
+        ====================================================== */}
         <div className="mx-auto mt-20 max-w-[980px] text-center md:mt-28">
           <span className="mx-auto mb-8 block h-px w-14 bg-gold" />
 

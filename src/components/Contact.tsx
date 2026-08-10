@@ -373,7 +373,9 @@ function ArrowIcon() {
 
 export default function Contact() {
   const { locale } = useLanguage();
-  const copy = CONTACT_COPY[locale];
+
+  const copy =
+    CONTACT_COPY[locale] ?? CONTACT_COPY.en;
 
   return (
     <section
@@ -383,24 +385,24 @@ export default function Contact() {
       {/* AMBIENT DETAIL */}
       <div className="pointer-events-none absolute -left-44 top-10 h-[400px] w-[400px] rounded-full bg-gold/5 blur-3xl" />
 
-      <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
-        <div className="grid gap-8 lg:grid-cols-12 lg:gap-10">
+      <div className="relative mx-auto max-w-[1440px] px-5 sm:px-6 md:px-10 lg:px-16 xl:px-20">
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-10">
           {/* =====================================================
               LEFT SIDE
           ====================================================== */}
-          <div className="lg:col-span-7 lg:pr-6">
+          <div className="text-center lg:col-span-7 lg:pr-6 lg:text-left">
             <span className="mb-5 block text-[0.68rem] font-semibold uppercase tracking-[0.34em] text-gold">
               {copy.eyebrow}
             </span>
 
             <h2
-              className="max-w-[760px] font-display text-5xl leading-[0.95] tracking-[-0.03em] md:text-6xl lg:text-7xl"
+              className="mx-auto max-w-[760px] font-display text-5xl leading-[0.95] tracking-[-0.03em] md:text-6xl lg:mx-0 lg:text-7xl"
               style={{ color: "#1B0B20" }}
             >
               {copy.title}
             </h2>
 
-            <p className="mt-6 max-w-xl text-sm leading-7 text-grey md:text-base">
+            <p className="mx-auto mt-6 max-w-xl text-sm leading-7 text-grey md:text-base lg:mx-0">
               {copy.intro}
             </p>
 
@@ -408,37 +410,26 @@ export default function Contact() {
                 CONTACT PEOPLE
             ================================================== */}
             <div className="mt-10 border-t border-plum-dark/10">
-              {contacts.map((contact, index) => (
+              {contacts.map((contact) => (
                 <div
                   key={contact.name}
-                  className="group border-b border-plum-dark/10 py-7 transition-colors duration-500 hover:bg-brand-white/60 md:px-2"
+                  className="group border-b border-plum-dark/10 py-9 transition-colors duration-500 hover:bg-brand-white/60 md:px-2 md:py-7"
                 >
-                  <div className="grid gap-6 md:grid-cols-12 md:items-center">
-                    {/* NUMBER */}
-                    <div className="hidden md:col-span-1 md:block">
-                      <span className="text-[0.58rem] font-semibold tracking-[0.22em] text-gold">
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                    </div>
-
+                  <div className="grid gap-6 md:grid-cols-11 md:items-center">
                     {/* PHOTO + NAME */}
                     <div className="md:col-span-4">
-                      <div className="flex items-center gap-4">
-                        <div className="relative h-[82px] w-[82px] shrink-0 overflow-hidden rounded-full border border-plum-dark/10 bg-brand-white shadow-[0_12px_35px_-20px_rgba(27,11,32,0.45)] md:h-[92px] md:w-[92px]">
+                      <div className="flex flex-col items-center gap-4 md:flex-row md:text-left">
+                        <div className="relative h-[96px] w-[96px] shrink-0 overflow-hidden rounded-full border border-plum-dark/10 bg-brand-white shadow-[0_12px_35px_-20px_rgba(27,11,32,0.45)] md:h-[92px] md:w-[92px]">
                           <Image
                             src={contact.image}
                             alt={contact.imageAlt}
                             fill
-                            sizes="92px"
+                            sizes="96px"
                             className={`object-cover ${contact.imagePosition} transition-transform duration-700 group-hover:scale-[1.04]`}
                           />
                         </div>
 
-                        <div className="min-w-0">
-                          <span className="mb-1 block text-[0.54rem] font-semibold tracking-[0.22em] text-gold md:hidden">
-                            {String(index + 1).padStart(2, "0")}
-                          </span>
-
+                        <div className="min-w-0 text-center md:text-left">
                           <h3
                             className="font-display text-3xl leading-none md:text-[2.1rem]"
                             style={{ color: "#1B0B20" }}
@@ -450,7 +441,7 @@ export default function Contact() {
                     </div>
 
                     {/* PHONE + EMAIL */}
-                    <div className="min-w-0 md:col-span-4">
+                    <div className="min-w-0 text-center md:col-span-4 md:text-left">
                       <a
                         href={contact.phoneHref}
                         className="block text-sm text-plum-dark transition-colors duration-300 hover:text-gold"
@@ -460,17 +451,17 @@ export default function Contact() {
 
                       <a
                         href={`mailto:${contact.email}`}
-                        className="mt-1 block break-all text-sm text-grey transition-colors duration-300 hover:text-gold"
+                        className="mt-2 block break-all text-sm text-grey transition-colors duration-300 hover:text-gold md:mt-1"
                       >
                         {contact.email}
                       </a>
                     </div>
 
                     {/* ACTIONS */}
-                    <div className="flex flex-row flex-wrap gap-x-6 gap-y-3 md:col-span-3 md:flex-col md:items-center md:justify-center">
+                    <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-4 md:col-span-3 md:flex-col md:gap-y-3">
                       <a
                         href={contact.phoneHref}
-                        className="group/action flex w-full max-w-[120px] items-center justify-between gap-4 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-plum-dark transition-colors hover:text-gold"
+                        className="group/action inline-flex items-center justify-center gap-3 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-plum-dark transition-colors hover:text-gold md:w-full md:max-w-[120px] md:justify-between md:gap-4"
                       >
                         <span>{copy.call}</span>
 
@@ -481,7 +472,7 @@ export default function Contact() {
                         href={contact.whatsapp}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group/action flex w-full max-w-[120px] items-center justify-between gap-4 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-plum-dark transition-colors hover:text-gold"
+                        className="group/action inline-flex items-center justify-center gap-3 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-plum-dark transition-colors hover:text-gold md:w-full md:max-w-[120px] md:justify-between md:gap-4"
                       >
                         <span>WhatsApp</span>
 
@@ -490,7 +481,7 @@ export default function Contact() {
 
                       <a
                         href={`mailto:${contact.email}`}
-                        className="group/action flex w-full max-w-[120px] items-center justify-between gap-4 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-plum-dark transition-colors hover:text-gold"
+                        className="group/action inline-flex items-center justify-center gap-3 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-plum-dark transition-colors hover:text-gold md:w-full md:max-w-[120px] md:justify-between md:gap-4"
                       >
                         <span>{copy.email}</span>
 
@@ -507,7 +498,7 @@ export default function Contact() {
               RIGHT SIDE
           ====================================================== */}
           <div className="lg:col-span-5">
-            <div className="relative overflow-hidden bg-plum-dark px-7 py-8 md:px-9 md:py-10 lg:px-10 lg:py-11">
+            <div className="relative overflow-hidden bg-plum-dark px-6 py-9 text-center md:px-9 md:py-10 lg:px-10 lg:py-11 lg:text-left">
               <div className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-gold/10 blur-3xl" />
 
               <div className="relative">
@@ -522,20 +513,16 @@ export default function Contact() {
                   {copy.ourBoutiques}
                 </h3>
 
-                <p className="mt-3 max-w-sm text-sm leading-6 text-brand-white/55">
+                <p className="mx-auto mt-3 max-w-sm text-sm leading-6 text-brand-white/55 lg:mx-0">
                   {copy.locationsIntro}
                 </p>
 
                 {/* LOCATIONS */}
                 <div className="mt-8 border-t border-brand-white/12">
-                  {locations.map((location, index) => {
-                    const content = (
+                  {locations.map((location) => {
+                    const locationContent = (
                       <>
-                        <div className="flex min-w-0 items-start gap-4">
-                          <span className="mt-1 shrink-0 text-[0.56rem] font-semibold tracking-[0.22em] text-gold">
-                            {String(index + 1).padStart(2, "0")}
-                          </span>
-
+                        <div className="flex min-w-0 flex-1 flex-col items-center text-center sm:items-start sm:text-left">
                           <div className="min-w-0">
                             <h4
                               className={`font-display text-lg md:text-xl ${
@@ -548,18 +535,18 @@ export default function Contact() {
                               {location.name}
                             </h4>
 
-                            <p className="mt-1 max-w-[340px] text-[0.72rem] leading-5 text-brand-white/40">
+                            <p className="mx-auto mt-2 max-w-[340px] text-[0.72rem] leading-5 text-brand-white/40 sm:mx-0 sm:mt-1">
                               {location.detail}
                             </p>
                           </div>
                         </div>
 
                         {location.url ? (
-                          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-brand-white/15 text-brand-white/45 transition-all duration-500 group-hover:translate-x-1 group-hover:border-gold group-hover:bg-gold group-hover:text-plum-dark">
+                          <span className="mt-4 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-brand-white/15 text-brand-white/45 transition-all duration-500 group-hover:translate-x-1 group-hover:border-gold group-hover:bg-gold group-hover:text-plum-dark sm:mt-0">
                             <ArrowIcon />
                           </span>
                         ) : (
-                          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-brand-white/8 text-brand-white/15">
+                          <span className="mt-4 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-brand-white/8 text-brand-white/15 sm:mt-0">
                             <ArrowIcon />
                           </span>
                         )}
@@ -574,9 +561,9 @@ export default function Contact() {
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label={`${copy.visitAria} ${location.name}`}
-                          className="group flex items-center justify-between gap-5 border-b border-brand-white/12 py-4 transition-colors duration-500 hover:bg-brand-white/[0.025]"
+                          className="group flex flex-col items-center justify-between gap-3 border-b border-brand-white/12 py-5 transition-colors duration-500 hover:bg-brand-white/[0.025] sm:flex-row sm:gap-5"
                         >
-                          {content}
+                          {locationContent}
                         </a>
                       );
                     }
@@ -584,16 +571,16 @@ export default function Contact() {
                     return (
                       <div
                         key={location.name}
-                        className="flex cursor-default items-center justify-between gap-5 border-b border-brand-white/12 py-4"
+                        className="flex cursor-default flex-col items-center justify-between gap-3 border-b border-brand-white/12 py-5 sm:flex-row sm:gap-5"
                       >
-                        {content}
+                        {locationContent}
                       </div>
                     );
                   })}
                 </div>
 
                 {/* PRIVATE APPOINTMENT */}
-                <div className="mt-8 border-t border-brand-white/12 pt-7">
+                <div className="mt-8 border-t border-brand-white/12 pt-8 text-center lg:text-left">
                   <p
                     className="font-display text-2xl italic leading-snug md:text-3xl"
                     style={{ color: "#E8D8B5" }}
@@ -601,13 +588,13 @@ export default function Contact() {
                     {copy.privateTitle}
                   </p>
 
-                  <p className="mt-2 max-w-sm text-sm leading-6 text-brand-white/50">
+                  <p className="mx-auto mt-3 max-w-sm text-sm leading-6 text-brand-white/50 lg:mx-0">
                     {copy.privateText}
                   </p>
 
                   <a
                     href="tel:+905325672777"
-                    className="mt-6 inline-flex w-full items-center justify-between bg-gold px-6 py-4 text-[0.64rem] font-semibold uppercase tracking-[0.2em] text-plum-dark transition-all duration-500 hover:bg-gold-light md:w-auto md:min-w-[260px]"
+                    className="mx-auto mt-6 inline-flex w-full max-w-[320px] items-center justify-between bg-gold px-6 py-4 text-[0.64rem] font-semibold uppercase tracking-[0.2em] text-plum-dark transition-all duration-500 hover:bg-gold-light lg:mx-0 lg:w-auto lg:min-w-[260px]"
                   >
                     {copy.privateButton}
 

@@ -1410,7 +1410,8 @@ const UI_COPY: Record<Locale, UiCopy> = {
 
   fi: {
     eyebrow: "Koru- & kellohuolto",
-    title: "Täydellinen huolenpito puhdistuksesta yksilölliseen uudelleensuunnitteluun",
+    title:
+      "Täydellinen huolenpito puhdistuksesta yksilölliseen uudelleensuunnitteluun",
     sub: "Verstaamme tarjoaa kattavan palveluvalikoiman. Lopullinen hinta vahvistetaan aina henkilökohtaisen tarkastuksen jälkeen.",
     personalSince: "HENKILÖKOHTAINEN PALVELU · VUODESTA 1989",
     request: "Huoltopyyntö",
@@ -1781,14 +1782,14 @@ ${copy.messageThanks}`;
 
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#F8F4ED]/16 via-transparent to-transparent" />
 
-          <div className="relative z-10 grid min-h-[420px] gap-8 py-12 md:min-h-[470px] md:py-16 lg:min-h-[500px] lg:grid-cols-12 lg:items-end lg:py-20">
+          <div className="relative z-10 grid min-h-[420px] gap-8 py-12 text-center md:min-h-[470px] md:py-16 lg:min-h-[500px] lg:grid-cols-12 lg:items-end lg:py-20 lg:text-left">
             <div className="lg:col-span-8">
               <span className="mb-4 block text-[0.66rem] font-semibold uppercase tracking-[0.32em] text-[#A98242]">
                 {copy.eyebrow}
               </span>
 
               <h2
-                className="max-w-[820px] font-display text-4xl leading-[0.96] tracking-[-0.03em] md:text-5xl lg:text-6xl"
+                className="mx-auto max-w-[820px] font-display text-4xl leading-[0.96] tracking-[-0.03em] md:text-5xl lg:mx-0 lg:text-6xl"
                 style={{ color: "#1B0B20" }}
               >
                 {copy.title}
@@ -1796,12 +1797,12 @@ ${copy.messageThanks}`;
             </div>
 
             <div className="lg:col-span-4 lg:pb-2">
-              <div className="max-w-md bg-[#F8F4ED]/50 p-5 backdrop-blur-[2px] md:p-6 lg:bg-[#F8F4ED]/44">
+              <div className="mx-auto max-w-md bg-[#F8F4ED]/50 p-5 backdrop-blur-[2px] md:p-6 lg:mx-0 lg:bg-[#F8F4ED]/44">
                 <p className="text-sm leading-6 text-grey md:text-[0.95rem]">
                   {copy.sub}
                 </p>
 
-                <div className="mt-5 flex items-center gap-4">
+                <div className="mt-5 flex items-center justify-center gap-4 lg:justify-start">
                   <span className="h-px w-10 bg-[#A98242]" />
 
                   <span className="text-[0.58rem] font-semibold uppercase tracking-[0.24em] text-plum-dark/55">
@@ -1814,7 +1815,7 @@ ${copy.messageThanks}`;
         </div>
 
         {/* INSTRUCTION */}
-        <div className="mb-7 flex flex-col justify-between gap-4 border-y border-plum-dark/10 py-5 md:flex-row md:items-center">
+        <div className="mb-7 flex flex-col items-center justify-between gap-4 border-y border-plum-dark/10 py-5 text-center md:flex-row md:text-left">
           <div>
             <span className="text-[0.58rem] font-semibold uppercase tracking-[0.26em] text-gold">
               {copy.request}
@@ -1836,41 +1837,33 @@ ${copy.messageThanks}`;
           )}
         </div>
 
-        {/* SERVICES */}
+                {/* SERVICES */}
         <div className="border-t border-plum-dark/10">
-          {SERVICE_GROUPS.map((group, index) => {
+          {SERVICE_GROUPS.map((group) => {
             const translation =
               SERVICE_TRANSLATIONS[locale][group.key];
 
             return (
               <div
-                key={group.letter}
-                className="group grid gap-5 border-b border-plum-dark/10 py-6 transition-colors duration-500 hover:bg-ivory/60 md:grid-cols-12 md:items-start md:px-3 md:py-7"
+                key={group.key}
+                className="group grid gap-6 border-b border-plum-dark/10 py-8 text-center transition-colors duration-500 hover:bg-ivory/60 md:grid-cols-12 md:items-start md:px-3 md:py-8 md:text-left"
               >
-                <div className="md:col-span-1">
-                  <span className="text-[0.58rem] font-semibold tracking-[0.22em] text-gold">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                </div>
-
-                <div className="md:col-span-4">
-                  <span className="mb-2 block text-[0.58rem] font-semibold uppercase tracking-[0.22em] text-plum-dark/40">
-                    {group.letter}
-                  </span>
-
+                {/* SERVICE TITLE */}
+                <div className="md:col-span-5">
                   <h3
-                    className="font-display text-[2rem] leading-tight transition-transform duration-500 group-hover:translate-x-1 md:text-[2.15rem] lg:text-[2.3rem]"
+                    className="font-display text-[2rem] leading-tight transition-transform duration-500 md:text-[2.15rem] md:group-hover:translate-x-1 lg:text-[2.3rem]"
                     style={{ color: "#1B0B20" }}
                   >
                     {translation.title}
                   </h3>
 
-                  <p className="mt-2 max-w-sm text-[0.82rem] leading-5 text-grey">
+                  <p className="mx-auto mt-3 max-w-sm text-[0.82rem] leading-5 text-grey md:mx-0">
                     {translation.note}
                   </p>
                 </div>
 
-                <div className="md:col-span-7 md:pl-3">
+                {/* SERVICE ITEMS */}
+                <div className="md:col-span-7 md:pl-6">
                   <div className="grid gap-x-8 gap-y-2 sm:grid-cols-2">
                     {translation.items.map((item, itemIndex) => {
                       const id = `${group.key}-${itemIndex}`;
@@ -1886,15 +1879,15 @@ ${copy.messageThanks}`;
                           onClick={() =>
                             toggleService(group.key, itemIndex)
                           }
-                          className={`group/item flex w-full items-center justify-between gap-4 border-b px-1 py-3 text-left text-[0.82rem] leading-5 transition-all duration-300 ${
+                          className={`group/item flex w-full items-center justify-between gap-4 border-b px-2 py-3 text-[0.82rem] leading-5 transition-all duration-300 ${
                             selected
                               ? "border-gold bg-gold/[0.08] text-plum-dark"
                               : "border-plum-dark/8 text-ink hover:border-gold/50 hover:bg-ivory"
                           }`}
                         >
-                          <span className="flex items-start gap-3">
+                          <span className="flex flex-1 items-center justify-center gap-3 text-center md:justify-start md:text-left">
                             <span
-                              className={`mt-[0.58rem] h-px shrink-0 transition-all duration-300 ${
+                              className={`hidden h-px shrink-0 transition-all duration-300 md:block ${
                                 selected
                                   ? "w-6 bg-gold"
                                   : "w-4 bg-gold/70"
@@ -1926,7 +1919,7 @@ ${copy.messageThanks}`;
         {/* REQUEST BUILDER */}
         <div className="mt-16 overflow-hidden border border-plum-dark/10 bg-ivory md:mt-20">
           <div className="grid lg:grid-cols-12">
-            <div className="border-b border-plum-dark/10 p-6 md:p-8 lg:col-span-5 lg:border-b-0 lg:border-r lg:p-10">
+            <div className="border-b border-plum-dark/10 p-6 text-center md:p-8 lg:col-span-5 lg:border-b-0 lg:border-r lg:p-10 lg:text-left">
               <span className="text-[0.6rem] font-semibold uppercase tracking-[0.28em] text-gold">
                 {copy.yourRequest}
               </span>
@@ -1940,7 +1933,7 @@ ${copy.messageThanks}`;
 
               {selectedServices.length === 0 ? (
                 <div className="mt-7 border-t border-plum-dark/10 pt-6">
-                  <p className="max-w-sm text-sm leading-6 text-grey">
+                  <p className="mx-auto max-w-sm text-sm leading-6 text-grey lg:mx-0">
                     {copy.noSelection}
                   </p>
                 </div>
@@ -1956,7 +1949,7 @@ ${copy.messageThanks}`;
                           key={service.id}
                           className="flex items-center justify-between gap-4 border-b border-plum-dark/8 py-3"
                         >
-                          <div>
+                          <div className="flex-1 text-center lg:text-left">
                             <span className="block text-[0.55rem] font-semibold uppercase tracking-[0.18em] text-gold">
                               {translated.group}
                             </span>
@@ -1991,7 +1984,7 @@ ${copy.messageThanks}`;
                 </>
               )}
 
-              <div className="mt-9 flex items-center gap-4">
+              <div className="mt-9 flex items-center justify-center gap-4 lg:justify-start">
                 <span className="h-px w-10 bg-gold" />
 
                 <span className="text-[0.56rem] font-semibold uppercase tracking-[0.22em] text-plum-dark/40">
@@ -2000,7 +1993,7 @@ ${copy.messageThanks}`;
               </div>
             </div>
 
-            <div className="p-6 md:p-8 lg:col-span-7 lg:p-10">
+            <div className="p-6 text-center md:p-8 lg:col-span-7 lg:p-10 lg:text-left">
               <span className="text-[0.6rem] font-semibold uppercase tracking-[0.28em] text-gold">
                 {copy.contactDetails}
               </span>
@@ -2022,7 +2015,7 @@ ${copy.messageThanks}`;
                       setCustomerName(event.target.value)
                     }
                     placeholder={copy.namePlaceholder}
-                    className="w-full border-b border-plum-dark/20 bg-transparent px-0 py-3 text-sm text-plum-dark outline-none transition-colors duration-300 placeholder:text-grey/50 focus:border-gold"
+                    className="w-full border-b border-plum-dark/20 bg-transparent px-0 py-3 text-center text-sm text-plum-dark outline-none transition-colors duration-300 placeholder:text-grey/50 focus:border-gold md:text-left"
                   />
                 </div>
 
@@ -2042,7 +2035,7 @@ ${copy.messageThanks}`;
                         event.target.value as ContactKey
                       )
                     }
-                    className="w-full border-b border-plum-dark/20 bg-transparent px-0 py-3 text-sm text-plum-dark outline-none transition-colors duration-300 focus:border-gold"
+                    className="w-full border-b border-plum-dark/20 bg-transparent px-0 py-3 text-center text-sm text-plum-dark outline-none transition-colors duration-300 focus:border-gold md:text-left"
                   >
                     <option value="victor">
                       Zafer (Victor)
@@ -2071,11 +2064,11 @@ ${copy.messageThanks}`;
                   }
                   placeholder={copy.notePlaceholder}
                   rows={4}
-                  className="w-full resize-none border border-plum-dark/15 bg-brand-white/60 p-4 text-sm leading-6 text-plum-dark outline-none transition-colors duration-300 placeholder:text-grey/50 focus:border-gold"
+                  className="w-full resize-none border border-plum-dark/15 bg-brand-white/60 p-4 text-center text-sm leading-6 text-plum-dark outline-none transition-colors duration-300 placeholder:text-grey/50 focus:border-gold md:text-left"
                 />
               </div>
 
-              <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 border-y border-plum-dark/10 py-4">
+              <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 border-y border-plum-dark/10 py-4 lg:justify-start">
                 <span className="text-[0.58rem] font-semibold uppercase tracking-[0.2em] text-plum-dark/40">
                   {copy.sentTo}
                 </span>
@@ -2093,9 +2086,10 @@ ${copy.messageThanks}`;
                 <button
                   type="button"
                   onClick={sendWhatsApp}
-                  className="group inline-flex min-h-[54px] flex-1 items-center justify-between bg-gold px-6 text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-plum-dark transition-all duration-500 hover:bg-gold-light"
+                  className="group inline-flex min-h-[54px] flex-1 items-center justify-center gap-4 bg-gold px-6 text-center text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-plum-dark transition-all duration-500 hover:bg-gold-light"
                 >
                   {copy.whatsapp}
+
                   <span className="text-base transition-transform duration-500 group-hover:translate-x-1">
                     →
                   </span>
@@ -2104,16 +2098,17 @@ ${copy.messageThanks}`;
                 <button
                   type="button"
                   onClick={sendEmail}
-                  className="group inline-flex min-h-[54px] flex-1 items-center justify-between border border-plum-dark/20 px-6 text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-plum-dark transition-all duration-500 hover:border-plum-dark hover:bg-plum-dark hover:text-brand-white"
+                  className="group inline-flex min-h-[54px] flex-1 items-center justify-center gap-4 border border-plum-dark/20 px-6 text-center text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-plum-dark transition-all duration-500 hover:border-plum-dark hover:bg-plum-dark hover:text-brand-white"
                 >
                   {copy.email}
+
                   <span className="text-base transition-transform duration-500 group-hover:translate-x-1">
                     →
                   </span>
                 </button>
               </div>
 
-              <p className="mt-4 text-[0.7rem] leading-5 text-grey">
+              <p className="mt-4 text-center text-[0.7rem] leading-5 text-grey lg:text-left">
                 {copy.disclaimer}
               </p>
             </div>

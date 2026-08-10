@@ -155,9 +155,7 @@ export default function Hero() {
       <div
         ref={imageWrapRef}
         className={`absolute inset-[-3%] will-change-transform transition-[opacity,filter] duration-[1800ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
-          loaded
-            ? "opacity-100 blur-0"
-            : "opacity-0 blur-[2px]"
+          loaded ? "opacity-100 blur-0" : "opacity-0 blur-[2px]"
         }`}
         style={{
           transform: loaded
@@ -194,9 +192,9 @@ export default function Hero() {
 
       <div
         ref={contentRef}
-        className="relative z-10 mx-auto w-full max-w-[1440px] px-6 pb-20 pt-40 will-change-transform md:px-10 md:pb-24 lg:px-16 lg:pb-28 xl:px-20"
+        className="relative z-10 mx-auto w-full max-w-[1440px] px-6 pb-20 pt-40 text-center will-change-transform md:px-10 md:pb-24 md:text-left lg:px-16 lg:pb-28 xl:px-20"
       >
-        <div className="max-w-[760px]">
+        <div className="mx-auto max-w-[760px] md:mx-0">
           <div className="overflow-hidden">
             <span
               className={`block text-[0.68rem] font-semibold uppercase tracking-[0.34em] text-gold transition-all duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
@@ -239,7 +237,7 @@ export default function Hero() {
           </h1>
 
           <p
-            className={`mt-9 max-w-[520px] font-display text-xl italic leading-relaxed text-brand-white/90 transition-all duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:text-2xl ${
+            className={`mx-auto mt-9 max-w-[520px] font-display text-xl italic leading-relaxed text-brand-white/90 transition-all duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:mx-0 md:text-2xl ${
               loaded
                 ? "translate-y-0 opacity-100"
                 : "translate-y-4 opacity-0"
@@ -250,7 +248,7 @@ export default function Hero() {
           </p>
 
           <p
-            className={`mt-4 max-w-[680px] text-sm leading-7 text-brand-white/72 transition-all duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:text-base md:whitespace-nowrap ${
+            className={`mx-auto mt-4 max-w-[680px] text-sm leading-7 text-brand-white/72 transition-all duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:mx-0 md:text-base md:whitespace-nowrap ${
               loaded
                 ? "translate-y-0 opacity-100"
                 : "translate-y-4 opacity-0"
@@ -261,7 +259,7 @@ export default function Hero() {
           </p>
 
           <div
-            className={`mt-10 flex flex-wrap items-center gap-x-8 gap-y-5 transition-all duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+            className={`mt-10 flex flex-col items-center justify-center gap-5 transition-all duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] sm:flex-row sm:flex-wrap md:justify-start md:gap-x-8 md:gap-y-5 ${
               loaded
                 ? "translate-y-0 opacity-100"
                 : "translate-y-4 opacity-0"
@@ -270,7 +268,7 @@ export default function Hero() {
           >
             <Link
               href="/#collections"
-              className="group inline-flex items-center gap-6 bg-gold px-9 py-3.5 text-[0.66rem] font-semibold uppercase tracking-[0.22em] text-plum-dark transition-all duration-500 hover:bg-gold-light"
+              className="group inline-flex items-center justify-center gap-6 bg-gold px-9 py-3.5 text-[0.66rem] font-semibold uppercase tracking-[0.22em] text-plum-dark transition-all duration-500 hover:bg-gold-light"
             >
               {dict.hero.cta1}
 
@@ -281,7 +279,7 @@ export default function Hero() {
 
             <Link
               href="/#contact"
-              className="group relative inline-flex items-center gap-5 py-3 text-[0.66rem] font-semibold uppercase tracking-[0.2em] text-brand-white"
+              className="group relative inline-flex items-center justify-center gap-5 py-3 text-[0.66rem] font-semibold uppercase tracking-[0.2em] text-brand-white"
             >
               {dict.hero.cta2}
 
@@ -289,7 +287,7 @@ export default function Hero() {
                 →
               </span>
 
-              <span className="absolute bottom-1 left-0 h-px w-full origin-left bg-brand-white/35 transition-all duration-500 group-hover:scale-x-90 group-hover:bg-gold" />
+              <span className="absolute bottom-1 left-0 h-px w-full origin-center bg-brand-white/35 transition-all duration-500 group-hover:scale-x-90 group-hover:bg-gold md:origin-left" />
             </Link>
           </div>
         </div>

@@ -312,9 +312,9 @@ export default function Footer() {
       <div className="pointer-events-none absolute -left-40 top-10 h-[480px] w-[480px] rounded-full bg-gold/8 blur-3xl" />
       <div className="pointer-events-none absolute -right-52 bottom-0 h-[520px] w-[520px] rounded-full bg-gold/5 blur-3xl" />
 
-      <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
+      <div className="relative mx-auto max-w-[1440px] px-5 sm:px-6 md:px-10 lg:px-16 xl:px-20">
         {/* BRAND FINALE */}
-        <div className="border-b border-brand-white/12 py-16 md:py-20 lg:py-24">
+        <div className="border-b border-brand-white/12 py-16 text-center md:py-20 lg:py-24 lg:text-left">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-8">
               <Image
@@ -322,10 +322,10 @@ export default function Footer() {
                 alt="LIDYA JEWELRY"
                 width={520}
                 height={220}
-                className="h-[96px] w-auto object-contain brightness-[3.2] saturate-0 md:h-[112px]"
+                className="mx-auto h-[96px] w-auto object-contain brightness-[3.2] saturate-0 md:h-[112px] lg:mx-0"
               />
 
-              <div className="mt-8 max-w-[900px]">
+              <div className="mx-auto mt-8 max-w-[900px] lg:mx-0">
                 <p
                   className="font-display text-4xl italic leading-[1.02] md:text-5xl lg:text-6xl"
                   style={{ color: "#F5EFE6" }}
@@ -347,7 +347,7 @@ export default function Footer() {
                 LIDYA JEWELRY
               </span>
 
-              <p className="mt-4 max-w-sm text-sm leading-6 text-brand-white/65 lg:ml-auto">
+              <p className="mx-auto mt-4 max-w-sm text-sm leading-6 text-brand-white/65 lg:ml-auto lg:mr-0">
                 {copy.description}
               </p>
             </div>
@@ -355,13 +355,14 @@ export default function Footer() {
         </div>
 
         {/* FOOTER NAV */}
-        <div className="grid gap-12 py-14 md:grid-cols-2 lg:grid-cols-12 lg:gap-10 lg:py-16">
+        <div className="grid gap-12 py-14 text-center md:grid-cols-2 lg:grid-cols-12 lg:gap-10 lg:py-16 lg:text-left">
+          {/* NAVIGATE */}
           <div className="lg:col-span-3">
             <h5 className="text-[0.62rem] font-semibold uppercase tracking-[0.24em] text-gold">
               {copy.navigate}
             </h5>
 
-            <div className="mt-6 flex flex-col gap-3 text-sm text-brand-white/70">
+            <div className="mt-6 flex flex-col items-center gap-3 text-sm text-brand-white/70 lg:items-start">
               <Link
                 href="/#collections"
                 className="transition-colors hover:text-gold"
@@ -399,12 +400,13 @@ export default function Footer() {
             </div>
           </div>
 
+          {/* BOUTIQUES */}
           <div className="lg:col-span-3">
             <h5 className="text-[0.62rem] font-semibold uppercase tracking-[0.24em] text-gold">
               {copy.boutiques}
             </h5>
 
-            <div className="mt-6 flex flex-col gap-3 text-sm text-brand-white/70">
+            <div className="mt-6 flex flex-col items-center gap-3 text-sm text-brand-white/70 lg:items-start">
               <span className="cursor-default text-brand-white/70">
                 LIDYA JEWELLERY — Manavgat
               </span>
@@ -438,12 +440,13 @@ export default function Footer() {
             </div>
           </div>
 
+          {/* CONTACT */}
           <div className="lg:col-span-4">
             <h5 className="text-[0.62rem] font-semibold uppercase tracking-[0.24em] text-gold">
               {copy.contact}
             </h5>
 
-            <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+            <div className="mt-6 grid gap-7 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
               <div>
                 <p
                   className="font-display text-xl"
@@ -461,7 +464,7 @@ export default function Footer() {
 
                 <a
                   href="mailto:albalidya@hotmail.com"
-                  className="mt-1 block text-sm text-brand-white/55 transition-colors hover:text-gold"
+                  className="mt-1 block break-all text-sm text-brand-white/55 transition-colors hover:text-gold"
                 >
                   albalidya@hotmail.com
                 </a>
@@ -484,7 +487,7 @@ export default function Footer() {
 
                 <a
                   href="mailto:vierakocaker@hotmail.com"
-                  className="mt-1 block text-sm text-brand-white/55 transition-colors hover:text-gold"
+                  className="mt-1 block break-all text-sm text-brand-white/55 transition-colors hover:text-gold"
                 >
                   vierakocaker@hotmail.com
                 </a>
@@ -515,12 +518,13 @@ export default function Footer() {
             </div>
           </div>
 
+          {/* LEGAL */}
           <div className="lg:col-span-2">
             <h5 className="text-[0.62rem] font-semibold uppercase tracking-[0.24em] text-gold">
               {copy.legal}
             </h5>
 
-            <div className="mt-6 flex flex-col items-start gap-3 text-sm text-brand-white/70">
+            <div className="mt-6 flex flex-col items-center gap-3 text-sm text-brand-white/70 lg:items-start">
               <Link
                 href="/privacy"
                 className="transition-colors hover:text-gold"
@@ -538,7 +542,7 @@ export default function Footer() {
               <button
                 type="button"
                 onClick={openCookieSettings}
-                className="text-left transition-colors hover:text-gold"
+                className="text-center transition-colors hover:text-gold lg:text-left"
               >
                 {copy.cookies}
               </button>
@@ -547,13 +551,13 @@ export default function Footer() {
         </div>
 
         {/* SOCIAL + APPOINTMENT */}
-        <div className="grid gap-8 border-t border-brand-white/12 py-10 md:grid-cols-2 md:items-center">
+        <div className="grid gap-8 border-t border-brand-white/12 py-10 text-center md:grid-cols-2 md:items-center md:text-left">
           <div>
             <span className="block text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-gold">
               {copy.follow}
             </span>
 
-            <div className="mt-4 flex flex-wrap items-start gap-6">
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:justify-start">
               <a
                 href="https://www.instagram.com/tanirzafer?igsh=MWs5ZTh5bzA0a3p5Ng=="
                 target="_blank"
@@ -563,7 +567,7 @@ export default function Footer() {
                 Instagram
               </a>
 
-              <span className="mt-[0.45rem] h-px w-5 bg-brand-white/15" />
+              <span className="h-px w-5 bg-brand-white/15" />
 
               <a
                 href="https://www.facebook.com/lidyaalbajewellery/"
@@ -574,19 +578,20 @@ export default function Footer() {
                 Facebook
               </a>
 
-              <span className="mt-[0.45rem] h-px w-5 bg-brand-white/15" />
+              <span className="h-px w-5 bg-brand-white/15" />
 
               <details className="group relative">
                 <summary className="cursor-pointer list-none text-[0.64rem] font-semibold uppercase tracking-[0.18em] text-brand-white/65 transition-colors hover:text-gold [&::-webkit-details-marker]:hidden">
                   <span className="inline-flex items-center gap-2">
                     WhatsApp
+
                     <span className="text-[0.55rem] transition-transform duration-300 group-open:rotate-180">
                       ▾
                     </span>
                   </span>
                 </summary>
 
-                <div className="absolute bottom-full left-0 z-50 mb-3 min-w-[210px] border border-brand-white/15 bg-plum-dark/95 p-2 shadow-2xl backdrop-blur-md">
+                <div className="absolute bottom-full left-1/2 z-50 mb-3 min-w-[220px] -translate-x-1/2 border border-brand-white/15 bg-plum-dark/95 p-2 text-left shadow-2xl backdrop-blur-md md:left-0 md:translate-x-0">
                   <a
                     href="https://wa.me/905325672777"
                     target="_blank"
@@ -658,12 +663,13 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="md:text-right">
+          <div className="text-center md:text-right">
             <Link
               href="/#contact"
-              className="inline-flex items-center gap-6 border border-brand-white/25 px-7 py-4 text-[0.64rem] font-semibold uppercase tracking-[0.2em] text-brand-white transition-all duration-500 hover:border-gold hover:bg-gold hover:text-plum-dark"
+              className="inline-flex items-center justify-center gap-6 border border-brand-white/25 px-7 py-4 text-[0.64rem] font-semibold uppercase tracking-[0.2em] text-brand-white transition-all duration-500 hover:border-gold hover:bg-gold hover:text-plum-dark"
             >
               {copy.privateAppointment}
+
               <span>→</span>
             </Link>
           </div>
@@ -672,10 +678,10 @@ export default function Footer() {
 
       {/* COPYRIGHT */}
       <div className="border-t border-brand-white/10">
-        <div className="relative mx-auto max-w-[1440px] px-6 py-8 text-[0.68rem] text-brand-white/45 md:px-10 lg:px-16 xl:px-20">
-          <div className="text-center">
-            <span>© {year} FraPa Technologies. All rights reserved.</span>
-          </div>
+        <div className="relative mx-auto max-w-[1440px] px-5 py-8 text-center text-[0.68rem] text-brand-white/45 sm:px-6 md:px-10 lg:px-16 xl:px-20">
+          <span>
+            © {year} FraPa Technologies. All rights reserved.
+          </span>
 
           <div className="mt-4 flex items-center justify-center gap-4 sm:absolute sm:right-6 sm:top-1/2 sm:mt-0 sm:-translate-y-1/2 md:right-10 lg:right-16 xl:right-20">
             <span className="h-px w-8 bg-gold/60" />

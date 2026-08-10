@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { GemClusterIcon } from "@/components/category/icons";
 import { useLanguage } from "@/components/LanguageProvider";
@@ -233,115 +233,266 @@ const BRILLIANTS_HERO_COPY: Record<Locale, BrilliantsHeroCopy> = {
 
 export default function BrilliantsCinematicHero() {
   const { locale } = useLanguage();
-  const copy = BRILLIANTS_HERO_COPY[locale];
 
-  const [loaded, setLoaded] = useState(false);
+  const copy =
+    BRILLIANTS_HERO_COPY[locale] ??
+    BRILLIANTS_HERO_COPY.en;
 
-  const [mouse, setMouse] = useState({
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const imageWrapRef = useRef<HTMLDivElement | null>(null);
+  const contentRef = useRef<HTMLDivElement | null>(null);
+  const glowRef = useRef<HTMLDivElement | null>(null);
+
+  const frameRef = useRef<number | null>(null);
+
+  const pointerTarget = useRef({
     x: 0,
     y: 0,
   });
 
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const pointerCurrent = useRef({
+    x: 0,
+    y: 0,
+  });
+
+  const scrollTarget = useRef(0);
+  const scrollCurrent = useRef(0);
+
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    const timer = window.setTimeout(() => {
-      setLoaded(true);
-    }, 80);
+    const section = sectionRef.current;
+    const imageWrap = imageWrapRef.current;
+    const content = contentRef.current;
+    const glow = glowRef.current;
 
-    const handleScroll = () => {
-      const hero = document.getElementById(
-        "brilliants-cinematic-hero"
+    if (!section || !imageWrap || !content || !glow) {
+      setLoaded(true);
+      return;
+    }
+
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    const finePointer = window.matchMedia(
+      "(pointer: fine)"
+    ).matches;
+
+    /*
+      Mobile a touch zariadenia:
+      parallax animation loop nepúšťame.
+
+      Výsledok:
+      - plynulejší scroll
+      - stabilnejší hero
+      - menšia spotreba
+      - žiadne zbytočné posúvanie textu
+    */
+    if (reducedMotion || !finePointer) {
+      setLoaded(true);
+      return;
+    }
+
+    const updatePointer = (event: PointerEvent) => {
+      const rect = section.getBoundingClientRect();
+
+      const x =
+        ((event.clientX - rect.left) /
+          Math.max(rect.width, 1) -
+          0.5) *
+        2;
+
+      const y =
+        ((event.clientY - rect.top) /
+          Math.max(rect.height, 1) -
+          0.5) *
+        2;
+
+      pointerTarget.current.x = Math.max(
+        -1,
+        Math.min(1, x)
       );
 
-      if (!hero) return;
+      pointerTarget.current.y = Math.max(
+        -1,
+        Math.min(1, y)
+      );
+    };
 
-      const rect = hero.getBoundingClientRect();
-      const height = Math.max(hero.offsetHeight, 1);
+    const resetPointer = () => {
+      pointerTarget.current.x = 0;
+      pointerTarget.current.y = 0;
+    };
+
+    const updateScroll = () => {
+      const rect = section.getBoundingClientRect();
+
+      const total = Math.max(
+        section.offsetHeight,
+        1
+      );
 
       const progress = Math.max(
         0,
-        Math.min(1, -rect.top / height)
+        Math.min(
+          1,
+          Math.abs(Math.min(rect.top, 0)) / total
+        )
       );
 
-      setScrollProgress(progress);
+      scrollTarget.current = progress;
     };
 
-    window.addEventListener("scroll", handleScroll, {
-      passive: true,
-    });
+    const animate = () => {
+      pointerCurrent.current.x +=
+        (pointerTarget.current.x -
+          pointerCurrent.current.x) *
+        0.045;
 
-    handleScroll();
+      pointerCurrent.current.y +=
+        (pointerTarget.current.y -
+          pointerCurrent.current.y) *
+        0.045;
+
+      scrollCurrent.current +=
+        (scrollTarget.current -
+          scrollCurrent.current) *
+        0.065;
+
+      const x = pointerCurrent.current.x;
+      const y = pointerCurrent.current.y;
+      const scroll = scrollCurrent.current;
+
+      /*
+        Obrázok sa pohybuje len veľmi jemne.
+        Luxusný efekt bez príliš agresívneho parallaxu.
+      */
+      const imageX = x * 10;
+      const imageY = y * 6 - scroll * 20;
+      const imageScale =
+        1.04 + scroll * 0.014;
+
+      imageWrap.style.transform = `
+        translate3d(${imageX}px, ${imageY}px, 0)
+        scale(${imageScale})
+      `;
+
+      /*
+        Text sa pohybuje ešte menej než obrázok,
+        aby zostával čitateľný a pokojný.
+      */
+      const contentX = x * -2.2;
+      const contentY =
+        y * -1.4 - scroll * 4;
+
+      content.style.transform = `
+        translate3d(${contentX}px, ${contentY}px, 0)
+      `;
+
+      /*
+        Jemný diamond-light efekt.
+      */
+      const glowX = 50 + x * 8;
+      const glowY = 42 + y * 6;
+
+      glow.style.background = `
+        radial-gradient(
+          circle at ${glowX}% ${glowY}%,
+          rgba(255,255,255,0.25) 0%,
+          rgba(232,238,246,0.11) 18%,
+          rgba(200,169,106,0.05) 31%,
+          rgba(255,255,255,0) 52%
+        )
+      `;
+
+      frameRef.current =
+        requestAnimationFrame(animate);
+    };
+
+    section.addEventListener(
+      "pointermove",
+      updatePointer
+    );
+
+    section.addEventListener(
+      "pointerleave",
+      resetPointer
+    );
+
+    window.addEventListener(
+      "scroll",
+      updateScroll,
+      {
+        passive: true,
+      }
+    );
+
+    updateScroll();
+
+    frameRef.current =
+      requestAnimationFrame(animate);
+
+    const loadTimer = window.setTimeout(() => {
+      setLoaded(true);
+    }, 60);
 
     return () => {
-      window.clearTimeout(timer);
+      section.removeEventListener(
+        "pointermove",
+        updatePointer
+      );
+
+      section.removeEventListener(
+        "pointerleave",
+        resetPointer
+      );
+
       window.removeEventListener(
         "scroll",
-        handleScroll
+        updateScroll
       );
+
+      if (frameRef.current !== null) {
+        cancelAnimationFrame(
+          frameRef.current
+        );
+      }
+
+      window.clearTimeout(loadTimer);
     };
   }, []);
 
-  const handleMouseMove = (
-    event: React.MouseEvent<HTMLElement>
-  ) => {
-    const rect =
-      event.currentTarget.getBoundingClientRect();
-
-    const x =
-      ((event.clientX - rect.left) /
-        Math.max(rect.width, 1) -
-        0.5) *
-      2;
-
-    const y =
-      ((event.clientY - rect.top) /
-        Math.max(rect.height, 1) -
-        0.5) *
-      2;
-
-    setMouse({
-      x: Math.max(-1, Math.min(1, x)),
-      y: Math.max(-1, Math.min(1, y)),
-    });
-  };
-
-  const handleMouseLeave = () => {
-    setMouse({
-      x: 0,
-      y: 0,
-    });
-  };
-
-  const imageX = mouse.x * 24;
-  const imageY =
-    mouse.y * 16 - scrollProgress * 32;
-
-  const imageScale =
-    1.07 + scrollProgress * 0.02;
-
-  const contentX = mouse.x * -5;
-  const contentY =
-    mouse.y * -3 - scrollProgress * 7;
-
-  const lightX = 52 + mouse.x * 14;
-  const lightY = 40 + mouse.y * 10;
-
   return (
     <section
+      ref={sectionRef}
       id="brilliants-cinematic-hero"
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      className="relative min-h-[820px] overflow-hidden bg-ivory pt-36 md:min-h-[900px] md:pt-40 lg:min-h-[940px] lg:pt-44"
+      className="
+        relative
+        min-h-[720px]
+        overflow-hidden
+        bg-ivory
+        pt-[108px]
+        md:min-h-[860px]
+        md:pt-36
+        lg:min-h-[940px]
+        lg:pt-44
+      "
     >
-      {/* CINEMATIC BACKGROUND */}
+      {/* =====================================================
+          CINEMATIC BACKGROUND
+      ====================================================== */}
       <div
-        className="absolute inset-[-6%] transition-transform duration-300 ease-out will-change-transform"
+        ref={imageWrapRef}
+        className={`absolute inset-[-3%] will-change-transform transition-[opacity,filter,transform] duration-[1800ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          loaded
+            ? "opacity-100 blur-0"
+            : "opacity-0 blur-[2px]"
+        }`}
         style={{
-          transform: `
-            translate3d(${imageX}px, ${imageY}px, 0)
-            scale(${imageScale})
-          `,
+          transform: loaded
+            ? "translate3d(0,0,0) scale(1.04)"
+            : "translate3d(0,0,0) scale(1.075)",
         }}
       >
         <Image
@@ -350,172 +501,252 @@ export default function BrilliantsCinematicHero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center"
+          className="
+            object-cover
+            object-[58%_50%]
+            md:object-[55%_50%]
+            lg:object-center
+          "
         />
       </div>
 
-      {/* READABILITY OVERLAY */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#F7F3EB]/92 via-[#F7F3EB]/38 to-transparent" />
-
-      {/* LOWER SOFT VEIL */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#F7F3EB]/18 via-transparent to-[#F7F3EB]/6" />
-
-      {/* MOVING DIAMOND LIGHT */}
+      {/* =====================================================
+          READABILITY OVERLAY
+      ====================================================== */}
       <div
-        className="pointer-events-none absolute inset-0 transition-[background] duration-300 ease-out"
-        style={{
-          background: `
-            radial-gradient(
-              circle at ${lightX}% ${lightY}%,
-              rgba(255,255,255,0.28) 0%,
-              rgba(232,238,246,0.13) 17%,
-              rgba(200,169,106,0.055) 31%,
-              rgba(255,255,255,0) 53%
-            )
-          `,
-        }}
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          bg-gradient-to-r
+          from-[#F7F3EB]/97
+          via-[#F7F3EB]/76
+          to-[#F7F3EB]/16
+          md:from-[#F7F3EB]/94
+          md:via-[#F7F3EB]/50
+          md:to-transparent
+          lg:from-[#F7F3EB]/91
+          lg:via-[#F7F3EB]/38
+        "
       />
 
-      {/* SUBTLE VIGNETTE */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_48%,rgba(65,54,46,0.08)_100%)]" />
-
-      {/* CONTENT */}
+      {/* =====================================================
+          SOFT LOWER VEIL
+      ====================================================== */}
       <div
-        className="relative mx-auto max-w-[1440px] px-6 transition-transform duration-300 ease-out will-change-transform md:px-10 lg:px-16 xl:px-20"
-        style={{
-          transform: `
-            translate3d(
-              ${contentX}px,
-              ${contentY}px,
-              0
-            )
-          `,
-        }}
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          bg-gradient-to-t
+          from-[#F7F3EB]/38
+          via-transparent
+          to-[#F7F3EB]/8
+          md:from-[#F7F3EB]/20
+        "
+      />
+
+      {/* =====================================================
+          DYNAMIC DIAMOND LIGHT
+      ====================================================== */}
+      <div
+        ref={glowRef}
+        className="pointer-events-none absolute inset-0"
+      />
+
+      {/* =====================================================
+          CINEMATIC VIGNETTE
+      ====================================================== */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_52%,rgba(65,54,46,0.065)_100%)]" />
+
+      {/* =====================================================
+          CONTENT
+      ====================================================== */}
+      <div
+        ref={contentRef}
+        className="
+          relative
+          mx-auto
+          max-w-[1440px]
+          px-6
+          will-change-transform
+          md:px-10
+          lg:px-16
+          xl:px-20
+        "
       >
-        {/* TOP HERO CONTENT */}
-        <div className="grid gap-12 pb-20 lg:grid-cols-12 lg:items-end lg:pb-28">
-          {/* LEFT */}
-          <div className="lg:col-span-8">
-            <div
-              className={`flex items-center gap-4 transition-all duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                loaded
-                  ? "translate-y-0 opacity-100"
-                  : "translate-y-5 opacity-0"
-              }`}
-              style={{
-                transitionDelay: "180ms",
-              }}
-            >
-              <span className="flex h-10 w-10 items-center justify-center text-gold">
-                <GemClusterIcon />
-              </span>
-
-              <span className="text-[0.66rem] font-semibold uppercase tracking-[0.34em] text-gold">
-                {copy.eyebrow}
-              </span>
-            </div>
-
-            <h1
-              className="mt-7 max-w-[900px] font-display text-5xl leading-[0.92] tracking-[-0.035em] md:text-6xl lg:text-[5.8rem]"
-              style={{
-                color: "#1B0B20",
-              }}
-            >
-              <span className="block overflow-hidden">
-                <span
-                  className={`block transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                    loaded
-                      ? "translate-y-0 opacity-100"
-                      : "translate-y-[30%] opacity-0"
-                  }`}
-                  style={{
-                    transitionDelay: "280ms",
-                  }}
-                >
-                  {copy.title1}
-                </span>
-              </span>
-
-              <span className="block overflow-hidden">
-                <span
-                  className={`block transition-all duration-[1300ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                    loaded
-                      ? "translate-y-0 opacity-100"
-                      : "translate-y-[30%] opacity-0"
-                  }`}
-                  style={{
-                    transitionDelay: "390ms",
-                  }}
-                >
-                  {copy.title2}
-                </span>
-              </span>
-            </h1>
-          </div>
-
-          {/* RIGHT */}
+        {/* =================================================
+            MAIN HERO
+        ================================================== */}
+        <div
+          className="
+            mx-auto
+            max-w-[1120px]
+            pb-10
+            text-center
+            md:pb-16
+            lg:pb-24
+          "
+        >
+          {/* EYEBROW */}
           <div
-            className={`transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] lg:col-span-4 lg:pb-2 ${
+            className={`flex items-center justify-center gap-3 transition-all duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:gap-4 ${
               loaded
                 ? "translate-y-0 opacity-100"
                 : "translate-y-5 opacity-0"
             }`}
             style={{
-              transitionDelay: "560ms",
+              transitionDelay: "140ms",
             }}
           >
-            <p className="max-w-md text-sm leading-7 text-[#645E5A] md:text-base">
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center text-gold md:h-10 md:w-10">
+              <GemClusterIcon />
+            </span>
+
+            <span className="text-[0.6rem] font-semibold uppercase tracking-[0.3em] text-gold md:text-[0.66rem] md:tracking-[0.34em]">
+              {copy.eyebrow}
+            </span>
+          </div>
+
+          {/* =================================================
+              TITLE
+          ================================================== */}
+          <h1
+            className="
+              mx-auto
+              mt-5
+              max-w-[1050px]
+              font-display
+              text-[2.85rem]
+              leading-[0.92]
+              tracking-[-0.04em]
+              sm:text-[3.2rem]
+              md:mt-7
+              md:text-6xl
+              md:leading-[0.92]
+              lg:text-[5.6rem]
+            "
+            style={{
+              color: "#1B0B20",
+            }}
+          >
+            <span className="block overflow-hidden">
+              <span
+                className={`block transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                  loaded
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-[30%] opacity-0"
+                }`}
+                style={{
+                  transitionDelay: "240ms",
+                }}
+              >
+                {copy.title1}
+              </span>
+            </span>
+
+            <span className="block overflow-hidden">
+              <span
+                className={`block transition-all duration-[1300ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                  loaded
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-[30%] opacity-0"
+                }`}
+                style={{
+                  transitionDelay: "340ms",
+                }}
+              >
+                {copy.title2}
+              </span>
+            </span>
+          </h1>
+
+          {/* =================================================
+              DESCRIPTION
+          ================================================== */}
+          <div
+            className={`mx-auto mt-7 transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:mt-9 ${
+              loaded
+                ? "translate-y-0 opacity-100"
+                : "translate-y-5 opacity-0"
+            }`}
+            style={{
+              transitionDelay: "500ms",
+            }}
+          >
+            <p
+              className="
+                mx-auto
+                max-w-[650px]
+                text-[0.8rem]
+                leading-[1.65rem]
+                text-[#645E5A]
+                md:text-base
+                md:leading-7
+              "
+            >
               {copy.description}
             </p>
 
-            <div className="mt-7 flex items-center gap-4">
-              <span className="h-px w-12 bg-gold" />
+            {/* SINCE */}
+            <div className="mt-6 flex items-center justify-center gap-4 md:mt-7">
+              <span className="h-px w-10 bg-gold md:w-12" />
 
-              <span className="text-[0.58rem] font-semibold uppercase tracking-[0.24em] text-plum-dark/50">
+              <span className="text-[0.52rem] font-semibold uppercase tracking-[0.21em] text-plum-dark/50 md:text-[0.58rem] md:tracking-[0.24em]">
                 {copy.since}
               </span>
+
+              <span className="h-px w-10 bg-gold md:w-12" />
             </div>
           </div>
         </div>
 
-        {/* LOWER STATEMENT */}
+        {/* =================================================
+            LOWER EDITORIAL STATEMENT
+        ================================================== */}
         <div
-          className={`border-t border-plum-dark/10 py-12 transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:py-16 ${
+          className={`mx-auto max-w-[1100px] border-t border-plum-dark/10 py-8 text-center transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:py-12 lg:py-16 ${
             loaded
               ? "translate-y-0 opacity-100"
               : "translate-y-5 opacity-0"
           }`}
           style={{
-            transitionDelay: "740ms",
+            transitionDelay: "650ms",
           }}
         >
-          <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
-            <div className="lg:col-span-3">
-              <span className="text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-[#A98242]">
-                {copy.statementEyebrow}
-              </span>
-            </div>
+          <span className="text-[0.55rem] font-semibold uppercase tracking-[0.27em] text-[#A98242] md:text-[0.62rem] md:tracking-[0.3em]">
+            {copy.statementEyebrow}
+          </span>
 
-            <div className="lg:col-span-9">
-              <p
-                className="max-w-[1000px] font-display text-3xl italic leading-tight md:text-4xl lg:text-5xl"
-                style={{
-                  color: "#1B0B20",
-                }}
-              >
-                {copy.statementBefore}
+          <p
+            className="
+              mx-auto
+              mt-4
+              max-w-[950px]
+              font-display
+              text-[1.7rem]
+              italic
+              leading-[1.12]
+              md:mt-5
+              md:text-4xl
+              md:leading-tight
+              lg:text-5xl
+            "
+            style={{
+              color: "#1B0B20",
+            }}
+          >
+            {copy.statementBefore}
 
-                <span
-                  style={{
-                    color: "#A98242",
-                  }}
-                >
-                  {" "}
-                  {copy.statementAccent}
-                </span>
-              </p>
-            </div>
-          </div>
+            <span
+              style={{
+                color: "#A98242",
+              }}
+            >
+              {" "}
+              {copy.statementAccent}
+            </span>
+          </p>
         </div>
       </div>
     </section>

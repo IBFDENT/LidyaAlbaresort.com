@@ -144,65 +144,75 @@ export default function CategoryCTA({
 }: CategoryCTAProps) {
   const { locale } = useLanguage();
 
-  const text =
-    CTA_TEXT[locale] ?? CTA_TEXT.en;
+  const text = CTA_TEXT[locale] ?? CTA_TEXT.en;
 
   return (
-    <section className="relative overflow-hidden bg-ivory py-20 md:py-24 lg:py-28">
-      {/* Ambient detail */}
+    <section className="relative overflow-hidden bg-ivory py-16 md:py-22 lg:py-24">
+      {/* AMBIENT */}
       <div className="pointer-events-none absolute -left-40 top-10 h-[420px] w-[420px] rounded-full bg-gold/5 blur-3xl" />
 
+      <div className="pointer-events-none absolute -right-40 bottom-0 h-[360px] w-[360px] rounded-full bg-gold/[0.035] blur-3xl" />
+
       <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
-        <div className="grid gap-10 border-y border-plum-dark/10 py-14 md:py-16 lg:grid-cols-12 lg:items-center lg:py-20">
-          {/* TEXT */}
-          <div className="lg:col-span-8">
-            <span className="mb-5 block text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-gold">
+        {/* =====================================================
+            MAIN CTA
+        ====================================================== */}
+        <div className="border-y border-plum-dark/10 py-14 text-center md:py-16 lg:py-20">
+          <div className="mx-auto max-w-[900px]">
+            <span className="mb-5 block text-[0.6rem] font-semibold uppercase tracking-[0.3em] text-gold md:text-[0.62rem]">
               {text.eyebrow}
             </span>
 
             <h2
-              className="max-w-[820px] font-display text-4xl leading-[0.98] tracking-[-0.03em] md:text-5xl lg:text-6xl"
+              className="mx-auto max-w-[820px] font-display text-[2.35rem] leading-[0.98] tracking-[-0.03em] md:text-5xl lg:text-6xl"
               style={{ color: "#1B0B20" }}
             >
               {title}
             </h2>
 
-            <p className="mt-6 max-w-xl text-sm leading-7 text-grey md:text-base">
+            <p className="mx-auto mt-6 max-w-[620px] text-sm leading-7 text-grey md:text-base">
               {sub}
             </p>
-          </div>
 
-          {/* ACTIONS */}
-          <div className="lg:col-span-4 lg:text-right">
-            <a
-              href="/#contact"
-              className="inline-flex w-full items-center justify-between bg-gold px-7 py-4 text-[0.66rem] font-semibold uppercase tracking-[0.2em] text-plum-dark transition-all duration-500 hover:bg-gold-light md:w-auto md:min-w-[300px]"
-            >
-              {text.appointment}
-              <span>→</span>
-            </a>
+            {/* ACTIONS */}
+            <div className="mt-9 flex flex-col items-center justify-center gap-5">
+              <a
+                href="/#contact"
+                className="group inline-flex w-full max-w-[390px] items-center justify-center gap-5 bg-gold px-7 py-4 text-center text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-plum-dark transition-all duration-500 hover:bg-gold-light md:w-auto md:min-w-[330px] md:text-[0.66rem] md:tracking-[0.2em]"
+              >
+                <span>{text.appointment}</span>
 
-            <div className="mt-5">
+                <span className="transition-transform duration-500 group-hover:translate-x-1">
+                  →
+                </span>
+              </a>
+
               <a
                 href="/"
-                className="inline-flex items-center gap-3 text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-plum-dark/55 transition-colors hover:text-gold"
+                className="group inline-flex items-center justify-center gap-3 text-[0.58rem] font-semibold uppercase tracking-[0.18em] text-plum-dark/50 transition-colors duration-300 hover:text-gold md:text-[0.62rem]"
               >
-                <span>←</span>
-                {text.backHome}
+                <span className="transition-transform duration-300 group-hover:-translate-x-1">
+                  ←
+                </span>
+
+                <span>{text.backHome}</span>
               </a>
             </div>
           </div>
         </div>
 
-        {/* CLOSING LINE */}
+        {/* =====================================================
+            CLOSING STATEMENT
+        ====================================================== */}
         <div className="mx-auto mt-14 max-w-[980px] text-center md:mt-16">
           <span className="mx-auto mb-6 block h-px w-14 bg-gold" />
 
           <p
-            className="font-display text-3xl italic leading-tight md:text-4xl lg:text-5xl"
+            className="font-display text-[1.9rem] italic leading-[1.12] md:text-4xl lg:text-5xl"
             style={{ color: "#1B0B20" }}
           >
             {text.closingBefore}
+
             <span style={{ color: "#C8A96A" }}>
               {" "}
               {text.closingAccent}

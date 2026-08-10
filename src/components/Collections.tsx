@@ -123,23 +123,23 @@ export default function Collections() {
 
       <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
         {/* SECTION INTRO */}
-        <div className="mb-16 grid items-end gap-8 md:mb-20 lg:grid-cols-12 lg:gap-12">
+        <div className="mb-16 grid items-end gap-8 text-center md:mb-20 md:text-left lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-8">
             <span className="mb-5 block text-[0.68rem] font-semibold uppercase tracking-[0.32em] text-gold">
               {dict.collections.eyebrow}
             </span>
 
-            <h2 className="max-w-[850px] font-display text-5xl leading-[0.95] tracking-[-0.025em] text-plum-dark md:text-6xl lg:text-7xl">
+            <h2 className="mx-auto max-w-[850px] font-display text-5xl leading-[0.95] tracking-[-0.025em] text-plum-dark md:mx-0 md:text-6xl lg:text-7xl">
               {dict.collections.title}
             </h2>
           </div>
 
           <div className="lg:col-span-4 lg:pb-2">
-            <p className="max-w-md text-sm leading-7 text-grey md:text-base">
+            <p className="mx-auto max-w-md text-sm leading-7 text-grey md:mx-0 md:text-base">
               {dict.collections.sub}
             </p>
 
-            <div className="mt-7 flex items-center gap-4">
+            <div className="mt-7 flex items-center justify-center gap-4 md:justify-start">
               <span className="h-px w-12 bg-gold" />
 
               <span className="text-[0.6rem] font-semibold uppercase tracking-[0.26em] text-plum-dark/55">
@@ -183,24 +183,19 @@ export default function Collections() {
                 {/* SUBTLE DARKENING */}
                 <div className="absolute inset-0 bg-plum-dark/5 transition-colors duration-700 group-hover:bg-plum-dark/15" />
 
-                {/* NUMBER */}
-                <span className="absolute right-5 top-5 z-10 text-[0.62rem] font-semibold tracking-[0.22em] text-brand-white/60 md:right-7 md:top-7">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-
                 {/* CONTENT */}
-                <div className="absolute inset-x-0 bottom-0 z-10 p-6 md:p-8 lg:p-10">
+                <div className="absolute inset-x-0 bottom-0 z-10 p-6 text-center md:p-8 md:text-left lg:p-10">
                   <span className="block text-[0.62rem] font-semibold uppercase tracking-[0.24em] text-gold">
                     {dict.nav.collections}
                   </span>
 
-                  <div className="mt-3 flex items-end justify-between gap-5">
-                    <div>
+                  <div className="mt-3 flex items-end justify-center gap-5 md:justify-between">
+                    <div className="mx-auto md:mx-0">
                       <h3 className="font-display text-3xl leading-none text-brand-white md:text-4xl lg:text-[2.8rem]">
                         {localized(collection.name, locale)}
                       </h3>
 
-                      <p className="mt-3 max-w-md text-sm leading-6 text-brand-white/70">
+                      <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-brand-white/70 md:mx-0">
                         {localized(collection.description, locale)}
                       </p>
                     </div>

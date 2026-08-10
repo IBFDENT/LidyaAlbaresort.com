@@ -317,20 +317,20 @@ export default function Boutiques() {
   return (
     <section
       id="boutiques"
-      className="relative overflow-hidden bg-ivory py-24 md:py-30 lg:py-32"
+      className="relative overflow-hidden bg-ivory py-20 md:py-30 lg:py-32"
     >
       <div className="pointer-events-none absolute -left-40 top-10 h-[420px] w-[420px] rounded-full bg-gold/5 blur-3xl" />
 
-      <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
+      <div className="relative mx-auto max-w-[1440px] px-5 sm:px-6 md:px-10 lg:px-16 xl:px-20">
         {/* INTRO */}
-        <div className="mb-14 grid gap-8 lg:mb-18 lg:grid-cols-12 lg:items-end">
+        <div className="mb-12 grid gap-8 text-center lg:mb-18 lg:grid-cols-12 lg:items-end lg:text-left">
           <div className="lg:col-span-8">
             <span className="mb-5 block text-[0.68rem] font-semibold uppercase tracking-[0.34em] text-gold">
               {copy.eyebrow}
             </span>
 
             <h2
-              className="max-w-[900px] font-display text-5xl leading-[0.95] tracking-[-0.03em] md:text-6xl lg:text-7xl"
+              className="mx-auto max-w-[900px] font-display text-4xl leading-[0.98] tracking-[-0.03em] sm:text-5xl md:text-6xl lg:mx-0 lg:text-7xl"
               style={{ color: "#1B0B20" }}
             >
               {copy.title}
@@ -338,11 +338,11 @@ export default function Boutiques() {
           </div>
 
           <div className="lg:col-span-4 lg:pb-2">
-            <p className="max-w-md text-sm leading-7 text-grey md:text-base">
+            <p className="mx-auto max-w-md text-sm leading-7 text-grey md:text-base lg:mx-0">
               {copy.intro}
             </p>
 
-            <div className="mt-7 flex items-center gap-4">
+            <div className="mt-7 flex items-center justify-center gap-4 lg:justify-start">
               <span className="h-px w-12 bg-gold" />
 
               <span className="text-[0.6rem] font-semibold uppercase tracking-[0.26em] text-plum-dark/45">
@@ -354,7 +354,7 @@ export default function Boutiques() {
 
         {/* BOUTIQUES GRID */}
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:gap-6">
-          {BOUTIQUES.map((boutique, index) => {
+          {BOUTIQUES.map((boutique) => {
             const imagePosition =
               BOUTIQUE_IMAGE_POSITIONS[boutique.id] ??
               "object-center";
@@ -378,7 +378,7 @@ export default function Boutiques() {
             return (
               <article
                 key={boutique.id}
-                className="group relative min-h-[500px] overflow-hidden bg-plum-dark md:min-h-[540px] lg:min-h-[580px]"
+                className="group relative min-h-[460px] overflow-hidden bg-plum-dark sm:min-h-[500px] md:min-h-[540px] lg:min-h-[580px]"
               >
                 <Image
                   src={image}
@@ -388,24 +388,20 @@ export default function Boutiques() {
                   className={`object-cover ${imagePosition} transition-transform duration-[1300ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.035]`}
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-plum-dark/95 via-plum-dark/28 to-plum-dark/5" />
+                <div className="absolute inset-0 bg-gradient-to-t from-plum-dark/95 via-plum-dark/30 to-plum-dark/8" />
 
                 <div className="absolute inset-0 bg-plum-dark/5 transition-colors duration-700 group-hover:bg-plum-dark/12" />
 
-                <span className="absolute right-6 top-6 z-10 text-[0.62rem] font-semibold tracking-[0.24em] text-brand-white/55 md:right-8 md:top-8">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-
-                <div className="absolute inset-x-0 bottom-0 z-10 p-6 md:p-8 lg:p-9">
+                <div className="absolute inset-x-0 bottom-0 z-10 p-6 text-center md:p-8 lg:p-9 lg:text-left">
                   <span className="block text-[0.62rem] font-semibold uppercase tracking-[0.24em] text-gold">
                     {copy.label}
                   </span>
 
                   <h3
-                    className={`mt-3 max-w-[580px] font-display leading-[1.02] tracking-[-0.02em] ${
+                    className={`mx-auto mt-3 max-w-[580px] font-display leading-[1.02] tracking-[-0.02em] lg:mx-0 ${
                       boutique.id === "manavgat"
-                        ? "text-[2rem] md:text-[2.35rem] lg:text-[2.65rem]"
-                        : "text-3xl md:text-4xl lg:text-[2.65rem]"
+                        ? "text-[1.85rem] sm:text-[2rem] md:text-[2.35rem] lg:text-[2.65rem]"
+                        : "text-[1.85rem] sm:text-3xl md:text-4xl lg:text-[2.65rem]"
                     }`}
                     style={{ color: "#F5EFE6" }}
                   >
@@ -416,13 +412,13 @@ export default function Boutiques() {
                   </h3>
 
                   {address && (
-                    <p className="mt-4 max-w-[520px] text-[0.82rem] leading-6 text-brand-white/65 md:text-sm">
+                    <p className="mx-auto mt-4 max-w-[520px] text-[0.8rem] leading-6 text-brand-white/65 sm:text-[0.82rem] md:text-sm lg:mx-0">
                       {address}
                     </p>
                   )}
 
-                  <div className="mt-6 flex items-center justify-between gap-5 border-t border-brand-white/15 pt-5">
-                    <span className="text-[0.58rem] font-semibold uppercase tracking-[0.2em] text-brand-white/55 md:text-[0.6rem]">
+                  <div className="mt-6 flex flex-col items-center gap-4 border-t border-brand-white/15 pt-5 lg:flex-row lg:justify-between lg:gap-5">
+                    <span className="text-[0.56rem] font-semibold uppercase tracking-[0.18em] text-brand-white/55 sm:text-[0.58rem] md:text-[0.6rem]">
                       {servicesText}
                     </span>
 

@@ -274,7 +274,10 @@ export default function PearlsCinematicHero() {
     const content = contentRef.current;
     const glow = glowRef.current;
 
-    if (!section || !imageWrap || !content || !glow) return;
+    if (!section || !imageWrap || !content || !glow) {
+      setLoaded(true);
+      return;
+    }
 
     const reducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
@@ -282,14 +285,12 @@ export default function PearlsCinematicHero() {
 
     const finePointer = window.matchMedia("(pointer: fine)").matches;
 
-    if (reducedMotion) {
+    if (reducedMotion || !finePointer) {
       setLoaded(true);
       return;
     }
 
     const updatePointer = (event: PointerEvent) => {
-      if (!finePointer) return;
-
       const rect = section.getBoundingClientRect();
 
       const x =
@@ -333,31 +334,31 @@ export default function PearlsCinematicHero() {
       const y = pointerCurrent.current.y;
       const scroll = scrollCurrent.current;
 
-      const imageX = x * 11;
-      const imageY = y * 7 - scroll * 24;
-      const imageScale = 1.045 + scroll * 0.016;
+      const imageX = x * 10;
+      const imageY = y * 6 - scroll * 20;
+      const imageScale = 1.04 + scroll * 0.014;
 
       imageWrap.style.transform = `
         translate3d(${imageX}px, ${imageY}px, 0)
         scale(${imageScale})
       `;
 
-      const contentX = x * -3.6;
-      const contentY = y * -2.4 - scroll * 6;
+      const contentX = x * -3;
+      const contentY = y * -2 - scroll * 5;
 
       content.style.transform = `
         translate3d(${contentX}px, ${contentY}px, 0)
       `;
 
-      const glowX = 48 + x * 9;
-      const glowY = 42 + y * 7;
+      const glowX = 48 + x * 8;
+      const glowY = 42 + y * 6;
 
       glow.style.background = `
         radial-gradient(
           circle at ${glowX}% ${glowY}%,
-          rgba(255, 244, 218, 0.23) 0%,
-          rgba(225, 190, 126, 0.08) 20%,
-          rgba(255, 255, 255, 0) 48%
+          rgba(255, 244, 218, 0.22) 0%,
+          rgba(225, 190, 126, 0.07) 21%,
+          rgba(255, 255, 255, 0) 50%
         )
       `;
 
@@ -377,7 +378,7 @@ export default function PearlsCinematicHero() {
 
     const loadTimer = window.setTimeout(() => {
       setLoaded(true);
-    }, 80);
+    }, 60);
 
     return () => {
       section.removeEventListener("pointermove", updatePointer);
@@ -396,19 +397,29 @@ export default function PearlsCinematicHero() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[820px] overflow-hidden bg-ivory pt-36 md:min-h-[900px] md:pt-40 lg:min-h-[940px] lg:pt-44"
+      className="
+        relative
+        min-h-[720px]
+        overflow-hidden
+        bg-ivory
+        pt-[108px]
+        md:min-h-[860px]
+        md:pt-36
+        lg:min-h-[940px]
+        lg:pt-44
+      "
     >
       <div
         ref={imageWrapRef}
-        className={`absolute inset-[-3%] will-change-transform transition-[opacity,filter] duration-[1800ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+        className={`absolute inset-[-3%] will-change-transform transition-[opacity,filter,transform] duration-[1800ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
           loaded
             ? "opacity-100 blur-0"
             : "opacity-0 blur-[2px]"
         }`}
         style={{
           transform: loaded
-            ? "translate3d(0,0,0) scale(1.045)"
-            : "translate3d(0,0,0) scale(1.085)",
+            ? "translate3d(0,0,0) scale(1.04)"
+            : "translate3d(0,0,0) scale(1.075)",
         }}
       >
         <Image
@@ -417,46 +428,110 @@ export default function PearlsCinematicHero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center"
+          className="
+            object-cover
+            object-[58%_50%]
+            md:object-[55%_50%]
+            lg:object-center
+          "
         />
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-r from-[#F7F3EB]/92 via-[#F7F3EB]/42 to-transparent" />
+      <div
+        className="
+          absolute
+          inset-0
+          bg-gradient-to-r
+          from-[#F7F3EB]/97
+          via-[#F7F3EB]/78
+          to-[#F7F3EB]/16
+          md:from-[#F7F3EB]/94
+          md:via-[#F7F3EB]/52
+          md:to-transparent
+          lg:from-[#F7F3EB]/92
+          lg:via-[#F7F3EB]/42
+        "
+      />
 
-      <div className="absolute inset-0 bg-gradient-to-t from-[#F7F3EB]/24 via-transparent to-[#F7F3EB]/8" />
+      <div
+        className="
+          absolute
+          inset-0
+          bg-gradient-to-t
+          from-[#F7F3EB]/40
+          via-transparent
+          to-[#F7F3EB]/10
+          md:from-[#F7F3EB]/24
+        "
+      />
 
       <div
         ref={glowRef}
         className="pointer-events-none absolute inset-0"
       />
 
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_50%,rgba(84,52,27,0.08)_100%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_52%,rgba(84,52,27,0.065)_100%)]" />
 
       <div
         ref={contentRef}
-        className="relative mx-auto max-w-[1440px] px-6 will-change-transform md:px-10 lg:px-16 xl:px-20"
+        className="
+          relative
+          mx-auto
+          max-w-[1440px]
+          px-6
+          will-change-transform
+          md:px-10
+          lg:px-16
+          xl:px-20
+        "
       >
-        <div className="grid gap-12 pb-20 lg:grid-cols-12 lg:items-end lg:pb-28">
-          <div className="lg:col-span-8">
+        <div
+          className="
+            grid
+            gap-7
+            pb-10
+            md:gap-10
+            md:pb-16
+            lg:grid-cols-12
+            lg:items-end
+            lg:gap-12
+            lg:pb-28
+          "
+        >
+          <div className="text-center lg:col-span-8 lg:text-left">
             <div
-              className={`flex items-center gap-4 transition-all duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+              className={`flex items-center justify-center gap-3 transition-all duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:gap-4 lg:justify-start ${
                 loaded
                   ? "translate-y-0 opacity-100"
                   : "translate-y-5 opacity-0"
               }`}
-              style={{ transitionDelay: "180ms" }}
+              style={{ transitionDelay: "140ms" }}
             >
-              <span className="flex h-10 w-10 items-center justify-center text-gold">
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center text-gold md:h-10 md:w-10">
                 <PearlIcon />
               </span>
 
-              <span className="text-[0.66rem] font-semibold uppercase tracking-[0.34em] text-gold">
+              <span className="text-[0.6rem] font-semibold uppercase tracking-[0.3em] text-gold md:text-[0.66rem] md:tracking-[0.34em]">
                 {copy.eyebrow}
               </span>
             </div>
 
             <h1
-              className="mt-7 max-w-[800px] font-display text-5xl leading-[0.92] tracking-[-0.035em] md:text-6xl lg:text-[5.8rem]"
+              className="
+                mx-auto
+                mt-5
+                max-w-[760px]
+                font-display
+                text-[2.85rem]
+                leading-[0.91]
+                tracking-[-0.04em]
+                sm:text-[3.15rem]
+                md:mt-7
+                md:text-6xl
+                md:leading-[0.92]
+                lg:mx-0
+                lg:text-[5.8rem]
+              "
               style={{ color: "#1B0B20" }}
             >
               <span className="block overflow-hidden">
@@ -466,7 +541,7 @@ export default function PearlsCinematicHero() {
                       ? "translate-y-0 opacity-100"
                       : "translate-y-[30%] opacity-0"
                   }`}
-                  style={{ transitionDelay: "280ms" }}
+                  style={{ transitionDelay: "240ms" }}
                 >
                   {copy.title1}
                 </span>
@@ -479,7 +554,7 @@ export default function PearlsCinematicHero() {
                       ? "translate-y-0 opacity-100"
                       : "translate-y-[30%] opacity-0"
                   }`}
-                  style={{ transitionDelay: "370ms" }}
+                  style={{ transitionDelay: "320ms" }}
                 >
                   {copy.title2}
                 </span>
@@ -492,7 +567,7 @@ export default function PearlsCinematicHero() {
                       ? "translate-y-0 opacity-100"
                       : "translate-y-[30%] opacity-0"
                   }`}
-                  style={{ transitionDelay: "460ms" }}
+                  style={{ transitionDelay: "400ms" }}
                 >
                   {copy.title3}
                 </span>
@@ -501,21 +576,33 @@ export default function PearlsCinematicHero() {
           </div>
 
           <div
-            className={`lg:col-span-4 lg:pb-2 transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+            className={`text-center transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] lg:col-span-4 lg:pb-2 lg:text-left ${
               loaded
                 ? "translate-y-0 opacity-100"
                 : "translate-y-5 opacity-0"
             }`}
-            style={{ transitionDelay: "590ms" }}
+            style={{ transitionDelay: "520ms" }}
           >
-            <p className="max-w-md text-sm leading-7 text-[#645E5A] md:text-base">
+            <p
+              className="
+                mx-auto
+                max-w-[340px]
+                text-[0.78rem]
+                leading-[1.65rem]
+                text-[#645E5A]
+                sm:max-w-md
+                md:text-base
+                md:leading-7
+                lg:mx-0
+              "
+            >
               {copy.description}
             </p>
 
-            <div className="mt-7 flex items-center gap-4">
-              <span className="h-px w-12 bg-gold" />
+            <div className="mt-5 flex items-center justify-center gap-3 md:mt-7 md:gap-4 lg:justify-start">
+              <span className="h-px w-9 bg-gold md:w-12" />
 
-              <span className="text-[0.58rem] font-semibold uppercase tracking-[0.24em] text-plum-dark/50">
+              <span className="text-[0.52rem] font-semibold uppercase tracking-[0.21em] text-plum-dark/50 md:text-[0.58rem] md:tracking-[0.24em]">
                 {copy.since}
               </span>
             </div>
@@ -523,23 +610,34 @@ export default function PearlsCinematicHero() {
         </div>
 
         <div
-          className={`border-t border-plum-dark/10 py-12 transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:py-16 ${
+          className={`border-t border-plum-dark/10 py-7 transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:py-12 lg:py-16 ${
             loaded
               ? "translate-y-0 opacity-100"
               : "translate-y-5 opacity-0"
           }`}
-          style={{ transitionDelay: "760ms" }}
+          style={{ transitionDelay: "660ms" }}
         >
-          <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
+          <div className="grid gap-4 text-center md:gap-6 lg:grid-cols-12 lg:items-center lg:gap-8 lg:text-left">
             <div className="lg:col-span-3">
-              <span className="text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-[#A98242]">
+              <span className="text-[0.55rem] font-semibold uppercase tracking-[0.27em] text-[#A98242] md:text-[0.62rem] md:tracking-[0.3em]">
                 {copy.statementEyebrow}
               </span>
             </div>
 
             <div className="lg:col-span-9">
               <p
-                className="max-w-[1000px] font-display text-3xl italic leading-tight md:text-4xl lg:text-5xl"
+                className="
+                  mx-auto
+                  max-w-[900px]
+                  font-display
+                  text-[1.65rem]
+                  italic
+                  leading-[1.12]
+                  md:text-4xl
+                  md:leading-tight
+                  lg:mx-0
+                  lg:text-5xl
+                "
                 style={{ color: "#1B0B20" }}
               >
                 {copy.statementBefore}

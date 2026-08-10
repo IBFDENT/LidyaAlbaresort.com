@@ -472,14 +472,15 @@ export default function About() {
       <div className="pointer-events-none absolute -right-40 bottom-0 h-[480px] w-[480px] rounded-full bg-gold/5 blur-3xl" />
 
       <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
-        <div className="mb-14 grid gap-8 lg:mb-20 lg:grid-cols-12 lg:items-end">
+        {/* INTRO */}
+        <div className="mb-14 grid gap-8 text-center lg:mb-20 lg:grid-cols-12 lg:items-end lg:text-left">
           <div className="lg:col-span-8">
             <span className="mb-5 block text-[0.68rem] font-semibold uppercase tracking-[0.34em] text-gold">
               {copy.eyebrow}
             </span>
 
             <h2
-              className="max-w-[920px] font-display text-5xl leading-[0.95] tracking-[-0.03em] md:text-6xl lg:text-7xl"
+              className="mx-auto max-w-[920px] font-display text-5xl leading-[0.95] tracking-[-0.03em] md:text-6xl lg:mx-0 lg:text-7xl"
               style={{ color: "#F5EFE6" }}
             >
               {copy.title}
@@ -487,7 +488,7 @@ export default function About() {
           </div>
 
           <div className="lg:col-span-4 lg:pb-2">
-            <div className="flex items-end gap-5">
+            <div className="flex items-end justify-center gap-5 lg:justify-start">
               <span
                 className="font-display text-6xl leading-none md:text-7xl lg:text-8xl"
                 style={{ color: "#E8D8B5" }}
@@ -502,6 +503,7 @@ export default function About() {
           </div>
         </div>
 
+        {/* IMAGE + STORY */}
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
           <div className="lg:col-span-7">
             <div className="group relative min-h-[560px] overflow-hidden md:min-h-[680px] lg:min-h-[760px]">
@@ -515,7 +517,7 @@ export default function About() {
 
               <div className="absolute inset-0 bg-gradient-to-t from-plum-dark/45 via-transparent to-transparent" />
 
-              <div className="absolute bottom-6 left-6 md:bottom-8 md:left-8">
+              <div className="absolute inset-x-0 bottom-6 text-center md:bottom-8 lg:left-8 lg:right-auto lg:text-left">
                 <span className="text-[0.62rem] font-semibold uppercase tracking-[0.24em] text-gold">
                   {copy.craftsmanship}
                 </span>
@@ -523,9 +525,9 @@ export default function About() {
             </div>
           </div>
 
-          <div className="flex flex-col justify-center lg:col-span-5 lg:pl-4">
+          <div className="flex flex-col justify-center text-center lg:col-span-5 lg:pl-4 lg:text-left">
             <p
-              className="font-display text-2xl italic leading-snug md:text-3xl lg:text-4xl"
+              className="mx-auto max-w-xl font-display text-2xl italic leading-snug md:text-3xl lg:mx-0 lg:text-4xl"
               style={{ color: "#E8D8B5" }}
             >
               {copy.lead}
@@ -535,7 +537,7 @@ export default function About() {
               {body.map((paragraph, index) => (
                 <p
                   key={index}
-                  className="max-w-xl text-sm leading-7 text-brand-white/68 md:text-base"
+                  className="mx-auto max-w-xl text-sm leading-7 text-brand-white/68 md:text-base lg:mx-0"
                 >
                   {paragraph}
                 </p>
@@ -561,25 +563,23 @@ export default function About() {
           </div>
         </div>
 
-        <div className="mt-14 border-t border-brand-white/12 pt-7 md:mt-16">
-          <div className="flex flex-wrap items-center justify-between gap-x-8 gap-y-5">
-            {values.map((value, index) => (
-              <div
-                key={`${value}-${index}`}
-                className="flex items-center gap-4"
-              >
-                <span className="text-[0.58rem] font-semibold tracking-[0.22em] text-gold/70">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
+        {/* VALUES */}
+<div className="mt-14 border-t border-brand-white/12 pt-8 md:mt-16">
+  <div className="flex flex-col items-center justify-center gap-6 text-center md:flex-row md:flex-wrap md:gap-x-12 md:gap-y-6">
+    {values.map((value) => (
+      <div
+        key={value}
+        className="flex items-center justify-center"
+      >
+        <span className="text-[0.64rem] font-semibold uppercase tracking-[0.2em] text-brand-white/65 transition-colors duration-500 hover:text-gold">
+          {value}
+        </span>
+      </div>
+    ))}
+  </div>
+</div>
 
-                <span className="text-[0.64rem] font-semibold uppercase tracking-[0.2em] text-brand-white/65">
-                  {value}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-
+        {/* CLOSING */}
         <div className="mx-auto mt-14 max-w-[1000px] text-center md:mt-16">
           <span className="mx-auto mb-6 block h-px w-14 bg-gold" />
 
@@ -588,6 +588,7 @@ export default function About() {
             style={{ color: "#F5EFE6" }}
           >
             {copy.closingBefore}
+
             <span style={{ color: "#E8D8B5" }}>
               {" "}
               {copy.closingAccent}

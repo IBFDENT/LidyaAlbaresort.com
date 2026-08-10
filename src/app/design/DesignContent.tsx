@@ -27,13 +27,6 @@ const SEASON_ICONS = {
   winter: SnowflakeIcon,
 } as const;
 
-const SEASON_NUMBERS = {
-  spring: "01",
-  summer: "02",
-  autumn: "03",
-  winter: "04",
-} as const;
-
 type DesignCopy = {
   hero: {
     eyebrow: string;
@@ -45,6 +38,7 @@ type DesignCopy = {
     statementAccent: string;
     imageAlt: string;
   };
+
   seasons: {
     eyebrow: string;
     title: string;
@@ -55,6 +49,7 @@ type DesignCopy = {
     closingBefore: string;
     closingAccent: string;
   };
+
   philosophy: {
     eyebrow: string;
     title: string;
@@ -65,6 +60,7 @@ type DesignCopy = {
       text: string;
     }[];
   };
+
   cta: {
     title: string;
     sub: string;
@@ -85,6 +81,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
       imageAlt:
         "LIDYA jewellery collection arranged on natural stone with rings, earrings, bracelets and necklaces",
     },
+
     seasons: {
       eyebrow: "Four Seasons",
       title: "Designed for the",
@@ -96,6 +93,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
       closingBefore: "Design changes with the season.",
       closingAccent: "Craftsmanship does not.",
     },
+
     philosophy: {
       eyebrow: "Our Design Philosophy",
       title: "Created to feel individual,",
@@ -120,6 +118,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
         },
       ],
     },
+
     cta: {
       title: "Discover the latest LIDYA designs in person",
       sub:
@@ -140,6 +139,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
       imageAlt:
         "LIDYA Schmuckkollektion mit Ringen, Ohrringen, Armbändern und Halsketten auf Naturstein",
     },
+
     seasons: {
       eyebrow: "Vier Jahreszeiten",
       title: "Entworfen für den",
@@ -151,6 +151,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
       closingBefore: "Design verändert sich mit der Saison.",
       closingAccent: "Handwerkskunst nicht.",
     },
+
     philosophy: {
       eyebrow: "Unsere Designphilosophie",
       title: "Geschaffen, um individuell zu wirken,",
@@ -175,6 +176,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
         },
       ],
     },
+
     cta: {
       title: "Entdecken Sie die neuesten LIDYA Designs persönlich",
       sub:
@@ -195,6 +197,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
       imageAlt:
         "Doğal taş üzerinde yüzük, küpe, bileklik ve kolyelerden oluşan LIDYA mücevher koleksiyonu",
     },
+
     seasons: {
       eyebrow: "Dört Mevsim",
       title: "Yılın",
@@ -207,6 +210,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
       closingBefore: "Tasarım mevsimlerle değişir.",
       closingAccent: "İşçilik değişmez.",
     },
+
     philosophy: {
       eyebrow: "Tasarım Felsefemiz",
       title: "Kişisel hissettirmek için yaratıldı,",
@@ -231,6 +235,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
         },
       ],
     },
+
     cta: {
       title: "En yeni LIDYA tasarımlarını yakından keşfedin",
       sub:
@@ -251,6 +256,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
       imageAlt:
         "Kolekcia šperkov LIDYA s prsteňmi, náušnicami, náramkami a náhrdelníkmi na prírodnom kameni",
     },
+
     seasons: {
       eyebrow: "Štyri ročné obdobia",
       title: "Navrhnuté pre",
@@ -262,6 +268,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
       closingBefore: "Dizajn sa mení s ročnými obdobiami.",
       closingAccent: "Remeselnosť zostáva.",
     },
+
     philosophy: {
       eyebrow: "Naša filozofia dizajnu",
       title: "Vytvorené tak, aby pôsobilo osobito,",
@@ -286,6 +293,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
         },
       ],
     },
+
     cta: {
       title: "Objavte najnovšie dizajny LIDYA osobne",
       sub:
@@ -306,6 +314,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
       imageAlt:
         "Kolekce šperků LIDYA s prsteny, náušnicemi, náramky a náhrdelníky na přírodním kameni",
     },
+
     seasons: {
       eyebrow: "Čtyři roční období",
       title: "Navrženo pro",
@@ -317,6 +326,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
       closingBefore: "Design se mění s ročními obdobími.",
       closingAccent: "Řemeslo zůstává.",
     },
+
     philosophy: {
       eyebrow: "Naše filozofie designu",
       title: "Vytvořeno tak, aby působilo osobitě,",
@@ -341,6 +351,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
         },
       ],
     },
+
     cta: {
       title: "Objevte nejnovější designy LIDYA osobně",
       sub:
@@ -361,6 +372,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
       imageAlt:
         "LIDYA ékszerkollekció gyűrűkkel, fülbevalókkal, karkötőkkel és nyakláncokkal természetes kövön",
     },
+
     seasons: {
       eyebrow: "Négy évszak",
       title: "Az év",
@@ -372,6 +384,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
       closingBefore: "A design változik az évszakokkal.",
       closingAccent: "A kézművesség nem.",
     },
+
     philosophy: {
       eyebrow: "Designfilozófiánk",
       title: "Egyedinek alkotva,",
@@ -396,6 +409,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
         },
       ],
     },
+
     cta: {
       title: "Fedezze fel személyesen a legújabb LIDYA designokat",
       sub:
@@ -416,6 +430,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
       imageAlt:
         "Kolekcja biżuterii LIDYA z pierścionkami, kolczykami, bransoletkami i naszyjnikami na naturalnym kamieniu",
     },
+
     seasons: {
       eyebrow: "Cztery pory roku",
       title: "Projektowane zgodnie z",
@@ -428,6 +443,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
       closingBefore: "Design zmienia się wraz z porami roku.",
       closingAccent: "Rzemiosło pozostaje.",
     },
+
     philosophy: {
       eyebrow: "Nasza filozofia designu",
       title: "Tworzone tak, aby było indywidualne,",
@@ -452,6 +468,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
         },
       ],
     },
+
     cta: {
       title: "Odkryj najnowsze projekty LIDYA osobiście",
       sub:
@@ -472,6 +489,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
       imageAlt:
         "Коллекция украшений LIDYA с кольцами, серьгами, браслетами и ожерельями на натуральном камне",
     },
+
     seasons: {
       eyebrow: "Четыре сезона",
       title: "Создано в",
@@ -483,6 +501,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
       closingBefore: "Дизайн меняется вместе с сезонами.",
       closingAccent: "Мастерство остаётся неизменным.",
     },
+
     philosophy: {
       eyebrow: "Наша философия дизайна",
       title: "Создано, чтобы быть индивидуальным,",
@@ -507,6 +526,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
         },
       ],
     },
+
     cta: {
       title: "Откройте для себя новые дизайны LIDYA лично",
       sub:
@@ -527,6 +547,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
       imageAlt:
         "LIDYA-sieradencollectie met ringen, oorbellen, armbanden en kettingen op natuursteen",
     },
+
     seasons: {
       eyebrow: "Vier seizoenen",
       title: "Ontworpen voor het",
@@ -538,6 +559,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
       closingBefore: "Design verandert met het seizoen.",
       closingAccent: "Vakmanschap niet.",
     },
+
     philosophy: {
       eyebrow: "Onze designfilosofie",
       title: "Gemaakt om persoonlijk te voelen,",
@@ -562,6 +584,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
         },
       ],
     },
+
     cta: {
       title: "Ontdek de nieuwste LIDYA-designs persoonlijk",
       sub:
@@ -582,6 +605,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
       imageAlt:
         "LIDYA-smykkekollektion med ringe, øreringe, armbånd og halskæder arrangeret på natursten",
     },
+
     seasons: {
       eyebrow: "Fire årstider",
       title: "Designet til",
@@ -593,6 +617,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
       closingBefore: "Design ændrer sig med årstiderne.",
       closingAccent: "Håndværket gør ikke.",
     },
+
     philosophy: {
       eyebrow: "Vores designfilosofi",
       title: "Skabt til at føles individuelt,",
@@ -617,6 +642,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
         },
       ],
     },
+
     cta: {
       title: "Oplev de nyeste LIDYA-designs personligt",
       sub:
@@ -637,6 +663,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
       imageAlt:
         "LIDYA-korumallisto, jossa on sormuksia, korvakoruja, rannekoruja ja kaulakoruja luonnonkivellä",
     },
+
     seasons: {
       eyebrow: "Neljä vuodenaikaa",
       title: "Suunniteltu vuoden",
@@ -648,6 +675,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
       closingBefore: "Design muuttuu vuodenaikojen mukana.",
       closingAccent: "Käsityötaito ei.",
     },
+
     philosophy: {
       eyebrow: "Designfilosofiamme",
       title: "Luotu tuntumaan yksilölliseltä,",
@@ -672,6 +700,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
         },
       ],
     },
+
     cta: {
       title: "Tutustu uusimpiin LIDYA-designeihin henkilökohtaisesti",
       sub:
@@ -692,6 +721,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
       imageAlt:
         "LIDYA-smyckeskollektion med ringar, örhängen, armband och halsband arrangerade på natursten",
     },
+
     seasons: {
       eyebrow: "Fyra årstider",
       title: "Designad för",
@@ -703,6 +733,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
       closingBefore: "Design förändras med årstiderna.",
       closingAccent: "Hantverket gör det inte.",
     },
+
     philosophy: {
       eyebrow: "Vår designfilosofi",
       title: "Skapad för att kännas personlig,",
@@ -727,6 +758,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
         },
       ],
     },
+
     cta: {
       title: "Upptäck de senaste LIDYA-designerna personligen",
       sub:
@@ -747,6 +779,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
       imageAlt:
         "Collection de bijoux LIDYA composée de bagues, boucles d’oreilles, bracelets et colliers sur pierre naturelle",
     },
+
     seasons: {
       eyebrow: "Quatre saisons",
       title: "Conçu au",
@@ -758,6 +791,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
       closingBefore: "Le design change avec les saisons.",
       closingAccent: "Le savoir-faire reste.",
     },
+
     philosophy: {
       eyebrow: "Notre philosophie du design",
       title: "Créé pour être individuel,",
@@ -782,6 +816,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
         },
       ],
     },
+
     cta: {
       title: "Découvrez personnellement les dernières créations LIDYA",
       sub:
@@ -802,6 +837,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
       imageAlt:
         "Collezione di gioielli LIDYA con anelli, orecchini, bracciali e collane su pietra naturale",
     },
+
     seasons: {
       eyebrow: "Quattro stagioni",
       title: "Progettato per il",
@@ -813,6 +849,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
       closingBefore: "Il design cambia con le stagioni.",
       closingAccent: "L’artigianalità no.",
     },
+
     philosophy: {
       eyebrow: "La nostra filosofia del design",
       title: "Creato per essere personale,",
@@ -837,6 +874,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
         },
       ],
     },
+
     cta: {
       title: "Scoprite personalmente i più recenti design LIDYA",
       sub:
@@ -857,6 +895,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
       imageAlt:
         "Colección de joyas LIDYA con anillos, pendientes, pulseras y collares sobre piedra natural",
     },
+
     seasons: {
       eyebrow: "Cuatro estaciones",
       title: "Diseñado para el",
@@ -868,6 +907,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
       closingBefore: "El diseño cambia con las estaciones.",
       closingAccent: "La artesanía no.",
     },
+
     philosophy: {
       eyebrow: "Nuestra filosofía de diseño",
       title: "Creado para sentirse individual,",
@@ -892,6 +932,7 @@ const DESIGN_COPY: Record<Locale, DesignCopy> = {
         },
       ],
     },
+
     cta: {
       title: "Descubra personalmente los últimos diseños LIDYA",
       sub:
@@ -911,119 +952,169 @@ export default function DesignContent() {
       <Header />
 
       <main>
-        {/* HERO */}
-        <section className="relative min-h-[820px] overflow-hidden bg-ivory pt-36 md:min-h-[900px] md:pt-40 lg:min-h-[940px] lg:pt-44">
+        {/* =====================================================
+            HERO
+        ====================================================== */}
+        <section className="relative min-h-[760px] overflow-hidden bg-ivory pt-[108px] md:min-h-[900px] md:pt-40 lg:min-h-[940px] lg:pt-44">
           <Image
             src="/images/design/hero-design.png"
             alt={copy.hero.imageAlt}
             fill
             priority
             sizes="100vw"
-            className="object-cover object-center"
+            className="
+              object-cover
+              object-[54%_50%]
+              md:object-center
+            "
           />
 
-          <div className="absolute inset-0 bg-gradient-to-r from-[#F7F3EB]/88 via-[#F7F3EB]/34 to-transparent" />
+          <div
+            className="
+              absolute
+              inset-0
+              bg-[#F7F3EB]/72
+              md:bg-[#F7F3EB]/54
+              lg:bg-[#F7F3EB]/38
+            "
+          />
+
+          <div className="absolute inset-0 bg-gradient-to-b from-[#F7F3EB]/18 via-transparent to-[#F7F3EB]/30" />
 
           <div className="pointer-events-none absolute -left-40 top-10 h-[500px] w-[500px] rounded-full bg-brand-white/16 blur-3xl" />
 
           <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
-            <div className="grid gap-12 pb-20 lg:grid-cols-12 lg:items-end lg:pb-28">
-              <div className="lg:col-span-8">
-                <div className="flex items-center gap-4">
-                  <span className="flex h-9 w-9 items-center justify-center text-gold">
-                    <BlossomIcon />
-                  </span>
+            <div className="mx-auto max-w-[1050px] pb-12 text-center md:pb-16 lg:pb-20">
+              <div className="flex items-center justify-center gap-3 md:gap-4">
+                <span className="flex h-9 w-9 items-center justify-center text-gold">
+                  <BlossomIcon />
+                </span>
 
-                  <span className="text-[0.66rem] font-semibold uppercase tracking-[0.34em] text-gold">
-                    {copy.hero.eyebrow}
-                  </span>
-                </div>
-
-                <h1
-                  className="mt-7 max-w-[980px] font-display text-5xl leading-[0.92] tracking-[-0.035em] md:text-6xl lg:text-[5.8rem]"
-                  style={{ color: "#1B0B20" }}
-                >
-                  {copy.hero.title}
-                </h1>
+                <span className="text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-gold md:text-[0.66rem] md:tracking-[0.34em]">
+                  {copy.hero.eyebrow}
+                </span>
               </div>
 
-              <div className="lg:col-span-4 lg:pb-2">
-                <p className="max-w-md text-sm leading-7 text-[#645E5A] md:text-base">
-                  {copy.hero.lead}
-                </p>
+              <h1
+                className="
+                  mx-auto
+                  mt-6
+                  max-w-[980px]
+                  font-display
+                  text-[2.85rem]
+                  leading-[0.93]
+                  tracking-[-0.04em]
+                  sm:text-[3.2rem]
+                  md:mt-7
+                  md:text-6xl
+                  lg:text-[5.8rem]
+                "
+                style={{ color: "#1B0B20" }}
+              >
+                {copy.hero.title}
+              </h1>
 
-                <div className="mt-7 flex items-center gap-4">
-                  <span className="h-px w-12 bg-gold" />
+              <p
+                className="
+                  mx-auto
+                  mt-7
+                  max-w-[620px]
+                  text-sm
+                  leading-7
+                  text-[#645E5A]
+                  md:mt-8
+                  md:text-base
+                "
+              >
+                {copy.hero.lead}
+              </p>
 
-                  <span className="text-[0.58rem] font-semibold uppercase tracking-[0.24em] text-plum-dark/50">
-                    {copy.hero.since}
-                  </span>
-                </div>
+              <div className="mt-7 flex items-center justify-center gap-4">
+                <span className="h-px w-10 bg-gold md:w-12" />
+
+                <span className="text-[0.55rem] font-semibold uppercase tracking-[0.22em] text-plum-dark/50 md:text-[0.58rem] md:tracking-[0.24em]">
+                  {copy.hero.since}
+                </span>
+
+                <span className="h-px w-10 bg-gold md:w-12" />
               </div>
             </div>
 
-            {/* HERO STATEMENT */}
-            <div className="border-t border-plum-dark/10 py-12 md:py-16">
-              <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
-                <div className="lg:col-span-3">
-                  <span className="text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-gold">
-                    {copy.hero.statementEyebrow}
+            <div className="border-t border-plum-dark/10 py-9 text-center md:py-14 lg:py-16">
+              <div className="mx-auto max-w-[1000px]">
+                <span className="text-[0.58rem] font-semibold uppercase tracking-[0.28em] text-gold md:text-[0.62rem] md:tracking-[0.3em]">
+                  {copy.hero.statementEyebrow}
+                </span>
+
+                <p
+                  className="
+                    mx-auto
+                    mt-5
+                    max-w-[950px]
+                    font-display
+                    text-[1.8rem]
+                    italic
+                    leading-[1.12]
+                    md:text-4xl
+                    lg:text-5xl
+                  "
+                  style={{ color: "#1B0B20" }}
+                >
+                  {copy.hero.statementBefore}
+
+                  <span style={{ color: "#C8A96A" }}>
+                    {" "}
+                    {copy.hero.statementAccent}
                   </span>
-                </div>
-
-                <div className="lg:col-span-9">
-                  <p
-                    className="max-w-[1000px] font-display text-3xl italic leading-tight md:text-4xl lg:text-5xl"
-                    style={{ color: "#1B0B20" }}
-                  >
-                    {copy.hero.statementBefore}
-
-                    <span style={{ color: "#C8A96A" }}>
-                      {" "}
-                      {copy.hero.statementAccent}
-                    </span>
-                  </p>
-                </div>
+                </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* SEASONS */}
+        {/* =====================================================
+            SEASONS
+        ====================================================== */}
         <section className="bg-brand-white py-20 md:py-28 lg:py-32">
           <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
-            <div className="mb-14 grid gap-8 border-b border-plum-dark/10 pb-10 lg:grid-cols-12 lg:items-end">
-              <div className="lg:col-span-8">
-                <span className="block text-[0.64rem] font-semibold uppercase tracking-[0.32em] text-gold">
-                  {copy.seasons.eyebrow}
-                </span>
+            <div className="mx-auto mb-14 max-w-[950px] border-b border-plum-dark/10 pb-12 text-center md:mb-20 md:pb-14">
+              <span className="block text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-gold md:text-[0.64rem] md:tracking-[0.32em]">
+                {copy.seasons.eyebrow}
+              </span>
 
-                <h2
-                  className="mt-6 max-w-[850px] font-display text-4xl leading-[0.96] tracking-[-0.03em] md:text-5xl lg:text-6xl"
-                  style={{ color: "#1B0B20" }}
+              <h2
+                className="
+                  mx-auto
+                  mt-6
+                  max-w-[850px]
+                  font-display
+                  text-4xl
+                  leading-[0.96]
+                  tracking-[-0.03em]
+                  md:text-5xl
+                  lg:text-6xl
+                "
+                style={{ color: "#1B0B20" }}
+              >
+                {copy.seasons.title}
+
+                <span
+                  className="block italic"
+                  style={{ color: "#C8A96A" }}
                 >
-                  {copy.seasons.title}
+                  {copy.seasons.titleAccent}
+                </span>
+              </h2>
 
-                  <span
-                    className="block italic"
-                    style={{ color: "#C8A96A" }}
-                  >
-                    {copy.seasons.titleAccent}
-                  </span>
-                </h2>
-              </div>
-
-              <div className="lg:col-span-4">
-                <p className="max-w-md text-sm leading-7 text-grey md:text-base">
-                  {copy.seasons.description}
-                </p>
-              </div>
+              <p className="mx-auto mt-7 max-w-[620px] text-sm leading-7 text-grey md:text-base">
+                {copy.seasons.description}
+              </p>
             </div>
 
             <div className="space-y-20 md:space-y-24 lg:space-y-32">
               {SEASONS.map((season, index) => {
                 const Icon = SEASON_ICONS[season.id];
-                const number = SEASON_NUMBERS[season.id];
+
                 const reverse = index % 2 === 1;
 
                 const seasonName =
@@ -1037,9 +1128,14 @@ export default function DesignContent() {
                 return (
                   <article
                     key={season.id}
-                    className="grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-12"
+                    className="
+                      grid
+                      gap-8
+                      lg:grid-cols-12
+                      lg:items-center
+                      lg:gap-14
+                    "
                   >
-                    {/* IMAGE */}
                     <div
                       className={
                         reverse
@@ -1051,10 +1147,19 @@ export default function DesignContent() {
                         {season.image ? (
                           <Image
                             src={season.image}
-                            alt={season.imageAlt || seasonName}
+                            alt={
+                              season.imageAlt ||
+                              seasonName
+                            }
                             fill
                             sizes="(min-width: 1024px) 58vw, 100vw"
-                            className="object-cover transition-transform duration-[1500ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.035]"
+                            className="
+                              object-cover
+                              transition-transform
+                              duration-[1500ms]
+                              ease-[cubic-bezier(0.22,1,0.36,1)]
+                              group-hover:scale-[1.035]
+                            "
                           />
                         ) : (
                           <PlaceholderImage
@@ -1065,55 +1170,62 @@ export default function DesignContent() {
 
                         <div className="absolute inset-0 bg-gradient-to-t from-plum-dark/35 via-transparent to-transparent" />
 
-                        <span className="absolute right-6 top-6 text-[0.56rem] font-semibold tracking-[0.22em] text-brand-white/80">
-                          {number}
-                        </span>
+                        <div className="absolute inset-x-0 bottom-6 flex items-center justify-center gap-4 px-5 text-center">
+                          <span className="h-px w-9 bg-brand-white/60 md:w-10" />
 
-                        <div className="absolute bottom-6 left-6 flex items-center gap-4">
-                          <span className="h-px w-10 bg-brand-white/60" />
-
-                          <span className="text-[0.58rem] font-semibold uppercase tracking-[0.24em] text-brand-white/80">
+                          <span className="text-[0.55rem] font-semibold uppercase tracking-[0.22em] text-brand-white/85 md:text-[0.58rem] md:tracking-[0.24em]">
                             {copy.seasons.itemLabel}
                           </span>
+
+                          <span className="h-px w-9 bg-brand-white/60 md:w-10" />
                         </div>
+
+                        <span className="absolute bottom-0 left-1/2 h-[2px] w-0 -translate-x-1/2 bg-gold transition-all duration-700 group-hover:w-full" />
                       </div>
                     </div>
 
-                    {/* TEXT */}
                     <div
                       className={
                         reverse
-                          ? "lg:order-1 lg:col-span-5"
-                          : "lg:col-span-5"
+                          ? "text-center lg:order-1 lg:col-span-5"
+                          : "text-center lg:col-span-5"
                       }
                     >
-                      <div className="flex items-center gap-4">
-                        <span className="flex h-10 w-10 items-center justify-center text-gold">
+                      <div className="flex justify-center">
+                        <span className="flex h-11 w-11 items-center justify-center text-gold">
                           <Icon />
-                        </span>
-
-                        <span className="text-[0.6rem] font-semibold uppercase tracking-[0.28em] text-gold">
-                          {number}
                         </span>
                       </div>
 
                       <h3
-                        className="mt-6 font-display text-4xl md:text-5xl lg:text-6xl"
+                        className="
+                          mx-auto
+                          mt-5
+                          max-w-[560px]
+                          font-display
+                          text-4xl
+                          leading-[1]
+                          tracking-[-0.025em]
+                          md:text-5xl
+                          lg:text-6xl
+                        "
                         style={{ color: "#1B0B20" }}
                       >
                         {seasonName}
                       </h3>
 
-                      <p className="mt-6 max-w-md text-sm leading-7 text-grey md:text-base">
+                      <p className="mx-auto mt-6 max-w-[500px] text-sm leading-7 text-grey md:text-base">
                         {seasonDescription}
                       </p>
 
-                      <div className="mt-8 flex items-center gap-5">
-                        <span className="h-px w-10 bg-gold" />
+                      <div className="mt-8 flex items-center justify-center gap-4">
+                        <span className="h-px w-9 bg-gold md:w-10" />
 
-                        <span className="text-[0.58rem] font-semibold uppercase tracking-[0.22em] text-plum-dark/45">
+                        <span className="max-w-[300px] text-[0.55rem] font-semibold uppercase tracking-[0.2em] text-plum-dark/45 md:text-[0.58rem] md:tracking-[0.22em]">
                           {copy.seasons.handmade}
                         </span>
+
+                        <span className="h-px w-9 bg-gold md:w-10" />
                       </div>
                     </div>
                   </article>
@@ -1121,7 +1233,6 @@ export default function DesignContent() {
               })}
             </div>
 
-            {/* CLOSING STATEMENT */}
             <div className="mx-auto mt-24 max-w-[1000px] text-center md:mt-32">
               <span className="mx-auto mb-7 block h-px w-14 bg-gold" />
 
@@ -1140,66 +1251,92 @@ export default function DesignContent() {
           </div>
         </section>
 
-        {/* DARK DESIGN PHILOSOPHY */}
+        {/* =====================================================
+            DARK DESIGN PHILOSOPHY
+        ====================================================== */}
         <section className="relative overflow-hidden bg-plum-dark py-24 text-brand-white md:py-28 lg:py-32">
           <div className="pointer-events-none absolute -left-40 top-0 h-[480px] w-[480px] rounded-full bg-gold/8 blur-3xl" />
 
+          <div className="pointer-events-none absolute -right-40 bottom-0 h-[440px] w-[440px] rounded-full bg-gold/5 blur-3xl" />
+
           <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
-            <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
-              <div className="lg:col-span-8">
-                <span className="mb-5 block text-[0.66rem] font-semibold uppercase tracking-[0.34em] text-gold">
-                  {copy.philosophy.eyebrow}
-                </span>
+            <div className="mx-auto max-w-[1000px] text-center">
+              <span className="mb-5 block text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-gold md:text-[0.66rem] md:tracking-[0.34em]">
+                {copy.philosophy.eyebrow}
+              </span>
 
-                <h2
-                  className="max-w-[900px] font-display text-4xl leading-[0.98] tracking-[-0.03em] md:text-5xl lg:text-6xl"
-                  style={{ color: "#F5EFE6" }}
+              <h2
+                className="
+                  mx-auto
+                  max-w-[900px]
+                  font-display
+                  text-4xl
+                  leading-[0.98]
+                  tracking-[-0.03em]
+                  md:text-5xl
+                  lg:text-6xl
+                "
+                style={{ color: "#F5EFE6" }}
+              >
+                {copy.philosophy.title}
+
+                <span
+                  className="block italic"
+                  style={{ color: "#E8D8B5" }}
                 >
-                  {copy.philosophy.title}
+                  {copy.philosophy.titleAccent}
+                </span>
+              </h2>
 
-                  <span
-                    className="block italic"
-                    style={{ color: "#E8D8B5" }}
-                  >
-                    {copy.philosophy.titleAccent}
-                  </span>
-                </h2>
-              </div>
+              <p className="mx-auto mt-7 max-w-[650px] text-sm leading-7 text-brand-white/55 md:text-base">
+                {copy.philosophy.description}
+              </p>
 
-              <div className="lg:col-span-4">
-                <p className="max-w-md text-sm leading-7 text-brand-white/55 md:text-base">
-                  {copy.philosophy.description}
-                </p>
-              </div>
+              <span className="mx-auto mt-9 block h-px w-14 bg-gold" />
             </div>
 
-            <div className="mt-16 grid border-t border-brand-white/12 md:grid-cols-3">
-              {copy.philosophy.points.map((item, index) => (
-                <div
-                  key={`${item.title}-${index}`}
-                  className="border-b border-brand-white/12 py-8 md:border-r md:px-8 md:first:pl-0 md:last:border-r-0 md:last:pr-0"
-                >
-                  <span className="text-[0.58rem] font-semibold tracking-[0.22em] text-gold">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-
-                  <h3
-                    className="mt-7 font-display text-2xl md:text-3xl"
-                    style={{ color: "#F5EFE6" }}
+            <div className="mx-auto mt-14 grid max-w-[1180px] border-t border-brand-white/12 md:mt-16 md:grid-cols-3">
+              {copy.philosophy.points.map(
+                (item, index) => (
+                  <div
+                    key={`${item.title}-${index}`}
+                    className="
+                      group
+                      border-b
+                      border-brand-white/12
+                      px-2
+                      py-9
+                      text-center
+                      md:border-r
+                      md:px-8
+                      md:py-12
+                      md:last:border-r-0
+                    "
                   >
-                    {item.title}
-                  </h3>
+                    <div className="mx-auto flex h-11 w-11 items-center justify-center">
+                      <span className="h-px w-8 bg-gold/50 transition-all duration-500 group-hover:w-12 group-hover:bg-gold" />
+                    </div>
 
-                  <p className="mt-4 max-w-sm text-sm leading-7 text-brand-white/60">
-                    {item.text}
-                  </p>
-                </div>
-              ))}
+                    <h3
+                      className="mt-3 font-display text-2xl md:text-3xl"
+                      style={{ color: "#F5EFE6" }}
+                    >
+                      {item.title}
+                    </h3>
+
+                    <p className="mx-auto mt-4 max-w-[330px] text-sm leading-7 text-brand-white/60">
+                      {item.text}
+                    </p>
+                  </div>
+                )
+              )}
             </div>
           </div>
         </section>
 
-        {/* CTA */}
+        {/* =====================================================
+            CTA
+        ====================================================== */}
         <CategoryCTA
           title={copy.cta.title}
           sub={copy.cta.sub}

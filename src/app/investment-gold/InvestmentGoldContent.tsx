@@ -35,10 +35,8 @@ type GoldPoint =
 type GoldSectionProps = {
   eyebrow: string;
   title: string;
-  number: string;
   points: GoldPoint[];
   tone?: "light" | "ivory";
-  startNumber: number;
   locale: Locale;
   sectionLabel: string;
   valuesLabel: string;
@@ -51,6 +49,7 @@ type InvestmentCopy = {
     footerLine: string;
     imageAlt: string;
   };
+
   intro: {
     eyebrow: string;
     title: string;
@@ -60,15 +59,18 @@ type InvestmentCopy = {
     statement: string;
     statementAccent: string;
   };
+
   editorial: {
     sectionLabel: string;
     valuesLabel: string;
   };
+
   section4: {
     description: string;
     closing: string;
     closingAccent: string;
   };
+
   summary: {
     eyebrow: string;
     title: string;
@@ -92,6 +94,7 @@ const INVESTMENT_COPY: Record<Locale, InvestmentCopy> = {
       footerLine: "Gold · Value · Permanence",
       imageAlt: "Fine gold bars and investment coins",
     },
+
     intro: {
       eyebrow: "Investment Gold",
       title: "Precious metal.",
@@ -102,16 +105,19 @@ const INVESTMENT_COPY: Record<Locale, InvestmentCopy> = {
       statement: "Jewellery carries emotion.",
       statementAccent: "Gold also carries permanence.",
     },
+
     editorial: {
       sectionLabel: "Investment Gold",
       valuesLabel: "Value · Clarity · Confidence",
     },
+
     section4: {
       description:
         "Investment decisions deserve clear information, trusted products and personal attention.",
       closing: "Value should be understood.",
       closingAccent: "Trust should be earned.",
     },
+
     summary: {
       eyebrow: "Why Investment Gold",
       title: "Five principles.",
@@ -126,6 +132,7 @@ const INVESTMENT_COPY: Record<Locale, InvestmentCopy> = {
       footerLine: "Gold · Wert · Beständigkeit",
       imageAlt: "Feingoldbarren und Anlagemünzen",
     },
+
     intro: {
       eyebrow: "Investmentgold",
       title: "Edelmetall.",
@@ -136,16 +143,19 @@ const INVESTMENT_COPY: Record<Locale, InvestmentCopy> = {
       statement: "Schmuck trägt Emotionen.",
       statementAccent: "Gold trägt auch Beständigkeit.",
     },
+
     editorial: {
       sectionLabel: "Investmentgold",
       valuesLabel: "Wert · Klarheit · Vertrauen",
     },
+
     section4: {
       description:
         "Investitionsentscheidungen verdienen klare Informationen, vertrauenswürdige Produkte und persönliche Betreuung.",
       closing: "Wert sollte verstanden werden.",
       closingAccent: "Vertrauen muss verdient werden.",
     },
+
     summary: {
       eyebrow: "Warum Investmentgold",
       title: "Fünf Prinzipien.",
@@ -160,6 +170,7 @@ const INVESTMENT_COPY: Record<Locale, InvestmentCopy> = {
       footerLine: "Altın · Değer · Kalıcılık",
       imageAlt: "Saf altın külçeleri ve yatırım altınları",
     },
+
     intro: {
       eyebrow: "Yatırım Altını",
       title: "Değerli metal.",
@@ -170,16 +181,19 @@ const INVESTMENT_COPY: Record<Locale, InvestmentCopy> = {
       statement: "Mücevher duygu taşır.",
       statementAccent: "Altın aynı zamanda kalıcılık taşır.",
     },
+
     editorial: {
       sectionLabel: "Yatırım Altını",
       valuesLabel: "Değer · Şeffaflık · Güven",
     },
+
     section4: {
       description:
         "Yatırım kararları açık bilgi, güvenilir ürünler ve kişisel ilgi gerektirir.",
       closing: "Değer anlaşılmalıdır.",
       closingAccent: "Güven kazanılmalıdır.",
     },
+
     summary: {
       eyebrow: "Neden Yatırım Altını",
       title: "Beş ilke.",
@@ -194,6 +208,7 @@ const INVESTMENT_COPY: Record<Locale, InvestmentCopy> = {
       footerLine: "Zlato · Hodnota · Trvácnosť",
       imageAlt: "Rýdze zlaté tehličky a investičné mince",
     },
+
     intro: {
       eyebrow: "Investičné zlato",
       title: "Vzácny kov.",
@@ -204,16 +219,19 @@ const INVESTMENT_COPY: Record<Locale, InvestmentCopy> = {
       statement: "Šperk nesie emóciu.",
       statementAccent: "Zlato nesie aj trvácnosť.",
     },
+
     editorial: {
       sectionLabel: "Investičné zlato",
       valuesLabel: "Hodnota · Jasnosť · Dôvera",
     },
+
     section4: {
       description:
         "Investičné rozhodnutia si zaslúžia jasné informácie, dôveryhodné produkty a osobný prístup.",
       closing: "Hodnote treba rozumieť.",
       closingAccent: "Dôveru si treba zaslúžiť.",
     },
+
     summary: {
       eyebrow: "Prečo investičné zlato",
       title: "Päť princípov.",
@@ -228,6 +246,7 @@ const INVESTMENT_COPY: Record<Locale, InvestmentCopy> = {
       footerLine: "Zlato · Hodnota · Trvalost",
       imageAlt: "Ryzí zlaté slitky a investiční mince",
     },
+
     intro: {
       eyebrow: "Investiční zlato",
       title: "Vzácný kov.",
@@ -238,16 +257,19 @@ const INVESTMENT_COPY: Record<Locale, InvestmentCopy> = {
       statement: "Šperk nese emoci.",
       statementAccent: "Zlato nese také trvalost.",
     },
+
     editorial: {
       sectionLabel: "Investiční zlato",
       valuesLabel: "Hodnota · Jasnost · Důvěra",
     },
+
     section4: {
       description:
         "Investiční rozhodnutí si zaslouží jasné informace, důvěryhodné produkty a osobní přístup.",
       closing: "Hodnotě je třeba rozumět.",
       closingAccent: "Důvěru je třeba si zasloužit.",
     },
+
     summary: {
       eyebrow: "Proč investiční zlato",
       title: "Pět principů.",
@@ -262,6 +284,7 @@ const INVESTMENT_COPY: Record<Locale, InvestmentCopy> = {
       footerLine: "Arany · Érték · Állandóság",
       imageAlt: "Finomarany rudak és befektetési érmék",
     },
+
     intro: {
       eyebrow: "Befektetési arany",
       title: "Nemesfém.",
@@ -272,16 +295,19 @@ const INVESTMENT_COPY: Record<Locale, InvestmentCopy> = {
       statement: "Az ékszer érzelmet hordoz.",
       statementAccent: "Az arany állandóságot is hordoz.",
     },
+
     editorial: {
       sectionLabel: "Befektetési arany",
       valuesLabel: "Érték · Átláthatóság · Bizalom",
     },
+
     section4: {
       description:
         "A befektetési döntések világos információt, megbízható termékeket és személyes figyelmet érdemelnek.",
       closing: "Az értéket érteni kell.",
       closingAccent: "A bizalmat ki kell érdemelni.",
     },
+
     summary: {
       eyebrow: "Miért befektetési arany",
       title: "Öt alapelv.",
@@ -296,6 +322,7 @@ const INVESTMENT_COPY: Record<Locale, InvestmentCopy> = {
       footerLine: "Złoto · Wartość · Trwałość",
       imageAlt: "Sztabki czystego złota i monety inwestycyjne",
     },
+
     intro: {
       eyebrow: "Złoto inwestycyjne",
       title: "Metal szlachetny.",
@@ -306,16 +333,19 @@ const INVESTMENT_COPY: Record<Locale, InvestmentCopy> = {
       statement: "Biżuteria niesie emocje.",
       statementAccent: "Złoto niesie także trwałość.",
     },
+
     editorial: {
       sectionLabel: "Złoto inwestycyjne",
       valuesLabel: "Wartość · Przejrzystość · Zaufanie",
     },
+
     section4: {
       description:
         "Decyzje inwestycyjne wymagają jasnych informacji, zaufanych produktów i osobistego podejścia.",
       closing: "Wartość należy rozumieć.",
       closingAccent: "Na zaufanie trzeba zasłużyć.",
     },
+
     summary: {
       eyebrow: "Dlaczego złoto inwestycyjne",
       title: "Pięć zasad.",
@@ -330,6 +360,7 @@ const INVESTMENT_COPY: Record<Locale, InvestmentCopy> = {
       footerLine: "Золото · Ценность · Постоянство",
       imageAlt: "Слитки чистого золота и инвестиционные монеты",
     },
+
     intro: {
       eyebrow: "Инвестиционное золото",
       title: "Драгоценный металл.",
@@ -340,16 +371,19 @@ const INVESTMENT_COPY: Record<Locale, InvestmentCopy> = {
       statement: "Украшения несут эмоции.",
       statementAccent: "Золото также несёт постоянство.",
     },
+
     editorial: {
       sectionLabel: "Инвестиционное золото",
       valuesLabel: "Ценность · Прозрачность · Доверие",
     },
+
     section4: {
       description:
         "Инвестиционные решения требуют понятной информации, надёжных продуктов и индивидуального внимания.",
       closing: "Ценность должна быть понятной.",
       closingAccent: "Доверие необходимо заслужить.",
     },
+
     summary: {
       eyebrow: "Почему инвестиционное золото",
       title: "Пять принципов.",
@@ -364,6 +398,7 @@ const INVESTMENT_COPY: Record<Locale, InvestmentCopy> = {
       footerLine: "Goud · Waarde · Bestendigheid",
       imageAlt: "Fijngoudbaren en beleggingsmunten",
     },
+
     intro: {
       eyebrow: "Beleggingsgoud",
       title: "Edelmetaal.",
@@ -374,16 +409,19 @@ const INVESTMENT_COPY: Record<Locale, InvestmentCopy> = {
       statement: "Sieraden dragen emotie.",
       statementAccent: "Goud draagt ook bestendigheid.",
     },
+
     editorial: {
       sectionLabel: "Beleggingsgoud",
       valuesLabel: "Waarde · Duidelijkheid · Vertrouwen",
     },
+
     section4: {
       description:
         "Beleggingsbeslissingen verdienen duidelijke informatie, betrouwbare producten en persoonlijke aandacht.",
       closing: "Waarde moet worden begrepen.",
       closingAccent: "Vertrouwen moet worden verdiend.",
     },
+
     summary: {
       eyebrow: "Waarom beleggingsgoud",
       title: "Vijf principes.",
@@ -398,6 +436,7 @@ const INVESTMENT_COPY: Record<Locale, InvestmentCopy> = {
       footerLine: "Guld · Værdi · Bestandighed",
       imageAlt: "Fine guldbarrer og investeringsmønter",
     },
+
     intro: {
       eyebrow: "Investeringsguld",
       title: "Ædelmetal.",
@@ -408,16 +447,19 @@ const INVESTMENT_COPY: Record<Locale, InvestmentCopy> = {
       statement: "Smykker bærer følelser.",
       statementAccent: "Guld bærer også bestandighed.",
     },
+
     editorial: {
       sectionLabel: "Investeringsguld",
       valuesLabel: "Værdi · Klarhed · Tillid",
     },
+
     section4: {
       description:
         "Investeringsbeslutninger fortjener klar information, pålidelige produkter og personlig opmærksomhed.",
       closing: "Værdi skal forstås.",
       closingAccent: "Tillid skal fortjenes.",
     },
+
     summary: {
       eyebrow: "Hvorfor investeringsguld",
       title: "Fem principper.",
@@ -432,6 +474,7 @@ const INVESTMENT_COPY: Record<Locale, InvestmentCopy> = {
       footerLine: "Kulta · Arvo · Pysyvyys",
       imageAlt: "Hienokultaharkkoja ja sijoituskultakolikoita",
     },
+
     intro: {
       eyebrow: "Sijoituskulta",
       title: "Jalometalli.",
@@ -442,16 +485,19 @@ const INVESTMENT_COPY: Record<Locale, InvestmentCopy> = {
       statement: "Korut kantavat tunteita.",
       statementAccent: "Kulta kantaa myös pysyvyyttä.",
     },
+
     editorial: {
       sectionLabel: "Sijoituskulta",
       valuesLabel: "Arvo · Selkeys · Luottamus",
     },
+
     section4: {
       description:
         "Sijoituspäätökset ansaitsevat selkeää tietoa, luotettavia tuotteita ja henkilökohtaista palvelua.",
       closing: "Arvo on ymmärrettävä.",
       closingAccent: "Luottamus on ansaittava.",
     },
+
     summary: {
       eyebrow: "Miksi sijoituskulta",
       title: "Viisi periaatetta.",
@@ -466,6 +512,7 @@ const INVESTMENT_COPY: Record<Locale, InvestmentCopy> = {
       footerLine: "Guld · Värde · Beständighet",
       imageAlt: "Finguldtackor och investeringsmynt",
     },
+
     intro: {
       eyebrow: "Investeringsguld",
       title: "Ädelmetall.",
@@ -476,16 +523,19 @@ const INVESTMENT_COPY: Record<Locale, InvestmentCopy> = {
       statement: "Smycken bär känslor.",
       statementAccent: "Guld bär också beständighet.",
     },
+
     editorial: {
       sectionLabel: "Investeringsguld",
       valuesLabel: "Värde · Tydlighet · Trygghet",
     },
+
     section4: {
       description:
         "Investeringsbeslut förtjänar tydlig information, pålitliga produkter och personlig uppmärksamhet.",
       closing: "Värde bör förstås.",
       closingAccent: "Förtroende måste förtjänas.",
     },
+
     summary: {
       eyebrow: "Varför investeringsguld",
       title: "Fem principer.",
@@ -500,6 +550,7 @@ const INVESTMENT_COPY: Record<Locale, InvestmentCopy> = {
       footerLine: "Or · Valeur · Pérennité",
       imageAlt: "Lingots d’or fin et pièces d’investissement",
     },
+
     intro: {
       eyebrow: "Or d’investissement",
       title: "Métal précieux.",
@@ -510,16 +561,19 @@ const INVESTMENT_COPY: Record<Locale, InvestmentCopy> = {
       statement: "La joaillerie porte l’émotion.",
       statementAccent: "L’or porte aussi la permanence.",
     },
+
     editorial: {
       sectionLabel: "Or d’investissement",
       valuesLabel: "Valeur · Clarté · Confiance",
     },
+
     section4: {
       description:
         "Les décisions d’investissement méritent des informations claires, des produits fiables et une attention personnalisée.",
       closing: "La valeur doit être comprise.",
       closingAccent: "La confiance doit être méritée.",
     },
+
     summary: {
       eyebrow: "Pourquoi l’or d’investissement",
       title: "Cinq principes.",
@@ -534,6 +588,7 @@ const INVESTMENT_COPY: Record<Locale, InvestmentCopy> = {
       footerLine: "Oro · Valore · Permanenza",
       imageAlt: "Lingotti d’oro fino e monete da investimento",
     },
+
     intro: {
       eyebrow: "Oro da investimento",
       title: "Metallo prezioso.",
@@ -544,16 +599,19 @@ const INVESTMENT_COPY: Record<Locale, InvestmentCopy> = {
       statement: "I gioielli portano emozione.",
       statementAccent: "L’oro porta anche permanenza.",
     },
+
     editorial: {
       sectionLabel: "Oro da investimento",
       valuesLabel: "Valore · Chiarezza · Fiducia",
     },
+
     section4: {
       description:
         "Le decisioni di investimento meritano informazioni chiare, prodotti affidabili e attenzione personale.",
       closing: "Il valore deve essere compreso.",
       closingAccent: "La fiducia deve essere conquistata.",
     },
+
     summary: {
       eyebrow: "Perché l’oro da investimento",
       title: "Cinque principi.",
@@ -568,6 +626,7 @@ const INVESTMENT_COPY: Record<Locale, InvestmentCopy> = {
       footerLine: "Oro · Valor · Permanencia",
       imageAlt: "Lingotes de oro fino y monedas de inversión",
     },
+
     intro: {
       eyebrow: "Oro de inversión",
       title: "Metal precioso.",
@@ -578,16 +637,19 @@ const INVESTMENT_COPY: Record<Locale, InvestmentCopy> = {
       statement: "La joyería transmite emoción.",
       statementAccent: "El oro también transmite permanencia.",
     },
+
     editorial: {
       sectionLabel: "Oro de inversión",
       valuesLabel: "Valor · Claridad · Confianza",
     },
+
     section4: {
       description:
         "Las decisiones de inversión merecen información clara, productos fiables y atención personalizada.",
       closing: "El valor debe comprenderse.",
       closingAccent: "La confianza debe ganarse.",
     },
+
     summary: {
       eyebrow: "Por qué oro de inversión",
       title: "Cinco principios.",
@@ -599,10 +661,8 @@ const INVESTMENT_COPY: Record<Locale, InvestmentCopy> = {
 function GoldEditorialSection({
   eyebrow,
   title,
-  number,
   points,
   tone = "light",
-  startNumber,
   locale,
   sectionLabel,
   valuesLabel,
@@ -616,46 +676,41 @@ function GoldEditorialSection({
       }
     >
       <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
-        <div className="mb-16 grid gap-8 border-b border-plum-dark/10 pb-10 lg:grid-cols-12 lg:items-end">
-          <div className="lg:col-span-2">
-            <span
-              className="font-display text-6xl italic leading-none md:text-7xl"
-              style={{ color: "#E8D8B5" }}
-            >
-              {number}
-            </span>
-          </div>
+        {/* SECTION INTRO */}
+        <div className="mx-auto mb-16 max-w-[1000px] border-b border-plum-dark/10 pb-12 text-center md:mb-20 md:pb-14 lg:mb-24">
+          <span className="block text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-gold">
+            {eyebrow}
+          </span>
 
-          <div className="lg:col-span-7">
-            <span className="block text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-gold">
-              {eyebrow}
-            </span>
+          <h2
+            className="mx-auto mt-5 max-w-[850px] font-display text-4xl leading-[0.96] tracking-[-0.03em] md:text-5xl lg:text-6xl"
+            style={{ color: "#1B0B20" }}
+          >
+            {title}
+          </h2>
 
-            <h2
-              className="mt-5 max-w-[820px] font-display text-4xl leading-[0.96] tracking-[-0.03em] md:text-5xl lg:text-6xl"
-              style={{ color: "#1B0B20" }}
-            >
-              {title}
-            </h2>
-          </div>
+          <div className="mt-8 flex items-center justify-center gap-4">
+            <span className="h-px w-10 bg-gold" />
 
-          <div className="lg:col-span-3 lg:text-right">
-            <span className="text-[0.58rem] font-semibold uppercase tracking-[0.22em] text-plum-dark/40">
+            <span className="text-[0.55rem] font-semibold uppercase tracking-[0.22em] text-plum-dark/40 md:text-[0.58rem]">
               {sectionLabel}
             </span>
+
+            <span className="h-px w-10 bg-gold" />
           </div>
         </div>
 
+        {/* EDITORIAL POINTS */}
         <div className="space-y-20 md:space-y-24 lg:space-y-28">
           {points.map((point, index) => {
             const reverse = index % 2 === 1;
-            const itemNumber = startNumber + index;
 
             return (
               <article
-                key={`${itemNumber}-${localized(point.title, locale)}`}
-                className="grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-14"
+                key={`${index}-${localized(point.title, locale)}`}
+                className="grid gap-9 lg:grid-cols-12 lg:items-center lg:gap-14"
               >
+                {/* IMAGE */}
                 <div
                   className={
                     reverse
@@ -683,50 +738,49 @@ function GoldEditorialSection({
 
                     <div className="absolute inset-0 bg-gradient-to-t from-plum-dark/60 via-plum-dark/5 to-transparent" />
 
-                    <span className="absolute right-6 top-6 text-[0.58rem] font-semibold tracking-[0.22em] text-brand-white/70 md:right-8 md:top-8">
-                      {String(itemNumber).padStart(2, "0")}
-                    </span>
+                    <div className="absolute inset-x-0 bottom-6 flex items-center justify-center gap-4 px-5 text-center md:bottom-8">
+                      <span className="h-px w-9 bg-gold md:w-10" />
 
-                    <div className="absolute bottom-6 left-6 flex items-center gap-4 md:bottom-8 md:left-8">
-                      <span className="h-px w-10 bg-gold" />
-
-                      <span className="text-[0.58rem] font-semibold uppercase tracking-[0.24em] text-brand-white/75">
+                      <span className="text-[0.55rem] font-semibold uppercase tracking-[0.22em] text-brand-white/80 md:text-[0.58rem] md:tracking-[0.24em]">
                         LIDYA · {sectionLabel}
                       </span>
+
+                      <span className="h-px w-9 bg-gold md:w-10" />
                     </div>
 
-                    <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-gold transition-all duration-700 group-hover:w-full" />
+                    <span className="absolute bottom-0 left-1/2 h-[2px] w-0 -translate-x-1/2 bg-gold transition-all duration-700 group-hover:w-full" />
                   </div>
                 </div>
 
+                {/* TEXT */}
                 <div
                   className={
                     reverse
-                      ? "lg:order-1 lg:col-span-5"
-                      : "lg:col-span-5"
+                      ? "text-center lg:order-1 lg:col-span-5"
+                      : "text-center lg:col-span-5"
                   }
                 >
-                  <span className="text-[0.58rem] font-semibold tracking-[0.22em] text-gold">
-                    {String(itemNumber).padStart(2, "0")}
-                  </span>
+                  <span className="mx-auto block h-px w-12 bg-gold" />
 
                   <h3
-                    className="mt-6 max-w-lg font-display text-4xl leading-[0.98] tracking-[-0.025em] md:text-5xl"
+                    className="mx-auto mt-7 max-w-[560px] font-display text-4xl leading-[0.98] tracking-[-0.025em] md:text-5xl"
                     style={{ color: "#1B0B20" }}
                   >
                     {localized(point.title, locale)}
                   </h3>
 
-                  <p className="mt-6 max-w-md text-sm leading-7 text-grey md:text-base">
+                  <p className="mx-auto mt-6 max-w-[500px] text-sm leading-7 text-grey md:text-base">
                     {localized(point.description, locale)}
                   </p>
 
-                  <div className="mt-8 flex items-center gap-5">
-                    <span className="h-px w-10 bg-gold" />
+                  <div className="mt-8 flex items-center justify-center gap-4">
+                    <span className="h-px w-9 bg-gold md:w-10" />
 
-                    <span className="text-[0.58rem] font-semibold uppercase tracking-[0.22em] text-plum-dark/45">
+                    <span className="max-w-[340px] text-[0.54rem] font-semibold uppercase tracking-[0.2em] text-plum-dark/45 md:text-[0.58rem] md:tracking-[0.22em]">
                       {valuesLabel}
                     </span>
+
+                    <span className="h-px w-9 bg-gold md:w-10" />
                   </div>
                 </div>
               </article>
@@ -741,18 +795,9 @@ function GoldEditorialSection({
 export default function InvestmentGoldContent() {
   const { locale } = useLanguage();
 
-  /*
-   * Bezpečný fallback.
-   * Ak by sa do locale dostala neočakávaná hodnota,
-   * stránka použije angličtinu namiesto pádu.
-   */
   const copy: InvestmentCopy =
     INVESTMENT_COPY[locale] ?? INVESTMENT_COPY.en;
 
-  /*
-   * GOLD_TEXT obsahuje ďalšie texty stránky.
-   * localized() fallbackuje na angličtinu.
-   */
   const t = (key: string): string => {
     const value = GOLD_TEXT[key];
 
@@ -768,8 +813,10 @@ export default function InvestmentGoldContent() {
       <Header />
 
       <main>
-        {/* HERO */}
-        <section className="relative min-h-[760px] overflow-hidden bg-plum-dark pt-32 md:pt-36 lg:min-h-screen lg:pt-40">
+        {/* =====================================================
+            HERO
+        ====================================================== */}
+        <section className="relative min-h-[760px] overflow-hidden bg-plum-dark pt-[108px] md:min-h-[900px] md:pt-36 lg:min-h-screen lg:pt-40">
           <Image
             src="/images/investment-gold/investment-gold-hero.png"
             alt={copy.hero.imageAlt}
@@ -779,37 +826,39 @@ export default function InvestmentGoldContent() {
             className="object-cover object-center"
           />
 
-          <div className="absolute inset-0 bg-gradient-to-r from-plum-dark/95 via-plum-dark/65 to-plum-dark/15" />
+          <div className="absolute inset-0 bg-plum-dark/64 md:bg-plum-dark/58 lg:bg-plum-dark/52" />
 
-          <div className="absolute inset-0 bg-gradient-to-t from-plum-dark/80 via-transparent to-plum-dark/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-plum-dark/85 via-transparent to-plum-dark/28" />
 
-          <div className="relative z-10 mx-auto flex min-h-[700px] max-w-[1440px] items-end px-6 pb-20 md:px-10 md:pb-24 lg:min-h-[calc(100vh-80px)] lg:px-16 lg:pb-28 xl:px-20">
-            <div className="max-w-[850px]">
-              <div className="flex items-center gap-4">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(200,169,106,0.09),transparent_55%)]" />
+
+          <div className="relative z-10 mx-auto flex min-h-[650px] max-w-[1440px] items-center justify-center px-6 pb-16 pt-12 text-center md:min-h-[760px] md:px-10 md:pb-20 lg:min-h-[calc(100vh-80px)] lg:px-16 lg:pb-24 xl:px-20">
+            <div className="mx-auto max-w-[960px]">
+              <div className="flex items-center justify-center gap-3 md:gap-4">
                 <span className="flex h-10 w-10 items-center justify-center text-gold">
                   <TrendUpIcon />
                 </span>
 
-                <span className="text-[0.66rem] font-semibold uppercase tracking-[0.34em] text-gold">
+                <span className="text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-gold md:text-[0.66rem] md:tracking-[0.34em]">
                   {t("heroEyebrow")}
                 </span>
               </div>
 
               <h1
-                className="mt-8 max-w-[980px] font-display text-5xl leading-[0.9] tracking-[-0.035em] md:text-7xl lg:text-[6.5rem]"
+                className="mx-auto mt-7 max-w-[980px] font-display text-[2.9rem] leading-[0.92] tracking-[-0.04em] sm:text-[3.25rem] md:text-7xl lg:text-[6.5rem]"
                 style={{ color: "#F5EFE6" }}
               >
                 {t("heroTitle")}
               </h1>
 
-              <p className="mt-8 max-w-xl text-sm leading-7 text-brand-white/70 md:text-base">
+              <p className="mx-auto mt-7 max-w-[650px] text-sm leading-7 text-brand-white/70 md:mt-8 md:text-base">
                 {t("heroLead")}
               </p>
 
-              <div className="mt-10 flex flex-wrap items-center gap-7">
+              <div className="mt-9 flex flex-col items-center justify-center gap-5 sm:flex-row sm:flex-wrap md:mt-10">
                 <a
                   href="#gold-details"
-                  className="group inline-flex items-center gap-6 bg-gold px-8 py-4 text-[0.66rem] font-semibold uppercase tracking-[0.2em] text-plum-dark transition-all duration-500 hover:bg-gold-light"
+                  className="group inline-flex min-w-[245px] items-center justify-center gap-6 bg-gold px-8 py-4 text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-plum-dark transition-all duration-500 hover:bg-gold-light md:text-[0.66rem] md:tracking-[0.2em]"
                 >
                   {copy.hero.discover}
 
@@ -820,7 +869,7 @@ export default function InvestmentGoldContent() {
 
                 <a
                   href="/#contact"
-                  className="group relative inline-flex items-center gap-5 py-3 text-[0.66rem] font-semibold uppercase tracking-[0.2em] text-brand-white"
+                  className="group relative inline-flex items-center gap-5 py-3 text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-brand-white md:text-[0.66rem] md:tracking-[0.2em]"
                 >
                   {copy.hero.enquiry}
 
@@ -829,19 +878,23 @@ export default function InvestmentGoldContent() {
                   <span className="absolute bottom-1 left-0 h-px w-full bg-brand-white/35 transition-colors duration-500 group-hover:bg-gold" />
                 </a>
               </div>
+
+              <div className="mt-12 flex items-center justify-center gap-4 md:mt-14">
+                <span className="h-px w-10 bg-gold/70 md:w-12" />
+
+                <span className="text-[0.54rem] uppercase tracking-[0.25em] text-brand-white/45 md:text-[0.58rem] md:tracking-[0.3em]">
+                  {copy.hero.footerLine}
+                </span>
+
+                <span className="h-px w-10 bg-gold/70 md:w-12" />
+              </div>
             </div>
-          </div>
-
-          <div className="absolute bottom-8 right-8 z-10 hidden items-center gap-4 md:flex lg:right-16">
-            <span className="text-[0.58rem] uppercase tracking-[0.3em] text-brand-white/45">
-              {copy.hero.footerLine}
-            </span>
-
-            <span className="h-px w-12 bg-gold/70" />
           </div>
         </section>
 
-        {/* INTRO */}
+        {/* =====================================================
+            INTRO
+        ====================================================== */}
         <section
           id="gold-details"
           className="relative overflow-hidden bg-ivory py-20 md:py-24 lg:py-28"
@@ -849,45 +902,43 @@ export default function InvestmentGoldContent() {
           <div className="pointer-events-none absolute -left-40 top-10 h-[460px] w-[460px] rounded-full bg-gold/7 blur-3xl" />
 
           <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
-            <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
-              <div className="lg:col-span-8">
-                <span className="block text-[0.64rem] font-semibold uppercase tracking-[0.32em] text-gold">
-                  {copy.intro.eyebrow}
+            <div className="mx-auto max-w-[1000px] text-center">
+              <span className="block text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-gold md:text-[0.64rem] md:tracking-[0.32em]">
+                {copy.intro.eyebrow}
+              </span>
+
+              <h2
+                className="mx-auto mt-6 max-w-[950px] font-display text-4xl leading-[0.96] tracking-[-0.03em] md:text-5xl lg:text-6xl"
+                style={{ color: "#1B0B20" }}
+              >
+                {copy.intro.title}
+
+                <span
+                  className="block italic"
+                  style={{ color: "#C8A96A" }}
+                >
+                  {copy.intro.accent}
+                </span>
+              </h2>
+
+              <p className="mx-auto mt-7 max-w-[650px] text-sm leading-7 text-grey md:text-base">
+                {copy.intro.description}
+              </p>
+
+              <div className="mt-7 flex items-center justify-center gap-4">
+                <span className="h-px w-10 bg-gold md:w-12" />
+
+                <span className="text-[0.54rem] font-semibold uppercase tracking-[0.21em] text-plum-dark/45 md:text-[0.58rem] md:tracking-[0.24em]">
+                  {copy.intro.since}
                 </span>
 
-                <h2
-                  className="mt-6 max-w-[950px] font-display text-4xl leading-[0.96] tracking-[-0.03em] md:text-5xl lg:text-6xl"
-                  style={{ color: "#1B0B20" }}
-                >
-                  {copy.intro.title}
-
-                  <span
-                    className="block italic"
-                    style={{ color: "#C8A96A" }}
-                  >
-                    {copy.intro.accent}
-                  </span>
-                </h2>
-              </div>
-
-              <div className="lg:col-span-4">
-                <p className="max-w-md text-sm leading-7 text-grey md:text-base">
-                  {copy.intro.description}
-                </p>
-
-                <div className="mt-7 flex items-center gap-4">
-                  <span className="h-px w-12 bg-gold" />
-
-                  <span className="text-[0.58rem] font-semibold uppercase tracking-[0.24em] text-plum-dark/45">
-                    {copy.intro.since}
-                  </span>
-                </div>
+                <span className="h-px w-10 bg-gold md:w-12" />
               </div>
             </div>
 
-            <div className="mt-14 border-t border-plum-dark/10 pt-12">
+            <div className="mx-auto mt-14 max-w-[1050px] border-t border-plum-dark/10 pt-12 text-center">
               <p
-                className="max-w-[1050px] font-display text-3xl italic leading-tight md:text-4xl lg:text-5xl"
+                className="font-display text-3xl italic leading-tight md:text-4xl lg:text-5xl"
                 style={{ color: "#1B0B20" }}
               >
                 {copy.intro.statement}
@@ -901,99 +952,91 @@ export default function InvestmentGoldContent() {
           </div>
         </section>
 
-        {/* SECTION I */}
+        {/* =====================================================
+            SECTION 1
+        ====================================================== */}
         <GoldEditorialSection
           eyebrow={t("section1Eyebrow")}
           title={t("section1Title")}
-          number="I"
           points={[...SECTION_1_POINTS]}
-          startNumber={1}
           tone="light"
           locale={locale}
           sectionLabel={copy.editorial.sectionLabel}
           valuesLabel={copy.editorial.valuesLabel}
         />
 
-        {/* SECTION II */}
+        {/* =====================================================
+            SECTION 2
+        ====================================================== */}
         <GoldEditorialSection
           eyebrow={t("section2Eyebrow")}
           title={t("section2Title")}
-          number="II"
           points={[...SECTION_2_POINTS]}
-          startNumber={1 + SECTION_1_POINTS.length}
           tone="ivory"
           locale={locale}
           sectionLabel={copy.editorial.sectionLabel}
           valuesLabel={copy.editorial.valuesLabel}
         />
 
-        {/* SECTION III */}
+        {/* =====================================================
+            SECTION 3
+        ====================================================== */}
         <GoldEditorialSection
           eyebrow={t("section3Eyebrow")}
           title={t("section3Title")}
-          number="III"
           points={[...SECTION_3_POINTS]}
-          startNumber={
-            1 +
-            SECTION_1_POINTS.length +
-            SECTION_2_POINTS.length
-          }
           tone="light"
           locale={locale}
           sectionLabel={copy.editorial.sectionLabel}
           valuesLabel={copy.editorial.valuesLabel}
         />
 
-        {/* SECTION IV */}
+        {/* =====================================================
+            DARK TRUST SECTION
+        ====================================================== */}
         <section className="relative overflow-hidden bg-plum-dark py-24 text-brand-white md:py-28 lg:py-32">
           <div className="pointer-events-none absolute -left-40 top-0 h-[500px] w-[500px] rounded-full bg-gold/8 blur-3xl" />
 
           <div className="pointer-events-none absolute -right-40 bottom-0 h-[460px] w-[460px] rounded-full bg-gold/5 blur-3xl" />
 
           <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
-            <div className="grid gap-10 border-b border-brand-white/12 pb-14 lg:grid-cols-12 lg:items-end">
-              <div className="lg:col-span-8">
-                <span className="mb-5 block text-[0.66rem] font-semibold uppercase tracking-[0.34em] text-gold">
-                  {t("section4Eyebrow")}
-                </span>
+            <div className="mx-auto max-w-[1000px] text-center">
+              <span className="mb-5 block text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-gold md:text-[0.66rem] md:tracking-[0.34em]">
+                {t("section4Eyebrow")}
+              </span>
 
-                <h2
-                  className="max-w-[950px] font-display text-4xl leading-[0.97] tracking-[-0.03em] md:text-5xl lg:text-6xl"
-                  style={{ color: "#F5EFE6" }}
-                >
-                  {t("section4Title")}
-                </h2>
-              </div>
+              <h2
+                className="mx-auto max-w-[950px] font-display text-4xl leading-[0.97] tracking-[-0.03em] md:text-5xl lg:text-6xl"
+                style={{ color: "#F5EFE6" }}
+              >
+                {t("section4Title")}
+              </h2>
 
-              <div className="lg:col-span-4">
-                <p className="max-w-md text-sm leading-7 text-brand-white/55 md:text-base">
-                  {copy.section4.description}
-                </p>
-              </div>
+              <p className="mx-auto mt-7 max-w-[650px] text-sm leading-7 text-brand-white/55 md:text-base">
+                {copy.section4.description}
+              </p>
+
+              <span className="mx-auto mt-9 block h-px w-14 bg-gold" />
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4">
+            <div className="mx-auto mt-14 grid max-w-[1200px] border-t border-brand-white/12 md:mt-16 md:grid-cols-2 lg:grid-cols-4">
               {SECTION_4_POINTS.map((point, index) => (
                 <div
                   key={`${index}-${localized(point.title, locale)}`}
-                  className="group border-b border-brand-white/12 py-9 md:border-r md:px-7 lg:first:pl-0 lg:last:border-r-0 lg:last:pr-0"
+                  className="group border-b border-brand-white/12 px-3 py-10 text-center md:border-r md:px-7 lg:py-12 lg:first:pl-0 lg:last:border-r-0 lg:last:pr-0"
                 >
-                  <div className="flex items-center justify-between">
-                    <span className="text-[0.58rem] font-semibold tracking-[0.22em] text-gold">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-
-                    <span className="h-px w-8 bg-brand-white/15 transition-all duration-500 group-hover:w-14 group-hover:bg-gold" />
+                  <div className="mx-auto flex h-10 items-center justify-center">
+                    <span className="h-px w-8 bg-gold/50 transition-all duration-500 group-hover:w-14 group-hover:bg-gold" />
                   </div>
 
                   <h3
-                    className="mt-8 font-display text-2xl md:text-3xl"
+                    className="mt-5 font-display text-2xl md:text-3xl"
                     style={{ color: "#F5EFE6" }}
                   >
                     {localized(point.title, locale)}
                   </h3>
 
-                  <p className="mt-4 max-w-sm text-sm leading-7 text-brand-white/60">
+                  <p className="mx-auto mt-4 max-w-[320px] text-sm leading-7 text-brand-white/60">
                     {localized(point.description, locale)}
                   </p>
                 </div>
@@ -1018,10 +1061,12 @@ export default function InvestmentGoldContent() {
           </div>
         </section>
 
-        {/* SUMMARY */}
+        {/* =====================================================
+            SUMMARY
+        ====================================================== */}
         <section className="bg-ivory py-20 md:py-24 lg:py-28">
           <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
-            <div className="mb-12 text-center">
+            <div className="mx-auto mb-14 max-w-[900px] text-center">
               <span className="text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-gold">
                 {copy.summary.eyebrow}
               </span>
@@ -1039,6 +1084,8 @@ export default function InvestmentGoldContent() {
                   {copy.summary.accent}
                 </span>
               </h2>
+
+              <span className="mx-auto mt-8 block h-px w-14 bg-gold" />
             </div>
 
             <div className="grid border-t border-plum-dark/10 md:grid-cols-2 lg:grid-cols-5">
@@ -1049,18 +1096,16 @@ export default function InvestmentGoldContent() {
                 return (
                   <div
                     key={`${index}-${localized(summary, locale)}`}
-                    className="group border-b border-plum-dark/10 py-8 md:border-r md:px-6 lg:first:pl-0 lg:last:border-r-0 lg:last:pr-0"
+                    className="group border-b border-plum-dark/10 px-4 py-9 text-center md:border-r md:px-6 lg:py-12 lg:first:pl-0 lg:last:border-r-0 lg:last:pr-0"
                   >
-                    <div className="flex h-10 w-10 items-center justify-center text-gold">
+                    <div className="mx-auto flex h-11 w-11 items-center justify-center text-gold transition-transform duration-500 group-hover:-translate-y-1">
                       <Icon />
                     </div>
 
-                    <span className="mt-8 block text-[0.56rem] font-semibold tracking-[0.22em] text-gold">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
+                    <span className="mx-auto mt-7 block h-px w-8 bg-gold/50 transition-all duration-500 group-hover:w-12 group-hover:bg-gold" />
 
                     <p
-                      className="mt-4 font-display text-xl leading-snug md:text-2xl"
+                      className="mx-auto mt-5 max-w-[240px] font-display text-xl leading-snug md:text-2xl"
                       style={{ color: "#1B0B20" }}
                     >
                       {localized(summary, locale)}
@@ -1072,7 +1117,9 @@ export default function InvestmentGoldContent() {
           </div>
         </section>
 
-        {/* CTA */}
+        {/* =====================================================
+            CTA
+        ====================================================== */}
         <CategoryCTA
           title={t("ctaTitle")}
           sub={t("ctaSub")}

@@ -250,7 +250,8 @@ const WEDDING_HERO_COPY: Record<Locale, WeddingHeroCopy> = {
 export default function WeddingRingsCinematicHero() {
   const { locale } = useLanguage();
 
-  const copy = WEDDING_HERO_COPY[locale];
+  const copy =
+    WEDDING_HERO_COPY[locale] ?? WEDDING_HERO_COPY.en;
 
   const sectionRef = useRef<HTMLElement | null>(null);
   const imageWrapRef = useRef<HTMLDivElement | null>(null);
@@ -281,6 +282,7 @@ export default function WeddingRingsCinematicHero() {
     const glow = glowRef.current;
 
     if (!section || !imageWrap || !content || !glow) {
+      setLoaded(true);
       return;
     }
 
@@ -292,23 +294,22 @@ export default function WeddingRingsCinematicHero() {
       "(pointer: fine)"
     ).matches;
 
-    const loadTimer = window.setTimeout(() => {
-      setLoaded(true);
-    }, 80);
+    /*
+      Na mobiloch a touch zariadeniach nepúšťame
+      permanentný requestAnimationFrame parallax.
 
-    if (reducedMotion) {
+      Výsledok:
+      - plynulejší scroll
+      - menšia spotreba
+      - stabilnejší hero obrázok
+      - menej pohybu textu
+    */
+    if (reducedMotion || !finePointer) {
       setLoaded(true);
-
-      return () => {
-        window.clearTimeout(loadTimer);
-      };
+      return;
     }
 
     const updatePointer = (event: PointerEvent) => {
-      if (!finePointer) {
-        return;
-      }
-
       const rect = section.getBoundingClientRect();
 
       const x =
@@ -362,35 +363,40 @@ export default function WeddingRingsCinematicHero() {
       pointerCurrent.current.x +=
         (pointerTarget.current.x -
           pointerCurrent.current.x) *
-        0.04;
+        0.045;
 
       pointerCurrent.current.y +=
         (pointerTarget.current.y -
           pointerCurrent.current.y) *
-        0.04;
+        0.045;
 
       scrollCurrent.current +=
         (scrollTarget.current -
           scrollCurrent.current) *
-        0.06;
+        0.065;
 
       const x = pointerCurrent.current.x;
       const y = pointerCurrent.current.y;
       const scroll = scrollCurrent.current;
 
       const imageX = x * 10;
-      const imageY = y * 6.5 - scroll * 22;
+      const imageY = y * 6 - scroll * 20;
+
       const imageScale =
-        1.045 + scroll * 0.015;
+        1.04 + scroll * 0.014;
 
       imageWrap.style.transform = `
         translate3d(${imageX}px, ${imageY}px, 0)
         scale(${imageScale})
       `;
 
-      const contentX = x * -3.4;
-      const contentY =
-        y * -2.2 - scroll * 6;
+      /*
+        Obsah sa pohybuje oveľa jemnejšie než obrázok.
+        Na desktopoch zostane cinematic efekt,
+        ale text nebude pôsobiť nervózne.
+      */
+      const contentX = x * -2.4;
+      const contentY = y * -1.5 - scroll * 4;
 
       content.style.transform = `
         translate3d(${contentX}px, ${contentY}px, 0)
@@ -403,7 +409,7 @@ export default function WeddingRingsCinematicHero() {
         radial-gradient(
           circle at ${glowX}% ${glowY}%,
           rgba(238, 205, 145, 0.20) 0%,
-          rgba(204, 157, 82, 0.075) 22%,
+          rgba(204, 157, 82, 0.07) 22%,
           rgba(255, 255, 255, 0) 50%
         )
       `;
@@ -435,6 +441,10 @@ export default function WeddingRingsCinematicHero() {
     frameRef.current =
       requestAnimationFrame(animate);
 
+    const loadTimer = window.setTimeout(() => {
+      setLoaded(true);
+    }, 60);
+
     return () => {
       section.removeEventListener(
         "pointermove",
@@ -464,15 +474,32 @@ export default function WeddingRingsCinematicHero() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[820px] overflow-hidden bg-ivory pt-36 md:min-h-[900px] md:pt-40 lg:min-h-[940px] lg:pt-44"
+      className="
+        relative
+        min-h-[720px]
+        overflow-hidden
+        bg-ivory
+        pt-[108px]
+        md:min-h-[860px]
+        md:pt-36
+        lg:min-h-[940px]
+        lg:pt-44
+      "
     >
-      {/* CINEMATIC BACKGROUND */}
+      {/* =====================================================
+          CINEMATIC BACKGROUND
+      ====================================================== */}
       <div
         ref={imageWrapRef}
-        className="absolute inset-[-3%] will-change-transform"
+        className={`absolute inset-[-3%] will-change-transform transition-[opacity,filter,transform] duration-[1800ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          loaded
+            ? "opacity-100 blur-0"
+            : "opacity-0 blur-[2px]"
+        }`}
         style={{
-          transform:
-            "translate3d(0,0,0) scale(1.045)",
+          transform: loaded
+            ? "translate3d(0,0,0) scale(1.04)"
+            : "translate3d(0,0,0) scale(1.075)",
         }}
       >
         <Image
@@ -481,169 +508,256 @@ export default function WeddingRingsCinematicHero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center"
+          className="
+            object-cover
+            object-[58%_50%]
+            md:object-[55%_50%]
+            lg:object-center
+          "
         />
       </div>
 
-      {/* LEFT READABILITY OVERLAY */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#F7F3EB]/92 via-[#F7F3EB]/40 to-transparent" />
+      {/* =====================================================
+          READABILITY OVERLAYS
+      ====================================================== */}
 
-      {/* LOWER SOFT VEIL */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#F7F3EB]/20 via-transparent to-[#F7F3EB]/8" />
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          bg-gradient-to-r
+          from-[#F7F3EB]/97
+          via-[#F7F3EB]/77
+          to-[#F7F3EB]/18
+          md:from-[#F7F3EB]/94
+          md:via-[#F7F3EB]/52
+          md:to-transparent
+          lg:from-[#F7F3EB]/92
+          lg:via-[#F7F3EB]/40
+        "
+      />
 
-      {/* DYNAMIC GOLD LIGHT */}
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          bg-gradient-to-t
+          from-[#F7F3EB]/38
+          via-transparent
+          to-[#F7F3EB]/10
+          md:from-[#F7F3EB]/22
+        "
+      />
+
+      {/* Dynamic desktop glow */}
       <div
         ref={glowRef}
         className="pointer-events-none absolute inset-0"
       />
 
-      {/* SUBTLE VIGNETTE */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_50%,rgba(84,52,27,0.08)_100%)]" />
+      {/* Cinematic vignette */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_52%,rgba(84,52,27,0.065)_100%)]" />
 
-      {/* CONTENT */}
+      {/* =====================================================
+          CONTENT
+      ====================================================== */}
       <div
         ref={contentRef}
-        className="relative mx-auto max-w-[1440px] px-6 will-change-transform md:px-10 lg:px-16 xl:px-20"
+        className="
+          relative
+          mx-auto
+          max-w-[1440px]
+          px-6
+          will-change-transform
+          md:px-10
+          lg:px-16
+          xl:px-20
+        "
       >
-        {/* TOP HERO CONTENT */}
-        <div className="grid gap-12 pb-20 lg:grid-cols-12 lg:items-end lg:pb-28">
-          {/* LEFT SIDE */}
-          <div className="lg:col-span-8">
-            <div
-              className={`flex items-center gap-4 transition-all duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                loaded
-                  ? "translate-y-0 opacity-100"
-                  : "translate-y-5 opacity-0"
-              }`}
-              style={{
-                transitionDelay: "180ms",
-              }}
-            >
-              <span className="flex h-10 w-10 items-center justify-center text-gold">
-                <RingIcon />
-              </span>
-
-              <span className="text-[0.66rem] font-semibold uppercase tracking-[0.34em] text-gold">
-                {copy.eyebrow}
-              </span>
-            </div>
-
-            <h1
-              className="mt-7 max-w-[900px] font-display text-5xl leading-[0.92] tracking-[-0.035em] md:text-6xl lg:text-[5.8rem]"
-              style={{
-                color: "#1B0B20",
-              }}
-            >
-              <span className="block overflow-hidden">
-                <span
-                  className={`block transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                    loaded
-                      ? "translate-y-0 opacity-100"
-                      : "translate-y-[30%] opacity-0"
-                  }`}
-                  style={{
-                    transitionDelay: "280ms",
-                  }}
-                >
-                  {copy.title1}
-                </span>
-              </span>
-
-              <span className="block overflow-hidden">
-                <span
-                  className={`block transition-all duration-[1250ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                    loaded
-                      ? "translate-y-0 opacity-100"
-                      : "translate-y-[30%] opacity-0"
-                  }`}
-                  style={{
-                    transitionDelay: "370ms",
-                  }}
-                >
-                  {copy.title2}
-                </span>
-              </span>
-
-              <span className="block overflow-hidden">
-                <span
-                  className={`block transition-all duration-[1300ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                    loaded
-                      ? "translate-y-0 opacity-100"
-                      : "translate-y-[30%] opacity-0"
-                  }`}
-                  style={{
-                    transitionDelay: "460ms",
-                  }}
-                >
-                  {copy.title3}
-                </span>
-              </span>
-            </h1>
-          </div>
-
-          {/* RIGHT SIDE */}
+        {/* =================================================
+            HERO CONTENT
+        ================================================== */}
+        <div
+          className="
+            mx-auto
+            max-w-[1120px]
+            pb-10
+            text-center
+            md:pb-16
+            lg:pb-24
+          "
+        >
+          {/* EYEBROW */}
           <div
-            className={`transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] lg:col-span-4 lg:pb-2 ${
+            className={`flex items-center justify-center gap-3 transition-all duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:gap-4 ${
               loaded
                 ? "translate-y-0 opacity-100"
                 : "translate-y-5 opacity-0"
             }`}
             style={{
-              transitionDelay: "590ms",
+              transitionDelay: "140ms",
             }}
           >
-            <p className="max-w-md text-sm leading-7 text-[#645E5A] md:text-base">
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center text-gold md:h-10 md:w-10">
+              <RingIcon />
+            </span>
+
+            <span className="text-[0.6rem] font-semibold uppercase tracking-[0.3em] text-gold md:text-[0.66rem] md:tracking-[0.34em]">
+              {copy.eyebrow}
+            </span>
+          </div>
+
+          {/* TITLE */}
+          <h1
+            className="
+              mx-auto
+              mt-5
+              max-w-[1000px]
+              font-display
+              text-[2.75rem]
+              leading-[0.92]
+              tracking-[-0.04em]
+              sm:text-[3.15rem]
+              md:mt-7
+              md:text-6xl
+              md:leading-[0.92]
+              lg:text-[5.5rem]
+            "
+            style={{
+              color: "#1B0B20",
+            }}
+          >
+            <span className="block overflow-hidden">
+              <span
+                className={`block transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                  loaded
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-[30%] opacity-0"
+                }`}
+                style={{
+                  transitionDelay: "240ms",
+                }}
+              >
+                {copy.title1}
+              </span>
+            </span>
+
+            <span className="block overflow-hidden">
+              <span
+                className={`block transition-all duration-[1250ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                  loaded
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-[30%] opacity-0"
+                }`}
+                style={{
+                  transitionDelay: "320ms",
+                }}
+              >
+                {copy.title2}
+              </span>
+            </span>
+
+            <span className="block overflow-hidden">
+              <span
+                className={`block transition-all duration-[1300ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                  loaded
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-[30%] opacity-0"
+                }`}
+                style={{
+                  transitionDelay: "400ms",
+                }}
+              >
+                {copy.title3}
+              </span>
+            </span>
+          </h1>
+
+          {/* DESCRIPTION */}
+          <div
+            className={`mx-auto mt-7 transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:mt-9 ${
+              loaded
+                ? "translate-y-0 opacity-100"
+                : "translate-y-5 opacity-0"
+            }`}
+            style={{
+              transitionDelay: "520ms",
+            }}
+          >
+            <p
+              className="
+                mx-auto
+                max-w-[650px]
+                text-[0.8rem]
+                leading-[1.65rem]
+                text-[#645E5A]
+                md:text-base
+                md:leading-7
+              "
+            >
               {copy.description}
             </p>
 
-            <div className="mt-7 flex items-center gap-4">
-              <span className="h-px w-12 bg-gold" />
+            <div className="mt-6 flex items-center justify-center gap-4 md:mt-7">
+              <span className="h-px w-10 bg-gold md:w-12" />
 
-              <span className="text-[0.58rem] font-semibold uppercase tracking-[0.24em] text-plum-dark/50">
+              <span className="text-[0.52rem] font-semibold uppercase tracking-[0.21em] text-plum-dark/50 md:text-[0.58rem] md:tracking-[0.24em]">
                 {copy.since}
               </span>
+
+              <span className="h-px w-10 bg-gold md:w-12" />
             </div>
           </div>
         </div>
 
-        {/* LOWER STATEMENT */}
+        {/* =================================================
+            LOWER STATEMENT
+        ================================================== */}
         <div
-          className={`border-t border-plum-dark/10 py-12 transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:py-16 ${
+          className={`mx-auto max-w-[1100px] border-t border-plum-dark/10 py-8 text-center transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:py-12 lg:py-16 ${
             loaded
               ? "translate-y-0 opacity-100"
               : "translate-y-5 opacity-0"
           }`}
           style={{
-            transitionDelay: "760ms",
+            transitionDelay: "660ms",
           }}
         >
-          <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
-            <div className="lg:col-span-3">
-              <span className="text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-[#A98242]">
-                {copy.statementEyebrow}
-              </span>
-            </div>
+          <span className="text-[0.55rem] font-semibold uppercase tracking-[0.27em] text-[#A98242] md:text-[0.62rem] md:tracking-[0.3em]">
+            {copy.statementEyebrow}
+          </span>
 
-            <div className="lg:col-span-9">
-              <p
-                className="max-w-[1000px] font-display text-3xl italic leading-tight md:text-4xl lg:text-5xl"
-                style={{
-                  color: "#1B0B20",
-                }}
-              >
-                {copy.statementBefore}
+          <p
+            className="
+              mx-auto
+              mt-4
+              max-w-[950px]
+              font-display
+              text-[1.7rem]
+              italic
+              leading-[1.12]
+              md:mt-5
+              md:text-4xl
+              md:leading-tight
+              lg:text-5xl
+            "
+            style={{
+              color: "#1B0B20",
+            }}
+          >
+            {copy.statementBefore}
 
-                <span
-                  style={{
-                    color: "#A98242",
-                  }}
-                >
-                  {" "}
-                  {copy.statementAccent}
-                </span>
-              </p>
-            </div>
-          </div>
+            <span
+              style={{
+                color: "#A98242",
+              }}
+            >
+              {" "}
+              {copy.statementAccent}
+            </span>
+          </p>
         </div>
       </div>
     </section>

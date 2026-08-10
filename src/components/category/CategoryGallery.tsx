@@ -64,9 +64,22 @@ export default function CategoryGallery({
     <section className="relative overflow-hidden bg-brand-white py-16 md:py-22 lg:py-24">
       <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
         {/* INTRO */}
-        <div className="mb-12 grid gap-8 border-b border-plum-dark/10 pb-10 lg:grid-cols-12 lg:items-end">
+        <div
+          className="
+            mb-12
+            grid
+            gap-8
+            border-b
+            border-plum-dark/10
+            pb-10
+            text-center
+            lg:grid-cols-12
+            lg:items-end
+            lg:text-left
+          "
+        >
           <div className="lg:col-span-7">
-            <div className="flex items-center gap-4">
+            <div className="flex items-center justify-center gap-4 lg:justify-start">
               {icon && (
                 <span className="flex h-8 w-8 items-center justify-center text-gold">
                   {icon}
@@ -79,7 +92,18 @@ export default function CategoryGallery({
             </div>
 
             <h2
-              className="mt-6 max-w-[760px] font-display text-4xl leading-[0.96] tracking-[-0.03em] md:text-5xl lg:text-6xl"
+              className="
+                mx-auto
+                mt-6
+                max-w-[760px]
+                font-display
+                text-4xl
+                leading-[0.96]
+                tracking-[-0.03em]
+                md:text-5xl
+                lg:mx-0
+                lg:text-6xl
+              "
               style={{ color: "#1B0B20" }}
             >
               {title}
@@ -96,7 +120,7 @@ export default function CategoryGallery({
           </div>
 
           <div className="lg:col-span-5 lg:pb-1">
-            <p className="max-w-md text-sm leading-7 text-grey md:text-base">
+            <p className="mx-auto max-w-md text-sm leading-7 text-grey md:text-base lg:mx-0">
               {description}
             </p>
           </div>
@@ -122,39 +146,61 @@ export default function CategoryGallery({
                     alt={item.alt}
                     fill
                     sizes="(min-width: 1024px) 58vw, (min-width: 768px) 50vw, 100vw"
-                    className="object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.035]"
+                    className="
+                      object-cover
+                      transition-transform
+                      duration-[1400ms]
+                      ease-[cubic-bezier(0.22,1,0.36,1)]
+                      group-hover:scale-[1.035]
+                    "
                   />
 
                   {/* subtle hover overlay */}
                   <div className="absolute inset-0 bg-plum-dark/0 transition-colors duration-700 group-hover:bg-plum-dark/[0.05]" />
-
-                  {/* NUMBER */}
-                  <span className="absolute right-5 top-5 text-[0.56rem] font-semibold tracking-[0.22em] text-brand-white/80 drop-shadow-sm md:right-6 md:top-6">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
 
                   {/* GOLD BOTTOM LINE */}
                   <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-gold transition-all duration-700 group-hover:w-full" />
                 </div>
 
                 {/* CAPTION */}
-                <figcaption className="mt-5 flex items-start justify-between gap-5 border-t border-plum-dark/10 pt-4">
-                  <div>
-                    <span className="block text-[0.58rem] font-semibold uppercase tracking-[0.22em] text-gold">
-                      {itemLabel}
-                    </span>
-
-                    <h3
-                      className="mt-2 font-display text-2xl md:text-3xl"
-                      style={{ color: "#1B0B20" }}
-                    >
-                      {item.caption}
-                    </h3>
-                  </div>
-
-                  <span className="mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-plum-dark/15 text-plum-dark/45 transition-all duration-500 group-hover:border-gold group-hover:bg-gold group-hover:text-plum-dark">
-                    →
+                <figcaption
+                  className="
+                    mt-4
+                    border-t
+                    border-plum-dark/10
+                    pt-4
+                    text-center
+                    md:mt-5
+                    md:text-left
+                  "
+                >
+                  <span
+                    className="
+                      block
+                      text-[0.54rem]
+                      font-semibold
+                      uppercase
+                      tracking-[0.2em]
+                      text-gold
+                      md:text-[0.58rem]
+                      md:tracking-[0.22em]
+                    "
+                  >
+                    {itemLabel}
                   </span>
+
+                  <h3
+                    className="
+                      mt-2
+                      font-display
+                      text-[1.65rem]
+                      leading-tight
+                      md:text-3xl
+                    "
+                    style={{ color: "#1B0B20" }}
+                  >
+                    {item.caption}
+                  </h3>
                 </figcaption>
               </figure>
             );

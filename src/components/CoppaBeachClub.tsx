@@ -876,18 +876,18 @@ export default function CoppaBeachClub() {
 
       <div className="pointer-events-none absolute -right-48 bottom-40 h-[460px] w-[460px] rounded-full bg-[#DBC3A1]/15 blur-3xl" />
 
-      <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
+      <div className="relative mx-auto max-w-[1440px] px-5 sm:px-6 md:px-10 lg:px-16 xl:px-20">
         {/* =====================================================
             INTRO
         ====================================================== */}
-        <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
+        <div className="grid gap-9 text-center lg:grid-cols-12 lg:items-end lg:gap-10 lg:text-left">
           <div className="lg:col-span-8">
             <span className="mb-5 block text-[0.66rem] font-semibold uppercase tracking-[0.34em] text-gold">
               {copy.eyebrow}
             </span>
 
             <h2
-              className="max-w-[950px] font-display text-5xl leading-[0.94] tracking-[-0.035em] md:text-6xl lg:text-7xl"
+              className="mx-auto max-w-[950px] font-display text-5xl leading-[0.94] tracking-[-0.035em] md:text-6xl lg:mx-0 lg:text-7xl"
               style={{ color: "#1B0B20" }}
             >
               {copy.title}
@@ -902,11 +902,11 @@ export default function CoppaBeachClub() {
           </div>
 
           <div className="lg:col-span-4 lg:pb-2">
-            <p className="max-w-md text-sm leading-7 text-grey md:text-base">
+            <p className="mx-auto max-w-md text-sm leading-7 text-grey md:text-base lg:mx-0">
               {copy.intro}
             </p>
 
-            <div className="mt-7 flex items-center gap-4">
+            <div className="mt-7 flex items-center justify-center gap-4 lg:justify-start">
               <span className="h-px w-12 bg-gold" />
 
               <span className="text-[0.58rem] font-semibold uppercase tracking-[0.24em] text-plum-dark/45">
@@ -930,15 +930,15 @@ export default function CoppaBeachClub() {
               className="object-cover transition-transform duration-[1600ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.025]"
             />
 
-            <div className="absolute inset-0 bg-gradient-to-t from-plum-dark/75 via-transparent to-plum-dark/5" />
+            <div className="absolute inset-0 bg-gradient-to-t from-plum-dark/80 via-plum-dark/10 to-plum-dark/5" />
 
-            <div className="absolute bottom-0 left-0 right-0 p-7 md:p-10 lg:p-12">
+            <div className="absolute bottom-0 left-0 right-0 p-6 text-center md:p-10 lg:p-12 lg:text-left">
               <span className="text-[0.6rem] font-semibold uppercase tracking-[0.28em] text-gold">
                 {copy.experienceEyebrow}
               </span>
 
               <h3
-                className="mt-4 max-w-[700px] font-display text-4xl leading-[1] md:text-5xl lg:text-6xl"
+                className="mx-auto mt-4 max-w-[700px] font-display text-4xl leading-[1] md:text-5xl lg:mx-0 lg:text-6xl"
                 style={{ color: "#F5EFE6" }}
               >
                 {copy.experienceTitle}
@@ -975,41 +975,33 @@ export default function CoppaBeachClub() {
         </div>
 
         {/* =====================================================
-            EXPERIENCE POINTS
+            EXPERIENCE POINTS — WITHOUT NUMBERING
         ====================================================== */}
         <div className="mt-16 grid border-y border-plum-dark/10 md:grid-cols-2 lg:grid-cols-4">
           {[
             {
-              number: "01",
               title: copy.beachTitle,
               text: copy.beachText,
             },
             {
-              number: "02",
               title: copy.foodTitle,
               text: copy.foodText,
             },
             {
-              number: "03",
               title: copy.eventsTitle,
               text: copy.eventsText,
             },
             {
-              number: "04",
               title: copy.atmosphereTitle,
               text: copy.atmosphereText,
             },
           ].map((item) => (
             <div
-              key={item.number}
-              className="group border-b border-plum-dark/10 py-9 md:border-r md:px-7 lg:border-b-0 lg:px-8 lg:first:pl-0 lg:last:border-r-0 lg:last:pr-0"
+              key={item.title}
+              className="group border-b border-plum-dark/10 py-10 text-center md:border-r md:px-7 lg:border-b-0 lg:px-8 lg:text-left lg:first:pl-0 lg:last:border-r-0 lg:last:pr-0"
             >
-              <div className="flex items-center justify-between gap-4">
-                <span className="text-[0.58rem] font-semibold tracking-[0.22em] text-gold">
-                  {item.number}
-                </span>
-
-                <span className="h-px w-8 bg-plum-dark/10 transition-all duration-500 group-hover:w-14 group-hover:bg-gold" />
+              <div className="flex justify-center lg:justify-end">
+                <span className="h-px w-10 bg-plum-dark/10 transition-all duration-500 group-hover:w-14 group-hover:bg-gold" />
               </div>
 
               <h3
@@ -1019,7 +1011,7 @@ export default function CoppaBeachClub() {
                 {item.title}
               </h3>
 
-              <p className="mt-4 text-sm leading-7 text-grey">
+              <p className="mx-auto mt-4 max-w-sm text-sm leading-7 text-grey lg:mx-0">
                 {item.text}
               </p>
             </div>
@@ -1027,7 +1019,7 @@ export default function CoppaBeachClub() {
         </div>
 
         {/* =====================================================
-            FOOD + EVENING
+            EVENTS / WEDDING
         ====================================================== */}
         <div className="mt-20 grid gap-6 lg:grid-cols-12 lg:items-stretch">
           <div className="group relative min-h-[440px] overflow-hidden lg:col-span-5 lg:min-h-[600px]">
@@ -1040,7 +1032,7 @@ export default function CoppaBeachClub() {
             />
           </div>
 
-          <div className="relative overflow-hidden bg-plum-dark px-7 py-10 md:px-10 md:py-12 lg:col-span-7 lg:flex lg:min-h-[600px] lg:flex-col lg:justify-between lg:px-14 lg:py-14">
+          <div className="relative overflow-hidden bg-plum-dark px-6 py-10 text-center md:px-10 md:py-12 lg:col-span-7 lg:flex lg:min-h-[600px] lg:flex-col lg:justify-between lg:px-14 lg:py-14 lg:text-left">
             <div className="pointer-events-none absolute -right-24 -top-24 h-[340px] w-[340px] rounded-full bg-gold/10 blur-3xl" />
 
             <div className="relative">
@@ -1049,34 +1041,31 @@ export default function CoppaBeachClub() {
               </span>
 
               <h3
-                className="mt-5 max-w-[700px] font-display text-4xl leading-[1] md:text-5xl lg:text-6xl"
+                className="mx-auto mt-5 max-w-[700px] font-display text-4xl leading-[1] md:text-5xl lg:mx-0 lg:text-6xl"
                 style={{ color: "#F5EFE6" }}
               >
                 {copy.eventsHeading}
               </h3>
 
-              <p className="mt-7 max-w-[620px] text-sm leading-7 text-brand-white/55 md:text-base">
+              <p className="mx-auto mt-7 max-w-[620px] text-sm leading-7 text-brand-white/55 md:text-base lg:mx-0">
                 {copy.eventsDescription}
               </p>
             </div>
 
+            {/* EVENT TYPES — WITHOUT NUMBERING */}
             <div className="relative mt-12 grid grid-cols-2 border-t border-brand-white/12 md:grid-cols-4">
               {[
                 copy.weddings,
                 copy.birthdays,
                 copy.anniversaries,
                 copy.privateEvents,
-              ].map((item, index) => (
+              ].map((item) => (
                 <div
                   key={item}
-                  className="border-b border-r border-brand-white/12 px-3 py-6 last:border-r-0 md:border-b-0"
+                  className="border-b border-r border-brand-white/12 px-3 py-8 text-center last:border-r-0 md:border-b-0"
                 >
-                  <span className="text-[0.55rem] font-semibold tracking-[0.2em] text-gold">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-
                   <p
-                    className="mt-3 font-display text-lg md:text-xl"
+                    className="font-display text-lg md:text-xl"
                     style={{ color: "#F5EFE6" }}
                   >
                     {item}
@@ -1086,17 +1075,17 @@ export default function CoppaBeachClub() {
             </div>
 
             {/* SOCIAL */}
-            <div className="relative mt-10">
+            <div className="relative mt-10 text-center lg:text-left">
               <span className="text-[0.58rem] font-semibold uppercase tracking-[0.24em] text-brand-white/35">
                 {copy.socialEyebrow}
               </span>
 
-              <div className="mt-4 flex flex-wrap gap-3">
+              <div className="mt-4 flex flex-col items-stretch gap-3 sm:flex-row sm:justify-center lg:justify-start">
                 <a
                   href={INSTAGRAM_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group/social inline-flex min-w-[170px] items-center justify-between gap-6 border border-brand-white/18 px-5 py-4 text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-brand-white transition-all duration-500 hover:border-gold hover:bg-gold hover:text-plum-dark"
+                  className="group/social inline-flex min-h-[54px] flex-1 items-center justify-between gap-6 border border-brand-white/18 px-5 py-4 text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-brand-white transition-all duration-500 hover:border-gold hover:bg-gold hover:text-plum-dark sm:max-w-[210px]"
                 >
                   {copy.instagram}
 
@@ -1109,7 +1098,7 @@ export default function CoppaBeachClub() {
                   href={FACEBOOK_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group/social inline-flex min-w-[170px] items-center justify-between gap-6 border border-brand-white/18 px-5 py-4 text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-brand-white transition-all duration-500 hover:border-gold hover:bg-gold hover:text-plum-dark"
+                  className="group/social inline-flex min-h-[54px] flex-1 items-center justify-between gap-6 border border-brand-white/18 px-5 py-4 text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-brand-white transition-all duration-500 hover:border-gold hover:bg-gold hover:text-plum-dark sm:max-w-[210px]"
                 >
                   {copy.facebook}
 
@@ -1135,6 +1124,7 @@ export default function CoppaBeachClub() {
           />
 
           <div className="absolute inset-0 bg-gradient-to-r from-plum-dark/35 via-transparent to-plum-dark/10" />
+
           <div className="absolute inset-0 bg-gradient-to-t from-plum-dark/55 via-transparent to-transparent" />
         </div>
 

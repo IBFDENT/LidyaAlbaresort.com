@@ -20,14 +20,6 @@ import {
   type BespokeStep,
 } from "@/lib/bespoke";
 
-type Phase = {
-  eyebrow: string;
-  title: string;
-  number: string;
-  steps: BespokeStep[];
-  startNumber: number;
-};
-
 type BespokeCopy = {
   hero: {
     eyebrow: string;
@@ -1025,22 +1017,22 @@ const BESPOKE_COPY: Record<Locale, BespokeCopy> = {
 
 function ProcessStep({
   step,
-  number,
   reverse,
   locale,
   atelierLabel,
   handcraftedLabel,
 }: {
   step: BespokeStep;
-  number: number;
   reverse: boolean;
   locale: Locale;
   atelierLabel: string;
   handcraftedLabel: string;
 }) {
   return (
-    <article className="grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-14">
-      {/* IMAGE */}
+    <article className="grid gap-9 lg:grid-cols-12 lg:items-center lg:gap-14">
+      {/* =====================================================
+          IMAGE
+      ====================================================== */}
       <div
         className={
           reverse
@@ -1054,56 +1046,73 @@ function ProcessStep({
             alt={step.imageAlt}
             fill
             sizes="(min-width: 1024px) 58vw, 100vw"
-            className="object-cover transition-transform duration-[1500ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.035]"
+            className="
+              object-cover
+              transition-transform
+              duration-[1500ms]
+              ease-[cubic-bezier(0.22,1,0.36,1)]
+              group-hover:scale-[1.035]
+            "
           />
 
           <div className="absolute inset-0 bg-gradient-to-t from-plum-dark/38 via-transparent to-transparent" />
 
-          <span className="absolute right-6 top-6 text-[0.58rem] font-semibold tracking-[0.22em] text-brand-white/75 md:right-8 md:top-8">
-            {String(number).padStart(2, "0")}
-          </span>
+          {/* ATELIER LABEL */}
+          <div className="absolute inset-x-0 bottom-6 flex items-center justify-center gap-4 px-5 text-center md:bottom-8">
+            <span className="h-px w-9 bg-brand-white/60 md:w-10" />
 
-          <div className="absolute bottom-6 left-6 flex items-center gap-4 md:bottom-8 md:left-8">
-            <span className="h-px w-10 bg-brand-white/60" />
-
-            <span className="text-[0.58rem] font-semibold uppercase tracking-[0.24em] text-brand-white/75">
+            <span className="text-[0.55rem] font-semibold uppercase tracking-[0.22em] text-brand-white/80 md:text-[0.58rem] md:tracking-[0.24em]">
               {atelierLabel}
             </span>
+
+            <span className="h-px w-9 bg-brand-white/60 md:w-10" />
           </div>
 
-          <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-gold transition-all duration-700 group-hover:w-full" />
+          {/* GOLD HOVER LINE */}
+          <span className="absolute bottom-0 left-1/2 h-[2px] w-0 -translate-x-1/2 bg-gold transition-all duration-700 group-hover:w-full" />
         </div>
       </div>
 
-      {/* TEXT */}
+      {/* =====================================================
+          TEXT
+      ====================================================== */}
       <div
         className={
           reverse
-            ? "lg:order-1 lg:col-span-5"
-            : "lg:col-span-5"
+            ? "text-center lg:order-1 lg:col-span-5"
+            : "text-center lg:col-span-5"
         }
       >
-        <span className="text-[0.6rem] font-semibold tracking-[0.24em] text-gold">
-          {String(number).padStart(2, "0")}
-        </span>
+        <span className="mx-auto block h-px w-12 bg-gold" />
 
         <h3
-          className="mt-6 max-w-lg font-display text-4xl leading-[0.98] tracking-[-0.025em] md:text-5xl"
+          className="
+            mx-auto
+            mt-7
+            max-w-[560px]
+            font-display
+            text-4xl
+            leading-[0.98]
+            tracking-[-0.025em]
+            md:text-5xl
+          "
           style={{ color: "#1B0B20" }}
         >
           {localized(step.title, locale)}
         </h3>
 
-        <p className="mt-6 max-w-md text-sm leading-7 text-grey md:text-base">
+        <p className="mx-auto mt-6 max-w-[500px] text-sm leading-7 text-grey md:text-base">
           {localized(step.description, locale)}
         </p>
 
-        <div className="mt-8 flex items-center gap-5">
-          <span className="h-px w-10 bg-gold" />
+        <div className="mt-8 flex items-center justify-center gap-4">
+          <span className="h-px w-9 bg-gold md:w-10" />
 
-          <span className="text-[0.58rem] font-semibold uppercase tracking-[0.22em] text-plum-dark/45">
+          <span className="max-w-[320px] text-[0.55rem] font-semibold uppercase tracking-[0.2em] text-plum-dark/45 md:text-[0.58rem] md:tracking-[0.22em]">
             {handcraftedLabel}
           </span>
+
+          <span className="h-px w-9 bg-gold md:w-10" />
         </div>
       </div>
     </article>
@@ -1116,27 +1125,21 @@ export default function BespokeContent() {
   const copy =
     BESPOKE_COPY[locale] ?? BESPOKE_COPY.en;
 
-  const phases: Phase[] = [
+  const phases = [
     {
       eyebrow: copy.phaseLabels.phase1Eyebrow,
       title: copy.phaseLabels.phase1Title,
-      number: "I",
       steps: PHASE_1_STEPS,
-      startNumber: 1,
     },
     {
       eyebrow: copy.phaseLabels.phase2Eyebrow,
       title: copy.phaseLabels.phase2Title,
-      number: "II",
       steps: PHASE_2_STEPS,
-      startNumber: 4,
     },
     {
       eyebrow: copy.phaseLabels.phase3Eyebrow,
       title: copy.phaseLabels.phase3Title,
-      number: "III",
       steps: PHASE_3_STEPS,
-      startNumber: 9,
     },
   ];
 
@@ -1145,123 +1148,181 @@ export default function BespokeContent() {
       <Header />
 
       <main>
-        {/* HERO */}
-        <section className="relative min-h-[820px] overflow-hidden bg-ivory pt-36 md:min-h-[900px] md:pt-40 lg:min-h-[940px] lg:pt-44">
+        {/* =====================================================
+            HERO
+        ====================================================== */}
+        <section
+          className="
+            relative
+            min-h-[760px]
+            overflow-hidden
+            bg-ivory
+            pt-[108px]
+            md:min-h-[900px]
+            md:pt-40
+            lg:min-h-[940px]
+            lg:pt-44
+          "
+        >
           <Image
             src="/images/bespoke/hero-bespoke.png"
             alt={copy.hero.imageAlt}
             fill
             priority
             sizes="100vw"
-            className="object-cover object-[55%_50%]"
+            className="
+              object-cover
+              object-[55%_50%]
+              md:object-center
+            "
           />
 
-          <div className="absolute inset-0 bg-gradient-to-r from-[#F7F3EB]/88 via-[#F7F3EB]/52 to-[#F7F3EB]/08" />
+          {/* MOBILE / DESKTOP READABILITY */}
+          <div
+            className="
+              absolute
+              inset-0
+              bg-[#F7F3EB]/74
+              md:bg-[#F7F3EB]/56
+              lg:bg-[#F7F3EB]/40
+            "
+          />
 
-          <div className="absolute inset-x-0 bottom-0 h-[24%] bg-gradient-to-t from-[#F7F3EB]/35 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#F7F3EB]/16 via-transparent to-[#F7F3EB]/34" />
 
           <div className="pointer-events-none absolute -left-40 top-10 h-[520px] w-[520px] rounded-full bg-brand-white/25 blur-3xl" />
 
           <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
-            <div className="grid gap-12 pb-20 lg:grid-cols-12 lg:items-end lg:pb-28">
-              <div className="lg:col-span-8">
-                <div className="flex items-center gap-4">
-                  <span className="flex h-10 w-10 items-center justify-center text-gold">
-                    <GemClusterIcon />
-                  </span>
-
-                  <span className="text-[0.66rem] font-semibold uppercase tracking-[0.34em] text-gold">
-                    {copy.hero.eyebrow}
-                  </span>
-                </div>
-
-                <h1
-                  className="mt-7 max-w-[980px] font-display text-5xl leading-[0.92] tracking-[-0.035em] md:text-6xl lg:text-[5.8rem]"
-                  style={{ color: "#1B0B20" }}
-                >
-                  {copy.hero.title}
-                </h1>
-              </div>
-
-              <div className="lg:col-span-4 lg:pb-2">
-                <p className="max-w-md text-sm leading-7 text-[#645E5A] md:text-base">
-                  {copy.hero.lead}
-                </p>
-
-                <div className="mt-7 flex items-center gap-4">
-                  <span className="h-px w-12 bg-gold" />
-
-                  <span className="text-[0.58rem] font-semibold uppercase tracking-[0.24em] text-plum-dark/50">
-                    {copy.hero.since}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* HERO STATEMENT */}
-            <div className="border-t border-plum-dark/10 py-12 md:py-16">
-              <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
-                <div className="lg:col-span-3">
-                  <span className="text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-gold">
-                    {copy.hero.statementEyebrow}
-                  </span>
-                </div>
-
-                <div className="lg:col-span-9">
-                  <p
-                    className="max-w-[1000px] font-display text-3xl italic leading-tight md:text-4xl lg:text-5xl"
-                    style={{ color: "#1B0B20" }}
-                  >
-                    {copy.hero.statementBefore}
-
-                    <span style={{ color: "#C8A96A" }}>
-                      {" "}
-                      {copy.hero.statementAccent}
-                    </span>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* INTRO */}
-        <section className="bg-brand-white py-20 md:py-24 lg:py-28">
-          <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
-            <div className="grid gap-10 border-b border-plum-dark/10 pb-12 lg:grid-cols-12 lg:items-end">
-              <div className="lg:col-span-8">
-                <span className="text-[0.64rem] font-semibold uppercase tracking-[0.32em] text-gold">
-                  {copy.intro.eyebrow}
+            {/* HERO MAIN */}
+            <div className="mx-auto max-w-[1080px] pb-12 text-center md:pb-16 lg:pb-20">
+              <div className="flex items-center justify-center gap-3 md:gap-4">
+                <span className="flex h-9 w-9 items-center justify-center text-gold md:h-10 md:w-10">
+                  <GemClusterIcon />
                 </span>
 
-                <h2
-                  className="mt-6 max-w-[900px] font-display text-4xl leading-[0.96] tracking-[-0.03em] md:text-5xl lg:text-6xl"
-                  style={{ color: "#1B0B20" }}
-                >
-                  {copy.intro.title}
-
-                  <span
-                    className="block italic"
-                    style={{ color: "#C8A96A" }}
-                  >
-                    {copy.intro.titleAccent}
-                  </span>
-                </h2>
+                <span className="text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-gold md:text-[0.66rem] md:tracking-[0.34em]">
+                  {copy.hero.eyebrow}
+                </span>
               </div>
 
-              <div className="lg:col-span-4">
-                <p className="max-w-md text-sm leading-7 text-grey md:text-base">
-                  {copy.intro.description}
+              <h1
+                className="
+                  mx-auto
+                  mt-6
+                  max-w-[980px]
+                  font-display
+                  text-[2.85rem]
+                  leading-[0.93]
+                  tracking-[-0.04em]
+                  sm:text-[3.2rem]
+                  md:mt-7
+                  md:text-6xl
+                  lg:text-[5.8rem]
+                "
+                style={{ color: "#1B0B20" }}
+              >
+                {copy.hero.title}
+              </h1>
+
+              <p className="mx-auto mt-7 max-w-[640px] text-sm leading-7 text-[#645E5A] md:mt-8 md:text-base">
+                {copy.hero.lead}
+              </p>
+
+              <div className="mt-7 flex items-center justify-center gap-4">
+                <span className="h-px w-10 bg-gold md:w-12" />
+
+                <span className="text-[0.53rem] font-semibold uppercase tracking-[0.21em] text-plum-dark/50 md:text-[0.58rem] md:tracking-[0.24em]">
+                  {copy.hero.since}
+                </span>
+
+                <span className="h-px w-10 bg-gold md:w-12" />
+              </div>
+            </div>
+
+            {/* =================================================
+                HERO STATEMENT
+            ================================================== */}
+            <div className="border-t border-plum-dark/10 py-9 text-center md:py-14 lg:py-16">
+              <div className="mx-auto max-w-[1000px]">
+                <span className="text-[0.58rem] font-semibold uppercase tracking-[0.28em] text-gold md:text-[0.62rem] md:tracking-[0.3em]">
+                  {copy.hero.statementEyebrow}
+                </span>
+
+                <p
+                  className="
+                    mx-auto
+                    mt-5
+                    max-w-[950px]
+                    font-display
+                    text-[1.8rem]
+                    italic
+                    leading-[1.12]
+                    md:text-4xl
+                    lg:text-5xl
+                  "
+                  style={{ color: "#1B0B20" }}
+                >
+                  {copy.hero.statementBefore}
+
+                  <span style={{ color: "#C8A96A" }}>
+                    {" "}
+                    {copy.hero.statementAccent}
+                  </span>
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* PHASES */}
+        {/* =====================================================
+            INTRO
+        ====================================================== */}
+        <section className="bg-brand-white py-20 md:py-24 lg:py-28">
+          <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
+            <div className="mx-auto max-w-[1000px] border-b border-plum-dark/10 pb-14 text-center md:pb-16">
+              <span className="text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-gold md:text-[0.64rem] md:tracking-[0.32em]">
+                {copy.intro.eyebrow}
+              </span>
+
+              <h2
+                className="
+                  mx-auto
+                  mt-6
+                  max-w-[900px]
+                  font-display
+                  text-4xl
+                  leading-[0.96]
+                  tracking-[-0.03em]
+                  md:text-5xl
+                  lg:text-6xl
+                "
+                style={{ color: "#1B0B20" }}
+              >
+                {copy.intro.title}
+
+                <span
+                  className="block italic"
+                  style={{ color: "#C8A96A" }}
+                >
+                  {copy.intro.titleAccent}
+                </span>
+              </h2>
+
+              <p className="mx-auto mt-7 max-w-[650px] text-sm leading-7 text-grey md:text-base">
+                {copy.intro.description}
+              </p>
+
+              <span className="mx-auto mt-9 block h-px w-14 bg-gold" />
+            </div>
+          </div>
+        </section>
+
+        {/* =====================================================
+            PHASES
+        ====================================================== */}
         {phases.map((phase, phaseIndex) => (
           <section
-            key={phase.number}
+            key={`${phase.eyebrow}-${phaseIndex}`}
             className={
               phaseIndex % 2 === 0
                 ? "bg-brand-white py-20 md:py-28 lg:py-32"
@@ -1269,46 +1330,50 @@ export default function BespokeContent() {
             }
           >
             <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
-              <div className="mb-16 grid gap-8 border-b border-plum-dark/10 pb-10 lg:grid-cols-12 lg:items-end">
-                <div className="lg:col-span-2">
-                  <span
-                    className="font-display text-6xl italic md:text-7xl"
-                    style={{ color: "#E8D8B5" }}
-                  >
-                    {phase.number}
-                  </span>
-                </div>
+              {/* =================================================
+                  PHASE HEADER
+              ================================================== */}
+              <div className="mx-auto mb-16 max-w-[950px] border-b border-plum-dark/10 pb-12 text-center md:mb-20 md:pb-14 lg:mb-24">
+                <span className="block text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-gold">
+                  {phase.eyebrow}
+                </span>
 
-                <div className="lg:col-span-7">
-                  <span className="block text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-gold">
-                    {phase.eyebrow}
-                  </span>
+                <h2
+                  className="
+                    mx-auto
+                    mt-5
+                    max-w-[820px]
+                    font-display
+                    text-4xl
+                    leading-[0.98]
+                    tracking-[-0.03em]
+                    md:text-5xl
+                    lg:text-6xl
+                  "
+                  style={{ color: "#1B0B20" }}
+                >
+                  {phase.title}
+                </h2>
 
-                  <h2
-                    className="mt-5 max-w-[800px] font-display text-4xl leading-[0.98] tracking-[-0.03em] md:text-5xl"
-                    style={{ color: "#1B0B20" }}
-                  >
-                    {phase.title}
-                  </h2>
-                </div>
-
-                <div className="lg:col-span-3 lg:text-right">
-                  <span className="text-[0.58rem] font-semibold uppercase tracking-[0.22em] text-plum-dark/40">
-                    {copy.phaseLabels.phaseWord} {phase.number}
-                  </span>
-                </div>
+                <span className="mx-auto mt-8 block h-px w-14 bg-gold" />
               </div>
 
+              {/* =================================================
+                  STEPS
+              ================================================== */}
               <div className="space-y-20 md:space-y-24 lg:space-y-32">
                 {phase.steps.map((step, index) => (
                   <ProcessStep
                     key={`${step.image}-${index}`}
                     step={step}
-                    number={phase.startNumber + index}
                     reverse={index % 2 === 1}
                     locale={locale}
-                    atelierLabel={copy.phaseLabels.atelierLabel}
-                    handcraftedLabel={copy.phaseLabels.handcrafted}
+                    atelierLabel={
+                      copy.phaseLabels.atelierLabel
+                    }
+                    handcraftedLabel={
+                      copy.phaseLabels.handcrafted
+                    }
                   />
                 ))}
               </div>
@@ -1316,65 +1381,94 @@ export default function BespokeContent() {
           </section>
         ))}
 
-        {/* DARK ATELIER STATEMENT */}
+        {/* =====================================================
+            DARK ATELIER STATEMENT
+        ====================================================== */}
         <section className="relative overflow-hidden bg-plum-dark py-24 text-brand-white md:py-28 lg:py-32">
           <div className="pointer-events-none absolute -left-40 top-0 h-[500px] w-[500px] rounded-full bg-gold/8 blur-3xl" />
 
           <div className="pointer-events-none absolute -right-40 bottom-0 h-[420px] w-[420px] rounded-full bg-gold/5 blur-3xl" />
 
           <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
-            <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
-              <div className="lg:col-span-8">
-                <span className="mb-5 block text-[0.66rem] font-semibold uppercase tracking-[0.34em] text-gold">
-                  {copy.atelier.eyebrow}
-                </span>
+            {/* =================================================
+                ATELIER INTRO
+            ================================================== */}
+            <div className="mx-auto max-w-[1000px] text-center">
+              <span className="mb-5 block text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-gold md:text-[0.66rem] md:tracking-[0.34em]">
+                {copy.atelier.eyebrow}
+              </span>
 
-                <h2
-                  className="max-w-[920px] font-display text-4xl leading-[0.98] tracking-[-0.03em] md:text-5xl lg:text-6xl"
-                  style={{ color: "#F5EFE6" }}
+              <h2
+                className="
+                  mx-auto
+                  max-w-[920px]
+                  font-display
+                  text-4xl
+                  leading-[0.98]
+                  tracking-[-0.03em]
+                  md:text-5xl
+                  lg:text-6xl
+                "
+                style={{ color: "#F5EFE6" }}
+              >
+                {copy.atelier.title}
+
+                <span
+                  className="block italic"
+                  style={{ color: "#E8D8B5" }}
                 >
-                  {copy.atelier.title}
+                  {copy.atelier.titleAccent}
+                </span>
+              </h2>
 
-                  <span
-                    className="block italic"
-                    style={{ color: "#E8D8B5" }}
-                  >
-                    {copy.atelier.titleAccent}
-                  </span>
-                </h2>
-              </div>
+              <p className="mx-auto mt-7 max-w-[650px] text-sm leading-7 text-brand-white/55 md:text-base">
+                {copy.atelier.description}
+              </p>
 
-              <div className="lg:col-span-4">
-                <p className="max-w-md text-sm leading-7 text-brand-white/55 md:text-base">
-                  {copy.atelier.description}
-                </p>
-              </div>
+              <span className="mx-auto mt-9 block h-px w-14 bg-gold" />
             </div>
 
-            <div className="mt-16 grid border-t border-brand-white/12 md:grid-cols-3">
-              {copy.atelier.points.map((item, index) => (
+            {/* =================================================
+                ATELIER POINTS
+            ================================================== */}
+            <div className="mx-auto mt-14 grid max-w-[1180px] border-t border-brand-white/12 md:mt-16 md:grid-cols-3">
+              {copy.atelier.points.map((item) => (
                 <div
                   key={item.title}
-                  className="border-b border-brand-white/12 py-8 md:border-r md:px-8 md:first:pl-0 md:last:border-r-0 md:last:pr-0"
+                  className="
+                    group
+                    border-b
+                    border-brand-white/12
+                    px-2
+                    py-9
+                    text-center
+                    md:border-r
+                    md:px-8
+                    md:py-12
+                    md:last:border-r-0
+                  "
                 >
-                  <span className="text-[0.58rem] font-semibold tracking-[0.22em] text-gold">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
+                  <div className="mx-auto flex h-11 w-11 items-center justify-center">
+                    <span className="h-px w-8 bg-gold/50 transition-all duration-500 group-hover:w-12 group-hover:bg-gold" />
+                  </div>
 
                   <h3
-                    className="mt-7 font-display text-2xl md:text-3xl"
+                    className="mt-3 font-display text-2xl md:text-3xl"
                     style={{ color: "#F5EFE6" }}
                   >
                     {item.title}
                   </h3>
 
-                  <p className="mt-4 max-w-sm text-sm leading-7 text-brand-white/60">
+                  <p className="mx-auto mt-4 max-w-[330px] text-sm leading-7 text-brand-white/60">
                     {item.text}
                   </p>
                 </div>
               ))}
             </div>
 
+            {/* =================================================
+                CLOSING STATEMENT
+            ================================================== */}
             <div className="mx-auto mt-16 max-w-[980px] text-center md:mt-20">
               <span className="mx-auto mb-7 block h-px w-14 bg-gold" />
 
@@ -1393,7 +1487,9 @@ export default function BespokeContent() {
           </div>
         </section>
 
-        {/* CTA */}
+        {/* =====================================================
+            CTA
+        ====================================================== */}
         <CategoryCTA
           title={copy.cta.title}
           sub={copy.cta.sub}
