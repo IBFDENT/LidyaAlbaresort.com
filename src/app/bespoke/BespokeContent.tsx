@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -1030,9 +1031,6 @@ function ProcessStep({
 }) {
   return (
     <article className="grid gap-9 lg:grid-cols-12 lg:items-center lg:gap-14">
-      {/* =====================================================
-          IMAGE
-      ====================================================== */}
       <div
         className={
           reverse
@@ -1057,7 +1055,6 @@ function ProcessStep({
 
           <div className="absolute inset-0 bg-gradient-to-t from-plum-dark/38 via-transparent to-transparent" />
 
-          {/* ATELIER LABEL */}
           <div className="absolute inset-x-0 bottom-6 flex items-center justify-center gap-4 px-5 text-center md:bottom-8">
             <span className="h-px w-9 bg-brand-white/60 md:w-10" />
 
@@ -1068,14 +1065,10 @@ function ProcessStep({
             <span className="h-px w-9 bg-brand-white/60 md:w-10" />
           </div>
 
-          {/* GOLD HOVER LINE */}
           <span className="absolute bottom-0 left-1/2 h-[2px] w-0 -translate-x-1/2 bg-gold transition-all duration-700 group-hover:w-full" />
         </div>
       </div>
 
-      {/* =====================================================
-          TEXT
-      ====================================================== */}
       <div
         className={
           reverse
@@ -1125,6 +1118,20 @@ export default function BespokeContent() {
   const copy =
     BESPOKE_COPY[locale] ?? BESPOKE_COPY.en;
 
+  const [heroLoaded, setHeroLoaded] =
+    useState(false);
+
+  useEffect(() => {
+    const frame =
+      window.requestAnimationFrame(() => {
+        setHeroLoaded(true);
+      });
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+    };
+  }, []);
+
   const phases = [
     {
       eyebrow: copy.phaseLabels.phase1Eyebrow,
@@ -1164,22 +1171,40 @@ export default function BespokeContent() {
             lg:pt-44
           "
         >
-          <Image
-            src="/images/bespoke/hero-bespoke.png"
-            alt={copy.hero.imageAlt}
-            fill
-            priority
-            sizes="100vw"
-            className="
-              object-cover
-              object-[55%_50%]
-              md:object-center
-            "
-          />
+          {/* HERO IMAGE */}
+          <div
+            className={`
+              absolute
+              inset-[-2%]
+              transition-[opacity,transform,filter]
+              duration-[1800ms]
+              ease-[cubic-bezier(0.22,1,0.36,1)]
+              motion-reduce:transition-none
+              ${
+                heroLoaded
+                  ? "scale-100 opacity-100 blur-0"
+                  : "scale-[1.055] opacity-0 blur-[2px]"
+              }
+            `}
+          >
+            <Image
+              src="/images/bespoke/hero-bespoke.png"
+              alt={copy.hero.imageAlt}
+              fill
+              priority
+              sizes="100vw"
+              className="
+                object-cover
+                object-[55%_50%]
+                md:object-center
+              "
+            />
+          </div>
 
-          {/* MOBILE / DESKTOP READABILITY */}
+          {/* READABILITY */}
           <div
             className="
+              pointer-events-none
               absolute
               inset-0
               bg-[#F7F3EB]/74
@@ -1188,14 +1213,35 @@ export default function BespokeContent() {
             "
           />
 
-          <div className="absolute inset-0 bg-gradient-to-b from-[#F7F3EB]/16 via-transparent to-[#F7F3EB]/34" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#F7F3EB]/16 via-transparent to-[#F7F3EB]/34" />
 
           <div className="pointer-events-none absolute -left-40 top-10 h-[520px] w-[520px] rounded-full bg-brand-white/25 blur-3xl" />
 
           <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
             {/* HERO MAIN */}
             <div className="mx-auto max-w-[1080px] pb-12 text-center md:pb-16 lg:pb-20">
-              <div className="flex items-center justify-center gap-3 md:gap-4">
+              {/* EYEBROW */}
+              <div
+                className={`
+                  flex
+                  items-center
+                  justify-center
+                  gap-3
+                  transition-all
+                  duration-[1000ms]
+                  ease-[cubic-bezier(0.22,1,0.36,1)]
+                  motion-reduce:transition-none
+                  md:gap-4
+                  ${
+                    heroLoaded
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-5 opacity-0"
+                  }
+                `}
+                style={{
+                  transitionDelay: "120ms",
+                }}
+              >
                 <span className="flex h-9 w-9 items-center justify-center text-gold md:h-10 md:w-10">
                   <GemClusterIcon />
                 </span>
@@ -1205,11 +1251,13 @@ export default function BespokeContent() {
                 </span>
               </div>
 
+              {/* TITLE */}
               <h1
                 className="
                   mx-auto
                   mt-6
                   max-w-[980px]
+                  overflow-hidden
                   font-display
                   text-[2.85rem]
                   leading-[0.93]
@@ -1221,14 +1269,74 @@ export default function BespokeContent() {
                 "
                 style={{ color: "#1B0B20" }}
               >
-                {copy.hero.title}
+                <span
+                  className={`
+                    block
+                    transition-all
+                    duration-[1250ms]
+                    ease-[cubic-bezier(0.22,1,0.36,1)]
+                    motion-reduce:transition-none
+                    ${
+                      heroLoaded
+                        ? "translate-y-0 opacity-100"
+                        : "translate-y-[28%] opacity-0"
+                    }
+                  `}
+                  style={{
+                    transitionDelay: "220ms",
+                  }}
+                >
+                  {copy.hero.title}
+                </span>
               </h1>
 
-              <p className="mx-auto mt-7 max-w-[640px] text-sm leading-7 text-[#645E5A] md:mt-8 md:text-base">
-                {copy.hero.lead}
-              </p>
+              {/* LEAD */}
+              <div
+                className={`
+                  mx-auto
+                  mt-7
+                  transition-all
+                  duration-[1100ms]
+                  ease-[cubic-bezier(0.22,1,0.36,1)]
+                  motion-reduce:transition-none
+                  md:mt-8
+                  ${
+                    heroLoaded
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-5 opacity-0"
+                  }
+                `}
+                style={{
+                  transitionDelay: "420ms",
+                }}
+              >
+                <p className="mx-auto max-w-[640px] text-sm leading-7 text-[#645E5A] md:text-base">
+                  {copy.hero.lead}
+                </p>
+              </div>
 
-              <div className="mt-7 flex items-center justify-center gap-4">
+              {/* SINCE */}
+              <div
+                className={`
+                  mt-7
+                  flex
+                  items-center
+                  justify-center
+                  gap-4
+                  transition-all
+                  duration-[1100ms]
+                  ease-[cubic-bezier(0.22,1,0.36,1)]
+                  motion-reduce:transition-none
+                  ${
+                    heroLoaded
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-4 opacity-0"
+                  }
+                `}
+                style={{
+                  transitionDelay: "540ms",
+                }}
+              >
                 <span className="h-px w-10 bg-gold md:w-12" />
 
                 <span className="text-[0.53rem] font-semibold uppercase tracking-[0.21em] text-plum-dark/50 md:text-[0.58rem] md:tracking-[0.24em]">
@@ -1242,7 +1350,28 @@ export default function BespokeContent() {
             {/* =================================================
                 HERO STATEMENT
             ================================================== */}
-            <div className="border-t border-plum-dark/10 py-9 text-center md:py-14 lg:py-16">
+            <div
+              className={`
+                border-t
+                border-plum-dark/10
+                py-9
+                text-center
+                transition-all
+                duration-[1200ms]
+                ease-[cubic-bezier(0.22,1,0.36,1)]
+                motion-reduce:transition-none
+                md:py-14
+                lg:py-16
+                ${
+                  heroLoaded
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-5 opacity-0"
+                }
+              `}
+              style={{
+                transitionDelay: "680ms",
+              }}
+            >
               <div className="mx-auto max-w-[1000px]">
                 <span className="text-[0.58rem] font-semibold uppercase tracking-[0.28em] text-gold md:text-[0.62rem] md:tracking-[0.3em]">
                   {copy.hero.statementEyebrow}
@@ -1330,9 +1459,6 @@ export default function BespokeContent() {
             }
           >
             <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
-              {/* =================================================
-                  PHASE HEADER
-              ================================================== */}
               <div className="mx-auto mb-16 max-w-[950px] border-b border-plum-dark/10 pb-12 text-center md:mb-20 md:pb-14 lg:mb-24">
                 <span className="block text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-gold">
                   {phase.eyebrow}
@@ -1358,9 +1484,6 @@ export default function BespokeContent() {
                 <span className="mx-auto mt-8 block h-px w-14 bg-gold" />
               </div>
 
-              {/* =================================================
-                  STEPS
-              ================================================== */}
               <div className="space-y-20 md:space-y-24 lg:space-y-32">
                 {phase.steps.map((step, index) => (
                   <ProcessStep
@@ -1390,9 +1513,6 @@ export default function BespokeContent() {
           <div className="pointer-events-none absolute -right-40 bottom-0 h-[420px] w-[420px] rounded-full bg-gold/5 blur-3xl" />
 
           <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
-            {/* =================================================
-                ATELIER INTRO
-            ================================================== */}
             <div className="mx-auto max-w-[1000px] text-center">
               <span className="mb-5 block text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-gold md:text-[0.66rem] md:tracking-[0.34em]">
                 {copy.atelier.eyebrow}
@@ -1428,9 +1548,6 @@ export default function BespokeContent() {
               <span className="mx-auto mt-9 block h-px w-14 bg-gold" />
             </div>
 
-            {/* =================================================
-                ATELIER POINTS
-            ================================================== */}
             <div className="mx-auto mt-14 grid max-w-[1180px] border-t border-brand-white/12 md:mt-16 md:grid-cols-3">
               {copy.atelier.points.map((item) => (
                 <div
@@ -1466,9 +1583,6 @@ export default function BespokeContent() {
               ))}
             </div>
 
-            {/* =================================================
-                CLOSING STATEMENT
-            ================================================== */}
             <div className="mx-auto mt-16 max-w-[980px] text-center md:mt-20">
               <span className="mx-auto mb-7 block h-px w-14 bg-gold" />
 

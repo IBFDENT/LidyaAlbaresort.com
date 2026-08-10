@@ -963,6 +963,7 @@ export default function DesignContent() {
             priority
             sizes="100vw"
             className="
+              hero-design-image
               object-cover
               object-[54%_50%]
               md:object-center
@@ -985,7 +986,8 @@ export default function DesignContent() {
 
           <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
             <div className="mx-auto max-w-[1050px] pb-12 text-center md:pb-16 lg:pb-20">
-              <div className="flex items-center justify-center gap-3 md:gap-4">
+              {/* EYEBROW */}
+              <div className="hero-design-reveal hero-design-delay-1 flex items-center justify-center gap-3 md:gap-4">
                 <span className="flex h-9 w-9 items-center justify-center text-gold">
                   <BlossomIcon />
                 </span>
@@ -995,8 +997,11 @@ export default function DesignContent() {
                 </span>
               </div>
 
+              {/* TITLE */}
               <h1
                 className="
+                  hero-design-reveal
+                  hero-design-delay-2
                   mx-auto
                   mt-6
                   max-w-[980px]
@@ -1014,8 +1019,11 @@ export default function DesignContent() {
                 {copy.hero.title}
               </h1>
 
+              {/* LEAD */}
               <p
                 className="
+                  hero-design-reveal
+                  hero-design-delay-3
                   mx-auto
                   mt-7
                   max-w-[620px]
@@ -1029,7 +1037,8 @@ export default function DesignContent() {
                 {copy.hero.lead}
               </p>
 
-              <div className="mt-7 flex items-center justify-center gap-4">
+              {/* SINCE */}
+              <div className="hero-design-reveal hero-design-delay-4 mt-7 flex items-center justify-center gap-4">
                 <span className="h-px w-10 bg-gold md:w-12" />
 
                 <span className="text-[0.55rem] font-semibold uppercase tracking-[0.22em] text-plum-dark/50 md:text-[0.58rem] md:tracking-[0.24em]">
@@ -1040,7 +1049,8 @@ export default function DesignContent() {
               </div>
             </div>
 
-            <div className="border-t border-plum-dark/10 py-9 text-center md:py-14 lg:py-16">
+            {/* STATEMENT */}
+            <div className="hero-design-reveal hero-design-delay-5 border-t border-plum-dark/10 py-9 text-center md:py-14 lg:py-16">
               <div className="mx-auto max-w-[1000px]">
                 <span className="text-[0.58rem] font-semibold uppercase tracking-[0.28em] text-gold md:text-[0.62rem] md:tracking-[0.3em]">
                   {copy.hero.statementEyebrow}
@@ -1345,6 +1355,75 @@ export default function DesignContent() {
 
       <Footer />
       <FloatingActions />
+
+      <style jsx global>{`
+        @keyframes designHeroImageEnter {
+          0% {
+            opacity: 0;
+            transform: scale(1.055);
+          }
+
+          100% {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        @keyframes designHeroReveal {
+          0% {
+            opacity: 0;
+            transform: translateY(24px);
+          }
+
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .hero-design-image {
+          animation: designHeroImageEnter 1.8s
+            cubic-bezier(0.22, 1, 0.36, 1) both;
+          transform-origin: center center;
+          will-change: transform, opacity;
+        }
+
+        .hero-design-reveal {
+          opacity: 0;
+          animation: designHeroReveal 0.95s
+            cubic-bezier(0.22, 1, 0.36, 1) forwards;
+          will-change: transform, opacity;
+        }
+
+        .hero-design-delay-1 {
+          animation-delay: 0.18s;
+        }
+
+        .hero-design-delay-2 {
+          animation-delay: 0.34s;
+        }
+
+        .hero-design-delay-3 {
+          animation-delay: 0.5s;
+        }
+
+        .hero-design-delay-4 {
+          animation-delay: 0.66s;
+        }
+
+        .hero-design-delay-5 {
+          animation-delay: 0.84s;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .hero-design-image,
+          .hero-design-reveal {
+            animation: none !important;
+            opacity: 1 !important;
+            transform: none !important;
+          }
+        }
+      `}</style>
     </>
   );
 }

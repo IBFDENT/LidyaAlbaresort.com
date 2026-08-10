@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -676,7 +677,6 @@ function GoldEditorialSection({
       }
     >
       <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
-        {/* SECTION INTRO */}
         <div className="mx-auto mb-16 max-w-[1000px] border-b border-plum-dark/10 pb-12 text-center md:mb-20 md:pb-14 lg:mb-24">
           <span className="block text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-gold">
             {eyebrow}
@@ -700,7 +700,6 @@ function GoldEditorialSection({
           </div>
         </div>
 
-        {/* EDITORIAL POINTS */}
         <div className="space-y-20 md:space-y-24 lg:space-y-28">
           {points.map((point, index) => {
             const reverse = index % 2 === 1;
@@ -710,7 +709,6 @@ function GoldEditorialSection({
                 key={`${index}-${localized(point.title, locale)}`}
                 className="grid gap-9 lg:grid-cols-12 lg:items-center lg:gap-14"
               >
-                {/* IMAGE */}
                 <div
                   className={
                     reverse
@@ -752,7 +750,6 @@ function GoldEditorialSection({
                   </div>
                 </div>
 
-                {/* TEXT */}
                 <div
                   className={
                     reverse
@@ -798,6 +795,28 @@ export default function InvestmentGoldContent() {
   const copy: InvestmentCopy =
     INVESTMENT_COPY[locale] ?? INVESTMENT_COPY.en;
 
+  const heroRef = useRef<HTMLElement | null>(null);
+  const imageWrapRef = useRef<HTMLDivElement | null>(null);
+  const contentRef = useRef<HTMLDivElement | null>(null);
+  const glowRef = useRef<HTMLDivElement | null>(null);
+
+  const frameRef = useRef<number | null>(null);
+
+  const pointerTarget = useRef({
+    x: 0,
+    y: 0,
+  });
+
+  const pointerCurrent = useRef({
+    x: 0,
+    y: 0,
+  });
+
+  const scrollTarget = useRef(0);
+  const scrollCurrent = useRef(0);
+
+  const [heroLoaded, setHeroLoaded] = useState(false);
+
   const t = (key: string): string => {
     const value = GOLD_TEXT[key];
 
@@ -808,6 +827,189 @@ export default function InvestmentGoldContent() {
     return localized(value, locale);
   };
 
+  useEffect(() => {
+    const hero = heroRef.current;
+    const imageWrap = imageWrapRef.current;
+    const content = contentRef.current;
+    const glow = glowRef.current;
+
+    if (!hero || !imageWrap || !content || !glow) {
+      setHeroLoaded(true);
+      return;
+    }
+
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    const finePointer = window.matchMedia(
+      "(pointer: fine)"
+    ).matches;
+
+    const loadTimer = window.setTimeout(() => {
+      setHeroLoaded(true);
+    }, 70);
+
+    if (reducedMotion || !finePointer) {
+      return () => {
+        window.clearTimeout(loadTimer);
+      };
+    }
+
+    const updatePointer = (event: PointerEvent) => {
+      const rect = hero.getBoundingClientRect();
+
+      const x =
+        ((event.clientX - rect.left) /
+          Math.max(rect.width, 1) -
+          0.5) *
+        2;
+
+      const y =
+        ((event.clientY - rect.top) /
+          Math.max(rect.height, 1) -
+          0.5) *
+        2;
+
+      pointerTarget.current.x = Math.max(
+        -1,
+        Math.min(1, x)
+      );
+
+      pointerTarget.current.y = Math.max(
+        -1,
+        Math.min(1, y)
+      );
+    };
+
+    const resetPointer = () => {
+      pointerTarget.current.x = 0;
+      pointerTarget.current.y = 0;
+    };
+
+    const updateScroll = () => {
+      const rect = hero.getBoundingClientRect();
+
+      const total = Math.max(
+        hero.offsetHeight,
+        1
+      );
+
+      const progress = Math.max(
+        0,
+        Math.min(
+          1,
+          Math.abs(Math.min(rect.top, 0)) / total
+        )
+      );
+
+      scrollTarget.current = progress;
+    };
+
+    const animate = () => {
+      pointerCurrent.current.x +=
+        (pointerTarget.current.x -
+          pointerCurrent.current.x) *
+        0.045;
+
+      pointerCurrent.current.y +=
+        (pointerTarget.current.y -
+          pointerCurrent.current.y) *
+        0.045;
+
+      scrollCurrent.current +=
+        (scrollTarget.current -
+          scrollCurrent.current) *
+        0.065;
+
+      const x = pointerCurrent.current.x;
+      const y = pointerCurrent.current.y;
+      const scroll = scrollCurrent.current;
+
+      const imageX = x * 10;
+      const imageY = y * 6 - scroll * 22;
+      const imageScale =
+        1.045 + scroll * 0.014;
+
+      imageWrap.style.transform = `
+        translate3d(${imageX}px, ${imageY}px, 0)
+        scale(${imageScale})
+      `;
+
+      const contentX = x * -2;
+      const contentY =
+        y * -1.2 - scroll * 4;
+
+      content.style.transform = `
+        translate3d(${contentX}px, ${contentY}px, 0)
+      `;
+
+      const glowX = 50 + x * 9;
+      const glowY = 42 + y * 7;
+
+      glow.style.background = `
+        radial-gradient(
+          circle at ${glowX}% ${glowY}%,
+          rgba(255,231,177,0.18) 0%,
+          rgba(200,169,106,0.11) 18%,
+          rgba(200,169,106,0.05) 31%,
+          rgba(255,255,255,0) 54%
+        )
+      `;
+
+      frameRef.current =
+        requestAnimationFrame(animate);
+    };
+
+    hero.addEventListener(
+      "pointermove",
+      updatePointer
+    );
+
+    hero.addEventListener(
+      "pointerleave",
+      resetPointer
+    );
+
+    window.addEventListener(
+      "scroll",
+      updateScroll,
+      {
+        passive: true,
+      }
+    );
+
+    updateScroll();
+
+    frameRef.current =
+      requestAnimationFrame(animate);
+
+    return () => {
+      hero.removeEventListener(
+        "pointermove",
+        updatePointer
+      );
+
+      hero.removeEventListener(
+        "pointerleave",
+        resetPointer
+      );
+
+      window.removeEventListener(
+        "scroll",
+        updateScroll
+      );
+
+      if (frameRef.current !== null) {
+        cancelAnimationFrame(
+          frameRef.current
+        );
+      }
+
+      window.clearTimeout(loadTimer);
+    };
+  }, []);
+
   return (
     <>
       <Header />
@@ -816,25 +1018,69 @@ export default function InvestmentGoldContent() {
         {/* =====================================================
             HERO
         ====================================================== */}
-        <section className="relative min-h-[760px] overflow-hidden bg-plum-dark pt-[108px] md:min-h-[900px] md:pt-36 lg:min-h-screen lg:pt-40">
-          <Image
-            src="/images/investment-gold/investment-gold-hero.png"
-            alt={copy.hero.imageAlt}
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center"
+        <section
+          ref={heroRef}
+          className="relative min-h-[760px] overflow-hidden bg-plum-dark pt-[108px] md:min-h-[900px] md:pt-36 lg:min-h-screen lg:pt-40"
+        >
+          {/* HERO IMAGE */}
+          <div
+            ref={imageWrapRef}
+            className={`absolute inset-[-3%] will-change-transform transition-[opacity,filter,transform] duration-[1800ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+              heroLoaded
+                ? "opacity-100 blur-0"
+                : "opacity-0 blur-[2px]"
+            }`}
+            style={{
+              transform: heroLoaded
+                ? "translate3d(0,0,0) scale(1.045)"
+                : "translate3d(0,0,0) scale(1.08)",
+            }}
+          >
+            <Image
+              src="/images/investment-gold/investment-gold-hero.png"
+              alt={copy.hero.imageAlt}
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-center"
+            />
+          </div>
+
+          {/* DARK OVERLAY */}
+          <div className="pointer-events-none absolute inset-0 bg-plum-dark/64 md:bg-plum-dark/58 lg:bg-plum-dark/52" />
+
+          {/* LOWER SHADOW */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-plum-dark/85 via-transparent to-plum-dark/28" />
+
+          {/* DYNAMIC GOLD LIGHT */}
+          <div
+            ref={glowRef}
+            className="pointer-events-none absolute inset-0"
           />
 
-          <div className="absolute inset-0 bg-plum-dark/64 md:bg-plum-dark/58 lg:bg-plum-dark/52" />
+          {/* SOFT STATIC GOLD LIGHT */}
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(200,169,106,0.08),transparent_55%)]" />
 
-          <div className="absolute inset-0 bg-gradient-to-t from-plum-dark/85 via-transparent to-plum-dark/28" />
+          {/* VIGNETTE */}
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_50%,rgba(10,4,13,0.18)_100%)]" />
 
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(200,169,106,0.09),transparent_55%)]" />
-
-          <div className="relative z-10 mx-auto flex min-h-[650px] max-w-[1440px] items-center justify-center px-6 pb-16 pt-12 text-center md:min-h-[760px] md:px-10 md:pb-20 lg:min-h-[calc(100vh-80px)] lg:px-16 lg:pb-24 xl:px-20">
+          {/* CONTENT */}
+          <div
+            ref={contentRef}
+            className="relative z-10 mx-auto flex min-h-[650px] max-w-[1440px] items-center justify-center px-6 pb-16 pt-12 text-center will-change-transform md:min-h-[760px] md:px-10 md:pb-20 lg:min-h-[calc(100vh-80px)] lg:px-16 lg:pb-24 xl:px-20"
+          >
             <div className="mx-auto max-w-[960px]">
-              <div className="flex items-center justify-center gap-3 md:gap-4">
+              {/* EYEBROW */}
+              <div
+                className={`flex items-center justify-center gap-3 transition-all duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:gap-4 ${
+                  heroLoaded
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-5 opacity-0"
+                }`}
+                style={{
+                  transitionDelay: "120ms",
+                }}
+              >
                 <span className="flex h-10 w-10 items-center justify-center text-gold">
                   <TrendUpIcon />
                 </span>
@@ -844,18 +1090,52 @@ export default function InvestmentGoldContent() {
                 </span>
               </div>
 
+              {/* TITLE */}
               <h1
-                className="mx-auto mt-7 max-w-[980px] font-display text-[2.9rem] leading-[0.92] tracking-[-0.04em] sm:text-[3.25rem] md:text-7xl lg:text-[6.5rem]"
+                className="mx-auto mt-7 max-w-[980px] overflow-hidden font-display text-[2.9rem] leading-[0.92] tracking-[-0.04em] sm:text-[3.25rem] md:text-7xl lg:text-[6.5rem]"
                 style={{ color: "#F5EFE6" }}
               >
-                {t("heroTitle")}
+                <span
+                  className={`block transition-all duration-[1300ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                    heroLoaded
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-[28%] opacity-0"
+                  }`}
+                  style={{
+                    transitionDelay: "230ms",
+                  }}
+                >
+                  {t("heroTitle")}
+                </span>
               </h1>
 
-              <p className="mx-auto mt-7 max-w-[650px] text-sm leading-7 text-brand-white/70 md:mt-8 md:text-base">
-                {t("heroLead")}
-              </p>
+              {/* LEAD */}
+              <div
+                className={`transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                  heroLoaded
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-5 opacity-0"
+                }`}
+                style={{
+                  transitionDelay: "420ms",
+                }}
+              >
+                <p className="mx-auto mt-7 max-w-[650px] text-sm leading-7 text-brand-white/70 md:mt-8 md:text-base">
+                  {t("heroLead")}
+                </p>
+              </div>
 
-              <div className="mt-9 flex flex-col items-center justify-center gap-5 sm:flex-row sm:flex-wrap md:mt-10">
+              {/* BUTTONS */}
+              <div
+                className={`mt-9 flex flex-col items-center justify-center gap-5 transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] sm:flex-row sm:flex-wrap md:mt-10 ${
+                  heroLoaded
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-5 opacity-0"
+                }`}
+                style={{
+                  transitionDelay: "560ms",
+                }}
+              >
                 <a
                   href="#gold-details"
                   className="group inline-flex min-w-[245px] items-center justify-center gap-6 bg-gold px-8 py-4 text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-plum-dark transition-all duration-500 hover:bg-gold-light md:text-[0.66rem] md:tracking-[0.2em]"
@@ -873,13 +1153,25 @@ export default function InvestmentGoldContent() {
                 >
                   {copy.hero.enquiry}
 
-                  <span>→</span>
+                  <span className="transition-transform duration-500 group-hover:translate-x-1">
+                    →
+                  </span>
 
                   <span className="absolute bottom-1 left-0 h-px w-full bg-brand-white/35 transition-colors duration-500 group-hover:bg-gold" />
                 </a>
               </div>
 
-              <div className="mt-12 flex items-center justify-center gap-4 md:mt-14">
+              {/* FOOTER LINE */}
+              <div
+                className={`mt-12 flex items-center justify-center gap-4 transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:mt-14 ${
+                  heroLoaded
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-4 opacity-0"
+                }`}
+                style={{
+                  transitionDelay: "700ms",
+                }}
+              >
                 <span className="h-px w-10 bg-gold/70 md:w-12" />
 
                 <span className="text-[0.54rem] uppercase tracking-[0.25em] text-brand-white/45 md:text-[0.58rem] md:tracking-[0.3em]">

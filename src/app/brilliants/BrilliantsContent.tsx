@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
@@ -9,6 +7,7 @@ import FloatingActions from "@/components/FloatingActions";
 import CategoryGallery from "@/components/category/CategoryGallery";
 import CategoryCraft from "@/components/category/CategoryCraft";
 import CategoryCTA from "@/components/category/CategoryCTA";
+import BrilliantsCinematicHero from "@/components/category/BrilliantsCinematicHero";
 
 import { GemClusterIcon } from "@/components/category/icons";
 import { useLanguage } from "@/components/LanguageProvider";
@@ -1382,84 +1381,7 @@ export default function BrilliantsContent() {
       <Header />
 
       <main>
-        {/* HERO */}
-        <section className="relative min-h-[820px] overflow-hidden bg-ivory pt-36 md:min-h-[900px] md:pt-40 lg:min-h-[940px] lg:pt-44">
-          <Image
-            src="/images/brilliants/hero-brilliants.png"
-            alt={copy.hero.imageAlt}
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center"
-          />
-
-          <div className="absolute inset-0 bg-gradient-to-r from-[#F7F3EB]/92 via-[#F7F3EB]/40 to-transparent" />
-
-          <div className="pointer-events-none absolute -left-40 top-10 h-[520px] w-[520px] rounded-full bg-brand-white/18 blur-3xl" />
-
-          <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
-            <div className="grid gap-12 pb-20 lg:grid-cols-12 lg:items-end lg:pb-28">
-              <div className="lg:col-span-8">
-                <div className="flex items-center gap-4">
-                  <span className="flex h-10 w-10 items-center justify-center text-gold">
-                    <GemClusterIcon />
-                  </span>
-
-                  <span className="text-[0.66rem] font-semibold uppercase tracking-[0.34em] text-gold">
-                    {copy.hero.eyebrow}
-                  </span>
-                </div>
-
-                <h1
-                  className="mt-7 max-w-[820px] font-display text-5xl leading-[0.92] tracking-[-0.035em] md:text-6xl lg:text-[5.8rem]"
-                  style={{ color: "#1B0B20" }}
-                >
-                  {copy.hero.title1}
-                  <span className="block">
-                    {copy.hero.title2}
-                  </span>
-                </h1>
-              </div>
-
-              <div className="lg:col-span-4 lg:pb-2">
-                <p className="max-w-md text-sm leading-7 text-[#645E5A] md:text-base">
-                  {copy.hero.description}
-                </p>
-
-                <div className="mt-7 flex items-center gap-4">
-                  <span className="h-px w-12 bg-gold" />
-
-                  <span className="text-[0.58rem] font-semibold uppercase tracking-[0.24em] text-plum-dark/50">
-                    {copy.hero.since}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div className="border-t border-plum-dark/10 py-12 md:py-16">
-              <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
-                <div className="lg:col-span-3">
-                  <span className="text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-gold">
-                    {copy.hero.statementEyebrow}
-                  </span>
-                </div>
-
-                <div className="lg:col-span-9">
-                  <p
-                    className="max-w-[1000px] font-display text-3xl italic leading-tight md:text-4xl lg:text-5xl"
-                    style={{ color: "#1B0B20" }}
-                  >
-                    {copy.hero.statementBefore}
-                    <span style={{ color: "#A98242" }}>
-                      {" "}
-                      {copy.hero.statementAccent}
-                    </span>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <BrilliantsCinematicHero />
 
         <CategoryGallery
           icon={<GemClusterIcon />}

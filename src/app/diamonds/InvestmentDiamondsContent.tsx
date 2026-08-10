@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -978,7 +979,6 @@ function EditorialSection({
       }
     >
       <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
-        {/* HEADER */}
         <div className="mx-auto mb-16 max-w-[1000px] border-b border-plum-dark/10 pb-12 text-center">
           <span className="block text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-gold">
             {eyebrow}
@@ -1002,7 +1002,6 @@ function EditorialSection({
           </div>
         </div>
 
-        {/* POINTS */}
         <div className="space-y-20 md:space-y-24 lg:space-y-28">
           {points.map((point, index) => {
             const image = images[index];
@@ -1013,7 +1012,6 @@ function EditorialSection({
                 key={`${localized(point.title, locale)}-${index}`}
                 className="grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-14"
               >
-                {/* IMAGE */}
                 <div
                   className={
                     reverse
@@ -1052,7 +1050,6 @@ function EditorialSection({
                   </div>
                 </div>
 
-                {/* TEXT */}
                 <div
                   className={
                     reverse
@@ -1096,6 +1093,28 @@ export default function InvestmentDiamondsContent() {
   const copy: DiamondCopy =
     DIAMOND_COPY[locale] ?? DIAMOND_COPY.en;
 
+  const heroRef = useRef<HTMLElement | null>(null);
+  const imageWrapRef = useRef<HTMLDivElement | null>(null);
+  const contentRef = useRef<HTMLDivElement | null>(null);
+  const glowRef = useRef<HTMLDivElement | null>(null);
+
+  const frameRef = useRef<number | null>(null);
+
+  const pointerTarget = useRef({
+    x: 0,
+    y: 0,
+  });
+
+  const pointerCurrent = useRef({
+    x: 0,
+    y: 0,
+  });
+
+  const scrollTarget = useRef(0);
+  const scrollCurrent = useRef(0);
+
+  const [heroLoaded, setHeroLoaded] = useState(false);
+
   const t = (key: string): string => {
     const value = DIAMONDS_TEXT[key];
 
@@ -1106,6 +1125,189 @@ export default function InvestmentDiamondsContent() {
     return localized(value, locale);
   };
 
+  useEffect(() => {
+    const hero = heroRef.current;
+    const imageWrap = imageWrapRef.current;
+    const content = contentRef.current;
+    const glow = glowRef.current;
+
+    if (!hero || !imageWrap || !content || !glow) {
+      setHeroLoaded(true);
+      return;
+    }
+
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    const finePointer = window.matchMedia(
+      "(pointer: fine)"
+    ).matches;
+
+    const loadTimer = window.setTimeout(() => {
+      setHeroLoaded(true);
+    }, 70);
+
+    if (reducedMotion || !finePointer) {
+      return () => {
+        window.clearTimeout(loadTimer);
+      };
+    }
+
+    const updatePointer = (event: PointerEvent) => {
+      const rect = hero.getBoundingClientRect();
+
+      const x =
+        ((event.clientX - rect.left) /
+          Math.max(rect.width, 1) -
+          0.5) *
+        2;
+
+      const y =
+        ((event.clientY - rect.top) /
+          Math.max(rect.height, 1) -
+          0.5) *
+        2;
+
+      pointerTarget.current.x = Math.max(
+        -1,
+        Math.min(1, x)
+      );
+
+      pointerTarget.current.y = Math.max(
+        -1,
+        Math.min(1, y)
+      );
+    };
+
+    const resetPointer = () => {
+      pointerTarget.current.x = 0;
+      pointerTarget.current.y = 0;
+    };
+
+    const updateScroll = () => {
+      const rect = hero.getBoundingClientRect();
+
+      const total = Math.max(
+        hero.offsetHeight,
+        1
+      );
+
+      const progress = Math.max(
+        0,
+        Math.min(
+          1,
+          Math.abs(Math.min(rect.top, 0)) / total
+        )
+      );
+
+      scrollTarget.current = progress;
+    };
+
+    const animate = () => {
+      pointerCurrent.current.x +=
+        (pointerTarget.current.x -
+          pointerCurrent.current.x) *
+        0.045;
+
+      pointerCurrent.current.y +=
+        (pointerTarget.current.y -
+          pointerCurrent.current.y) *
+        0.045;
+
+      scrollCurrent.current +=
+        (scrollTarget.current -
+          scrollCurrent.current) *
+        0.065;
+
+      const x = pointerCurrent.current.x;
+      const y = pointerCurrent.current.y;
+      const scroll = scrollCurrent.current;
+
+      const imageX = x * 10;
+      const imageY = y * 6 - scroll * 22;
+      const imageScale =
+        1.045 + scroll * 0.014;
+
+      imageWrap.style.transform = `
+        translate3d(${imageX}px, ${imageY}px, 0)
+        scale(${imageScale})
+      `;
+
+      const contentX = x * -2;
+      const contentY =
+        y * -1.2 - scroll * 4;
+
+      content.style.transform = `
+        translate3d(${contentX}px, ${contentY}px, 0)
+      `;
+
+      const glowX = 50 + x * 9;
+      const glowY = 42 + y * 7;
+
+      glow.style.background = `
+        radial-gradient(
+          circle at ${glowX}% ${glowY}%,
+          rgba(255,255,255,0.20) 0%,
+          rgba(225,232,242,0.12) 17%,
+          rgba(200,169,106,0.055) 31%,
+          rgba(255,255,255,0) 54%
+        )
+      `;
+
+      frameRef.current =
+        requestAnimationFrame(animate);
+    };
+
+    hero.addEventListener(
+      "pointermove",
+      updatePointer
+    );
+
+    hero.addEventListener(
+      "pointerleave",
+      resetPointer
+    );
+
+    window.addEventListener(
+      "scroll",
+      updateScroll,
+      {
+        passive: true,
+      }
+    );
+
+    updateScroll();
+
+    frameRef.current =
+      requestAnimationFrame(animate);
+
+    return () => {
+      hero.removeEventListener(
+        "pointermove",
+        updatePointer
+      );
+
+      hero.removeEventListener(
+        "pointerleave",
+        resetPointer
+      );
+
+      window.removeEventListener(
+        "scroll",
+        updateScroll
+      );
+
+      if (frameRef.current !== null) {
+        cancelAnimationFrame(
+          frameRef.current
+        );
+      }
+
+      window.clearTimeout(loadTimer);
+    };
+  }, []);
+
   return (
     <>
       <Header />
@@ -1114,25 +1316,94 @@ export default function InvestmentDiamondsContent() {
         {/* =====================================================
             HERO
         ====================================================== */}
-        <section className="relative min-h-[900px] overflow-hidden bg-plum-dark text-brand-white lg:min-h-screen">
-          <Image
-            src="/images/diamonds/diamonds-herou.png"
-            alt={copy.hero.imageAlt}
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center"
+        <section
+          ref={heroRef}
+          className="
+            relative
+            min-h-[900px]
+            overflow-hidden
+            bg-plum-dark
+            text-brand-white
+            lg:min-h-screen
+          "
+        >
+          <div
+            ref={imageWrapRef}
+            className={`absolute inset-[-3%] will-change-transform transition-[opacity,filter,transform] duration-[1800ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+              heroLoaded
+                ? "opacity-100 blur-0"
+                : "opacity-0 blur-[2px]"
+            }`}
+            style={{
+              transform: heroLoaded
+                ? "translate3d(0,0,0) scale(1.045)"
+                : "translate3d(0,0,0) scale(1.08)",
+            }}
+          >
+            <Image
+              src="/images/diamonds/diamonds-herou.png"
+              alt={copy.hero.imageAlt}
+              fill
+              priority
+              sizes="100vw"
+              className="
+                object-cover
+                object-[54%_50%]
+                md:object-center
+              "
+            />
+          </div>
+
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-plum-dark/72 via-plum-dark/30 to-plum-dark/5" />
+
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-plum-dark/48 via-transparent to-plum-dark/12" />
+
+          <div
+            ref={glowRef}
+            className="pointer-events-none absolute inset-0"
           />
 
-          <div className="absolute inset-0 bg-gradient-to-r from-plum-dark/68 via-plum-dark/26 to-plum-dark/5" />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_52%_40%,rgba(255,255,255,0.07),transparent_48%)]" />
 
-          <div className="absolute inset-0 bg-gradient-to-t from-plum-dark/42 via-transparent to-plum-dark/10" />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_50%,rgba(9,3,12,0.18)_100%)]" />
 
           <div className="pointer-events-none absolute -left-40 top-1/3 h-[620px] w-[620px] rounded-full bg-plum-dark/30 blur-3xl" />
 
-          <div className="relative mx-auto flex min-h-[900px] max-w-[1440px] items-center justify-center px-6 pb-20 pt-36 md:px-10 md:pt-40 lg:min-h-screen lg:px-16 lg:pt-44 xl:px-20">
-            <div className="mx-auto max-w-[1000px] text-center">
-              <div className="flex items-center justify-center gap-4">
+          <div
+            ref={contentRef}
+            className="
+              relative
+              z-10
+              mx-auto
+              flex
+              min-h-[900px]
+              max-w-[1440px]
+              items-center
+              justify-center
+              px-6
+              pb-20
+              pt-36
+              text-center
+              will-change-transform
+              md:px-10
+              md:pt-40
+              lg:min-h-screen
+              lg:px-16
+              lg:pt-44
+              xl:px-20
+            "
+          >
+            <div className="mx-auto max-w-[1000px]">
+              <div
+                className={`flex items-center justify-center gap-4 transition-all duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                  heroLoaded
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-5 opacity-0"
+                }`}
+                style={{
+                  transitionDelay: "120ms",
+                }}
+              >
                 <span className="flex h-10 w-10 items-center justify-center text-gold">
                   <DiamondIcon />
                 </span>
@@ -1143,40 +1414,98 @@ export default function InvestmentDiamondsContent() {
               </div>
 
               <h1
-                className="mx-auto mt-7 max-w-[900px] font-display text-5xl leading-[0.91] tracking-[-0.04em] md:text-6xl lg:text-[5.7rem]"
-                style={{ color: "#F5EFE6" }}
+                className="
+                  mx-auto
+                  mt-7
+                  max-w-[900px]
+                  overflow-hidden
+                  font-display
+                  text-5xl
+                  leading-[0.91]
+                  tracking-[-0.04em]
+                  md:text-6xl
+                  lg:text-[5.7rem]
+                "
+                style={{
+                  color: "#F5EFE6",
+                }}
               >
-                {t("heroTitle")}
+                <span
+                  className={`block transition-all duration-[1300ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                    heroLoaded
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-[28%] opacity-0"
+                  }`}
+                  style={{
+                    transitionDelay: "230ms",
+                  }}
+                >
+                  {t("heroTitle")}
+                </span>
               </h1>
 
-              <p className="mx-auto mt-7 max-w-[620px] text-sm leading-7 text-brand-white/65 md:text-base">
-                {t("heroLead")}
-              </p>
+              <div
+                className={`transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                  heroLoaded
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-5 opacity-0"
+                }`}
+                style={{
+                  transitionDelay: "420ms",
+                }}
+              >
+                <p className="mx-auto mt-7 max-w-[620px] text-sm leading-7 text-brand-white/65 md:text-base">
+                  {t("heroLead")}
+                </p>
 
-              <div className="mt-7 flex items-center justify-center gap-4">
-                <span className="h-px w-12 bg-gold" />
+                <div className="mt-7 flex items-center justify-center gap-4">
+                  <span className="h-px w-12 bg-gold" />
 
-                <span className="text-[0.58rem] font-semibold uppercase tracking-[0.24em] text-brand-white/45">
-                  {copy.hero.since}
-                </span>
+                  <span className="text-[0.58rem] font-semibold uppercase tracking-[0.24em] text-brand-white/45">
+                    {copy.hero.since}
+                  </span>
 
-                <span className="h-px w-12 bg-gold" />
+                  <span className="h-px w-12 bg-gold" />
+                </div>
               </div>
 
-              <div className="mx-auto mt-14 max-w-[720px] border-t border-brand-white/15 pt-10">
+              <div
+                className={`mx-auto mt-14 max-w-[720px] border-t border-brand-white/15 pt-10 transition-all duration-[1250ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                  heroLoaded
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-5 opacity-0"
+                }`}
+                style={{
+                  transitionDelay: "620ms",
+                }}
+              >
                 <span className="text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-gold">
                   {copy.hero.eyebrowRight}
                 </span>
 
                 <p
-                  className="mx-auto mt-6 max-w-[650px] font-display text-3xl italic leading-tight md:text-4xl lg:text-[2.65rem]"
-                  style={{ color: "#F5EFE6" }}
+                  className="
+                    mx-auto
+                    mt-6
+                    max-w-[650px]
+                    font-display
+                    text-3xl
+                    italic
+                    leading-tight
+                    md:text-4xl
+                    lg:text-[2.65rem]
+                  "
+                  style={{
+                    color: "#F5EFE6",
+                  }}
                 >
                   {copy.hero.statement}
 
                   <span
                     className="block"
-                    style={{ color: "#E8D8B5" }}
+                    style={{
+                      color: "#E8D8B5",
+                    }}
                   >
                     {copy.hero.statementAccent}
                   </span>
@@ -1271,7 +1600,6 @@ export default function InvestmentDiamondsContent() {
           <div className="pointer-events-none absolute -right-44 bottom-0 h-[460px] w-[460px] rounded-full bg-brand-white/[0.03] blur-3xl" />
 
           <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
-            {/* HEADER */}
             <div className="mx-auto max-w-[1000px] border-b border-brand-white/12 pb-14 text-center">
               <span className="mb-5 block text-[0.66rem] font-semibold uppercase tracking-[0.34em] text-gold">
                 {copy.trust.eyebrow}
@@ -1296,7 +1624,6 @@ export default function InvestmentDiamondsContent() {
               </p>
             </div>
 
-            {/* POINTS */}
             <div className="grid md:grid-cols-3">
               {copy.trust.points.map((item, index) => (
                 <div
@@ -1317,7 +1644,6 @@ export default function InvestmentDiamondsContent() {
               ))}
             </div>
 
-            {/* CLOSING */}
             <div className="mx-auto mt-16 max-w-[980px] text-center md:mt-20">
               <span className="mx-auto mb-7 block h-px w-14 bg-gold" />
 
