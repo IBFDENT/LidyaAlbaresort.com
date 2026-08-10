@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -947,6 +948,18 @@ export default function DesignContent() {
   const copy =
     DESIGN_COPY[locale] ?? DESIGN_COPY.en;
 
+  const [heroLoaded, setHeroLoaded] = useState(false);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      setHeroLoaded(true);
+    }, 60);
+
+    return () => {
+      window.clearTimeout(timer);
+    };
+  }, []);
+
   return (
     <>
       <Header />
@@ -956,22 +969,39 @@ export default function DesignContent() {
             HERO
         ====================================================== */}
         <section className="relative min-h-[760px] overflow-hidden bg-ivory pt-[108px] md:min-h-[900px] md:pt-40 lg:min-h-[940px] lg:pt-44">
-          <Image
-            src="/images/design/hero-design.png"
-            alt={copy.hero.imageAlt}
-            fill
-            priority
-            sizes="100vw"
-            className="
-              hero-design-image
-              object-cover
-              object-[54%_50%]
-              md:object-center
-            "
-          />
+          {/* HERO IMAGE */}
+          <div
+            className={`
+              absolute
+              inset-[-3%]
+              transition-[opacity,filter,transform]
+              duration-[1800ms]
+              ease-[cubic-bezier(0.22,1,0.36,1)]
+              ${
+                heroLoaded
+                  ? "scale-100 opacity-100 blur-0"
+                  : "scale-[1.055] opacity-0 blur-[2px]"
+              }
+            `}
+          >
+            <Image
+              src="/images/design/hero-design.png"
+              alt={copy.hero.imageAlt}
+              fill
+              priority
+              sizes="100vw"
+              className="
+                object-cover
+                object-[54%_50%]
+                md:object-center
+              "
+            />
+          </div>
 
+          {/* READABILITY OVERLAY */}
           <div
             className="
+              pointer-events-none
               absolute
               inset-0
               bg-[#F7F3EB]/72
@@ -980,14 +1010,33 @@ export default function DesignContent() {
             "
           />
 
-          <div className="absolute inset-0 bg-gradient-to-b from-[#F7F3EB]/18 via-transparent to-[#F7F3EB]/30" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#F7F3EB]/18 via-transparent to-[#F7F3EB]/30" />
 
           <div className="pointer-events-none absolute -left-40 top-10 h-[500px] w-[500px] rounded-full bg-brand-white/16 blur-3xl" />
 
           <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
             <div className="mx-auto max-w-[1050px] pb-12 text-center md:pb-16 lg:pb-20">
               {/* EYEBROW */}
-              <div className="hero-design-reveal hero-design-delay-1 flex items-center justify-center gap-3 md:gap-4">
+              <div
+                className={`
+                  flex
+                  items-center
+                  justify-center
+                  gap-3
+                  transition-all
+                  duration-[950ms]
+                  ease-[cubic-bezier(0.22,1,0.36,1)]
+                  md:gap-4
+                  ${
+                    heroLoaded
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-6 opacity-0"
+                  }
+                `}
+                style={{
+                  transitionDelay: "180ms",
+                }}
+              >
                 <span className="flex h-9 w-9 items-center justify-center text-gold">
                   <BlossomIcon />
                 </span>
@@ -998,47 +1047,86 @@ export default function DesignContent() {
               </div>
 
               {/* TITLE */}
-              <h1
-                className="
-                  hero-design-reveal
-                  hero-design-delay-2
-                  mx-auto
-                  mt-6
-                  max-w-[980px]
-                  font-display
-                  text-[2.85rem]
-                  leading-[0.93]
-                  tracking-[-0.04em]
-                  sm:text-[3.2rem]
-                  md:mt-7
-                  md:text-6xl
-                  lg:text-[5.8rem]
-                "
-                style={{ color: "#1B0B20" }}
-              >
-                {copy.hero.title}
-              </h1>
+              <div className="overflow-hidden">
+                <h1
+                  className={`
+                    mx-auto
+                    mt-6
+                    max-w-[980px]
+                    font-display
+                    text-[2.85rem]
+                    leading-[0.93]
+                    tracking-[-0.04em]
+                    transition-all
+                    duration-[1100ms]
+                    ease-[cubic-bezier(0.22,1,0.36,1)]
+                    sm:text-[3.2rem]
+                    md:mt-7
+                    md:text-6xl
+                    lg:text-[5.8rem]
+                    ${
+                      heroLoaded
+                        ? "translate-y-0 opacity-100"
+                        : "translate-y-[28%] opacity-0"
+                    }
+                  `}
+                  style={{
+                    color: "#1B0B20",
+                    transitionDelay: "340ms",
+                  }}
+                >
+                  {copy.hero.title}
+                </h1>
+              </div>
 
               {/* LEAD */}
               <p
-                className="
-                  hero-design-reveal
-                  hero-design-delay-3
+                className={`
                   mx-auto
                   mt-7
                   max-w-[620px]
                   text-sm
                   leading-7
                   text-[#645E5A]
+                  transition-all
+                  duration-[1000ms]
+                  ease-[cubic-bezier(0.22,1,0.36,1)]
                   md:mt-8
                   md:text-base
-                "
+                  ${
+                    heroLoaded
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-5 opacity-0"
+                  }
+                `}
+                style={{
+                  transitionDelay: "500ms",
+                }}
               >
                 {copy.hero.lead}
               </p>
 
               {/* SINCE */}
-              <div className="hero-design-reveal hero-design-delay-4 mt-7 flex items-center justify-center gap-4">
+              <div
+                className={`
+                  mt-7
+                  flex
+                  items-center
+                  justify-center
+                  gap-4
+                  transition-all
+                  duration-[1000ms]
+                  ease-[cubic-bezier(0.22,1,0.36,1)]
+                  ${
+                    heroLoaded
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-5 opacity-0"
+                  }
+                `}
+                style={{
+                  transitionDelay: "660ms",
+                }}
+              >
                 <span className="h-px w-10 bg-gold md:w-12" />
 
                 <span className="text-[0.55rem] font-semibold uppercase tracking-[0.22em] text-plum-dark/50 md:text-[0.58rem] md:tracking-[0.24em]">
@@ -1049,8 +1137,28 @@ export default function DesignContent() {
               </div>
             </div>
 
-            {/* STATEMENT */}
-            <div className="hero-design-reveal hero-design-delay-5 border-t border-plum-dark/10 py-9 text-center md:py-14 lg:py-16">
+            {/* HERO STATEMENT */}
+            <div
+              className={`
+                border-t
+                border-plum-dark/10
+                py-9
+                text-center
+                transition-all
+                duration-[1100ms]
+                ease-[cubic-bezier(0.22,1,0.36,1)]
+                md:py-14
+                lg:py-16
+                ${
+                  heroLoaded
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-5 opacity-0"
+                }
+              `}
+              style={{
+                transitionDelay: "840ms",
+              }}
+            >
               <div className="mx-auto max-w-[1000px]">
                 <span className="text-[0.58rem] font-semibold uppercase tracking-[0.28em] text-gold md:text-[0.62rem] md:tracking-[0.3em]">
                   {copy.hero.statementEyebrow}
@@ -1355,75 +1463,6 @@ export default function DesignContent() {
 
       <Footer />
       <FloatingActions />
-
-      <style jsx global>{`
-        @keyframes designHeroImageEnter {
-          0% {
-            opacity: 0;
-            transform: scale(1.055);
-          }
-
-          100% {
-            opacity: 1;
-            transform: scale(1);
-          }
-        }
-
-        @keyframes designHeroReveal {
-          0% {
-            opacity: 0;
-            transform: translateY(24px);
-          }
-
-          100% {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .hero-design-image {
-          animation: designHeroImageEnter 1.8s
-            cubic-bezier(0.22, 1, 0.36, 1) both;
-          transform-origin: center center;
-          will-change: transform, opacity;
-        }
-
-        .hero-design-reveal {
-          opacity: 0;
-          animation: designHeroReveal 0.95s
-            cubic-bezier(0.22, 1, 0.36, 1) forwards;
-          will-change: transform, opacity;
-        }
-
-        .hero-design-delay-1 {
-          animation-delay: 0.18s;
-        }
-
-        .hero-design-delay-2 {
-          animation-delay: 0.34s;
-        }
-
-        .hero-design-delay-3 {
-          animation-delay: 0.5s;
-        }
-
-        .hero-design-delay-4 {
-          animation-delay: 0.66s;
-        }
-
-        .hero-design-delay-5 {
-          animation-delay: 0.84s;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .hero-design-image,
-          .hero-design-reveal {
-            animation: none !important;
-            opacity: 1 !important;
-            transform: none !important;
-          }
-        }
-      `}</style>
     </>
   );
 }
