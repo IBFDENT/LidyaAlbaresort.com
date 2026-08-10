@@ -30,6 +30,15 @@ export const COLLECTIONS: Collection[] = [
       cs: "Perly",
       hu: "Gyöngyök",
       pl: "Perły",
+
+      ru: "Жемчуг",
+      nl: "Parels",
+      da: "Perler",
+      fi: "Helmet",
+      sv: "Pärlor",
+      fr: "Perles",
+      it: "Perle",
+      es: "Perlas",
     },
     description: {
       de: "Perlen in ihrer schönsten Form – ein zeitloses Vergnügen.",
@@ -39,8 +48,18 @@ export const COLLECTIONS: Collection[] = [
       cs: "Perly v jejich nejkrásnější podobě – nadčasové potěšení.",
       hu: "Gyöngyök legszebb formájukban – időtlen élvezet.",
       pl: "Perły w ich najpiękniejszej formie – ponadczasowa przyjemność.",
+
+      ru: "Жемчуг в своей прекраснейшей форме — удовольствие вне времени.",
+      nl: "Parels in hun mooiste vorm – tijdloze elegantie.",
+      da: "Perler i deres smukkeste form – en tidløs glæde.",
+      fi: "Helmet kauneimmillaan – ajatonta iloa.",
+      sv: "Pärlor i sin vackraste form – tidlös elegans.",
+      fr: "Les perles dans leur plus belle expression – un plaisir intemporel.",
+      it: "Perle nella loro forma più bella – un piacere senza tempo.",
+      es: "Perlas en su expresión más bella – un placer atemporal.",
     },
   },
+
   {
     id: "wedding",
     image: "/images/collections/wedding.jpg",
@@ -53,6 +72,15 @@ export const COLLECTIONS: Collection[] = [
       cs: "Snubní prsteny",
       hu: "Karikagyűrűk",
       pl: "Obrączki",
+
+      ru: "Обручальные кольца",
+      nl: "Trouwringen",
+      da: "Vielsesringe",
+      fi: "Vihkisormukset",
+      sv: "Vigselringar",
+      fr: "Alliances",
+      it: "Fedi nuziali",
+      es: "Alianzas",
     },
     description: {
       de: "Trauringe – Schmuck für ein Leben lang.",
@@ -62,8 +90,18 @@ export const COLLECTIONS: Collection[] = [
       cs: "Snubní prsteny – šperk na celý život.",
       hu: "Karikagyűrűk – ékszer egy életre.",
       pl: "Obrączki – biżuteria na całe życie.",
+
+      ru: "Обручальные кольца — украшения на всю жизнь.",
+      nl: "Trouwringen – sieraden voor het leven.",
+      da: "Vielsesringe – smykker for livet.",
+      fi: "Vihkisormukset – koruja koko elämän ajaksi.",
+      sv: "Vigselringar – smycken för livet.",
+      fr: "Alliances – des bijoux pour toute une vie.",
+      it: "Fedi nuziali – gioielli per tutta la vita.",
+      es: "Alianzas – joyas para toda la vida.",
     },
   },
+
   {
     id: "signature",
     image: "/images/collections/signature.jpg",
@@ -76,6 +114,15 @@ export const COLLECTIONS: Collection[] = [
       cs: "Charakteristický styl",
       hu: "Jellegzetes stílus",
       pl: "Charakterystyczny styl",
+
+      ru: "Фирменный стиль",
+      nl: "Signatuurstijl",
+      da: "Signaturstil",
+      fi: "Tunnusomainen tyyli",
+      sv: "Signaturstil",
+      fr: "Style signature",
+      it: "Stile distintivo",
+      es: "Estilo distintivo",
     },
     description: {
       de: "Eigener, unverwechselbarer Stil.",
@@ -85,8 +132,18 @@ export const COLLECTIONS: Collection[] = [
       cs: "Váš vlastní, nezaměnitelný styl.",
       hu: "Saját, egyedi stílusa.",
       pl: "Twój własny, niepowtarzalny styl.",
+
+      ru: "Ваш собственный, неповторимый стиль.",
+      nl: "Uw eigen onmiskenbare stijl.",
+      da: "Din egen umiskendelige stil.",
+      fi: "Oma, tunnistettava tyylisi.",
+      sv: "Din egen omisskännliga stil.",
+      fr: "Votre style unique et reconnaissable.",
+      it: "Il vostro stile unico e inconfondibile.",
+      es: "Su propio estilo único e inconfundible.",
     },
   },
+
   {
     id: "brilliants",
     image: "/images/collections/brilliants.jpg",
@@ -99,6 +156,15 @@ export const COLLECTIONS: Collection[] = [
       cs: "Brilianty",
       hu: "Briliánsok",
       pl: "Brylanty",
+
+      ru: "Бриллианты",
+      nl: "Briljanten",
+      da: "Brillanter",
+      fi: "Briljantit",
+      sv: "Briljanter",
+      fr: "Brillants",
+      it: "Brillanti",
+      es: "Brillantes",
     },
     description: {
       de: "Brillant-geschliffene Stücke, für maximalen Glanz ausgewählt.",
@@ -108,8 +174,18 @@ export const COLLECTIONS: Collection[] = [
       cs: "Kousky s brusem brilliant, vybrané pro maximální lesk.",
       hu: "Brilliáns csiszolású darabok, a maximális csillogásért válogatva.",
       pl: "Elementy o szlifie brylantowym, wybrane dla maksymalnego blasku.",
+
+      ru: "Изделия с бриллиантовой огранкой, выбранные для максимального сияния.",
+      nl: "Briljant geslepen stukken, geselecteerd voor maximale schittering.",
+      da: "Brillantslebne smykker, udvalgt for maksimal glans.",
+      fi: "Briljanttihiotut korut, valittu maksimaalisen säihkeen vuoksi.",
+      sv: "Briljantslipade smycken, utvalda för maximal lyster.",
+      fr: "Des pièces taillées en brillant, sélectionnées pour un éclat maximal.",
+      it: "Pezzi con taglio brillante, scelti per la massima luminosità.",
+      es: "Piezas de talla brillante, seleccionadas para ofrecer el máximo resplandor.",
     },
   },
+
   {
     id: "design",
     image: "/images/collections/design.jpg",
@@ -122,6 +198,15 @@ export const COLLECTIONS: Collection[] = [
       cs: "Design",
       hu: "Design",
       pl: "Design",
+
+      ru: "Дизайн",
+      nl: "Design",
+      da: "Design",
+      fi: "Design",
+      sv: "Design",
+      fr: "Design",
+      it: "Design",
+      es: "Diseño",
     },
     description: {
       de: "Design – Ausdruck Ihrer Persönlichkeit.",
@@ -131,8 +216,18 @@ export const COLLECTIONS: Collection[] = [
       cs: "Design – výraz vaší osobnosti.",
       hu: "Design – személyisége kifejezése.",
       pl: "Design – wyraz Twojej osobowości.",
+
+      ru: "Дизайн — отражение вашей индивидуальности.",
+      nl: "Design – een uitdrukking van uw persoonlijkheid.",
+      da: "Design – et udtryk for din personlighed.",
+      fi: "Design – persoonallisuutesi ilmentymä.",
+      sv: "Design – ett uttryck för din personlighet.",
+      fr: "Design – l’expression de votre personnalité.",
+      it: "Design – espressione della vostra personalità.",
+      es: "Diseño – una expresión de su personalidad.",
     },
   },
+
   {
     id: "bespoke",
     image: "/images/collections/bespoke.jpg",
@@ -145,6 +240,15 @@ export const COLLECTIONS: Collection[] = [
       cs: "Na míru",
       hu: "Egyedi készítés",
       pl: "Na zamówienie",
+
+      ru: "На заказ",
+      nl: "Maatwerk",
+      da: "Skræddersyet",
+      fi: "Mittatilaus",
+      sv: "Skräddarsytt",
+      fr: "Sur mesure",
+      it: "Su misura",
+      es: "A medida",
     },
     description: {
       de: "Schmuck nach Ihren Wünschen gefertigt.",
@@ -154,6 +258,15 @@ export const COLLECTIONS: Collection[] = [
       cs: "Šperky vyrobené podle vašich přání.",
       hu: "Ékszerek az Ön kívánságai szerint készítve.",
       pl: "Biżuteria wykonana według Twoich życzeń.",
+
+      ru: "Украшения, созданные в соответствии с вашими пожеланиями.",
+      nl: "Sieraden gemaakt volgens uw persoonlijke wensen.",
+      da: "Smykker fremstillet efter dine ønsker.",
+      fi: "Toiveidesi mukaan valmistettuja koruja.",
+      sv: "Smycken tillverkade efter dina önskemål.",
+      fr: "Des bijoux réalisés selon vos souhaits.",
+      it: "Gioielli realizzati secondo i vostri desideri.",
+      es: "Joyas creadas según sus deseos.",
     },
   },
 ];
@@ -184,6 +297,15 @@ export const MATERIALS: Material[] = [
       cs: "Bílé zlato",
       hu: "Fehérarany",
       pl: "Białe złoto",
+
+      ru: "Белое золото",
+      nl: "Witgoud",
+      da: "Hvidguld",
+      fi: "Valkokulta",
+      sv: "Vitguld",
+      fr: "Or blanc",
+      it: "Oro bianco",
+      es: "Oro blanco",
     },
     description: {
       de: "Zeitlos elegant und vielseitig kombinierbar.",
@@ -193,8 +315,18 @@ export const MATERIALS: Material[] = [
       cs: "Nadčasově elegantní a všestranně kombinovatelné.",
       hu: "Időtlenül elegáns és sokoldalúan kombinálható.",
       pl: "Ponadczasowo eleganckie i wszechstronne w łączeniu.",
+
+      ru: "Вневременная элегантность и универсальность.",
+      nl: "Tijdloos elegant en veelzijdig te combineren.",
+      da: "Tidløst elegant og alsidigt at kombinere.",
+      fi: "Ajattoman elegantti ja monipuolisesti yhdisteltävä.",
+      sv: "Tidlöst elegant och mångsidigt att kombinera.",
+      fr: "Une élégance intemporelle et une grande polyvalence.",
+      it: "Elegante senza tempo e versatile negli abbinamenti.",
+      es: "Elegante, atemporal y versátil en cualquier combinación.",
     },
   },
+
   {
     id: "yellowgold",
     icon: "◆",
@@ -206,6 +338,15 @@ export const MATERIALS: Material[] = [
       cs: "Žluté zlato",
       hu: "Sárgaarany",
       pl: "Żółte złoto",
+
+      ru: "Жёлтое золото",
+      nl: "Geelgoud",
+      da: "Gult guld",
+      fi: "Keltakulta",
+      sv: "Gult guld",
+      fr: "Or jaune",
+      it: "Oro giallo",
+      es: "Oro amarillo",
     },
     description: {
       de: "Der klassische, warme Goldton.",
@@ -215,8 +356,18 @@ export const MATERIALS: Material[] = [
       cs: "Klasický, teplý odstín zlata.",
       hu: "A klasszikus, meleg aranytónus.",
       pl: "Klasyczny, ciepły odcień złota.",
+
+      ru: "Классический тёплый оттенок золота.",
+      nl: "De klassieke, warme goudtint.",
+      da: "Den klassiske, varme guldtone.",
+      fi: "Klassinen, lämmin kullan sävy.",
+      sv: "Den klassiska, varma guldtonen.",
+      fr: "La teinte classique et chaleureuse de l’or.",
+      it: "La classica tonalità calda dell’oro.",
+      es: "El clásico tono cálido del oro.",
     },
   },
+
   {
     id: "rosegold",
     icon: "◈",
@@ -228,6 +379,15 @@ export const MATERIALS: Material[] = [
       cs: "Růžové zlato",
       hu: "Rosé arany",
       pl: "Różowe złoto",
+
+      ru: "Розовое золото",
+      nl: "Roségoud",
+      da: "Rosaguld",
+      fi: "Ruusukulta",
+      sv: "Roséguld",
+      fr: "Or rose",
+      it: "Oro rosa",
+      es: "Oro rosa",
     },
     description: {
       de: "Ein sanfter, moderner Farbton.",
@@ -237,8 +397,18 @@ export const MATERIALS: Material[] = [
       cs: "Jemný, moderní barevný tón.",
       hu: "Lágy, modern árnyalat.",
       pl: "Delikatny, nowoczesny odcień.",
+
+      ru: "Мягкий современный оттенок.",
+      nl: "Een zachte, eigentijdse tint.",
+      da: "En blød og moderne nuance.",
+      fi: "Pehmeä ja moderni sävy.",
+      sv: "En mjuk och modern nyans.",
+      fr: "Une nuance douce et contemporaine.",
+      it: "Una tonalità delicata e contemporanea.",
+      es: "Un tono suave y contemporáneo.",
     },
   },
+
   {
     id: "platinum",
     icon: "⬖",
@@ -250,6 +420,15 @@ export const MATERIALS: Material[] = [
       cs: "Platina",
       hu: "Platina",
       pl: "Platyna",
+
+      ru: "Платина",
+      nl: "Platina",
+      da: "Platin",
+      fi: "Platina",
+      sv: "Platina",
+      fr: "Platine",
+      it: "Platino",
+      es: "Platino",
     },
     description: {
       de: "Ausserordentlich beständig und edel.",
@@ -259,8 +438,18 @@ export const MATERIALS: Material[] = [
       cs: "Mimořádně odolná a ušlechtilá.",
       hu: "Rendkívül tartós és nemes.",
       pl: "Wyjątkowo trwała i szlachetna.",
+
+      ru: "Исключительно прочная и благородная.",
+      nl: "Uitzonderlijk duurzaam en verfijnd.",
+      da: "Exceptionelt holdbart og eksklusivt.",
+      fi: "Poikkeuksellisen kestävä ja hienostunut.",
+      sv: "Exceptionellt hållbart och exklusivt.",
+      fr: "Exceptionnellement durable et raffiné.",
+      it: "Eccezionalmente resistente e raffinato.",
+      es: "Excepcionalmente resistente y refinado.",
     },
   },
+
   {
     id: "diamond",
     icon: "✦",
@@ -272,6 +461,15 @@ export const MATERIALS: Material[] = [
       cs: "Diamanty",
       hu: "Gyémántok",
       pl: "Diamenty",
+
+      ru: "Бриллианты",
+      nl: "Diamanten",
+      da: "Diamanter",
+      fi: "Timantit",
+      sv: "Diamanter",
+      fr: "Diamants",
+      it: "Diamanti",
+      es: "Diamantes",
     },
     description: {
       de: "Für Augenblicke von bleibendem Wert.",
@@ -281,8 +479,18 @@ export const MATERIALS: Material[] = [
       cs: "Pro chvíle s trvalou hodnotou.",
       hu: "Tartós értékű pillanatokért.",
       pl: "Dla chwil o trwałej wartości.",
+
+      ru: "Для моментов непреходящей ценности.",
+      nl: "Voor momenten van blijvende waarde.",
+      da: "Til øjeblikke af varig værdi.",
+      fi: "Hetkiin, joilla on pysyvää arvoa.",
+      sv: "För ögonblick med bestående värde.",
+      fr: "Pour des instants d’une valeur durable.",
+      it: "Per momenti dal valore duraturo.",
+      es: "Para momentos de valor duradero.",
     },
   },
+
   {
     id: "gem",
     icon: "●",
@@ -294,6 +502,15 @@ export const MATERIALS: Material[] = [
       cs: "Drahé kameny",
       hu: "Drágakövek",
       pl: "Kamienie szlachetne",
+
+      ru: "Драгоценные камни",
+      nl: "Edelstenen",
+      da: "Ædelsten",
+      fi: "Jalokivet",
+      sv: "Ädelstenar",
+      fr: "Pierres précieuses",
+      it: "Pietre preziose",
+      es: "Piedras preciosas",
     },
     description: {
       de: "Eine grosse Auswahl an Farben und Formen.",
@@ -303,8 +520,18 @@ export const MATERIALS: Material[] = [
       cs: "Široký výběr barev a tvarů.",
       hu: "Széles szín- és formaválaszték.",
       pl: "Szeroki wybór kolorów i kształtów.",
+
+      ru: "Широкий выбор цветов и форм.",
+      nl: "Een ruime keuze aan kleuren en vormen.",
+      da: "Et bredt udvalg af farver og former.",
+      fi: "Laaja valikoima värejä ja muotoja.",
+      sv: "Ett brett urval av färger och former.",
+      fr: "Un large choix de couleurs et de formes.",
+      it: "Un’ampia scelta di colori e forme.",
+      es: "Una amplia selección de colores y formas.",
     },
   },
+
   {
     id: "pearl",
     icon: "○",
@@ -316,6 +543,15 @@ export const MATERIALS: Material[] = [
       cs: "Perly",
       hu: "Gyöngyök",
       pl: "Perły",
+
+      ru: "Жемчуг",
+      nl: "Parels",
+      da: "Perler",
+      fi: "Helmet",
+      sv: "Pärlor",
+      fr: "Perles",
+      it: "Perle",
+      es: "Perlas",
     },
     description: {
       de: "Ein zeitloses Vergnügen in ihrer schönsten Form.",
@@ -325,6 +561,15 @@ export const MATERIALS: Material[] = [
       cs: "Nadčasové potěšení v nejkrásnější podobě.",
       hu: "Időtlen élvezet legszebb formájában.",
       pl: "Ponadczasowa przyjemność w najpiękniejszej formie.",
+
+      ru: "Вневременное удовольствие в своей прекраснейшей форме.",
+      nl: "Tijdloze schoonheid in haar mooiste vorm.",
+      da: "En tidløs glæde i sin smukkeste form.",
+      fi: "Ajatonta kauneutta parhaimmillaan.",
+      sv: "Tidlös elegans i sin vackraste form.",
+      fr: "Un plaisir intemporel dans sa plus belle expression.",
+      it: "Un piacere senza tempo nella sua forma più bella.",
+      es: "Un placer atemporal en su expresión más bella.",
     },
   },
 ];
@@ -336,16 +581,21 @@ export function localized(
   return text[locale] ?? text.en ?? "";
 }
 
-// --- Services, About, Boutiques content -------------------------------
-// Currently English-only (LOCALE = "en"). The shape mirrors the rest of
-// this file so translations can be filled in per-locale later.
+// ---------------------------------------------------------------------
+// SERVICE STRUCTURE
+// ---------------------------------------------------------------------
+//
+// Services.tsx already contains the complete translated text for all
+// supported languages. This structure is kept here because Services.tsx
+// uses SERVICE_GROUPS for the service-group keys and ordering.
+//
 
 export type ServiceGroup = {
   letter: string;
   key: string;
   title: LocalizedText;
   note: LocalizedText;
-  items: string[]; // English only for now
+  items: string[];
 };
 
 export const SERVICE_GROUPS: ServiceGroup[] = [
@@ -419,6 +669,15 @@ export const SERVICE_GROUPS: ServiceGroup[] = [
   },
 ];
 
+// ---------------------------------------------------------------------
+// LEGACY ABOUT DATA
+// ---------------------------------------------------------------------
+//
+// About.tsx already contains its own complete multilingual translations.
+// These exports are retained in case another part of the project still
+// imports them.
+//
+
 export const ABOUT_BODY_EN: string[] = [
   "We want to be your personal advisor, whether you are looking for a special gift or wish to treat yourself to a new favourite piece.",
   "With handcraftsmanship as our standard of quality, we set the highest demands on design, material and execution.",
@@ -435,6 +694,14 @@ export const ABOUT_VALUES_EN: string[] = [
   "Individuality",
   "Lasting Value",
 ];
+
+// ---------------------------------------------------------------------
+// BOUTIQUES
+// ---------------------------------------------------------------------
+//
+// Boutique names and addresses are proper names and therefore do not
+// require language-specific variants.
+//
 
 export type Boutique = {
   id: "manavgat" | "resort" | "royal" | "queen";

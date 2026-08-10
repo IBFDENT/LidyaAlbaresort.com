@@ -15,29 +15,75 @@ const FLOATING_COPY: Record<
     chooseContact: "Choose your contact",
     whatsappAria: "Choose WhatsApp contact",
   },
+
   de: {
     chooseContact: "Kontakt auswählen",
     whatsappAria: "WhatsApp-Kontakt auswählen",
   },
+
   tr: {
     chooseContact: "İletişim kişisini seçin",
     whatsappAria: "WhatsApp iletişim kişisini seçin",
   },
+
   sk: {
     chooseContact: "Vyberte kontaktnú osobu",
     whatsappAria: "Vyberte WhatsApp kontakt",
   },
+
   cs: {
     chooseContact: "Vyberte kontaktní osobu",
     whatsappAria: "Vyberte WhatsApp kontakt",
   },
+
   hu: {
     chooseContact: "Válasszon kapcsolattartót",
     whatsappAria: "Válasszon WhatsApp-kapcsolatot",
   },
+
   pl: {
     chooseContact: "Wybierz osobę kontaktową",
     whatsappAria: "Wybierz kontakt WhatsApp",
+  },
+
+  ru: {
+    chooseContact: "Выберите контактное лицо",
+    whatsappAria: "Выберите контакт WhatsApp",
+  },
+
+  nl: {
+    chooseContact: "Kies uw contactpersoon",
+    whatsappAria: "Kies een WhatsApp-contact",
+  },
+
+  da: {
+    chooseContact: "Vælg din kontaktperson",
+    whatsappAria: "Vælg WhatsApp-kontakt",
+  },
+
+  fi: {
+    chooseContact: "Valitse yhteyshenkilö",
+    whatsappAria: "Valitse WhatsApp-yhteyshenkilö",
+  },
+
+  sv: {
+    chooseContact: "Välj din kontaktperson",
+    whatsappAria: "Välj WhatsApp-kontakt",
+  },
+
+  fr: {
+    chooseContact: "Choisissez votre contact",
+    whatsappAria: "Choisissez un contact WhatsApp",
+  },
+
+  it: {
+    chooseContact: "Scegli il tuo contatto",
+    whatsappAria: "Scegli un contatto WhatsApp",
+  },
+
+  es: {
+    chooseContact: "Elija su persona de contacto",
+    whatsappAria: "Elija un contacto de WhatsApp",
   },
 };
 
@@ -112,6 +158,7 @@ export default function FloatingActions() {
             </p>
           </div>
 
+          {/* ZAFER */}
           <a
             href="https://wa.me/905325672777"
             target="_blank"
@@ -128,7 +175,7 @@ export default function FloatingActions() {
               </span>
 
               <span className="mt-1 block text-[0.68rem] text-brand-white/45">
-                +905 325 672 777
+                +90 532 567 27 77
               </span>
             </div>
 
@@ -137,12 +184,13 @@ export default function FloatingActions() {
             </span>
           </a>
 
+          {/* VIERKA */}
           <a
             href="https://wa.me/905378278599"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setWhatsappOpen(false)}
-            className="group flex items-center justify-between gap-5 px-5 py-4 transition-colors duration-300 hover:bg-brand-white/[0.06]"
+            className="group flex items-center justify-between gap-5 border-b border-brand-white/10 px-5 py-4 transition-colors duration-300 hover:bg-brand-white/[0.06]"
           >
             <div>
               <span
@@ -153,7 +201,33 @@ export default function FloatingActions() {
               </span>
 
               <span className="mt-1 block text-[0.68rem] text-brand-white/45">
-                +905 378 278 599
+                +90 537 827 85 99
+              </span>
+            </div>
+
+            <span className="text-brand-white/35 transition-all duration-300 group-hover:translate-x-1 group-hover:text-gold">
+              →
+            </span>
+          </a>
+
+          {/* BENNY */}
+          <a
+            href="https://wa.me/905376694584"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setWhatsappOpen(false)}
+            className="group flex items-center justify-between gap-5 px-5 py-4 transition-colors duration-300 hover:bg-brand-white/[0.06]"
+          >
+            <div>
+              <span
+                className="block font-display text-lg"
+                style={{ color: "#F5EFE6" }}
+              >
+                Benny
+              </span>
+
+              <span className="mt-1 block text-[0.68rem] text-brand-white/45">
+                +90 537 669 45 84
               </span>
             </div>
 

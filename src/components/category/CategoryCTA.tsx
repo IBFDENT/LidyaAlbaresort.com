@@ -72,6 +72,70 @@ const CTA_TEXT: Record<Locale, CategoryCTATranslations> = {
     closingBefore: "Niektóre klejnoty wybieramy.",
     closingAccent: "Przy innych po prostu czujemy, że zostały stworzone dla nas.",
   },
+
+  ru: {
+    eyebrow: "Частный просмотр",
+    appointment: "Записаться на личную встречу",
+    backHome: "Вернуться на главную",
+    closingBefore: "Некоторые украшения мы выбираем.",
+    closingAccent: "Другие словно изначально были созданы для вас.",
+  },
+
+  nl: {
+    eyebrow: "Privébezichtiging",
+    appointment: "Boek een privéafspraak",
+    backHome: "Terug naar home",
+    closingBefore: "Sommige sieraden kiest u.",
+    closingAccent: "Andere voelen alsof ze speciaal voor u zijn gemaakt.",
+  },
+
+  da: {
+    eyebrow: "Privat fremvisning",
+    appointment: "Book en privat aftale",
+    backHome: "Tilbage til forsiden",
+    closingBefore: "Nogle smykker vælger man.",
+    closingAccent: "Andre føles ganske enkelt som skabt til dig.",
+  },
+
+  fi: {
+    eyebrow: "Yksityinen esittely",
+    appointment: "Varaa yksityinen tapaaminen",
+    backHome: "Takaisin etusivulle",
+    closingBefore: "Jotkut korut valitaan.",
+    closingAccent: "Toiset tuntuvat yksinkertaisesti olevan juuri sinulle tarkoitettuja.",
+  },
+
+  sv: {
+    eyebrow: "Privat visning",
+    appointment: "Boka ett privat möte",
+    backHome: "Tillbaka till startsidan",
+    closingBefore: "Vissa smycken väljer man.",
+    closingAccent: "Andra känns helt enkelt som om de vore skapade för dig.",
+  },
+
+  fr: {
+    eyebrow: "Présentation privée",
+    appointment: "Réserver un rendez-vous privé",
+    backHome: "Retour à l’accueil",
+    closingBefore: "Certaines pièces se choisissent.",
+    closingAccent: "D’autres semblent simplement avoir été créées pour vous.",
+  },
+
+  it: {
+    eyebrow: "Presentazione privata",
+    appointment: "Prenota un appuntamento privato",
+    backHome: "Torna alla home",
+    closingBefore: "Alcuni gioielli si scelgono.",
+    closingAccent: "Altri sembrano semplicemente essere stati creati per voi.",
+  },
+
+  es: {
+    eyebrow: "Presentación privada",
+    appointment: "Reservar una cita privada",
+    backHome: "Volver al inicio",
+    closingBefore: "Algunas joyas se eligen.",
+    closingAccent: "Otras simplemente parecen haber sido creadas para usted.",
+  },
 };
 
 export default function CategoryCTA({
@@ -80,7 +144,8 @@ export default function CategoryCTA({
 }: CategoryCTAProps) {
   const { locale } = useLanguage();
 
-  const text = CTA_TEXT[locale];
+  const text =
+    CTA_TEXT[locale] ?? CTA_TEXT.en;
 
   return (
     <section className="relative overflow-hidden bg-ivory py-20 md:py-24 lg:py-28">

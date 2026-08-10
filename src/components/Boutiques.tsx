@@ -12,6 +12,10 @@ const BOUTIQUE_IMAGE_POSITIONS: Record<string, string> = {
   queen: "object-[50%_56%]",
 };
 
+const BOUTIQUE_IMAGES: Partial<Record<string, string>> = {
+  queen: "/Images/boutiques/queen.jpg",
+};
+
 const BOUTIQUE_ADDRESSES: Record<string, string> = {
   manavgat:
     "Çolaklı, Tilkiler Mevkii · Manavgat / Antalya / Türkiye",
@@ -57,6 +61,7 @@ const BOUTIQUE_COPY: Record<
     closingAccent: "A place to choose something lasting.",
     visitAria: "Visit",
   },
+
   de: {
     eyebrow: "Unsere Boutiquen",
     title: "Besuchen Sie uns in den Alba Hotels",
@@ -70,6 +75,7 @@ const BOUTIQUE_COPY: Record<
     closingAccent: "Ein Ort für etwas von bleibendem Wert.",
     visitAria: "Website besuchen:",
   },
+
   tr: {
     eyebrow: "Butiklerimiz",
     title: "Alba Otellerinde bizi ziyaret edin",
@@ -83,6 +89,7 @@ const BOUTIQUE_COPY: Record<
     closingAccent: "Kalıcı bir seçim yapmak için özel bir yer.",
     visitAria: "Web sitesini ziyaret et:",
   },
+
   sk: {
     eyebrow: "Naše butiky",
     title: "Navštívte nás v hoteloch Alba",
@@ -93,9 +100,11 @@ const BOUTIQUE_COPY: Record<
     manavgatServices: "PREDAJ · SERVIS · PORADENSTVO",
     hotelServices: "BUTIK · HOTEL · REZERVÁCIE",
     closingBefore: "Viac než butik.",
-    closingAccent: "Miesto, kde si vyberiete niečo s trvalou hodnotou.",
+    closingAccent:
+      "Miesto, kde si vyberiete niečo s trvalou hodnotou.",
     visitAria: "Navštíviť web:",
   },
+
   cs: {
     eyebrow: "Naše butiky",
     title: "Navštivte nás v hotelech Alba",
@@ -106,9 +115,11 @@ const BOUTIQUE_COPY: Record<
     manavgatServices: "PRODEJ · SERVIS · PORADENSTVÍ",
     hotelServices: "BUTIK · HOTEL · REZERVACE",
     closingBefore: "Více než butik.",
-    closingAccent: "Místo, kde si vyberete něco s trvalou hodnotou.",
+    closingAccent:
+      "Místo, kde si vyberete něco s trvalou hodnotou.",
     visitAria: "Navštívit web:",
   },
+
   hu: {
     eyebrow: "Butikjaink",
     title: "Látogasson el hozzánk az Alba szállodákban",
@@ -119,9 +130,11 @@ const BOUTIQUE_COPY: Record<
     manavgatServices: "ÉRTÉKESÍTÉS · SZERVIZ · TANÁCSADÁS",
     hotelServices: "BUTIK · HOTEL · FOGLALÁS",
     closingBefore: "Több mint egy butik.",
-    closingAccent: "Egy hely, ahol maradandó értéket választhat.",
+    closingAccent:
+      "Egy hely, ahol maradandó értéket választhat.",
     visitAria: "Weboldal megnyitása:",
   },
+
   pl: {
     eyebrow: "Nasze butiki",
     title: "Odwiedź nas w hotelach Alba",
@@ -132,8 +145,129 @@ const BOUTIQUE_COPY: Record<
     manavgatServices: "SPRZEDAŻ · SERWIS · KONSULTACJE",
     hotelServices: "BUTIK · HOTEL · REZERWACJE",
     closingBefore: "Więcej niż butik.",
-    closingAccent: "Miejsce, w którym wybierasz coś o trwałej wartości.",
+    closingAccent:
+      "Miejsce, w którym wybierasz coś o trwałej wartości.",
     visitAria: "Odwiedź stronę:",
+  },
+
+  ru: {
+    eyebrow: "Наши бутики",
+    title: "Посетите нас в отелях Alba",
+    intro:
+      "Посетите LIDYA лично и откройте для себя наши коллекции, мастерство и персональный сервис в атмосфере, созданной для вас.",
+    label: "Бутик",
+    boutiquesLabel: "БУТИКИ LIDYA",
+    manavgatServices: "ПРОДАЖА · СЕРВИС · КОНСУЛЬТАЦИЯ",
+    hotelServices: "БУТИК · ОТЕЛЬ · БРОНИРОВАНИЕ",
+    closingBefore: "Больше, чем бутик.",
+    closingAccent:
+      "Место, где выбирают вещи с непреходящей ценностью.",
+    visitAria: "Посетить сайт:",
+  },
+
+  nl: {
+    eyebrow: "Onze boetieks",
+    title: "Bezoek ons bij Alba Hotels",
+    intro:
+      "Bezoek LIDYA persoonlijk en ontdek onze collecties, ons vakmanschap en onze persoonlijke service in een omgeving die om u draait.",
+    label: "Boetiek",
+    boutiquesLabel: "LIDYA BOETIEKS",
+    manavgatServices: "VERKOOP · SERVICE · ADVIES",
+    hotelServices: "BOETIEK · HOTEL · RESERVERINGEN",
+    closingBefore: "Meer dan een boetiek.",
+    closingAccent:
+      "Een plek om iets van blijvende waarde te kiezen.",
+    visitAria: "Bezoek website:",
+  },
+
+  da: {
+    eyebrow: "Vores boutiques",
+    title: "Besøg os på Alba Hotels",
+    intro:
+      "Besøg LIDYA personligt og oplev vores kollektioner, håndværk og personlige service i omgivelser skabt med dig i centrum.",
+    label: "Boutique",
+    boutiquesLabel: "LIDYA BOUTIQUES",
+    manavgatServices: "SALG · SERVICE · RÅDGIVNING",
+    hotelServices: "BOUTIQUE · HOTEL · RESERVATIONER",
+    closingBefore: "Mere end en boutique.",
+    closingAccent:
+      "Et sted at vælge noget med varig værdi.",
+    visitAria: "Besøg website:",
+  },
+
+  fi: {
+    eyebrow: "Myymälämme",
+    title: "Vieraile luonamme Alba Hotels -hotelleissa",
+    intro:
+      "Vieraile LIDYAssa henkilökohtaisesti ja tutustu mallistoihimme, käsityötaitoomme ja henkilökohtaiseen palveluumme ympäristössä, joka on suunniteltu sinua varten.",
+    label: "Myymälä",
+    boutiquesLabel: "LIDYA-MYYMÄLÄT",
+    manavgatServices: "MYYNTI · HUOLTO · NEUVONTA",
+    hotelServices: "MYYMÄLÄ · HOTELLI · VARAUKSET",
+    closingBefore: "Enemmän kuin myymälä.",
+    closingAccent:
+      "Paikka, jossa valitaan jotain pysyvää.",
+    visitAria: "Vieraile sivustolla:",
+  },
+
+  sv: {
+    eyebrow: "Våra butiker",
+    title: "Besök oss på Alba Hotels",
+    intro:
+      "Besök LIDYA personligen och upptäck våra kollektioner, vårt hantverk och vår personliga service i en miljö skapad med dig i fokus.",
+    label: "Butik",
+    boutiquesLabel: "LIDYA BUTIKER",
+    manavgatServices: "FÖRSÄLJNING · SERVICE · RÅDGIVNING",
+    hotelServices: "BUTIK · HOTELL · BOKNINGAR",
+    closingBefore: "Mer än en butik.",
+    closingAccent:
+      "En plats där du väljer något med bestående värde.",
+    visitAria: "Besök webbplats:",
+  },
+
+  fr: {
+    eyebrow: "Nos boutiques",
+    title: "Retrouvez-nous dans les Alba Hotels",
+    intro:
+      "Venez découvrir LIDYA en personne, nos collections, notre savoir-faire et notre service personnalisé dans un cadre pensé pour vous.",
+    label: "Boutique",
+    boutiquesLabel: "BOUTIQUES LIDYA",
+    manavgatServices: "VENTE · SERVICE · CONSEIL",
+    hotelServices: "BOUTIQUE · HÔTEL · RÉSERVATIONS",
+    closingBefore: "Bien plus qu’une boutique.",
+    closingAccent:
+      "Un lieu pour choisir quelque chose qui dure.",
+    visitAria: "Visiter le site:",
+  },
+
+  it: {
+    eyebrow: "Le nostre boutique",
+    title: "Venite a trovarci negli Alba Hotels",
+    intro:
+      "Visitate LIDYA di persona e scoprite le nostre collezioni, l’artigianalità e il servizio personale in un ambiente pensato intorno a voi.",
+    label: "Boutique",
+    boutiquesLabel: "BOUTIQUE LIDYA",
+    manavgatServices: "VENDITA · ASSISTENZA · CONSULENZA",
+    hotelServices: "BOUTIQUE · HOTEL · PRENOTAZIONI",
+    closingBefore: "Più di una boutique.",
+    closingAccent:
+      "Un luogo dove scegliere qualcosa destinato a durare.",
+    visitAria: "Visita il sito:",
+  },
+
+  es: {
+    eyebrow: "Nuestras boutiques",
+    title: "Visítenos en los Alba Hotels",
+    intro:
+      "Visite LIDYA en persona y descubra nuestras colecciones, artesanía y servicio personalizado en un entorno pensado para usted.",
+    label: "Boutique",
+    boutiquesLabel: "BOUTIQUES LIDYA",
+    manavgatServices: "VENTA · SERVICIO · ASESORAMIENTO",
+    hotelServices: "BOUTIQUE · HOTEL · RESERVAS",
+    closingBefore: "Más que una boutique.",
+    closingAccent:
+      "Un lugar para elegir algo de valor duradero.",
+    visitAria: "Visitar sitio web:",
   },
 };
 
@@ -177,6 +311,7 @@ function ArrowIcon() {
 
 export default function Boutiques() {
   const { locale } = useLanguage();
+
   const copy = BOUTIQUE_COPY[locale];
 
   return (
@@ -221,7 +356,12 @@ export default function Boutiques() {
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:gap-6">
           {BOUTIQUES.map((boutique, index) => {
             const imagePosition =
-              BOUTIQUE_IMAGE_POSITIONS[boutique.id] ?? "object-center";
+              BOUTIQUE_IMAGE_POSITIONS[boutique.id] ??
+              "object-center";
+
+            const image =
+              BOUTIQUE_IMAGES[boutique.id] ??
+              boutique.image;
 
             const address =
               BOUTIQUE_ADDRESSES[boutique.id] ??
@@ -241,7 +381,7 @@ export default function Boutiques() {
                 className="group relative min-h-[500px] overflow-hidden bg-plum-dark md:min-h-[540px] lg:min-h-[580px]"
               >
                 <Image
-                  src={boutique.image}
+                  src={image}
                   alt={boutique.name}
                   fill
                   sizes="(min-width: 768px) 50vw, 100vw"
@@ -249,6 +389,7 @@ export default function Boutiques() {
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-plum-dark/95 via-plum-dark/28 to-plum-dark/5" />
+
                 <div className="absolute inset-0 bg-plum-dark/5 transition-colors duration-700 group-hover:bg-plum-dark/12" />
 
                 <span className="absolute right-6 top-6 z-10 text-[0.62rem] font-semibold tracking-[0.24em] text-brand-white/55 md:right-8 md:top-8">
@@ -319,6 +460,7 @@ export default function Boutiques() {
             style={{ color: "#1B0B20" }}
           >
             {copy.closingBefore}
+
             <span style={{ color: "#C8A96A" }}>
               {" "}
               {copy.closingAccent}

@@ -264,6 +264,270 @@ const TRANSFER_COPY: Record<
     closingBefore: "Od lotu aż po butik,",
     closingAccent: "każdy szczegół Twojej wizyty może zostać zorganizowany.",
   },
+
+  ru: {
+    eyebrow: "Спланируйте визит",
+    titleBefore: "Ваше путешествие в LIDYA,",
+    titleAccent: "легко и комфортно.",
+    intro:
+      "Приезжаете из-за границы? Мы поможем сделать поездку проще — от перелёта в Анталью и частного трансфера из аэропорта до проживания в отеле и визита в бутик.",
+
+    flightsTitle: "Авиабилеты",
+    flightsText:
+      "Спланируйте поездку в Анталью и выберите рейс, который лучше всего подходит для вашего визита.",
+    flightsCta: "Найти рейсы",
+
+    transferTitle: "VIP-трансфер",
+    transferText:
+      "Частный трансфер из аэропорта Антальи в Манавгат или выбранный вами отель Alba.",
+    transferCta: "Связаться с водителем",
+    qrAria: "Открыть QR-код VIP-трансфера",
+    qrAlt: "QR-код VIP-трансфера",
+    qrLabel: "Сканируйте для связи",
+
+    hotelTitle: "Проживание в отеле",
+    hotelText:
+      "Остановитесь в одном из выбранных отелей Alba и сделайте свой визит в LIDYA комфортным, удобным и без лишних забот.",
+
+    privateTitle: "Частный визит",
+    privateText:
+      "Запишитесь на персональную встречу в бутике, и мы подготовим ваш визит с учётом ваших пожеланий.",
+    privateCta: "Записаться на визит",
+
+    closingBefore: "От перелёта до бутика,",
+    closingAccent: "каждую деталь вашего визита можно организовать.",
+  },
+
+  nl: {
+    eyebrow: "Plan uw bezoek",
+    titleBefore: "Uw reis naar LIDYA,",
+    titleAccent: "zorgeloos geregeld.",
+    intro:
+      "Komt u uit het buitenland? Wij helpen uw reis eenvoudig te maken — van vluchten naar Antalya en privétransfer vanaf de luchthaven tot uw hotelverblijf en afspraak in de boetiek.",
+
+    flightsTitle: "Vluchten",
+    flightsText:
+      "Plan uw reis naar Antalya en kies de verbinding die het beste bij uw bezoek past.",
+    flightsCta: "Vluchten zoeken",
+
+    transferTitle: "VIP-transfer",
+    transferText:
+      "Privétransfer van Antalya Airport naar Manavgat of het door u gekozen Alba Hotel.",
+    transferCta: "Contact met chauffeur",
+    qrAria: "QR-code voor VIP-transfer openen",
+    qrAlt: "QR-code voor VIP-transfer",
+    qrLabel: "Scan voor contact",
+
+    hotelTitle: "Hotelverblijf",
+    hotelText:
+      "Verblijf in een van de geselecteerde Alba Hotels en maak uw bezoek aan LIDYA comfortabel, dichtbij en zorgeloos.",
+
+    privateTitle: "Privébezoek",
+    privateText:
+      "Maak een persoonlijke afspraak in de boetiek en wij stemmen uw bezoek volledig op u af.",
+    privateCta: "Bezoek boeken",
+
+    closingBefore: "Van vlucht tot boetiek,",
+    closingAccent: "elk detail van uw bezoek kan worden geregeld.",
+  },
+
+  da: {
+    eyebrow: "Planlæg dit besøg",
+    titleBefore: "Din rejse til LIDYA,",
+    titleAccent: "nemt og ubesværet.",
+    intro:
+      "Kommer du fra udlandet? Vi hjælper med at gøre rejsen enkel — fra fly til Antalya og privat lufthavnstransfer til hotelophold og aftale i butikken.",
+
+    flightsTitle: "Fly",
+    flightsText:
+      "Planlæg din rejse til Antalya og vælg den forbindelse, der passer bedst til dit besøg.",
+    flightsCta: "Find fly",
+
+    transferTitle: "VIP-transfer",
+    transferText:
+      "Privat afhentning fra Antalya Lufthavn til Manavgat eller dit valgte Alba Hotel.",
+    transferCta: "Kontakt chauffør",
+    qrAria: "Åbn QR-kode til VIP-transfer",
+    qrAlt: "QR-kode til VIP-transfer",
+    qrLabel: "Scan for kontakt",
+
+    hotelTitle: "Hotelophold",
+    hotelText:
+      "Bo på et af de udvalgte Alba Hotels og gør dit besøg hos LIDYA komfortabelt, nært og ubesværet.",
+
+    privateTitle: "Privat besøg",
+    privateText:
+      "Book en personlig aftale i butikken, så tilrettelægger vi besøget efter dine ønsker.",
+    privateCta: "Book et besøg",
+
+    closingBefore: "Fra fly til boutique,",
+    closingAccent: "kan hver detalje af dit besøg arrangeres.",
+  },
+
+  fi: {
+    eyebrow: "Suunnittele vierailusi",
+    titleBefore: "Matkasi LIDYAan,",
+    titleAccent: "helposti ja vaivattomasti.",
+    intro:
+      "Saavutko ulkomailta? Autamme tekemään matkasta helpon — lennoista Antalyaan ja yksityisestä lentokenttäkuljetuksesta hotellimajoitukseen ja myymälävierailuun.",
+
+    flightsTitle: "Lennot",
+    flightsText:
+      "Suunnittele matkasi Antalyaan ja valitse vierailuusi parhaiten sopiva yhteys.",
+    flightsCta: "Etsi lentoja",
+
+    transferTitle: "VIP-kuljetus",
+    transferText:
+      "Yksityinen kuljetus Antalyan lentoasemalta Manavgatiin tai valitsemaasi Alba-hotelliin.",
+    transferCta: "Ota yhteyttä kuljettajaan",
+    qrAria: "Avaa VIP-kuljetuksen QR-koodi",
+    qrAlt: "VIP-kuljetuksen QR-koodi",
+    qrLabel: "Skannaa yhteydenottoa varten",
+
+    hotelTitle: "Hotellimajoitus",
+    hotelText:
+      "Majoitu yhdessä valituista Alba Hotels -hotelleista ja tee LIDYA-vierailustasi mukava, helppo ja vaivaton.",
+
+    privateTitle: "Yksityinen vierailu",
+    privateText:
+      "Varaa henkilökohtainen aika myymälään, niin valmistelemme vierailusi toiveidesi mukaan.",
+    privateCta: "Varaa vierailu",
+
+    closingBefore: "Lennolta myymälään,",
+    closingAccent: "vierailusi jokainen yksityiskohta voidaan järjestää.",
+  },
+
+  sv: {
+    eyebrow: "Planera ditt besök",
+    titleBefore: "Din resa till LIDYA,",
+    titleAccent: "enkelt och bekvämt.",
+    intro:
+      "Kommer du från utlandet? Vi hjälper dig att göra resan enkel — från flyg till Antalya och privat flygplatstransfer till hotellvistelse och besök i butiken.",
+
+    flightsTitle: "Flyg",
+    flightsText:
+      "Planera din resa till Antalya och välj den förbindelse som passar bäst för ditt besök.",
+    flightsCta: "Hitta flyg",
+
+    transferTitle: "VIP-transfer",
+    transferText:
+      "Privat upphämtning från Antalya flygplats till Manavgat eller ditt valda Alba Hotel.",
+    transferCta: "Kontakta chauffören",
+    qrAria: "Öppna QR-kod för VIP-transfer",
+    qrAlt: "QR-kod för VIP-transfer",
+    qrLabel: "Skanna för kontakt",
+
+    hotelTitle: "Hotellvistelse",
+    hotelText:
+      "Bo på ett av de utvalda Alba Hotels och gör ditt besök hos LIDYA bekvämt, nära och enkelt.",
+
+    privateTitle: "Privat besök",
+    privateText:
+      "Boka ett personligt möte i butiken så förbereder vi ditt besök efter dina önskemål.",
+    privateCta: "Boka ett besök",
+
+    closingBefore: "Från flyg till butik,",
+    closingAccent: "varje detalj av ditt besök kan ordnas.",
+  },
+
+  fr: {
+    eyebrow: "Planifiez votre visite",
+    titleBefore: "Votre voyage vers LIDYA,",
+    titleAccent: "en toute simplicité.",
+    intro:
+      "Vous venez de l’étranger ? Nous pouvons simplifier votre voyage — des vols vers Antalya au transfert privé depuis l’aéroport, jusqu’à votre séjour à l’hôtel et votre rendez-vous en boutique.",
+
+    flightsTitle: "Vols",
+    flightsText:
+      "Planifiez votre voyage vers Antalya et choisissez la liaison qui convient le mieux à votre visite.",
+    flightsCta: "Trouver des vols",
+
+    transferTitle: "Transfert VIP",
+    transferText:
+      "Transfert privé depuis l’aéroport d’Antalya vers Manavgat ou l’Alba Hotel de votre choix.",
+    transferCta: "Contacter le chauffeur",
+    qrAria: "Ouvrir le QR code du transfert VIP",
+    qrAlt: "QR code du transfert VIP",
+    qrLabel: "Scanner pour contacter",
+
+    hotelTitle: "Séjour à l’hôtel",
+    hotelText:
+      "Séjournez dans l’un des Alba Hotels sélectionnés et profitez d’une visite chez LIDYA confortable, proche et sans contrainte.",
+
+    privateTitle: "Visite privée",
+    privateText:
+      "Organisez un rendez-vous personnel en boutique et nous préparerons votre visite selon vos souhaits.",
+    privateCta: "Réserver une visite",
+
+    closingBefore: "Du vol à la boutique,",
+    closingAccent: "chaque détail de votre visite peut être organisé.",
+  },
+
+  it: {
+    eyebrow: "Organizza la tua visita",
+    titleBefore: "Il tuo viaggio verso LIDYA,",
+    titleAccent: "semplice e senza pensieri.",
+    intro:
+      "Arrivi dall’estero? Possiamo rendere il viaggio più semplice — dai voli per Antalya e dal trasferimento privato dall’aeroporto fino al soggiorno in hotel e all’appuntamento in boutique.",
+
+    flightsTitle: "Voli",
+    flightsText:
+      "Pianifica il viaggio verso Antalya e scegli il collegamento più adatto alla tua visita.",
+    flightsCta: "Trova voli",
+
+    transferTitle: "Transfer VIP",
+    transferText:
+      "Trasferimento privato dall’aeroporto di Antalya a Manavgat o all’Alba Hotel scelto.",
+    transferCta: "Contatta l’autista",
+    qrAria: "Apri il codice QR del transfer VIP",
+    qrAlt: "Codice QR del transfer VIP",
+    qrLabel: "Scansiona per contattare",
+
+    hotelTitle: "Soggiorno in hotel",
+    hotelText:
+      "Soggiorna in uno degli Alba Hotels selezionati e rendi la visita a LIDYA comoda, vicina e senza pensieri.",
+
+    privateTitle: "Visita privata",
+    privateText:
+      "Prenota un appuntamento personale in boutique e prepareremo la visita secondo le tue esigenze.",
+    privateCta: "Prenota una visita",
+
+    closingBefore: "Dal volo alla boutique,",
+    closingAccent: "ogni dettaglio della tua visita può essere organizzato.",
+  },
+
+  es: {
+    eyebrow: "Planifique su visita",
+    titleBefore: "Su viaje a LIDYA,",
+    titleAccent: "fácil y sin complicaciones.",
+    intro:
+      "¿Nos visita desde el extranjero? Podemos facilitarle el viaje — desde los vuelos a Antalya y el traslado privado desde el aeropuerto hasta su estancia en el hotel y su cita en la boutique.",
+
+    flightsTitle: "Vuelos",
+    flightsText:
+      "Planifique su viaje a Antalya y elija la conexión que mejor se adapte a su visita.",
+    flightsCta: "Buscar vuelos",
+
+    transferTitle: "Traslado VIP",
+    transferText:
+      "Traslado privado desde el aeropuerto de Antalya hasta Manavgat o el Alba Hotel que haya elegido.",
+    transferCta: "Contactar con el conductor",
+    qrAria: "Abrir el código QR del traslado VIP",
+    qrAlt: "Código QR del traslado VIP",
+    qrLabel: "Escanee para contactar",
+
+    hotelTitle: "Estancia en hotel",
+    hotelText:
+      "Alójese en uno de los Alba Hotels seleccionados y disfrute de una visita a LIDYA cómoda, cercana y sin complicaciones.",
+
+    privateTitle: "Visita privada",
+    privateText:
+      "Reserve una cita personal en la boutique y prepararemos su visita de acuerdo con sus preferencias.",
+    privateCta: "Reservar una visita",
+
+    closingBefore: "Desde el vuelo hasta la boutique,",
+    closingAccent: "cada detalle de su visita puede organizarse.",
+  },
 };
 
 function PlaneIcon() {

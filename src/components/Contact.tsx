@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import { useLanguage } from "@/components/LanguageProvider";
 import type { Locale } from "@/lib/i18n";
 
@@ -10,6 +12,9 @@ const contacts = [
     phoneHref: "tel:+905325672777",
     email: "albalidya@hotmail.com",
     whatsapp: "https://wa.me/905325672777",
+    image: "/images/viktor.jpg",
+    imageAlt: "Zafer Victor — LIDYA JEWELLERY",
+    imagePosition: "object-[50%_28%]",
   },
   {
     name: "Vierka",
@@ -17,6 +22,19 @@ const contacts = [
     phoneHref: "tel:+905378278599",
     email: "vierakocaker@hotmail.com",
     whatsapp: "https://wa.me/905378278599",
+    image: "/images/vierka.jpg",
+    imageAlt: "Vierka — LIDYA JEWELLERY",
+    imagePosition: "object-[50%_25%]",
+  },
+  {
+    name: "Benny",
+    phone: "+90 537 669 45 84",
+    phoneHref: "tel:+905376694584",
+    email: "bekirozdilberler@gmail.com",
+    whatsapp: "https://wa.me/905376694584",
+    image: "/images/benny.jpg",
+    imageAlt: "Benny — LIDYA JEWELLERY",
+    imagePosition: "object-[50%_24%]",
   },
 ];
 
@@ -188,6 +206,150 @@ const CONTACT_COPY: Record<
       "Umów osobiste spotkanie w dogodnym dla Ciebie terminie.",
     privateButton: "Prywatne spotkanie",
   },
+
+  ru: {
+    eyebrow: "Контакты",
+    title: "Мы будем рады вашему обращению",
+    intro:
+      "Персональная помощь по вопросам ювелирных изделий, сервиса, индивидуальных заказов и личных встреч.",
+    call: "Позвонить",
+    email: "E-mail",
+    visitUs: "Посетите нас",
+    ourBoutiques: "Наши бутики",
+    locationsIntro:
+      "Откройте для себя LIDYA в Манавгате и в выбранных отелях Alba.",
+    visitAria: "Посетить",
+    privateTitle: "Предпочитаете личную консультацию?",
+    privateText:
+      "Запишитесь на персональную встречу в удобное для вас время.",
+    privateButton: "Личная встреча",
+  },
+
+  nl: {
+    eyebrow: "Contact",
+    title: "We horen graag van u",
+    intro:
+      "Persoonlijke hulp bij sieraden, service, maatwerkvragen en privéafspraken.",
+    call: "Bellen",
+    email: "E-mail",
+    visitUs: "Bezoek ons",
+    ourBoutiques: "Onze boetieks",
+    locationsIntro:
+      "Ontdek LIDYA in Manavgat en bij geselecteerde Alba Hotels.",
+    visitAria: "Bezoek",
+    privateTitle: "Liever een persoonlijk adviesgesprek?",
+    privateText:
+      "Plan een persoonlijke afspraak op een moment dat u goed uitkomt.",
+    privateButton: "Privéafspraak",
+  },
+
+  da: {
+    eyebrow: "Kontakt",
+    title: "Vi glæder os til at høre fra dig",
+    intro:
+      "Personlig hjælp med smykker, service, specialbestillinger og private aftaler.",
+    call: "Ring",
+    email: "E-mail",
+    visitUs: "Besøg os",
+    ourBoutiques: "Vores boutiques",
+    locationsIntro:
+      "Oplev LIDYA i Manavgat og på udvalgte Alba Hotels.",
+    visitAria: "Besøg",
+    privateTitle: "Foretrækker du en privat konsultation?",
+    privateText:
+      "Aftal et personligt møde på et tidspunkt, der passer dig.",
+    privateButton: "Privat aftale",
+  },
+
+  fi: {
+    eyebrow: "Yhteystiedot",
+    title: "Kuulemme mielellämme sinusta",
+    intro:
+      "Henkilökohtaista apua koruihin, huoltoon, mittatilaustöihin ja yksityisiin tapaamisiin.",
+    call: "Soita",
+    email: "Sähköposti",
+    visitUs: "Vieraile luonamme",
+    ourBoutiques: "Myymälämme",
+    locationsIntro:
+      "Tutustu LIDYAan Manavgatissa ja valituissa Alba Hotels -hotelleissa.",
+    visitAria: "Vieraile",
+    privateTitle: "Haluatko yksityisen konsultoinnin?",
+    privateText:
+      "Varaa henkilökohtainen tapaaminen sinulle sopivaan aikaan.",
+    privateButton: "Yksityinen tapaaminen",
+  },
+
+  sv: {
+    eyebrow: "Kontakt",
+    title: "Vi ser fram emot att höra från dig",
+    intro:
+      "Personlig hjälp med smycken, service, specialbeställningar och privata möten.",
+    call: "Ring",
+    email: "E-post",
+    visitUs: "Besök oss",
+    ourBoutiques: "Våra butiker",
+    locationsIntro:
+      "Upptäck LIDYA i Manavgat och på utvalda Alba Hotels.",
+    visitAria: "Besök",
+    privateTitle: "Föredrar du en privat konsultation?",
+    privateText:
+      "Boka ett personligt möte vid en tidpunkt som passar dig.",
+    privateButton: "Privat möte",
+  },
+
+  fr: {
+    eyebrow: "Contact",
+    title: "Nous serons ravis de vous répondre",
+    intro:
+      "Assistance personnalisée pour les bijoux, le service, les demandes sur mesure et les rendez-vous privés.",
+    call: "Appeler",
+    email: "E-mail",
+    visitUs: "Venez nous voir",
+    ourBoutiques: "Nos boutiques",
+    locationsIntro:
+      "Découvrez LIDYA à Manavgat et dans une sélection d’Alba Hotels.",
+    visitAria: "Visiter",
+    privateTitle: "Vous préférez une consultation privée ?",
+    privateText:
+      "Organisez un rendez-vous personnel à l’heure qui vous convient.",
+    privateButton: "Rendez-vous privé",
+  },
+
+  it: {
+    eyebrow: "Contatti",
+    title: "Saremo lieti di sentirvi",
+    intro:
+      "Assistenza personale per gioielli, servizi, richieste su misura e appuntamenti privati.",
+    call: "Chiama",
+    email: "E-mail",
+    visitUs: "Venite a trovarci",
+    ourBoutiques: "Le nostre boutique",
+    locationsIntro:
+      "Scoprite LIDYA a Manavgat e nei selezionati Alba Hotels.",
+    visitAria: "Visita",
+    privateTitle: "Preferite una consulenza privata?",
+    privateText:
+      "Prenotate un appuntamento personale nell’orario più adatto a voi.",
+    privateButton: "Appuntamento privato",
+  },
+
+  es: {
+    eyebrow: "Contacto",
+    title: "Estaremos encantados de atenderle",
+    intro:
+      "Asistencia personalizada para joyería, servicio, encargos a medida y citas privadas.",
+    call: "Llamar",
+    email: "E-mail",
+    visitUs: "Visítenos",
+    ourBoutiques: "Nuestras boutiques",
+    locationsIntro:
+      "Descubra LIDYA en Manavgat y en una selección de Alba Hotels.",
+    visitAria: "Visitar",
+    privateTitle: "¿Prefiere una consulta privada?",
+    privateText:
+      "Concierte una cita personal en el horario que mejor le convenga.",
+    privateButton: "Cita privada",
+  },
 };
 
 function ArrowIcon() {
@@ -223,7 +385,9 @@ export default function Contact() {
 
       <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
         <div className="grid gap-8 lg:grid-cols-12 lg:gap-10">
-          {/* LEFT SIDE */}
+          {/* =====================================================
+              LEFT SIDE
+          ====================================================== */}
           <div className="lg:col-span-7 lg:pr-6">
             <span className="mb-5 block text-[0.68rem] font-semibold uppercase tracking-[0.34em] text-gold">
               {copy.eyebrow}
@@ -240,84 +404,108 @@ export default function Contact() {
               {copy.intro}
             </p>
 
-            {/* CONTACT PEOPLE */}
+            {/* =================================================
+                CONTACT PEOPLE
+            ================================================== */}
             <div className="mt-10 border-t border-plum-dark/10">
               {contacts.map((contact, index) => (
                 <div
                   key={contact.name}
-                  className="group grid gap-5 border-b border-plum-dark/10 py-7 transition-colors duration-500 hover:bg-brand-white/60 md:grid-cols-12 md:items-center md:px-2"
+                  className="group border-b border-plum-dark/10 py-7 transition-colors duration-500 hover:bg-brand-white/60 md:px-2"
                 >
-                  {/* NUMBER */}
-                  <div className="md:col-span-1">
-                    <span className="text-[0.58rem] font-semibold tracking-[0.22em] text-gold">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                  </div>
+                  <div className="grid gap-6 md:grid-cols-12 md:items-center">
+                    {/* NUMBER */}
+                    <div className="hidden md:col-span-1 md:block">
+                      <span className="text-[0.58rem] font-semibold tracking-[0.22em] text-gold">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                    </div>
 
-                  {/* NAME */}
-                  <div className="md:col-span-4">
-                    <h3
-                      className="font-display text-3xl md:text-[2.2rem]"
-                      style={{ color: "#1B0B20" }}
-                    >
-                      {contact.name}
-                    </h3>
-                  </div>
+                    {/* PHOTO + NAME */}
+                    <div className="md:col-span-4">
+                      <div className="flex items-center gap-4">
+                        <div className="relative h-[82px] w-[82px] shrink-0 overflow-hidden rounded-full border border-plum-dark/10 bg-brand-white shadow-[0_12px_35px_-20px_rgba(27,11,32,0.45)] md:h-[92px] md:w-[92px]">
+                          <Image
+                            src={contact.image}
+                            alt={contact.imageAlt}
+                            fill
+                            sizes="92px"
+                            className={`object-cover ${contact.imagePosition} transition-transform duration-700 group-hover:scale-[1.04]`}
+                          />
+                        </div>
 
-                  {/* PHONE + EMAIL */}
-                  <div className="md:col-span-4">
-                    <a
-                      href={contact.phoneHref}
-                      className="block text-sm text-plum-dark transition-colors duration-300 hover:text-gold"
-                    >
-                      {contact.phone}
-                    </a>
+                        <div className="min-w-0">
+                          <span className="mb-1 block text-[0.54rem] font-semibold tracking-[0.22em] text-gold md:hidden">
+                            {String(index + 1).padStart(2, "0")}
+                          </span>
 
-                    <a
-                      href={`mailto:${contact.email}`}
-                      className="mt-1 block text-sm text-grey transition-colors duration-300 hover:text-gold"
-                    >
-                      {contact.email}
-                    </a>
-                  </div>
+                          <h3
+                            className="font-display text-3xl leading-none md:text-[2.1rem]"
+                            style={{ color: "#1B0B20" }}
+                          >
+                            {contact.name}
+                          </h3>
+                        </div>
+                      </div>
+                    </div>
 
-                  {/* ACTIONS */}
-                  <div className="flex flex-col items-center justify-center gap-3 md:col-span-3">
-                    <a
-                      href={contact.phoneHref}
-                      className="group/action flex w-full max-w-[120px] items-center justify-between gap-4 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-plum-dark transition-colors hover:text-gold"
-                    >
-                      <span>{copy.call}</span>
+                    {/* PHONE + EMAIL */}
+                    <div className="min-w-0 md:col-span-4">
+                      <a
+                        href={contact.phoneHref}
+                        className="block text-sm text-plum-dark transition-colors duration-300 hover:text-gold"
+                      >
+                        {contact.phone}
+                      </a>
 
-                      <span className="h-px w-4 shrink-0 bg-plum-dark/15 transition-all duration-300 group-hover/action:w-6 group-hover/action:bg-gold" />
-                    </a>
+                      <a
+                        href={`mailto:${contact.email}`}
+                        className="mt-1 block break-all text-sm text-grey transition-colors duration-300 hover:text-gold"
+                      >
+                        {contact.email}
+                      </a>
+                    </div>
 
-                    <a
-                      href={contact.whatsapp}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group/action flex w-full max-w-[120px] items-center justify-between gap-4 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-plum-dark transition-colors hover:text-gold"
-                    >
-                      <span>WhatsApp</span>
+                    {/* ACTIONS */}
+                    <div className="flex flex-row flex-wrap gap-x-6 gap-y-3 md:col-span-3 md:flex-col md:items-center md:justify-center">
+                      <a
+                        href={contact.phoneHref}
+                        className="group/action flex w-full max-w-[120px] items-center justify-between gap-4 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-plum-dark transition-colors hover:text-gold"
+                      >
+                        <span>{copy.call}</span>
 
-                      <span className="h-px w-4 shrink-0 bg-plum-dark/15 transition-all duration-300 group-hover/action:w-6 group-hover/action:bg-gold" />
-                    </a>
+                        <span className="h-px w-4 shrink-0 bg-plum-dark/15 transition-all duration-300 group-hover/action:w-6 group-hover/action:bg-gold" />
+                      </a>
 
-                    <a
-                      href={`mailto:${contact.email}`}
-                      className="group/action flex w-full max-w-[120px] items-center justify-between gap-4 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-plum-dark transition-colors hover:text-gold"
-                    >
-                      <span>{copy.email}</span>
+                      <a
+                        href={contact.whatsapp}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group/action flex w-full max-w-[120px] items-center justify-between gap-4 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-plum-dark transition-colors hover:text-gold"
+                      >
+                        <span>WhatsApp</span>
 
-                      <span className="h-px w-4 shrink-0 bg-plum-dark/15 transition-all duration-300 group-hover/action:w-6 group-hover/action:bg-gold" />
-                    </a>
+                        <span className="h-px w-4 shrink-0 bg-plum-dark/15 transition-all duration-300 group-hover/action:w-6 group-hover/action:bg-gold" />
+                      </a>
+
+                      <a
+                        href={`mailto:${contact.email}`}
+                        className="group/action flex w-full max-w-[120px] items-center justify-between gap-4 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-plum-dark transition-colors hover:text-gold"
+                      >
+                        <span>{copy.email}</span>
+
+                        <span className="h-px w-4 shrink-0 bg-plum-dark/15 transition-all duration-300 group-hover/action:w-6 group-hover/action:bg-gold" />
+                      </a>
+                    </div>
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* RIGHT SIDE */}
+          {/* =====================================================
+              RIGHT SIDE
+          ====================================================== */}
           <div className="lg:col-span-5">
             <div className="relative overflow-hidden bg-plum-dark px-7 py-8 md:px-9 md:py-10 lg:px-10 lg:py-11">
               <div className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-gold/10 blur-3xl" />
@@ -422,6 +610,7 @@ export default function Contact() {
                     className="mt-6 inline-flex w-full items-center justify-between bg-gold px-6 py-4 text-[0.64rem] font-semibold uppercase tracking-[0.2em] text-plum-dark transition-all duration-500 hover:bg-gold-light md:w-auto md:min-w-[260px]"
                   >
                     {copy.privateButton}
+
                     <span>→</span>
                   </a>
                 </div>

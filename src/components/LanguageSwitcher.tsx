@@ -12,6 +12,14 @@ const FLAGS: Record<Locale, string> = {
   cs: "🇨🇿",
   hu: "🇭🇺",
   pl: "🇵🇱",
+  ru: "🇷🇺",
+  nl: "🇳🇱",
+  da: "🇩🇰",
+  fi: "🇫🇮",
+  sv: "🇸🇪",
+  fr: "🇫🇷",
+  it: "🇮🇹",
+  es: "🇪🇸",
 };
 
 const LOCALE_NAMES: Record<Locale, string> = {
@@ -22,6 +30,14 @@ const LOCALE_NAMES: Record<Locale, string> = {
   cs: "Čeština",
   hu: "Magyar",
   pl: "Polski",
+  ru: "Русский",
+  nl: "Nederlands",
+  da: "Dansk",
+  fi: "Suomi",
+  sv: "Svenska",
+  fr: "Français",
+  it: "Italiano",
+  es: "Español",
 };
 
 export default function LanguageSwitcher() {
@@ -63,6 +79,7 @@ export default function LanguageSwitcher() {
         type="button"
         aria-label="Change language"
         aria-expanded={open}
+        aria-haspopup="menu"
         onClick={() => setOpen((v) => !v)}
         className="flex h-8 w-8 items-center justify-center rounded-sm text-xl leading-none transition-transform hover:scale-110"
       >
@@ -72,7 +89,7 @@ export default function LanguageSwitcher() {
       {open && (
         <div
           role="menu"
-          className="absolute right-0 top-full mt-2 w-44 overflow-hidden rounded-sm border border-plum-dark/10 bg-brand-white py-1.5 shadow-[0_16px_36px_-12px_rgba(27,11,32,0.28)]"
+          className="absolute right-0 top-full z-50 mt-2 max-h-[70vh] w-48 overflow-y-auto rounded-sm border border-plum-dark/10 bg-brand-white py-1.5 shadow-[0_16px_36px_-12px_rgba(27,11,32,0.28)]"
         >
           {LOCALES.map((code) => (
             <button
@@ -82,7 +99,7 @@ export default function LanguageSwitcher() {
               onClick={() => changeLanguage(code)}
               className={`flex w-full items-center gap-3 px-3.5 py-2 text-left text-[0.78rem] transition-colors hover:bg-ivory ${
                 code === locale
-                  ? "text-gold font-semibold"
+                  ? "font-semibold text-gold"
                   : "text-plum-dark"
               }`}
             >
@@ -90,7 +107,7 @@ export default function LanguageSwitcher() {
                 {FLAGS[code]}
               </span>
 
-              {LOCALE_NAMES[code]}
+              <span>{LOCALE_NAMES[code]}</span>
             </button>
           ))}
         </div>

@@ -13,37 +13,109 @@ import { RingIcon } from "@/components/category/icons";
 import { useLanguage } from "@/components/LanguageProvider";
 import type { Locale } from "@/lib/i18n";
 
-const WEDDING_COPY: Record<
-  Locale,
-  {
+type WeddingCopy = {
+  gallery: {
+    eyebrow: string;
+    title: string;
+    titleAccent: string;
+    description: string;
+    itemLabel: string;
+    closingText: string;
+    closingAccent: string;
+    captions: string[];
+    alts: string[];
+  };
+  craft: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    closingText: string;
+    closingAccent: string;
+    points: {
+      title: string;
+      description: string;
+    }[];
+  };
+  cta: {
+    title: string;
+    sub: string;
+  };
+};
+
+const WEDDING_COPY: Record<Locale, WeddingCopy> = {
+  de: {
     gallery: {
-      eyebrow: string;
-      title: string;
-      titleAccent: string;
-      description: string;
-      itemLabel: string;
-      closingText: string;
-      closingAccent: string;
-      captions: string[];
-      alts: string[];
-    };
+      eyebrow: "Die Trauring-Kollektion",
+      title: "Trauringe gemacht für",
+      titleAccent: "ein gemeinsames Leben.",
+      description:
+        "Von zeitlosen Goldringen bis zu diamantbesetzten und modernen Designs wird jedes Paar mit Blick auf Proportion, Komfort und das Gefühl am Finger ausgewählt.",
+      itemLabel: "Trauring-Kollektion",
+      closingText: "Zwei Ringe. Ein Versprechen.",
+      closingAccent: "Ein gemeinsames Leben liegt vor Ihnen.",
+      captions: [
+        "Klassisches Paar",
+        "Zweifarbiges Pavé",
+        "Solitär-Akzent",
+        "Geflochtenes Roségold",
+        "Diamant-Eternity",
+        "Gelbgold-Paar",
+        "Dreifarbiges Set",
+        "Gerillter Ring",
+        "Gedrehtes Pavé",
+        "Rosé- & Weißgold",
+      ],
+      alts: [
+        "Gebürsteter Goldring zusammen mit einem pavébesetzten Diamantring",
+        "Trauringe aus Weißgold und Roségold mit Pavé-Diamanten",
+        "Platinringe, einer davon mit einem einzelnen eingefassten Diamanten",
+        "Roségoldringe, einer mit geflochtener Struktur",
+        "Weißgoldringe, einer davon als vollständig diamantbesetzter Eternity-Ring",
+        "Gelbgoldringe, einer mit einem einzelnen Diamantakzent",
+        "Ringe aus Weiß- und Roségold mit Pavé-Diamanten",
+        "Gerillter Gelbgoldring mit pavébesetztem Roségoldring",
+        "Gerillter Gelbgoldring mit gedrehtem diamantbesetztem Roségoldring",
+        "Weißgoldring mit Roségoldrille und gedrehtem Pavé-Ring",
+      ],
+    },
     craft: {
-      eyebrow: string;
-      title: string;
-      description: string;
-      closingText: string;
-      closingAccent: string;
-      points: {
-        title: string;
-        description: string;
-      }[];
-    };
+      eyebrow: "Für den Alltag gemacht",
+      title:
+        "Die Details, die zählen, wenn ein Ring jeden Tag getragen wird",
+      description:
+        "Ein Trauring wird Teil des täglichen Lebens. Komfort, Proportion, Material und persönliche Details sind wichtig, weil dieser Ring Sie viele Jahre begleiten soll.",
+      closingText: "Für den Hochzeitstag gemacht.",
+      closingAccent: "Für jeden Tag danach gestaltet.",
+      points: [
+        {
+          title: "Proportion",
+          description:
+            "Breite, Profil und Gewicht sollten sich ausgewogen an der Hand anfühlen. Der richtige Ring hat Präsenz, ohne jemals mit der Person zu konkurrieren, die ihn trägt.",
+        },
+        {
+          title: "Komfort",
+          description:
+            "Ein Trauring ist nicht nur für einen besonderen Anlass gedacht. Innenprofil, Kanten und Passform werden für die unzähligen alltäglichen Stunden berücksichtigt, in denen er getragen wird.",
+        },
+        {
+          title: "Material",
+          description:
+            "Platin sowie 18-karätiges Weiß-, Gelb- oder Roségold bringen jeweils einen eigenen Ton, ein eigenes Gewicht und einen eigenen Charakter mit.",
+        },
+        {
+          title: "Persönliches Detail",
+          description:
+            "Ein Datum, Initialen oder eine private Botschaft können aus einem schönen Ring etwas machen, das nur den beiden Menschen gehört, die ihn gewählt haben.",
+        },
+      ],
+    },
     cta: {
-      title: string;
-      sub: string;
-    };
-  }
-> = {
+      title: "Wählen Sie die Ringe für jeden gemeinsamen Tag",
+      sub:
+        "Besuchen Sie uns gemeinsam zu einem privaten Termin und entdecken Sie Proportionen, Metalle, Oberflächen und Details, bis sich das richtige Paar unverkennbar nach Ihnen anfühlt.",
+    },
+  },
+
   en: {
     gallery: {
       eyebrow: "The Wedding Collection",
@@ -100,7 +172,7 @@ const WEDDING_COPY: Record<
         {
           title: "Material",
           description:
-            "Platinum and 18k white, yellow or rose gold each bring a different tone, weight and character. The choice should suit both your style and the way you intend to wear the ring.",
+            "Platinum and 18k white, yellow or rose gold each bring a different tone, weight and character.",
         },
         {
           title: "Personal Detail",
@@ -113,78 +185,6 @@ const WEDDING_COPY: Record<
       title: "Choose the rings you will live with every day",
       sub:
         "Visit us together for a private appointment and explore proportions, metals, finishes and details until the right pair feels unmistakably yours.",
-    },
-  },
-
-  de: {
-    gallery: {
-      eyebrow: "Die Trauring-Kollektion",
-      title: "Trauringe gemacht für",
-      titleAccent: "ein gemeinsames Leben.",
-      description:
-        "Von zeitlosen Goldringen bis zu diamantbesetzten und modernen Designs wird jedes Paar mit Blick auf Proportion, Komfort und das Gefühl am Finger ausgewählt.",
-      itemLabel: "Trauring-Kollektion",
-      closingText: "Zwei Ringe. Ein Versprechen.",
-      closingAccent: "Ein gemeinsames Leben liegt vor Ihnen.",
-      captions: [
-        "Klassisches Paar",
-        "Zweifarbiges Pavé",
-        "Solitär-Akzent",
-        "Geflochtenes Roségold",
-        "Diamant-Eternity",
-        "Gelbgold-Paar",
-        "Dreifarbiges Set",
-        "Gerillter Ring",
-        "Gedrehtes Pavé",
-        "Rosé- & Weißgold",
-      ],
-      alts: [
-        "Gebürsteter Goldring zusammen mit einem pavébesetzten Diamantring",
-        "Trauringe aus Weißgold und Roségold mit Pavé-Diamanten",
-        "Platinringe, einer davon mit einem einzelnen eingefassten Diamanten",
-        "Roségoldringe, einer mit geflochtener Struktur",
-        "Weißgoldringe, einer davon als vollständig diamantbesetzter Eternity-Ring",
-        "Gelbgoldringe, einer mit einem einzelnen Diamantakzent",
-        "Ringe aus Weiß- und Roségold mit Pavé-Diamanten",
-        "Gerillter Gelbgoldring mit pavébesetztem Roségoldring",
-        "Gerillter Gelbgoldring mit gedrehtem diamantbesetztem Roségoldring",
-        "Weißgoldring mit Roségoldrille und gedrehtem Pavé-Ring",
-      ],
-    },
-    craft: {
-      eyebrow: "Für den Alltag gemacht",
-      title: "Die Details, die zählen, wenn ein Ring jeden Tag getragen wird",
-      description:
-        "Ein Trauring wird Teil des täglichen Lebens. Komfort, Proportion, Material und persönliche Details sind wichtig, weil dieser Ring Sie viele Jahre begleiten soll.",
-      closingText: "Für den Hochzeitstag gemacht.",
-      closingAccent: "Für jeden Tag danach gestaltet.",
-      points: [
-        {
-          title: "Proportion",
-          description:
-            "Breite, Profil und Gewicht sollten sich ausgewogen an der Hand anfühlen. Der richtige Ring hat Präsenz, ohne jemals mit der Person zu konkurrieren, die ihn trägt.",
-        },
-        {
-          title: "Komfort",
-          description:
-            "Ein Trauring ist nicht nur für einen besonderen Anlass gedacht. Innenprofil, Kanten und Passform werden für die unzähligen alltäglichen Stunden berücksichtigt, in denen er getragen wird.",
-        },
-        {
-          title: "Material",
-          description:
-            "Platin sowie 18-karätiges Weiß-, Gelb- oder Roségold bringen jeweils einen eigenen Ton, ein eigenes Gewicht und einen eigenen Charakter mit. Die Wahl sollte zu Ihrem Stil und Ihrer Art, den Ring zu tragen, passen.",
-        },
-        {
-          title: "Persönliches Detail",
-          description:
-            "Ein Datum, Initialen oder eine private Botschaft können aus einem schönen Ring etwas machen, das nur den beiden Menschen gehört, die ihn gewählt haben.",
-        },
-      ],
-    },
-    cta: {
-      title: "Wählen Sie die Ringe für jeden gemeinsamen Tag",
-      sub:
-        "Besuchen Sie uns gemeinsam zu einem privaten Termin und entdecken Sie Proportionen, Metalle, Oberflächen und Details, bis sich das richtige Paar unverkennbar nach Ihnen anfühlt.",
     },
   },
 
@@ -244,7 +244,7 @@ const WEDDING_COPY: Record<
         {
           title: "Malzeme",
           description:
-            "Platin ile 18 ayar beyaz, sarı veya rose altın; her biri farklı ton, ağırlık ve karakter sunar. Seçim hem stilinize hem de yüzüğü nasıl kullanacağınıza uygun olmalıdır.",
+            "Platin ile 18 ayar beyaz, sarı veya rose altın; her biri farklı ton, ağırlık ve karakter sunar.",
         },
         {
           title: "Kişisel Detay",
@@ -316,7 +316,7 @@ const WEDDING_COPY: Record<
         {
           title: "Materiál",
           description:
-            "Platina a 18-karátové biele, žlté alebo ružové zlato prinášajú odlišný tón, hmotnosť aj charakter. Výber by mal zodpovedať vášmu štýlu aj spôsobu, akým chcete obrúčku nosiť.",
+            "Platina a 18-karátové biele, žlté alebo ružové zlato prinášajú odlišný tón, hmotnosť aj charakter.",
         },
         {
           title: "Osobný detail",
@@ -388,7 +388,7 @@ const WEDDING_COPY: Record<
         {
           title: "Materiál",
           description:
-            "Platina a 18karátové bílé, žluté nebo růžové zlato přinášejí rozdílný tón, hmotnost i charakter. Volba by měla odpovídat vašemu stylu i způsobu, jakým chcete prsten nosit.",
+            "Platina a 18karátové bílé, žluté nebo růžové zlato přinášejí rozdílný tón, hmotnost i charakter.",
         },
         {
           title: "Osobní detail",
@@ -450,7 +450,7 @@ const WEDDING_COPY: Record<
         {
           title: "Arány",
           description:
-            "A szélességnek, profilnak és súlynak kiegyensúlyozottan kell hatnia a kézen. A megfelelő gyűrű karakteres, de soha nem nyomja el azt, aki viseli.",
+            "A szélességnek, profilnak és súlynak kiegyensúlyozottan kell hatnia a kézen.",
         },
         {
           title: "Kényelem",
@@ -460,7 +460,7 @@ const WEDDING_COPY: Record<
         {
           title: "Anyag",
           description:
-            "A platina, valamint a 18 karátos fehér-, sárga- vagy rozéarany mind más tónust, súlyt és karaktert ad. A választásnak illeszkednie kell a stílusotokhoz és ahhoz, ahogyan viselni szeretnétek a gyűrűt.",
+            "A platina, valamint a 18 karátos fehér-, sárga- vagy rozéarany mind más tónust, súlyt és karaktert ad.",
         },
         {
           title: "Személyes részlet",
@@ -522,17 +522,17 @@ const WEDDING_COPY: Record<
         {
           title: "Proporcje",
           description:
-            "Szerokość, profil i waga powinny być dobrze wyważone na dłoni. Odpowiednia obrączka ma charakter, ale nigdy nie dominuje nad osobą, która ją nosi.",
+            "Szerokość, profil i waga powinny być dobrze wyważone na dłoni.",
         },
         {
           title: "Wygoda",
           description:
-            "Obrączka nie jest tworzona wyłącznie na jedną okazję. Jej wewnętrzny profil, krawędzie i dopasowanie są projektowane z myślą o niezliczonych zwyczajnych godzinach codziennego noszenia.",
+            "Obrączka nie jest tworzona wyłącznie na jedną okazję. Jej wewnętrzny profil, krawędzie i dopasowanie są projektowane z myślą o codziennym noszeniu.",
         },
         {
           title: "Materiał",
           description:
-            "Platyna oraz 18-karatowe białe, żółte i różowe złoto mają inny ton, wagę i charakter. Wybór powinien pasować zarówno do Waszego stylu, jak i sposobu, w jaki chcecie nosić obrączkę.",
+            "Platyna oraz 18-karatowe białe, żółte i różowe złoto mają inny ton, wagę i charakter.",
         },
         {
           title: "Osobisty detal",
@@ -545,6 +545,582 @@ const WEDDING_COPY: Record<
       title: "Wybierzcie obrączki, z którymi będziecie żyć każdego dnia",
       sub:
         "Odwiedźcie nas razem podczas prywatnego spotkania i poznajcie proporcje, metale, wykończenia oraz detale, aż właściwa para stanie się bezsprzecznie Wasza.",
+    },
+  },
+
+  ru: {
+    gallery: {
+      eyebrow: "Коллекция обручальных колец",
+      title: "Обручальные кольца для",
+      titleAccent: "целой совместной жизни.",
+      description:
+        "От классических золотых колец до моделей с бриллиантами и современным дизайном — каждая пара подбирается с учётом пропорций, комфорта и ощущения на руке.",
+      itemLabel: "Коллекция обручальных колец",
+      closingText: "Два кольца. Одно обещание.",
+      closingAccent: "Вся жизнь впереди.",
+      captions: [
+        "Классическая пара",
+        "Двухцветное паве",
+        "Акцент-солитер",
+        "Плетёное розовое золото",
+        "Бриллиантовая eternity",
+        "Пара из жёлтого золота",
+        "Трёхцветный комплект",
+        "Кольцо с канавкой",
+        "Закрученное паве",
+        "Розовое и белое золото",
+      ],
+      alts: [
+        "Матовая золотая обручальная кольцо и кольцо с бриллиантами паве",
+        "Обручальные кольца из белого и розового золота с бриллиантами паве",
+        "Платиновые кольца, одно с одиночным бриллиантом",
+        "Кольца из розового золота с плетёной текстурой",
+        "Кольца из белого золота с бриллиантовой дорожкой eternity",
+        "Кольца из жёлтого золота с одиночным бриллиантом",
+        "Кольца из белого и розового золота с бриллиантами паве",
+        "Кольцо из жёлтого золота с канавкой и кольцо из розового золота с паве",
+        "Кольцо из жёлтого золота с канавкой и закрученное кольцо из розового золота",
+        "Кольцо из белого золота с розовой вставкой и закрученное паве",
+      ],
+    },
+    craft: {
+      eyebrow: "Созданы для жизни вместе",
+      title: "Детали, которые важны при ежедневном ношении",
+      description:
+        "Обручальное кольцо становится частью повседневной жизни. Комфорт, пропорции, материал и личные детали важны, потому что это украшение остаётся с вами на долгие годы.",
+      closingText: "Созданы для дня свадьбы.",
+      closingAccent: "Продуманы для каждого дня после.",
+      points: [
+        {
+          title: "Пропорции",
+          description:
+            "Ширина, профиль и вес должны ощущаться на руке гармонично и сбалансированно.",
+        },
+        {
+          title: "Комфорт",
+          description:
+            "Обручальное кольцо создаётся не только для церемонии. Внутренний профиль, края и посадка рассчитаны на ежедневное ношение.",
+        },
+        {
+          title: "Материал",
+          description:
+            "Платина и 18-каратное белое, жёлтое или розовое золото отличаются оттенком, весом и характером.",
+        },
+        {
+          title: "Личная деталь",
+          description:
+            "Дата, инициалы или личное послание превращают красивое кольцо в нечто, принадлежащее только вам двоим.",
+        },
+      ],
+    },
+    cta: {
+      title: "Выберите кольца, которые будут с вами каждый день",
+      sub:
+        "Приходите вместе на индивидуальную встречу и изучите пропорции, металлы, отделку и детали, пока не найдёте пару, которая ощущается именно вашей.",
+    },
+  },
+
+  nl: {
+    gallery: {
+      eyebrow: "De trouwringencollectie",
+      title: "Trouwringen gemaakt voor",
+      titleAccent: "een leven samen.",
+      description:
+        "Van tijdloze gouden ringen tot diamanten en moderne ontwerpen: elk paar wordt gekozen met aandacht voor verhouding, comfort en hoe het op de hand aanvoelt.",
+      itemLabel: "Trouwringencollectie",
+      closingText: "Twee ringen. Eén belofte.",
+      closingAccent: "Een heel leven samen voor jullie.",
+      captions: [
+        "Klassiek paar",
+        "Tweekleurig pavé",
+        "Solitair accent",
+        "Gevlochten roségoud",
+        "Diamond eternity",
+        "Geelgouden paar",
+        "Driekleurige set",
+        "Ring met groef",
+        "Gedraaid pavé",
+        "Rosé- & witgoud",
+      ],
+      alts: [
+        "Geborstelde gouden ring met pavé diamanten ring",
+        "Witgouden en roségouden trouwringen met pavé diamanten",
+        "Platina ringen, één met een enkele diamant",
+        "Roségouden ringen met gevlochten textuur",
+        "Witgouden ringen met volledige diamant eternity-band",
+        "Geelgouden ringen met één diamantaccent",
+        "Wit- en roségouden ringen met pavé diamanten",
+        "Geelgouden ring met groef en roségouden pavé ring",
+        "Geelgouden ring met groef en gedraaide roségouden diamanten ring",
+        "Witgouden ring met roségouden groef en gedraaide pavé ring",
+      ],
+    },
+    craft: {
+      eyebrow: "Gemaakt om met u mee te leven",
+      title: "De details die tellen wanneer een ring elke dag wordt gedragen",
+      description:
+        "Een trouwring wordt onderdeel van het dagelijks leven. Comfort, verhouding, materiaal en persoonlijke details zijn belangrijk omdat dit een sieraad is dat jarenlang meegaat.",
+      closingText: "Gemaakt voor de trouwdag.",
+      closingAccent: "Ontworpen voor elke dag daarna.",
+      points: [
+        {
+          title: "Verhouding",
+          description:
+            "Breedte, profiel en gewicht moeten gebalanceerd aanvoelen op de hand.",
+        },
+        {
+          title: "Comfort",
+          description:
+            "Een trouwring is niet alleen voor één gelegenheid. Binnenzijde, randen en pasvorm zijn bedoeld voor dagelijks gebruik.",
+        },
+        {
+          title: "Materiaal",
+          description:
+            "Platina en 18-karaats wit-, geel- of roségoud hebben elk hun eigen kleur, gewicht en karakter.",
+        },
+        {
+          title: "Persoonlijk detail",
+          description:
+            "Een datum, initialen of een persoonlijke boodschap kan een mooie ring veranderen in iets dat alleen van jullie twee is.",
+        },
+      ],
+    },
+    cta: {
+      title: "Kies de ringen die u elke dag zult dragen",
+      sub:
+        "Kom samen langs voor een privéafspraak en ontdek verhoudingen, metalen, afwerkingen en details totdat het juiste paar onmiskenbaar als het uwe voelt.",
+    },
+  },
+
+  da: {
+    gallery: {
+      eyebrow: "Vielsesringskollektionen",
+      title: "Vielsesringe skabt til",
+      titleAccent: "et helt liv sammen.",
+      description:
+        "Fra tidløse guldringe til diamantbesatte og moderne designs vælges hvert par med fokus på proportioner, komfort og hvordan det føles på hånden.",
+      itemLabel: "Vielsesringskollektionen",
+      closingText: "To ringe. Ét løfte.",
+      closingAccent: "Et helt liv foran jer.",
+      captions: [
+        "Klassisk par",
+        "Tofarvet pavé",
+        "Solitær-detalje",
+        "Flettet rosaguld",
+        "Diamant eternity",
+        "Par i gult guld",
+        "Trefarvet sæt",
+        "Ring med rille",
+        "Snoet pavé",
+        "Rosé- & hvidguld",
+      ],
+      alts: [
+        "Børstet guldring med pavé diamantring",
+        "Hvidgulds- og rosaguldsringe med pavé diamanter",
+        "Platinringe, én med en enkelt diamant",
+        "Rosaguldsringe med flettet struktur",
+        "Hvidguldsringe med fuld diamant eternity",
+        "Guldringe med en enkelt diamantdetalje",
+        "Hvid- og rosaguldsringe med pavé diamanter",
+        "Guldring med rille og rosaguldsring med pavé",
+        "Guldring med rille og snoet rosaguldsring med diamanter",
+        "Hvidguldsring med rosaguldsrille og snoet pavé-ring",
+      ],
+    },
+    craft: {
+      eyebrow: "Skabt til livet sammen",
+      title: "Detaljerne der betyder noget, når ringen bæres hver dag",
+      description:
+        "En vielsesring bliver en del af hverdagen. Komfort, proportioner, materiale og personlige detaljer betyder noget, fordi ringen skal følge jer i mange år.",
+      closingText: "Skabt til bryllupsdagen.",
+      closingAccent: "Designet til hver dag bagefter.",
+      points: [
+        {
+          title: "Proportioner",
+          description:
+            "Bredde, profil og vægt skal føles afbalanceret på hånden.",
+        },
+        {
+          title: "Komfort",
+          description:
+            "En vielsesring er ikke kun skabt til én anledning. Inderside, kanter og pasform er tænkt til daglig brug.",
+        },
+        {
+          title: "Materiale",
+          description:
+            "Platin og 18 kt. hvid-, gul- eller rosaguld har hver sin tone, vægt og karakter.",
+        },
+        {
+          title: "Personlig detalje",
+          description:
+            "En dato, initialer eller en privat besked kan gøre en smuk ring til noget, der kun tilhører jer to.",
+        },
+      ],
+    },
+    cta: {
+      title: "Vælg ringene, I skal leve med hver dag",
+      sub:
+        "Besøg os sammen til en privat aftale og udforsk proportioner, metaller, overflader og detaljer, indtil det rette par føles helt jeres.",
+    },
+  },
+
+  fi: {
+    gallery: {
+      eyebrow: "Vihkisormusmallisto",
+      title: "Vihkisormukset luotu",
+      titleAccent: "yhteistä elämää varten.",
+      description:
+        "Ajattomista kultasormuksista timanttisormuksiin ja moderneihin muotoihin jokainen pari valitaan mittasuhteiden, mukavuuden ja käyttötuntuman perusteella.",
+      itemLabel: "Vihkisormusmallisto",
+      closingText: "Kaksi sormusta. Yksi lupaus.",
+      closingAccent: "Koko yhteinen elämä edessä.",
+      captions: [
+        "Klassinen pari",
+        "Kaksivärinen pavé",
+        "Solitääriyksityiskohta",
+        "Punottu ruusukulta",
+        "Timantti eternity",
+        "Keltakultainen pari",
+        "Kolmivärinen setti",
+        "Uritettu sormus",
+        "Kierretty pavé",
+        "Ruusu- & valkokulta",
+      ],
+      alts: [
+        "Harjattu kultasormus ja pavé-timanttisormus",
+        "Valko- ja ruusukultaiset vihkisormukset pavé-timanteilla",
+        "Platinarenkaat, toisessa yksi timantti",
+        "Ruusukultaiset sormukset punotulla pinnalla",
+        "Valkokultaiset sormukset täydellä timantti eternity -rivillä",
+        "Keltakultaiset sormukset yhdellä timanttiyksityiskohdalla",
+        "Valko- ja ruusukultaiset sormukset pavé-timanteilla",
+        "Uritettu keltakultainen sormus ja ruusukultainen pavé-sormus",
+        "Uritettu keltakultainen sormus ja kierretty ruusukultainen timanttisormus",
+        "Valkokultainen sormus ruusukultaisella uralla ja kierretty pavé-sormus",
+      ],
+    },
+    craft: {
+      eyebrow: "Luotu elämään kanssasi",
+      title: "Yksityiskohdat, joilla on merkitystä päivittäisessä käytössä",
+      description:
+        "Vihkisormuksesta tulee osa arkea. Mukavuus, mittasuhteet, materiaali ja henkilökohtaiset yksityiskohdat ovat tärkeitä, koska sormus on tarkoitettu kestämään vuosia.",
+      closingText: "Luotu hääpäivää varten.",
+      closingAccent: "Suunniteltu jokaiseen päivään sen jälkeen.",
+      points: [
+        {
+          title: "Mittasuhteet",
+          description:
+            "Leveyden, profiilin ja painon tulee tuntua tasapainoiselta kädessä.",
+        },
+        {
+          title: "Mukavuus",
+          description:
+            "Vihkisormus ei ole vain yhtä päivää varten. Sisäprofiili, reunat ja istuvuus suunnitellaan päivittäiseen käyttöön.",
+        },
+        {
+          title: "Materiaali",
+          description:
+            "Platina sekä 18 karaatin valko-, kelta- ja ruusukulta tarjoavat kukin oman sävynsä, painonsa ja luonteensa.",
+        },
+        {
+          title: "Henkilökohtainen yksityiskohta",
+          description:
+            "Päivämäärä, nimikirjaimet tai yksityinen viesti voi tehdä kauniista sormuksesta vain teille kahdelle kuuluvan.",
+        },
+      ],
+    },
+    cta: {
+      title: "Valitkaa sormukset, joita käytätte joka päivä",
+      sub:
+        "Tulkaa yhdessä yksityiseen tapaamiseen ja tutustukaa mittasuhteisiin, metalleihin, viimeistelyihin ja yksityiskohtiin, kunnes oikea pari tuntuu täysin omalta.",
+    },
+  },
+
+  sv: {
+    gallery: {
+      eyebrow: "Vigselringskollektionen",
+      title: "Vigselringar skapade för",
+      titleAccent: "ett helt liv tillsammans.",
+      description:
+        "Från tidlösa guldringar till diamantinfattade och moderna designer väljs varje par med fokus på proportion, komfort och känslan på handen.",
+      itemLabel: "Vigselringskollektionen",
+      closingText: "Två ringar. Ett löfte.",
+      closingAccent: "Ett helt liv framför er.",
+      captions: [
+        "Klassiskt par",
+        "Tvåfärgat pavé",
+        "Solitärdetalj",
+        "Flätat roséguld",
+        "Diamant eternity",
+        "Par i gult guld",
+        "Trefärgat set",
+        "Ring med spår",
+        "Tvinnat pavé",
+        "Rosé- & vitguld",
+      ],
+      alts: [
+        "Borstad guldring och pavé-diamantring",
+        "Vitgulds- och roséguldsringar med pavé-diamanter",
+        "Platinaringar, en med en enda diamant",
+        "Roséguldsringar med flätad struktur",
+        "Vitguldsringar med full diamant eternity",
+        "Guldringar med en enda diamantdetalj",
+        "Vit- och roséguldsringar med pavé-diamanter",
+        "Guldring med spår och roséguldsring med pavé",
+        "Guldring med spår och tvinnad roséguldsring med diamanter",
+        "Vitguldsring med roséguldsspår och tvinnad pavé-ring",
+      ],
+    },
+    craft: {
+      eyebrow: "Skapade för livet tillsammans",
+      title: "Detaljerna som betyder något när ringen bärs varje dag",
+      description:
+        "En vigselring blir en del av vardagen. Komfort, proportion, material och personliga detaljer är viktiga eftersom ringen är tänkt att följa er i många år.",
+      closingText: "Skapade för bröllopsdagen.",
+      closingAccent: "Designade för varje dag därefter.",
+      points: [
+        {
+          title: "Proportion",
+          description:
+            "Bredd, profil och vikt ska kännas balanserade på handen.",
+        },
+        {
+          title: "Komfort",
+          description:
+            "En vigselring är inte bara skapad för en dag. Insida, kanter och passform är utformade för daglig användning.",
+        },
+        {
+          title: "Material",
+          description:
+            "Platina samt 18K vitt, gult eller roséguld har alla sin egen ton, vikt och karaktär.",
+        },
+        {
+          title: "Personlig detalj",
+          description:
+            "Ett datum, initialer eller ett privat meddelande kan göra en vacker ring till något som bara tillhör er två.",
+        },
+      ],
+    },
+    cta: {
+      title: "Välj ringarna ni kommer att bära varje dag",
+      sub:
+        "Besök oss tillsammans för ett privat möte och utforska proportioner, metaller, ytbehandlingar och detaljer tills rätt par känns helt och hållet ert.",
+    },
+  },
+
+  fr: {
+    gallery: {
+      eyebrow: "La collection alliances",
+      title: "Des alliances conçues pour",
+      titleAccent: "toute une vie à deux.",
+      description:
+        "Des anneaux en or intemporels aux modèles sertis de diamants et aux designs contemporains, chaque paire est choisie avec attention portée aux proportions, au confort et au ressenti au doigt.",
+      itemLabel: "Collection alliances",
+      closingText: "Deux alliances. Une promesse.",
+      closingAccent: "Toute une vie à venir.",
+      captions: [
+        "Paire classique",
+        "Pavé bicolore",
+        "Accent solitaire",
+        "Or rose tressé",
+        "Éternité diamant",
+        "Paire en or jaune",
+        "Ensemble tricolore",
+        "Anneau rainuré",
+        "Pavé torsadé",
+        "Or rose & or blanc",
+      ],
+      alts: [
+        "Alliance en or brossé avec alliance pavée de diamants",
+        "Alliances en or blanc et or rose avec diamants pavé",
+        "Alliances en platine, dont une avec un diamant unique",
+        "Alliances en or rose avec texture tressée",
+        "Alliances en or blanc avec tour complet de diamants",
+        "Alliances en or jaune avec détail diamant",
+        "Alliances en or blanc et rose avec diamants pavé",
+        "Alliance en or jaune rainurée avec alliance pavée en or rose",
+        "Alliance en or jaune rainurée avec alliance torsadée en or rose et diamants",
+        "Alliance en or blanc avec rainure en or rose et alliance pavée torsadée",
+      ],
+    },
+    craft: {
+      eyebrow: "Conçues pour vivre avec vous",
+      title: "Les détails qui comptent lorsqu’une alliance est portée chaque jour",
+      description:
+        "Une alliance devient une partie de la vie quotidienne. Le confort, les proportions, le matériau et les détails personnels comptent parce que ce bijou est conçu pour rester avec vous pendant des années.",
+      closingText: "Créées pour le jour du mariage.",
+      closingAccent: "Pensées pour tous les jours qui suivent.",
+      points: [
+        {
+          title: "Proportions",
+          description:
+            "La largeur, le profil et le poids doivent être équilibrés sur la main.",
+        },
+        {
+          title: "Confort",
+          description:
+            "Une alliance n’est pas conçue pour une seule occasion. Son profil intérieur, ses bords et son ajustement sont pensés pour le quotidien.",
+        },
+        {
+          title: "Matériau",
+          description:
+            "Le platine et l’or blanc, jaune ou rose 18 carats possèdent chacun leur propre tonalité, poids et caractère.",
+        },
+        {
+          title: "Détail personnel",
+          description:
+            "Une date, des initiales ou un message privé peuvent transformer une belle alliance en quelque chose qui n’appartient qu’à vous deux.",
+        },
+      ],
+    },
+    cta: {
+      title: "Choisissez les alliances que vous porterez chaque jour",
+      sub:
+        "Venez ensemble pour un rendez-vous privé et découvrez proportions, métaux, finitions et détails jusqu’à ce que la paire idéale vous ressemble pleinement.",
+    },
+  },
+
+  it: {
+    gallery: {
+      eyebrow: "La collezione fedi",
+      title: "Fedi nuziali create per",
+      titleAccent: "una vita insieme.",
+      description:
+        "Dalle classiche fedi in oro ai modelli con diamanti e ai design contemporanei, ogni coppia viene scelta considerando proporzioni, comfort e sensazione sulla mano.",
+      itemLabel: "Collezione fedi",
+      closingText: "Due anelli. Una promessa.",
+      closingAccent: "Una vita intera ancora da vivere.",
+      captions: [
+        "Coppia classica",
+        "Pavé bicolore",
+        "Dettaglio solitario",
+        "Oro rosa intrecciato",
+        "Eternity di diamanti",
+        "Coppia in oro giallo",
+        "Set tricolore",
+        "Fede scanalata",
+        "Pavé intrecciato",
+        "Oro rosa & bianco",
+      ],
+      alts: [
+        "Fede in oro satinato con fede pavé di diamanti",
+        "Fedi in oro bianco e rosa con diamanti pavé",
+        "Fedi in platino, una con un singolo diamante",
+        "Fedi in oro rosa con trama intrecciata",
+        "Fedi in oro bianco con giro completo di diamanti",
+        "Fedi in oro giallo con singolo dettaglio diamantato",
+        "Fedi in oro bianco e rosa con diamanti pavé",
+        "Fede in oro giallo scanalata con fede pavé in oro rosa",
+        "Fede in oro giallo scanalata con fede intrecciata in oro rosa e diamanti",
+        "Fede in oro bianco con scanalatura in oro rosa e fede pavé intrecciata",
+      ],
+    },
+    craft: {
+      eyebrow: "Create per vivere con voi",
+      title: "I dettagli che contano quando un anello viene indossato ogni giorno",
+      description:
+        "Una fede entra a far parte della vita quotidiana. Comfort, proporzioni, materiale e dettagli personali sono importanti perché questo gioiello è pensato per accompagnarvi per anni.",
+      closingText: "Create per il giorno del matrimonio.",
+      closingAccent: "Pensate per ogni giorno successivo.",
+      points: [
+        {
+          title: "Proporzioni",
+          description:
+            "Larghezza, profilo e peso devono risultare equilibrati sulla mano.",
+        },
+        {
+          title: "Comfort",
+          description:
+            "Una fede non è fatta solo per un’occasione. Profilo interno, bordi e vestibilità sono pensati per l’uso quotidiano.",
+        },
+        {
+          title: "Materiale",
+          description:
+            "Platino e oro bianco, giallo o rosa 18 carati hanno ciascuno una tonalità, un peso e un carattere diversi.",
+        },
+        {
+          title: "Dettaglio personale",
+          description:
+            "Una data, delle iniziali o un messaggio privato possono trasformare una bella fede in qualcosa che appartiene soltanto a voi due.",
+        },
+      ],
+    },
+    cta: {
+      title: "Scegliete le fedi che indosserete ogni giorno",
+      sub:
+        "Venite insieme per un appuntamento privato e scoprite proporzioni, metalli, finiture e dettagli finché la coppia giusta non vi sembrerà davvero vostra.",
+    },
+  },
+
+  es: {
+    gallery: {
+      eyebrow: "La colección de alianzas",
+      title: "Alianzas creadas para",
+      titleAccent: "toda una vida juntos.",
+      description:
+        "Desde alianzas de oro atemporales hasta modelos con diamantes y diseños contemporáneos, cada pareja se elige prestando atención a las proporciones, la comodidad y la sensación en la mano.",
+      itemLabel: "Colección de alianzas",
+      closingText: "Dos anillos. Una promesa.",
+      closingAccent: "Toda una vida por delante.",
+      captions: [
+        "Pareja clásica",
+        "Pavé bicolor",
+        "Acento solitario",
+        "Oro rosa trenzado",
+        "Eternity de diamantes",
+        "Pareja de oro amarillo",
+        "Set tricolor",
+        "Anillo acanalado",
+        "Pavé retorcido",
+        "Oro rosa & blanco",
+      ],
+      alts: [
+        "Alianza de oro cepillado con alianza pavé de diamantes",
+        "Alianzas de oro blanco y rosa con diamantes pavé",
+        "Alianzas de platino, una con un solo diamante",
+        "Alianzas de oro rosa con textura trenzada",
+        "Alianzas de oro blanco con aro completo de diamantes",
+        "Alianzas de oro amarillo con un detalle de diamante",
+        "Alianzas de oro blanco y rosa con diamantes pavé",
+        "Alianza de oro amarillo acanalada con alianza pavé de oro rosa",
+        "Alianza de oro amarillo acanalada con alianza retorcida de oro rosa y diamantes",
+        "Alianza de oro blanco con canal de oro rosa y alianza pavé retorcida",
+      ],
+    },
+    craft: {
+      eyebrow: "Creadas para vivir con vosotros",
+      title: "Los detalles que importan cuando un anillo se lleva cada día",
+      description:
+        "Una alianza se convierte en parte de la vida cotidiana. La comodidad, las proporciones, el material y los detalles personales importan porque esta pieza está diseñada para acompañaros durante años.",
+      closingText: "Creadas para el día de la boda.",
+      closingAccent: "Diseñadas para todos los días después.",
+      points: [
+        {
+          title: "Proporción",
+          description:
+            "La anchura, el perfil y el peso deben sentirse equilibrados en la mano.",
+        },
+        {
+          title: "Comodidad",
+          description:
+            "Una alianza no se crea solo para una ocasión. Su interior, bordes y ajuste están pensados para el uso diario.",
+        },
+        {
+          title: "Material",
+          description:
+            "El platino y el oro blanco, amarillo o rosa de 18 quilates aportan cada uno un tono, peso y carácter distintos.",
+        },
+        {
+          title: "Detalle personal",
+          description:
+            "Una fecha, unas iniciales o un mensaje privado pueden convertir una hermosa alianza en algo que pertenece únicamente a vosotros dos.",
+        },
+      ],
+    },
+    cta: {
+      title: "Elegid las alianzas que llevaréis cada día",
+      sub:
+        "Visitadnos juntos para una cita privada y descubrid proporciones, metales, acabados y detalles hasta que la pareja adecuada se sienta completamente vuestra.",
     },
   },
 };
@@ -564,12 +1140,13 @@ const WEDDING_IMAGES = [
 
 export default function WeddingRingsContent() {
   const { locale } = useLanguage();
+
   const copy = WEDDING_COPY[locale];
 
   const galleryItems = WEDDING_IMAGES.map((image, index) => ({
     image,
-    caption: copy.gallery.captions[index],
-    alt: copy.gallery.alts[index],
+    caption: copy.gallery.captions[index] ?? copy.gallery.itemLabel,
+    alt: copy.gallery.alts[index] ?? copy.gallery.itemLabel,
   }));
 
   return (
@@ -577,10 +1154,8 @@ export default function WeddingRingsContent() {
       <Header />
 
       <main>
-        {/* CINEMATIC HERO */}
         <WeddingRingsCinematicHero />
 
-        {/* COLLECTION GALLERY */}
         <CategoryGallery
           icon={<RingIcon />}
           eyebrow={copy.gallery.eyebrow}
@@ -593,7 +1168,6 @@ export default function WeddingRingsContent() {
           items={galleryItems}
         />
 
-        {/* CRAFT / QUALITY */}
         <CategoryCraft
           eyebrow={copy.craft.eyebrow}
           title={copy.craft.title}
@@ -603,7 +1177,6 @@ export default function WeddingRingsContent() {
           points={copy.craft.points}
         />
 
-        {/* PRIVATE VIEWING CTA */}
         <CategoryCTA
           title={copy.cta.title}
           sub={copy.cta.sub}

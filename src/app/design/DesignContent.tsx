@@ -34,45 +34,44 @@ const SEASON_NUMBERS = {
   winter: "04",
 } as const;
 
-const DESIGN_COPY: Record<
-  Locale,
-  {
-    hero: {
-      eyebrow: string;
+type DesignCopy = {
+  hero: {
+    eyebrow: string;
+    title: string;
+    lead: string;
+    since: string;
+    statementEyebrow: string;
+    statementBefore: string;
+    statementAccent: string;
+    imageAlt: string;
+  };
+  seasons: {
+    eyebrow: string;
+    title: string;
+    titleAccent: string;
+    description: string;
+    itemLabel: string;
+    handmade: string;
+    closingBefore: string;
+    closingAccent: string;
+  };
+  philosophy: {
+    eyebrow: string;
+    title: string;
+    titleAccent: string;
+    description: string;
+    points: {
       title: string;
-      lead: string;
-      since: string;
-      statementEyebrow: string;
-      statementBefore: string;
-      statementAccent: string;
-      imageAlt: string;
-    };
-    seasons: {
-      eyebrow: string;
-      title: string;
-      titleAccent: string;
-      description: string;
-      itemLabel: string;
-      handmade: string;
-      closingBefore: string;
-      closingAccent: string;
-    };
-    philosophy: {
-      eyebrow: string;
-      title: string;
-      titleAccent: string;
-      description: string;
-      points: {
-        title: string;
-        text: string;
-      }[];
-    };
-    cta: {
-      title: string;
-      sub: string;
-    };
-  }
-> = {
+      text: string;
+    }[];
+  };
+  cta: {
+    title: string;
+    sub: string;
+  };
+};
+
+const DESIGN_COPY: Record<Locale, DesignCopy> = {
   en: {
     hero: {
       eyebrow: "Design",
@@ -106,15 +105,18 @@ const DESIGN_COPY: Record<
       points: [
         {
           title: "Original",
-          text: "Designed in-house with its own identity and point of view.",
+          text:
+            "Designed in-house with its own identity and point of view.",
         },
         {
           title: "Handcrafted",
-          text: "Created with attention to proportion, detail and finish.",
+          text:
+            "Created with attention to proportion, detail and finish.",
         },
         {
           title: "Personal",
-          text: "Jewellery designed to become part of the person who wears it.",
+          text:
+            "Jewellery designed to become part of the person who wears it.",
         },
       ],
     },
@@ -158,15 +160,18 @@ const DESIGN_COPY: Record<
       points: [
         {
           title: "Original",
-          text: "Im eigenen Haus entworfen, mit eigener Identität und eigener Haltung.",
+          text:
+            "Im eigenen Haus entworfen, mit eigener Identität und eigener Haltung.",
         },
         {
           title: "Handgefertigt",
-          text: "Mit besonderer Aufmerksamkeit für Proportion, Detail und Verarbeitung gefertigt.",
+          text:
+            "Mit besonderer Aufmerksamkeit für Proportion, Detail und Verarbeitung gefertigt.",
         },
         {
           title: "Persönlich",
-          text: "Schmuck, der dazu geschaffen ist, Teil der Persönlichkeit seines Trägers zu werden.",
+          text:
+            "Schmuck, der dazu geschaffen ist, Teil der Persönlichkeit seines Trägers zu werden.",
         },
       ],
     },
@@ -197,7 +202,8 @@ const DESIGN_COPY: Record<
       description:
         "Her mevsim yeni bir ruh, yeni detaylar ve aynı LIDYA işçiliğinin farklı bir ifadesini getirir.",
       itemLabel: "Mevsim Koleksiyonu",
-      handmade: "LIDYA tarafından tasarlandı & el işçiliğiyle üretildi",
+      handmade:
+        "LIDYA tarafından tasarlandı & el işçiliğiyle üretildi",
       closingBefore: "Tasarım mevsimlerle değişir.",
       closingAccent: "İşçilik değişmez.",
     },
@@ -210,15 +216,18 @@ const DESIGN_COPY: Record<
       points: [
         {
           title: "Özgün",
-          text: "Kendi kimliği ve bakış açısıyla LIDYA bünyesinde tasarlanır.",
+          text:
+            "Kendi kimliği ve bakış açısıyla LIDYA bünyesinde tasarlanır.",
         },
         {
           title: "El İşçiliği",
-          text: "Oran, detay ve bitiş kalitesine özen gösterilerek hazırlanır.",
+          text:
+            "Oran, detay ve bitiş kalitesine özen gösterilerek hazırlanır.",
         },
         {
           title: "Kişisel",
-          text: "Onu takan kişinin bir parçası olmak üzere tasarlanan mücevherler.",
+          text:
+            "Onu takan kişinin bir parçası olmak üzere tasarlanan mücevherler.",
         },
       ],
     },
@@ -262,15 +271,18 @@ const DESIGN_COPY: Record<
       points: [
         {
           title: "Originálne",
-          text: "Navrhnuté u nás s vlastnou identitou a osobitým pohľadom.",
+          text:
+            "Navrhnuté u nás s vlastnou identitou a osobitým pohľadom.",
         },
         {
           title: "Ručne vyrobené",
-          text: "Vytvorené s dôrazom na proporcie, detail a precízne spracovanie.",
+          text:
+            "Vytvorené s dôrazom na proporcie, detail a precízne spracovanie.",
         },
         {
           title: "Osobné",
-          text: "Šperky navrhnuté tak, aby sa stali súčasťou človeka, ktorý ich nosí.",
+          text:
+            "Šperky navrhnuté tak, aby sa stali súčasťou človeka, ktorý ich nosí.",
         },
       ],
     },
@@ -314,15 +326,18 @@ const DESIGN_COPY: Record<
       points: [
         {
           title: "Originální",
-          text: "Navrženo u nás s vlastní identitou a osobitým pohledem.",
+          text:
+            "Navrženo u nás s vlastní identitou a osobitým pohledem.",
         },
         {
           title: "Ručně vyrobené",
-          text: "Vytvořeno s důrazem na proporce, detail a precizní zpracování.",
+          text:
+            "Vytvořeno s důrazem na proporce, detail a precizní zpracování.",
         },
         {
           title: "Osobní",
-          text: "Šperky navržené tak, aby se staly součástí člověka, který je nosí.",
+          text:
+            "Šperky navržené tak, aby se staly součástí člověka, který je nosí.",
         },
       ],
     },
@@ -366,15 +381,18 @@ const DESIGN_COPY: Record<
       points: [
         {
           title: "Eredeti",
-          text: "Házon belül tervezve, saját identitással és önálló látásmóddal.",
+          text:
+            "Házon belül tervezve, saját identitással és önálló látásmóddal.",
         },
         {
           title: "Kézzel készített",
-          text: "Az arányokra, részletekre és kidolgozásra fordított figyelemmel készül.",
+          text:
+            "Az arányokra, részletekre és kidolgozásra fordított figyelemmel készül.",
         },
         {
           title: "Személyes",
-          text: "Olyan ékszer, amely annak az embernek a részévé válik, aki viseli.",
+          text:
+            "Olyan ékszer, amely annak az embernek a részévé válik, aki viseli.",
         },
       ],
     },
@@ -405,7 +423,8 @@ const DESIGN_COPY: Record<
       description:
         "Każda pora roku przynosi nowy nastrój, nowe detale i inną odsłonę tego samego kunsztu LIDYA.",
       itemLabel: "Kolekcja sezonowa",
-      handmade: "Projektowane & wykonywane ręcznie przez LIDYA",
+      handmade:
+        "Projektowane & wykonywane ręcznie przez LIDYA",
       closingBefore: "Design zmienia się wraz z porami roku.",
       closingAccent: "Rzemiosło pozostaje.",
     },
@@ -418,15 +437,18 @@ const DESIGN_COPY: Record<
       points: [
         {
           title: "Oryginalne",
-          text: "Projektowane przez nas z własną tożsamością i punktem widzenia.",
+          text:
+            "Projektowane przez nas z własną tożsamością i punktem widzenia.",
         },
         {
           title: "Ręcznie wykonane",
-          text: "Tworzone z dbałością o proporcje, detal i wykończenie.",
+          text:
+            "Tworzone z dbałością o proporcje, detal i wykończenie.",
         },
         {
           title: "Osobiste",
-          text: "Biżuteria zaprojektowana tak, aby stała się częścią osoby, która ją nosi.",
+          text:
+            "Biżuteria zaprojektowana tak, aby stała się częścią osoby, która ją nosi.",
         },
       ],
     },
@@ -436,11 +458,453 @@ const DESIGN_COPY: Record<
         "Odwiedź nas podczas prywatnego spotkania i odkryj sezonowe kolekcje, materiały i detale, które nadają każdemu projektowi LIDYA indywidualny charakter.",
     },
   },
+
+  ru: {
+    hero: {
+      eyebrow: "Дизайн",
+      title: "Дизайн, который меняется вместе с сезонами",
+      lead:
+        "Каждый сезон приносит новую коллекцию LIDYA — разработанную и созданную вручную в нашей мастерской, со своим настроением, характером и индивидуальным взглядом.",
+      since: "LIDYA · С 1989 ГОДА",
+      statementEyebrow: "Создано в LIDYA",
+      statementBefore: "Одна философия.",
+      statementAccent: "Четыре сезонных выражения.",
+      imageAlt:
+        "Коллекция украшений LIDYA с кольцами, серьгами, браслетами и ожерельями на натуральном камне",
+    },
+    seasons: {
+      eyebrow: "Четыре сезона",
+      title: "Создано в",
+      titleAccent: "ритме года.",
+      description:
+        "Каждый сезон приносит новое настроение, новые детали и новое выражение неизменного мастерства LIDYA.",
+      itemLabel: "Сезонная коллекция",
+      handmade: "Разработано и создано вручную LIDYA",
+      closingBefore: "Дизайн меняется вместе с сезонами.",
+      closingAccent: "Мастерство остаётся неизменным.",
+    },
+    philosophy: {
+      eyebrow: "Наша философия дизайна",
+      title: "Создано, чтобы быть индивидуальным,",
+      titleAccent: "никогда не обычным.",
+      description:
+        "Каждый дизайн LIDYA начинается с пропорций, характера и желания создать украшение, которое ощущается личным с первого момента.",
+      points: [
+        {
+          title: "Оригинальность",
+          text:
+            "Разработано внутри LIDYA с собственной идентичностью и характером.",
+        },
+        {
+          title: "Ручная работа",
+          text:
+            "Создано с вниманием к пропорциям, деталям и качеству отделки.",
+        },
+        {
+          title: "Личное",
+          text:
+            "Украшение, созданное для того, чтобы стать частью человека, который его носит.",
+        },
+      ],
+    },
+    cta: {
+      title: "Откройте для себя новые дизайны LIDYA лично",
+      sub:
+        "Посетите нас по частной записи и познакомьтесь с сезонными коллекциями, материалами и деталями, которые делают каждый дизайн LIDYA индивидуальным.",
+    },
+  },
+
+  nl: {
+    hero: {
+      eyebrow: "Design",
+      title: "Design dat met de seizoenen verandert",
+      lead:
+        "Elk seizoen brengt een nieuwe LIDYA-collectie — in eigen huis ontworpen en met de hand vervaardigd, met een eigen sfeer, karakter en visie.",
+      since: "LIDYA · SINDS 1989",
+      statementEyebrow: "In eigen huis ontworpen",
+      statementBefore: "Eén filosofie.",
+      statementAccent: "Vier seizoensgebonden expressies.",
+      imageAlt:
+        "LIDYA-sieradencollectie met ringen, oorbellen, armbanden en kettingen op natuursteen",
+    },
+    seasons: {
+      eyebrow: "Vier seizoenen",
+      title: "Ontworpen voor het",
+      titleAccent: "ritme van het jaar.",
+      description:
+        "Elk seizoen brengt een nieuwe sfeer, nieuwe details en een andere uitdrukking van hetzelfde LIDYA-vakmanschap.",
+      itemLabel: "Seizoenscollectie",
+      handmade: "Ontworpen & handgemaakt door LIDYA",
+      closingBefore: "Design verandert met het seizoen.",
+      closingAccent: "Vakmanschap niet.",
+    },
+    philosophy: {
+      eyebrow: "Onze designfilosofie",
+      title: "Gemaakt om persoonlijk te voelen,",
+      titleAccent: "nooit gewoon.",
+      description:
+        "Elk LIDYA-design begint met verhouding, karakter en de wens om sieraden te creëren die vanaf het eerste moment persoonlijk aanvoelen.",
+      points: [
+        {
+          title: "Origineel",
+          text:
+            "In eigen huis ontworpen met een eigen identiteit en visie.",
+        },
+        {
+          title: "Handgemaakt",
+          text:
+            "Gemaakt met aandacht voor verhouding, detail en afwerking.",
+        },
+        {
+          title: "Persoonlijk",
+          text:
+            "Sieraden ontworpen om onderdeel te worden van de persoon die ze draagt.",
+        },
+      ],
+    },
+    cta: {
+      title: "Ontdek de nieuwste LIDYA-designs persoonlijk",
+      sub:
+        "Bezoek ons tijdens een privéafspraak en ontdek de seizoenscollecties, materialen en details die elk LIDYA-design uniek maken.",
+    },
+  },
+
+  da: {
+    hero: {
+      eyebrow: "Design",
+      title: "Design, der følger årstidernes skiften",
+      lead:
+        "Hver sæson bringer en ny LIDYA-kollektion — designet og håndlavet i vores eget værksted med sin egen stemning, karakter og identitet.",
+      since: "LIDYA · SIDEN 1989",
+      statementEyebrow: "Designet hos LIDYA",
+      statementBefore: "Én filosofi.",
+      statementAccent: "Fire sæsonbestemte udtryk.",
+      imageAlt:
+        "LIDYA-smykkekollektion med ringe, øreringe, armbånd og halskæder arrangeret på natursten",
+    },
+    seasons: {
+      eyebrow: "Fire årstider",
+      title: "Designet til",
+      titleAccent: "årets rytme.",
+      description:
+        "Hver årstid bringer en ny stemning, nye detaljer og et nyt udtryk for det samme LIDYA-håndværk.",
+      itemLabel: "Sæsonkollektion",
+      handmade: "Designet & håndlavet af LIDYA",
+      closingBefore: "Design ændrer sig med årstiderne.",
+      closingAccent: "Håndværket gør ikke.",
+    },
+    philosophy: {
+      eyebrow: "Vores designfilosofi",
+      title: "Skabt til at føles individuelt,",
+      titleAccent: "aldrig almindeligt.",
+      description:
+        "Hvert LIDYA-design begynder med proportioner, karakter og ønsket om at skabe smykker, der føles personlige fra det øjeblik, de bæres.",
+      points: [
+        {
+          title: "Originalt",
+          text:
+            "Designet hos LIDYA med sin egen identitet og sit eget udtryk.",
+        },
+        {
+          title: "Håndlavet",
+          text:
+            "Skabt med fokus på proportioner, detaljer og finish.",
+        },
+        {
+          title: "Personligt",
+          text:
+            "Smykker designet til at blive en del af personen, der bærer dem.",
+        },
+      ],
+    },
+    cta: {
+      title: "Oplev de nyeste LIDYA-designs personligt",
+      sub:
+        "Besøg os ved en privat aftale og oplev sæsonkollektionerne, materialerne og detaljerne, der gør hvert LIDYA-design individuelt.",
+    },
+  },
+
+  fi: {
+    hero: {
+      eyebrow: "Design",
+      title: "Vuodenaikojen mukana muuttuva design",
+      lead:
+        "Jokainen vuodenaika tuo uuden LIDYA-malliston — omassa työpajassamme suunnitellun ja käsintehdyn, omalla tunnelmallaan, luonteellaan ja näkemyksellään.",
+      since: "LIDYA · VUODESTA 1989",
+      statementEyebrow: "Suunniteltu LIDYAlla",
+      statementBefore: "Yksi filosofia.",
+      statementAccent: "Neljä vuodenaikojen ilmaisua.",
+      imageAlt:
+        "LIDYA-korumallisto, jossa on sormuksia, korvakoruja, rannekoruja ja kaulakoruja luonnonkivellä",
+    },
+    seasons: {
+      eyebrow: "Neljä vuodenaikaa",
+      title: "Suunniteltu vuoden",
+      titleAccent: "rytmiin.",
+      description:
+        "Jokainen vuodenaika tuo uuden tunnelman, uusia yksityiskohtia ja uuden ilmaisun samasta LIDYA-käsityötaidosta.",
+      itemLabel: "Sesonkimallisto",
+      handmade: "LIDYAn suunnittelema & käsintekemä",
+      closingBefore: "Design muuttuu vuodenaikojen mukana.",
+      closingAccent: "Käsityötaito ei.",
+    },
+    philosophy: {
+      eyebrow: "Designfilosofiamme",
+      title: "Luotu tuntumaan yksilölliseltä,",
+      titleAccent: "ei koskaan tavalliselta.",
+      description:
+        "Jokainen LIDYA-design alkaa mittasuhteista, luonteesta ja halusta luoda koruja, jotka tuntuvat henkilökohtaisilta heti ensimmäisestä käyttökerrasta.",
+      points: [
+        {
+          title: "Omaperäinen",
+          text:
+            "Suunniteltu LIDYAlla omalla identiteetillä ja näkemyksellä.",
+        },
+        {
+          title: "Käsintehty",
+          text:
+            "Valmistettu huomioiden mittasuhteet, yksityiskohdat ja viimeistely.",
+        },
+        {
+          title: "Henkilökohtainen",
+          text:
+            "Koru, joka on suunniteltu osaksi sitä ihmistä, joka sitä kantaa.",
+        },
+      ],
+    },
+    cta: {
+      title: "Tutustu uusimpiin LIDYA-designeihin henkilökohtaisesti",
+      sub:
+        "Varaa yksityinen tapaaminen ja tutustu sesonkimallistoihin, materiaaleihin ja yksityiskohtiin, jotka tekevät jokaisesta LIDYA-designista yksilöllisen.",
+    },
+  },
+
+  sv: {
+    hero: {
+      eyebrow: "Design",
+      title: "Design som förändras med årstiderna",
+      lead:
+        "Varje säsong kommer med en ny LIDYA-kollektion — designad och handgjord i vår egen verkstad, med sin egen känsla, karaktär och identitet.",
+      since: "LIDYA · SEDAN 1989",
+      statementEyebrow: "Designad hos LIDYA",
+      statementBefore: "En filosofi.",
+      statementAccent: "Fyra säsongsuttryck.",
+      imageAlt:
+        "LIDYA-smyckeskollektion med ringar, örhängen, armband och halsband arrangerade på natursten",
+    },
+    seasons: {
+      eyebrow: "Fyra årstider",
+      title: "Designad för",
+      titleAccent: "årets rytm.",
+      description:
+        "Varje årstid ger en ny känsla, nya detaljer och ett nytt uttryck för samma LIDYA-hantverk.",
+      itemLabel: "Säsongskollektion",
+      handmade: "Designad & handgjord av LIDYA",
+      closingBefore: "Design förändras med årstiderna.",
+      closingAccent: "Hantverket gör det inte.",
+    },
+    philosophy: {
+      eyebrow: "Vår designfilosofi",
+      title: "Skapad för att kännas personlig,",
+      titleAccent: "aldrig vanlig.",
+      description:
+        "Varje LIDYA-design börjar med proportioner, karaktär och viljan att skapa smycken som känns personliga från första ögonblicket.",
+      points: [
+        {
+          title: "Original",
+          text:
+            "Designad hos LIDYA med en egen identitet och ett eget uttryck.",
+        },
+        {
+          title: "Handgjord",
+          text:
+            "Skapad med omsorg om proportioner, detaljer och finish.",
+        },
+        {
+          title: "Personlig",
+          text:
+            "Smycken designade för att bli en del av personen som bär dem.",
+        },
+      ],
+    },
+    cta: {
+      title: "Upptäck de senaste LIDYA-designerna personligen",
+      sub:
+        "Besök oss vid ett privat möte och upptäck säsongskollektionerna, materialen och detaljerna som gör varje LIDYA-design unik.",
+    },
+  },
+
+  fr: {
+    hero: {
+      eyebrow: "Design",
+      title: "Un design qui évolue avec les saisons",
+      lead:
+        "Chaque saison apporte une nouvelle collection LIDYA — conçue et façonnée à la main dans notre propre atelier, avec son humeur, son caractère et son identité.",
+      since: "LIDYA · DEPUIS 1989",
+      statementEyebrow: "Conçu chez LIDYA",
+      statementBefore: "Une philosophie.",
+      statementAccent: "Quatre expressions saisonnières.",
+      imageAlt:
+        "Collection de bijoux LIDYA composée de bagues, boucles d’oreilles, bracelets et colliers sur pierre naturelle",
+    },
+    seasons: {
+      eyebrow: "Quatre saisons",
+      title: "Conçu au",
+      titleAccent: "rythme de l’année.",
+      description:
+        "Chaque saison apporte une nouvelle atmosphère, de nouveaux détails et une nouvelle expression du même savoir-faire LIDYA.",
+      itemLabel: "Collection saisonnière",
+      handmade: "Conçu & façonné à la main par LIDYA",
+      closingBefore: "Le design change avec les saisons.",
+      closingAccent: "Le savoir-faire reste.",
+    },
+    philosophy: {
+      eyebrow: "Notre philosophie du design",
+      title: "Créé pour être individuel,",
+      titleAccent: "jamais ordinaire.",
+      description:
+        "Chaque design LIDYA commence par les proportions, le caractère et l’envie de créer un bijou qui semble personnel dès le premier instant.",
+      points: [
+        {
+          title: "Original",
+          text:
+            "Conçu chez LIDYA avec sa propre identité et sa propre vision.",
+        },
+        {
+          title: "Fait main",
+          text:
+            "Créé avec une attention particulière aux proportions, aux détails et à la finition.",
+        },
+        {
+          title: "Personnel",
+          text:
+            "Un bijou conçu pour devenir une partie de la personne qui le porte.",
+        },
+      ],
+    },
+    cta: {
+      title: "Découvrez personnellement les dernières créations LIDYA",
+      sub:
+        "Rendez-nous visite sur rendez-vous privé et découvrez les collections saisonnières, les matériaux et les détails qui rendent chaque création LIDYA unique.",
+    },
+  },
+
+  it: {
+    hero: {
+      eyebrow: "Design",
+      title: "Un design che cambia con le stagioni",
+      lead:
+        "Ogni stagione porta una nuova collezione LIDYA — progettata e realizzata a mano nel nostro laboratorio, con un’atmosfera, un carattere e un’identità propri.",
+      since: "LIDYA · DAL 1989",
+      statementEyebrow: "Progettato da LIDYA",
+      statementBefore: "Una filosofia.",
+      statementAccent: "Quattro espressioni stagionali.",
+      imageAlt:
+        "Collezione di gioielli LIDYA con anelli, orecchini, bracciali e collane su pietra naturale",
+    },
+    seasons: {
+      eyebrow: "Quattro stagioni",
+      title: "Progettato per il",
+      titleAccent: "ritmo dell’anno.",
+      description:
+        "Ogni stagione porta una nuova atmosfera, nuovi dettagli e una diversa espressione della stessa artigianalità LIDYA.",
+      itemLabel: "Collezione stagionale",
+      handmade: "Progettato & realizzato a mano da LIDYA",
+      closingBefore: "Il design cambia con le stagioni.",
+      closingAccent: "L’artigianalità no.",
+    },
+    philosophy: {
+      eyebrow: "La nostra filosofia del design",
+      title: "Creato per essere personale,",
+      titleAccent: "mai ordinario.",
+      description:
+        "Ogni design LIDYA nasce dalle proporzioni, dal carattere e dal desiderio di creare gioielli che sembrino personali fin dal primo momento.",
+      points: [
+        {
+          title: "Originale",
+          text:
+            "Progettato da LIDYA con una propria identità e una propria visione.",
+        },
+        {
+          title: "Fatto a mano",
+          text:
+            "Creato con attenzione alle proporzioni, ai dettagli e alla finitura.",
+        },
+        {
+          title: "Personale",
+          text:
+            "Un gioiello progettato per diventare parte della persona che lo indossa.",
+        },
+      ],
+    },
+    cta: {
+      title: "Scoprite personalmente i più recenti design LIDYA",
+      sub:
+        "Visitateci con un appuntamento privato e scoprite le collezioni stagionali, i materiali e i dettagli che rendono ogni design LIDYA unico.",
+    },
+  },
+
+  es: {
+    hero: {
+      eyebrow: "Diseño",
+      title: "Diseño que cambia con las estaciones",
+      lead:
+        "Cada temporada trae una nueva colección LIDYA — diseñada y elaborada a mano en nuestro propio taller, con su propio ambiente, carácter e identidad.",
+      since: "LIDYA · DESDE 1989",
+      statementEyebrow: "Diseñado por LIDYA",
+      statementBefore: "Una filosofía.",
+      statementAccent: "Cuatro expresiones estacionales.",
+      imageAlt:
+        "Colección de joyas LIDYA con anillos, pendientes, pulseras y collares sobre piedra natural",
+    },
+    seasons: {
+      eyebrow: "Cuatro estaciones",
+      title: "Diseñado para el",
+      titleAccent: "ritmo del año.",
+      description:
+        "Cada estación trae un nuevo ambiente, nuevos detalles y una expresión diferente de la misma artesanía LIDYA.",
+      itemLabel: "Colección de temporada",
+      handmade: "Diseñado & hecho a mano por LIDYA",
+      closingBefore: "El diseño cambia con las estaciones.",
+      closingAccent: "La artesanía no.",
+    },
+    philosophy: {
+      eyebrow: "Nuestra filosofía de diseño",
+      title: "Creado para sentirse individual,",
+      titleAccent: "nunca ordinario.",
+      description:
+        "Cada diseño LIDYA comienza con las proporciones, el carácter y el deseo de crear joyas que se sientan personales desde el primer momento.",
+      points: [
+        {
+          title: "Original",
+          text:
+            "Diseñado por LIDYA con identidad y visión propias.",
+        },
+        {
+          title: "Hecho a mano",
+          text:
+            "Creado con atención a las proporciones, los detalles y el acabado.",
+        },
+        {
+          title: "Personal",
+          text:
+            "Joyas diseñadas para convertirse en parte de la persona que las lleva.",
+        },
+      ],
+    },
+    cta: {
+      title: "Descubra personalmente los últimos diseños LIDYA",
+      sub:
+        "Visítenos con cita privada y descubra las colecciones de temporada, los materiales y los detalles que hacen único cada diseño LIDYA.",
+    },
+  },
 };
 
 export default function DesignContent() {
   const { locale } = useLanguage();
-  const copy = DESIGN_COPY[locale];
+
+  const copy =
+    DESIGN_COPY[locale] ?? DESIGN_COPY.en;
 
   return (
     <>
@@ -513,6 +977,7 @@ export default function DesignContent() {
                     style={{ color: "#1B0B20" }}
                   >
                     {copy.hero.statementBefore}
+
                     <span style={{ color: "#C8A96A" }}>
                       {" "}
                       {copy.hero.statementAccent}
@@ -561,6 +1026,14 @@ export default function DesignContent() {
                 const number = SEASON_NUMBERS[season.id];
                 const reverse = index % 2 === 1;
 
+                const seasonName =
+                  localized(season.name, locale) ||
+                  localized(season.name, "en");
+
+                const seasonDescription =
+                  localized(season.description, locale) ||
+                  localized(season.description, "en");
+
                 return (
                   <article
                     key={season.id}
@@ -578,10 +1051,7 @@ export default function DesignContent() {
                         {season.image ? (
                           <Image
                             src={season.image}
-                            alt={
-                              season.imageAlt ??
-                              localized(season.name, locale)
-                            }
+                            alt={season.imageAlt || seasonName}
                             fill
                             sizes="(min-width: 1024px) 58vw, 100vw"
                             className="object-cover transition-transform duration-[1500ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.035]"
@@ -631,11 +1101,11 @@ export default function DesignContent() {
                         className="mt-6 font-display text-4xl md:text-5xl lg:text-6xl"
                         style={{ color: "#1B0B20" }}
                       >
-                        {localized(season.name, locale)}
+                        {seasonName}
                       </h3>
 
                       <p className="mt-6 max-w-md text-sm leading-7 text-grey md:text-base">
-                        {localized(season.description, locale)}
+                        {seasonDescription}
                       </p>
 
                       <div className="mt-8 flex items-center gap-5">
@@ -706,7 +1176,7 @@ export default function DesignContent() {
             <div className="mt-16 grid border-t border-brand-white/12 md:grid-cols-3">
               {copy.philosophy.points.map((item, index) => (
                 <div
-                  key={item.title}
+                  key={`${item.title}-${index}`}
                   className="border-b border-brand-white/12 py-8 md:border-r md:px-8 md:first:pl-0 md:last:border-r-0 md:last:pr-0"
                 >
                   <span className="text-[0.58rem] font-semibold tracking-[0.22em] text-gold">

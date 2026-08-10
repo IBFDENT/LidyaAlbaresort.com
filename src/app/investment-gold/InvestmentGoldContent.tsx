@@ -44,6 +44,38 @@ type GoldSectionProps = {
   valuesLabel: string;
 };
 
+type InvestmentCopy = {
+  hero: {
+    discover: string;
+    enquiry: string;
+    footerLine: string;
+    imageAlt: string;
+  };
+  intro: {
+    eyebrow: string;
+    title: string;
+    accent: string;
+    description: string;
+    since: string;
+    statement: string;
+    statementAccent: string;
+  };
+  editorial: {
+    sectionLabel: string;
+    valuesLabel: string;
+  };
+  section4: {
+    description: string;
+    closing: string;
+    closingAccent: string;
+  };
+  summary: {
+    eyebrow: string;
+    title: string;
+    accent: string;
+  };
+};
+
 const SUMMARY_ICONS = [
   ShieldCheckIcon,
   TrendUpIcon,
@@ -52,40 +84,7 @@ const SUMMARY_ICONS = [
   GlobeIcon,
 ];
 
-const INVESTMENT_COPY: Record<
-  Locale,
-  {
-    hero: {
-      discover: string;
-      enquiry: string;
-      footerLine: string;
-      imageAlt: string;
-    };
-    intro: {
-      eyebrow: string;
-      title: string;
-      accent: string;
-      description: string;
-      since: string;
-      statement: string;
-      statementAccent: string;
-    };
-    editorial: {
-      sectionLabel: string;
-      valuesLabel: string;
-    };
-    section4: {
-      description: string;
-      closing: string;
-      closingAccent: string;
-    };
-    summary: {
-      eyebrow: string;
-      title: string;
-      accent: string;
-    };
-  }
-> = {
+const INVESTMENT_COPY: Record<Locale, InvestmentCopy> = {
   en: {
     hero: {
       discover: "Discover Investment Gold",
@@ -323,6 +322,278 @@ const INVESTMENT_COPY: Record<
       accent: "Jeden trwały materiał.",
     },
   },
+
+  ru: {
+    hero: {
+      discover: "Откройте инвестиционное золото",
+      enquiry: "Индивидуальный запрос",
+      footerLine: "Золото · Ценность · Постоянство",
+      imageAlt: "Слитки чистого золота и инвестиционные монеты",
+    },
+    intro: {
+      eyebrow: "Инвестиционное золото",
+      title: "Драгоценный металл.",
+      accent: "Непреходящая ценность.",
+      description:
+        "Другая сторона LIDYA — прозрачность, происхождение, качество и персональный сервис в сфере физического золота.",
+      since: "LIDYA · С 1989 ГОДА",
+      statement: "Украшения несут эмоции.",
+      statementAccent: "Золото также несёт постоянство.",
+    },
+    editorial: {
+      sectionLabel: "Инвестиционное золото",
+      valuesLabel: "Ценность · Прозрачность · Доверие",
+    },
+    section4: {
+      description:
+        "Инвестиционные решения требуют понятной информации, надёжных продуктов и индивидуального внимания.",
+      closing: "Ценность должна быть понятной.",
+      closingAccent: "Доверие необходимо заслужить.",
+    },
+    summary: {
+      eyebrow: "Почему инвестиционное золото",
+      title: "Пять принципов.",
+      accent: "Один непреходящий материал.",
+    },
+  },
+
+  nl: {
+    hero: {
+      discover: "Ontdek beleggingsgoud",
+      enquiry: "Privéaanvraag",
+      footerLine: "Goud · Waarde · Bestendigheid",
+      imageAlt: "Fijngoudbaren en beleggingsmunten",
+    },
+    intro: {
+      eyebrow: "Beleggingsgoud",
+      title: "Edelmetaal.",
+      accent: "Blijvende waarde.",
+      description:
+        "Een andere kant van LIDYA — gericht op transparantie, herkomst, kwaliteit en persoonlijke service rond fysiek goud.",
+      since: "LIDYA · SINDS 1989",
+      statement: "Sieraden dragen emotie.",
+      statementAccent: "Goud draagt ook bestendigheid.",
+    },
+    editorial: {
+      sectionLabel: "Beleggingsgoud",
+      valuesLabel: "Waarde · Duidelijkheid · Vertrouwen",
+    },
+    section4: {
+      description:
+        "Beleggingsbeslissingen verdienen duidelijke informatie, betrouwbare producten en persoonlijke aandacht.",
+      closing: "Waarde moet worden begrepen.",
+      closingAccent: "Vertrouwen moet worden verdiend.",
+    },
+    summary: {
+      eyebrow: "Waarom beleggingsgoud",
+      title: "Vijf principes.",
+      accent: "Eén tijdloos materiaal.",
+    },
+  },
+
+  da: {
+    hero: {
+      discover: "Oplev investeringsguld",
+      enquiry: "Privat forespørgsel",
+      footerLine: "Guld · Værdi · Bestandighed",
+      imageAlt: "Fine guldbarrer og investeringsmønter",
+    },
+    intro: {
+      eyebrow: "Investeringsguld",
+      title: "Ædelmetal.",
+      accent: "Varig værdi.",
+      description:
+        "En anden side af LIDYA — med fokus på gennemsigtighed, oprindelse, kvalitet og personlig service omkring fysisk guld.",
+      since: "LIDYA · SIDEN 1989",
+      statement: "Smykker bærer følelser.",
+      statementAccent: "Guld bærer også bestandighed.",
+    },
+    editorial: {
+      sectionLabel: "Investeringsguld",
+      valuesLabel: "Værdi · Klarhed · Tillid",
+    },
+    section4: {
+      description:
+        "Investeringsbeslutninger fortjener klar information, pålidelige produkter og personlig opmærksomhed.",
+      closing: "Værdi skal forstås.",
+      closingAccent: "Tillid skal fortjenes.",
+    },
+    summary: {
+      eyebrow: "Hvorfor investeringsguld",
+      title: "Fem principper.",
+      accent: "Ét bestandigt materiale.",
+    },
+  },
+
+  fi: {
+    hero: {
+      discover: "Tutustu sijoituskultaan",
+      enquiry: "Yksityinen tiedustelu",
+      footerLine: "Kulta · Arvo · Pysyvyys",
+      imageAlt: "Hienokultaharkkoja ja sijoituskultakolikoita",
+    },
+    intro: {
+      eyebrow: "Sijoituskulta",
+      title: "Jalometalli.",
+      accent: "Pysyvä arvo.",
+      description:
+        "LIDYAn toinen puoli — keskittyen läpinäkyvyyteen, alkuperään, laatuun ja henkilökohtaiseen palveluun fyysisen kullan ympärillä.",
+      since: "LIDYA · VUODESTA 1989",
+      statement: "Korut kantavat tunteita.",
+      statementAccent: "Kulta kantaa myös pysyvyyttä.",
+    },
+    editorial: {
+      sectionLabel: "Sijoituskulta",
+      valuesLabel: "Arvo · Selkeys · Luottamus",
+    },
+    section4: {
+      description:
+        "Sijoituspäätökset ansaitsevat selkeää tietoa, luotettavia tuotteita ja henkilökohtaista palvelua.",
+      closing: "Arvo on ymmärrettävä.",
+      closingAccent: "Luottamus on ansaittava.",
+    },
+    summary: {
+      eyebrow: "Miksi sijoituskulta",
+      title: "Viisi periaatetta.",
+      accent: "Yksi aikaa kestävä materiaali.",
+    },
+  },
+
+  sv: {
+    hero: {
+      discover: "Upptäck investeringsguld",
+      enquiry: "Privat förfrågan",
+      footerLine: "Guld · Värde · Beständighet",
+      imageAlt: "Finguldtackor och investeringsmynt",
+    },
+    intro: {
+      eyebrow: "Investeringsguld",
+      title: "Ädelmetall.",
+      accent: "Bestående värde.",
+      description:
+        "En annan sida av LIDYA — med fokus på tydlighet, ursprung, kvalitet och personlig service kring fysiskt guld.",
+      since: "LIDYA · SEDAN 1989",
+      statement: "Smycken bär känslor.",
+      statementAccent: "Guld bär också beständighet.",
+    },
+    editorial: {
+      sectionLabel: "Investeringsguld",
+      valuesLabel: "Värde · Tydlighet · Trygghet",
+    },
+    section4: {
+      description:
+        "Investeringsbeslut förtjänar tydlig information, pålitliga produkter och personlig uppmärksamhet.",
+      closing: "Värde bör förstås.",
+      closingAccent: "Förtroende måste förtjänas.",
+    },
+    summary: {
+      eyebrow: "Varför investeringsguld",
+      title: "Fem principer.",
+      accent: "Ett bestående material.",
+    },
+  },
+
+  fr: {
+    hero: {
+      discover: "Découvrir l’or d’investissement",
+      enquiry: "Demande privée",
+      footerLine: "Or · Valeur · Pérennité",
+      imageAlt: "Lingots d’or fin et pièces d’investissement",
+    },
+    intro: {
+      eyebrow: "Or d’investissement",
+      title: "Métal précieux.",
+      accent: "Valeur durable.",
+      description:
+        "Une autre facette de LIDYA — centrée sur la transparence, la provenance, la qualité et un service personnel autour de l’or physique.",
+      since: "LIDYA · DEPUIS 1989",
+      statement: "La joaillerie porte l’émotion.",
+      statementAccent: "L’or porte aussi la permanence.",
+    },
+    editorial: {
+      sectionLabel: "Or d’investissement",
+      valuesLabel: "Valeur · Clarté · Confiance",
+    },
+    section4: {
+      description:
+        "Les décisions d’investissement méritent des informations claires, des produits fiables et une attention personnalisée.",
+      closing: "La valeur doit être comprise.",
+      closingAccent: "La confiance doit être méritée.",
+    },
+    summary: {
+      eyebrow: "Pourquoi l’or d’investissement",
+      title: "Cinq principes.",
+      accent: "Un matériau intemporel.",
+    },
+  },
+
+  it: {
+    hero: {
+      discover: "Scoprite l’oro da investimento",
+      enquiry: "Richiesta privata",
+      footerLine: "Oro · Valore · Permanenza",
+      imageAlt: "Lingotti d’oro fino e monete da investimento",
+    },
+    intro: {
+      eyebrow: "Oro da investimento",
+      title: "Metallo prezioso.",
+      accent: "Valore duraturo.",
+      description:
+        "Un lato diverso di LIDYA — dedicato a trasparenza, provenienza, qualità e servizio personale nel mondo dell’oro fisico.",
+      since: "LIDYA · DAL 1989",
+      statement: "I gioielli portano emozione.",
+      statementAccent: "L’oro porta anche permanenza.",
+    },
+    editorial: {
+      sectionLabel: "Oro da investimento",
+      valuesLabel: "Valore · Chiarezza · Fiducia",
+    },
+    section4: {
+      description:
+        "Le decisioni di investimento meritano informazioni chiare, prodotti affidabili e attenzione personale.",
+      closing: "Il valore deve essere compreso.",
+      closingAccent: "La fiducia deve essere conquistata.",
+    },
+    summary: {
+      eyebrow: "Perché l’oro da investimento",
+      title: "Cinque principi.",
+      accent: "Un materiale duraturo.",
+    },
+  },
+
+  es: {
+    hero: {
+      discover: "Descubra el oro de inversión",
+      enquiry: "Consulta privada",
+      footerLine: "Oro · Valor · Permanencia",
+      imageAlt: "Lingotes de oro fino y monedas de inversión",
+    },
+    intro: {
+      eyebrow: "Oro de inversión",
+      title: "Metal precioso.",
+      accent: "Valor duradero.",
+      description:
+        "Otra faceta de LIDYA — centrada en la transparencia, la procedencia, la calidad y el servicio personal relacionado con el oro físico.",
+      since: "LIDYA · DESDE 1989",
+      statement: "La joyería transmite emoción.",
+      statementAccent: "El oro también transmite permanencia.",
+    },
+    editorial: {
+      sectionLabel: "Oro de inversión",
+      valuesLabel: "Valor · Claridad · Confianza",
+    },
+    section4: {
+      description:
+        "Las decisiones de inversión merecen información clara, productos fiables y atención personalizada.",
+      closing: "El valor debe comprenderse.",
+      closingAccent: "La confianza debe ganarse.",
+    },
+    summary: {
+      eyebrow: "Por qué oro de inversión",
+      title: "Cinco principios.",
+      accent: "Un material perdurable.",
+    },
+  },
 };
 
 function GoldEditorialSection({
@@ -385,7 +656,6 @@ function GoldEditorialSection({
                 key={`${itemNumber}-${localized(point.title, locale)}`}
                 className="grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-14"
               >
-                {/* IMAGE */}
                 <div
                   className={
                     reverse
@@ -406,7 +676,7 @@ function GoldEditorialSection({
                         className="object-cover transition-transform duration-[1500ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.035]"
                       />
                     ) : (
-                      <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#4a3515] via-[#1b0b20] to-[#0f0712]">
+                      <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#4a3515] via-[#1b0b20] to-[#0f0712] text-gold">
                         <TrendUpIcon />
                       </div>
                     )}
@@ -429,7 +699,6 @@ function GoldEditorialSection({
                   </div>
                 </div>
 
-                {/* TEXT */}
                 <div
                   className={
                     reverse
@@ -471,10 +740,28 @@ function GoldEditorialSection({
 
 export default function InvestmentGoldContent() {
   const { locale } = useLanguage();
-  const copy = INVESTMENT_COPY[locale];
 
-  const t = (key: keyof typeof GOLD_TEXT) =>
-    localized(GOLD_TEXT[key], locale);
+  /*
+   * Bezpečný fallback.
+   * Ak by sa do locale dostala neočakávaná hodnota,
+   * stránka použije angličtinu namiesto pádu.
+   */
+  const copy: InvestmentCopy =
+    INVESTMENT_COPY[locale] ?? INVESTMENT_COPY.en;
+
+  /*
+   * GOLD_TEXT obsahuje ďalšie texty stránky.
+   * localized() fallbackuje na angličtinu.
+   */
+  const t = (key: string): string => {
+    const value = GOLD_TEXT[key];
+
+    if (!value) {
+      return "";
+    }
+
+    return localized(value, locale);
+  };
 
   return (
     <>
@@ -532,7 +819,7 @@ export default function InvestmentGoldContent() {
                 </a>
 
                 <a
-                  href="#contact"
+                  href="/#contact"
                   className="group relative inline-flex items-center gap-5 py-3 text-[0.66rem] font-semibold uppercase tracking-[0.2em] text-brand-white"
                 >
                   {copy.hero.enquiry}
@@ -688,7 +975,7 @@ export default function InvestmentGoldContent() {
             <div className="grid md:grid-cols-2 lg:grid-cols-4">
               {SECTION_4_POINTS.map((point, index) => (
                 <div
-                  key={localized(point.title, locale)}
+                  key={`${index}-${localized(point.title, locale)}`}
                   className="group border-b border-brand-white/12 py-9 md:border-r md:px-7 lg:first:pl-0 lg:last:border-r-0 lg:last:pr-0"
                 >
                   <div className="flex items-center justify-between">

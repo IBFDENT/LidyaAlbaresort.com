@@ -433,6 +433,478 @@ const MATERIALS: Record<Locale, MaterialItem[]> = {
       kind: "pearl",
     },
   ],
+
+  ru: [
+    {
+      number: "01",
+      title: "Белое золото",
+      subtitle: "Холодное сияние",
+      description:
+        "Вневременное, элегантное и универсальное — выбрано за утончённое сияние.",
+      kind: "white-gold",
+    },
+    {
+      number: "02",
+      title: "Жёлтое золото",
+      subtitle: "Тёплая традиция",
+      description:
+        "Классическое воплощение роскоши с насыщенным и узнаваемым тёплым оттенком.",
+      kind: "yellow-gold",
+    },
+    {
+      number: "03",
+      title: "Розовое золото",
+      subtitle: "Мягкий характер",
+      description:
+        "Современный оттенок с деликатным теплом и выразительным присутствием.",
+      kind: "rose-gold",
+    },
+    {
+      number: "04",
+      title: "Платина",
+      subtitle: "Чистая прочность",
+      description:
+        "Исключительная прочность, редкость и естественный благородный белый оттенок.",
+      kind: "platinum",
+    },
+    {
+      number: "05",
+      title: "Бриллианты",
+      subtitle: "Непреходящее сияние",
+      description:
+        "Отобраны за исключительную игру света, точность и долговечную эмоциональную ценность.",
+      kind: "diamond",
+    },
+    {
+      number: "06",
+      title: "Драгоценные камни",
+      subtitle: "Цвет & индивидуальность",
+      description:
+        "Выразительные камни, выбранные за глубину, цвет и уникальный характер.",
+      kind: "precious-stone",
+    },
+    {
+      number: "07",
+      title: "Жемчуг",
+      subtitle: "Естественная элегантность",
+      description:
+        "Вневременная красота, ценимая за мягкость, блеск и утончённость.",
+      kind: "pearl",
+    },
+  ],
+
+  nl: [
+    {
+      number: "01",
+      title: "Witgoud",
+      subtitle: "Koele schittering",
+      description:
+        "Tijdloos, elegant en veelzijdig — gekozen om zijn verfijnde glans.",
+      kind: "white-gold",
+    },
+    {
+      number: "02",
+      title: "Geelgoud",
+      subtitle: "Warme traditie",
+      description:
+        "Een klassieke uitdrukking van luxe met een rijke en herkenbare warmte.",
+      kind: "yellow-gold",
+    },
+    {
+      number: "03",
+      title: "Roségoud",
+      subtitle: "Zacht karakter",
+      description:
+        "Een eigentijdse tint met subtiele warmte en een uitgesproken uitstraling.",
+      kind: "rose-gold",
+    },
+    {
+      number: "04",
+      title: "Platina",
+      subtitle: "Pure duurzaamheid",
+      description:
+        "Uitzonderlijke sterkte, zeldzaamheid en een natuurlijk verfijnde witte uitstraling.",
+      kind: "platinum",
+    },
+    {
+      number: "05",
+      title: "Diamanten",
+      subtitle: "Blijvende schittering",
+      description:
+        "Geselecteerd om uitzonderlijk licht, precisie en blijvende emotionele waarde.",
+      kind: "diamond",
+    },
+    {
+      number: "06",
+      title: "Edelstenen",
+      subtitle: "Kleur & individualiteit",
+      description:
+        "Bijzondere stenen geselecteerd om hun diepte, kleur en unieke karakter.",
+      kind: "precious-stone",
+    },
+    {
+      number: "07",
+      title: "Parels",
+      subtitle: "Natuurlijke elegantie",
+      description:
+        "Tijdloze schoonheid, gewaardeerd om zachtheid, glans en ingetogen elegantie.",
+      kind: "pearl",
+    },
+  ],
+
+  da: [
+    {
+      number: "01",
+      title: "Hvidguld",
+      subtitle: "Kølig glans",
+      description:
+        "Tidløst, elegant og alsidigt — valgt for sin raffinerede glød.",
+      kind: "white-gold",
+    },
+    {
+      number: "02",
+      title: "Gult guld",
+      subtitle: "Varm tradition",
+      description:
+        "Et klassisk udtryk for luksus med en rig og umiskendelig varme.",
+      kind: "yellow-gold",
+    },
+    {
+      number: "03",
+      title: "Rosaguld",
+      subtitle: "Blød karakter",
+      description:
+        "En moderne tone med diskret varme og et karakteristisk udtryk.",
+      kind: "rose-gold",
+    },
+    {
+      number: "04",
+      title: "Platin",
+      subtitle: "Ren holdbarhed",
+      description:
+        "Enestående styrke, sjældenhed og en naturligt raffineret hvid finish.",
+      kind: "platinum",
+    },
+    {
+      number: "05",
+      title: "Diamanter",
+      subtitle: "Varig glans",
+      description:
+        "Udvalgt for exceptionelt lys, præcision og varig følelsesmæssig værdi.",
+      kind: "diamond",
+    },
+    {
+      number: "06",
+      title: "Ædelsten",
+      subtitle: "Farve & individualitet",
+      description:
+        "Karakterfulde sten udvalgt for deres dybde, farve og unikke udtryk.",
+      kind: "precious-stone",
+    },
+    {
+      number: "07",
+      title: "Perler",
+      subtitle: "Naturlig elegance",
+      description:
+        "Tidløs skønhed værdsat for blødhed, glans og diskret elegance.",
+      kind: "pearl",
+    },
+  ],
+
+  fi: [
+    {
+      number: "01",
+      title: "Valkokulta",
+      subtitle: "Viileä loisto",
+      description:
+        "Ajaton, elegantti ja monikäyttöinen — valittu hienostuneen hohteensa vuoksi.",
+      kind: "white-gold",
+    },
+    {
+      number: "02",
+      title: "Keltakulta",
+      subtitle: "Lämmin perinne",
+      description:
+        "Klassinen ylellisyyden ilmentymä, jossa on täyteläinen ja tunnistettava lämpö.",
+      kind: "yellow-gold",
+    },
+    {
+      number: "03",
+      title: "Ruusukulta",
+      subtitle: "Pehmeä luonne",
+      description:
+        "Moderni sävy, jossa yhdistyvät hienovarainen lämpö ja persoonallinen ilme.",
+      kind: "rose-gold",
+    },
+    {
+      number: "04",
+      title: "Platina",
+      subtitle: "Puhdas kestävyys",
+      description:
+        "Poikkeuksellinen lujuus, harvinaisuus ja luonnollisen hienostunut vaalea pinta.",
+      kind: "platinum",
+    },
+    {
+      number: "05",
+      title: "Timantit",
+      subtitle: "Kestävä loisto",
+      description:
+        "Valittu poikkeuksellisen valon, tarkkuuden ja pysyvän tunne-arvon vuoksi.",
+      kind: "diamond",
+    },
+    {
+      number: "06",
+      title: "Jalokivet",
+      subtitle: "Väri & yksilöllisyys",
+      description:
+        "Persoonalliset kivet, jotka on valittu syvyyden, värin ja ainutlaatuisen luonteen vuoksi.",
+      kind: "precious-stone",
+    },
+    {
+      number: "07",
+      title: "Helmet",
+      subtitle: "Luonnollinen eleganssi",
+      description:
+        "Ajaton kauneus, jota arvostetaan pehmeyden, kiillon ja hillityn eleganssin vuoksi.",
+      kind: "pearl",
+    },
+  ],
+
+  sv: [
+    {
+      number: "01",
+      title: "Vitguld",
+      subtitle: "Kall glans",
+      description:
+        "Tidlöst, elegant och mångsidigt — valt för sin raffinerade lyster.",
+      kind: "white-gold",
+    },
+    {
+      number: "02",
+      title: "Gulguld",
+      subtitle: "Varm tradition",
+      description:
+        "Ett klassiskt uttryck för lyx med en rik och omisskännlig värme.",
+      kind: "yellow-gold",
+    },
+    {
+      number: "03",
+      title: "Roséguld",
+      subtitle: "Mjuk karaktär",
+      description:
+        "En modern ton med subtil värme och en tydlig personlighet.",
+      kind: "rose-gold",
+    },
+    {
+      number: "04",
+      title: "Platina",
+      subtitle: "Ren hållbarhet",
+      description:
+        "Exceptionell styrka, sällsynthet och en naturligt elegant vit finish.",
+      kind: "platinum",
+    },
+    {
+      number: "05",
+      title: "Diamanter",
+      subtitle: "Bestående briljans",
+      description:
+        "Utvalda för exceptionellt ljus, precision och varaktigt emotionellt värde.",
+      kind: "diamond",
+    },
+    {
+      number: "06",
+      title: "Ädelstenar",
+      subtitle: "Färg & individualitet",
+      description:
+        "Karaktärsfulla stenar utvalda för sitt djup, sin färg och unika karaktär.",
+      kind: "precious-stone",
+    },
+    {
+      number: "07",
+      title: "Pärlor",
+      subtitle: "Naturlig elegans",
+      description:
+        "Tidlös skönhet uppskattad för mjukhet, lyster och diskret elegans.",
+      kind: "pearl",
+    },
+  ],
+
+  fr: [
+    {
+      number: "01",
+      title: "Or blanc",
+      subtitle: "Éclat frais",
+      description:
+        "Intemporel, élégant et polyvalent — choisi pour sa luminosité raffinée.",
+      kind: "white-gold",
+    },
+    {
+      number: "02",
+      title: "Or jaune",
+      subtitle: "Chaleur classique",
+      description:
+        "Une expression classique du luxe avec une chaleur riche et reconnaissable.",
+      kind: "yellow-gold",
+    },
+    {
+      number: "03",
+      title: "Or rose",
+      subtitle: "Caractère délicat",
+      description:
+        "Une teinte contemporaine à la chaleur subtile et à la présence distinctive.",
+      kind: "rose-gold",
+    },
+    {
+      number: "04",
+      title: "Platine",
+      subtitle: "Résistance pure",
+      description:
+        "Une résistance exceptionnelle, une grande rareté et une finition blanche naturellement raffinée.",
+      kind: "platinum",
+    },
+    {
+      number: "05",
+      title: "Diamants",
+      subtitle: "Brillance durable",
+      description:
+        "Sélectionnés pour leur lumière exceptionnelle, leur précision et leur valeur émotionnelle durable.",
+      kind: "diamond",
+    },
+    {
+      number: "06",
+      title: "Pierres précieuses",
+      subtitle: "Couleur & personnalité",
+      description:
+        "Des pierres distinctives choisies pour leur profondeur, leur couleur et leur caractère unique.",
+      kind: "precious-stone",
+    },
+    {
+      number: "07",
+      title: "Perles",
+      subtitle: "Élégance naturelle",
+      description:
+        "Une beauté intemporelle appréciée pour sa douceur, son lustre et son élégance discrète.",
+      kind: "pearl",
+    },
+  ],
+
+  it: [
+    {
+      number: "01",
+      title: "Oro bianco",
+      subtitle: "Brillantezza fredda",
+      description:
+        "Senza tempo, elegante e versatile — scelto per la sua luminosità raffinata.",
+      kind: "white-gold",
+    },
+    {
+      number: "02",
+      title: "Oro giallo",
+      subtitle: "Calore della tradizione",
+      description:
+        "Un’espressione classica del lusso con un calore ricco e inconfondibile.",
+      kind: "yellow-gold",
+    },
+    {
+      number: "03",
+      title: "Oro rosa",
+      subtitle: "Carattere delicato",
+      description:
+        "Una tonalità contemporanea con calore delicato e presenza distintiva.",
+      kind: "rose-gold",
+    },
+    {
+      number: "04",
+      title: "Platino",
+      subtitle: "Resistenza pura",
+      description:
+        "Forza eccezionale, rarità e una finitura bianca naturalmente raffinata.",
+      kind: "platinum",
+    },
+    {
+      number: "05",
+      title: "Diamanti",
+      subtitle: "Brillantezza duratura",
+      description:
+        "Selezionati per luce eccezionale, precisione e valore emotivo duraturo.",
+      kind: "diamond",
+    },
+    {
+      number: "06",
+      title: "Pietre preziose",
+      subtitle: "Colore & individualità",
+      description:
+        "Pietre distintive scelte per profondità, colore e carattere unico.",
+      kind: "precious-stone",
+    },
+    {
+      number: "07",
+      title: "Perle",
+      subtitle: "Eleganza naturale",
+      description:
+        "Una bellezza senza tempo apprezzata per morbidezza, lucentezza ed eleganza discreta.",
+      kind: "pearl",
+    },
+  ],
+
+  es: [
+    {
+      number: "01",
+      title: "Oro blanco",
+      subtitle: "Brillo frío",
+      description:
+        "Atemporal, elegante y versátil — elegido por su luminosidad refinada.",
+      kind: "white-gold",
+    },
+    {
+      number: "02",
+      title: "Oro amarillo",
+      subtitle: "Calidez clásica",
+      description:
+        "Una expresión clásica del lujo con una calidez rica e inconfundible.",
+      kind: "yellow-gold",
+    },
+    {
+      number: "03",
+      title: "Oro rosa",
+      subtitle: "Carácter suave",
+      description:
+        "Un tono contemporáneo con calidez delicada y una presencia distintiva.",
+      kind: "rose-gold",
+    },
+    {
+      number: "04",
+      title: "Platino",
+      subtitle: "Resistencia pura",
+      description:
+        "Fuerza excepcional, rareza y un acabado blanco naturalmente refinado.",
+      kind: "platinum",
+    },
+    {
+      number: "05",
+      title: "Diamantes",
+      subtitle: "Brillo duradero",
+      description:
+        "Seleccionados por su luz excepcional, precisión y valor emocional duradero.",
+      kind: "diamond",
+    },
+    {
+      number: "06",
+      title: "Piedras preciosas",
+      subtitle: "Color & individualidad",
+      description:
+        "Piedras distintivas elegidas por su profundidad, color y carácter único.",
+      kind: "precious-stone",
+    },
+    {
+      number: "07",
+      title: "Perlas",
+      subtitle: "Elegancia natural",
+      description:
+        "Una belleza atemporal apreciada por su suavidad, lustre y elegancia discreta.",
+      kind: "pearl",
+    },
+  ],
 };
 
 const MATERIAL_COPY: Record<
@@ -492,6 +964,62 @@ const MATERIAL_COPY: Record<
     closingBefore: "Piękno zaczyna się od materiału,",
     closingAccent: "wartość",
     closingAfter: "od sposobu jego wyboru.",
+  },
+  ru: {
+    intro:
+      "Драгоценные материалы выбираются не только за красоту, но и за качество, долговечность и способность стать частью целой жизни.",
+    closingBefore: "Красота начинается с материала,",
+    closingAccent: "ценность",
+    closingAfter: "— с того, как он выбран.",
+  },
+  nl: {
+    intro:
+      "Kostbare materialen worden niet alleen gekozen om hun schoonheid, maar ook om hun kwaliteit, duurzaamheid en de manier waarop ze deel worden van een leven.",
+    closingBefore: "Schoonheid begint bij het materiaal,",
+    closingAccent: "waarde",
+    closingAfter: "begint bij de manier waarop het wordt gekozen.",
+  },
+  da: {
+    intro:
+      "Ædle materialer vælges ikke kun for deres skønhed, men også for kvalitet, holdbarhed og evnen til at blive en del af et helt liv.",
+    closingBefore: "Skønhed begynder med materialet,",
+    closingAccent: "værdi",
+    closingAfter: "begynder med måden, det udvælges på.",
+  },
+  fi: {
+    intro:
+      "Arvokkaat materiaalit valitaan paitsi kauneutensa myös laatunsa, kestävyytensä ja elinikäisen merkityksensä vuoksi.",
+    closingBefore: "Kauneus alkaa materiaalista,",
+    closingAccent: "arvo",
+    closingAfter: "siitä, miten se valitaan.",
+  },
+  sv: {
+    intro:
+      "Ädla material väljs inte bara för sin skönhet, utan också för sin kvalitet, hållbarhet och förmåga att bli en del av ett helt liv.",
+    closingBefore: "Skönhet börjar med materialet,",
+    closingAccent: "värde",
+    closingAfter: "börjar med hur det väljs.",
+  },
+  fr: {
+    intro:
+      "Les matériaux précieux sont choisis non seulement pour leur beauté, mais aussi pour leur qualité, leur durabilité et leur capacité à accompagner toute une vie.",
+    closingBefore: "La beauté commence par la matière,",
+    closingAccent: "la valeur",
+    closingAfter: "par la manière dont elle est choisie.",
+  },
+  it: {
+    intro:
+      "I materiali preziosi vengono scelti non solo per la loro bellezza, ma anche per qualità, durata e capacità di diventare parte di una vita.",
+    closingBefore: "La bellezza inizia dal materiale,",
+    closingAccent: "il valore",
+    closingAfter: "da come viene scelto.",
+  },
+  es: {
+    intro:
+      "Los materiales preciosos se eligen no solo por su belleza, sino también por su calidad, durabilidad y capacidad de formar parte de toda una vida.",
+    closingBefore: "La belleza comienza con el material,",
+    closingAccent: "el valor",
+    closingAfter: "con la forma en que se elige.",
   },
 };
 

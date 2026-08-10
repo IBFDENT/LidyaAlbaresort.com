@@ -1,19 +1,50 @@
 "use client";
 
 import Link from "next/link";
+import type { ReactNode } from "react";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
 import { useLanguage } from "@/components/LanguageProvider";
+import type { Locale } from "@/lib/i18n";
 
 const LEGAL_COMPANY_NAME = "[LEGAL COMPANY NAME]";
 const REGISTERED_ADDRESS = "[REGISTERED ADDRESS]";
-const COMPANY_REGISTRATION_NUMBER = "[COMPANY / REGISTRATION NUMBER]";
+const COMPANY_REGISTRATION_NUMBER =
+  "[COMPANY / REGISTRATION NUMBER]";
 const TAX_NUMBER = "[TAX NUMBER]";
 const LEGAL_EMAIL = "[LEGAL CONTACT EMAIL]";
 
-const translations = {
+type TermsSection = {
+  title: string;
+  nav: string;
+  paragraphs: readonly string[];
+};
+
+type TermsCopy = {
+  legalLabel: string;
+  title: string;
+  subtitle: string;
+  heroText: string;
+  lastUpdated: string;
+  date: string;
+
+  introduction: string;
+  introTitle: string;
+  introText: string;
+
+  contents: string;
+
+  sections: readonly TermsSection[];
+
+  registration: string;
+  taxNumber: string;
+  legalContact: string;
+  returnWebsite: string;
+};
+
+const translations: Record<Locale, TermsCopy> = {
   en: {
     legalLabel: "Legal · Terms",
     title: "Terms & Conditions",
@@ -297,7 +328,9 @@ const translations = {
       {
         title: "Web sitesi işletmecisi",
         nav: "Web sitesi işletmecisi",
-        paragraphs: ["Bu web sitesi aşağıdaki işletme tarafından yönetilmektedir:"],
+        paragraphs: [
+          "Bu web sitesi aşağıdaki işletme tarafından yönetilmektedir:",
+        ],
       },
       {
         title: "Web sitesinin kullanımı",
@@ -821,7 +854,9 @@ const translations = {
       {
         title: "Operator strony internetowej",
         nav: "Operator strony",
-        paragraphs: ["Niniejsza strona internetowa jest prowadzona przez:"],
+        paragraphs: [
+          "Niniejsza strona internetowa jest prowadzona przez:",
+        ],
       },
       {
         title: "Korzystanie ze strony internetowej",
@@ -930,7 +965,1053 @@ const translations = {
     legalContact: "Kontakt prawny",
     returnWebsite: "Powrót do strony",
   },
-} as const;
+
+  ru: {
+    legalLabel: "Правовая информация · Условия",
+    title: "Условия использования",
+    subtitle: "Понятные условия персонального обслуживания.",
+    heroText:
+      "Настоящие Условия регулируют использование веб-сайта LIDYA JEWELLERY и связанные с ним взаимодействия, включая запросы, запись на встречи и обращения за услугами.",
+    lastUpdated: "Последнее обновление",
+    date: "Август 2026",
+
+    introduction: "Введение",
+    introTitle:
+      "Наш веб-сайт предназначен для предоставления информации, обработки запросов и организации персонального обслуживания.",
+    introText:
+      "Используя этот веб-сайт, вы соглашаетесь использовать его законным образом и в соответствии с настоящими Условиями. Отдельные покупки, ремонт, индивидуальные заказы и другие услуги могут регулироваться дополнительными условиями, согласованными непосредственно с вами.",
+
+    contents: "Содержание",
+
+    sections: [
+      {
+        title: "Оператор веб-сайта",
+        nav: "Оператор сайта",
+        paragraphs: ["Оператором данного веб-сайта является:"],
+      },
+      {
+        title: "Использование веб-сайта",
+        nav: "Использование сайта",
+        paragraphs: [
+          "Вы можете использовать этот веб-сайт в личных и законных целях, в том числе для просмотра информации о LIDYA JEWELLERY, коллекциях, услугах, бутиках и связанных предложениях.",
+          "Запрещается злоупотреблять использованием сайта, пытаться получить несанкционированный доступ, вмешиваться в его работу, внедрять вредоносный код или использовать сайт способом, способным повредить, отключить или нарушить его функциональность.",
+        ],
+      },
+      {
+        title: "Информация на веб-сайте",
+        nav: "Информация на сайте",
+        paragraphs: [
+          "Мы стремимся поддерживать информацию на сайте точной и актуальной, однако описания товаров, изображения, наличие, цены, сведения об услугах и другая информация могут время от времени изменяться.",
+          "Изображения предназначены для максимально точного представления товаров и услуг, однако цвета, пропорции и внешний вид могут отличаться в зависимости от освещения, фотографии, настроек дисплея и индивидуальных особенностей ювелирных изделий и драгоценных камней.",
+        ],
+      },
+      {
+        title: "Запросы и встречи",
+        nav: "Запросы и встречи",
+        paragraphs: [
+          "Запросы через сайт, заявки на встречу, телефонные звонки, электронные письма и сообщения WhatsApp сами по себе не создают обязательного договора купли-продажи или оказания услуг.",
+          "Встреча или запрос на услугу считаются подтверждёнными только после прямого принятия со стороны LIDYA JEWELLERY или уполномоченного представителя.",
+        ],
+      },
+      {
+        title: "Ювелирные и часовые услуги",
+        nav: "Услуги",
+        paragraphs: [
+          "Ремонт, регулировка, закрепка камней, изменение дизайна и связанные услуги могут потребовать физического осмотра изделия до подтверждения объёма работ, стоимости и сроков.",
+          "Любая предварительная оценка до осмотра считается ориентировочной, если прямо не подтверждено иное.",
+          "Клиент несёт ответственность за предоставление точной информации об изделиях, переданных на обслуживание, включая известные повреждения, предыдущие ремонты и другую существенную историю.",
+        ],
+      },
+      {
+        title: "Цены, наличие и доступность",
+        nav: "Цены и наличие",
+        paragraphs: [
+          "Цены, складские остатки, стоимость драгоценных металлов, наличие драгоценных камней и другая коммерческая информация могут изменяться без предварительного уведомления.",
+          "Окончательной ценой покупки или услуги является цена, непосредственно подтверждённая клиенту на соответствующий момент.",
+          "Размещение товара или услуги на веб-сайте не гарантирует их фактического наличия.",
+        ],
+      },
+      {
+        title: "Индивидуальные и заказные работы",
+        nav: "Индивидуальные заказы",
+        paragraphs: [
+          "Изготовление украшений на заказ, редизайн и индивидуальные проекты могут включать персональную консультацию, утверждение дизайна, выбор материалов, размеры и другие параметры, согласованные непосредственно с клиентом.",
+          "Сроки изготовления, авансовые платежи, условия отмены, изменения и окончательная стоимость должны быть согласованы до начала работы.",
+          "Поскольку изделия на заказ создаются по индивидуальным требованиям, к ним могут применяться особые правила отмены, возврата или изменения в пределах, допускаемых применимым законодательством.",
+        ],
+      },
+      {
+        title: "Ссылки и услуги третьих лиц",
+        nav: "Сторонние сервисы",
+        paragraphs: [
+          "Веб-сайт может содержать ссылки на сторонние сайты и сервисы, включая WhatsApp, Instagram, Facebook, сайты отелей, туристические сервисы и других внешних поставщиков.",
+          "Такие третьи лица действуют независимо от LIDYA JEWELLERY. Мы не несём ответственности за их содержание, доступность, практики конфиденциальности, безопасность или договорные условия.",
+          "Любое взаимодействие со сторонним сервисом регулируется собственными условиями и политиками соответствующего поставщика.",
+        ],
+      },
+      {
+        title: "Интеллектуальная собственность",
+        nav: "Интеллектуальная собственность",
+        paragraphs: [
+          "Если не указано иное, дизайн веб-сайта, тексты, элементы бренда, логотипы, фотографии, графика и другие материалы принадлежат LIDYA JEWELLERY, лицензированы ей или используются с соответствующего разрешения.",
+          "Содержимое веб-сайта нельзя воспроизводить, распространять, повторно публиковать, использовать в коммерческих целях или изменять без соответствующего разрешения, за исключением случаев, разрешённых законом.",
+        ],
+      },
+      {
+        title: "Ограничение ответственности",
+        nav: "Ответственность",
+        paragraphs: [
+          "Веб-сайт предоставляется для общих информационных и коммуникационных целей. В пределах, разрешённых законом, мы не гарантируем непрерывную доступность сайта или полное отсутствие технических ошибок.",
+          "Ничто в настоящих Условиях не предназначено для исключения или ограничения ответственности в случаях, когда такое исключение или ограничение запрещено применимым законодательством.",
+          "Если решение требует специализированной юридической, финансовой, налоговой, инвестиционной или иной профессиональной оценки, клиенту следует обратиться за соответствующей профессиональной консультацией.",
+        ],
+      },
+      {
+        title: "Изменения сайта и настоящих условий",
+        nav: "Изменения",
+        paragraphs: [
+          "Мы можем время от времени обновлять веб-сайт, услуги или настоящие Условия.",
+          "Последняя версия будет опубликована на этой странице вместе с соответствующей датой обновления.",
+        ],
+      },
+      {
+        title: "Применимое право и юрисдикция",
+        nav: "Применимое право",
+        paragraphs: [
+          "Применимое к настоящим Условиям право, а также компетентные суды или органы зависят от юридического статуса и зарегистрированного местонахождения оператора веб-сайта.",
+          "Этот раздел должен быть окончательно оформлен после подтверждения юридических данных оператора и применимой юрисдикции.",
+        ],
+      },
+      {
+        title: "Контакты",
+        nav: "Контакты",
+        paragraphs: [
+          "Вопросы, касающиеся настоящих Условий, можно направлять по адресу:",
+        ],
+      },
+    ],
+
+    registration: "Регистрационный / корпоративный номер",
+    taxNumber: "Налоговый номер",
+    legalContact: "Юридический контакт",
+    returnWebsite: "Вернуться на сайт",
+  },
+
+  nl: {
+    legalLabel: "Juridisch · Voorwaarden",
+    title: "Algemene voorwaarden",
+    subtitle: "Duidelijke voorwaarden voor persoonlijke service.",
+    heroText:
+      "Deze Algemene voorwaarden regelen het gebruik van de website van LIDYA JEWELLERY en de daarmee samenhangende contacten, waaronder aanvragen, afspraken en serviceverzoeken.",
+    lastUpdated: "Laatst bijgewerkt",
+    date: "Augustus 2026",
+
+    introduction: "Inleiding",
+    introTitle:
+      "Onze website is bedoeld om informatie te bieden, aanvragen te ondersteunen en persoonlijke service mogelijk te maken.",
+    introText:
+      "Door deze website te gebruiken, stemt u ermee in deze rechtmatig en in overeenstemming met deze Algemene voorwaarden te gebruiken. Voor specifieke aankopen, reparaties, maatwerk of andere diensten kunnen aanvullende voorwaarden gelden die rechtstreeks met u worden bevestigd.",
+
+    contents: "Inhoud",
+
+    sections: [
+      {
+        title: "Websitebeheerder",
+        nav: "Websitebeheerder",
+        paragraphs: ["Deze website wordt beheerd door:"],
+      },
+      {
+        title: "Gebruik van de website",
+        nav: "Gebruik van de website",
+        paragraphs: [
+          "U mag deze website gebruiken voor persoonlijke en rechtmatige doeleinden, waaronder het bekijken van informatie over LIDYA JEWELLERY, collecties, diensten, boutiques en gerelateerde aanbiedingen.",
+          "U mag de website niet misbruiken, geen ongeoorloofde toegang proberen te verkrijgen, de werking niet verstoren, schadelijke code introduceren of de website gebruiken op een manier die de functionaliteit kan beschadigen, uitschakelen of beperken.",
+        ],
+      },
+      {
+        title: "Informatie op de website",
+        nav: "Website-informatie",
+        paragraphs: [
+          "Wij streven ernaar de informatie op de website correct en actueel te houden, maar productbeschrijvingen, afbeeldingen, beschikbaarheid, prijzen, servicedetails en andere informatie kunnen van tijd tot tijd wijzigen.",
+          "Afbeeldingen zijn bedoeld om producten en diensten zo nauwkeurig mogelijk weer te geven, maar kleuren, verhoudingen en visuele uitstraling kunnen verschillen door verlichting, fotografie, scherminstellingen en het individuele karakter van sieraden en edelstenen.",
+        ],
+      },
+      {
+        title: "Aanvragen en afspraken",
+        nav: "Aanvragen & afspraken",
+        paragraphs: [
+          "Aanvragen via de website, verzoeken om afspraken, telefoongesprekken, e-mails en WhatsApp-communicatie vormen op zichzelf geen bindende koop- of dienstverleningsovereenkomst.",
+          "Een afspraak of serviceverzoek is pas bevestigd wanneer dit rechtstreeks door LIDYA JEWELLERY of een bevoegde vertegenwoordiger is aanvaard.",
+        ],
+      },
+      {
+        title: "Sieraden- en horlogeservices",
+        nav: "Diensten",
+        paragraphs: [
+          "Reparaties, aanpassingen, steenzetting, herontwerp en aanverwante diensten kunnen een fysieke inspectie vereisen voordat omvang, prijs en doorlooptijd kunnen worden bevestigd.",
+          "Elke prijsindicatie die vóór inspectie wordt verstrekt, moet als indicatief worden beschouwd tenzij uitdrukkelijk anders bevestigd.",
+          "Klanten zijn verantwoordelijk voor het verstrekken van correcte informatie over artikelen die voor service worden ingediend, waaronder bekende schade, eerdere reparaties en relevante voorgeschiedenis.",
+        ],
+      },
+      {
+        title: "Prijzen, voorraad en beschikbaarheid",
+        nav: "Prijzen & beschikbaarheid",
+        paragraphs: [
+          "Prijzen, voorraadniveaus, waarden van edelmetalen, beschikbaarheid van edelstenen en andere commerciële informatie kunnen zonder voorafgaande kennisgeving wijzigen.",
+          "De uiteindelijke prijs voor een aankoop of dienst is de prijs die op het relevante moment rechtstreeks met de klant wordt bevestigd.",
+          "Het tonen van een artikel of dienst op de website garandeert niet dat deze op dat moment beschikbaar is.",
+        ],
+      },
+      {
+        title: "Maatwerk en persoonlijke opdrachten",
+        nav: "Maatwerk",
+        paragraphs: [
+          "Maatwerkjuwelen, herontwerpen en persoonlijke opdrachten kunnen individuele consultatie, goedkeuring van het ontwerp, materiaalkeuze, maten en andere rechtstreeks met de klant overeengekomen specificaties omvatten.",
+          "Productietijden, aanbetalingen, annuleringsvoorwaarden, wijzigingen en definitieve prijzen moeten vóór aanvang van het werk afzonderlijk worden bevestigd.",
+          "Omdat maatwerkstukken volgens individuele wensen worden vervaardigd, kunnen afwijkende regels gelden voor annulering, retour of wijziging voor zover toegestaan door de toepasselijke wetgeving.",
+        ],
+      },
+      {
+        title: "Links en diensten van derden",
+        nav: "Diensten van derden",
+        paragraphs: [
+          "De website kan links bevatten naar websites en diensten van derden, waaronder WhatsApp, Instagram, Facebook, hotelwebsites, reisdiensten en andere externe aanbieders.",
+          "Deze derden opereren onafhankelijk van LIDYA JEWELLERY. Wij zijn niet verantwoordelijk voor hun inhoud, beschikbaarheid, privacypraktijken, beveiliging of contractuele voorwaarden.",
+          "Elke interactie met een dienst van een derde is onderworpen aan de eigen voorwaarden en beleidsregels van die aanbieder.",
+        ],
+      },
+      {
+        title: "Intellectuele eigendom",
+        nav: "Intellectuele eigendom",
+        paragraphs: [
+          "Tenzij anders vermeld, zijn het websiteontwerp, de geschreven inhoud, branding, logo's, fotografie, grafische elementen en andere materialen eigendom van LIDYA JEWELLERY, aan haar gelicentieerd of met toestemming gebruikt.",
+          "Website-inhoud mag niet zonder passende toestemming worden gereproduceerd, verspreid, opnieuw gepubliceerd, commercieel geëxploiteerd of gewijzigd, behalve waar dit wettelijk is toegestaan.",
+        ],
+      },
+      {
+        title: "Beperking van aansprakelijkheid",
+        nav: "Aansprakelijkheid",
+        paragraphs: [
+          "De website wordt aangeboden voor algemene informatie- en communicatiedoeleinden. Voor zover wettelijk toegestaan garanderen wij geen ononderbroken beschikbaarheid of dat de website altijd vrij zal zijn van technische fouten.",
+          "Niets in deze Algemene voorwaarden is bedoeld om aansprakelijkheid uit te sluiten of te beperken wanneer een dergelijke uitsluiting of beperking volgens toepasselijk recht verboden is.",
+          "Klanten dienen passende professionele begeleiding in te winnen wanneer een beslissing gespecialiseerde juridische, financiële, fiscale, beleggings- of andere professionele beoordeling vereist.",
+        ],
+      },
+      {
+        title: "Wijzigingen aan de website en deze voorwaarden",
+        nav: "Wijzigingen",
+        paragraphs: [
+          "Wij kunnen de website, diensten of deze Algemene voorwaarden van tijd tot tijd bijwerken.",
+          "De meest recente versie wordt op deze pagina gepubliceerd samen met de relevante wijzigingsdatum.",
+        ],
+      },
+      {
+        title: "Toepasselijk recht en bevoegde rechter",
+        nav: "Toepasselijk recht",
+        paragraphs: [
+          "Het recht dat op deze Algemene voorwaarden van toepassing is en de bevoegde rechtbanken of autoriteiten zijn afhankelijk van de juridische identiteit en geregistreerde vestigingsplaats van de websitebeheerder.",
+          "Deze paragraaf dient te worden afgerond nadat de juridische gegevens van de beheerder en de toepasselijke jurisdictie zijn bevestigd.",
+        ],
+      },
+      {
+        title: "Contact",
+        nav: "Contact",
+        paragraphs: [
+          "Vragen over deze Algemene voorwaarden kunnen worden gericht aan:",
+        ],
+      },
+    ],
+
+    registration: "Registratie- / bedrijfsnummer",
+    taxNumber: "Belastingnummer",
+    legalContact: "Juridisch contact",
+    returnWebsite: "Terug naar de website",
+  },
+
+  da: {
+    legalLabel: "Juridisk · Vilkår",
+    title: "Vilkår og betingelser",
+    subtitle: "Klare vilkår for personlig service.",
+    heroText:
+      "Disse vilkår og betingelser regulerer din brug af LIDYA JEWELLERYs hjemmeside og relaterede henvendelser, herunder forespørgsler, aftaler og serviceanmodninger.",
+    lastUpdated: "Senest opdateret",
+    date: "August 2026",
+
+    introduction: "Introduktion",
+    introTitle:
+      "Vores hjemmeside er beregnet til at give information, understøtte forespørgsler og gøre personlig service lettere.",
+    introText:
+      "Ved at bruge denne hjemmeside accepterer du at anvende den lovligt og i overensstemmelse med disse vilkår og betingelser. Specifikke køb, reparationer, specialarbejde eller andre tjenester kan desuden være underlagt yderligere vilkår, som bekræftes direkte med dig.",
+
+    contents: "Indhold",
+
+    sections: [
+      {
+        title: "Hjemmesidens operatør",
+        nav: "Operatør",
+        paragraphs: ["Denne hjemmeside drives af:"],
+      },
+      {
+        title: "Brug af hjemmesiden",
+        nav: "Brug af hjemmesiden",
+        paragraphs: [
+          "Du må bruge hjemmesiden til personlige og lovlige formål, herunder at se oplysninger om LIDYA JEWELLERY, kollektioner, tjenester, butikker og relaterede tilbud.",
+          "Du må ikke misbruge hjemmesiden, forsøge uautoriseret adgang, forstyrre dens drift, introducere skadelig kode eller bruge hjemmesiden på en måde, der kan beskadige, deaktivere eller begrænse dens funktionalitet.",
+        ],
+      },
+      {
+        title: "Oplysninger på hjemmesiden",
+        nav: "Hjemmesideoplysninger",
+        paragraphs: [
+          "Vi bestræber os på at holde oplysningerne på hjemmesiden korrekte og opdaterede, men produktbeskrivelser, billeder, tilgængelighed, priser, servicedetaljer og andre oplysninger kan ændres.",
+          "Billeder har til formål at gengive produkter og tjenester så præcist som muligt, men farver, proportioner og udseende kan variere afhængigt af belysning, fotografering, skærmindstillinger og smykkers og ædelstenes individuelle karakter.",
+        ],
+      },
+      {
+        title: "Forespørgsler og aftaler",
+        nav: "Forespørgsler & aftaler",
+        paragraphs: [
+          "Forespørgsler via hjemmesiden, aftaleanmodninger, telefonopkald, e-mails og WhatsApp-kommunikation skaber ikke i sig selv en bindende købs- eller serviceaftale.",
+          "En aftale eller serviceanmodning er først bekræftet, når den er accepteret direkte af LIDYA JEWELLERY eller en autoriseret repræsentant.",
+        ],
+      },
+      {
+        title: "Smykke- og urservice",
+        nav: "Service",
+        paragraphs: [
+          "Reparationer, justeringer, stenfatning, redesign og relaterede tjenester kan kræve fysisk inspektion, før omfang, pris og tidsplan kan bekræftes.",
+          "Ethvert prisoverslag givet før inspektion skal betragtes som vejledende, medmindre andet udtrykkeligt bekræftes.",
+          "Kunden er ansvarlig for at give korrekte oplysninger om genstande indleveret til service, herunder kendte skader, tidligere reparationer og relevant historik.",
+        ],
+      },
+      {
+        title: "Priser, lager og tilgængelighed",
+        nav: "Priser & tilgængelighed",
+        paragraphs: [
+          "Priser, lagerbeholdning, værdier på ædelmetaller, tilgængelighed af ædelsten og andre kommercielle oplysninger kan ændres uden varsel.",
+          "Den endelige pris for et køb eller en service er den pris, der bekræftes direkte med kunden på det relevante tidspunkt.",
+          "At et produkt eller en service vises på hjemmesiden er ikke en garanti for, at det aktuelt er tilgængeligt.",
+        ],
+      },
+      {
+        title: "Specialfremstilling og individuelt arbejde",
+        nav: "Specialfremstilling",
+        paragraphs: [
+          "Specialfremstillede smykker, redesign og individuelle bestillinger kan omfatte personlig konsultation, designgodkendelse, materialevalg, mål og andre specifikationer aftalt direkte med kunden.",
+          "Produktionstid, depositum, annulleringsvilkår, ændringer og endelig pris bør bekræftes individuelt før arbejdet påbegyndes.",
+          "Da specialfremstillede produkter laves efter individuelle krav, kan særlige regler for annullering, returnering eller ændring gælde i det omfang, lovgivningen tillader det.",
+        ],
+      },
+      {
+        title: "Links og tjenester fra tredjeparter",
+        nav: "Tredjepartstjenester",
+        paragraphs: [
+          "Hjemmesiden kan indeholde links til tredjepartswebsteder og -tjenester, herunder WhatsApp, Instagram, Facebook, hotelwebsteder, rejsetjenester og andre eksterne udbydere.",
+          "Disse tredjeparter opererer uafhængigt af LIDYA JEWELLERY. Vi er ikke ansvarlige for deres indhold, tilgængelighed, privatlivspraksis, sikkerhed eller kontraktvilkår.",
+          "Enhver interaktion med en tredjepartstjeneste er underlagt den pågældende udbyders egne vilkår og politikker.",
+        ],
+      },
+      {
+        title: "Immaterielle rettigheder",
+        nav: "Immaterielle rettigheder",
+        paragraphs: [
+          "Medmindre andet er angivet, ejes hjemmesidens design, skriftlige indhold, branding, logoer, fotografier, grafik og andre materialer af LIDYA JEWELLERY, er licenseret til virksomheden eller anvendes med tilladelse.",
+          "Hjemmesidens indhold må ikke reproduceres, distribueres, genudgives, udnyttes kommercielt eller ændres uden relevant tilladelse, medmindre loven tillader det.",
+        ],
+      },
+      {
+        title: "Begrænsning af ansvar",
+        nav: "Ansvar",
+        paragraphs: [
+          "Hjemmesiden stilles til rådighed til generelle informations- og kommunikationsformål. I det omfang loven tillader det, garanterer vi ikke uafbrudt tilgængelighed eller at hjemmesiden altid vil være fri for tekniske fejl.",
+          "Intet i disse vilkår og betingelser har til formål at udelukke eller begrænse ansvar, hvor en sådan udelukkelse eller begrænsning er forbudt efter gældende lov.",
+          "Kunder bør indhente relevant professionel rådgivning, hvis en beslutning kræver specialiseret juridisk, finansiel, skattemæssig, investeringsmæssig eller anden faglig vurdering.",
+        ],
+      },
+      {
+        title: "Ændringer af hjemmesiden og disse vilkår",
+        nav: "Ændringer",
+        paragraphs: [
+          "Vi kan fra tid til anden opdatere hjemmesiden, tjenesterne eller disse vilkår og betingelser.",
+          "Den seneste version offentliggøres på denne side sammen med den relevante revisionsdato.",
+        ],
+      },
+      {
+        title: "Lovvalg og jurisdiktion",
+        nav: "Lovvalg",
+        paragraphs: [
+          "Den lovgivning, der gælder for disse vilkår og betingelser, samt kompetente domstole eller myndigheder afhænger af hjemmesideoperatørens juridiske identitet og registrerede hjemsted.",
+          "Dette afsnit bør færdiggøres, når operatørens juridiske oplysninger og relevante jurisdiktion er bekræftet.",
+        ],
+      },
+      {
+        title: "Kontakt",
+        nav: "Kontakt",
+        paragraphs: [
+          "Spørgsmål om disse vilkår og betingelser kan sendes til:",
+        ],
+      },
+    ],
+
+    registration: "Registrerings- / virksomhedsnummer",
+    taxNumber: "Skattenummer",
+    legalContact: "Juridisk kontakt",
+    returnWebsite: "Tilbage til hjemmesiden",
+  },
+
+  fi: {
+    legalLabel: "Oikeudelliset tiedot · Ehdot",
+    title: "Käyttöehdot",
+    subtitle: "Selkeät ehdot henkilökohtaiseen palveluun.",
+    heroText:
+      "Nämä käyttöehdot koskevat LIDYA JEWELLERY -verkkosivuston käyttöä ja siihen liittyvää asiointia, mukaan lukien tiedustelut, ajanvaraukset ja palvelupyynnöt.",
+    lastUpdated: "Viimeksi päivitetty",
+    date: "Elokuu 2026",
+
+    introduction: "Johdanto",
+    introTitle:
+      "Verkkosivustomme tarkoituksena on tarjota tietoa, tukea tiedusteluja ja helpottaa henkilökohtaista palvelua.",
+    introText:
+      "Käyttämällä tätä verkkosivustoa hyväksyt, että käytät sitä lainmukaisesti ja näiden käyttöehtojen mukaisesti. Yksittäisiin ostoihin, korjauksiin, mittatilaustöihin tai muihin palveluihin voi lisäksi soveltua erillisiä ehtoja, jotka vahvistetaan kanssasi suoraan.",
+
+    contents: "Sisältö",
+
+    sections: [
+      {
+        title: "Verkkosivuston ylläpitäjä",
+        nav: "Ylläpitäjä",
+        paragraphs: ["Tätä verkkosivustoa ylläpitää:"],
+      },
+      {
+        title: "Verkkosivuston käyttö",
+        nav: "Verkkosivuston käyttö",
+        paragraphs: [
+          "Voit käyttää verkkosivustoa henkilökohtaisiin ja lainmukaisiin tarkoituksiin, kuten LIDYA JEWELLERYä, mallistoja, palveluja, liikkeitä ja muita tarjontaan liittyviä tietoja varten.",
+          "Verkkosivustoa ei saa käyttää väärin, siihen ei saa yrittää päästä luvatta, sen toimintaa ei saa häiritä, siihen ei saa syöttää haitallista koodia eikä sitä saa käyttää tavalla, joka voi vahingoittaa tai rajoittaa sen toimintaa.",
+        ],
+      },
+      {
+        title: "Verkkosivuston tiedot",
+        nav: "Verkkosivuston tiedot",
+        paragraphs: [
+          "Pyrimme pitämään verkkosivuston tiedot oikeina ja ajan tasalla, mutta tuotekuvaukset, kuvat, saatavuus, hinnat, palvelujen yksityiskohdat ja muut tiedot voivat muuttua.",
+          "Kuvat pyrkivät esittämään tuotteet ja palvelut mahdollisimman tarkasti, mutta värit, mittasuhteet ja ulkonäkö voivat vaihdella valaistuksen, valokuvauksen, näyttöasetusten sekä korujen ja jalokivien yksilöllisen luonteen vuoksi.",
+        ],
+      },
+      {
+        title: "Tiedustelut ja ajanvaraukset",
+        nav: "Tiedustelut & ajanvaraukset",
+        paragraphs: [
+          "Verkkosivuston kautta tehdyt tiedustelut, ajanvarauspyynnöt, puhelut, sähköpostit ja WhatsApp-viestit eivät yksinään muodosta sitovaa kauppa- tai palvelusopimusta.",
+          "Ajanvaraus tai palvelupyyntö katsotaan vahvistetuksi vasta, kun LIDYA JEWELLERY tai valtuutettu edustaja on hyväksynyt sen suoraan.",
+        ],
+      },
+      {
+        title: "Koru- ja kellopalvelut",
+        nav: "Palvelut",
+        paragraphs: [
+          "Korjaukset, säädöt, kivien istutukset, uudelleensuunnittelu ja niihin liittyvät palvelut voivat edellyttää tuotteen fyysistä tarkastusta ennen työn laajuuden, hinnan ja aikataulun vahvistamista.",
+          "Ennen tarkastusta annettua arviota on pidettävä suuntaa-antavana, ellei muuta nimenomaisesti vahvisteta.",
+          "Asiakas vastaa huoltoon toimitettujen tuotteiden oikeiden tietojen antamisesta, mukaan lukien tiedossa olevat vauriot, aiemmat korjaukset ja muut olennaiset tiedot.",
+        ],
+      },
+      {
+        title: "Hinnat, varasto ja saatavuus",
+        nav: "Hinnat & saatavuus",
+        paragraphs: [
+          "Hinnat, varastotilanteet, jalometallien arvot, jalokivien saatavuus ja muut kaupalliset tiedot voivat muuttua ilman ennakkoilmoitusta.",
+          "Oston tai palvelun lopullinen hinta on se hinta, joka vahvistetaan asiakkaalle kyseisenä ajankohtana.",
+          "Tuotteen tai palvelun näkyminen verkkosivustolla ei takaa sen ajankohtaista saatavuutta.",
+        ],
+      },
+      {
+        title: "Mittatilaus- ja yksilölliset työt",
+        nav: "Mittatilaustyöt",
+        paragraphs: [
+          "Mittatilauskorut, uudelleensuunnittelu ja yksilölliset toimeksiannot voivat sisältää henkilökohtaisen konsultoinnin, mallin hyväksynnän, materiaalivalinnan, mitat ja muita asiakkaan kanssa suoraan sovittavia tietoja.",
+          "Valmistusajat, ennakkomaksut, peruutusehdot, muutokset ja lopullinen hinnoittelu tulee vahvistaa erikseen ennen työn aloittamista.",
+          "Koska mittatilaustuotteet valmistetaan yksilöllisten vaatimusten mukaisesti, niihin voi soveltua poikkeavia peruutus-, palautus- tai muutossääntöjä sovellettavan lain sallimissa rajoissa.",
+        ],
+      },
+      {
+        title: "Kolmansien osapuolten linkit ja palvelut",
+        nav: "Ulkoiset palvelut",
+        paragraphs: [
+          "Verkkosivusto voi sisältää linkkejä kolmansien osapuolten verkkosivustoille ja palveluihin, kuten WhatsAppiin, Instagramiin, Facebookiin, hotellien verkkosivuille, matkailupalveluihin ja muihin ulkoisiin palveluntarjoajiin.",
+          "Nämä kolmannet osapuolet toimivat LIDYA JEWELLERYstä riippumattomasti. Emme vastaa niiden sisällöstä, saatavuudesta, tietosuojakäytännöistä, turvallisuudesta tai sopimusehdoista.",
+          "Kaikki asiointi kolmannen osapuolen palvelun kanssa on kyseisen palveluntarjoajan omien ehtojen ja käytäntöjen alaista.",
+        ],
+      },
+      {
+        title: "Immateriaalioikeudet",
+        nav: "Immateriaalioikeudet",
+        paragraphs: [
+          "Ellei toisin ilmoiteta, verkkosivuston suunnittelu, tekstit, brändielementit, logot, valokuvat, grafiikka ja muut materiaalit ovat LIDYA JEWELLERYn omistamia, sille lisensoituja tai niitä käytetään luvalla.",
+          "Verkkosivuston sisältöä ei saa jäljentää, jakaa, julkaista uudelleen, hyödyntää kaupallisesti tai muokata ilman asianmukaista lupaa, ellei laki sitä salli.",
+        ],
+      },
+      {
+        title: "Vastuun rajoittaminen",
+        nav: "Vastuu",
+        paragraphs: [
+          "Verkkosivusto tarjotaan yleistä tiedottamista ja yhteydenpitoa varten. Lain sallimissa rajoissa emme takaa keskeytyksetöntä saatavuutta tai sitä, että verkkosivusto olisi aina vapaa teknisistä virheistä.",
+          "Mikään näissä käyttöehdoissa ei pyri sulkemaan pois tai rajoittamaan vastuuta tilanteissa, joissa tällainen poissulkeminen tai rajoitus on sovellettavan lain mukaan kielletty.",
+          "Asiakkaan tulee hankkia asianmukaista ammatillista neuvontaa, jos päätös edellyttää erityistä oikeudellista, taloudellista, verotuksellista, sijoituksellista tai muuta ammatillista arviointia.",
+        ],
+      },
+      {
+        title: "Verkkosivuston ja ehtojen muutokset",
+        nav: "Muutokset",
+        paragraphs: [
+          "Voimme ajoittain päivittää verkkosivustoa, palveluja tai näitä käyttöehtoja.",
+          "Uusin versio julkaistaan tällä sivulla yhdessä asianmukaisen päivityspäivän kanssa.",
+        ],
+      },
+      {
+        title: "Sovellettava laki ja oikeuspaikka",
+        nav: "Sovellettava laki",
+        paragraphs: [
+          "Näihin käyttöehtoihin sovellettava laki sekä toimivaltaiset tuomioistuimet tai viranomaiset riippuvat verkkosivuston ylläpitäjän oikeudellisesta identiteetistä ja rekisteröidystä sijainnista.",
+          "Tämä kohta tulee viimeistellä, kun ylläpitäjän oikeudelliset tiedot ja sovellettava oikeuspaikka on vahvistettu.",
+        ],
+      },
+      {
+        title: "Yhteystiedot",
+        nav: "Yhteystiedot",
+        paragraphs: [
+          "Näitä käyttöehtoja koskevat kysymykset voi osoittaa:",
+        ],
+      },
+    ],
+
+    registration: "Rekisteri- / yritysnumero",
+    taxNumber: "Veronumero",
+    legalContact: "Oikeudellinen yhteyshenkilö",
+    returnWebsite: "Takaisin verkkosivustolle",
+  },
+
+  sv: {
+    legalLabel: "Juridiskt · Villkor",
+    title: "Allmänna villkor",
+    subtitle: "Tydliga villkor för personlig service.",
+    heroText:
+      "Dessa allmänna villkor reglerar användningen av LIDYA JEWELLERYs webbplats och relaterade kontakter, inklusive förfrågningar, bokningar och serviceärenden.",
+    lastUpdated: "Senast uppdaterad",
+    date: "Augusti 2026",
+
+    introduction: "Introduktion",
+    introTitle:
+      "Vår webbplats är avsedd att tillhandahålla information, stödja förfrågningar och underlätta personlig service.",
+    introText:
+      "Genom att använda webbplatsen samtycker du till att använda den lagligt och i enlighet med dessa villkor. Specifika köp, reparationer, specialbeställningar eller andra tjänster kan dessutom omfattas av ytterligare villkor som bekräftas direkt med dig.",
+
+    contents: "Innehåll",
+
+    sections: [
+      {
+        title: "Webbplatsens operatör",
+        nav: "Operatör",
+        paragraphs: ["Denna webbplats drivs av:"],
+      },
+      {
+        title: "Användning av webbplatsen",
+        nav: "Användning av webbplatsen",
+        paragraphs: [
+          "Du får använda webbplatsen för personliga och lagliga ändamål, inklusive för att ta del av information om LIDYA JEWELLERY, kollektioner, tjänster, butiker och relaterade erbjudanden.",
+          "Du får inte missbruka webbplatsen, försöka få obehörig åtkomst, störa dess drift, införa skadlig kod eller använda webbplatsen på ett sätt som kan skada, inaktivera eller begränsa dess funktionalitet.",
+        ],
+      },
+      {
+        title: "Information på webbplatsen",
+        nav: "Webbplatsinformation",
+        paragraphs: [
+          "Vi strävar efter att hålla informationen på webbplatsen korrekt och aktuell, men produktbeskrivningar, bilder, tillgänglighet, priser, servicedetaljer och annan information kan ändras.",
+          "Bilder är avsedda att återge produkter och tjänster så korrekt som möjligt, men färger, proportioner och utseende kan variera beroende på belysning, fotografering, skärminställningar och smyckens och ädelstenars individuella karaktär.",
+        ],
+      },
+      {
+        title: "Förfrågningar och bokningar",
+        nav: "Förfrågningar & bokningar",
+        paragraphs: [
+          "Förfrågningar via webbplatsen, bokningsförfrågningar, telefonsamtal, e-post och WhatsApp-kommunikation skapar inte i sig ett bindande köp- eller serviceavtal.",
+          "En bokning eller serviceförfrågan är bekräftad först när den uttryckligen har accepterats av LIDYA JEWELLERY eller en behörig representant.",
+        ],
+      },
+      {
+        title: "Smyckes- och klockservice",
+        nav: "Service",
+        paragraphs: [
+          "Reparationer, justeringar, steninfattning, redesign och relaterade tjänster kan kräva fysisk inspektion innan omfattning, pris och tidsplan kan bekräftas.",
+          "Varje uppskattning som lämnas före inspektion ska betraktas som vägledande om inget annat uttryckligen bekräftas.",
+          "Kunden ansvarar för att lämna korrekt information om föremål som lämnas in för service, inklusive kända skador, tidigare reparationer och relevant historik.",
+        ],
+      },
+      {
+        title: "Priser, lager och tillgänglighet",
+        nav: "Priser & tillgänglighet",
+        paragraphs: [
+          "Priser, lagernivåer, värden på ädelmetaller, tillgänglighet av ädelstenar och annan kommersiell information kan ändras utan föregående meddelande.",
+          "Det slutliga priset för ett köp eller en tjänst är det pris som bekräftas direkt med kunden vid den aktuella tidpunkten.",
+          "Att en produkt eller tjänst visas på webbplatsen innebär inte att den garanterat finns tillgänglig.",
+        ],
+      },
+      {
+        title: "Specialbeställningar och individuellt arbete",
+        nav: "Specialbeställningar",
+        paragraphs: [
+          "Specialtillverkade smycken, redesign och individuella uppdrag kan omfatta personlig konsultation, godkännande av design, materialval, mått och andra specifikationer som avtalas direkt med kunden.",
+          "Produktionstider, depositioner, avbokningsvillkor, ändringar och slutligt pris bör bekräftas individuellt innan arbetet påbörjas.",
+          "Eftersom specialtillverkade produkter görs efter individuella krav kan särskilda regler för avbokning, retur eller ändring gälla i den utsträckning tillämplig lag tillåter.",
+        ],
+      },
+      {
+        title: "Länkar och tjänster från tredje part",
+        nav: "Tredjepartstjänster",
+        paragraphs: [
+          "Webbplatsen kan innehålla länkar till tredje parts webbplatser och tjänster, inklusive WhatsApp, Instagram, Facebook, hotellwebbplatser, resetjänster och andra externa leverantörer.",
+          "Dessa tredje parter verkar oberoende av LIDYA JEWELLERY. Vi ansvarar inte för deras innehåll, tillgänglighet, integritetspraxis, säkerhet eller avtalsvillkor.",
+          "All interaktion med en tredjepartstjänst omfattas av den leverantörens egna villkor och policyer.",
+        ],
+      },
+      {
+        title: "Immateriella rättigheter",
+        nav: "Immateriella rättigheter",
+        paragraphs: [
+          "Om inget annat anges ägs webbplatsens design, skriftliga innehåll, varumärkeselement, logotyper, fotografier, grafik och andra material av LIDYA JEWELLERY, är licensierade till bolaget eller används med tillstånd.",
+          "Webbplatsens innehåll får inte reproduceras, distribueras, återpubliceras, utnyttjas kommersiellt eller ändras utan lämpligt tillstånd, utom där lagen medger det.",
+        ],
+      },
+      {
+        title: "Ansvarsbegränsning",
+        nav: "Ansvar",
+        paragraphs: [
+          "Webbplatsen tillhandahålls för allmän information och kommunikation. I den utsträckning lagen tillåter garanterar vi inte oavbruten tillgänglighet eller att webbplatsen alltid kommer att vara fri från tekniska fel.",
+          "Ingenting i dessa villkor syftar till att utesluta eller begränsa ansvar där ett sådant undantag eller en sådan begränsning är förbjuden enligt tillämplig lag.",
+          "Kunder bör inhämta lämplig professionell rådgivning när ett beslut kräver särskild juridisk, finansiell, skattemässig, investeringsmässig eller annan professionell bedömning.",
+        ],
+      },
+      {
+        title: "Ändringar av webbplatsen och dessa villkor",
+        nav: "Ändringar",
+        paragraphs: [
+          "Vi kan från tid till annan uppdatera webbplatsen, tjänsterna eller dessa villkor.",
+          "Den senaste versionen publiceras på denna sida tillsammans med relevant revisionsdatum.",
+        ],
+      },
+      {
+        title: "Tillämplig lag och jurisdiktion",
+        nav: "Tillämplig lag",
+        paragraphs: [
+          "Vilken lag som gäller för dessa villkor och vilka domstolar eller myndigheter som är behöriga beror på webbplatsoperatörens juridiska identitet och registrerade säte.",
+          "Detta avsnitt bör färdigställas efter att operatörens juridiska uppgifter och tillämplig jurisdiktion har bekräftats.",
+        ],
+      },
+      {
+        title: "Kontakt",
+        nav: "Kontakt",
+        paragraphs: ["Frågor om dessa villkor kan skickas till:"],
+      },
+    ],
+
+    registration: "Registrerings- / företagsnummer",
+    taxNumber: "Skattenummer",
+    legalContact: "Juridisk kontakt",
+    returnWebsite: "Tillbaka till webbplatsen",
+  },
+
+  fr: {
+    legalLabel: "Mentions légales · Conditions",
+    title: "Conditions générales",
+    subtitle: "Des conditions claires pour un service personnalisé.",
+    heroText:
+      "Les présentes Conditions générales régissent l’utilisation du site LIDYA JEWELLERY et les interactions associées, notamment les demandes, les rendez-vous et les demandes de service.",
+    lastUpdated: "Dernière mise à jour",
+    date: "Août 2026",
+
+    introduction: "Introduction",
+    introTitle:
+      "Notre site a pour vocation de fournir des informations, de faciliter les demandes et d’accompagner un service personnalisé.",
+    introText:
+      "En utilisant ce site, vous acceptez de l’utiliser de manière légale et conformément aux présentes Conditions générales. Certains achats, réparations, travaux sur mesure ou autres services peuvent également être soumis à des conditions supplémentaires confirmées directement avec vous.",
+
+    contents: "Sommaire",
+
+    sections: [
+      {
+        title: "Exploitant du site",
+        nav: "Exploitant du site",
+        paragraphs: ["Ce site est exploité par :"],
+      },
+      {
+        title: "Utilisation du site",
+        nav: "Utilisation du site",
+        paragraphs: [
+          "Vous pouvez utiliser ce site à des fins personnelles et légales, notamment pour consulter des informations sur LIDYA JEWELLERY, ses collections, services, boutiques et offres associées.",
+          "Vous ne devez pas utiliser le site de manière abusive, tenter d’y accéder sans autorisation, perturber son fonctionnement, introduire un code malveillant ou l’utiliser d’une manière susceptible d’endommager, de désactiver ou d’altérer ses fonctionnalités.",
+        ],
+      },
+      {
+        title: "Informations du site",
+        nav: "Informations du site",
+        paragraphs: [
+          "Nous nous efforçons de maintenir les informations du site exactes et à jour, mais les descriptions de produits, images, disponibilités, prix, détails de services et autres informations peuvent évoluer.",
+          "Les images visent à représenter les produits et services aussi fidèlement que possible, mais les couleurs, proportions et apparences peuvent varier selon l’éclairage, la photographie, les réglages d’affichage et le caractère individuel des bijoux et pierres précieuses.",
+        ],
+      },
+      {
+        title: "Demandes et rendez-vous",
+        nav: "Demandes & rendez-vous",
+        paragraphs: [
+          "Les demandes effectuées via le site, demandes de rendez-vous, appels téléphoniques, e-mails et communications WhatsApp ne constituent pas à eux seuls un contrat de vente ou de service contraignant.",
+          "Un rendez-vous ou une demande de service n’est confirmé qu’après acceptation directe par LIDYA JEWELLERY ou par un représentant autorisé.",
+        ],
+      },
+      {
+        title: "Services de joaillerie et d’horlogerie",
+        nav: "Services",
+        paragraphs: [
+          "Les réparations, ajustements, sertissages, transformations et services associés peuvent nécessiter un examen physique de la pièce avant de pouvoir confirmer l’étendue des travaux, le prix et le délai.",
+          "Toute estimation fournie avant examen doit être considérée comme indicative, sauf confirmation expresse contraire.",
+          "Le client est responsable de fournir des informations exactes sur les articles confiés au service, notamment tout dommage connu, réparation antérieure ou historique pertinent.",
+        ],
+      },
+      {
+        title: "Prix, stock et disponibilité",
+        nav: "Prix & disponibilité",
+        paragraphs: [
+          "Les prix, niveaux de stock, valeurs des métaux précieux, disponibilités des pierres et autres informations commerciales peuvent être modifiés sans préavis.",
+          "Le prix final applicable à un achat ou à un service est celui qui est confirmé directement avec le client au moment concerné.",
+          "La présentation d’un article ou d’un service sur le site ne garantit pas sa disponibilité actuelle.",
+        ],
+      },
+      {
+        title: "Créations sur mesure et travaux personnalisés",
+        nav: "Sur mesure",
+        paragraphs: [
+          "Les bijoux sur mesure, transformations et commandes personnalisées peuvent nécessiter une consultation individuelle, la validation d’un dessin, le choix des matériaux, des mesures et d’autres spécifications convenues directement avec le client.",
+          "Les délais de production, acomptes, conditions d’annulation, modifications et prix définitifs doivent être confirmés individuellement avant le début du travail.",
+          "Les pièces sur mesure étant réalisées selon des exigences individuelles, des règles particulières d’annulation, de retour ou de modification peuvent s’appliquer dans les limites permises par la loi.",
+        ],
+      },
+      {
+        title: "Liens et services de tiers",
+        nav: "Services tiers",
+        paragraphs: [
+          "Le site peut contenir des liens vers des sites et services tiers, notamment WhatsApp, Instagram, Facebook, des sites d’hôtels, des services de voyage et d’autres prestataires externes.",
+          "Ces tiers opèrent indépendamment de LIDYA JEWELLERY. Nous ne sommes pas responsables de leur contenu, disponibilité, pratiques de confidentialité, sécurité ou conditions contractuelles.",
+          "Toute interaction avec un service tiers est soumise aux propres conditions et politiques de ce prestataire.",
+        ],
+      },
+      {
+        title: "Propriété intellectuelle",
+        nav: "Propriété intellectuelle",
+        paragraphs: [
+          "Sauf indication contraire, la conception du site, les textes, éléments de marque, logos, photographies, graphismes et autres contenus appartiennent à LIDYA JEWELLERY, lui sont concédés sous licence ou sont utilisés avec autorisation.",
+          "Le contenu du site ne peut être reproduit, distribué, republié, exploité commercialement ou modifié sans autorisation appropriée, sauf lorsque la loi le permet.",
+        ],
+      },
+      {
+        title: "Limitation de responsabilité",
+        nav: "Responsabilité",
+        paragraphs: [
+          "Le site est fourni à des fins générales d’information et de communication. Dans les limites permises par la loi, nous ne garantissons ni une disponibilité ininterrompue ni l’absence permanente d’erreurs techniques.",
+          "Aucune disposition des présentes Conditions générales ne vise à exclure ou limiter une responsabilité lorsque cette exclusion ou limitation est interdite par la loi applicable.",
+          "Les clients doivent solliciter un conseil professionnel approprié lorsqu’une décision nécessite une expertise juridique, financière, fiscale, d’investissement ou autre.",
+        ],
+      },
+      {
+        title: "Modifications du site et des présentes conditions",
+        nav: "Modifications",
+        paragraphs: [
+          "Nous pouvons mettre à jour le site, les services ou les présentes Conditions générales de temps à autre.",
+          "La version la plus récente sera publiée sur cette page avec la date de révision correspondante.",
+        ],
+      },
+      {
+        title: "Droit applicable et juridiction",
+        nav: "Droit applicable",
+        paragraphs: [
+          "Le droit applicable aux présentes Conditions générales ainsi que les juridictions ou autorités compétentes dépendront de l’identité juridique et du siège enregistré de l’exploitant du site.",
+          "Cette section devra être finalisée après confirmation des informations juridiques de l’exploitant et de la juridiction applicable.",
+        ],
+      },
+      {
+        title: "Contact",
+        nav: "Contact",
+        paragraphs: [
+          "Toute question concernant les présentes Conditions générales peut être adressée à :",
+        ],
+      },
+    ],
+
+    registration: "Numéro d’immatriculation / société",
+    taxNumber: "Numéro fiscal",
+    legalContact: "Contact juridique",
+    returnWebsite: "Retour au site",
+  },
+
+  it: {
+    legalLabel: "Informazioni legali · Condizioni",
+    title: "Termini e condizioni",
+    subtitle: "Condizioni chiare per un servizio personale.",
+    heroText:
+      "I presenti Termini e condizioni regolano l’utilizzo del sito LIDYA JEWELLERY e le relative interazioni, incluse richieste, appuntamenti e richieste di servizio.",
+    lastUpdated: "Ultimo aggiornamento",
+    date: "Agosto 2026",
+
+    introduction: "Introduzione",
+    introTitle:
+      "Il nostro sito è pensato per fornire informazioni, supportare le richieste e facilitare un servizio personalizzato.",
+    introText:
+      "Utilizzando questo sito, accettate di farlo in modo legale e nel rispetto dei presenti Termini e condizioni. Acquisti specifici, riparazioni, lavori su misura o altri servizi possono inoltre essere soggetti a condizioni aggiuntive confermate direttamente con voi.",
+
+    contents: "Contenuti",
+
+    sections: [
+      {
+        title: "Gestore del sito",
+        nav: "Gestore del sito",
+        paragraphs: ["Questo sito è gestito da:"],
+      },
+      {
+        title: "Utilizzo del sito",
+        nav: "Utilizzo del sito",
+        paragraphs: [
+          "Potete utilizzare questo sito per scopi personali e leciti, incluso consultare informazioni su LIDYA JEWELLERY, collezioni, servizi, boutique e offerte collegate.",
+          "Non è consentito utilizzare impropriamente il sito, tentare accessi non autorizzati, interferire con il suo funzionamento, introdurre codice dannoso o utilizzarlo in modo tale da danneggiarne, disabilitarne o comprometterne le funzionalità.",
+        ],
+      },
+      {
+        title: "Informazioni sul sito",
+        nav: "Informazioni sul sito",
+        paragraphs: [
+          "Ci impegniamo a mantenere le informazioni sul sito accurate e aggiornate, ma descrizioni dei prodotti, immagini, disponibilità, prezzi, dettagli dei servizi e altre informazioni possono cambiare nel tempo.",
+          "Le immagini intendono rappresentare prodotti e servizi nel modo più accurato possibile, ma colori, proporzioni e aspetto visivo possono variare in base a illuminazione, fotografia, impostazioni dello schermo e caratteristiche individuali di gioielli e pietre preziose.",
+        ],
+      },
+      {
+        title: "Richieste e appuntamenti",
+        nav: "Richieste & appuntamenti",
+        paragraphs: [
+          "Richieste tramite il sito, richieste di appuntamento, telefonate, e-mail e comunicazioni WhatsApp non costituiscono di per sé un contratto vincolante di vendita o di servizio.",
+          "Un appuntamento o una richiesta di servizio si considera confermato solo dopo l’accettazione diretta da parte di LIDYA JEWELLERY o di un rappresentante autorizzato.",
+        ],
+      },
+      {
+        title: "Servizi di gioielleria e orologeria",
+        nav: "Servizi",
+        paragraphs: [
+          "Riparazioni, regolazioni, incastonatura di pietre, redesign e servizi correlati possono richiedere un’ispezione fisica prima di poter confermare l’entità del lavoro, il prezzo e i tempi.",
+          "Qualsiasi stima fornita prima dell’ispezione deve essere considerata indicativa, salvo espressa conferma contraria.",
+          "Il cliente è responsabile della correttezza delle informazioni fornite sugli articoli consegnati per il servizio, inclusi eventuali danni noti, riparazioni precedenti e storia rilevante.",
+        ],
+      },
+      {
+        title: "Prezzi, disponibilità e stock",
+        nav: "Prezzi & disponibilità",
+        paragraphs: [
+          "Prezzi, livelli di stock, valori dei metalli preziosi, disponibilità delle pietre e altre informazioni commerciali possono cambiare senza preavviso.",
+          "Il prezzo finale applicabile a un acquisto o servizio è quello confermato direttamente con il cliente al momento pertinente.",
+          "La presenza di un articolo o servizio sul sito non ne garantisce l’effettiva disponibilità.",
+        ],
+      },
+      {
+        title: "Lavori su misura e personalizzati",
+        nav: "Su misura",
+        paragraphs: [
+          "Gioielli su misura, redesign e commissioni personalizzate possono richiedere consulenza individuale, approvazione del progetto, selezione dei materiali, misure e altre specifiche concordate direttamente con il cliente.",
+          "Tempi di produzione, depositi, condizioni di cancellazione, modifiche e prezzo finale devono essere confermati individualmente prima dell’inizio del lavoro.",
+          "Poiché i pezzi su misura vengono realizzati secondo requisiti individuali, possono applicarsi regole particolari in materia di cancellazione, restituzione o modifica nei limiti consentiti dalla legge.",
+        ],
+      },
+      {
+        title: "Link e servizi di terze parti",
+        nav: "Servizi di terzi",
+        paragraphs: [
+          "Il sito può contenere link a siti e servizi di terze parti, tra cui WhatsApp, Instagram, Facebook, siti di hotel, servizi di viaggio e altri fornitori esterni.",
+          "Tali terze parti operano indipendentemente da LIDYA JEWELLERY. Non siamo responsabili dei loro contenuti, disponibilità, pratiche sulla privacy, sicurezza o condizioni contrattuali.",
+          "Qualsiasi interazione con un servizio di terzi è soggetta ai termini e alle politiche del relativo fornitore.",
+        ],
+      },
+      {
+        title: "Proprietà intellettuale",
+        nav: "Proprietà intellettuale",
+        paragraphs: [
+          "Salvo diversa indicazione, il design del sito, i contenuti scritti, gli elementi di brand, i loghi, le fotografie, la grafica e gli altri materiali sono di proprietà di LIDYA JEWELLERY, concessi in licenza o utilizzati con autorizzazione.",
+          "I contenuti del sito non possono essere riprodotti, distribuiti, ripubblicati, sfruttati commercialmente o modificati senza adeguata autorizzazione, salvo nei casi consentiti dalla legge.",
+        ],
+      },
+      {
+        title: "Limitazione di responsabilità",
+        nav: "Responsabilità",
+        paragraphs: [
+          "Il sito è fornito per finalità generali di informazione e comunicazione. Nei limiti consentiti dalla legge, non garantiamo disponibilità ininterrotta né che il sito sia sempre privo di errori tecnici.",
+          "Nulla nei presenti Termini e condizioni mira a escludere o limitare responsabilità quando tale esclusione o limitazione è vietata dalla legge applicabile.",
+          "I clienti dovrebbero ottenere una consulenza professionale adeguata quando una decisione richiede una valutazione specialistica legale, finanziaria, fiscale, d’investimento o di altra natura.",
+        ],
+      },
+      {
+        title: "Modifiche al sito e ai presenti termini",
+        nav: "Modifiche",
+        paragraphs: [
+          "Possiamo aggiornare periodicamente il sito, i servizi o i presenti Termini e condizioni.",
+          "La versione più recente sarà pubblicata su questa pagina insieme alla relativa data di revisione.",
+        ],
+      },
+      {
+        title: "Legge applicabile e giurisdizione",
+        nav: "Legge applicabile",
+        paragraphs: [
+          "La legge applicabile ai presenti Termini e condizioni e i tribunali o le autorità competenti dipenderanno dall’identità giuridica e dalla sede registrata del gestore del sito.",
+          "Questa sezione dovrà essere completata dopo la conferma dei dati legali del gestore e della giurisdizione applicabile.",
+        ],
+      },
+      {
+        title: "Contatti",
+        nav: "Contatti",
+        paragraphs: [
+          "Le domande relative ai presenti Termini e condizioni possono essere inviate a:",
+        ],
+      },
+    ],
+
+    registration: "Numero di registrazione / società",
+    taxNumber: "Numero fiscale",
+    legalContact: "Contatto legale",
+    returnWebsite: "Torna al sito",
+  },
+
+  es: {
+    legalLabel: "Legal · Condiciones",
+    title: "Términos y condiciones",
+    subtitle: "Condiciones claras para un servicio personal.",
+    heroText:
+      "Estos Términos y condiciones regulan el uso del sitio web de LIDYA JEWELLERY y las interacciones relacionadas, incluidas consultas, citas y solicitudes de servicio.",
+    lastUpdated: "Última actualización",
+    date: "Agosto de 2026",
+
+    introduction: "Introducción",
+    introTitle:
+      "Nuestro sitio web está destinado a proporcionar información, atender consultas y facilitar un servicio personalizado.",
+    introText:
+      "Al utilizar este sitio web, acepta hacerlo de forma legal y de acuerdo con estos Términos y condiciones. Determinadas compras, reparaciones, trabajos a medida u otros servicios pueden estar sujetos además a condiciones adicionales confirmadas directamente con usted.",
+
+    contents: "Contenido",
+
+    sections: [
+      {
+        title: "Operador del sitio web",
+        nav: "Operador del sitio",
+        paragraphs: ["Este sitio web es operado por:"],
+      },
+      {
+        title: "Uso del sitio web",
+        nav: "Uso del sitio",
+        paragraphs: [
+          "Puede utilizar este sitio web con fines personales y legales, incluido consultar información sobre LIDYA JEWELLERY, colecciones, servicios, boutiques y ofertas relacionadas.",
+          "No debe hacer un uso indebido del sitio, intentar acceder sin autorización, interferir con su funcionamiento, introducir código malicioso ni utilizarlo de una manera que pueda dañar, deshabilitar o perjudicar su funcionalidad.",
+        ],
+      },
+      {
+        title: "Información del sitio web",
+        nav: "Información del sitio",
+        paragraphs: [
+          "Procuramos mantener la información del sitio exacta y actualizada, pero las descripciones de productos, imágenes, disponibilidad, precios, detalles de servicios y otra información pueden cambiar con el tiempo.",
+          "Las imágenes tienen como objetivo representar los productos y servicios con la mayor precisión posible, pero los colores, proporciones y apariencia visual pueden variar según la iluminación, la fotografía, los ajustes de pantalla y el carácter individual de las joyas y piedras preciosas.",
+        ],
+      },
+      {
+        title: "Consultas y citas",
+        nav: "Consultas & citas",
+        paragraphs: [
+          "Las consultas realizadas a través del sitio, solicitudes de cita, llamadas telefónicas, correos electrónicos y comunicaciones por WhatsApp no constituyen por sí mismas un contrato vinculante de venta o servicio.",
+          "Una cita o solicitud de servicio solo se considera confirmada cuando ha sido aceptada directamente por LIDYA JEWELLERY o por un representante autorizado.",
+        ],
+      },
+      {
+        title: "Servicios de joyería y relojería",
+        nav: "Servicios",
+        paragraphs: [
+          "Las reparaciones, ajustes, engaste de piedras, rediseños y servicios relacionados pueden requerir una inspección física antes de confirmar el alcance, el precio y el plazo.",
+          "Cualquier estimación proporcionada antes de la inspección debe considerarse orientativa salvo que se confirme expresamente lo contrario.",
+          "Los clientes son responsables de proporcionar información exacta sobre los artículos entregados para servicio, incluidos daños conocidos, reparaciones anteriores y antecedentes relevantes.",
+        ],
+      },
+      {
+        title: "Precios, stock y disponibilidad",
+        nav: "Precios & disponibilidad",
+        paragraphs: [
+          "Los precios, niveles de stock, valores de metales preciosos, disponibilidad de piedras preciosas y otra información comercial pueden cambiar sin previo aviso.",
+          "El precio final aplicable a una compra o servicio es el precio confirmado directamente con el cliente en el momento correspondiente.",
+          "La presentación de un producto o servicio en el sitio no garantiza su disponibilidad actual.",
+        ],
+      },
+      {
+        title: "Trabajos a medida y personalizados",
+        nav: "A medida",
+        paragraphs: [
+          "Las joyas a medida, rediseños y encargos personalizados pueden implicar una consulta individual, aprobación del diseño, selección de materiales, medidas y otras especificaciones acordadas directamente con el cliente.",
+          "Los plazos de producción, depósitos, condiciones de cancelación, modificaciones y precio final deben confirmarse individualmente antes del inicio del trabajo.",
+          "Debido a que las piezas a medida se elaboran según requisitos individuales, pueden aplicarse reglas especiales de cancelación, devolución o modificación en la medida permitida por la legislación aplicable.",
+        ],
+      },
+      {
+        title: "Enlaces y servicios de terceros",
+        nav: "Servicios de terceros",
+        paragraphs: [
+          "El sitio puede contener enlaces a sitios web y servicios de terceros, incluidos WhatsApp, Instagram, Facebook, páginas de hoteles, servicios de viaje y otros proveedores externos.",
+          "Estos terceros operan independientemente de LIDYA JEWELLERY. No somos responsables de su contenido, disponibilidad, prácticas de privacidad, seguridad ni condiciones contractuales.",
+          "Cualquier interacción con un servicio de terceros está sujeta a los términos y políticas propios de dicho proveedor.",
+        ],
+      },
+      {
+        title: "Propiedad intelectual",
+        nav: "Propiedad intelectual",
+        paragraphs: [
+          "Salvo indicación contraria, el diseño del sitio, los contenidos escritos, elementos de marca, logotipos, fotografías, gráficos y otros materiales pertenecen a LIDYA JEWELLERY, están licenciados a su favor o se utilizan con autorización.",
+          "El contenido del sitio no puede reproducirse, distribuirse, volver a publicarse, explotarse comercialmente ni modificarse sin la autorización correspondiente, salvo cuando la ley lo permita.",
+        ],
+      },
+      {
+        title: "Limitación de responsabilidad",
+        nav: "Responsabilidad",
+        paragraphs: [
+          "El sitio se ofrece con fines generales de información y comunicación. En la medida permitida por la ley, no garantizamos una disponibilidad ininterrumpida ni que el sitio esté siempre libre de errores técnicos.",
+          "Nada de lo dispuesto en estos Términos y condiciones pretende excluir o limitar la responsabilidad cuando dicha exclusión o limitación esté prohibida por la legislación aplicable.",
+          "Los clientes deben obtener asesoramiento profesional adecuado cuando una decisión requiera una evaluación especializada jurídica, financiera, fiscal, de inversión o de otro tipo.",
+        ],
+      },
+      {
+        title: "Cambios en el sitio y en estas condiciones",
+        nav: "Cambios",
+        paragraphs: [
+          "Podemos actualizar periódicamente el sitio web, los servicios o estos Términos y condiciones.",
+          "La versión más reciente se publicará en esta página junto con la fecha de revisión correspondiente.",
+        ],
+      },
+      {
+        title: "Ley aplicable y jurisdicción",
+        nav: "Ley aplicable",
+        paragraphs: [
+          "La ley que regirá estos Términos y condiciones, así como los tribunales o autoridades competentes, dependerán de la identidad jurídica y domicilio registrado del operador del sitio.",
+          "Esta sección deberá finalizarse una vez confirmados los datos legales del operador y la jurisdicción aplicable.",
+        ],
+      },
+      {
+        title: "Contacto",
+        nav: "Contacto",
+        paragraphs: [
+          "Las preguntas relacionadas con estos Términos y condiciones pueden dirigirse a:",
+        ],
+      },
+    ],
+
+    registration: "Número de registro / empresa",
+    taxNumber: "Número fiscal",
+    legalContact: "Contacto legal",
+    returnWebsite: "Volver al sitio web",
+  },
+};
 
 const sectionIds = [
   "operator",
@@ -951,8 +2032,10 @@ const sectionIds = [
 export default function TermsContent() {
   const { locale } = useLanguage();
 
-  const t =
-    translations[locale as keyof typeof translations] ?? translations.en;
+  const activeLocale: Locale =
+    locale && translations[locale] ? locale : "en";
+
+  const t = translations[activeLocale];
 
   return (
     <>
@@ -1042,15 +2125,21 @@ export default function TermsContent() {
                   </span>
 
                   <nav className="mt-6 flex flex-col gap-3 text-sm text-plum-dark/55">
-                    {t.sections.map((section, index) => (
-                      <a
-                        key={sectionIds[index]}
-                        href={`#${sectionIds[index]}`}
-                        className="transition-colors hover:text-gold"
-                      >
-                        {String(index + 1).padStart(2, "0")} · {section.nav}
-                      </a>
-                    ))}
+                    {t.sections.map((section, index) => {
+                      const id =
+                        sectionIds[index] ?? `section-${index + 1}`;
+
+                      return (
+                        <a
+                          key={id}
+                          href={`#${id}`}
+                          className="transition-colors hover:text-gold"
+                        >
+                          {String(index + 1).padStart(2, "0")} ·{" "}
+                          {section.nav}
+                        </a>
+                      );
+                    })}
                   </nav>
                 </div>
               </aside>
@@ -1058,8 +2147,15 @@ export default function TermsContent() {
               {/* LEGAL COPY */}
               <div className="space-y-16 lg:col-span-9">
                 {t.sections.map((section, index) => {
-                  const id = sectionIds[index];
+                  const id =
+                    sectionIds[index] ?? `section-${index + 1}`;
+
                   const number = String(index + 1).padStart(2, "0");
+
+                  const isOperator = index === 0;
+
+                  const isContact =
+                    index === t.sections.length - 1;
 
                   return (
                     <LegalSection
@@ -1068,25 +2164,32 @@ export default function TermsContent() {
                       number={number}
                       title={section.title}
                     >
-                      {section.paragraphs.map((paragraph, paragraphIndex) => (
-                        <p
-                          key={paragraphIndex}
-                          className={paragraphIndex > 0 ? "mt-4" : ""}
-                        >
-                          {paragraph}
-                        </p>
-                      ))}
+                      {section.paragraphs.map(
+                        (paragraph, paragraphIndex) => (
+                          <p
+                            key={`${id}-${paragraphIndex}`}
+                            className={
+                              paragraphIndex > 0 ? "mt-4" : ""
+                            }
+                          >
+                            {paragraph}
+                          </p>
+                        )
+                      )}
 
-                      {index === 0 && (
+                      {isOperator && (
                         <div className="mt-6 border-l border-gold/50 pl-6">
                           <p className="font-semibold text-plum-dark">
                             {LEGAL_COMPANY_NAME}
                           </p>
 
-                          <p className="mt-2">{REGISTERED_ADDRESS}</p>
+                          <p className="mt-2">
+                            {REGISTERED_ADDRESS}
+                          </p>
 
                           <p className="mt-2">
-                            {t.registration}: {COMPANY_REGISTRATION_NUMBER}
+                            {t.registration}:{" "}
+                            {COMPANY_REGISTRATION_NUMBER}
                           </p>
 
                           <p className="mt-2">
@@ -1102,7 +2205,7 @@ export default function TermsContent() {
                         </div>
                       )}
 
-                      {index === t.sections.length - 1 && (
+                      {isContact && (
                         <div className="mt-6 border border-plum-dark/10 bg-ivory p-6 md:p-8">
                           <span className="block text-[0.56rem] font-semibold uppercase tracking-[0.22em] text-gold">
                             {t.legalContact}
@@ -1165,7 +2268,7 @@ type LegalSectionProps = {
   id: string;
   number: string;
   title: string;
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 function LegalSection({

@@ -10,6 +10,7 @@ type CategoryCraftProps = {
   points: CraftPoint[];
   closingText: string;
   closingAccent?: string;
+  since: string;
 };
 
 export default function CategoryCraft({
@@ -19,6 +20,7 @@ export default function CategoryCraft({
   points,
   closingText,
   closingAccent,
+  since,
 }: CategoryCraftProps) {
   return (
     <section className="relative overflow-hidden bg-plum-dark py-24 text-brand-white md:py-28 lg:py-32">
@@ -51,7 +53,7 @@ export default function CategoryCraft({
               <span className="h-px w-12 bg-gold" />
 
               <span className="text-[0.58rem] font-semibold uppercase tracking-[0.24em] text-brand-white/40">
-                LIDYA · SINCE 1989
+                {since}
               </span>
             </div>
           </div>
@@ -61,7 +63,7 @@ export default function CategoryCraft({
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
           {points.map((point, index) => (
             <div
-              key={point.title}
+              key={`${point.title}-${index}`}
               className="group border-b border-brand-white/12 py-8 md:border-r md:px-6 lg:py-10 lg:first:pl-0 lg:last:border-r-0 lg:last:pr-0"
             >
               <div className="flex items-center justify-between gap-4">

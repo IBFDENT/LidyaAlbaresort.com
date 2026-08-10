@@ -41,6 +41,7 @@ const FOOTER_COPY: Record<
     rights: "All rights reserved.",
     since: "Since 1989",
   },
+
   de: {
     hero1: "Schmuck von bleibendem Wert.",
     hero2: "Seit 1989.",
@@ -58,6 +59,7 @@ const FOOTER_COPY: Record<
     rights: "Alle Rechte vorbehalten.",
     since: "Seit 1989",
   },
+
   tr: {
     hero1: "Kalıcı değere sahip mücevherler.",
     hero2: "1989'dan beri.",
@@ -75,6 +77,7 @@ const FOOTER_COPY: Record<
     rights: "Tüm hakları saklıdır.",
     since: "1989'dan beri",
   },
+
   sk: {
     hero1: "Šperky s trvalou hodnotou.",
     hero2: "Od roku 1989.",
@@ -92,6 +95,7 @@ const FOOTER_COPY: Record<
     rights: "Všetky práva vyhradené.",
     since: "Od roku 1989",
   },
+
   cs: {
     hero1: "Šperky s trvalou hodnotou.",
     hero2: "Od roku 1989.",
@@ -109,6 +113,7 @@ const FOOTER_COPY: Record<
     rights: "Všechna práva vyhrazena.",
     since: "Od roku 1989",
   },
+
   hu: {
     hero1: "Maradandó értékű ékszerek.",
     hero2: "1989 óta.",
@@ -126,6 +131,7 @@ const FOOTER_COPY: Record<
     rights: "Minden jog fenntartva.",
     since: "1989 óta",
   },
+
   pl: {
     hero1: "Biżuteria o trwałej wartości.",
     hero2: "Od 1989 roku.",
@@ -142,6 +148,150 @@ const FOOTER_COPY: Record<
     privateAppointment: "Prywatne spotkanie",
     rights: "Wszelkie prawa zastrzeżone.",
     since: "Od 1989 roku",
+  },
+
+  ru: {
+    hero1: "Украшения непреходящей ценности.",
+    hero2: "С 1989 года.",
+    description:
+      "Ювелирные изделия ручной работы, персональный сервис и мастерство в Манавгате и выбранных отелях Alba.",
+    navigate: "Навигация",
+    boutiques: "Бутики",
+    contact: "Контакты",
+    legal: "Правовая информация",
+    privacy: "Конфиденциальность",
+    terms: "Условия",
+    cookies: "Настройки cookies",
+    follow: "Следите за LIDYA",
+    privateAppointment: "Личная встреча",
+    rights: "Все права защищены.",
+    since: "С 1989 года",
+  },
+
+  nl: {
+    hero1: "Sieraden van blijvende waarde.",
+    hero2: "Sinds 1989.",
+    description:
+      "Handgemaakte sieraden, persoonlijke service en duurzaam vakmanschap in Manavgat en geselecteerde Alba Hotels.",
+    navigate: "Navigatie",
+    boutiques: "Boetieks",
+    contact: "Contact",
+    legal: "Juridisch",
+    privacy: "Privacy",
+    terms: "Voorwaarden",
+    cookies: "Cookie-instellingen",
+    follow: "Volg LIDYA",
+    privateAppointment: "Privéafspraak",
+    rights: "Alle rechten voorbehouden.",
+    since: "Sinds 1989",
+  },
+
+  da: {
+    hero1: "Smykker af varig værdi.",
+    hero2: "Siden 1989.",
+    description:
+      "Håndlavede smykker, personlig service og varigt håndværk i Manavgat og udvalgte Alba Hotels.",
+    navigate: "Navigation",
+    boutiques: "Boutiques",
+    contact: "Kontakt",
+    legal: "Juridisk",
+    privacy: "Privatliv",
+    terms: "Vilkår",
+    cookies: "Cookieindstillinger",
+    follow: "Følg LIDYA",
+    privateAppointment: "Privat aftale",
+    rights: "Alle rettigheder forbeholdes.",
+    since: "Siden 1989",
+  },
+
+  fi: {
+    hero1: "Koruja, joilla on pysyvää arvoa.",
+    hero2: "Vuodesta 1989.",
+    description:
+      "Käsintehtyjä koruja, henkilökohtaista palvelua ja ajatonta käsityötaitoa Manavgatissa ja valituissa Alba Hotels -hotelleissa.",
+    navigate: "Navigointi",
+    boutiques: "Myymälät",
+    contact: "Yhteystiedot",
+    legal: "Lakiasiat",
+    privacy: "Tietosuoja",
+    terms: "Ehdot",
+    cookies: "Evästeasetukset",
+    follow: "Seuraa LIDYAa",
+    privateAppointment: "Yksityinen tapaaminen",
+    rights: "Kaikki oikeudet pidätetään.",
+    since: "Vuodesta 1989",
+  },
+
+  sv: {
+    hero1: "Smycken med bestående värde.",
+    hero2: "Sedan 1989.",
+    description:
+      "Handgjorda smycken, personlig service och tidlöst hantverk i Manavgat och utvalda Alba Hotels.",
+    navigate: "Navigering",
+    boutiques: "Butiker",
+    contact: "Kontakt",
+    legal: "Juridiskt",
+    privacy: "Integritet",
+    terms: "Villkor",
+    cookies: "Cookieinställningar",
+    follow: "Följ LIDYA",
+    privateAppointment: "Privat möte",
+    rights: "Alla rättigheter förbehållna.",
+    since: "Sedan 1989",
+  },
+
+  fr: {
+    hero1: "Des bijoux d’une valeur durable.",
+    hero2: "Depuis 1989.",
+    description:
+      "Bijoux faits main, service personnalisé et savoir-faire durable à Manavgat et dans une sélection d’Alba Hotels.",
+    navigate: "Navigation",
+    boutiques: "Boutiques",
+    contact: "Contact",
+    legal: "Mentions légales",
+    privacy: "Confidentialité",
+    terms: "Conditions",
+    cookies: "Paramètres des cookies",
+    follow: "Suivez LIDYA",
+    privateAppointment: "Rendez-vous privé",
+    rights: "Tous droits réservés.",
+    since: "Depuis 1989",
+  },
+
+  it: {
+    hero1: "Gioielli dal valore duraturo.",
+    hero2: "Dal 1989.",
+    description:
+      "Gioielli realizzati a mano, servizio personale e artigianalità duratura a Manavgat e in selezionati Alba Hotels.",
+    navigate: "Navigazione",
+    boutiques: "Boutique",
+    contact: "Contatti",
+    legal: "Informazioni legali",
+    privacy: "Privacy",
+    terms: "Termini",
+    cookies: "Impostazioni cookie",
+    follow: "Segui LIDYA",
+    privateAppointment: "Appuntamento privato",
+    rights: "Tutti i diritti riservati.",
+    since: "Dal 1989",
+  },
+
+  es: {
+    hero1: "Joyas de valor duradero.",
+    hero2: "Desde 1989.",
+    description:
+      "Joyas hechas a mano, servicio personalizado y artesanía duradera en Manavgat y en una selección de Alba Hotels.",
+    navigate: "Navegación",
+    boutiques: "Boutiques",
+    contact: "Contacto",
+    legal: "Legal",
+    privacy: "Privacidad",
+    terms: "Términos",
+    cookies: "Configuración de cookies",
+    follow: "Siga a LIDYA",
+    privateAppointment: "Cita privada",
+    rights: "Todos los derechos reservados.",
+    since: "Desde 1989",
   },
 };
 
@@ -339,6 +489,29 @@ export default function Footer() {
                   vierakocaker@hotmail.com
                 </a>
               </div>
+
+              <div>
+                <p
+                  className="font-display text-xl"
+                  style={{ color: "#F5EFE6" }}
+                >
+                  Benny
+                </p>
+
+                <a
+                  href="tel:+905376694584"
+                  className="mt-2 block text-sm text-brand-white/70 transition-colors hover:text-gold"
+                >
+                  +90 537 669 45 84
+                </a>
+
+                <a
+                  href="mailto:bekirozdilberler@gmail.com"
+                  className="mt-1 block break-all text-sm text-brand-white/55 transition-colors hover:text-gold"
+                >
+                  bekirozdilberler@gmail.com
+                </a>
+              </div>
             </div>
           </div>
 
@@ -457,6 +630,29 @@ export default function Footer() {
                       →
                     </span>
                   </a>
+
+                  <div className="mx-4 h-px bg-brand-white/10" />
+
+                  <a
+                    href="https://wa.me/905376694584"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group/link flex items-center justify-between gap-5 px-4 py-3 transition-colors hover:bg-brand-white/[0.06]"
+                  >
+                    <div>
+                      <span className="block text-[0.55rem] font-semibold uppercase tracking-[0.2em] text-gold">
+                        WhatsApp
+                      </span>
+
+                      <span className="mt-1 block text-sm text-brand-white/80">
+                        Benny
+                      </span>
+                    </div>
+
+                    <span className="text-brand-white/40 transition-all group-hover/link:translate-x-1 group-hover/link:text-gold">
+                      →
+                    </span>
+                  </a>
                 </div>
               </details>
             </div>
@@ -478,9 +674,7 @@ export default function Footer() {
       <div className="border-t border-brand-white/10">
         <div className="relative mx-auto max-w-[1440px] px-6 py-8 text-[0.68rem] text-brand-white/45 md:px-10 lg:px-16 xl:px-20">
           <div className="text-center">
-            <span>
-              © {year} FraPa Technologies. All rights reserved.
-            </span>
+            <span>© {year} FraPa Technologies. All rights reserved.</span>
           </div>
 
           <div className="mt-4 flex items-center justify-center gap-4 sm:absolute sm:right-6 sm:top-1/2 sm:mt-0 sm:-translate-y-1/2 md:right-10 lg:right-16 xl:right-20">

@@ -61,46 +61,49 @@ type EditorialSectionProps = {
   valuesLabel: string;
 };
 
-const DIAMOND_COPY: Record<
-  Locale,
-  {
-    hero: {
-      since: string;
-      eyebrowRight: string;
-      statement: string;
-      statementAccent: string;
-      imageAlt: string;
-    };
-    intro: {
-      eyebrow: string;
+type DiamondCopy = {
+  hero: {
+    since: string;
+    eyebrowRight: string;
+    statement: string;
+    statementAccent: string;
+    imageAlt: string;
+  };
+
+  intro: {
+    eyebrow: string;
+    title: string;
+    titleAccent: string;
+    description: string;
+  };
+
+  editorial: {
+    expertiseLabel: string;
+    selectionLabel: string;
+    valuesLabel: string;
+  };
+
+  trust: {
+    eyebrow: string;
+    title: string;
+    titleAccent: string;
+    description: string;
+    points: {
       title: string;
-      titleAccent: string;
-      description: string;
-    };
-    editorial: {
-      expertiseLabel: string;
-      selectionLabel: string;
-      valuesLabel: string;
-    };
-    trust: {
-      eyebrow: string;
-      title: string;
-      titleAccent: string;
-      description: string;
-      points: {
-        title: string;
-        text: string;
-      }[];
-      closing: string;
-      closingAccent: string;
-    };
-    summary: {
-      eyebrow: string;
-      title: string;
-      titleAccent: string;
-    };
-  }
-> = {
+      text: string;
+    }[];
+    closing: string;
+    closingAccent: string;
+  };
+
+  summary: {
+    eyebrow: string;
+    title: string;
+    titleAccent: string;
+  };
+};
+
+const DIAMOND_COPY: Record<Locale, DiamondCopy> = {
   en: {
     hero: {
       since: "LIDYA · SINCE 1989",
@@ -109,6 +112,7 @@ const DIAMOND_COPY: Record<
       statementAccent: "Quality withstands scrutiny.",
       imageAlt: "Investment diamonds by LIDYA JEWELRY",
     },
+
     intro: {
       eyebrow: "Diamond Expertise",
       title: "Every diamond begins with",
@@ -116,11 +120,13 @@ const DIAMOND_COPY: Record<
       description:
         "A fine diamond is more than brilliance alone. Proportion, grading, rarity and certification all contribute to its character and long-term value.",
     },
+
     editorial: {
       expertiseLabel: "Diamond Expertise",
       selectionLabel: "LIDYA Diamond Selection",
       valuesLabel: "Precision · Rarity · Confidence",
     },
+
     trust: {
       eyebrow: "Certified Confidence",
       title: "Rarity deserves",
@@ -147,6 +153,7 @@ const DIAMOND_COPY: Record<
       closing: "Brilliance attracts attention.",
       closingAccent: "Confidence comes from knowledge.",
     },
+
     summary: {
       eyebrow: "Diamond Fundamentals",
       title: "Five things worth",
@@ -162,6 +169,7 @@ const DIAMOND_COPY: Record<
       statementAccent: "Qualität hält genauer Prüfung stand.",
       imageAlt: "Investmentdiamanten von LIDYA JEWELRY",
     },
+
     intro: {
       eyebrow: "Diamant-Expertise",
       title: "Jeder Diamant beginnt mit",
@@ -169,11 +177,13 @@ const DIAMOND_COPY: Record<
       description:
         "Ein feiner Diamant ist mehr als nur Brillanz. Proportion, Bewertung, Seltenheit und Zertifizierung tragen alle zu seinem Charakter und langfristigen Wert bei.",
     },
+
     editorial: {
       expertiseLabel: "Diamant-Expertise",
       selectionLabel: "LIDYA Diamantenauswahl",
       valuesLabel: "Präzision · Seltenheit · Vertrauen",
     },
+
     trust: {
       eyebrow: "Zertifizierte Sicherheit",
       title: "Seltenheit verdient",
@@ -200,6 +210,7 @@ const DIAMOND_COPY: Record<
       closing: "Brillanz zieht Aufmerksamkeit an.",
       closingAccent: "Vertrauen entsteht durch Wissen.",
     },
+
     summary: {
       eyebrow: "Grundlagen von Diamanten",
       title: "Fünf Dinge, die man",
@@ -215,6 +226,7 @@ const DIAMOND_COPY: Record<
       statementAccent: "Kalite incelemeye dayanır.",
       imageAlt: "LIDYA JEWELRY yatırım pırlantaları",
     },
+
     intro: {
       eyebrow: "Pırlanta Uzmanlığı",
       title: "Her pırlanta",
@@ -222,11 +234,13 @@ const DIAMOND_COPY: Record<
       description:
         "Kaliteli bir pırlanta yalnızca parlaklıktan ibaret değildir. Oran, derecelendirme, nadirlik ve sertifikasyon; karakterine ve uzun vadeli değerine birlikte katkıda bulunur.",
     },
+
     editorial: {
       expertiseLabel: "Pırlanta Uzmanlığı",
       selectionLabel: "LIDYA Pırlanta Seçimi",
       valuesLabel: "Hassasiyet · Nadirlik · Güven",
     },
+
     trust: {
       eyebrow: "Sertifikalı Güven",
       title: "Nadirlik",
@@ -253,6 +267,7 @@ const DIAMOND_COPY: Record<
       closing: "Parlaklık dikkat çeker.",
       closingAccent: "Güven bilgiden gelir.",
     },
+
     summary: {
       eyebrow: "Pırlanta Temelleri",
       title: "Açıkça anlaşılması gereken",
@@ -268,6 +283,7 @@ const DIAMOND_COPY: Record<
       statementAccent: "Kvalita obstojí pri dôkladnom skúmaní.",
       imageAlt: "Investičné diamanty LIDYA JEWELRY",
     },
+
     intro: {
       eyebrow: "Diamantová expertíza",
       title: "Každý diamant začína",
@@ -275,11 +291,13 @@ const DIAMOND_COPY: Record<
       description:
         "Kvalitný diamant je viac než len brilancia. Proporcie, hodnotenie, vzácnosť a certifikácia spoločne určujú jeho charakter aj dlhodobú hodnotu.",
     },
+
     editorial: {
       expertiseLabel: "Diamantová expertíza",
       selectionLabel: "Výber diamantov LIDYA",
       valuesLabel: "Presnosť · Vzácnosť · Dôvera",
     },
+
     trust: {
       eyebrow: "Certifikovaná dôvera",
       title: "Vzácnosť si zaslúži",
@@ -306,6 +324,7 @@ const DIAMOND_COPY: Record<
       closing: "Brilancia priťahuje pozornosť.",
       closingAccent: "Dôvera prichádza s poznaním.",
     },
+
     summary: {
       eyebrow: "Základy diamantov",
       title: "Päť vecí, ktorým sa oplatí",
@@ -321,6 +340,7 @@ const DIAMOND_COPY: Record<
       statementAccent: "Kvalita obstojí při důkladném zkoumání.",
       imageAlt: "Investiční diamanty LIDYA JEWELRY",
     },
+
     intro: {
       eyebrow: "Diamantová expertiza",
       title: "Každý diamant začíná",
@@ -328,11 +348,13 @@ const DIAMOND_COPY: Record<
       description:
         "Kvalitní diamant je víc než jen brilance. Proporce, hodnocení, vzácnost a certifikace společně určují jeho charakter i dlouhodobou hodnotu.",
     },
+
     editorial: {
       expertiseLabel: "Diamantová expertiza",
       selectionLabel: "Výběr diamantů LIDYA",
       valuesLabel: "Přesnost · Vzácnost · Důvěra",
     },
+
     trust: {
       eyebrow: "Certifikovaná důvěra",
       title: "Vzácnost si zaslouží",
@@ -359,6 +381,7 @@ const DIAMOND_COPY: Record<
       closing: "Brilance přitahuje pozornost.",
       closingAccent: "Důvěra přichází s poznáním.",
     },
+
     summary: {
       eyebrow: "Základy diamantů",
       title: "Pět věcí, kterým stojí za to",
@@ -374,6 +397,7 @@ const DIAMOND_COPY: Record<
       statementAccent: "A minőség kiállja az alapos vizsgálatot.",
       imageAlt: "LIDYA JEWELRY befektetési gyémántok",
     },
+
     intro: {
       eyebrow: "Gyémántszakértelem",
       title: "Minden gyémánt",
@@ -381,11 +405,13 @@ const DIAMOND_COPY: Record<
       description:
         "Egy kiváló gyémánt több puszta ragyogásnál. Az arányok, a minősítés, a ritkaság és a tanúsítás egyaránt hozzájárul karakteréhez és hosszú távú értékéhez.",
     },
+
     editorial: {
       expertiseLabel: "Gyémántszakértelem",
       selectionLabel: "LIDYA gyémántválogatás",
       valuesLabel: "Pontosság · Ritkaság · Bizalom",
     },
+
     trust: {
       eyebrow: "Tanúsított bizalom",
       title: "A ritkaság megérdemli",
@@ -412,6 +438,7 @@ const DIAMOND_COPY: Record<
       closing: "A ragyogás felkelti a figyelmet.",
       closingAccent: "A bizalom a tudásból fakad.",
     },
+
     summary: {
       eyebrow: "A gyémánt alapjai",
       title: "Öt dolog, amelyet érdemes",
@@ -427,6 +454,7 @@ const DIAMOND_COPY: Record<
       statementAccent: "Jakość wytrzymuje dokładną ocenę.",
       imageAlt: "Diamenty inwestycyjne LIDYA JEWELRY",
     },
+
     intro: {
       eyebrow: "Ekspertyza diamentów",
       title: "Każdy diament zaczyna się od",
@@ -434,11 +462,13 @@ const DIAMOND_COPY: Record<
       description:
         "Wyjątkowy diament to więcej niż sam blask. Proporcje, klasyfikacja, rzadkość i certyfikacja wspólnie wpływają na jego charakter oraz długoterminową wartość.",
     },
+
     editorial: {
       expertiseLabel: "Ekspertyza diamentów",
       selectionLabel: "Selekcja diamentów LIDYA",
       valuesLabel: "Precyzja · Rzadkość · Zaufanie",
     },
+
     trust: {
       eyebrow: "Certyfikowane zaufanie",
       title: "Rzadkość zasługuje na",
@@ -465,10 +495,467 @@ const DIAMOND_COPY: Record<
       closing: "Blask przyciąga uwagę.",
       closingAccent: "Zaufanie wynika z wiedzy.",
     },
+
     summary: {
       eyebrow: "Podstawy diamentów",
       title: "Pięć rzeczy, które warto",
       titleAccent: "dobrze rozumieć.",
+    },
+  },
+
+  ru: {
+    hero: {
+      since: "LIDYA · С 1989 ГОДА",
+      eyebrowRight: "Свет, доведённый до совершенства",
+      statement: "Красота притягивает взгляд.",
+      statementAccent: "Качество выдерживает тщательную проверку.",
+      imageAlt: "Инвестиционные бриллианты LIDYA JEWELRY",
+    },
+
+    intro: {
+      eyebrow: "Экспертиза бриллиантов",
+      title: "Каждый бриллиант начинается с",
+      titleAccent: "измеримого качества.",
+      description:
+        "Исключительный бриллиант — это больше, чем просто блеск. Пропорции, оценка, редкость и сертификация вместе определяют его характер и долгосрочную ценность.",
+    },
+
+    editorial: {
+      expertiseLabel: "Экспертиза бриллиантов",
+      selectionLabel: "Отбор бриллиантов LIDYA",
+      valuesLabel: "Точность · Редкость · Уверенность",
+    },
+
+    trust: {
+      eyebrow: "Сертифицированная уверенность",
+      title: "Редкость заслуживает",
+      titleAccent: "независимого подтверждения.",
+      description:
+        "Сертификация, прозрачность и независимая оценка создают основу для осознанного выбора бриллианта.",
+      points: [
+        {
+          title: "Сертифицирован",
+          text:
+            "Независимая оценка документирует измеримые характеристики камня.",
+        },
+        {
+          title: "Прослеживаем",
+          text:
+            "Чёткая документация укрепляет уверенность в происхождении, идентичности и качестве камня.",
+        },
+        {
+          title: "Отобран",
+          text:
+            "Цифры имеют значение, однако окончательный выбор по-прежнему зависит от профессионального экспертного суждения.",
+        },
+      ],
+      closing: "Блеск привлекает внимание.",
+      closingAccent: "Уверенность приходит со знанием.",
+    },
+
+    summary: {
+      eyebrow: "Основы бриллиантов",
+      title: "Пять вещей, которые важно",
+      titleAccent: "понимать ясно.",
+    },
+  },
+
+  nl: {
+    hero: {
+      since: "LIDYA · SINDS 1989",
+      eyebrowRight: "Licht geperfectioneerd",
+      statement: "Schoonheid trekt de aandacht.",
+      statementAccent: "Kwaliteit doorstaat nauwkeurig onderzoek.",
+      imageAlt: "Investeringsdiamanten van LIDYA JEWELRY",
+    },
+
+    intro: {
+      eyebrow: "Diamantexpertise",
+      title: "Elke diamant begint met",
+      titleAccent: "meetbare kwaliteit.",
+      description:
+        "Een uitzonderlijke diamant is meer dan schittering alleen. Verhoudingen, beoordeling, zeldzaamheid en certificering dragen allemaal bij aan zijn karakter en waarde op lange termijn.",
+    },
+
+    editorial: {
+      expertiseLabel: "Diamantexpertise",
+      selectionLabel: "LIDYA diamantselectie",
+      valuesLabel: "Precisie · Zeldzaamheid · Vertrouwen",
+    },
+
+    trust: {
+      eyebrow: "Gecertificeerd vertrouwen",
+      title: "Zeldzaamheid verdient",
+      titleAccent: "onafhankelijk bewijs.",
+      description:
+        "Certificering, transparantie en onafhankelijke beoordeling vormen de basis voor een weloverwogen diamantkeuze.",
+      points: [
+        {
+          title: "Gecertificeerd",
+          text:
+            "Onafhankelijke beoordeling documenteert de meetbare eigenschappen van de steen.",
+        },
+        {
+          title: "Traceerbaar",
+          text:
+            "Duidelijke documentatie ondersteunt vertrouwen in herkomst, identiteit en kwaliteit.",
+        },
+        {
+          title: "Geselecteerd",
+          text:
+            "Cijfers zijn belangrijk, maar de uiteindelijke selectie blijft afhankelijk van deskundig menselijk oordeel.",
+        },
+      ],
+      closing: "Schittering trekt de aandacht.",
+      closingAccent: "Vertrouwen komt voort uit kennis.",
+    },
+
+    summary: {
+      eyebrow: "De basis van diamanten",
+      title: "Vijf zaken die de moeite waard zijn om",
+      titleAccent: "helder te begrijpen.",
+    },
+  },
+
+  da: {
+    hero: {
+      since: "LIDYA · SIDEN 1989",
+      eyebrowRight: "Lys perfektioneret",
+      statement: "Skønhed fanger blikket.",
+      statementAccent: "Kvalitet består en grundig vurdering.",
+      imageAlt: "Investeringsdiamanter fra LIDYA JEWELRY",
+    },
+
+    intro: {
+      eyebrow: "Diamantekspertise",
+      title: "Hver diamant begynder med",
+      titleAccent: "målbar kvalitet.",
+      description:
+        "En exceptionel diamant er mere end glans alene. Proportioner, klassificering, sjældenhed og certificering bidrager alle til dens karakter og langsigtede værdi.",
+    },
+
+    editorial: {
+      expertiseLabel: "Diamantekspertise",
+      selectionLabel: "LIDYA diamantudvælgelse",
+      valuesLabel: "Præcision · Sjældenhed · Tillid",
+    },
+
+    trust: {
+      eyebrow: "Certificeret tillid",
+      title: "Sjældenhed fortjener",
+      titleAccent: "uafhængig dokumentation.",
+      description:
+        "Certificering, gennemsigtighed og uafhængig klassificering danner grundlaget for et velinformeret valg af diamant.",
+      points: [
+        {
+          title: "Certificeret",
+          text:
+            "Uafhængig klassificering dokumenterer stenens målbare egenskaber.",
+        },
+        {
+          title: "Sporbar",
+          text:
+            "Tydelig dokumentation skaber tillid til oprindelse, identitet og kvalitet.",
+        },
+        {
+          title: "Udvalgt",
+          text:
+            "Tal er vigtige, men den endelige udvælgelse afhænger stadig af ekspertens menneskelige vurdering.",
+        },
+      ],
+      closing: "Brillans tiltrækker opmærksomhed.",
+      closingAccent: "Tillid kommer fra viden.",
+    },
+
+    summary: {
+      eyebrow: "Grundlæggende om diamanter",
+      title: "Fem ting, der er værd at",
+      titleAccent: "forstå klart.",
+    },
+  },
+
+  fi: {
+    hero: {
+      since: "LIDYA · VUODESTA 1989",
+      eyebrowRight: "Täydellisyyteen hiottu valo",
+      statement: "Kauneus vangitsee katseen.",
+      statementAccent: "Laatu kestää tarkan tarkastelun.",
+      imageAlt: "LIDYA JEWELRY -sijoitustimantit",
+    },
+
+    intro: {
+      eyebrow: "Timanttiasiantuntemus",
+      title: "Jokainen timantti alkaa",
+      titleAccent: "mitattavasta laadusta.",
+      description:
+        "Poikkeuksellinen timantti on enemmän kuin pelkkää loistoa. Mittasuhteet, luokitus, harvinaisuus ja sertifiointi vaikuttavat kaikki sen luonteeseen ja pitkän aikavälin arvoon.",
+    },
+
+    editorial: {
+      expertiseLabel: "Timanttiasiantuntemus",
+      selectionLabel: "LIDYA-timanttivalikoima",
+      valuesLabel: "Tarkkuus · Harvinaisuus · Luottamus",
+    },
+
+    trust: {
+      eyebrow: "Sertifioitu luottamus",
+      title: "Harvinaisuus ansaitsee",
+      titleAccent: "riippumattoman todisteen.",
+      description:
+        "Sertifiointi, läpinäkyvyys ja riippumaton luokitus muodostavat perustan harkitulle timantin valinnalle.",
+      points: [
+        {
+          title: "Sertifioitu",
+          text:
+            "Riippumaton luokitus dokumentoi kiven mitattavat ominaisuudet.",
+        },
+        {
+          title: "Jäljitettävä",
+          text:
+            "Selkeä dokumentaatio vahvistaa luottamusta alkuperään, identiteettiin ja laatuun.",
+        },
+        {
+          title: "Valikoitu",
+          text:
+            "Numerot ovat tärkeitä, mutta lopullinen valinta perustuu edelleen asiantuntijan arvioon.",
+        },
+      ],
+      closing: "Loisto herättää huomion.",
+      closingAccent: "Luottamus syntyy tiedosta.",
+    },
+
+    summary: {
+      eyebrow: "Timantin perusteet",
+      title: "Viisi asiaa, jotka kannattaa",
+      titleAccent: "ymmärtää selkeästi.",
+    },
+  },
+
+  sv: {
+    hero: {
+      since: "LIDYA · SEDAN 1989",
+      eyebrowRight: "Ljus fulländat",
+      statement: "Skönhet fångar blicken.",
+      statementAccent: "Kvalitet står emot noggrann granskning.",
+      imageAlt: "Investeringsdiamanter från LIDYA JEWELRY",
+    },
+
+    intro: {
+      eyebrow: "Diamantexpertis",
+      title: "Varje diamant börjar med",
+      titleAccent: "mätbar kvalitet.",
+      description:
+        "En exceptionell diamant är mer än bara briljans. Proportioner, gradering, sällsynthet och certifiering bidrar alla till dess karaktär och långsiktiga värde.",
+    },
+
+    editorial: {
+      expertiseLabel: "Diamantexpertis",
+      selectionLabel: "LIDYA diamanturval",
+      valuesLabel: "Precision · Sällsynthet · Trygghet",
+    },
+
+    trust: {
+      eyebrow: "Certifierad trygghet",
+      title: "Sällsynthet förtjänar",
+      titleAccent: "oberoende bevis.",
+      description:
+        "Certifiering, transparens och oberoende gradering utgör grunden för ett välgrundat val av diamant.",
+      points: [
+        {
+          title: "Certifierad",
+          text:
+            "Oberoende gradering dokumenterar stenens mätbara egenskaper.",
+        },
+        {
+          title: "Spårbar",
+          text:
+            "Tydlig dokumentation skapar trygghet kring ursprung, identitet och kvalitet.",
+        },
+        {
+          title: "Utvald",
+          text:
+            "Siffror är viktiga, men det slutliga urvalet beror fortfarande på expertens mänskliga bedömning.",
+        },
+      ],
+      closing: "Briljans väcker uppmärksamhet.",
+      closingAccent: "Trygghet kommer från kunskap.",
+    },
+
+    summary: {
+      eyebrow: "Diamantens grunder",
+      title: "Fem saker som är värda att",
+      titleAccent: "förstå tydligt.",
+    },
+  },
+
+  fr: {
+    hero: {
+      since: "LIDYA · DEPUIS 1989",
+      eyebrowRight: "La lumière perfectionnée",
+      statement: "La beauté attire le regard.",
+      statementAccent: "La qualité résiste à l’examen.",
+      imageAlt: "Diamants d’investissement par LIDYA JEWELRY",
+    },
+
+    intro: {
+      eyebrow: "Expertise du diamant",
+      title: "Chaque diamant commence par",
+      titleAccent: "une qualité mesurable.",
+      description:
+        "Un diamant d’exception ne se résume pas à son éclat. Les proportions, la classification, la rareté et la certification contribuent toutes à son caractère et à sa valeur à long terme.",
+    },
+
+    editorial: {
+      expertiseLabel: "Expertise du diamant",
+      selectionLabel: "Sélection de diamants LIDYA",
+      valuesLabel: "Précision · Rareté · Confiance",
+    },
+
+    trust: {
+      eyebrow: "Confiance certifiée",
+      title: "La rareté mérite",
+      titleAccent: "une preuve indépendante.",
+      description:
+        "La certification, la transparence et l’évaluation indépendante constituent la base d’une sélection éclairée des diamants.",
+      points: [
+        {
+          title: "Certifié",
+          text:
+            "Une évaluation indépendante documente les caractéristiques mesurables de la pierre.",
+        },
+        {
+          title: "Traçable",
+          text:
+            "Une documentation claire renforce la confiance dans l’origine, l’identité et la qualité.",
+        },
+        {
+          title: "Sélectionné",
+          text:
+            "Les chiffres comptent, mais la sélection finale repose toujours sur le jugement d’un expert.",
+        },
+      ],
+      closing: "L’éclat attire l’attention.",
+      closingAccent: "La confiance vient de la connaissance.",
+    },
+
+    summary: {
+      eyebrow: "Les fondamentaux du diamant",
+      title: "Cinq éléments qu’il est essentiel de",
+      titleAccent: "comprendre clairement.",
+    },
+  },
+
+  it: {
+    hero: {
+      since: "LIDYA · DAL 1989",
+      eyebrowRight: "Luce perfezionata",
+      statement: "La bellezza cattura lo sguardo.",
+      statementAccent: "La qualità resiste a un esame attento.",
+      imageAlt: "Diamanti da investimento LIDYA JEWELRY",
+    },
+
+    intro: {
+      eyebrow: "Competenza sui diamanti",
+      title: "Ogni diamante inizia da",
+      titleAccent: "una qualità misurabile.",
+      description:
+        "Un diamante eccezionale è molto più della sua brillantezza. Proporzioni, classificazione, rarità e certificazione contribuiscono al suo carattere e al suo valore nel tempo.",
+    },
+
+    editorial: {
+      expertiseLabel: "Competenza sui diamanti",
+      selectionLabel: "Selezione di diamanti LIDYA",
+      valuesLabel: "Precisione · Rarità · Fiducia",
+    },
+
+    trust: {
+      eyebrow: "Fiducia certificata",
+      title: "La rarità merita",
+      titleAccent: "una prova indipendente.",
+      description:
+        "Certificazione, trasparenza e classificazione indipendente costituiscono la base per una scelta consapevole del diamante.",
+      points: [
+        {
+          title: "Certificato",
+          text:
+            "La classificazione indipendente documenta le caratteristiche misurabili della pietra.",
+        },
+        {
+          title: "Tracciabile",
+          text:
+            "Una documentazione chiara rafforza la fiducia nell’origine, nell’identità e nella qualità.",
+        },
+        {
+          title: "Selezionato",
+          text:
+            "I numeri contano, ma la selezione finale dipende comunque dal giudizio umano di un esperto.",
+        },
+      ],
+      closing: "La brillantezza attira l’attenzione.",
+      closingAccent: "La fiducia nasce dalla conoscenza.",
+    },
+
+    summary: {
+      eyebrow: "Fondamenti del diamante",
+      title: "Cinque aspetti che vale la pena",
+      titleAccent: "comprendere chiaramente.",
+    },
+  },
+
+  es: {
+    hero: {
+      since: "LIDYA · DESDE 1989",
+      eyebrowRight: "Luz perfeccionada",
+      statement: "La belleza atrae la mirada.",
+      statementAccent: "La calidad resiste un examen minucioso.",
+      imageAlt: "Diamantes de inversión de LIDYA JEWELRY",
+    },
+
+    intro: {
+      eyebrow: "Experiencia en diamantes",
+      title: "Cada diamante comienza con",
+      titleAccent: "una calidad medible.",
+      description:
+        "Un diamante excepcional es mucho más que brillo. Las proporciones, la clasificación, la rareza y la certificación contribuyen a su carácter y a su valor a largo plazo.",
+    },
+
+    editorial: {
+      expertiseLabel: "Experiencia en diamantes",
+      selectionLabel: "Selección de diamantes LIDYA",
+      valuesLabel: "Precisión · Rareza · Confianza",
+    },
+
+    trust: {
+      eyebrow: "Confianza certificada",
+      title: "La rareza merece",
+      titleAccent: "una prueba independiente.",
+      description:
+        "La certificación, la transparencia y la clasificación independiente constituyen la base de una selección informada de diamantes.",
+      points: [
+        {
+          title: "Certificado",
+          text:
+            "La clasificación independiente documenta las características medibles de la piedra.",
+        },
+        {
+          title: "Trazable",
+          text:
+            "Una documentación clara refuerza la confianza en el origen, la identidad y la calidad.",
+        },
+        {
+          title: "Seleccionado",
+          text:
+            "Las cifras importan, pero la selección final sigue dependiendo del criterio humano de un experto.",
+        },
+      ],
+      closing: "El brillo atrae la atención.",
+      closingAccent: "La confianza nace del conocimiento.",
+    },
+
+    summary: {
+      eyebrow: "Fundamentos del diamante",
+      title: "Cinco aspectos que merece la pena",
+      titleAccent: "comprender con claridad.",
     },
   },
 };
@@ -621,13 +1108,33 @@ function EditorialSection({
 
 export default function InvestmentDiamondsContent() {
   const { locale } = useLanguage();
-  const copy = DIAMOND_COPY[locale];
 
-  const t = (key: keyof typeof DIAMONDS_TEXT) =>
-    localized(DIAMONDS_TEXT[key], locale);
+  /*
+   * Runtime fallback.
+   * Aj keby sa do locale dostala neočakávaná hodnota,
+   * stránka nespadne a použije angličtinu.
+   */
+  const copy: DiamondCopy =
+    DIAMOND_COPY[locale] ?? DIAMOND_COPY.en;
+
+  /*
+   * DIAMONDS_TEXT má vlastné preklady.
+   * localized() zároveň fallbackuje na EN.
+   */
+  const t = (key: string): string => {
+    const value = DIAMONDS_TEXT[key];
+
+    if (!value) {
+      return "";
+    }
+
+    return localized(value, locale);
+  };
 
   const section2Start = 1 + FOUR_CS.length;
-  const section3Start = section2Start + BEYOND_FOUR_CS.length;
+
+  const section3Start =
+    section2Start + BEYOND_FOUR_CS.length;
 
   return (
     <>
@@ -825,7 +1332,7 @@ export default function InvestmentDiamondsContent() {
             <div className="grid md:grid-cols-3">
               {copy.trust.points.map((item, index) => (
                 <div
-                  key={item.title}
+                  key={`${index}-${item.title}`}
                   className="border-b border-brand-white/12 py-9 md:border-r md:px-8 md:first:pl-0 md:last:border-r-0 md:last:pr-0"
                 >
                   <span className="text-[0.58rem] font-semibold tracking-[0.22em] text-gold">

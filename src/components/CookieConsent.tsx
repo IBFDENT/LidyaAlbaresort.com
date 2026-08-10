@@ -215,6 +215,206 @@ const COOKIE_COPY: Record<
 
     save: "Zapisz ustawienia",
   },
+
+  ru: {
+    eyebrow: "Конфиденциальность и cookies",
+    title: "Ваша конфиденциальность — ваш выбор.",
+    description:
+      "Мы используем необходимые технологии для корректной работы этого сайта. С вашего согласия мы также можем использовать аналитические и маркетинговые технологии, чтобы лучше понимать использование сайта и улучшать наши услуги.",
+    reject: "Отклонить необязательные",
+    settings: "Настройки cookies",
+    accept: "Принять все",
+
+    necessaryTitle: "Необходимые",
+    necessaryText:
+      "Необходимы для основных функций сайта и не могут быть отключены.",
+    alwaysOn: "Всегда активны",
+
+    analyticsTitle: "Аналитические",
+    analyticsText:
+      "Помогают нам понять, как посетители используют сайт.",
+
+    marketingTitle: "Маркетинговые",
+    marketingText:
+      "Позволяют использовать маркетинговые технологии, когда соответствующие сервисы добавлены на сайт.",
+
+    save: "Сохранить настройки",
+  },
+
+  nl: {
+    eyebrow: "Privacy & cookies",
+    title: "Uw privacy, uw keuze.",
+    description:
+      "Wij gebruiken noodzakelijke technologieën om deze website goed te laten functioneren. Met uw toestemming kunnen we ook analytische en marketingtechnologieën gebruiken om beter te begrijpen hoe de website wordt gebruikt en onze diensten te verbeteren.",
+    reject: "Optionele weigeren",
+    settings: "Cookie-instellingen",
+    accept: "Alles accepteren",
+
+    necessaryTitle: "Noodzakelijk",
+    necessaryText:
+      "Vereist voor de essentiële werking van de website en kan niet worden uitgeschakeld.",
+    alwaysOn: "Altijd actief",
+
+    analyticsTitle: "Analytisch",
+    analyticsText:
+      "Helpt ons te begrijpen hoe bezoekers de website gebruiken.",
+
+    marketingTitle: "Marketing",
+    marketingText:
+      "Maakt het gebruik van marketingtechnologieën mogelijk wanneer deze diensten aan de website worden toegevoegd.",
+
+    save: "Voorkeuren opslaan",
+  },
+
+  da: {
+    eyebrow: "Privatliv & cookies",
+    title: "Dit privatliv, dit valg.",
+    description:
+      "Vi bruger nødvendige teknologier for at få denne hjemmeside til at fungere korrekt. Med dit samtykke kan vi også bruge analyse- og marketingteknologier til bedre at forstå brugen af hjemmesiden og forbedre vores tjenester.",
+    reject: "Afvis valgfrie",
+    settings: "Cookieindstillinger",
+    accept: "Accepter alle",
+
+    necessaryTitle: "Nødvendige",
+    necessaryText:
+      "Kræves for hjemmesidens grundlæggende funktioner og kan ikke deaktiveres.",
+    alwaysOn: "Altid aktiv",
+
+    analyticsTitle: "Analyse",
+    analyticsText:
+      "Hjælper os med at forstå, hvordan besøgende bruger hjemmesiden.",
+
+    marketingTitle: "Marketing",
+    marketingText:
+      "Tillader brug af marketingteknologier, når disse tjenester tilføjes til hjemmesiden.",
+
+    save: "Gem indstillinger",
+  },
+
+  fi: {
+    eyebrow: "Tietosuoja & evästeet",
+    title: "Yksityisyytesi, sinun valintasi.",
+    description:
+      "Käytämme välttämättömiä teknologioita, jotta tämä verkkosivusto toimii oikein. Suostumuksellasi voimme käyttää myös analytiikka- ja markkinointiteknologioita ymmärtääksemme paremmin verkkosivuston käyttöä ja kehittääksemme palveluitamme.",
+    reject: "Hylkää valinnaiset",
+    settings: "Evästeasetukset",
+    accept: "Hyväksy kaikki",
+
+    necessaryTitle: "Välttämättömät",
+    necessaryText:
+      "Tarvitaan verkkosivuston olennaisiin toimintoihin, eikä niitä voi poistaa käytöstä.",
+    alwaysOn: "Aina käytössä",
+
+    analyticsTitle: "Analytiikka",
+    analyticsText:
+      "Auttaa meitä ymmärtämään, miten kävijät käyttävät verkkosivustoa.",
+
+    marketingTitle: "Markkinointi",
+    marketingText:
+      "Mahdollistaa markkinointiteknologioiden käytön, kun tällaisia palveluita lisätään verkkosivustolle.",
+
+    save: "Tallenna asetukset",
+  },
+
+  sv: {
+    eyebrow: "Integritet & cookies",
+    title: "Din integritet, ditt val.",
+    description:
+      "Vi använder nödvändiga tekniker för att webbplatsen ska fungera korrekt. Med ditt samtycke kan vi även använda analys- och marknadsföringstekniker för att bättre förstå hur webbplatsen används och förbättra våra tjänster.",
+    reject: "Avvisa valfria",
+    settings: "Cookieinställningar",
+    accept: "Acceptera alla",
+
+    necessaryTitle: "Nödvändiga",
+    necessaryText:
+      "Krävs för webbplatsens grundläggande funktioner och kan inte stängas av.",
+    alwaysOn: "Alltid aktiva",
+
+    analyticsTitle: "Analys",
+    analyticsText:
+      "Hjälper oss att förstå hur besökare använder webbplatsen.",
+
+    marketingTitle: "Marknadsföring",
+    marketingText:
+      "Tillåter användning av marknadsföringstekniker när dessa tjänster läggs till på webbplatsen.",
+
+    save: "Spara inställningar",
+  },
+
+  fr: {
+    eyebrow: "Confidentialité & cookies",
+    title: "Votre vie privée, votre choix.",
+    description:
+      "Nous utilisons les technologies nécessaires au bon fonctionnement de ce site. Avec votre consentement, nous pouvons également utiliser des technologies d’analyse et de marketing afin de mieux comprendre l’utilisation du site et d’améliorer nos services.",
+    reject: "Refuser les optionnels",
+    settings: "Paramètres des cookies",
+    accept: "Tout accepter",
+
+    necessaryTitle: "Nécessaires",
+    necessaryText:
+      "Indispensables au fonctionnement essentiel du site et ne peuvent pas être désactivés.",
+    alwaysOn: "Toujours actifs",
+
+    analyticsTitle: "Analyse",
+    analyticsText:
+      "Nous aide à comprendre comment les visiteurs utilisent le site.",
+
+    marketingTitle: "Marketing",
+    marketingText:
+      "Permet l’utilisation de technologies marketing lorsque ces services sont ajoutés au site.",
+
+    save: "Enregistrer les préférences",
+  },
+
+  it: {
+    eyebrow: "Privacy & cookie",
+    title: "La tua privacy, la tua scelta.",
+    description:
+      "Utilizziamo le tecnologie necessarie per garantire il corretto funzionamento di questo sito. Con il tuo consenso, possiamo utilizzare anche tecnologie di analisi e marketing per comprendere meglio l’utilizzo del sito e migliorare i nostri servizi.",
+    reject: "Rifiuta opzionali",
+    settings: "Impostazioni cookie",
+    accept: "Accetta tutti",
+
+    necessaryTitle: "Necessari",
+    necessaryText:
+      "Necessari per le funzioni essenziali del sito e non possono essere disattivati.",
+    alwaysOn: "Sempre attivi",
+
+    analyticsTitle: "Analitici",
+    analyticsText:
+      "Ci aiutano a capire come i visitatori utilizzano il sito.",
+
+    marketingTitle: "Marketing",
+    marketingText:
+      "Consentono l’utilizzo di tecnologie di marketing quando questi servizi vengono aggiunti al sito.",
+
+    save: "Salva preferenze",
+  },
+
+  es: {
+    eyebrow: "Privacidad & cookies",
+    title: "Su privacidad, su elección.",
+    description:
+      "Utilizamos las tecnologías necesarias para que este sitio web funcione correctamente. Con su consentimiento, también podemos utilizar tecnologías de análisis y marketing para comprender mejor el uso del sitio y mejorar nuestros servicios.",
+    reject: "Rechazar opcionales",
+    settings: "Configuración de cookies",
+    accept: "Aceptar todo",
+
+    necessaryTitle: "Necesarias",
+    necessaryText:
+      "Son necesarias para las funciones esenciales del sitio web y no pueden desactivarse.",
+    alwaysOn: "Siempre activas",
+
+    analyticsTitle: "Analíticas",
+    analyticsText:
+      "Nos ayudan a comprender cómo utilizan los visitantes el sitio web.",
+
+    marketingTitle: "Marketing",
+    marketingText:
+      "Permiten utilizar tecnologías de marketing cuando estos servicios se incorporan al sitio web.",
+
+    save: "Guardar preferencias",
+  },
 };
 
 export default function CookieConsent() {

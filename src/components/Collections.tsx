@@ -66,6 +66,46 @@ const EDITORIAL_COPY: Record<
     accent: "charakter",
     after: "i ponadczasowe piękno.",
   },
+  ru: {
+    before: "Украшения, созданные мастерством,",
+    accent: "характером",
+    after: "и непреходящей красотой.",
+  },
+  nl: {
+    before: "Sieraden gevormd door vakmanschap,",
+    accent: "karakter",
+    after: "en blijvende schoonheid.",
+  },
+  da: {
+    before: "Smykker formet af håndværk,",
+    accent: "karakter",
+    after: "og varig skønhed.",
+  },
+  fi: {
+    before: "Koruja, joita muovaavat käsityötaito,",
+    accent: "luonne",
+    after: "ja ajaton kauneus.",
+  },
+  sv: {
+    before: "Smycken formade av hantverk,",
+    accent: "karaktär",
+    after: "och bestående skönhet.",
+  },
+  fr: {
+    before: "Des bijoux façonnés par le savoir-faire,",
+    accent: "le caractère",
+    after: "et une beauté durable.",
+  },
+  it: {
+    before: "Gioielli plasmati dall’artigianalità,",
+    accent: "dal carattere",
+    after: "e da una bellezza duratura.",
+  },
+  es: {
+    before: "Joyas moldeadas por la artesanía,",
+    accent: "el carácter",
+    after: "y una belleza duradera.",
+  },
 };
 
 export default function Collections() {
@@ -112,8 +152,7 @@ export default function Collections() {
         {/* EDITORIAL COLLECTION GRID */}
         <div className="grid grid-cols-1 gap-4 md:grid-cols-12 md:gap-5 lg:gap-6">
           {COLLECTIONS.map((collection, index) => {
-            const href =
-              CATEGORY_LINKS[collection.id] ?? "/#catalog";
+            const href = CATEGORY_LINKS[collection.id] ?? "/#catalog";
 
             const layout =
               CARD_LAYOUTS[index] ??
@@ -162,10 +201,7 @@ export default function Collections() {
                       </h3>
 
                       <p className="mt-3 max-w-md text-sm leading-6 text-brand-white/70">
-                        {localized(
-                          collection.description,
-                          locale
-                        )}
+                        {localized(collection.description, locale)}
                       </p>
                     </div>
 
@@ -202,9 +238,7 @@ export default function Collections() {
 
           <p className="font-display text-3xl italic leading-tight text-plum-dark md:text-4xl lg:text-5xl">
             {editorial.before}{" "}
-            <span className="text-gold">
-              {editorial.accent}
-            </span>{" "}
+            <span className="text-gold">{editorial.accent}</span>{" "}
             {editorial.after}
           </p>
         </div>

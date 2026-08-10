@@ -13,29 +13,49 @@ import { PearlIcon } from "@/components/category/icons";
 import { useLanguage } from "@/components/LanguageProvider";
 import type { Locale } from "@/lib/i18n";
 
-const PEARLS_COPY: Record<
-  Locale,
-  {
-    gallery: {
-      captions: string[];
-      alts: string[];
-    };
-    craft: {
-      eyebrow: string;
+type PearlsCopy = {
+  gallery: {
+    eyebrow: string;
+    title: string;
+    titleAccent: string;
+    description: string;
+    itemLabel: string;
+    closingText: string;
+    closingAccent: string;
+    captions: string[];
+    alts: string[];
+  };
+
+  craft: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    closingText: string;
+    closingAccent: string;
+    since: string;
+    points: {
       title: string;
-      points: {
-        title: string;
-        description: string;
-      }[];
-    };
-    cta: {
-      title: string;
-      sub: string;
-    };
-  }
-> = {
+      description: string;
+    }[];
+  };
+
+  cta: {
+    title: string;
+    sub: string;
+  };
+};
+
+const PEARLS_COPY: Record<Locale, PearlsCopy> = {
   en: {
     gallery: {
+      eyebrow: "The Pearl Collection",
+      title: "Pearls chosen for",
+      titleAccent: "their quiet beauty.",
+      description:
+        "From classic strands to contemporary pearl jewellery, every piece is selected for lustre, harmony and the natural character that makes each pearl unique.",
+      itemLabel: "Pearl Collection",
+      closingText: "Formed slowly by nature.",
+      closingAccent: "Chosen carefully by hand.",
       captions: [
         "Strand Necklace",
         "Pearl Pendant",
@@ -61,9 +81,15 @@ const PEARLS_COPY: Record<
         "Pearl ring with diamond-set leaf motifs in gold",
       ],
     },
+
     craft: {
       eyebrow: "The Beauty Is in the Detail",
       title: "What gives a fine pearl its unmistakable presence",
+      description:
+        "The beauty of a pearl is revealed through light, surface, colour and balance. Each detail contributes to the character of the finished piece.",
+      closingText: "A natural jewel.",
+      closingAccent: "Refined by careful selection.",
+      since: "LIDYA · SINCE 1989",
       points: [
         {
           title: "Lustre",
@@ -87,6 +113,7 @@ const PEARLS_COPY: Record<
         },
       ],
     },
+
     cta: {
       title: "Discover the beauty of pearls in person",
       sub:
@@ -96,6 +123,14 @@ const PEARLS_COPY: Record<
 
   de: {
     gallery: {
+      eyebrow: "Die Perlenkollektion",
+      title: "Perlen ausgewählt für",
+      titleAccent: "ihre stille Schönheit.",
+      description:
+        "Von klassischen Perlenketten bis zu modernen Schmuckstücken wird jede Kreation nach Lüster, Harmonie und dem natürlichen Charakter ausgewählt, der jede Perle einzigartig macht.",
+      itemLabel: "Perlenkollektion",
+      closingText: "Langsam von der Natur geformt.",
+      closingAccent: "Sorgfältig von Hand ausgewählt.",
       captions: [
         "Perlenkette",
         "Perlenanhänger",
@@ -121,9 +156,16 @@ const PEARLS_COPY: Record<
         "Perlenring mit diamantbesetzten Blattmotiven aus Gold",
       ],
     },
+
     craft: {
       eyebrow: "Die Schönheit liegt im Detail",
-      title: "Was einer feinen Perle ihre unverwechselbare Ausstrahlung verleiht",
+      title:
+        "Was einer feinen Perle ihre unverwechselbare Ausstrahlung verleiht",
+      description:
+        "Die Schönheit einer Perle zeigt sich durch Licht, Oberfläche, Farbe und Balance. Jedes Detail trägt zum Charakter des fertigen Schmuckstücks bei.",
+      closingText: "Ein Juwel der Natur.",
+      closingAccent: "Veredelt durch sorgfältige Auswahl.",
+      since: "LIDYA · SEIT 1989",
       points: [
         {
           title: "Lüster",
@@ -147,6 +189,7 @@ const PEARLS_COPY: Record<
         },
       ],
     },
+
     cta: {
       title: "Entdecken Sie die Schönheit der Perlen persönlich",
       sub:
@@ -156,6 +199,14 @@ const PEARLS_COPY: Record<
 
   tr: {
     gallery: {
+      eyebrow: "İnci Koleksiyonu",
+      title: "Sessiz güzellikleri için",
+      titleAccent: "seçilmiş inciler.",
+      description:
+        "Klasik inci dizilerinden çağdaş tasarımlara kadar her parça; parlaklığı, uyumu ve her inciyi benzersiz kılan doğal karakteri için seçilir.",
+      itemLabel: "İnci Koleksiyonu",
+      closingText: "Doğa tarafından yavaşça şekillendirildi.",
+      closingAccent: "Özenle elde seçildi.",
       captions: [
         "Dizi İnci Kolye",
         "İnci Kolye Ucu",
@@ -181,9 +232,15 @@ const PEARLS_COPY: Record<
         "Altın üzerinde pırlanta yaprak motifli inci yüzük",
       ],
     },
+
     craft: {
       eyebrow: "Güzellik Detaylarda",
       title: "İnce bir inciye benzersiz karakterini veren nedir",
+      description:
+        "Bir incinin güzelliği ışık, yüzey, renk ve denge ile ortaya çıkar. Her detay tamamlanmış parçanın karakterine katkıda bulunur.",
+      closingText: "Doğal bir mücevher.",
+      closingAccent: "Özenli seçimle rafine edildi.",
+      since: "LIDYA · 1989'DAN BERİ",
       points: [
         {
           title: "Parlaklık",
@@ -207,6 +264,7 @@ const PEARLS_COPY: Record<
         },
       ],
     },
+
     cta: {
       title: "İncilerin güzelliğini yakından keşfedin",
       sub:
@@ -216,6 +274,14 @@ const PEARLS_COPY: Record<
 
   sk: {
     gallery: {
+      eyebrow: "Kolekcia perál",
+      title: "Perly vybrané pre",
+      titleAccent: "ich tichú krásu.",
+      description:
+        "Od klasických perlových náhrdelníkov až po moderné šperky je každý kus vybraný podľa lesku, harmónie a prirodzeného charakteru, ktorý robí každú perlu jedinečnou.",
+      itemLabel: "Kolekcia perál",
+      closingText: "Pomaly formované prírodou.",
+      closingAccent: "Starostlivo vybrané ručne.",
       captions: [
         "Perlový náhrdelník",
         "Perlový prívesok",
@@ -241,9 +307,15 @@ const PEARLS_COPY: Record<
         "Perlový prsteň s diamantovými listovými motívmi v zlate",
       ],
     },
+
     craft: {
       eyebrow: "Krása sa ukrýva v detaile",
       title: "Čo dáva výnimočnej perle jej nezameniteľný charakter",
+      description:
+        "Krása perly sa odhaľuje vo svetle, povrchu, farbe a rovnováhe. Každý detail prispieva k charakteru hotového šperku.",
+      closingText: "Prírodný klenot.",
+      closingAccent: "Zdokonalený starostlivým výberom.",
+      since: "LIDYA · OD ROKU 1989",
       points: [
         {
           title: "Lesk",
@@ -267,6 +339,7 @@ const PEARLS_COPY: Record<
         },
       ],
     },
+
     cta: {
       title: "Objavte krásu perál osobne",
       sub:
@@ -276,6 +349,14 @@ const PEARLS_COPY: Record<
 
   cs: {
     gallery: {
+      eyebrow: "Kolekce perel",
+      title: "Perly vybrané pro",
+      titleAccent: "jejich tichou krásu.",
+      description:
+        "Od klasických perlových náhrdelníků až po moderní šperky je každý kus vybírán podle lesku, harmonie a přirozeného charakteru, který činí každou perlu jedinečnou.",
+      itemLabel: "Kolekce perel",
+      closingText: "Pomalu formované přírodou.",
+      closingAccent: "Pečlivě vybírané ručně.",
       captions: [
         "Perlový náhrdelník",
         "Perlový přívěsek",
@@ -297,13 +378,19 @@ const PEARLS_COPY: Record<
         "Visací perlové náušnice na diamantových zlatých kruzích",
         "Perlové puzetové náušnice s diamantovým detailem",
         "Zlatý pevný náramek s perlou a diamantovým přívěskem",
-        "Detail diamantového zapínání perlového náhrdelníku",
+        "Detail diamantového zapínání perlového náhrdelníka",
         "Perlový prsten s diamantovými listovými motivy ve zlatě",
       ],
     },
+
     craft: {
       eyebrow: "Krása se skrývá v detailu",
       title: "Co dává jemné perle její nezaměnitelný charakter",
+      description:
+        "Krása perly se odhaluje ve světle, povrchu, barvě a rovnováze. Každý detail přispívá k charakteru hotového šperku.",
+      closingText: "Přírodní klenot.",
+      closingAccent: "Zdokonalený pečlivým výběrem.",
+      since: "LIDYA · OD ROKU 1989",
       points: [
         {
           title: "Lesk",
@@ -327,6 +414,7 @@ const PEARLS_COPY: Record<
         },
       ],
     },
+
     cta: {
       title: "Objevte krásu perel osobně",
       sub:
@@ -336,6 +424,14 @@ const PEARLS_COPY: Record<
 
   hu: {
     gallery: {
+      eyebrow: "Gyöngykollekció",
+      title: "Gyöngyök, amelyeket",
+      titleAccent: "visszafogott szépségükért választunk.",
+      description:
+        "A klasszikus gyöngysoroktól a kortárs ékszerekig minden darabot fénye, harmóniája és természetes karaktere alapján választunk ki.",
+      itemLabel: "Gyöngykollekció",
+      closingText: "Lassan formálja a természet.",
+      closingAccent: "Gondosan, kézzel válogatva.",
       captions: [
         "Gyöngysor",
         "Gyöngy medál",
@@ -361,9 +457,16 @@ const PEARLS_COPY: Record<
         "Gyöngy gyűrű gyémántberakásos arany levélmotívumokkal",
       ],
     },
+
     craft: {
       eyebrow: "A szépség a részletekben rejlik",
-      title: "Mitől lesz egy finom gyöngy megjelenése összetéveszthetetlen",
+      title:
+        "Mitől lesz egy finom gyöngy megjelenése összetéveszthetetlen",
+      description:
+        "A gyöngy szépsége a fényben, a felületben, a színben és az egyensúlyban mutatkozik meg. Minden részlet hozzájárul a kész ékszer karakteréhez.",
+      closingText: "A természet ékszere.",
+      closingAccent: "Gondos válogatással finomítva.",
+      since: "LIDYA · 1989 ÓTA",
       points: [
         {
           title: "Fény",
@@ -387,6 +490,7 @@ const PEARLS_COPY: Record<
         },
       ],
     },
+
     cta: {
       title: "Fedezze fel személyesen a gyöngyök szépségét",
       sub:
@@ -396,6 +500,14 @@ const PEARLS_COPY: Record<
 
   pl: {
     gallery: {
+      eyebrow: "Kolekcja pereł",
+      title: "Perły wybrane ze względu na",
+      titleAccent: "ich dyskretne piękno.",
+      description:
+        "Od klasycznych sznurów pereł po współczesną biżuterię — każdy element wybieramy ze względu na połysk, harmonię i naturalny charakter.",
+      itemLabel: "Kolekcja pereł",
+      closingText: "Powoli formowane przez naturę.",
+      closingAccent: "Starannie wybierane ręcznie.",
       captions: [
         "Naszyjnik z pereł",
         "Wisiorek z perłą",
@@ -421,9 +533,15 @@ const PEARLS_COPY: Record<
         "Pierścionek z perłą i diamentowymi motywami liści w złocie",
       ],
     },
+
     craft: {
       eyebrow: "Piękno tkwi w detalu",
       title: "Co nadaje szlachetnej perle jej niepowtarzalny charakter",
+      description:
+        "Piękno perły objawia się w świetle, powierzchni, kolorze i harmonii. Każdy detal wpływa na charakter gotowej biżuterii.",
+      closingText: "Naturalny klejnot.",
+      closingAccent: "Udoskonalony starannym wyborem.",
+      since: "LIDYA · OD 1989 ROKU",
       points: [
         {
           title: "Połysk",
@@ -443,14 +561,615 @@ const PEARLS_COPY: Record<
         {
           title: "Harmonia",
           description:
-            "Piękny sznur pereł nie powstaje wyłącznie na podstawie wymiarów. Perły są starannie dobierane pod względem wielkości, koloru, kształtu i połysku, aby gotowy element wyglądał naturalnie i harmonijnie.",
+            "Piękny sznur pereł nie powstaje wyłącznie na podstawie wymiarów. Perły są starannie dobierane pod względem wielkości, koloru, kształtu i połysku.",
         },
       ],
     },
+
     cta: {
       title: "Odkryj piękno pereł osobiście",
       sub:
         "Perły pokazują swój prawdziwy charakter w ruchu i świetle. Odwiedź nas podczas prywatnego spotkania i przekonaj się o ich połysku, kolorze i indywidualności.",
+    },
+  },
+
+  ru: {
+    gallery: {
+      eyebrow: "Коллекция жемчуга",
+      title: "Жемчуг, выбранный за",
+      titleAccent: "его сдержанную красоту.",
+      description:
+        "От классических жемчужных нитей до современных украшений — каждое изделие выбирается за блеск, гармонию и природный характер.",
+      itemLabel: "Коллекция жемчуга",
+      closingText: "Медленно создано природой.",
+      closingAccent: "Тщательно отобрано вручную.",
+      captions: [
+        "Жемчужное ожерелье",
+        "Жемчужный кулон",
+        "Деталь кулона",
+        "Жемчужный браслет",
+        "Регулируемый браслет",
+        "Серьги-подвески",
+        "Серьги-пусеты",
+        "Жемчужный браслет",
+        "Деталь застёжки",
+        "Кольцо с жемчугом",
+      ],
+      alts: [
+        "Жемчужное ожерелье с золотой застёжкой, украшенной бриллиантами",
+        "Кулон с одной жемчужиной и бриллиантовым акцентом на золотой цепочке",
+        "Кулон с жемчугом и бриллиантом на натуральном камне",
+        "Жемчужный браслет с золотой бусиной pavé и бриллиантами",
+        "Жемчужный браслет с регулируемой золотой застёжкой",
+        "Жемчужные серьги-подвески на золотых кольцах с бриллиантами",
+        "Жемчужные серьги-пусеты с бриллиантовым акцентом",
+        "Золотой браслет с жемчугом и бриллиантовой подвеской",
+        "Крупный план украшенной бриллиантами застёжки жемчужного ожерелья",
+        "Кольцо с жемчугом и золотыми мотивами листьев, украшенными бриллиантами",
+      ],
+    },
+
+    craft: {
+      eyebrow: "Красота в деталях",
+      title: "Что придаёт прекрасной жемчужине её неповторимый характер",
+      description:
+        "Красота жемчуга раскрывается через свет, поверхность, цвет и гармонию. Каждая деталь влияет на характер готового украшения.",
+      closingText: "Драгоценность природы.",
+      closingAccent: "Совершенствуется тщательным отбором.",
+      since: "LIDYA · С 1989 ГОДА",
+      points: [
+        {
+          title: "Блеск",
+          description:
+            "Качественная жемчужина словно светится изнутри. Её поверхность отражает свет с глубиной и чистотой, создавая характерное сияние.",
+        },
+        {
+          title: "Ориент",
+          description:
+            "Под поверхностью лучших жемчужин проявляются тонкие оттенки розового, серебристого, кремового и зелёного.",
+        },
+        {
+          title: "Перламутр",
+          description:
+            "Слой за слоем перламутр создаёт глубину, мягкость и долговечную красоту жемчужины.",
+        },
+        {
+          title: "Гармония",
+          description:
+            "Жемчужины тщательно подбираются по величине, цвету, форме и блеску, чтобы готовое украшение выглядело естественно и гармонично.",
+        },
+      ],
+    },
+
+    cta: {
+      title: "Откройте красоту жемчуга лично",
+      sub:
+        "Жемчуг раскрывает свой настоящий характер в движении и свете. Посетите нас в рамках индивидуальной встречи.",
+    },
+  },
+
+  nl: {
+    gallery: {
+      eyebrow: "De parelcollectie",
+      title: "Parels geselecteerd om",
+      titleAccent: "hun ingetogen schoonheid.",
+      description:
+        "Van klassieke parelsnoeren tot eigentijdse sieraden: elk stuk wordt geselecteerd op glans, harmonie en natuurlijk karakter.",
+      itemLabel: "Parelcollectie",
+      closingText: "Langzaam gevormd door de natuur.",
+      closingAccent: "Zorgvuldig met de hand geselecteerd.",
+      captions: [
+        "Parelsnoer",
+        "Parelhanger",
+        "Detail van hanger",
+        "Parelarmband",
+        "Verstelbare armband",
+        "Hangende oorbellen",
+        "Parelstekers",
+        "Parelarmband",
+        "Detail van sluiting",
+        "Parelring",
+      ],
+      alts: [
+        "Parelsnoer met goudkleurige diamanten sluiting",
+        "Enkele parelhanger met diamantaccent aan een gouden ketting",
+        "Parel- en diamanthanger op natuursteen",
+        "Parelarmband met een gouden pavé kraal met diamanten",
+        "Parelarmband met verstelbare gouden kettingsluiting",
+        "Hangende pareloorbellen aan gouden ringen met diamanten",
+        "Parelstekers met diamantaccent",
+        "Gouden armband met parel- en diamanten bedel",
+        "Close-up van de diamanten sluiting van een parelsnoer",
+        "Parelring met diamanten bladmotieven in goud",
+      ],
+    },
+
+    craft: {
+      eyebrow: "Schoonheid zit in het detail",
+      title: "Wat een fijne parel haar onmiskenbare uitstraling geeft",
+      description:
+        "De schoonheid van een parel wordt zichtbaar in licht, oppervlak, kleur en balans. Elk detail draagt bij aan het karakter van het uiteindelijke sieraad.",
+      closingText: "Een juweel van de natuur.",
+      closingAccent: "Verfijnd door zorgvuldige selectie.",
+      since: "LIDYA · SINDS 1989",
+      points: [
+        {
+          title: "Glans",
+          description:
+            "Een fijne parel lijkt van binnenuit te stralen. Het oppervlak weerspiegelt licht met helderheid en diepte.",
+        },
+        {
+          title: "Oriënt",
+          description:
+            "Onder het oppervlak tonen de mooiste parels subtiele nuances van roze, zilver, crème en groen.",
+        },
+        {
+          title: "Parelmoer",
+          description:
+            "Laag na laag parelmoer creëert de diepte, zachtheid en blijvende schoonheid van een parel.",
+        },
+        {
+          title: "Harmonie",
+          description:
+            "Parels worden zorgvuldig gecombineerd op grootte, kleur, vorm en glans, zodat het uiteindelijke sieraad natuurlijk in balans voelt.",
+        },
+      ],
+    },
+
+    cta: {
+      title: "Ontdek de schoonheid van parels persoonlijk",
+      sub:
+        "Parels tonen hun ware karakter in beweging en licht. Bezoek ons tijdens een privéafspraak en ervaar zelf hun glans, kleur en individualiteit.",
+    },
+  },
+
+  da: {
+    gallery: {
+      eyebrow: "Perlekollektionen",
+      title: "Perler udvalgt for",
+      titleAccent: "deres stille skønhed.",
+      description:
+        "Fra klassiske perlekæder til moderne smykker vælges hvert stykke for glans, harmoni og naturlig karakter.",
+      itemLabel: "Perlekollektion",
+      closingText: "Langsomt formet af naturen.",
+      closingAccent: "Omhyggeligt udvalgt i hånden.",
+      captions: [
+        "Perlekæde",
+        "Perlevedhæng",
+        "Detalje af vedhæng",
+        "Perlearmbånd",
+        "Justerbart armbånd",
+        "Hængende øreringe",
+        "Perleørestikker",
+        "Perlearmring",
+        "Detalje af lås",
+        "Perlering",
+      ],
+      alts: [
+        "Perlekæde med diamantbesat guldlås",
+        "Enkelt perlevedhæng med diamantdetalje på guldkæde",
+        "Perle- og diamantvedhæng på natursten",
+        "Perlearmbånd med pavébesat guld- og diamantperle",
+        "Perlearmbånd med justerbar guldkædelås",
+        "Hængende perleøreringe på diamantbesatte guldringe",
+        "Perleørestikker med diamantdetalje",
+        "Guldarmring med perle- og diamantvedhæng",
+        "Nærbillede af diamantbesat lås på en perlekæde",
+        "Perlering med diamantbesatte bladmotiver i guld",
+      ],
+    },
+
+    craft: {
+      eyebrow: "Skønheden ligger i detaljen",
+      title: "Det, der giver en fin perle dens umiskendelige udstråling",
+      description:
+        "En perles skønhed viser sig gennem lys, overflade, farve og balance. Hver detalje bidrager til det færdige smykkes karakter.",
+      closingText: "En juvel fra naturen.",
+      closingAccent: "Forfinet gennem omhyggelig udvælgelse.",
+      since: "LIDYA · SIDEN 1989",
+      points: [
+        {
+          title: "Glans",
+          description:
+            "En fin perle synes at lyse indefra. Overfladen reflekterer lyset med klarhed og dybde.",
+        },
+        {
+          title: "Orient",
+          description:
+            "Under overfladen afslører de fineste perler subtile nuancer af rosa, sølv, creme og grøn.",
+        },
+        {
+          title: "Perlemor",
+          description:
+            "Lag på lag af perlemor skaber perlens dybde, blødhed og varige skønhed.",
+        },
+        {
+          title: "Harmoni",
+          description:
+            "Perlerne udvælges omhyggeligt efter størrelse, farve, form og glans.",
+        },
+      ],
+    },
+
+    cta: {
+      title: "Oplev perlernes skønhed personligt",
+      sub:
+        "Perler viser deres sande karakter i bevægelse og lys. Besøg os til en privat aftale og oplev deres glans, farve og individualitet.",
+    },
+  },
+
+  fi: {
+    gallery: {
+      eyebrow: "Helmikokoelma",
+      title: "Helmet valittu niiden",
+      titleAccent: "hillityn kauneuden vuoksi.",
+      description:
+        "Klassisista helminauhoista moderneihin koruihin jokainen kappale valitaan kiillon, harmonian ja luonnollisen luonteen perusteella.",
+      itemLabel: "Helmikokoelma",
+      closingText: "Luonnon hitaasti muovaama.",
+      closingAccent: "Huolellisesti käsin valittu.",
+      captions: [
+        "Helminauha",
+        "Helmiriipus",
+        "Riipuksen yksityiskohta",
+        "Helmirannekoru",
+        "Säädettävä rannekoru",
+        "Riippuvat korvakorut",
+        "Helminappikorvakorut",
+        "Helmirannerengas",
+        "Lukon yksityiskohta",
+        "Helmisormus",
+      ],
+      alts: [
+        "Helminauha timantein koristellulla kultalukolla",
+        "Yksittäinen helmiriipus timanttiyksityiskohdalla kultaketjussa",
+        "Helmi- ja timanttiriipus luonnonkiven päällä",
+        "Helmirannekoru pavé-kulta- ja timanttihelmellä",
+        "Helmirannekoru säädettävällä kultaketjulukolla",
+        "Riippuvat helmikorvakorut timantein koristelluissa kultarenkaissa",
+        "Helminappikorvakorut timanttiyksityiskohdalla",
+        "Kultainen rannerengas helmi- ja timanttikoristeella",
+        "Lähikuva helminauhan timantein koristellusta lukosta",
+        "Helmisormus timantein koristelluilla kultaisilla lehtiaiheilla",
+      ],
+    },
+
+    craft: {
+      eyebrow: "Kauneus on yksityiskohdissa",
+      title: "Mikä antaa hienolle helmelle sen tunnistettavan olemuksen",
+      description:
+        "Helmen kauneus näkyy valossa, pinnassa, värissä ja tasapainossa. Jokainen yksityiskohta vaikuttaa valmiin korun luonteeseen.",
+      closingText: "Luonnon jalokivi.",
+      closingAccent: "Huolellisen valinnan viimeistelemä.",
+      since: "LIDYA · VUODESTA 1989",
+      points: [
+        {
+          title: "Kiilto",
+          description:
+            "Hieno helmi näyttää hehkuvan sisältäpäin. Sen pinta heijastaa valoa kirkkaasti ja syvältä.",
+        },
+        {
+          title: "Orient",
+          description:
+            "Hienoimpien helmien pinnan alla näkyy hienovaraisia vaaleanpunaisen, hopean, kerman ja vihreän sävyjä.",
+        },
+        {
+          title: "Helmiäinen",
+          description:
+            "Kerros kerrokselta muodostuva helmiäinen luo helmen syvyyden, pehmeyden ja kestävän kauneuden.",
+        },
+        {
+          title: "Harmonia",
+          description:
+            "Helmet valitaan huolellisesti koon, värin, muodon ja kiillon mukaan.",
+        },
+      ],
+    },
+
+    cta: {
+      title: "Tutustu helmien kauneuteen henkilökohtaisesti",
+      sub:
+        "Helmet paljastavat todellisen luonteensa liikkeessä ja valossa. Vieraile luonamme yksityisellä tapaamisella.",
+    },
+  },
+
+  sv: {
+    gallery: {
+      eyebrow: "Pärlkollektionen",
+      title: "Pärlor valda för",
+      titleAccent: "sin diskreta skönhet.",
+      description:
+        "Från klassiska pärlhalsband till samtida smycken väljs varje del för lyster, harmoni och naturlig karaktär.",
+      itemLabel: "Pärlkollektion",
+      closingText: "Långsamt formad av naturen.",
+      closingAccent: "Omsorgsfullt handplockad.",
+      captions: [
+        "Pärlhalsband",
+        "Pärlhänge",
+        "Detalj av hänge",
+        "Pärlarmband",
+        "Justerbart armband",
+        "Hängande örhängen",
+        "Pärlstift",
+        "Pärlarmring",
+        "Detalj av lås",
+        "Pärlring",
+      ],
+      alts: [
+        "Pärlhalsband med diamantbesatt guldlås",
+        "Enkelt pärlhänge med diamantdetalj på guldkedja",
+        "Pärl- och diamanthänge på natursten",
+        "Pärlarmband med pavébesatt guld- och diamantpärla",
+        "Pärlarmband med justerbart guldkedjelås",
+        "Hängande pärlörhängen på diamantbesatta guldringar",
+        "Pärlstift med diamantdetalj",
+        "Guldarmring med pärl- och diamantberlock",
+        "Närbild av ett pärlhalsbands diamantbesatta lås",
+        "Pärlring med diamantbesatta bladmotiv i guld",
+      ],
+    },
+
+    craft: {
+      eyebrow: "Skönheten finns i detaljerna",
+      title: "Det som ger en fin pärla dess omisskännliga närvaro",
+      description:
+        "En pärlas skönhet syns i ljuset, ytan, färgen och balansen. Varje detalj bidrar till det färdiga smyckets karaktär.",
+      closingText: "En juvel från naturen.",
+      closingAccent: "Förfinad genom omsorgsfullt urval.",
+      since: "LIDYA · SEDAN 1989",
+      points: [
+        {
+          title: "Lyster",
+          description:
+            "En fin pärla tycks lysa inifrån. Ytan reflekterar ljuset med klarhet och djup.",
+        },
+        {
+          title: "Orient",
+          description:
+            "Under ytan avslöjar de finaste pärlorna subtila nyanser av rosa, silver, crème och grönt.",
+        },
+        {
+          title: "Pärlemor",
+          description:
+            "Lager efter lager av pärlemor skapar pärlans djup, mjukhet och varaktiga skönhet.",
+        },
+        {
+          title: "Harmoni",
+          description:
+            "Pärlorna väljs noggrant efter storlek, färg, form och lyster.",
+        },
+      ],
+    },
+
+    cta: {
+      title: "Upptäck pärlornas skönhet personligen",
+      sub:
+        "Pärlor visar sin verkliga karaktär i rörelse och ljus. Besök oss vid ett privat möte.",
+    },
+  },
+
+  fr: {
+    gallery: {
+      eyebrow: "La collection de perles",
+      title: "Des perles choisies pour",
+      titleAccent: "leur beauté discrète.",
+      description:
+        "Des rangs classiques aux bijoux contemporains, chaque pièce est choisie pour son lustre, son harmonie et son caractère naturel.",
+      itemLabel: "Collection de perles",
+      closingText: "Lentement façonnée par la nature.",
+      closingAccent: "Soigneusement sélectionnée à la main.",
+      captions: [
+        "Collier de perles",
+        "Pendentif perle",
+        "Détail du pendentif",
+        "Bracelet de perles",
+        "Bracelet ajustable",
+        "Boucles pendantes",
+        "Puces d’oreilles",
+        "Jonc avec perle",
+        "Détail du fermoir",
+        "Bague perle",
+      ],
+      alts: [
+        "Collier de perles avec fermoir en or serti de diamants",
+        "Pendentif avec une perle et un accent de diamant sur chaîne en or",
+        "Pendentif perle et diamant posé sur une pierre naturelle",
+        "Bracelet de perles avec bille en or pavée de diamants",
+        "Bracelet de perles avec fermoir réglable en chaîne d’or",
+        "Boucles d’oreilles pendantes en perles sur anneaux en or sertis de diamants",
+        "Puces d’oreilles en perles avec accent de diamant",
+        "Jonc en or avec perle et pendentif diamant",
+        "Gros plan du fermoir serti de diamants d’un collier de perles",
+        "Bague en perle avec motifs de feuilles en or sertis de diamants",
+      ],
+    },
+
+    craft: {
+      eyebrow: "La beauté réside dans le détail",
+      title: "Ce qui donne à une perle fine sa présence incomparable",
+      description:
+        "La beauté d’une perle se révèle dans la lumière, la surface, la couleur et l’équilibre. Chaque détail contribue au caractère du bijou fini.",
+      closingText: "Un joyau de la nature.",
+      closingAccent: "Affiné par une sélection attentive.",
+      since: "LIDYA · DEPUIS 1989",
+      points: [
+        {
+          title: "Lustre",
+          description:
+            "Une perle fine semble rayonner de l’intérieur. Sa surface reflète la lumière avec clarté et profondeur.",
+        },
+        {
+          title: "Orient",
+          description:
+            "Sous leur surface, les plus belles perles révèlent de subtiles nuances de rose, d’argent, de crème et de vert.",
+        },
+        {
+          title: "Nacre",
+          description:
+            "Couche après couche, la nacre crée la profondeur, la douceur et la beauté durable d’une perle.",
+        },
+        {
+          title: "Harmonie",
+          description:
+            "Les perles sont soigneusement assorties par taille, couleur, forme et lustre.",
+        },
+      ],
+    },
+
+    cta: {
+      title: "Découvrez la beauté des perles en personne",
+      sub:
+        "Les perles révèlent leur véritable caractère dans le mouvement et la lumière. Venez les découvrir lors d’un rendez-vous privé.",
+    },
+  },
+
+  it: {
+    gallery: {
+      eyebrow: "La collezione di perle",
+      title: "Perle scelte per",
+      titleAccent: "la loro bellezza discreta.",
+      description:
+        "Dalle classiche collane ai gioielli contemporanei, ogni pezzo viene scelto per lucentezza, armonia e carattere naturale.",
+      itemLabel: "Collezione di perle",
+      closingText: "Formata lentamente dalla natura.",
+      closingAccent: "Selezionata con cura a mano.",
+      captions: [
+        "Collana di perle",
+        "Pendente con perla",
+        "Dettaglio del pendente",
+        "Bracciale di perle",
+        "Bracciale regolabile",
+        "Orecchini pendenti",
+        "Orecchini a lobo",
+        "Bracciale rigido con perla",
+        "Dettaglio della chiusura",
+        "Anello con perla",
+      ],
+      alts: [
+        "Collana di perle con chiusura in oro e diamanti",
+        "Pendente con singola perla e dettaglio in diamante su catena d’oro",
+        "Pendente con perla e diamante su pietra naturale",
+        "Bracciale di perle con elemento pavé in oro e diamanti",
+        "Bracciale di perle con chiusura regolabile in catena d’oro",
+        "Orecchini pendenti con perle su cerchi d’oro e diamanti",
+        "Orecchini a lobo con perla e dettaglio in diamante",
+        "Bracciale rigido in oro con perla e charm in diamante",
+        "Dettaglio ravvicinato della chiusura in diamanti di una collana di perle",
+        "Anello con perla e motivi a foglia in oro e diamanti",
+      ],
+    },
+
+    craft: {
+      eyebrow: "La bellezza è nei dettagli",
+      title: "Ciò che dona a una perla fine la sua presenza inconfondibile",
+      description:
+        "La bellezza di una perla si rivela attraverso luce, superficie, colore ed equilibrio. Ogni dettaglio contribuisce al carattere del gioiello finito.",
+      closingText: "Un gioiello della natura.",
+      closingAccent: "Raffinato da una selezione attenta.",
+      since: "LIDYA · DAL 1989",
+      points: [
+        {
+          title: "Lucentezza",
+          description:
+            "Una perla fine sembra brillare dall’interno. La sua superficie riflette la luce con chiarezza e profondità.",
+        },
+        {
+          title: "Oriente",
+          description:
+            "Sotto la superficie, le perle più pregiate rivelano delicate sfumature di rosa, argento, crema e verde.",
+        },
+        {
+          title: "Madreperla",
+          description:
+            "Strato dopo strato, la madreperla crea profondità, morbidezza e bellezza duratura.",
+        },
+        {
+          title: "Armonia",
+          description:
+            "Le perle vengono abbinate con cura per dimensione, colore, forma e lucentezza.",
+        },
+      ],
+    },
+
+    cta: {
+      title: "Scoprite di persona la bellezza delle perle",
+      sub:
+        "Le perle rivelano il loro vero carattere nel movimento e nella luce. Venite a trovarci con un appuntamento privato.",
+    },
+  },
+
+  es: {
+    gallery: {
+      eyebrow: "La colección de perlas",
+      title: "Perlas elegidas por",
+      titleAccent: "su belleza discreta.",
+      description:
+        "Desde collares clásicos hasta joyas contemporáneas, cada pieza se selecciona por su lustre, armonía y carácter natural.",
+      itemLabel: "Colección de perlas",
+      closingText: "Formada lentamente por la naturaleza.",
+      closingAccent: "Seleccionada cuidadosamente a mano.",
+      captions: [
+        "Collar de perlas",
+        "Colgante de perla",
+        "Detalle del colgante",
+        "Pulsera de perlas",
+        "Pulsera ajustable",
+        "Pendientes colgantes",
+        "Pendientes de botón",
+        "Brazalete con perla",
+        "Detalle del cierre",
+        "Anillo con perla",
+      ],
+      alts: [
+        "Collar de perlas con cierre de oro engastado con diamantes",
+        "Colgante con una perla y detalle de diamante en cadena de oro",
+        "Colgante de perla y diamante sobre piedra natural",
+        "Pulsera de perlas con cuenta de oro pavé y diamantes",
+        "Pulsera de perlas con cierre ajustable de cadena de oro",
+        "Pendientes colgantes de perlas en aros de oro con diamantes",
+        "Pendientes de botón con perla y detalle de diamante",
+        "Brazalete de oro con perla y colgante de diamante",
+        "Primer plano del cierre con diamantes de un collar de perlas",
+        "Anillo con perla y motivos de hojas de oro con diamantes",
+      ],
+    },
+
+    craft: {
+      eyebrow: "La belleza está en los detalles",
+      title: "Lo que da a una perla fina su presencia inconfundible",
+      description:
+        "La belleza de una perla se revela a través de la luz, la superficie, el color y el equilibrio. Cada detalle contribuye al carácter de la pieza terminada.",
+      closingText: "Una joya de la naturaleza.",
+      closingAccent: "Refinada mediante una selección cuidadosa.",
+      since: "LIDYA · DESDE 1989",
+      points: [
+        {
+          title: "Lustre",
+          description:
+            "Una perla fina parece brillar desde su interior. Su superficie refleja la luz con claridad y profundidad.",
+        },
+        {
+          title: "Oriente",
+          description:
+            "Bajo la superficie, las mejores perlas revelan delicados matices de rosa, plata, crema y verde.",
+        },
+        {
+          title: "Nácar",
+          description:
+            "Capa tras capa, el nácar crea la profundidad, la suavidad y la belleza duradera de una perla.",
+        },
+        {
+          title: "Armonía",
+          description:
+            "Las perlas se combinan cuidadosamente por tamaño, color, forma y lustre.",
+        },
+      ],
+    },
+
+    cta: {
+      title: "Descubra la belleza de las perlas en persona",
+      sub:
+        "Las perlas revelan su verdadero carácter con el movimiento y la luz. Visítenos en una cita privada.",
     },
   },
 };
@@ -470,12 +1189,19 @@ const PEARL_IMAGES = [
 
 export default function PearlsContent() {
   const { locale } = useLanguage();
-  const copy = PEARLS_COPY[locale];
+
+  const copy = PEARLS_COPY[locale] ?? PEARLS_COPY.en;
 
   const galleryItems = PEARL_IMAGES.map((image, index) => ({
     image,
-    caption: copy.gallery.captions[index],
-    alt: copy.gallery.alts[index],
+    caption:
+      copy.gallery.captions[index] ??
+      PEARLS_COPY.en.gallery.captions[index] ??
+      "",
+    alt:
+      copy.gallery.alts[index] ??
+      PEARLS_COPY.en.gallery.alts[index] ??
+      "",
   }));
 
   return (
@@ -483,23 +1209,30 @@ export default function PearlsContent() {
       <Header />
 
       <main>
-        {/* CINEMATIC HERO */}
         <PearlsCinematicHero />
 
-        {/* COLLECTION GALLERY */}
         <CategoryGallery
           icon={<PearlIcon />}
+          eyebrow={copy.gallery.eyebrow}
+          title={copy.gallery.title}
+          titleAccent={copy.gallery.titleAccent}
+          description={copy.gallery.description}
+          itemLabel={copy.gallery.itemLabel}
+          closingText={copy.gallery.closingText}
+          closingAccent={copy.gallery.closingAccent}
           items={galleryItems}
         />
 
-        {/* CRAFT / QUALITY */}
         <CategoryCraft
           eyebrow={copy.craft.eyebrow}
           title={copy.craft.title}
+          description={copy.craft.description}
           points={copy.craft.points}
+          closingText={copy.craft.closingText}
+          closingAccent={copy.craft.closingAccent}
+          since={copy.craft.since}
         />
 
-        {/* PRIVATE VIEWING CTA */}
         <CategoryCTA
           title={copy.cta.title}
           sub={copy.cta.sub}

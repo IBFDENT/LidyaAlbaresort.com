@@ -14,48 +14,47 @@ import { GemClusterIcon } from "@/components/category/icons";
 import { useLanguage } from "@/components/LanguageProvider";
 import type { Locale } from "@/lib/i18n";
 
-const BRILLIANTS_COPY: Record<
-  Locale,
-  {
-    hero: {
-      eyebrow: string;
-      title1: string;
-      title2: string;
-      description: string;
-      since: string;
-      statementEyebrow: string;
-      statementBefore: string;
-      statementAccent: string;
-      imageAlt: string;
-    };
-    gallery: {
-      eyebrow: string;
+type BrilliantsCopy = {
+  hero: {
+    eyebrow: string;
+    title1: string;
+    title2: string;
+    description: string;
+    since: string;
+    statementEyebrow: string;
+    statementBefore: string;
+    statementAccent: string;
+    imageAlt: string;
+  };
+  gallery: {
+    eyebrow: string;
+    title: string;
+    titleAccent: string;
+    description: string;
+    itemLabel: string;
+    closingText: string;
+    closingAccent: string;
+    captions: string[];
+    alts: string[];
+  };
+  craft: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    closingText: string;
+    closingAccent: string;
+    points: {
       title: string;
-      titleAccent: string;
       description: string;
-      itemLabel: string;
-      closingText: string;
-      closingAccent: string;
-      captions: string[];
-      alts: string[];
-    };
-    craft: {
-      eyebrow: string;
-      title: string;
-      description: string;
-      closingText: string;
-      closingAccent: string;
-      points: {
-        title: string;
-        description: string;
-      }[];
-    };
-    cta: {
-      title: string;
-      sub: string;
-    };
-  }
-> = {
+    }[];
+  };
+  cta: {
+    title: string;
+    sub: string;
+  };
+};
+
+const BRILLIANTS_COPY: Record<Locale, BrilliantsCopy> = {
   en: {
     hero: {
       eyebrow: "Brilliants",
@@ -657,6 +656,694 @@ const BRILLIANTS_COPY: Record<
         "Zdjęcie może pokazać formę diamentu, ale nie to, jak ożywa w świetle. Odkryj kolekcję Brilliants podczas prywatnej wizyty w jednym z naszych butików.",
     },
   },
+
+  ru: {
+    hero: {
+      eyebrow: "Бриллианты",
+      title1: "Где свет",
+      title2: "становится украшением",
+      description:
+        "Бриллиантовая огранка была создана с одной исключительной целью — превращать свет в огонь. Каждый камень в нашей коллекции отбирается по тому, как он оживает в движении и раскрывает новые вспышки блеска при каждом повороте.",
+      since: "LIDYA · С 1989 ГОДА",
+      statementEyebrow: "Искусство света",
+      statementBefore: "Создано, чтобы ловить свет.",
+      statementAccent: "Создано, чтобы сохранять его.",
+      imageAlt:
+        "Коллекция украшений LIDYA с бриллиантами, расположенная на ткани цвета шампанского и натуральном камне",
+    },
+    gallery: {
+      eyebrow: "Коллекция бриллиантов",
+      title: "Украшения, созданные",
+      titleAccent: "светом и блеском.",
+      description:
+        "От классических солитеров до браслетов, серег и подвесок с бриллиантами — каждое украшение выбирается за то, как его камни взаимодействуют со светом: элегантны в покое и необыкновенны в движении.",
+      itemLabel: "Коллекция бриллиантов",
+      closingText: "Каждое движение ловит свет.",
+      closingAccent: "Каждый взгляд открывает что-то новое.",
+      captions: [
+        "Кольцо-солитер",
+        "Серьги-пусеты",
+        "Классический солитер",
+        "Кольцо Eternity",
+        "Бриллиантовая подвеска",
+        "Теннисный браслет",
+        "Деталь Eternity",
+        "Подвеска Pavé",
+        "Каплевидный Halo",
+        "Комплект",
+      ],
+      alts: [
+        "Кольцо-солитер с бриллиантом круглой огранки",
+        "Серьги-пусеты с бриллиантами круглой огранки",
+        "Кольцо-солитер с бриллиантом в шестикраповой закрепке",
+        "Кольцо Eternity с бриллиантами",
+        "Подвеска с бриллиантом круглой огранки",
+        "Теннисный браслет с бриллиантами",
+        "Кольцо Eternity с бриллиантами под углом",
+        "Бриллиантовая подвеска с ушком Pavé",
+        "Подвеска с бриллиантом грушевидной формы в ореоле бриллиантов",
+        "Комплект из бриллиантового кольца, серег и ожерелья",
+      ],
+    },
+    craft: {
+      eyebrow: "Красота блеска",
+      title:
+        "Истинный блеск начинается с того, как бриллиант встречается со светом",
+      description:
+        "Красота бриллианта определяется не только его размером. Огранка, пропорции, движение и закрепка вместе определяют, насколько выразительно камень возвращает свет.",
+      closingText: "Свет раскрывает блеск.",
+      closingAccent: "Время раскрывает ценность.",
+      points: [
+        {
+          title: "Огранка",
+          description:
+            "Пропорции и грани бриллиантовой огранки определяют, как свет проходит через камень и возвращается к глазу. Прекрасная огранка придаёт бриллианту его неповторимую живость.",
+        },
+        {
+          title: "Огонь",
+          description:
+            "Проходя через бриллиант, свет разделяется на цветные вспышки. Эта игра спектрального света создаёт завораживающий огонь качественного бриллианта.",
+        },
+        {
+          title: "Сцинтилляция",
+          description:
+            "Вспышки света и контраста, возникающие при движении камня, его владельца или источника света, делают бриллиант живым, а не просто ярким.",
+        },
+        {
+          title: "Закрепка",
+          description:
+            "Продуманная закрепка защищает камень и одновременно позволяет свету свободно проникать к нему. Украшение должно обрамлять бриллиант, а не конкурировать с ним.",
+        },
+      ],
+    },
+    cta: {
+      title: "Некоторые бриллианты нужно увидеть лично",
+      sub:
+        "Фотография может передать форму бриллианта, но не то, как он оживает в свете. Откройте для себя коллекцию Brilliants во время частного визита в один из наших бутиков.",
+    },
+  },
+
+  nl: {
+    hero: {
+      eyebrow: "Briljanten",
+      title1: "Waar licht",
+      title2: "een sieraad wordt",
+      description:
+        "De briljantslijpvorm werd ontwikkeld met één uitzonderlijk doel — licht veranderen in vuur. Elke steen in onze collectie wordt geselecteerd op de manier waarop hij tot leven komt in beweging en bij iedere beweging nieuwe lichtflitsen onthult.",
+      since: "LIDYA · SINDS 1989",
+      statementEyebrow: "De kunst van licht",
+      statementBefore: "Gemaakt om het licht te vangen.",
+      statementAccent: "Ontworpen om het vast te houden.",
+      imageAlt:
+        "LIDYA-collectie met briljanten op champagnekleurige stof en natuursteen",
+    },
+    gallery: {
+      eyebrow: "De Briljantencollectie",
+      title: "Sieraden gevormd door",
+      titleAccent: "licht en schittering.",
+      description:
+        "Van tijdloze solitaires tot met diamanten bezette armbanden, oorbellen en hangers: elk stuk wordt geselecteerd op de manier waarop de stenen met licht spelen — elegant in rust, buitengewoon in beweging.",
+      itemLabel: "Briljantencollectie",
+      closingText: "Elke beweging vangt het licht.",
+      closingAccent: "Elke blik onthult iets nieuws.",
+      captions: [
+        "Solitairring",
+        "Oorknopjes",
+        "Klassieke solitair",
+        "Eternityring",
+        "Diamanten hanger",
+        "Tennisarmband",
+        "Eternity-detail",
+        "Pavé-hanger",
+        "Druppelvormige halo",
+        "De set",
+      ],
+      alts: [
+        "Solitairring met briljantgeslepen diamant",
+        "Oorknopjes met briljantgeslepen diamanten",
+        "Solitairring met briljantgeslepen diamant in zes griffen",
+        "Eternityring met briljantgeslepen diamanten",
+        "Hanger met briljantgeslepen diamant",
+        "Tennisarmband met briljantgeslepen diamanten",
+        "Eternityring met diamanten vanuit een hoek",
+        "Diamanten hanger met pavé-bezette hangerlus",
+        "Peervormige diamanten hanger met diamanten halo",
+        "Bijpassende set van diamanten ring, oorbellen en ketting",
+      ],
+    },
+    craft: {
+      eyebrow: "De schoonheid van schittering",
+      title:
+        "Ware schittering begint bij de manier waarop een diamant het licht ontmoet",
+      description:
+        "Een mooie diamant is meer dan alleen zijn formaat. Slijpvorm, verhoudingen, beweging en zetting bepalen samen hoe krachtig de steen het licht terugkaatst.",
+      closingText: "Licht onthult de schittering.",
+      closingAccent: "Tijd onthult de waarde.",
+      points: [
+        {
+          title: "Slijpvorm",
+          description:
+            "De verhoudingen en facetten van een briljantgeslepen diamant bepalen hoe licht door de steen reist en terugkeert naar het oog. Een prachtige slijpvorm geeft een diamant zijn karakteristieke levendigheid.",
+        },
+        {
+          title: "Vuur",
+          description:
+            "Wanneer licht door de diamant beweegt, wordt het opgesplitst in kleurrijke flitsen. Dit spel van spectraal licht geeft een fijne briljant zijn fascinerende vuur.",
+        },
+        {
+          title: "Scintillatie",
+          description:
+            "De licht- en contrastflitsen die zichtbaar worden wanneer de diamant, de drager of de lichtbron beweegt — de eigenschap waardoor een steen levendig aanvoelt.",
+        },
+        {
+          title: "Zetting",
+          description:
+            "Een doordachte zetting beschermt de steen en laat tegelijk zoveel mogelijk licht toe. Het sieraad moet de diamant omlijsten, niet ermee concurreren.",
+        },
+      ],
+    },
+    cta: {
+      title: "Sommige schittering moet u in het echt zien",
+      sub:
+        "Een foto kan de vorm van een diamant vastleggen, maar niet hoe hij tot leven komt in het licht. Ontdek de Briljantencollectie tijdens een privébezoek aan een van onze boutiques.",
+    },
+  },
+
+  da: {
+    hero: {
+      eyebrow: "Brillanter",
+      title1: "Hvor lys",
+      title2: "bliver til smykker",
+      description:
+        "Brillantslibningen blev skabt med ét ekstraordinært formål — at forvandle lys til ild. Hver sten i vores kollektion udvælges efter, hvordan den kommer til live i bevægelse og afslører nye glimt ved hver bevægelse.",
+      since: "LIDYA · SIDEN 1989",
+      statementEyebrow: "Lysets kunst",
+      statementBefore: "Skabt til at fange lyset.",
+      statementAccent: "Skabt til at bevare det.",
+      imageAlt:
+        "LIDYA-kollektion med brillantsmykker arrangeret på champagnefarvet stof og natursten",
+    },
+    gallery: {
+      eyebrow: "Brillantkollektionen",
+      title: "Smykker formet af",
+      titleAccent: "lys og brillans.",
+      description:
+        "Fra tidløse solitaire-ringe til diamantbesatte armbånd, øreringe og vedhæng udvælges hvert smykke efter den måde, stenene arbejder med lyset på — elegante i ro, ekstraordinære i bevægelse.",
+      itemLabel: "Brillantkollektionen",
+      closingText: "Hver bevægelse fanger lyset.",
+      closingAccent: "Hvert blik afslører noget nyt.",
+      captions: [
+        "Solitaire-ring",
+        "Ørestikker",
+        "Klassisk solitaire",
+        "Eternity-ring",
+        "Diamantvedhæng",
+        "Tennisarmbånd",
+        "Eternity-detalje",
+        "Pavé-vedhæng",
+        "Dråbe-halo",
+        "Sættet",
+      ],
+      alts: [
+        "Solitaire-ring med brillantsleben diamant",
+        "Ørestikker med brillantslebne diamanter",
+        "Solitaire-ring med seks grabber og brillantsleben diamant",
+        "Eternity-ring med brillantslebne diamanter",
+        "Vedhæng med brillantsleben diamant",
+        "Tennisarmbånd med brillantslebne diamanter",
+        "Diamantbesat eternity-ring vist fra siden",
+        "Diamantvedhæng med pavébesat øsken",
+        "Dråbeformet diamantvedhæng omgivet af diamant-halo",
+        "Matchende sæt med diamantring, øreringe og halskæde",
+      ],
+    },
+    craft: {
+      eyebrow: "Brillansens skønhed",
+      title:
+        "Ægte brillans begynder med den måde, diamanten møder lyset",
+      description:
+        "En smuk diamant handler om mere end størrelse. Slibning, proportioner, bevægelse og fatning afgør tilsammen, hvor levende stenen sender lyset tilbage.",
+      closingText: "Lyset afslører brillansen.",
+      closingAccent: "Tiden afslører værdien.",
+      points: [
+        {
+          title: "Slibning",
+          description:
+            "Proportionerne og facetterne i en brillantsleben diamant bestemmer, hvordan lyset bevæger sig gennem stenen og vender tilbage til øjet. En smuk slibning giver diamanten dens særlige liv.",
+        },
+        {
+          title: "Ild",
+          description:
+            "Når lys passerer gennem diamanten, opdeles det i farvede glimt. Dette spektrale lysspil giver en fin brillant dens fascinerende ild.",
+        },
+        {
+          title: "Scintillation",
+          description:
+            "Glimtene af lys og kontrast, der opstår, når diamanten, bæreren eller lyskilden bevæger sig — kvaliteten, der får stenen til at virke levende.",
+        },
+        {
+          title: "Fatning",
+          description:
+            "En gennemtænkt fatning beskytter stenen og giver samtidig lyset fri adgang. Smykket skal indramme diamanten, aldrig konkurrere med den.",
+        },
+      ],
+    },
+    cta: {
+      title: "Nogle former for brillans skal opleves personligt",
+      sub:
+        "Et fotografi kan vise diamantens form, men ikke hvordan den kommer til live i lyset. Oplev Brillantkollektionen ved et privat besøg i en af vores boutiques.",
+    },
+  },
+
+  fi: {
+    hero: {
+      eyebrow: "Briljantit",
+      title1: "Kun valo",
+      title2: "muuttuu koruksi",
+      description:
+        "Briljanttihionta luotiin yhtä erityistä tarkoitusta varten — muuttamaan valo tuleksi. Jokainen mallistomme kivi valitaan sen perusteella, kuinka se herää eloon liikkeessä ja paljastaa uusia valonvälähdyksiä jokaisella liikkeellä.",
+      since: "LIDYA · VUODESTA 1989",
+      statementEyebrow: "Valon taide",
+      statementBefore: "Luotu vangitsemaan valo.",
+      statementAccent: "Suunniteltu säilyttämään se.",
+      imageAlt:
+        "LIDYA-briljanttikorujen mallisto aseteltuna samppanjanväriselle kankaalle ja luonnonkivelle",
+    },
+    gallery: {
+      eyebrow: "Briljanttimallisto",
+      title: "Valon ja",
+      titleAccent: "säihkeen muotoilemia koruja.",
+      description:
+        "Ajattomista solitaire-sormuksista timantein koristeltuihin rannekoruihin, korvakoruihin ja riipuksiin — jokainen koru valitaan sen mukaan, miten sen kivet toimivat valon kanssa: levossa elegantteja, liikkeessä poikkeuksellisia.",
+      itemLabel: "Briljanttimallisto",
+      closingText: "Jokainen liike vangitsee valon.",
+      closingAccent: "Jokainen katse paljastaa jotain uutta.",
+      captions: [
+        "Solitaire-sormus",
+        "Nappikorvakorut",
+        "Klassinen solitaire",
+        "Eternity-sormus",
+        "Timanttiriipus",
+        "Tennisrannekoru",
+        "Eternity-yksityiskohta",
+        "Pavé-riipus",
+        "Pisara-halo",
+        "Setti",
+      ],
+      alts: [
+        "Briljanttihiottu solitaire-timanttisormus",
+        "Briljanttihiotut timanttiset nappikorvakorut",
+        "Kuusikyntinen briljanttihiottu solitaire-sormus",
+        "Briljanttihiottu timanttinen eternity-sormus",
+        "Briljanttihiottu timanttiriipus",
+        "Briljanttihiottu timanttinen tennisrannekoru",
+        "Timanttinen eternity-sormus kulmasta kuvattuna",
+        "Timanttiriipus pavé-istutetulla ripustuslenkillä",
+        "Päärynänmuotoinen timanttiriipus timanttihalolla",
+        "Yhteensopiva timanttisormus-, korvakoru- ja kaulakorusetti",
+      ],
+    },
+    craft: {
+      eyebrow: "Säihkeen kauneus",
+      title:
+        "Todellinen säihke alkaa siitä, miten timantti kohtaa valon",
+      description:
+        "Kaunis timantti on enemmän kuin kokonsa. Hionta, mittasuhteet, liike ja istutus yhdessä ratkaisevat, kuinka elävästi kivi heijastaa valoa takaisin silmään.",
+      closingText: "Valo paljastaa säihkeen.",
+      closingAccent: "Aika paljastaa arvon.",
+      points: [
+        {
+          title: "Hionta",
+          description:
+            "Briljanttihiotun timantin mittasuhteet ja fasetit määräävät, miten valo kulkee kiven läpi ja palaa takaisin silmään. Kaunis hionta antaa timantille sen tunnistettavan elävyyden.",
+        },
+        {
+          title: "Tuli",
+          description:
+            "Kun valo kulkee timantin läpi, se jakautuu värillisiksi välähdyksiksi. Tämä spektrisen valon leikki antaa hienolle briljantille sen kiehtovan tulen.",
+        },
+        {
+          title: "Scintillaatio",
+          description:
+            "Valon ja kontrastin välähdykset, jotka näkyvät timantin, käyttäjän tai valonlähteen liikkuessa — ominaisuus, joka saa kiven tuntumaan elävältä.",
+        },
+        {
+          title: "Istutus",
+          description:
+            "Huolellinen istutus suojaa kiveä ja antaa valolle mahdollisimman vapaan pääsyn siihen. Korun tulee kehystää timanttia, ei kilpailla sen kanssa.",
+        },
+      ],
+    },
+    cta: {
+      title: "Jotkin säihkeet täytyy nähdä omin silmin",
+      sub:
+        "Valokuva voi näyttää timantin muodon, mutta ei sitä, kuinka se herää eloon valossa. Tutustu Briljanttimallistoon yksityisellä vierailulla yhdessä myymälöistämme.",
+    },
+  },
+
+  sv: {
+    hero: {
+      eyebrow: "Briljanter",
+      title1: "Där ljus",
+      title2: "blir till smycken",
+      description:
+        "Briljantslipningen skapades för ett enda extraordinärt syfte — att förvandla ljus till eld. Varje sten i vår kollektion väljs ut efter hur den vaknar till liv i rörelse och avslöjar nya ljusblixtar vid varje rörelse.",
+      since: "LIDYA · SEDAN 1989",
+      statementEyebrow: "Ljusets konst",
+      statementBefore: "Skapad för att fånga ljuset.",
+      statementAccent: "Skapad för att bevara det.",
+      imageAlt:
+        "LIDYA-kollektion med briljantsmycken arrangerad på champagnefärgat tyg och natursten",
+    },
+    gallery: {
+      eyebrow: "Briljantkollektionen",
+      title: "Smycken formade av",
+      titleAccent: "ljus och briljans.",
+      description:
+        "Från tidlösa solitärer till diamantbesatta armband, örhängen och hängen väljs varje smycke ut efter hur stenarna samspelar med ljuset — elegant i vila, extraordinärt i rörelse.",
+      itemLabel: "Briljantkollektionen",
+      closingText: "Varje rörelse fångar ljuset.",
+      closingAccent: "Varje blick avslöjar något nytt.",
+      captions: [
+        "Solitär-ring",
+        "Stiftörhängen",
+        "Klassisk solitär",
+        "Eternity-ring",
+        "Diamanthänge",
+        "Tennisarmband",
+        "Eternity-detalj",
+        "Pavé-hänge",
+        "Droppformat halo",
+        "Setet",
+      ],
+      alts: [
+        "Solitär-ring med briljantslipad diamant",
+        "Stiftörhängen med briljantslipade diamanter",
+        "Solitär-ring med sex klor och briljantslipad diamant",
+        "Eternity-ring med briljantslipade diamanter",
+        "Hänge med briljantslipad diamant",
+        "Tennisarmband med briljantslipade diamanter",
+        "Diamantbesatt eternity-ring sedd från sidan",
+        "Diamanthänge med pavébesatt ögla",
+        "Päronformat diamanthänge omgivet av diamant-halo",
+        "Matchande set med diamantring, örhängen och halsband",
+      ],
+    },
+    craft: {
+      eyebrow: "Briljansens skönhet",
+      title:
+        "Äkta briljans börjar med hur diamanten möter ljuset",
+      description:
+        "En vacker diamant är mer än sin storlek. Slipning, proportioner, rörelse och infattning avgör tillsammans hur levande stenen återger ljuset.",
+      closingText: "Ljuset avslöjar briljansen.",
+      closingAccent: "Tiden avslöjar värdet.",
+      points: [
+        {
+          title: "Slipning",
+          description:
+            "Proportionerna och fasetterna i en briljantslipad diamant avgör hur ljuset färdas genom stenen och återvänder till ögat. En vacker slipning ger diamanten dess omisskännliga liv.",
+        },
+        {
+          title: "Eld",
+          description:
+            "När ljuset färdas genom diamanten delas det upp i färgade blixtar. Detta spektrala ljusspel ger en fin briljant dess fascinerande eld.",
+        },
+        {
+          title: "Scintillation",
+          description:
+            "Blixtarna av ljus och kontrast som syns när diamanten, bäraren eller ljuskällan rör sig — egenskapen som gör att stenen känns levande.",
+        },
+        {
+          title: "Infattning",
+          description:
+            "En genomtänkt infattning skyddar stenen samtidigt som ljuset får fri tillgång. Smycket ska rama in diamanten, aldrig konkurrera med den.",
+        },
+      ],
+    },
+    cta: {
+      title: "Viss briljans måste upplevas på plats",
+      sub:
+        "Ett fotografi kan fånga diamantens form, men inte hur den vaknar till liv i ljuset. Upptäck Briljantkollektionen under ett privat besök i en av våra butiker.",
+    },
+  },
+
+  fr: {
+    hero: {
+      eyebrow: "Brillants",
+      title1: "Quand la lumière",
+      title2: "devient joaillerie",
+      description:
+        "La taille brillant a été créée dans un but extraordinaire — transformer la lumière en feu. Chaque pierre de notre collection est sélectionnée pour la façon dont elle prend vie en mouvement et révèle de nouveaux éclats à chaque geste.",
+      since: "LIDYA · DEPUIS 1989",
+      statementEyebrow: "L’art de la lumière",
+      statementBefore: "Créé pour capter la lumière.",
+      statementAccent: "Pensé pour la retenir.",
+      imageAlt:
+        "Collection de bijoux LIDYA sertis de brillants, disposée sur un tissu champagne et une pierre naturelle",
+    },
+    gallery: {
+      eyebrow: "La collection Brillants",
+      title: "Des bijoux façonnés par",
+      titleAccent: "la lumière et l’éclat.",
+      description:
+        "Des solitaires intemporels aux bracelets, boucles d’oreilles et pendentifs sertis de diamants, chaque pièce est choisie pour la manière dont ses pierres dialoguent avec la lumière — élégante au repos, extraordinaire en mouvement.",
+      itemLabel: "Collection Brillants",
+      closingText: "Chaque mouvement capte la lumière.",
+      closingAccent: "Chaque regard révèle quelque chose de nouveau.",
+      captions: [
+        "Bague solitaire",
+        "Puces d’oreilles",
+        "Solitaire classique",
+        "Alliance Eternity",
+        "Pendentif diamant",
+        "Bracelet tennis",
+        "Détail Eternity",
+        "Pendentif pavé",
+        "Halo poire",
+        "La parure",
+      ],
+      alts: [
+        "Bague solitaire avec diamant taille brillant",
+        "Puces d’oreilles avec diamants taille brillant",
+        "Bague solitaire à six griffes avec diamant taille brillant",
+        "Alliance Eternity sertie de diamants taille brillant",
+        "Pendentif avec diamant taille brillant",
+        "Bracelet tennis serti de diamants taille brillant",
+        "Alliance Eternity en diamants vue de biais",
+        "Pendentif diamant avec bélière pavée",
+        "Pendentif diamant en forme de poire entouré d’un halo de diamants",
+        "Parure assortie avec bague, boucles d’oreilles et collier en diamants",
+      ],
+    },
+    craft: {
+      eyebrow: "La beauté de l’éclat",
+      title:
+        "La véritable brillance commence par la rencontre du diamant avec la lumière",
+      description:
+        "Un beau diamant ne se résume pas à sa taille. Taille, proportions, mouvement et sertissage déterminent ensemble la manière dont la pierre renvoie la lumière vers l’œil.",
+      closingText: "La lumière révèle l’éclat.",
+      closingAccent: "Le temps révèle la valeur.",
+      points: [
+        {
+          title: "Taille",
+          description:
+            "Les proportions et les facettes d’un diamant taille brillant déterminent la façon dont la lumière traverse la pierre et revient vers l’œil. Une belle taille donne au diamant sa vie incomparable.",
+        },
+        {
+          title: "Feu",
+          description:
+            "En traversant le diamant, la lumière se décompose en éclats colorés. Ce jeu de lumière spectrale donne à un beau brillant son feu captivant.",
+        },
+        {
+          title: "Scintillation",
+          description:
+            "Les éclats de lumière et de contraste visibles lorsque le diamant, la personne qui le porte ou la source lumineuse bouge — la qualité qui donne l’impression que la pierre est vivante.",
+        },
+        {
+          title: "Sertissage",
+          description:
+            "Un sertissage bien pensé protège la pierre tout en laissant la lumière l’atteindre librement. Le bijou doit encadrer le diamant, jamais rivaliser avec lui.",
+        },
+      ],
+    },
+    cta: {
+      title: "Certaines brillances doivent être vues en personne",
+      sub:
+        "Une photographie peut montrer la forme d’un diamant, mais pas la manière dont il prend vie dans la lumière. Découvrez la collection Brillants lors d’une visite privée dans l’une de nos boutiques.",
+    },
+  },
+
+  it: {
+    hero: {
+      eyebrow: "Brillanti",
+      title1: "Dove la luce",
+      title2: "diventa gioiello",
+      description:
+        "Il taglio brillante è stato creato per uno scopo straordinario — trasformare la luce in fuoco. Ogni pietra della nostra collezione viene scelta per il modo in cui prende vita nel movimento e rivela nuovi lampi di luce a ogni gesto.",
+      since: "LIDYA · DAL 1989",
+      statementEyebrow: "L’arte della luce",
+      statementBefore: "Creato per catturare la luce.",
+      statementAccent: "Pensato per conservarla.",
+      imageAlt:
+        "Collezione LIDYA di gioielli con brillanti disposta su tessuto color champagne e pietra naturale",
+    },
+    gallery: {
+      eyebrow: "La collezione Brillanti",
+      title: "Gioielli modellati da",
+      titleAccent: "luce e brillantezza.",
+      description:
+        "Dai solitari senza tempo ai bracciali, orecchini e pendenti con diamanti, ogni gioiello viene scelto per il modo in cui le sue pietre interagiscono con la luce — elegante da fermo, straordinario in movimento.",
+      itemLabel: "Collezione Brillanti",
+      closingText: "Ogni movimento cattura la luce.",
+      closingAccent: "Ogni sguardo rivela qualcosa di nuovo.",
+      captions: [
+        "Anello solitario",
+        "Orecchini a bottone",
+        "Solitario classico",
+        "Anello Eternity",
+        "Pendente con diamante",
+        "Bracciale tennis",
+        "Dettaglio Eternity",
+        "Pendente pavé",
+        "Halo a goccia",
+        "Il set",
+      ],
+      alts: [
+        "Anello solitario con diamante taglio brillante",
+        "Orecchini a bottone con diamanti taglio brillante",
+        "Anello solitario a sei griffe con diamante taglio brillante",
+        "Anello Eternity con diamanti taglio brillante",
+        "Pendente con diamante taglio brillante",
+        "Bracciale tennis con diamanti taglio brillante",
+        "Anello Eternity con diamanti visto di lato",
+        "Pendente con diamante e contromaglia pavé",
+        "Pendente con diamante a pera circondato da halo di diamanti",
+        "Set coordinato con anello, orecchini e collana con diamanti",
+      ],
+    },
+    craft: {
+      eyebrow: "La bellezza della brillantezza",
+      title:
+        "La vera brillantezza nasce dal modo in cui il diamante incontra la luce",
+      description:
+        "Un bel diamante è molto più della sua dimensione. Taglio, proporzioni, movimento e incastonatura determinano insieme quanto intensamente la pietra restituisce la luce.",
+      closingText: "La luce rivela la brillantezza.",
+      closingAccent: "Il tempo rivela il valore.",
+      points: [
+        {
+          title: "Taglio",
+          description:
+            "Le proporzioni e le faccette di un diamante taglio brillante determinano il percorso della luce attraverso la pietra e il suo ritorno all’occhio. Un taglio ben eseguito dona al diamante la sua inconfondibile vitalità.",
+        },
+        {
+          title: "Fuoco",
+          description:
+            "Quando la luce attraversa il diamante, si separa in lampi di colore. Questo gioco di luce spettrale dona a un brillante di qualità il suo affascinante fuoco.",
+        },
+        {
+          title: "Scintillazione",
+          description:
+            "I lampi di luce e contrasto visibili quando il diamante, chi lo indossa o la fonte luminosa si muove — la qualità che rende la pietra viva e non semplicemente luminosa.",
+        },
+        {
+          title: "Incastonatura",
+          description:
+            "Un’incastonatura ben progettata protegge la pietra lasciando allo stesso tempo libero accesso alla luce. Il gioiello deve incorniciare il diamante, non competere con esso.",
+        },
+      ],
+    },
+    cta: {
+      title: "Alcune brillantezze devono essere viste dal vivo",
+      sub:
+        "Una fotografia può mostrare la forma di un diamante, ma non il modo in cui prende vita nella luce. Scoprite la collezione Brillanti durante una visita privata in una delle nostre boutique.",
+    },
+  },
+
+  es: {
+    hero: {
+      eyebrow: "Brillantes",
+      title1: "Donde la luz",
+      title2: "se convierte en joya",
+      description:
+        "La talla brillante fue creada con un propósito extraordinario — transformar la luz en fuego. Cada piedra de nuestra colección se selecciona por la forma en que cobra vida con el movimiento y revela nuevos destellos a cada gesto.",
+      since: "LIDYA · DESDE 1989",
+      statementEyebrow: "El arte de la luz",
+      statementBefore: "Creado para atrapar la luz.",
+      statementAccent: "Diseñado para conservarla.",
+      imageAlt:
+        "Colección LIDYA de joyas con brillantes dispuesta sobre tejido color champán y piedra natural",
+    },
+    gallery: {
+      eyebrow: "La colección Brillantes",
+      title: "Joyas moldeadas por",
+      titleAccent: "la luz y el brillo.",
+      description:
+        "Desde solitarios atemporales hasta pulseras, pendientes y colgantes con diamantes, cada pieza se selecciona por la manera en que sus piedras interactúan con la luz — elegante en reposo, extraordinaria en movimiento.",
+      itemLabel: "Colección Brillantes",
+      closingText: "Cada movimiento atrapa la luz.",
+      closingAccent: "Cada mirada revela algo nuevo.",
+      captions: [
+        "Anillo solitario",
+        "Pendientes de botón",
+        "Solitario clásico",
+        "Anillo Eternity",
+        "Colgante de diamante",
+        "Pulsera tennis",
+        "Detalle Eternity",
+        "Colgante pavé",
+        "Halo en forma de lágrima",
+        "El conjunto",
+      ],
+      alts: [
+        "Anillo solitario con diamante talla brillante",
+        "Pendientes de botón con diamantes talla brillante",
+        "Anillo solitario de seis garras con diamante talla brillante",
+        "Anillo Eternity con diamantes talla brillante",
+        "Colgante con diamante talla brillante",
+        "Pulsera tennis con diamantes talla brillante",
+        "Anillo Eternity con diamantes visto en ángulo",
+        "Colgante de diamante con enganche pavé",
+        "Colgante con diamante en forma de pera rodeado por halo de diamantes",
+        "Conjunto a juego de anillo, pendientes y collar con diamantes",
+      ],
+    },
+    craft: {
+      eyebrow: "La belleza del brillo",
+      title:
+        "El verdadero brillo comienza con la forma en que el diamante se encuentra con la luz",
+      description:
+        "Un diamante hermoso es mucho más que su tamaño. La talla, las proporciones, el movimiento y el engaste determinan juntos cómo devuelve la piedra la luz al ojo.",
+      closingText: "La luz revela el brillo.",
+      closingAccent: "El tiempo revela su valor.",
+      points: [
+        {
+          title: "Talla",
+          description:
+            "Las proporciones y facetas de un diamante talla brillante determinan cómo viaja la luz por la piedra y regresa al ojo. Una gran talla aporta al diamante su inconfundible vida.",
+        },
+        {
+          title: "Fuego",
+          description:
+            "Cuando la luz atraviesa el diamante, se separa en destellos de color. Este juego de luz espectral aporta a un buen brillante su cautivador fuego.",
+        },
+        {
+          title: "Centelleo",
+          description:
+            "Los destellos de luz y contraste visibles cuando se mueve el diamante, quien lo lleva o la fuente de luz — la cualidad que hace que una piedra parezca viva.",
+        },
+        {
+          title: "Engaste",
+          description:
+            "Un engaste cuidadosamente diseñado protege la piedra y permite que la luz llegue a ella libremente. La joya debe enmarcar el diamante, nunca competir con él.",
+        },
+      ],
+    },
+    cta: {
+      title: "Hay brillos que deben verse en persona",
+      sub:
+        "Una fotografía puede mostrar la forma de un diamante, pero no cómo cobra vida bajo la luz. Descubra la colección Brillantes durante una visita privada a una de nuestras boutiques.",
+    },
+  },
 };
 
 const BRILLIANT_IMAGES = [
@@ -674,12 +1361,20 @@ const BRILLIANT_IMAGES = [
 
 export default function BrilliantsContent() {
   const { locale } = useLanguage();
-  const copy = BRILLIANTS_COPY[locale];
+
+  const copy =
+    BRILLIANTS_COPY[locale] ?? BRILLIANTS_COPY.en;
 
   const galleryItems = BRILLIANT_IMAGES.map((image, index) => ({
     image,
-    caption: copy.gallery.captions[index],
-    alt: copy.gallery.alts[index],
+    caption:
+      copy.gallery.captions[index] ??
+      BRILLIANTS_COPY.en.gallery.captions[index] ??
+      "",
+    alt:
+      copy.gallery.alts[index] ??
+      BRILLIANTS_COPY.en.gallery.alts[index] ??
+      "",
   }));
 
   return (
@@ -689,7 +1384,6 @@ export default function BrilliantsContent() {
       <main>
         {/* HERO */}
         <section className="relative min-h-[820px] overflow-hidden bg-ivory pt-36 md:min-h-[900px] md:pt-40 lg:min-h-[940px] lg:pt-44">
-          {/* HERO IMAGE */}
           <Image
             src="/images/brilliants/hero-brilliants.png"
             alt={copy.hero.imageAlt}
@@ -699,16 +1393,12 @@ export default function BrilliantsContent() {
             className="object-cover object-center"
           />
 
-          {/* LIGHT CINEMATIC OVERLAY */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#F7F3EB]/92 via-[#F7F3EB]/40 to-transparent" />
 
-          {/* SUBTLE AMBIENT LIGHT */}
           <div className="pointer-events-none absolute -left-40 top-10 h-[520px] w-[520px] rounded-full bg-brand-white/18 blur-3xl" />
 
           <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
-            {/* HERO CONTENT */}
             <div className="grid gap-12 pb-20 lg:grid-cols-12 lg:items-end lg:pb-28">
-              {/* LEFT */}
               <div className="lg:col-span-8">
                 <div className="flex items-center gap-4">
                   <span className="flex h-10 w-10 items-center justify-center text-gold">
@@ -731,7 +1421,6 @@ export default function BrilliantsContent() {
                 </h1>
               </div>
 
-              {/* RIGHT */}
               <div className="lg:col-span-4 lg:pb-2">
                 <p className="max-w-md text-sm leading-7 text-[#645E5A] md:text-base">
                   {copy.hero.description}
@@ -747,7 +1436,6 @@ export default function BrilliantsContent() {
               </div>
             </div>
 
-            {/* HERO STATEMENT */}
             <div className="border-t border-plum-dark/10 py-12 md:py-16">
               <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
                 <div className="lg:col-span-3">
@@ -773,7 +1461,6 @@ export default function BrilliantsContent() {
           </div>
         </section>
 
-        {/* COLLECTION GALLERY */}
         <CategoryGallery
           icon={<GemClusterIcon />}
           eyebrow={copy.gallery.eyebrow}
@@ -786,7 +1473,6 @@ export default function BrilliantsContent() {
           items={galleryItems}
         />
 
-        {/* CRAFT / QUALITY */}
         <CategoryCraft
           eyebrow={copy.craft.eyebrow}
           title={copy.craft.title}
@@ -796,7 +1482,6 @@ export default function BrilliantsContent() {
           points={copy.craft.points}
         />
 
-        {/* PRIVATE VIEWING CTA */}
         <CategoryCTA
           title={copy.cta.title}
           sub={copy.cta.sub}
