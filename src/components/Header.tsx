@@ -64,6 +64,8 @@ function DesktopNavItem({
     }, 150);
   };
 
+  const isWatches = item.labelKey === "watches";
+
   return (
     <div
       ref={rootRef}
@@ -71,29 +73,63 @@ function DesktopNavItem({
       onMouseEnter={openNow}
       onMouseLeave={closeSoon}
     >
-      <button
-        type="button"
-        aria-expanded={open}
-        onClick={() => setOpen((value) => !value)}
-        className="flex items-center gap-1.5 whitespace-nowrap transition-colors duration-300 hover:text-gold"
-      >
-        {dict.nav[item.labelKey]}
+      {isWatches ? (
+        <div className="flex items-center gap-1.5">
+          <Link
+            href={item.href}
+            className="whitespace-nowrap transition-colors duration-300 hover:text-gold"
+          >
+            {dict.nav[item.labelKey]}
+          </Link>
 
-        <svg
-          viewBox="0 0 12 8"
-          width="9"
-          height="6"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.4"
-          className={`transition-transform duration-300 ${
-            open ? "rotate-180" : ""
-          }`}
-          aria-hidden="true"
+          <button
+            type="button"
+            aria-label="Open watches menu"
+            aria-expanded={open}
+            onClick={() => setOpen((value) => !value)}
+            className="flex items-center justify-center transition-colors duration-300 hover:text-gold"
+          >
+            <svg
+              viewBox="0 0 12 8"
+              width="9"
+              height="6"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.4"
+              className={`transition-transform duration-300 ${
+                open ? "rotate-180" : ""
+              }`}
+              aria-hidden="true"
+            >
+              <path d="M1 1.5L6 6.5L11 1.5" />
+            </svg>
+          </button>
+        </div>
+      ) : (
+        <button
+          type="button"
+          aria-expanded={open}
+          onClick={() => setOpen((value) => !value)}
+          className="flex items-center gap-1.5 whitespace-nowrap transition-colors duration-300 hover:text-gold"
         >
-          <path d="M1 1.5L6 6.5L11 1.5" />
-        </svg>
-      </button>
+          {dict.nav[item.labelKey]}
+
+          <svg
+            viewBox="0 0 12 8"
+            width="9"
+            height="6"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.4"
+            className={`transition-transform duration-300 ${
+              open ? "rotate-180" : ""
+            }`}
+            aria-hidden="true"
+          >
+            <path d="M1 1.5L6 6.5L11 1.5" />
+          </svg>
+        </button>
+      )}
 
       {open && (
         <div
@@ -303,11 +339,7 @@ export default function Header() {
                   headerOnLightBackground
                     ? "bg-plum-dark"
                     : "bg-brand-white"
-                } ${
-                  menuOpen
-                    ? "top-[8px] rotate-45"
-                    : ""
-                }`}
+                } ${menuOpen ? "top-[8px] rotate-45" : ""}`}
               />
 
               <span
@@ -327,11 +359,7 @@ export default function Header() {
                   headerOnLightBackground
                     ? "bg-plum-dark"
                     : "bg-brand-white"
-                } ${
-                  menuOpen
-                    ? "bottom-[8px] -rotate-45"
-                    : ""
-                }`}
+                } ${menuOpen ? "bottom-[8px] -rotate-45" : ""}`}
               />
             </span>
           </button>
@@ -348,78 +376,122 @@ export default function Header() {
       >
         <nav className="mt-3 max-h-[calc(100dvh-76px)] overflow-y-auto border-t border-plum-dark/10 bg-ivory px-5 pb-10 pt-4 text-center text-plum-dark shadow-[0_18px_45px_-25px_rgba(27,11,32,0.3)] sm:px-6 md:px-10 lg:px-16">
           <div className="mx-auto max-w-[720px]">
-            {NAV_ITEMS.map((item, index) => (
-              <div
-                key={`mobile-${item.href}-${item.labelKey}-${index}`}
-                className="border-b border-plum-dark/10 last:border-b-0"
-              >
-                {item.children?.length ? (
-                  <>
-                    <button
-                      type="button"
-                      className="flex w-full items-center justify-center gap-3 py-5 text-center text-[0.72rem] font-semibold uppercase tracking-[0.16em] transition-colors hover:text-gold"
-                      onClick={() =>
-                        setMobileSubOpen((current) =>
-                          current === index ? null : index
-                        )
-                      }
-                    >
-                      <span>{dict.nav[item.labelKey]}</span>
+            {NAV_ITEMS.map((item, index) => {
+              const isWatches = item.labelKey === "watches";
 
-                      <svg
-                        viewBox="0 0 12 8"
-                        width="10"
-                        height="7"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.4"
-                        className={`transition-transform duration-300 ${
-                          mobileSubOpen === index
-                            ? "rotate-180"
-                            : ""
-                        }`}
-                        aria-hidden="true"
-                      >
-                        <path d="M1 1.5L6 6.5L11 1.5" />
-                      </svg>
-                    </button>
+              return (
+                <div
+                  key={`mobile-${item.href}-${item.labelKey}-${index}`}
+                  className="border-b border-plum-dark/10 last:border-b-0"
+                >
+                  {item.children?.length ? (
+                    <>
+                      {isWatches ? (
+                        <div className="flex items-center justify-center py-5">
+                          <Link
+                            href={item.href}
+                            onClick={closeMobileMenu}
+                            className="text-[0.72rem] font-semibold uppercase tracking-[0.16em] transition-colors hover:text-gold"
+                          >
+                            {dict.nav[item.labelKey]}
+                          </Link>
 
-                    <div
-                      className={`grid transition-all duration-300 ${
-                        mobileSubOpen === index
-                          ? "grid-rows-[1fr] pb-4 opacity-100"
-                          : "grid-rows-[0fr] opacity-0"
-                      }`}
-                    >
-                      <div className="overflow-hidden">
-                        <div className="mx-auto max-w-[420px] border-y border-gold/20 py-2">
-                          {item.children.map(
-                            (child, childIndex) => (
-                              <Link
-                                key={`${child.href}-${childIndex}`}
-                                href={child.href}
-                                className="block py-3 text-center text-[0.68rem] font-medium uppercase tracking-[0.14em] text-plum-dark/60 transition-colors hover:text-gold"
-                                onClick={closeMobileMenu}
-                              >
-                                {dict.nav[child.labelKey]}
-                              </Link>
+                          <button
+                            type="button"
+                            aria-label="Open watches submenu"
+                            onClick={() =>
+                              setMobileSubOpen((current) =>
+                                current === index ? null : index
+                              )
+                            }
+                            className="ml-3 flex h-8 w-8 items-center justify-center"
+                          >
+                            <svg
+                              viewBox="0 0 12 8"
+                              width="10"
+                              height="7"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="1.4"
+                              className={`transition-transform duration-300 ${
+                                mobileSubOpen === index
+                                  ? "rotate-180"
+                                  : ""
+                              }`}
+                              aria-hidden="true"
+                            >
+                              <path d="M1 1.5L6 6.5L11 1.5" />
+                            </svg>
+                          </button>
+                        </div>
+                      ) : (
+                        <button
+                          type="button"
+                          className="flex w-full items-center justify-center gap-3 py-5 text-center text-[0.72rem] font-semibold uppercase tracking-[0.16em] transition-colors hover:text-gold"
+                          onClick={() =>
+                            setMobileSubOpen((current) =>
+                              current === index ? null : index
                             )
-                          )}
+                          }
+                        >
+                          <span>{dict.nav[item.labelKey]}</span>
+
+                          <svg
+                            viewBox="0 0 12 8"
+                            width="10"
+                            height="7"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="1.4"
+                            className={`transition-transform duration-300 ${
+                              mobileSubOpen === index
+                                ? "rotate-180"
+                                : ""
+                            }`}
+                            aria-hidden="true"
+                          >
+                            <path d="M1 1.5L6 6.5L11 1.5" />
+                          </svg>
+                        </button>
+                      )}
+
+                      <div
+                        className={`grid transition-all duration-300 ${
+                          mobileSubOpen === index
+                            ? "grid-rows-[1fr] pb-4 opacity-100"
+                            : "grid-rows-[0fr] opacity-0"
+                        }`}
+                      >
+                        <div className="overflow-hidden">
+                          <div className="mx-auto max-w-[420px] border-y border-gold/20 py-2">
+                            {item.children.map(
+                              (child, childIndex) => (
+                                <Link
+                                  key={`${child.href}-${childIndex}`}
+                                  href={child.href}
+                                  className="block py-3 text-center text-[0.68rem] font-medium uppercase tracking-[0.14em] text-plum-dark/60 transition-colors hover:text-gold"
+                                  onClick={closeMobileMenu}
+                                >
+                                  {dict.nav[child.labelKey]}
+                                </Link>
+                              )
+                            )}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </>
-                ) : (
-                  <Link
-                    href={item.href}
-                    className="block py-5 text-center text-[0.72rem] font-semibold uppercase tracking-[0.16em] transition-colors hover:text-gold"
-                    onClick={closeMobileMenu}
-                  >
-                    {dict.nav[item.labelKey]}
-                  </Link>
-                )}
-              </div>
-            ))}
+                    </>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      className="block py-5 text-center text-[0.72rem] font-semibold uppercase tracking-[0.16em] transition-colors hover:text-gold"
+                      onClick={closeMobileMenu}
+                    >
+                      {dict.nav[item.labelKey]}
+                    </Link>
+                  )}
+                </div>
+              );
+            })}
 
             {/* MOBILE BOOK BUTTON */}
             <div className="pt-7">

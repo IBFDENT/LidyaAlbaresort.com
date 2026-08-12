@@ -6,7 +6,17 @@ export type NavLabelKey =
   | "diamonds"
   | "design"
   | "bespoke"
+  | "watches"
+  | "watchesMens"
+  | "watchesWomens"
+  | "watchesChildrens"
+  | "watchesGold"
+  | "watchesSport"
+  | "watchesBrilliants"
+  | "watchesDiamonds"
+  | "watchesBespoke"
   | "investment"
+  | "investmentDiamonds"
   | "investmentMenu"
   | "brilliants"
   | "services"
@@ -17,34 +27,119 @@ export type NavLabelKey =
 export type NavItem = {
   href: string;
   labelKey: NavLabelKey;
-  /** Optional dropdown children — when present, the parent renders as a
-   *  menu trigger rather than a direct link on desktop. */
+
+  /**
+   * Optional dropdown children.
+   * When present, the parent renders as a menu trigger
+   * rather than a direct link on desktop.
+   */
   children?: NavItem[];
 };
 
 export const NAV_ITEMS: NavItem[] = [
-  { href: "/#home", labelKey: "home" },
+  {
+    href: "/#home",
+    labelKey: "home",
+  },
+
   {
     href: "/#collections",
     labelKey: "collections",
     children: [
-      { href: "/pearls", labelKey: "pearls" },
-      { href: "/wedding-rings", labelKey: "wedding" },
-      { href: "/brilliants", labelKey: "brilliants" },
-      { href: "/design", labelKey: "design" },
-      { href: "/bespoke", labelKey: "bespoke" },
+      {
+        href: "/pearls",
+        labelKey: "pearls",
+      },
+      {
+        href: "/wedding-rings",
+        labelKey: "wedding",
+      },
+      {
+        href: "/brilliants",
+        labelKey: "brilliants",
+      },
+      {
+        href: "/design",
+        labelKey: "design",
+      },
+      {
+        href: "/bespoke",
+        labelKey: "bespoke",
+      },
     ],
   },
+
+  {
+    href: "/watches",
+    labelKey: "watches",
+    children: [
+      {
+        href: "/watches/mens",
+        labelKey: "watchesMens",
+      },
+      {
+        href: "/watches/womens",
+        labelKey: "watchesWomens",
+      },
+      {
+        href: "/watches/childrens",
+        labelKey: "watchesChildrens",
+      },
+      {
+        href: "/watches/gold",
+        labelKey: "watchesGold",
+      },
+      {
+        href: "/watches/sport",
+        labelKey: "watchesSport",
+      },
+      {
+        href: "/watches/brilliants",
+        labelKey: "watchesBrilliants",
+      },
+      {
+        href: "/watches/diamonds",
+        labelKey: "watchesDiamonds",
+      },
+      {
+        href: "/watches/bespoke",
+        labelKey: "watchesBespoke",
+      },
+    ],
+  },
+
   {
     href: "/investment-gold",
     labelKey: "investmentMenu",
     children: [
-      { href: "/investment-gold", labelKey: "investment" },
-      { href: "/diamonds", labelKey: "diamonds" },
+      {
+        href: "/investment-gold",
+        labelKey: "investment",
+      },
+      {
+        href: "/investment-diamonds",
+        labelKey: "investmentDiamonds",
+      },
     ],
   },
-  { href: "/#services", labelKey: "services" },
-  { href: "/#about", labelKey: "about" },
-  { href: "/#boutiques", labelKey: "boutiques" },
-  { href: "/#contact", labelKey: "contact" },
+
+  {
+    href: "/#services",
+    labelKey: "services",
+  },
+
+  {
+    href: "/#about",
+    labelKey: "about",
+  },
+
+  {
+    href: "/#boutiques",
+    labelKey: "boutiques",
+  },
+
+  {
+    href: "/#contact",
+    labelKey: "contact",
+  },
 ];

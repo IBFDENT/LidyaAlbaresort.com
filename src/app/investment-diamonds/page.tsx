@@ -1,7 +1,12 @@
-import { redirect } from "next/navigation";
+import type { Metadata } from "next";
+import InvestmentDiamondsContent from "../diamonds/InvestmentDiamondsContent";
 
-// "Investment Diamonds" was merged into the main Diamonds collection —
-// this route is kept only so old links / bookmarks don't break.
-export default function InvestmentDiamondsRedirect() {
-  redirect("/diamonds");
+export const metadata: Metadata = {
+  title: "Investment Diamonds — LIDYA JEWELRY",
+  description:
+    "Certified, independently graded diamonds for private, portable, long-term investment — the Four Cs, additional value factors and what to look for, explained by LIDYA JEWELRY.",
+};
+
+export default function InvestmentDiamondsPage() {
+  return <InvestmentDiamondsContent />;
 }
