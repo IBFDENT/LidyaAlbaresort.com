@@ -1020,7 +1020,17 @@ export default function InvestmentGoldContent() {
         ====================================================== */}
         <section
           ref={heroRef}
-          className="relative min-h-[760px] overflow-hidden bg-plum-dark pt-[108px] md:min-h-[900px] md:pt-36 lg:min-h-screen lg:pt-40"
+          className="
+            relative
+            min-h-[760px]
+            overflow-hidden
+            bg-plum-dark
+            pt-[108px]
+            md:min-h-[900px]
+            md:pt-36
+            lg:min-h-[940px]
+            lg:pt-44
+          "
         >
           {/* HERO IMAGE */}
           <div
@@ -1042,15 +1052,55 @@ export default function InvestmentGoldContent() {
               fill
               priority
               sizes="100vw"
-              className="object-cover object-center"
+              className="
+                object-cover
+                object-[58%_50%]
+                md:object-[55%_50%]
+                lg:object-center
+              "
             />
           </div>
 
-          {/* DARK OVERLAY */}
-          <div className="pointer-events-none absolute inset-0 bg-plum-dark/64 md:bg-plum-dark/58 lg:bg-plum-dark/52" />
+          {/* =================================================
+              READABILITY
+
+              Mobile + tablet:
+              dostatočne tmavé prekrytie.
+
+              Desktop:
+              gradient je silný vľavo,
+              ale pravá strana obrázka ostáva viditeľná.
+          ================================================== */}
+          <div
+            className="
+              pointer-events-none
+              absolute
+              inset-0
+              bg-gradient-to-r
+              from-plum-dark/94
+              via-plum-dark/78
+              to-plum-dark/50
+              md:from-plum-dark/90
+              md:via-plum-dark/68
+              md:to-plum-dark/34
+              lg:from-plum-dark/92
+              lg:via-plum-dark/55
+              lg:to-plum-dark/12
+            "
+          />
 
           {/* LOWER SHADOW */}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-plum-dark/85 via-transparent to-plum-dark/28" />
+          <div
+            className="
+              pointer-events-none
+              absolute
+              inset-0
+              bg-gradient-to-t
+              from-plum-dark/82
+              via-transparent
+              to-plum-dark/22
+            "
+          />
 
           {/* DYNAMIC GOLD LIGHT */}
           <div
@@ -1058,127 +1108,285 @@ export default function InvestmentGoldContent() {
             className="pointer-events-none absolute inset-0"
           />
 
-          {/* SOFT STATIC GOLD LIGHT */}
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(200,169,106,0.08),transparent_55%)]" />
+          {/* SUBTLE STATIC GOLD LIGHT */}
+          <div
+            className="
+              pointer-events-none
+              absolute
+              inset-0
+              bg-[radial-gradient(circle_at_68%_40%,rgba(200,169,106,0.08),transparent_48%)]
+            "
+          />
 
           {/* VIGNETTE */}
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_50%,rgba(10,4,13,0.18)_100%)]" />
+          <div
+            className="
+              pointer-events-none
+              absolute
+              inset-0
+              bg-[radial-gradient(circle_at_center,transparent_52%,rgba(10,4,13,0.18)_100%)]
+            "
+          />
 
-          {/* CONTENT */}
+          {/* =================================================
+              CONTENT
+          ================================================== */}
           <div
             ref={contentRef}
-            className="relative z-10 mx-auto flex min-h-[650px] max-w-[1440px] items-center justify-center px-6 pb-16 pt-12 text-center will-change-transform md:min-h-[760px] md:px-10 md:pb-20 lg:min-h-[calc(100vh-80px)] lg:px-16 lg:pb-24 xl:px-20"
+            className="
+              relative
+              z-10
+              mx-auto
+              max-w-[1440px]
+              px-6
+              will-change-transform
+              md:px-10
+              lg:px-16
+              xl:px-20
+            "
           >
-            <div className="mx-auto max-w-[960px]">
-              {/* EYEBROW */}
+            {/* =================================================
+                MAIN HERO
+
+                Mobile + tablet = CENTER
+                Desktop = LEFT / RIGHT
+            ================================================== */}
+            <div
+              className="
+                grid
+                gap-8
+                pb-10
+                pt-8
+                md:gap-10
+                md:pb-16
+                md:pt-12
+                lg:grid-cols-12
+                lg:items-end
+                lg:gap-12
+                lg:pb-24
+                lg:pt-8
+              "
+            >
+              {/* LEFT SIDE */}
               <div
-                className={`flex items-center justify-center gap-3 transition-all duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:gap-4 ${
-                  heroLoaded
-                    ? "translate-y-0 opacity-100"
-                    : "translate-y-5 opacity-0"
-                }`}
-                style={{
-                  transitionDelay: "120ms",
-                }}
+                className="
+                  text-center
+                  lg:col-span-8
+                  lg:text-left
+                "
               >
-                <span className="flex h-10 w-10 items-center justify-center text-gold">
-                  <TrendUpIcon />
-                </span>
-
-                <span className="text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-gold md:text-[0.66rem] md:tracking-[0.34em]">
-                  {t("heroEyebrow")}
-                </span>
-              </div>
-
-              {/* TITLE */}
-              <h1
-                className="mx-auto mt-7 max-w-[980px] overflow-hidden font-display text-[2.9rem] leading-[0.92] tracking-[-0.04em] sm:text-[3.25rem] md:text-7xl lg:text-[6.5rem]"
-                style={{ color: "#F5EFE6" }}
-              >
-                <span
-                  className={`block transition-all duration-[1300ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                {/* EYEBROW */}
+                <div
+                  className={`flex items-center justify-center gap-3 transition-all duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:gap-4 lg:justify-start ${
                     heroLoaded
                       ? "translate-y-0 opacity-100"
-                      : "translate-y-[28%] opacity-0"
+                      : "translate-y-5 opacity-0"
                   }`}
                   style={{
-                    transitionDelay: "230ms",
+                    transitionDelay: "120ms",
                   }}
                 >
-                  {t("heroTitle")}
-                </span>
-              </h1>
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center text-gold">
+                    <TrendUpIcon />
+                  </span>
 
-              {/* LEAD */}
+                  <span
+                    className="
+                      text-[0.62rem]
+                      font-semibold
+                      uppercase
+                      tracking-[0.3em]
+                      text-gold
+                      md:text-[0.66rem]
+                      md:tracking-[0.34em]
+                    "
+                  >
+                    {t("heroEyebrow")}
+                  </span>
+                </div>
+
+                {/* TITLE */}
+                <h1
+                  className="
+                    mx-auto
+                    mt-7
+                    max-w-[900px]
+                    overflow-hidden
+                    font-display
+                    text-[2.9rem]
+                    leading-[0.92]
+                    tracking-[-0.04em]
+                    sm:text-[3.25rem]
+                    md:text-7xl
+                    lg:mx-0
+                    lg:max-w-[860px]
+                    lg:text-[6.2rem]
+                  "
+                  style={{
+                    color: "#F5EFE6",
+                  }}
+                >
+                  <span
+                    className={`block transition-all duration-[1300ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                      heroLoaded
+                        ? "translate-y-0 opacity-100"
+                        : "translate-y-[28%] opacity-0"
+                    }`}
+                    style={{
+                      transitionDelay: "230ms",
+                    }}
+                  >
+                    {t("heroTitle")}
+                  </span>
+                </h1>
+              </div>
+
+              {/* RIGHT SIDE */}
               <div
-                className={`transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                  heroLoaded
-                    ? "translate-y-0 opacity-100"
-                    : "translate-y-5 opacity-0"
-                }`}
+                className={`
+                  text-center
+                  transition-all
+                  duration-[1200ms]
+                  ease-[cubic-bezier(0.22,1,0.36,1)]
+                  lg:col-span-4
+                  lg:pb-2
+                  lg:text-left
+                  ${
+                    heroLoaded
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-5 opacity-0"
+                  }
+                `}
                 style={{
                   transitionDelay: "420ms",
                 }}
               >
-                <p className="mx-auto mt-7 max-w-[650px] text-sm leading-7 text-brand-white/70 md:mt-8 md:text-base">
+                {/* LEAD */}
+                <p
+                  className="
+                    mx-auto
+                    max-w-[380px]
+                    text-sm
+                    leading-7
+                    text-brand-white/70
+                    md:text-base
+                    lg:mx-0
+                  "
+                >
                   {t("heroLead")}
                 </p>
-              </div>
 
-              {/* BUTTONS */}
-              <div
-                className={`mt-9 flex flex-col items-center justify-center gap-5 transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] sm:flex-row sm:flex-wrap md:mt-10 ${
-                  heroLoaded
-                    ? "translate-y-0 opacity-100"
-                    : "translate-y-5 opacity-0"
-                }`}
-                style={{
-                  transitionDelay: "560ms",
-                }}
-              >
-                <a
-                  href="#gold-details"
-                  className="group inline-flex min-w-[245px] items-center justify-center gap-6 bg-gold px-8 py-4 text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-plum-dark transition-all duration-500 hover:bg-gold-light md:text-[0.66rem] md:tracking-[0.2em]"
+                {/* BUTTONS */}
+                <div
+                  className="
+                    mt-8
+                    flex
+                    flex-col
+                    items-center
+                    justify-center
+                    gap-5
+                    sm:flex-row
+                    sm:flex-wrap
+                    lg:items-start
+                    lg:justify-start
+                  "
                 >
-                  {copy.hero.discover}
+                  <a
+                    href="#gold-details"
+                    className="
+                      group
+                      inline-flex
+                      min-w-[245px]
+                      items-center
+                      justify-center
+                      gap-6
+                      bg-gold
+                      px-8
+                      py-4
+                      text-[0.62rem]
+                      font-semibold
+                      uppercase
+                      tracking-[0.18em]
+                      text-plum-dark
+                      transition-all
+                      duration-500
+                      hover:bg-gold-light
+                      md:text-[0.66rem]
+                      md:tracking-[0.2em]
+                    "
+                  >
+                    {copy.hero.discover}
 
-                  <span className="transition-transform duration-500 group-hover:translate-x-1.5">
-                    →
-                  </span>
-                </a>
+                    <span className="transition-transform duration-500 group-hover:translate-x-1.5">
+                      →
+                    </span>
+                  </a>
 
-                <a
-                  href="/#contact"
-                  className="group relative inline-flex items-center gap-5 py-3 text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-brand-white md:text-[0.66rem] md:tracking-[0.2em]"
+                  <a
+                    href="/#contact"
+                    className="
+                      group
+                      relative
+                      inline-flex
+                      items-center
+                      gap-5
+                      py-3
+                      text-[0.62rem]
+                      font-semibold
+                      uppercase
+                      tracking-[0.18em]
+                      text-brand-white
+                      md:text-[0.66rem]
+                      md:tracking-[0.2em]
+                    "
+                  >
+                    {copy.hero.enquiry}
+
+                    <span className="transition-transform duration-500 group-hover:translate-x-1">
+                      →
+                    </span>
+
+                    <span className="absolute bottom-1 left-0 h-px w-full bg-brand-white/35 transition-colors duration-500 group-hover:bg-gold" />
+                  </a>
+                </div>
+
+                {/* FOOTER LINE */}
+                <div
+                  className={`
+                    mt-9
+                    flex
+                    items-center
+                    justify-center
+                    gap-4
+                    transition-all
+                    duration-[1200ms]
+                    ease-[cubic-bezier(0.22,1,0.36,1)]
+                    lg:justify-start
+                    ${
+                      heroLoaded
+                        ? "translate-y-0 opacity-100"
+                        : "translate-y-4 opacity-0"
+                    }
+                  `}
+                  style={{
+                    transitionDelay: "700ms",
+                  }}
                 >
-                  {copy.hero.enquiry}
+                  <span className="h-px w-10 bg-gold/70 md:w-12" />
 
-                  <span className="transition-transform duration-500 group-hover:translate-x-1">
-                    →
+                  <span
+                    className="
+                      text-[0.54rem]
+                      uppercase
+                      tracking-[0.25em]
+                      text-brand-white/45
+                      md:text-[0.58rem]
+                      md:tracking-[0.3em]
+                    "
+                  >
+                    {copy.hero.footerLine}
                   </span>
-
-                  <span className="absolute bottom-1 left-0 h-px w-full bg-brand-white/35 transition-colors duration-500 group-hover:bg-gold" />
-                </a>
-              </div>
-
-              {/* FOOTER LINE */}
-              <div
-                className={`mt-12 flex items-center justify-center gap-4 transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:mt-14 ${
-                  heroLoaded
-                    ? "translate-y-0 opacity-100"
-                    : "translate-y-4 opacity-0"
-                }`}
-                style={{
-                  transitionDelay: "700ms",
-                }}
-              >
-                <span className="h-px w-10 bg-gold/70 md:w-12" />
-
-                <span className="text-[0.54rem] uppercase tracking-[0.25em] text-brand-white/45 md:text-[0.58rem] md:tracking-[0.3em]">
-                  {copy.hero.footerLine}
-                </span>
-
-                <span className="h-px w-10 bg-gold/70 md:w-12" />
+                </div>
               </div>
             </div>
           </div>
@@ -1201,13 +1409,17 @@ export default function InvestmentGoldContent() {
 
               <h2
                 className="mx-auto mt-6 max-w-[950px] font-display text-4xl leading-[0.96] tracking-[-0.03em] md:text-5xl lg:text-6xl"
-                style={{ color: "#1B0B20" }}
+                style={{
+                  color: "#1B0B20",
+                }}
               >
                 {copy.intro.title}
 
                 <span
                   className="block italic"
-                  style={{ color: "#C8A96A" }}
+                  style={{
+                    color: "#C8A96A",
+                  }}
                 >
                   {copy.intro.accent}
                 </span>
@@ -1231,11 +1443,17 @@ export default function InvestmentGoldContent() {
             <div className="mx-auto mt-14 max-w-[1050px] border-t border-plum-dark/10 pt-12 text-center">
               <p
                 className="font-display text-3xl italic leading-tight md:text-4xl lg:text-5xl"
-                style={{ color: "#1B0B20" }}
+                style={{
+                  color: "#1B0B20",
+                }}
               >
                 {copy.intro.statement}
 
-                <span style={{ color: "#C8A96A" }}>
+                <span
+                  style={{
+                    color: "#C8A96A",
+                  }}
+                >
                   {" "}
                   {copy.intro.statementAccent}
                 </span>
@@ -1299,7 +1517,9 @@ export default function InvestmentGoldContent() {
 
               <h2
                 className="mx-auto max-w-[950px] font-display text-4xl leading-[0.97] tracking-[-0.03em] md:text-5xl lg:text-6xl"
-                style={{ color: "#F5EFE6" }}
+                style={{
+                  color: "#F5EFE6",
+                }}
               >
                 {t("section4Title")}
               </h2>
@@ -1312,27 +1532,40 @@ export default function InvestmentGoldContent() {
             </div>
 
             <div className="mx-auto mt-14 grid max-w-[1200px] border-t border-brand-white/12 md:mt-16 md:grid-cols-2 lg:grid-cols-4">
-              {SECTION_4_POINTS.map((point, index) => (
-                <div
-                  key={`${index}-${localized(point.title, locale)}`}
-                  className="group border-b border-brand-white/12 px-3 py-10 text-center md:border-r md:px-7 lg:py-12 lg:first:pl-0 lg:last:border-r-0 lg:last:pr-0"
-                >
-                  <div className="mx-auto flex h-10 items-center justify-center">
-                    <span className="h-px w-8 bg-gold/50 transition-all duration-500 group-hover:w-14 group-hover:bg-gold" />
-                  </div>
-
-                  <h3
-                    className="mt-5 font-display text-2xl md:text-3xl"
-                    style={{ color: "#F5EFE6" }}
+              {SECTION_4_POINTS.map(
+                (point, index) => (
+                  <div
+                    key={`${index}-${localized(
+                      point.title,
+                      locale
+                    )}`}
+                    className="group border-b border-brand-white/12 px-3 py-10 text-center md:border-r md:px-7 lg:py-12 lg:first:pl-0 lg:last:border-r-0 lg:last:pr-0"
                   >
-                    {localized(point.title, locale)}
-                  </h3>
+                    <div className="mx-auto flex h-10 items-center justify-center">
+                      <span className="h-px w-8 bg-gold/50 transition-all duration-500 group-hover:w-14 group-hover:bg-gold" />
+                    </div>
 
-                  <p className="mx-auto mt-4 max-w-[320px] text-sm leading-7 text-brand-white/60">
-                    {localized(point.description, locale)}
-                  </p>
-                </div>
-              ))}
+                    <h3
+                      className="mt-5 font-display text-2xl md:text-3xl"
+                      style={{
+                        color: "#F5EFE6",
+                      }}
+                    >
+                      {localized(
+                        point.title,
+                        locale
+                      )}
+                    </h3>
+
+                    <p className="mx-auto mt-4 max-w-[320px] text-sm leading-7 text-brand-white/60">
+                      {localized(
+                        point.description,
+                        locale
+                      )}
+                    </p>
+                  </div>
+                )
+              )}
             </div>
 
             <div className="mx-auto mt-16 max-w-[980px] text-center md:mt-20">
@@ -1340,11 +1573,17 @@ export default function InvestmentGoldContent() {
 
               <p
                 className="font-display text-3xl italic leading-tight md:text-4xl lg:text-5xl"
-                style={{ color: "#F5EFE6" }}
+                style={{
+                  color: "#F5EFE6",
+                }}
               >
                 {copy.section4.closing}
 
-                <span style={{ color: "#E8D8B5" }}>
+                <span
+                  style={{
+                    color: "#E8D8B5",
+                  }}
+                >
                   {" "}
                   {copy.section4.closingAccent}
                 </span>
@@ -1365,13 +1604,17 @@ export default function InvestmentGoldContent() {
 
               <h2
                 className="mx-auto mt-6 max-w-[850px] font-display text-4xl leading-[0.96] tracking-[-0.03em] md:text-5xl lg:text-6xl"
-                style={{ color: "#1B0B20" }}
+                style={{
+                  color: "#1B0B20",
+                }}
               >
                 {copy.summary.title}
 
                 <span
                   className="block italic"
-                  style={{ color: "#C8A96A" }}
+                  style={{
+                    color: "#C8A96A",
+                  }}
                 >
                   {copy.summary.accent}
                 </span>
@@ -1381,30 +1624,43 @@ export default function InvestmentGoldContent() {
             </div>
 
             <div className="grid border-t border-plum-dark/10 md:grid-cols-2 lg:grid-cols-5">
-              {SUMMARY_POINTS.map((summary, index) => {
-                const Icon =
-                  SUMMARY_ICONS[index % SUMMARY_ICONS.length];
+              {SUMMARY_POINTS.map(
+                (summary, index) => {
+                  const Icon =
+                    SUMMARY_ICONS[
+                      index %
+                        SUMMARY_ICONS.length
+                    ];
 
-                return (
-                  <div
-                    key={`${index}-${localized(summary, locale)}`}
-                    className="group border-b border-plum-dark/10 px-4 py-9 text-center md:border-r md:px-6 lg:py-12 lg:first:pl-0 lg:last:border-r-0 lg:last:pr-0"
-                  >
-                    <div className="mx-auto flex h-11 w-11 items-center justify-center text-gold transition-transform duration-500 group-hover:-translate-y-1">
-                      <Icon />
-                    </div>
-
-                    <span className="mx-auto mt-7 block h-px w-8 bg-gold/50 transition-all duration-500 group-hover:w-12 group-hover:bg-gold" />
-
-                    <p
-                      className="mx-auto mt-5 max-w-[240px] font-display text-xl leading-snug md:text-2xl"
-                      style={{ color: "#1B0B20" }}
+                  return (
+                    <div
+                      key={`${index}-${localized(
+                        summary,
+                        locale
+                      )}`}
+                      className="group border-b border-plum-dark/10 px-4 py-9 text-center md:border-r md:px-6 lg:py-12 lg:first:pl-0 lg:last:border-r-0 lg:last:pr-0"
                     >
-                      {localized(summary, locale)}
-                    </p>
-                  </div>
-                );
-              })}
+                      <div className="mx-auto flex h-11 w-11 items-center justify-center text-gold transition-transform duration-500 group-hover:-translate-y-1">
+                        <Icon />
+                      </div>
+
+                      <span className="mx-auto mt-7 block h-px w-8 bg-gold/50 transition-all duration-500 group-hover:w-12 group-hover:bg-gold" />
+
+                      <p
+                        className="mx-auto mt-5 max-w-[240px] font-display text-xl leading-snug md:text-2xl"
+                        style={{
+                          color: "#1B0B20",
+                        }}
+                      >
+                        {localized(
+                          summary,
+                          locale
+                        )}
+                      </p>
+                    </div>
+                  );
+                }
+              )}
             </div>
           </div>
         </section>

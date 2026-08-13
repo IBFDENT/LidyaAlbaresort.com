@@ -9,12 +9,23 @@ import FloatingActions from "@/components/FloatingActions";
 import { useLanguage } from "@/components/LanguageProvider";
 import type { Locale } from "@/lib/i18n";
 
-const LEGAL_COMPANY_NAME = "[LEGAL COMPANY NAME]";
-const REGISTERED_ADDRESS = "[REGISTERED ADDRESS]";
-const COMPANY_REGISTRATION_NUMBER =
-  "[COMPANY / REGISTRATION NUMBER]";
-const TAX_NUMBER = "[TAX NUMBER]";
-const LEGAL_EMAIL = "[LEGAL CONTACT EMAIL]";
+const LEGAL_COMPANY_NAME =
+  "LİDYA GOLD BAZAAR KUYUMCULUK TİCARET VE PAZARLAMA LİMİTED ŞİRKETİ";
+
+const REGISTERED_ADDRESS =
+  "Aşağı Hisar Mh. Antalya Cd. No:50/2, Manavgat, Antalya, Türkiye";
+
+const COMPANY_REGISTRATION_NUMBER = "1850";
+
+const TAX_NUMBER = "6080068522";
+
+/**
+ * Leave empty until an official legal contact
+ * email address is confirmed.
+ *
+ * When empty, the email row will not be rendered.
+ */
+const LEGAL_EMAIL = "";
 
 type TermsSection = {
   title: string;
@@ -157,8 +168,8 @@ const translations: Record<Locale, TermsCopy> = {
         title: "Governing law and jurisdiction",
         nav: "Governing law",
         paragraphs: [
-          "The law governing these Terms & Conditions and the courts or authorities having jurisdiction will depend on the legal identity and registered location of the website operator.",
-          "This section should be finalised after the operator's legal details and applicable jurisdiction have been confirmed.",
+          "These Terms & Conditions are governed by the laws of the Republic of Türkiye, without prejudice to any mandatory consumer-protection rights or other mandatory legal provisions that may apply.",
+          "Any dispute will be handled by the courts, consumer courts, consumer arbitration committees or other competent authorities having jurisdiction under applicable Turkish law. Nothing in these Terms limits any mandatory right of a consumer to apply to a competent court, committee or authority.",
         ],
       },
       {
@@ -288,8 +299,8 @@ const translations: Record<Locale, TermsCopy> = {
         title: "Anwendbares Recht und Gerichtsstand",
         nav: "Anwendbares Recht",
         paragraphs: [
-          "Das auf diese Bedingungen anwendbare Recht sowie die zuständigen Gerichte oder Behörden richten sich nach der rechtlichen Identität und dem eingetragenen Sitz des Websitebetreibers.",
-          "Dieser Abschnitt sollte nach Bestätigung der rechtlichen Angaben des Betreibers und der anwendbaren Rechtsordnung endgültig festgelegt werden.",
+          "Diese Allgemeinen Geschäftsbedingungen unterliegen dem Recht der Republik Türkiye, unbeschadet zwingender Verbraucherschutzrechte und anderer zwingender gesetzlicher Bestimmungen.",
+          "Streitigkeiten werden von den nach dem anwendbaren türkischen Recht zuständigen Gerichten, Verbrauchergerichten, Verbraucherschlichtungsstellen oder sonstigen zuständigen Behörden behandelt. Zwingende Rechte eines Verbrauchers, sich an ein zuständiges Gericht oder eine zuständige Behörde zu wenden, werden durch diese Bedingungen nicht eingeschränkt.",
         ],
       },
       {
@@ -421,8 +432,8 @@ const translations: Record<Locale, TermsCopy> = {
         title: "Uygulanacak hukuk ve yetki",
         nav: "Uygulanacak hukuk",
         paragraphs: [
-          "Bu Şartlar ve Koşullara uygulanacak hukuk ile yetkili mahkeme veya makamlar, web sitesi işletmecisinin hukuki kimliğine ve kayıtlı adresine bağlı olacaktır.",
-          "Bu bölüm, işletmecinin yasal bilgileri ve uygulanacak yargı yetkisi teyit edildikten sonra kesinleştirilmelidir.",
+          "Bu Şartlar ve Koşullar, tüketicinin korunmasına ilişkin emredici hükümler ve uygulanması zorunlu diğer yasal düzenlemeler saklı kalmak kaydıyla Türkiye Cumhuriyeti hukukuna tabidir.",
+          "Uyuşmazlıklar, uygulanabilir Türk hukuku uyarınca yetkili mahkemeler, tüketici mahkemeleri, tüketici hakem heyetleri veya diğer yetkili makamlar tarafından çözümlenir. Bu Şartlar, emredici hukukun tüketiciye tanıdığı yetkili mahkeme, hakem heyeti veya diğer makamlara başvurma haklarını sınırlandırmaz.",
         ],
       },
       {
@@ -552,8 +563,8 @@ const translations: Record<Locale, TermsCopy> = {
         title: "Rozhodné právo a jurisdikcia",
         nav: "Rozhodné právo",
         paragraphs: [
-          "Právo, ktorým sa riadia tieto obchodné podmienky, ako aj príslušné súdy alebo orgány budú závisieť od právnej identity a registrovaného sídla prevádzkovateľa webovej stránky.",
-          "Táto časť by mala byť dokončená po potvrdení právnych údajov prevádzkovateľa a príslušnej jurisdikcie.",
+          "Tieto obchodné podmienky sa riadia právom Tureckej republiky, pričom tým nie sú dotknuté žiadne kogentné práva na ochranu spotrebiteľa ani iné záväzné ustanovenia právnych predpisov, ktoré sa môžu uplatniť.",
+          "Prípadné spory budú riešené súdmi, spotrebiteľskými súdmi, spotrebiteľskými rozhodcovskými výbormi alebo inými príslušnými orgánmi podľa platného tureckého práva. Tieto podmienky neobmedzujú žiadne povinné právo spotrebiteľa obrátiť sa na príslušný súd, výbor alebo orgán.",
         ],
       },
       {
@@ -683,8 +694,8 @@ const translations: Record<Locale, TermsCopy> = {
         title: "Rozhodné právo a jurisdikce",
         nav: "Rozhodné právo",
         paragraphs: [
-          "Právo, kterým se řídí tyto obchodní podmínky, a příslušné soudy nebo orgány budou záviset na právní identitě a registrovaném sídle provozovatele webových stránek.",
-          "Tato část by měla být dokončena po potvrzení právních údajů provozovatele a příslušné jurisdikce.",
+          "Tyto obchodní podmínky se řídí právem Turecké republiky, aniž jsou dotčena kogentní práva na ochranu spotřebitele nebo jiná závazná ustanovení právních předpisů.",
+          "Případné spory budou řešeny soudy, spotřebitelskými soudy, spotřebitelskými rozhodčími výbory nebo jinými příslušnými orgány podle platného tureckého práva. Tyto podmínky neomezují žádné povinné právo spotřebitele obrátit se na příslušný soud, výbor nebo orgán.",
         ],
       },
       {
@@ -814,8 +825,8 @@ const translations: Record<Locale, TermsCopy> = {
         title: "Irányadó jog és joghatóság",
         nav: "Irányadó jog",
         paragraphs: [
-          "A jelen feltételekre irányadó jog, valamint az illetékes bíróságok vagy hatóságok a weboldal üzemeltetőjének jogi személyétől és bejegyzett székhelyétől függenek.",
-          "Ezt a részt az üzemeltető jogi adatainak és az alkalmazandó joghatóságnak a megerősítése után kell véglegesíteni.",
+          "Jelen feltételekre a Török Köztársaság joga irányadó, az alkalmazandó kötelező fogyasztóvédelmi jogok és más kötelező jogszabályi rendelkezések sérelme nélkül.",
+          "A jogvitákat az alkalmazandó török jog alapján hatáskörrel és illetékességgel rendelkező bíróságok, fogyasztóvédelmi bíróságok, fogyasztói választottbizottságok vagy más illetékes hatóságok kezelik. Jelen feltételek nem korlátozzák a fogyasztó kötelező jogát arra, hogy az illetékes bírósághoz, bizottsághoz vagy hatósághoz forduljon.",
         ],
       },
       {
@@ -947,8 +958,8 @@ const translations: Record<Locale, TermsCopy> = {
         title: "Prawo właściwe i jurysdykcja",
         nav: "Prawo właściwe",
         paragraphs: [
-          "Prawo właściwe dla niniejszego Regulaminu oraz właściwe sądy lub organy będą zależeć od tożsamości prawnej i zarejestrowanej siedziby operatora strony internetowej.",
-          "Ta część powinna zostać sfinalizowana po potwierdzeniu danych prawnych operatora oraz właściwej jurysdykcji.",
+          "Niniejszy Regulamin podlega prawu Republiki Turcji, bez uszczerbku dla bezwzględnie obowiązujących praw konsumenta oraz innych bezwzględnie obowiązujących przepisów prawa.",
+          "Spory będą rozpatrywane przez sądy, sądy konsumenckie, konsumenckie komisje arbitrażowe lub inne właściwe organy zgodnie z obowiązującym prawem tureckim. Niniejszy Regulamin nie ogranicza obowiązkowych praw konsumenta do zwrócenia się do właściwego sądu, komisji lub organu.",
         ],
       },
       {
@@ -1078,8 +1089,8 @@ const translations: Record<Locale, TermsCopy> = {
         title: "Применимое право и юрисдикция",
         nav: "Применимое право",
         paragraphs: [
-          "Применимое к настоящим Условиям право, а также компетентные суды или органы зависят от юридического статуса и зарегистрированного местонахождения оператора веб-сайта.",
-          "Этот раздел должен быть окончательно оформлен после подтверждения юридических данных оператора и применимой юрисдикции.",
+          "Настоящие Условия регулируются законодательством Турецкой Республики без ущерба для обязательных прав потребителей и иных императивных норм, которые подлежат применению.",
+          "Споры рассматриваются судами, судами по делам потребителей, потребительскими арбитражными комитетами или иными компетентными органами в соответствии с применимым законодательством Турции. Настоящие Условия не ограничивают обязательное право потребителя обратиться в компетентный суд, комитет или иной орган.",
         ],
       },
       {
@@ -1209,8 +1220,8 @@ const translations: Record<Locale, TermsCopy> = {
         title: "Toepasselijk recht en bevoegde rechter",
         nav: "Toepasselijk recht",
         paragraphs: [
-          "Het recht dat op deze Algemene voorwaarden van toepassing is en de bevoegde rechtbanken of autoriteiten zijn afhankelijk van de juridische identiteit en geregistreerde vestigingsplaats van de websitebeheerder.",
-          "Deze paragraaf dient te worden afgerond nadat de juridische gegevens van de beheerder en de toepasselijke jurisdictie zijn bevestigd.",
+          "Op deze Algemene voorwaarden is het recht van de Republiek Türkiye van toepassing, zonder afbreuk te doen aan dwingende consumentenrechten of andere dwingende wettelijke bepalingen.",
+          "Geschillen worden behandeld door rechtbanken, consumentenrechtbanken, consumentengeschillencommissies of andere bevoegde autoriteiten die volgens het toepasselijke Turkse recht bevoegd zijn. Deze voorwaarden beperken geen dwingend recht van een consument om zich tot een bevoegde rechtbank, commissie of autoriteit te wenden.",
         ],
       },
       {
@@ -1340,8 +1351,8 @@ const translations: Record<Locale, TermsCopy> = {
         title: "Lovvalg og jurisdiktion",
         nav: "Lovvalg",
         paragraphs: [
-          "Den lovgivning, der gælder for disse vilkår og betingelser, samt kompetente domstole eller myndigheder afhænger af hjemmesideoperatørens juridiske identitet og registrerede hjemsted.",
-          "Dette afsnit bør færdiggøres, når operatørens juridiske oplysninger og relevante jurisdiktion er bekræftet.",
+          "Disse vilkår og betingelser er underlagt lovgivningen i Republikken Türkiye uden at tilsidesætte ufravigelige forbrugerrettigheder eller andre ufravigelige lovbestemmelser.",
+          "Tvister behandles af domstole, forbrugerdomstole, forbrugertvistnævn eller andre kompetente myndigheder, som har kompetence efter gældende tyrkisk ret. Disse vilkår begrænser ikke en forbrugers ufravigelige ret til at henvende sig til en kompetent domstol, et nævn eller en myndighed.",
         ],
       },
       {
@@ -1471,8 +1482,8 @@ const translations: Record<Locale, TermsCopy> = {
         title: "Sovellettava laki ja oikeuspaikka",
         nav: "Sovellettava laki",
         paragraphs: [
-          "Näihin käyttöehtoihin sovellettava laki sekä toimivaltaiset tuomioistuimet tai viranomaiset riippuvat verkkosivuston ylläpitäjän oikeudellisesta identiteetistä ja rekisteröidystä sijainnista.",
-          "Tämä kohta tulee viimeistellä, kun ylläpitäjän oikeudelliset tiedot ja sovellettava oikeuspaikka on vahvistettu.",
+          "Näihin käyttöehtoihin sovelletaan Turkin tasavallan lakia, kuitenkaan rajoittamatta pakottavia kuluttajansuojaoikeuksia tai muita sovellettavia pakottavia oikeussäännöksiä.",
+          "Riita-asiat käsitellään sovellettavan Turkin lain mukaan toimivaltaisissa tuomioistuimissa, kuluttajatuomioistuimissa, kuluttajariitalautakunnissa tai muissa toimivaltaisissa viranomaisissa. Nämä ehdot eivät rajoita kuluttajan pakottavaan lainsäädäntöön perustuvaa oikeutta kääntyä toimivaltaisen tuomioistuimen, lautakunnan tai viranomaisen puoleen.",
         ],
       },
       {
@@ -1602,8 +1613,8 @@ const translations: Record<Locale, TermsCopy> = {
         title: "Tillämplig lag och jurisdiktion",
         nav: "Tillämplig lag",
         paragraphs: [
-          "Vilken lag som gäller för dessa villkor och vilka domstolar eller myndigheter som är behöriga beror på webbplatsoperatörens juridiska identitet och registrerade säte.",
-          "Detta avsnitt bör färdigställas efter att operatörens juridiska uppgifter och tillämplig jurisdiktion har bekräftats.",
+          "Dessa villkor regleras av lagen i Republiken Türkiye utan att påverka tvingande konsumentskyddsrättigheter eller andra tvingande rättsregler som kan vara tillämpliga.",
+          "Tvister hanteras av domstolar, konsumentdomstolar, konsumenttvistnämnder eller andra behöriga myndigheter enligt tillämplig turkisk lag. Dessa villkor begränsar inte någon tvingande rätt för en konsument att vända sig till en behörig domstol, nämnd eller myndighet.",
         ],
       },
       {
@@ -1731,8 +1742,8 @@ const translations: Record<Locale, TermsCopy> = {
         title: "Droit applicable et juridiction",
         nav: "Droit applicable",
         paragraphs: [
-          "Le droit applicable aux présentes Conditions générales ainsi que les juridictions ou autorités compétentes dépendront de l’identité juridique et du siège enregistré de l’exploitant du site.",
-          "Cette section devra être finalisée après confirmation des informations juridiques de l’exploitant et de la juridiction applicable.",
+          "Les présentes Conditions générales sont régies par le droit de la République de Türkiye, sans préjudice des droits impératifs de protection des consommateurs ni des autres dispositions légales impératives applicables.",
+          "Tout litige sera traité par les juridictions, tribunaux de la consommation, commissions arbitrales de consommateurs ou autres autorités compétentes conformément au droit turc applicable. Les présentes Conditions ne limitent aucun droit impératif d’un consommateur de saisir une juridiction, commission ou autorité compétente.",
         ],
       },
       {
@@ -1862,8 +1873,8 @@ const translations: Record<Locale, TermsCopy> = {
         title: "Legge applicabile e giurisdizione",
         nav: "Legge applicabile",
         paragraphs: [
-          "La legge applicabile ai presenti Termini e condizioni e i tribunali o le autorità competenti dipenderanno dall’identità giuridica e dalla sede registrata del gestore del sito.",
-          "Questa sezione dovrà essere completata dopo la conferma dei dati legali del gestore e della giurisdizione applicabile.",
+          "I presenti Termini e condizioni sono regolati dalla legge della Repubblica di Türkiye, fatti salvi i diritti inderogabili dei consumatori e le altre disposizioni imperative eventualmente applicabili.",
+          "Le controversie saranno trattate dai tribunali, dai tribunali dei consumatori, dai comitati arbitrali dei consumatori o dalle altre autorità competenti ai sensi della legge turca applicabile. I presenti Termini non limitano alcun diritto inderogabile del consumatore di rivolgersi a un tribunale, comitato o autorità competente.",
         ],
       },
       {
@@ -1993,8 +2004,8 @@ const translations: Record<Locale, TermsCopy> = {
         title: "Ley aplicable y jurisdicción",
         nav: "Ley aplicable",
         paragraphs: [
-          "La ley que regirá estos Términos y condiciones, así como los tribunales o autoridades competentes, dependerán de la identidad jurídica y domicilio registrado del operador del sitio.",
-          "Esta sección deberá finalizarse una vez confirmados los datos legales del operador y la jurisdicción aplicable.",
+          "Estos Términos y condiciones se rigen por las leyes de la República de Türkiye, sin perjuicio de los derechos imperativos de protección de los consumidores ni de otras disposiciones legales imperativas que resulten aplicables.",
+          "Las controversias serán tratadas por los tribunales, tribunales de consumidores, comités arbitrales de consumidores u otras autoridades competentes conforme a la legislación turca aplicable. Estos Términos no limitan ningún derecho imperativo del consumidor a acudir ante un tribunal, comité o autoridad competente.",
         ],
       },
       {
@@ -2127,7 +2138,8 @@ export default function TermsContent() {
                   <nav className="mt-6 flex flex-col gap-3 text-sm text-plum-dark/55">
                     {t.sections.map((section, index) => {
                       const id =
-                        sectionIds[index] ?? `section-${index + 1}`;
+                        sectionIds[index] ??
+                        `section-${index + 1}`;
 
                       return (
                         <a
@@ -2135,8 +2147,11 @@ export default function TermsContent() {
                           href={`#${id}`}
                           className="transition-colors hover:text-gold"
                         >
-                          {String(index + 1).padStart(2, "0")} ·{" "}
-                          {section.nav}
+                          {String(index + 1).padStart(
+                            2,
+                            "0"
+                          )}{" "}
+                          · {section.nav}
                         </a>
                       );
                     })}
@@ -2148,9 +2163,12 @@ export default function TermsContent() {
               <div className="space-y-16 lg:col-span-9">
                 {t.sections.map((section, index) => {
                   const id =
-                    sectionIds[index] ?? `section-${index + 1}`;
+                    sectionIds[index] ??
+                    `section-${index + 1}`;
 
-                  const number = String(index + 1).padStart(2, "0");
+                  const number = String(
+                    index + 1
+                  ).padStart(2, "0");
 
                   const isOperator = index === 0;
 
@@ -2169,7 +2187,9 @@ export default function TermsContent() {
                           <p
                             key={`${id}-${paragraphIndex}`}
                             className={
-                              paragraphIndex > 0 ? "mt-4" : ""
+                              paragraphIndex > 0
+                                ? "mt-4"
+                                : ""
                             }
                           >
                             {paragraph}
@@ -2189,19 +2209,27 @@ export default function TermsContent() {
 
                           <p className="mt-2">
                             {t.registration}:{" "}
-                            {COMPANY_REGISTRATION_NUMBER}
+                            {
+                              COMPANY_REGISTRATION_NUMBER
+                            }
                           </p>
 
                           <p className="mt-2">
-                            {t.taxNumber}: {TAX_NUMBER}
+                            {t.taxNumber}:{" "}
+                            {TAX_NUMBER}
                           </p>
 
-                          <p className="mt-2">
-                            {t.legalContact}:{" "}
-                            <span className="text-plum-dark">
-                              {LEGAL_EMAIL}
-                            </span>
-                          </p>
+                          {LEGAL_EMAIL && (
+                            <p className="mt-2">
+                              {t.legalContact}:{" "}
+                              <a
+                                href={`mailto:${LEGAL_EMAIL}`}
+                                className="text-plum-dark transition-colors hover:text-gold"
+                              >
+                                {LEGAL_EMAIL}
+                              </a>
+                            </p>
+                          )}
                         </div>
                       )}
 
@@ -2211,17 +2239,44 @@ export default function TermsContent() {
                             {t.legalContact}
                           </span>
 
-                          <p className="mt-4 font-display text-2xl text-plum-dark">
+                          <p className="mt-4 font-display text-2xl leading-snug text-plum-dark">
                             {LEGAL_COMPANY_NAME}
                           </p>
 
-                          <p className="mt-3 text-sm text-grey">
-                            {LEGAL_EMAIL}
-                          </p>
+                          {LEGAL_EMAIL && (
+                            <p className="mt-3 text-sm text-grey">
+                              <a
+                                href={`mailto:${LEGAL_EMAIL}`}
+                                className="transition-colors hover:text-gold"
+                              >
+                                {LEGAL_EMAIL}
+                              </a>
+                            </p>
+                          )}
 
-                          <p className="mt-1 text-sm text-grey">
+                          <p
+                            className={
+                              LEGAL_EMAIL
+                                ? "mt-1 text-sm leading-6 text-grey"
+                                : "mt-3 text-sm leading-6 text-grey"
+                            }
+                          >
                             {REGISTERED_ADDRESS}
                           </p>
+
+                          <div className="mt-4 space-y-1 border-t border-plum-dark/10 pt-4 text-sm text-grey">
+                            <p>
+                              {t.registration}:{" "}
+                              {
+                                COMPANY_REGISTRATION_NUMBER
+                              }
+                            </p>
+
+                            <p>
+                              {t.taxNumber}:{" "}
+                              {TAX_NUMBER}
+                            </p>
+                          </div>
                         </div>
                       )}
                     </LegalSection>
@@ -2242,7 +2297,8 @@ export default function TermsContent() {
                 </span>
 
                 <p className="mt-2 text-sm text-grey">
-                  {t.title} · {t.lastUpdated} {t.date}
+                  {t.title} · {t.lastUpdated}{" "}
+                  {t.date}
                 </p>
               </div>
 

@@ -968,7 +968,19 @@ export default function DesignContent() {
         {/* =====================================================
             HERO
         ====================================================== */}
-        <section className="relative min-h-[760px] overflow-hidden bg-ivory pt-[108px] md:min-h-[900px] md:pt-40 lg:min-h-[940px] lg:pt-44">
+        <section
+          className="
+            relative
+            min-h-[760px]
+            overflow-hidden
+            bg-ivory
+            pt-[108px]
+            md:min-h-[900px]
+            md:pt-40
+            lg:min-h-[940px]
+            lg:pt-44
+          "
+        >
           {/* HERO IMAGE */}
           <div
             className={`
@@ -992,107 +1004,185 @@ export default function DesignContent() {
               sizes="100vw"
               className="
                 object-cover
-                object-[54%_50%]
-                md:object-center
+                object-[58%_50%]
+                md:object-[55%_50%]
+                lg:object-center
               "
             />
           </div>
 
-          {/* READABILITY OVERLAY */}
+          {/* LEFT READABILITY GRADIENT */}
           <div
             className="
               pointer-events-none
               absolute
               inset-0
-              bg-[#F7F3EB]/72
-              md:bg-[#F7F3EB]/54
-              lg:bg-[#F7F3EB]/38
+              bg-gradient-to-r
+              from-[#F7F3EB]/97
+              via-[#F7F3EB]/78
+              to-[#F7F3EB]/16
+              md:from-[#F7F3EB]/94
+              md:via-[#F7F3EB]/52
+              md:to-transparent
+              lg:from-[#F7F3EB]/92
+              lg:via-[#F7F3EB]/42
             "
           />
 
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#F7F3EB]/18 via-transparent to-[#F7F3EB]/30" />
+          {/* LOWER DEPTH */}
+          <div
+            className="
+              pointer-events-none
+              absolute
+              inset-0
+              bg-gradient-to-t
+              from-[#F7F3EB]/40
+              via-transparent
+              to-[#F7F3EB]/10
+              md:from-[#F7F3EB]/24
+            "
+          />
 
-          <div className="pointer-events-none absolute -left-40 top-10 h-[500px] w-[500px] rounded-full bg-brand-white/16 blur-3xl" />
+          {/* SUBTLE VIGNETTE */}
+          <div
+            className="
+              pointer-events-none
+              absolute
+              inset-0
+              bg-[radial-gradient(circle_at_center,transparent_52%,rgba(84,52,27,0.055)_100%)]
+            "
+          />
 
-          <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20">
-            <div className="mx-auto max-w-[1050px] pb-12 text-center md:pb-16 lg:pb-20">
-              {/* EYEBROW */}
+          {/* CONTENT */}
+          <div
+            className="
+              relative
+              mx-auto
+              max-w-[1440px]
+              px-6
+              md:px-10
+              lg:px-16
+              xl:px-20
+            "
+          >
+            {/* MAIN HERO */}
+            <div
+              className="
+                grid
+                gap-7
+                pb-10
+                md:gap-10
+                md:pb-16
+                lg:grid-cols-12
+                lg:items-end
+                lg:gap-12
+                lg:pb-28
+              "
+            >
+              {/* LEFT SIDE */}
               <div
-                className={`
-                  flex
-                  items-center
-                  justify-center
-                  gap-3
-                  transition-all
-                  duration-[950ms]
-                  ease-[cubic-bezier(0.22,1,0.36,1)]
-                  md:gap-4
-                  ${
-                    heroLoaded
-                      ? "translate-y-0 opacity-100"
-                      : "translate-y-6 opacity-0"
-                  }
-                `}
-                style={{
-                  transitionDelay: "180ms",
-                }}
+                className="
+                  text-center
+                  lg:col-span-8
+                  lg:text-left
+                "
               >
-                <span className="flex h-9 w-9 items-center justify-center text-gold">
-                  <BlossomIcon />
-                </span>
-
-                <span className="text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-gold md:text-[0.66rem] md:tracking-[0.34em]">
-                  {copy.hero.eyebrow}
-                </span>
-              </div>
-
-              {/* TITLE */}
-              <div className="overflow-hidden">
-                <h1
+                {/* EYEBROW */}
+                <div
                   className={`
-                    mx-auto
-                    mt-6
-                    max-w-[980px]
-                    font-display
-                    text-[2.85rem]
-                    leading-[0.93]
-                    tracking-[-0.04em]
+                    flex
+                    items-center
+                    justify-center
+                    gap-3
                     transition-all
-                    duration-[1100ms]
+                    duration-[950ms]
                     ease-[cubic-bezier(0.22,1,0.36,1)]
-                    sm:text-[3.2rem]
-                    md:mt-7
-                    md:text-6xl
-                    lg:text-[5.8rem]
+                    md:gap-4
+                    lg:justify-start
                     ${
                       heroLoaded
                         ? "translate-y-0 opacity-100"
-                        : "translate-y-[28%] opacity-0"
+                        : "translate-y-6 opacity-0"
                     }
                   `}
                   style={{
-                    color: "#1B0B20",
-                    transitionDelay: "340ms",
+                    transitionDelay: "180ms",
                   }}
                 >
-                  {copy.hero.title}
-                </h1>
+                  <span
+                    className="
+                      flex
+                      h-9
+                      w-9
+                      shrink-0
+                      items-center
+                      justify-center
+                      text-gold
+                    "
+                  >
+                    <BlossomIcon />
+                  </span>
+
+                  <span
+                    className="
+                      text-[0.62rem]
+                      font-semibold
+                      uppercase
+                      tracking-[0.3em]
+                      text-gold
+                      md:text-[0.66rem]
+                      md:tracking-[0.34em]
+                    "
+                  >
+                    {copy.hero.eyebrow}
+                  </span>
+                </div>
+
+                {/* TITLE */}
+                <div className="overflow-hidden">
+                  <h1
+                    className={`
+                      mx-auto
+                      mt-6
+                      max-w-[800px]
+                      font-display
+                      text-[2.85rem]
+                      leading-[0.93]
+                      tracking-[-0.04em]
+                      transition-all
+                      duration-[1100ms]
+                      ease-[cubic-bezier(0.22,1,0.36,1)]
+                      sm:text-[3.2rem]
+                      md:mt-7
+                      md:text-6xl
+                      lg:mx-0
+                      lg:text-[5.8rem]
+                      ${
+                        heroLoaded
+                          ? "translate-y-0 opacity-100"
+                          : "translate-y-[28%] opacity-0"
+                      }
+                    `}
+                    style={{
+                      color: "#1B0B20",
+                      transitionDelay: "340ms",
+                    }}
+                  >
+                    {copy.hero.title}
+                  </h1>
+                </div>
               </div>
 
-              {/* LEAD */}
-              <p
+              {/* RIGHT SIDE */}
+              <div
                 className={`
-                  mx-auto
-                  mt-7
-                  max-w-[620px]
-                  text-sm
-                  leading-7
-                  text-[#645E5A]
+                  text-center
                   transition-all
                   duration-[1000ms]
                   ease-[cubic-bezier(0.22,1,0.36,1)]
-                  md:mt-8
-                  md:text-base
+                  lg:col-span-4
+                  lg:pb-2
+                  lg:text-left
                   ${
                     heroLoaded
                       ? "translate-y-0 opacity-100"
@@ -1103,37 +1193,62 @@ export default function DesignContent() {
                   transitionDelay: "500ms",
                 }}
               >
-                {copy.hero.lead}
-              </p>
+                <p
+                  className="
+                    mx-auto
+                    max-w-[340px]
+                    text-[0.78rem]
+                    leading-[1.65rem]
+                    text-[#645E5A]
+                    sm:max-w-md
+                    md:text-base
+                    md:leading-7
+                    lg:mx-0
+                  "
+                >
+                  {copy.hero.lead}
+                </p>
 
-              {/* SINCE */}
-              <div
-                className={`
-                  mt-7
-                  flex
-                  items-center
-                  justify-center
-                  gap-4
-                  transition-all
-                  duration-[1000ms]
-                  ease-[cubic-bezier(0.22,1,0.36,1)]
-                  ${
-                    heroLoaded
-                      ? "translate-y-0 opacity-100"
-                      : "translate-y-5 opacity-0"
-                  }
-                `}
-                style={{
-                  transitionDelay: "660ms",
-                }}
-              >
-                <span className="h-px w-10 bg-gold md:w-12" />
+                {/* SINCE */}
+                <div
+                  className={`
+                    mt-5
+                    flex
+                    items-center
+                    justify-center
+                    gap-3
+                    transition-all
+                    duration-[1000ms]
+                    ease-[cubic-bezier(0.22,1,0.36,1)]
+                    md:mt-7
+                    md:gap-4
+                    lg:justify-start
+                    ${
+                      heroLoaded
+                        ? "translate-y-0 opacity-100"
+                        : "translate-y-5 opacity-0"
+                    }
+                  `}
+                  style={{
+                    transitionDelay: "660ms",
+                  }}
+                >
+                  <span className="h-px w-9 bg-gold md:w-12" />
 
-                <span className="text-[0.55rem] font-semibold uppercase tracking-[0.22em] text-plum-dark/50 md:text-[0.58rem] md:tracking-[0.24em]">
-                  {copy.hero.since}
-                </span>
-
-                <span className="h-px w-10 bg-gold md:w-12" />
+                  <span
+                    className="
+                      text-[0.52rem]
+                      font-semibold
+                      uppercase
+                      tracking-[0.21em]
+                      text-plum-dark/50
+                      md:text-[0.58rem]
+                      md:tracking-[0.24em]
+                    "
+                  >
+                    {copy.hero.since}
+                  </span>
+                </div>
               </div>
             </div>
 
@@ -1142,12 +1257,11 @@ export default function DesignContent() {
               className={`
                 border-t
                 border-plum-dark/10
-                py-9
-                text-center
+                py-7
                 transition-all
                 duration-[1100ms]
                 ease-[cubic-bezier(0.22,1,0.36,1)]
-                md:py-14
+                md:py-12
                 lg:py-16
                 ${
                   heroLoaded
@@ -1159,32 +1273,64 @@ export default function DesignContent() {
                 transitionDelay: "840ms",
               }}
             >
-              <div className="mx-auto max-w-[1000px]">
-                <span className="text-[0.58rem] font-semibold uppercase tracking-[0.28em] text-gold md:text-[0.62rem] md:tracking-[0.3em]">
-                  {copy.hero.statementEyebrow}
-                </span>
-
-                <p
-                  className="
-                    mx-auto
-                    mt-5
-                    max-w-[950px]
-                    font-display
-                    text-[1.8rem]
-                    italic
-                    leading-[1.12]
-                    md:text-4xl
-                    lg:text-5xl
-                  "
-                  style={{ color: "#1B0B20" }}
-                >
-                  {copy.hero.statementBefore}
-
-                  <span style={{ color: "#C8A96A" }}>
-                    {" "}
-                    {copy.hero.statementAccent}
+              <div
+                className="
+                  grid
+                  gap-4
+                  text-center
+                  md:gap-6
+                  lg:grid-cols-12
+                  lg:items-center
+                  lg:gap-8
+                  lg:text-left
+                "
+              >
+                <div className="lg:col-span-3">
+                  <span
+                    className="
+                      text-[0.58rem]
+                      font-semibold
+                      uppercase
+                      tracking-[0.28em]
+                      text-gold
+                      md:text-[0.62rem]
+                      md:tracking-[0.3em]
+                    "
+                  >
+                    {copy.hero.statementEyebrow}
                   </span>
-                </p>
+                </div>
+
+                <div className="lg:col-span-9">
+                  <p
+                    className="
+                      mx-auto
+                      max-w-[900px]
+                      font-display
+                      text-[1.65rem]
+                      italic
+                      leading-[1.12]
+                      md:text-4xl
+                      md:leading-tight
+                      lg:mx-0
+                      lg:text-5xl
+                    "
+                    style={{
+                      color: "#1B0B20",
+                    }}
+                  >
+                    {copy.hero.statementBefore}
+
+                    <span
+                      style={{
+                        color: "#C8A96A",
+                      }}
+                    >
+                      {" "}
+                      {copy.hero.statementAccent}
+                    </span>
+                  </p>
+                </div>
               </div>
             </div>
           </div>

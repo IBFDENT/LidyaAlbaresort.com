@@ -1413,45 +1413,42 @@ const WATCHES_COPY: Record<Locale, WatchesCopy> = {
 
 const WATCH_CATEGORIES = [
   {
-    image: "/images/watches/men-category/men-hero.png",
+    image: "/images/watches/men-category/men-cover-category.png",
     key: "mens",
     href: "/watches/mens",
   },
   {
-    image: "/images/watches/woman-category/woman-hero.png",
+    image: "/images/watches/woman-category/woman-cover-category.png",
     key: "womens",
     href: "/watches/womens",
   },
   {
-    image: "/images/watches/children-category/children-hero.png",
+    image: "/images/watches/children-category/children-cover-category.png",
     key: "childrens",
     href: "/watches/childrens",
   },
   {
-    image: "/images/watches/gold-category/gold-hero.png",
+    image: "/images/watches/gold-category/gold-cover-category.png",
     key: "gold",
     href: "/watches/gold",
   },
   {
-    image: "/images/watches/sport-category/sport-man/men-hero1.png",
+    image: "/images/watches/sport-category/sport-cover-category.png",
     key: "sport",
     href: "/watches/sport",
   },
   {
-    image:
-      "/images/watches/brilliant-category/brilliant-watch-hero.png",
+    image: "/images/watches/brilliant-category/brilliant-cover-category.png",
     key: "brilliants",
     href: "/watches/brilliants",
   },
   {
-    image:
-      "/images/watches/diamond-category/diamond-watch-hero.png",
+    image: "/images/watches/diamond-category/diamond-cover-category.png",
     key: "diamonds",
     href: "/watches/diamonds",
   },
   {
-    image:
-      "/images/watches/bespoke-category/bespoke-watch1.png",
+    image: "/images/watches/bespoke-category/bespoke-cover-category.png",
     key: "bespoke",
     href: "/watches/bespoke",
   },
@@ -1460,7 +1457,8 @@ const WATCH_CATEGORIES = [
 export default function WatchesContent() {
   const { locale } = useLanguage();
 
-  const copy = WATCHES_COPY[locale] ?? WATCHES_COPY.en;
+  const copy =
+    WATCHES_COPY[locale] ?? WATCHES_COPY.en;
 
   return (
     <>
@@ -1469,26 +1467,75 @@ export default function WatchesContent() {
       <main>
         <WatchesCinematicHero />
 
-        <section className="bg-[#F7F3EB] px-6 py-20 md:px-10 md:py-28 lg:px-16 lg:py-36">
+        <section
+          className="
+            bg-[#F7F3EB]
+            px-6
+            py-20
+            md:px-10
+            md:py-28
+            lg:px-16
+            lg:py-36
+          "
+        >
           <div className="mx-auto max-w-[1320px]">
             <div className="mx-auto max-w-[820px] text-center">
-              <span className="text-[0.58rem] font-semibold uppercase tracking-[0.3em] text-[#A98242] md:text-[0.64rem]">
+              <span
+                className="
+                  text-[0.58rem]
+                  font-semibold
+                  uppercase
+                  tracking-[0.3em]
+                  text-[#A98242]
+                  md:text-[0.64rem]
+                "
+              >
                 {copy.categoriesEyebrow}
               </span>
 
-              <h2 className="mt-5 font-display text-4xl leading-[1.02] tracking-[-0.03em] text-[#1B0B20] md:text-6xl">
+              <h2
+                className="
+                  mt-5
+                  font-display
+                  text-4xl
+                  leading-[1.02]
+                  tracking-[-0.03em]
+                  text-[#1B0B20]
+                  md:text-6xl
+                "
+              >
                 {copy.categoriesTitle}{" "}
                 <span className="italic text-[#A98242]">
                   {copy.categoriesAccent}
                 </span>
               </h2>
 
-              <p className="mx-auto mt-7 max-w-[680px] text-sm leading-7 text-[#645E5A] md:text-base">
+              <p
+                className="
+                  mx-auto
+                  mt-7
+                  max-w-[680px]
+                  text-sm
+                  leading-7
+                  text-[#645E5A]
+                  md:text-base
+                "
+              >
                 {copy.categoriesDescription}
               </p>
             </div>
 
-            <div className="mt-16 grid gap-5 md:mt-20 md:grid-cols-2 lg:gap-7">
+            <div
+              className="
+                mt-16
+                grid
+                gap-5
+                md:mt-20
+                md:grid-cols-2
+                md:gap-6
+                lg:gap-7
+              "
+            >
               {WATCH_CATEGORIES.map((item, index) => {
                 const category =
                   copy.categories[index] ??
@@ -1502,47 +1549,165 @@ export default function WatchesContent() {
                       group
                       relative
                       block
-                      min-h-[420px]
+                      min-h-[430px]
                       overflow-hidden
-                      bg-[#1B0B20]
-                      md:min-h-[520px]
+                      border
+                      border-[#B8975D]/15
+                      bg-[#160919]
+                      shadow-[0_18px_55px_rgba(40,24,31,0.06)]
+                      transition-[border-color,box-shadow,transform]
+                      duration-700
+                      ease-[cubic-bezier(0.22,1,0.36,1)]
+                      hover:border-[#C6A15B]/35
+                      hover:shadow-[0_26px_70px_rgba(32,15,27,0.12)]
+                      md:min-h-[530px]
                     "
                   >
                     <Image
                       src={item.image}
                       alt={category.title}
                       fill
+                      priority={index < 2}
                       sizes="(max-width: 768px) 100vw, 50vw"
                       className="
                         object-cover
                         transition-transform
-                        duration-[1600ms]
+                        duration-[1400ms]
                         ease-[cubic-bezier(0.22,1,0.36,1)]
-                        group-hover:scale-[1.045]
+                        group-hover:scale-[1.035]
                       "
                     />
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#160919]/90 via-[#160919]/20 to-transparent" />
+                    <div
+                      className="
+                        pointer-events-none
+                        absolute
+                        inset-0
+                        bg-[#120714]/[0.025]
+                        transition-colors
+                        duration-700
+                        group-hover:bg-[#120714]/[0.06]
+                      "
+                    />
 
-                    <div className="absolute inset-x-0 bottom-0 p-7 md:p-10">
-                      <div className="mb-4 h-px w-10 bg-[#C6A15B]" />
+                    <div
+                      className="
+                        pointer-events-none
+                        absolute
+                        inset-0
+                        bg-[linear-gradient(to_top,rgba(18,5,22,0.96)_0%,rgba(18,5,22,0.76)_24%,rgba(18,5,22,0.43)_43%,rgba(18,5,22,0.12)_66%,transparent_84%)]
+                        transition-opacity
+                        duration-700
+                        group-hover:opacity-95
+                      "
+                    />
 
-                      <h3 className="font-display text-3xl text-white md:text-4xl">
+                    <div
+                      className="
+                        pointer-events-none
+                        absolute
+                        inset-0
+                        bg-[radial-gradient(circle_at_center,transparent_52%,rgba(13,5,14,0.12)_100%)]
+                      "
+                    />
+
+                    <div
+                      className="
+                        pointer-events-none
+                        absolute
+                        inset-x-0
+                        bottom-0
+                        h-px
+                        origin-left
+                        scale-x-0
+                        bg-[#C6A15B]
+                        transition-transform
+                        duration-700
+                        ease-[cubic-bezier(0.22,1,0.36,1)]
+                        group-hover:scale-x-100
+                      "
+                    />
+
+                    <div
+                      className="
+                        absolute
+                        inset-x-0
+                        bottom-0
+                        p-7
+                        transition-transform
+                        duration-700
+                        ease-[cubic-bezier(0.22,1,0.36,1)]
+                        group-hover:-translate-y-1
+                        md:p-10
+                        lg:p-11
+                      "
+                    >
+                      <div
+                        className="
+                          mb-5
+                          h-px
+                          w-10
+                          bg-[#C6A15B]
+                          transition-[width,opacity]
+                          duration-500
+                          group-hover:w-14
+                        "
+                      />
+
+                      <h3
+                        className="
+                          max-w-[520px]
+                          font-display
+                          text-[2rem]
+                          leading-[1.02]
+                          tracking-[-0.025em]
+                          !text-[#F8F3EA]
+                          drop-shadow-[0_2px_16px_rgba(0,0,0,0.35)]
+                          md:text-[2.45rem]
+                          lg:text-[2.7rem]
+                        "
+                      >
                         {category.title}
                       </h3>
 
-                      <p className="mt-3 max-w-[470px] text-sm leading-6 text-white/70 md:text-[0.95rem] md:leading-7">
+                      <p
+                        className="
+                          mt-4
+                          max-w-[500px]
+                          text-[0.82rem]
+                          leading-6
+                          text-[#F7F3EB]/78
+                          drop-shadow-[0_1px_8px_rgba(0,0,0,0.28)]
+                          md:text-[0.95rem]
+                          md:leading-7
+                        "
+                      >
                         {category.description}
                       </p>
 
-                      <div className="mt-5 flex items-center gap-3 text-[0.58rem] font-semibold uppercase tracking-[0.22em] text-[#D8B96B]">
+                      <div
+                        className="
+                          mt-6
+                          inline-flex
+                          items-center
+                          gap-3
+                          text-[0.58rem]
+                          font-semibold
+                          uppercase
+                          tracking-[0.24em]
+                          text-[#D8B96B]
+                          md:mt-7
+                        "
+                      >
                         <span>{copy.discover}</span>
 
                         <span
                           className="
+                            inline-block
                             transition-transform
-                            duration-300
-                            group-hover:translate-x-1
+                            duration-500
+                            ease-[cubic-bezier(0.22,1,0.36,1)]
+                            group-hover:translate-x-1.5
                           "
                         >
                           →

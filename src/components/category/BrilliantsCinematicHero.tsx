@@ -279,16 +279,6 @@ export default function BrilliantsCinematicHero() {
       "(pointer: fine)"
     ).matches;
 
-    /*
-      Mobile a touch zariadenia:
-      parallax animation loop nepúšťame.
-
-      Výsledok:
-      - plynulejší scroll
-      - stabilnejší hero
-      - menšia spotreba
-      - žiadne zbytočné posúvanie textu
-    */
     if (reducedMotion || !finePointer) {
       setLoaded(true);
       return;
@@ -364,12 +354,9 @@ export default function BrilliantsCinematicHero() {
       const y = pointerCurrent.current.y;
       const scroll = scrollCurrent.current;
 
-      /*
-        Obrázok sa pohybuje len veľmi jemne.
-        Luxusný efekt bez príliš agresívneho parallaxu.
-      */
       const imageX = x * 10;
       const imageY = y * 6 - scroll * 20;
+
       const imageScale =
         1.04 + scroll * 0.014;
 
@@ -378,10 +365,6 @@ export default function BrilliantsCinematicHero() {
         scale(${imageScale})
       `;
 
-      /*
-        Text sa pohybuje ešte menej než obrázok,
-        aby zostával čitateľný a pokojný.
-      */
       const contentX = x * -2.2;
       const contentY =
         y * -1.4 - scroll * 4;
@@ -390,9 +373,6 @@ export default function BrilliantsCinematicHero() {
         translate3d(${contentX}px, ${contentY}px, 0)
       `;
 
-      /*
-        Jemný diamond-light efekt.
-      */
       const glowX = 50 + x * 8;
       const glowY = 42 + y * 6;
 
@@ -479,9 +459,7 @@ export default function BrilliantsCinematicHero() {
         lg:pt-44
       "
     >
-      {/* =====================================================
-          CINEMATIC BACKGROUND
-      ====================================================== */}
+      {/* BACKGROUND IMAGE */}
       <div
         ref={imageWrapRef}
         className={`absolute inset-[-3%] will-change-transform transition-[opacity,filter,transform] duration-[1800ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
@@ -510,9 +488,7 @@ export default function BrilliantsCinematicHero() {
         />
       </div>
 
-      {/* =====================================================
-          READABILITY OVERLAY
-      ====================================================== */}
+      {/* READABILITY OVERLAY */}
       <div
         className="
           pointer-events-none
@@ -530,9 +506,7 @@ export default function BrilliantsCinematicHero() {
         "
       />
 
-      {/* =====================================================
-          SOFT LOWER VEIL
-      ====================================================== */}
+      {/* LOWER VEIL */}
       <div
         className="
           pointer-events-none
@@ -546,22 +520,27 @@ export default function BrilliantsCinematicHero() {
         "
       />
 
-      {/* =====================================================
-          DYNAMIC DIAMOND LIGHT
-      ====================================================== */}
+      {/* DYNAMIC LIGHT */}
       <div
         ref={glowRef}
-        className="pointer-events-none absolute inset-0"
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+        "
       />
 
-      {/* =====================================================
-          CINEMATIC VIGNETTE
-      ====================================================== */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_52%,rgba(65,54,46,0.065)_100%)]" />
+      {/* VIGNETTE */}
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          bg-[radial-gradient(circle_at_center,transparent_52%,rgba(65,54,46,0.065)_100%)]
+        "
+      />
 
-      {/* =====================================================
-          CONTENT
-      ====================================================== */}
+      {/* CONTENT */}
       <div
         ref={contentRef}
         className="
@@ -575,97 +554,126 @@ export default function BrilliantsCinematicHero() {
           xl:px-20
         "
       >
-        {/* =================================================
-            MAIN HERO
-        ================================================== */}
+        {/* MAIN HERO */}
         <div
           className="
-            mx-auto
-            max-w-[1120px]
+            grid
+            gap-7
             pb-10
-            text-center
+            md:gap-10
             md:pb-16
-            lg:pb-24
+            lg:grid-cols-12
+            lg:items-end
+            lg:gap-12
+            lg:pb-28
           "
         >
-          {/* EYEBROW */}
+          {/* LEFT SIDE */}
           <div
-            className={`flex items-center justify-center gap-3 transition-all duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:gap-4 ${
-              loaded
-                ? "translate-y-0 opacity-100"
-                : "translate-y-5 opacity-0"
-            }`}
-            style={{
-              transitionDelay: "140ms",
-            }}
+            className="
+              text-center
+              lg:col-span-8
+              lg:text-left
+            "
           >
-            <span className="flex h-8 w-8 shrink-0 items-center justify-center text-gold md:h-10 md:w-10">
-              <GemClusterIcon />
-            </span>
+            {/* EYEBROW */}
+            <div
+              className={`flex items-center justify-center gap-3 transition-all duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:gap-4 lg:justify-start ${
+                loaded
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-5 opacity-0"
+              }`}
+              style={{
+                transitionDelay: "140ms",
+              }}
+            >
+              <span
+                className="
+                  flex
+                  h-8
+                  w-8
+                  shrink-0
+                  items-center
+                  justify-center
+                  text-gold
+                  md:h-10
+                  md:w-10
+                "
+              >
+                <GemClusterIcon />
+              </span>
 
-            <span className="text-[0.6rem] font-semibold uppercase tracking-[0.3em] text-gold md:text-[0.66rem] md:tracking-[0.34em]">
-              {copy.eyebrow}
-            </span>
+              <span
+                className="
+                  text-[0.6rem]
+                  font-semibold
+                  uppercase
+                  tracking-[0.3em]
+                  text-gold
+                  md:text-[0.66rem]
+                  md:tracking-[0.34em]
+                "
+              >
+                {copy.eyebrow}
+              </span>
+            </div>
+
+            {/* TITLE */}
+            <h1
+              className="
+                mx-auto
+                mt-5
+                max-w-[760px]
+                font-display
+                text-[2.85rem]
+                leading-[0.92]
+                tracking-[-0.04em]
+                sm:text-[3.2rem]
+                md:mt-7
+                md:text-6xl
+                md:leading-[0.92]
+                lg:mx-0
+                lg:text-[5.6rem]
+              "
+              style={{
+                color: "#1B0B20",
+              }}
+            >
+              <span className="block overflow-hidden">
+                <span
+                  className={`block transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                    loaded
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-[30%] opacity-0"
+                  }`}
+                  style={{
+                    transitionDelay: "240ms",
+                  }}
+                >
+                  {copy.title1}
+                </span>
+              </span>
+
+              <span className="block overflow-hidden">
+                <span
+                  className={`block transition-all duration-[1300ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                    loaded
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-[30%] opacity-0"
+                  }`}
+                  style={{
+                    transitionDelay: "340ms",
+                  }}
+                >
+                  {copy.title2}
+                </span>
+              </span>
+            </h1>
           </div>
 
-          {/* =================================================
-              TITLE
-          ================================================== */}
-          <h1
-            className="
-              mx-auto
-              mt-5
-              max-w-[1050px]
-              font-display
-              text-[2.85rem]
-              leading-[0.92]
-              tracking-[-0.04em]
-              sm:text-[3.2rem]
-              md:mt-7
-              md:text-6xl
-              md:leading-[0.92]
-              lg:text-[5.6rem]
-            "
-            style={{
-              color: "#1B0B20",
-            }}
-          >
-            <span className="block overflow-hidden">
-              <span
-                className={`block transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                  loaded
-                    ? "translate-y-0 opacity-100"
-                    : "translate-y-[30%] opacity-0"
-                }`}
-                style={{
-                  transitionDelay: "240ms",
-                }}
-              >
-                {copy.title1}
-              </span>
-            </span>
-
-            <span className="block overflow-hidden">
-              <span
-                className={`block transition-all duration-[1300ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                  loaded
-                    ? "translate-y-0 opacity-100"
-                    : "translate-y-[30%] opacity-0"
-                }`}
-                style={{
-                  transitionDelay: "340ms",
-                }}
-              >
-                {copy.title2}
-              </span>
-            </span>
-          </h1>
-
-          {/* =================================================
-              DESCRIPTION
-          ================================================== */}
+          {/* RIGHT SIDE */}
           <div
-            className={`mx-auto mt-7 transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:mt-9 ${
+            className={`text-center transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] lg:col-span-4 lg:pb-2 lg:text-left ${
               loaded
                 ? "translate-y-0 opacity-100"
                 : "translate-y-5 opacity-0"
@@ -677,35 +685,61 @@ export default function BrilliantsCinematicHero() {
             <p
               className="
                 mx-auto
-                max-w-[650px]
-                text-[0.8rem]
+                max-w-[340px]
+                text-[0.78rem]
                 leading-[1.65rem]
                 text-[#645E5A]
+                sm:max-w-md
                 md:text-base
                 md:leading-7
+                lg:mx-0
               "
             >
               {copy.description}
             </p>
 
             {/* SINCE */}
-            <div className="mt-6 flex items-center justify-center gap-4 md:mt-7">
-              <span className="h-px w-10 bg-gold md:w-12" />
+            <div
+              className="
+                mt-5
+                flex
+                items-center
+                justify-center
+                gap-3
+                md:mt-7
+                md:gap-4
+                lg:justify-start
+              "
+            >
+              <span
+                className="
+                  h-px
+                  w-9
+                  bg-gold
+                  md:w-12
+                "
+              />
 
-              <span className="text-[0.52rem] font-semibold uppercase tracking-[0.21em] text-plum-dark/50 md:text-[0.58rem] md:tracking-[0.24em]">
+              <span
+                className="
+                  text-[0.52rem]
+                  font-semibold
+                  uppercase
+                  tracking-[0.21em]
+                  text-plum-dark/50
+                  md:text-[0.58rem]
+                  md:tracking-[0.24em]
+                "
+              >
                 {copy.since}
               </span>
-
-              <span className="h-px w-10 bg-gold md:w-12" />
             </div>
           </div>
         </div>
 
-        {/* =================================================
-            LOWER EDITORIAL STATEMENT
-        ================================================== */}
+        {/* LOWER EDITORIAL STATEMENT */}
         <div
-          className={`mx-auto max-w-[1100px] border-t border-plum-dark/10 py-8 text-center transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:py-12 lg:py-16 ${
+          className={`border-t border-plum-dark/10 py-7 transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:py-12 lg:py-16 ${
             loaded
               ? "translate-y-0 opacity-100"
               : "translate-y-5 opacity-0"
@@ -714,39 +748,67 @@ export default function BrilliantsCinematicHero() {
             transitionDelay: "650ms",
           }}
         >
-          <span className="text-[0.55rem] font-semibold uppercase tracking-[0.27em] text-[#A98242] md:text-[0.62rem] md:tracking-[0.3em]">
-            {copy.statementEyebrow}
-          </span>
-
-          <p
+          <div
             className="
-              mx-auto
-              mt-4
-              max-w-[950px]
-              font-display
-              text-[1.7rem]
-              italic
-              leading-[1.12]
-              md:mt-5
-              md:text-4xl
-              md:leading-tight
-              lg:text-5xl
+              grid
+              gap-4
+              text-center
+              md:gap-6
+              lg:grid-cols-12
+              lg:items-center
+              lg:gap-8
+              lg:text-left
             "
-            style={{
-              color: "#1B0B20",
-            }}
           >
-            {copy.statementBefore}
+            {/* STATEMENT EYEBROW */}
+            <div className="lg:col-span-3">
+              <span
+                className="
+                  text-[0.55rem]
+                  font-semibold
+                  uppercase
+                  tracking-[0.27em]
+                  text-[#A98242]
+                  md:text-[0.62rem]
+                  md:tracking-[0.3em]
+                "
+              >
+                {copy.statementEyebrow}
+              </span>
+            </div>
 
-            <span
-              style={{
-                color: "#A98242",
-              }}
-            >
-              {" "}
-              {copy.statementAccent}
-            </span>
-          </p>
+            {/* STATEMENT */}
+            <div className="lg:col-span-9">
+              <p
+                className="
+                  mx-auto
+                  max-w-[900px]
+                  font-display
+                  text-[1.65rem]
+                  italic
+                  leading-[1.12]
+                  md:text-4xl
+                  md:leading-tight
+                  lg:mx-0
+                  lg:text-5xl
+                "
+                style={{
+                  color: "#1B0B20",
+                }}
+              >
+                {copy.statementBefore}
+
+                <span
+                  style={{
+                    color: "#A98242",
+                  }}
+                >
+                  {" "}
+                  {copy.statementAccent}
+                </span>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

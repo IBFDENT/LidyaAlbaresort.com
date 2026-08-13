@@ -362,6 +362,7 @@ export default function WatchesCinematicHero() {
 
     const updateScroll = () => {
       const rect = section.getBoundingClientRect();
+
       const total = Math.max(
         section.offsetHeight,
         1
@@ -371,8 +372,7 @@ export default function WatchesCinematicHero() {
         0,
         Math.min(
           1,
-          Math.abs(Math.min(rect.top, 0)) /
-            total
+          Math.abs(Math.min(rect.top, 0)) / total
         )
       );
     };
@@ -399,8 +399,7 @@ export default function WatchesCinematicHero() {
 
       const imageX = x * 10;
       const imageY = y * 6 - scroll * 20;
-      const imageScale =
-        1.04 + scroll * 0.014;
+      const imageScale = 1.04 + scroll * 0.014;
 
       imageWrap.style.transform = `
         translate3d(${imageX}px, ${imageY}px, 0)
@@ -408,8 +407,7 @@ export default function WatchesCinematicHero() {
       `;
 
       const contentX = x * -2.2;
-      const contentY =
-        y * -1.4 - scroll * 4;
+      const contentY = y * -1.4 - scroll * 4;
 
       content.style.transform = `
         translate3d(${contentX}px, ${contentY}px, 0)
@@ -421,10 +419,9 @@ export default function WatchesCinematicHero() {
       glow.style.background = `
         radial-gradient(
           circle at ${glowX}% ${glowY}%,
-          rgba(255,255,255,0.12) 0%,
-          rgba(232,238,246,0.05) 18%,
-          rgba(200,169,106,0.03) 31%,
-          rgba(255,255,255,0) 52%
+          rgba(255,255,255,0.035) 0%,
+          rgba(200,169,106,0.015) 24%,
+          rgba(255,255,255,0) 48%
         )
       `;
 
@@ -455,10 +452,9 @@ export default function WatchesCinematicHero() {
     frameRef.current =
       requestAnimationFrame(animate);
 
-    const loadTimer =
-      window.setTimeout(() => {
-        setLoaded(true);
-      }, 60);
+    const loadTimer = window.setTimeout(() => {
+      setLoaded(true);
+    }, 60);
 
     return () => {
       section.removeEventListener(
@@ -531,50 +527,20 @@ export default function WatchesCinematicHero() {
         />
       </div>
 
-      {/* VERY LIGHT GLOBAL TONE */}
+      {/*
+        DÔLEŽITÉ:
+        Pôvodné veľké svetlé radial-gradient overlaye
+        sú odstránené, takže stred obrázka už nebude
+        mliečny / vyblednutý.
+      */}
+
+      {/* VERY SUBTLE GLOBAL TONE */}
       <div
         className="
           pointer-events-none
           absolute
           inset-0
-          bg-[#F7F3EB]/[0.025]
-        "
-      />
-
-      {/* LOCAL LIGHT BEHIND MAIN TEXT */}
-      <div
-        className="
-          pointer-events-none
-          absolute
-          left-1/2
-          top-[37%]
-          h-[500px]
-          w-[96vw]
-          max-w-[1150px]
-          -translate-x-1/2
-          -translate-y-1/2
-          bg-[radial-gradient(ellipse_at_center,rgba(247,243,235,0.76)_0%,rgba(247,243,235,0.58)_28%,rgba(247,243,235,0.30)_48%,rgba(247,243,235,0.09)_66%,transparent_82%)]
-          md:h-[560px]
-          md:w-[82vw]
-          lg:h-[600px]
-          lg:w-[72vw]
-        "
-      />
-
-      {/* LOCAL LIGHT BEHIND BOTTOM STATEMENT */}
-      <div
-        className="
-          pointer-events-none
-          absolute
-          bottom-[1%]
-          left-1/2
-          h-[300px]
-          w-[96vw]
-          max-w-[1100px]
-          -translate-x-1/2
-          bg-[radial-gradient(ellipse_at_center,rgba(247,243,235,0.58)_0%,rgba(247,243,235,0.36)_34%,rgba(247,243,235,0.12)_58%,transparent_78%)]
-          md:h-[340px]
-          md:w-[78vw]
+          bg-[#F7F3EB]/[0.015]
         "
       />
 
@@ -585,13 +551,13 @@ export default function WatchesCinematicHero() {
           absolute
           inset-0
           bg-gradient-to-t
-          from-[#F7F3EB]/10
+          from-[#F7F3EB]/[0.04]
           via-transparent
           to-transparent
         "
       />
 
-      {/* INTERACTIVE LIGHT */}
+      {/* INTERACTIVE LIGHT - VERY SUBTLE */}
       <div
         ref={glowRef}
         className="
@@ -607,7 +573,7 @@ export default function WatchesCinematicHero() {
           pointer-events-none
           absolute
           inset-0
-          bg-[radial-gradient(circle_at_center,transparent_58%,rgba(35,18,28,0.045)_100%)]
+          bg-[radial-gradient(circle_at_center,transparent_62%,rgba(35,18,28,0.04)_100%)]
         "
       />
 
@@ -628,112 +594,123 @@ export default function WatchesCinematicHero() {
         {/* MAIN HERO CONTENT */}
         <div
           className="
-            mx-auto
-            max-w-[1120px]
+            grid
+            gap-7
             pb-10
-            text-center
+            md:gap-10
             md:pb-16
-            lg:pb-24
+            lg:grid-cols-12
+            lg:items-start
+            lg:gap-14
+            lg:pb-36
           "
         >
-          {/* EYEBROW */}
+          {/* LEFT SIDE */}
           <div
-            className={`flex items-center justify-center gap-3 transition-all duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:gap-4 ${
-              loaded
-                ? "translate-y-0 opacity-100"
-                : "translate-y-5 opacity-0"
-            }`}
-            style={{
-              transitionDelay: "140ms",
-            }}
+            className="
+              text-center
+              lg:col-span-7
+              lg:pt-2
+              lg:text-left
+            "
           >
-            <span
-              className="
-                flex
-                h-8
-                w-8
-                shrink-0
-                items-center
-                justify-center
-                text-[#A98242]
-                md:h-10
-                md:w-10
-              "
+            {/* EYEBROW */}
+            <div
+              className={`flex items-center justify-center gap-3 transition-all duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:gap-4 lg:justify-start ${
+                loaded
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-5 opacity-0"
+              }`}
+              style={{
+                transitionDelay: "140ms",
+              }}
             >
-              <WatchIcon />
-            </span>
+              <span
+                className="
+                  flex
+                  h-8
+                  w-8
+                  shrink-0
+                  items-center
+                  justify-center
+                  text-[#A98242]
+                  md:h-10
+                  md:w-10
+                "
+              >
+                <WatchIcon />
+              </span>
 
-            <span
+              <span
+                className="
+                  text-[0.6rem]
+                  font-semibold
+                  uppercase
+                  tracking-[0.3em]
+                  text-[#8D6B35]
+                  md:text-[0.66rem]
+                  md:tracking-[0.34em]
+                "
+              >
+                {copy.eyebrow}
+              </span>
+            </div>
+
+            {/* MAIN TITLE */}
+            <h1
               className="
-                text-[0.6rem]
-                font-semibold
-                uppercase
-                tracking-[0.3em]
-                text-[#8D6B35]
-                md:text-[0.66rem]
-                md:tracking-[0.34em]
+                mx-auto
+                mt-5
+                max-w-[860px]
+                font-display
+                text-[2.85rem]
+                leading-[0.92]
+                tracking-[-0.04em]
+                text-[#1B0B20]
+                sm:text-[3.2rem]
+                md:mt-7
+                md:text-6xl
+                md:leading-[0.92]
+                lg:mx-0
+                lg:max-w-[760px]
+                lg:text-[5.6rem]
               "
             >
-              {copy.eyebrow}
-            </span>
+              <span className="block overflow-hidden">
+                <span
+                  className={`block transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                    loaded
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-[30%] opacity-0"
+                  }`}
+                  style={{
+                    transitionDelay: "240ms",
+                  }}
+                >
+                  {copy.title1}
+                </span>
+              </span>
+
+              <span className="block overflow-hidden">
+                <span
+                  className={`block transition-all duration-[1300ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                    loaded
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-[30%] opacity-0"
+                  }`}
+                  style={{
+                    transitionDelay: "340ms",
+                  }}
+                >
+                  {copy.title2}
+                </span>
+              </span>
+            </h1>
           </div>
 
-          {/* MAIN TITLE */}
-          <h1
-            className="
-              mx-auto
-              mt-5
-              max-w-[1050px]
-              font-display
-              text-[2.85rem]
-              leading-[0.92]
-              tracking-[-0.04em]
-              text-[#1B0B20]
-              sm:text-[3.2rem]
-              md:mt-7
-              md:text-6xl
-              md:leading-[0.92]
-              lg:text-[5.6rem]
-            "
-            style={{
-              textShadow:
-                "0 1px 18px rgba(247,243,235,0.30)",
-            }}
-          >
-            <span className="block overflow-hidden">
-              <span
-                className={`block transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                  loaded
-                    ? "translate-y-0 opacity-100"
-                    : "translate-y-[30%] opacity-0"
-                }`}
-                style={{
-                  transitionDelay: "240ms",
-                }}
-              >
-                {copy.title1}
-              </span>
-            </span>
-
-            <span className="block overflow-hidden">
-              <span
-                className={`block transition-all duration-[1300ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                  loaded
-                    ? "translate-y-0 opacity-100"
-                    : "translate-y-[30%] opacity-0"
-                }`}
-                style={{
-                  transitionDelay: "340ms",
-                }}
-              >
-                {copy.title2}
-              </span>
-            </span>
-          </h1>
-
-          {/* DESCRIPTION */}
+          {/* RIGHT SIDE */}
           <div
-            className={`mx-auto mt-7 transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:mt-9 ${
+            className={`text-center transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] lg:col-span-5 lg:pt-16 lg:pl-10 lg:text-left ${
               loaded
                 ? "translate-y-0 opacity-100"
                 : "translate-y-5 opacity-0"
@@ -752,11 +729,9 @@ export default function WatchesCinematicHero() {
                 text-[#352E2B]
                 md:text-base
                 md:leading-7
+                lg:mx-0
+                lg:max-w-[390px]
               "
-              style={{
-                textShadow:
-                  "0 1px 12px rgba(247,243,235,0.60)",
-              }}
             >
               {copy.description}
             </p>
@@ -770,6 +745,7 @@ export default function WatchesCinematicHero() {
                 justify-center
                 gap-4
                 md:mt-7
+                lg:justify-start
               "
             >
               <span
@@ -794,22 +770,13 @@ export default function WatchesCinematicHero() {
               >
                 {copy.since}
               </span>
-
-              <span
-                className="
-                  h-px
-                  w-10
-                  bg-[#A98242]
-                  md:w-12
-                "
-              />
             </div>
           </div>
         </div>
 
         {/* BOTTOM STATEMENT */}
         <div
-          className={`mx-auto max-w-[1100px] border-t border-[#1B0B20]/10 py-8 text-center transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:py-12 lg:py-16 ${
+          className={`border-t border-[#1B0B20]/10 py-7 text-center transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:py-12 lg:mt-4 lg:py-16 lg:text-left ${
             loaded
               ? "translate-y-0 opacity-100"
               : "translate-y-5 opacity-0"
@@ -818,51 +785,61 @@ export default function WatchesCinematicHero() {
             transitionDelay: "650ms",
           }}
         >
-          <span
+          <div
             className="
-              text-[0.55rem]
-              font-semibold
-              uppercase
-              tracking-[0.27em]
-              text-[#8D6B35]
-              md:text-[0.62rem]
-              md:tracking-[0.3em]
+              grid
+              gap-4
+              md:gap-6
+              lg:grid-cols-12
+              lg:items-center
+              lg:gap-8
             "
           >
-            {copy.statementEyebrow}
-          </span>
+            <div className="lg:col-span-3">
+              <span
+                className="
+                  text-[0.55rem]
+                  font-semibold
+                  uppercase
+                  tracking-[0.27em]
+                  text-[#8D6B35]
+                  md:text-[0.62rem]
+                  md:tracking-[0.3em]
+                "
+              >
+                {copy.statementEyebrow}
+              </span>
+            </div>
 
-          <p
-            className="
-              mx-auto
-              mt-4
-              max-w-[950px]
-              font-display
-              text-[1.7rem]
-              italic
-              leading-[1.12]
-              text-[#1B0B20]
-              md:mt-5
-              md:text-4xl
-              md:leading-tight
-              lg:text-5xl
-            "
-            style={{
-              textShadow:
-                "0 1px 16px rgba(247,243,235,0.42)",
-            }}
-          >
-            {copy.statementBefore}
+            <div className="lg:col-span-9">
+              <p
+                className="
+                  mx-auto
+                  max-w-[950px]
+                  font-display
+                  text-[1.7rem]
+                  italic
+                  leading-[1.12]
+                  text-[#1B0B20]
+                  md:text-4xl
+                  md:leading-tight
+                  lg:mx-0
+                  lg:text-5xl
+                "
+              >
+                {copy.statementBefore}
 
-            <span
-              style={{
-                color: "#A98242",
-              }}
-            >
-              {" "}
-              {copy.statementAccent}
-            </span>
-          </p>
+                <span
+                  style={{
+                    color: "#A98242",
+                  }}
+                >
+                  {" "}
+                  {copy.statementAccent}
+                </span>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

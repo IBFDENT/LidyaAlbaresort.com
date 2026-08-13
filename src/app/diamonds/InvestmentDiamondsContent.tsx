@@ -1187,11 +1187,7 @@ export default function InvestmentDiamondsContent() {
 
     const updateScroll = () => {
       const rect = hero.getBoundingClientRect();
-
-      const total = Math.max(
-        hero.offsetHeight,
-        1
-      );
+      const total = Math.max(hero.offsetHeight, 1);
 
       const progress = Math.max(
         0,
@@ -1320,13 +1316,18 @@ export default function InvestmentDiamondsContent() {
           ref={heroRef}
           className="
             relative
-            min-h-[900px]
+            min-h-[760px]
             overflow-hidden
             bg-plum-dark
+            pt-[108px]
             text-brand-white
-            lg:min-h-screen
+            md:min-h-[900px]
+            md:pt-36
+            lg:min-h-[940px]
+            lg:pt-44
           "
         >
+          {/* HERO IMAGE */}
           <div
             ref={imageWrapRef}
             className={`absolute inset-[-3%] will-change-transform transition-[opacity,filter,transform] duration-[1800ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
@@ -1348,168 +1349,303 @@ export default function InvestmentDiamondsContent() {
               sizes="100vw"
               className="
                 object-cover
-                object-[54%_50%]
-                md:object-center
+                object-[58%_50%]
+                md:object-[55%_50%]
+                lg:object-center
               "
             />
           </div>
 
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-plum-dark/72 via-plum-dark/30 to-plum-dark/5" />
+          {/* =================================================
+              READABILITY OVERLAY
 
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-plum-dark/48 via-transparent to-plum-dark/12" />
+              Mobile/tablet = stále silnejšie stmavenie
+              Desktop = silnejší ľavý gradient, pravá strana
+              obrázka ostáva viditeľnejšia.
+          ================================================== */}
+          <div
+            className="
+              pointer-events-none
+              absolute
+              inset-0
+              bg-gradient-to-r
+              from-plum-dark/92
+              via-plum-dark/72
+              to-plum-dark/32
+              md:from-plum-dark/88
+              md:via-plum-dark/58
+              md:to-plum-dark/18
+              lg:from-plum-dark/90
+              lg:via-plum-dark/45
+              lg:to-plum-dark/5
+            "
+          />
 
+          {/* LOWER SHADOW */}
+          <div
+            className="
+              pointer-events-none
+              absolute
+              inset-0
+              bg-gradient-to-t
+              from-plum-dark/58
+              via-transparent
+              to-plum-dark/12
+            "
+          />
+
+          {/* DYNAMIC LIGHT */}
           <div
             ref={glowRef}
             className="pointer-events-none absolute inset-0"
           />
 
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_52%_40%,rgba(255,255,255,0.07),transparent_48%)]" />
+          {/* STATIC DIAMOND LIGHT */}
+          <div
+            className="
+              pointer-events-none
+              absolute
+              inset-0
+              bg-[radial-gradient(circle_at_68%_38%,rgba(255,255,255,0.07),transparent_45%)]
+            "
+          />
 
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_50%,rgba(9,3,12,0.18)_100%)]" />
+          {/* VIGNETTE */}
+          <div
+            className="
+              pointer-events-none
+              absolute
+              inset-0
+              bg-[radial-gradient(circle_at_center,transparent_52%,rgba(9,3,12,0.18)_100%)]
+            "
+          />
 
-          <div className="pointer-events-none absolute -left-40 top-1/3 h-[620px] w-[620px] rounded-full bg-plum-dark/30 blur-3xl" />
-
+          {/* =================================================
+              CONTENT
+          ================================================== */}
           <div
             ref={contentRef}
             className="
               relative
               z-10
               mx-auto
-              flex
-              min-h-[900px]
               max-w-[1440px]
-              items-center
-              justify-center
               px-6
-              pb-20
-              pt-36
-              text-center
               will-change-transform
               md:px-10
-              md:pt-40
-              lg:min-h-screen
               lg:px-16
-              lg:pt-44
               xl:px-20
             "
           >
-            <div className="mx-auto max-w-[1000px]">
+            {/* =================================================
+                MOBILE + TABLET = CENTER
+                DESKTOP = LEFT / RIGHT
+            ================================================== */}
+            <div
+              className="
+                grid
+                gap-9
+                pb-10
+                pt-8
+                md:gap-10
+                md:pb-16
+                md:pt-12
+                lg:grid-cols-12
+                lg:items-end
+                lg:gap-12
+                lg:pb-24
+                lg:pt-8
+              "
+            >
+              {/* LEFT */}
               <div
-                className={`flex items-center justify-center gap-4 transition-all duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                  heroLoaded
-                    ? "translate-y-0 opacity-100"
-                    : "translate-y-5 opacity-0"
-                }`}
-                style={{
-                  transitionDelay: "120ms",
-                }}
-              >
-                <span className="flex h-10 w-10 items-center justify-center text-gold">
-                  <DiamondIcon />
-                </span>
-
-                <span className="text-[0.66rem] font-semibold uppercase tracking-[0.34em] text-gold">
-                  {t("heroEyebrow")}
-                </span>
-              </div>
-
-              <h1
                 className="
-                  mx-auto
-                  mt-7
-                  max-w-[900px]
-                  overflow-hidden
-                  font-display
-                  text-5xl
-                  leading-[0.91]
-                  tracking-[-0.04em]
-                  md:text-6xl
-                  lg:text-[5.7rem]
+                  text-center
+                  lg:col-span-8
+                  lg:text-left
                 "
-                style={{
-                  color: "#F5EFE6",
-                }}
               >
-                <span
-                  className={`block transition-all duration-[1300ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                {/* EYEBROW */}
+                <div
+                  className={`flex items-center justify-center gap-4 transition-all duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] lg:justify-start ${
                     heroLoaded
                       ? "translate-y-0 opacity-100"
-                      : "translate-y-[28%] opacity-0"
+                      : "translate-y-5 opacity-0"
                   }`}
                   style={{
-                    transitionDelay: "230ms",
+                    transitionDelay: "120ms",
                   }}
                 >
-                  {t("heroTitle")}
-                </span>
-              </h1>
-
-              <div
-                className={`transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                  heroLoaded
-                    ? "translate-y-0 opacity-100"
-                    : "translate-y-5 opacity-0"
-                }`}
-                style={{
-                  transitionDelay: "420ms",
-                }}
-              >
-                <p className="mx-auto mt-7 max-w-[620px] text-sm leading-7 text-brand-white/65 md:text-base">
-                  {t("heroLead")}
-                </p>
-
-                <div className="mt-7 flex items-center justify-center gap-4">
-                  <span className="h-px w-12 bg-gold" />
-
-                  <span className="text-[0.58rem] font-semibold uppercase tracking-[0.24em] text-brand-white/45">
-                    {copy.hero.since}
+                  <span className="flex h-10 w-10 items-center justify-center text-gold">
+                    <DiamondIcon />
                   </span>
 
-                  <span className="h-px w-12 bg-gold" />
+                  <span className="text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-gold md:text-[0.66rem] md:tracking-[0.34em]">
+                    {t("heroEyebrow")}
+                  </span>
                 </div>
-              </div>
 
-              <div
-                className={`mx-auto mt-14 max-w-[720px] border-t border-brand-white/15 pt-10 transition-all duration-[1250ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                  heroLoaded
-                    ? "translate-y-0 opacity-100"
-                    : "translate-y-5 opacity-0"
-                }`}
-                style={{
-                  transitionDelay: "620ms",
-                }}
-              >
-                <span className="text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-gold">
-                  {copy.hero.eyebrowRight}
-                </span>
-
-                <p
+                {/* TITLE */}
+                <h1
                   className="
                     mx-auto
-                    mt-6
-                    max-w-[650px]
+                    mt-7
+                    max-w-[900px]
+                    overflow-hidden
                     font-display
-                    text-3xl
-                    italic
-                    leading-tight
-                    md:text-4xl
-                    lg:text-[2.65rem]
+                    text-[2.9rem]
+                    leading-[0.91]
+                    tracking-[-0.04em]
+                    sm:text-[3.25rem]
+                    md:text-6xl
+                    lg:mx-0
+                    lg:max-w-[860px]
+                    lg:text-[5.7rem]
                   "
                   style={{
                     color: "#F5EFE6",
                   }}
                 >
-                  {copy.hero.statement}
-
                   <span
-                    className="block"
+                    className={`block transition-all duration-[1300ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                      heroLoaded
+                        ? "translate-y-0 opacity-100"
+                        : "translate-y-[28%] opacity-0"
+                    }`}
                     style={{
-                      color: "#E8D8B5",
+                      transitionDelay: "230ms",
                     }}
                   >
-                    {copy.hero.statementAccent}
+                    {t("heroTitle")}
                   </span>
+                </h1>
+              </div>
+
+              {/* RIGHT */}
+              <div
+                className={`
+                  text-center
+                  transition-all
+                  duration-[1200ms]
+                  ease-[cubic-bezier(0.22,1,0.36,1)]
+                  lg:col-span-4
+                  lg:pb-2
+                  lg:text-left
+                  ${
+                    heroLoaded
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-5 opacity-0"
+                  }
+                `}
+                style={{
+                  transitionDelay: "420ms",
+                }}
+              >
+                {/* LEAD */}
+                <p
+                  className="
+                    mx-auto
+                    max-w-[390px]
+                    text-sm
+                    leading-7
+                    text-brand-white/70
+                    md:text-base
+                    lg:mx-0
+                  "
+                >
+                  {t("heroLead")}
                 </p>
+
+                {/* SINCE */}
+                <div
+                  className="
+                    mt-7
+                    flex
+                    items-center
+                    justify-center
+                    gap-4
+                    lg:justify-start
+                  "
+                >
+                  <span className="h-px w-12 bg-gold" />
+
+                  <span className="text-[0.58rem] font-semibold uppercase tracking-[0.24em] text-brand-white/45">
+                    {copy.hero.since}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* =================================================
+                LOWER STATEMENT
+            ================================================== */}
+            <div
+              className={`
+                border-t
+                border-brand-white/15
+                py-8
+                text-center
+                transition-all
+                duration-[1250ms]
+                ease-[cubic-bezier(0.22,1,0.36,1)]
+                md:py-12
+                lg:py-16
+                lg:text-left
+                ${
+                  heroLoaded
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-5 opacity-0"
+                }
+              `}
+              style={{
+                transitionDelay: "620ms",
+              }}
+            >
+              <div
+                className="
+                  grid
+                  gap-5
+                  md:gap-6
+                  lg:grid-cols-12
+                  lg:items-center
+                  lg:gap-8
+                "
+              >
+                <div className="lg:col-span-3">
+                  <span className="text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-gold">
+                    {copy.hero.eyebrowRight}
+                  </span>
+                </div>
+
+                <div className="lg:col-span-9">
+                  <p
+                    className="
+                      mx-auto
+                      max-w-[900px]
+                      font-display
+                      text-[1.8rem]
+                      italic
+                      leading-[1.12]
+                      md:text-4xl
+                      md:leading-tight
+                      lg:mx-0
+                      lg:text-5xl
+                    "
+                    style={{
+                      color: "#F5EFE6",
+                    }}
+                  >
+                    {copy.hero.statement}{" "}
+
+                    <span
+                      style={{
+                        color: "#E8D8B5",
+                      }}
+                    >
+                      {copy.hero.statementAccent}
+                    </span>
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -1690,7 +1826,9 @@ export default function InvestmentDiamondsContent() {
             <div className="grid border-t border-plum-dark/10 md:grid-cols-2 lg:grid-cols-5">
               {SUMMARY_POINTS.map((summary, index) => {
                 const Icon =
-                  SUMMARY_ICONS[index % SUMMARY_ICONS.length];
+                  SUMMARY_ICONS[
+                    index % SUMMARY_ICONS.length
+                  ];
 
                 return (
                   <div

@@ -370,6 +370,14 @@ export default function Footer() {
                 {dict.nav.collections}
               </Link>
 
+              {/* WATCHES - NEW */}
+              <Link
+                href="/watches"
+                className="transition-colors hover:text-gold"
+              >
+                {dict.nav.watches}
+              </Link>
+
               <Link
                 href="/#services"
                 className="transition-colors hover:text-gold"

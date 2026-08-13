@@ -9,12 +9,34 @@ import FloatingActions from "@/components/FloatingActions";
 import { useLanguage } from "@/components/LanguageProvider";
 import type { Locale } from "@/lib/i18n";
 
-const LEGAL_COMPANY_NAME = "[LEGAL COMPANY NAME]";
-const REGISTERED_ADDRESS = "[REGISTERED ADDRESS]";
-const COMPANY_REGISTRATION_NUMBER =
-  "[COMPANY / REGISTRATION NUMBER]";
-const TAX_NUMBER = "[TAX NUMBER]";
-const PRIVACY_EMAIL = "[PRIVACY CONTACT EMAIL]";
+/* =========================================================
+   LEGAL COMPANY DETAILS
+   ========================================================= */
+
+const LEGAL_COMPANY_NAME =
+
+  "LİDYA GOLD BAZAAR KUYUMCULUK TİCARET VE PAZARLAMA LİMİTED ŞİRKETİ";
+
+const REGISTERED_ADDRESS =
+
+  "Aşağı Hisar Mh. Antalya Cd. No:50/2, Manavgat, Antalya, Türkiye";
+
+const COMPANY_REGISTRATION_NUMBER = "1850";
+
+const TAX_NUMBER = "6080068522";
+
+/**
+ * Privacy email is intentionally empty until the official
+ * privacy / KVKK contact email is confirmed.
+ *
+ * Example later:
+ * const PRIVACY_EMAIL = "privacy@yourdomain.com";
+ */
+const PRIVACY_EMAIL = "";
+
+/* =========================================================
+   TYPES
+   ========================================================= */
 
 type SectionCopy = {
   title: string;
@@ -49,7 +71,7 @@ type PrivacyCopy = {
   contact: SectionCopy;
 
   registrationLabel: string;
-  taxLabel: string;
+  taxNumberLabel: string;
   privacyContactLabel: string;
 
   cookieButton: string;
@@ -59,13 +81,21 @@ type PrivacyCopy = {
   returnToWebsite: string;
 };
 
+/* =========================================================
+   TRANSLATIONS
+   ========================================================= */
+
 const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
+  /* =======================================================
+     GERMAN
+     ======================================================= */
+
   de: {
     legalPrivacy: "Rechtliches · Datenschutz",
     title: "Datenschutzerklärung",
     heroLead: "Ihre Privatsphäre ist uns wichtig.",
     heroDescription:
-      "Diese Datenschutzerklärung erläutert, wie personenbezogene Daten erhoben, verwendet und geschützt werden können, wenn Sie die Website von LIDYA JEWELRY und unsere Services nutzen.",
+      "Diese Datenschutzerklärung erläutert, wie personenbezogene Daten erhoben, verwendet, weitergegeben und geschützt werden, wenn Sie die Website von LIDYA JEWELRY und unsere Services nutzen.",
     lastUpdated: "Zuletzt aktualisiert",
     lastUpdatedValue: "August 2026",
 
@@ -88,24 +118,24 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
       title: "Informationen, die wir erfassen können",
       paragraphs: [
         "Je nachdem, wie Sie die Website nutzen oder mit uns Kontakt aufnehmen, können wir Informationen wie Ihren Namen, Ihre Telefonnummer, Ihre E-Mail-Adresse, den Inhalt Ihrer Anfrage, Angaben zu gewünschten Services oder Terminen sowie weitere von Ihnen freiwillig bereitgestellte Informationen erhalten.",
-        "Im Rahmen des normalen Websitebetriebs können auch technische Informationen verarbeitet werden, einschließlich IP-Adresse, Browsertyp, Geräteinformationen, aufgerufene Seiten, Zeitstempel, Sicherheitsprotokolle und ähnliche durch die Hosting-Infrastruktur erzeugte technische Daten.",
-        "Die über die Website gewählten Cookie-Einstellungen werden lokal in Ihrem Browser gespeichert, damit sich die Website Ihre Auswahl merken kann.",
+        "Im Rahmen des normalen Websitebetriebs können außerdem technische Informationen verarbeitet werden, darunter IP-Adresse, Browsertyp, Geräteinformationen, aufgerufene Seiten, Zeitstempel, Sicherheitsprotokolle und ähnliche technische Daten, die durch Hosting- oder Sicherheitsinfrastruktur erzeugt werden.",
+        "Über die Website gewählte Cookie-Einstellungen können lokal in Ihrem Browser gespeichert werden, damit sich die Website Ihre Auswahl merken kann.",
       ],
     },
 
     use: {
       title: "Wie wir personenbezogene Daten verwenden",
       paragraphs: [
-        "Personenbezogene Daten können verwendet werden, um Anfragen zu beantworten, Termine zu vereinbaren, über Schmuck- oder Uhrenservices zu kommunizieren, Serviceanfragen zu bearbeiten, Kundensupport zu leisten sowie die Sicherheit und den Betrieb der Website aufrechtzuerhalten.",
-        "Wenn optionale Analyse- oder Marketingtechnologien eingeführt werden, werden diese nur entsprechend den über die Website gewählten Cookie-Einstellungen verwendet.",
+        "Personenbezogene Daten können verwendet werden, um Anfragen zu beantworten, Termine zu vereinbaren, über Schmuck- oder Uhrenservices zu kommunizieren, Serviceanfragen zu bearbeiten, Kundensupport zu leisten und die Sicherheit sowie den ordnungsgemäßen Betrieb der Website zu gewährleisten.",
+        "Soweit Analyse- oder Marketingtechnologien eine Einwilligung erfordern, sollen sie erst nach Erteilung der entsprechenden Einwilligung aktiviert werden.",
       ],
     },
 
     legalBasis: {
       title: "Rechtsgrundlage der Verarbeitung",
       paragraphs: [
-        "Die Rechtsgrundlage der Verarbeitung hängt vom jeweiligen Kontext ab. Eine Verarbeitung kann erforderlich sein, um eine Anfrage zu beantworten, Maßnahmen im Zusammenhang mit einem Service oder Termin zu ergreifen, gesetzliche Verpflichtungen zu erfüllen, berechtigte Geschäfts- und Sicherheitsinteressen zu schützen oder auf Grundlage Ihrer Einwilligung zu handeln, sofern eine Einwilligung erforderlich ist.",
-        "Optionale Analyse- und Marketingtechnologien sollen erst nach Erteilung der entsprechenden Einwilligung verwendet werden.",
+        "Als in Türkiye tätiges Unternehmen verarbeitet LIDYA personenbezogene Daten insbesondere gemäß dem türkischen Gesetz Nr. 6698 über den Schutz personenbezogener Daten (KVKK) und sonstigen anwendbaren Rechtsvorschriften.",
+        "Je nach Verarbeitung kann die Rechtsgrundlage insbesondere die Durchführung oder Vorbereitung eines Vertrags, die Erfüllung einer gesetzlichen Verpflichtung, die Begründung, Ausübung oder Verteidigung eines Rechts, berechtigte Interessen des Verantwortlichen unter Wahrung der Grundrechte der betroffenen Person oder eine ausdrückliche Einwilligung sein, sofern diese erforderlich ist.",
       ],
     },
 
@@ -113,69 +143,69 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
       title: "Wann Informationen weitergegeben werden können",
       paragraphs: [
         "Wir verkaufen keine personenbezogenen Daten.",
-        "Informationen können an Dienstleister weitergegeben werden, wenn dies für Hosting, technischen Betrieb, Kommunikation, Sicherheit, professionelle Beratung oder einen von Ihnen angeforderten Service angemessen erforderlich ist.",
-        "Informationen können außerdem offengelegt werden, wenn dies gesetzlich, regulatorisch, durch gerichtliche Anordnung oder eine andere gültige rechtliche Verpflichtung erforderlich ist.",
+        "Informationen können an Dienstleister weitergegeben werden, soweit dies für Hosting, technischen Betrieb, Kommunikation, Sicherheit, professionelle Beratung oder einen von Ihnen angeforderten Service erforderlich ist.",
+        "Informationen können außerdem offengelegt werden, wenn dies aufgrund gesetzlicher Vorschriften, einer behördlichen oder gerichtlichen Anordnung oder einer anderen verbindlichen rechtlichen Verpflichtung erforderlich ist.",
       ],
     },
 
     international: {
       title: "Externe und internationale Dienste",
       paragraphs: [
-        "Die Website enthält Links zu Diensten Dritter, darunter WhatsApp, Instagram und Facebook. Wenn Sie einem solchen Link folgen, unterliegt Ihre Interaktion den Datenschutzpraktiken und Bedingungen des jeweiligen Drittanbieters.",
-        "Einige Dienstleister können Informationen in anderen Ländern als Ihrem Aufenthaltsland verarbeiten. Soweit erforderlich, sollten geeignete Schutzmaßnahmen entsprechend den geltenden Datenschutzanforderungen eingesetzt werden.",
+        "Die Website kann Links zu Diensten Dritter wie WhatsApp, Instagram oder Facebook enthalten. Wenn Sie einen solchen Dienst aufrufen, gelten zusätzlich die Datenschutzpraktiken und Bedingungen des jeweiligen Drittanbieters.",
+        "Einige Dienstleister können personenbezogene Daten außerhalb von Türkiye oder außerhalb des Landes verarbeiten, in dem Sie sich befinden. Internationale Übermittlungen sollen nur im Einklang mit den jeweils anwendbaren Datenschutzanforderungen erfolgen.",
       ],
     },
 
     retention: {
       title: "Speicherdauer",
       paragraphs: [
-        "Personenbezogene Daten sollen nur so lange gespeichert werden, wie dies für den Zweck ihrer Erhebung angemessen erforderlich ist, zur Führung relevanter Geschäftsunterlagen, zur Klärung von Anfragen oder Streitigkeiten, zur Erfüllung gesetzlicher Verpflichtungen und zum Schutz berechtigter Interessen.",
-        "Die genauen Aufbewahrungsfristen können je nach Art der Informationen und Art der Kundenbeziehung variieren.",
+        "Personenbezogene Daten werden grundsätzlich nur so lange aufbewahrt, wie dies für den Zweck ihrer Verarbeitung, die Durchführung der Geschäftsbeziehung, gesetzliche Aufbewahrungspflichten, die Bearbeitung von Anfragen oder Streitigkeiten sowie die Begründung, Ausübung oder Verteidigung von Rechten erforderlich ist.",
+        "Die konkrete Speicherdauer kann je nach Kategorie der Daten, Zweck der Verarbeitung und gesetzlichen Verpflichtungen unterschiedlich sein.",
       ],
     },
 
     cookies: {
       title: "Cookies und Einwilligung",
       paragraphs: [
-        "Die Website verwendet notwendige Browsertechnologien für grundlegende Funktionen. Optionale Analyse- und Marketingkategorien werden über die Cookie-Einwilligungsoberfläche der Website gesteuert.",
-        "Ihre aktuellen Cookie-Einstellungen können jederzeit über den Link zu den Cookie-Einstellungen im Footer der Website geändert werden.",
+        "Die Website kann notwendige Browsertechnologien verwenden, die für grundlegende Funktionen erforderlich sind. Optionale Analyse- oder Marketingtechnologien werden über die Cookie-Einstellungen der Website gesteuert, soweit eine Einwilligung erforderlich ist.",
+        "Ihre Cookie-Auswahl kann über die Cookie-Einstellungen der Website geändert werden.",
       ],
     },
 
     rights: {
       title: "Ihre Datenschutzrechte",
       paragraphs: [
-        "Je nach anwendbarem Recht können Ihnen Rechte in Bezug auf Ihre personenbezogenen Daten zustehen, darunter Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit, Widerspruch gegen bestimmte Verarbeitungen und Widerruf einer Einwilligung.",
-        "Beruht die Verarbeitung auf einer Einwilligung, berührt deren Widerruf nicht die Rechtmäßigkeit der Verarbeitung vor dem Widerruf.",
-        "Sie können außerdem berechtigt sein, sich an die für Sie zuständige Datenschutzaufsichtsbehörde zu wenden oder dort Beschwerde einzulegen.",
+        "Nach Artikel 11 des türkischen Gesetzes Nr. 6698 (KVKK) können betroffene Personen unter anderem Auskunft darüber verlangen, ob ihre personenbezogenen Daten verarbeitet werden, Informationen über die Verarbeitung und deren Zwecke erhalten sowie erfahren, an welche Dritten Daten im In- oder Ausland übermittelt wurden.",
+        "Unter den gesetzlichen Voraussetzungen können Sie außerdem die Berichtigung unvollständiger oder unrichtiger Daten sowie die Löschung oder Vernichtung personenbezogener Daten verlangen und verlangen, dass bestimmte Maßnahmen gegenüber Empfängern Ihrer Daten mitgeteilt werden.",
+        "Sie können einer ausschließlich automatisierten Analyse widersprechen, wenn daraus ein für Sie nachteiliges Ergebnis entsteht, und bei rechtswidriger Verarbeitung gegebenenfalls Schadensersatz verlangen. Weitere Rechte können sich aus anderen anwendbaren Datenschutzgesetzen ergeben.",
       ],
     },
 
     security: {
       title: "Datensicherheit",
       paragraphs: [
-        "Es sollen angemessene technische und organisatorische Maßnahmen eingesetzt werden, um personenbezogene Daten vor unbefugtem Zugriff, Verlust, Missbrauch, Veränderung oder Offenlegung zu schützen.",
-        "Keine Übertragung über das Internet oder elektronische Speicherung kann vollständig sicher garantiert werden. Nutzer sollten daher beim elektronischen Versand sensibler Informationen angemessene Vorsicht walten lassen.",
+        "Wir beabsichtigen, angemessene technische und organisatorische Maßnahmen zum Schutz personenbezogener Daten vor unbefugtem Zugriff, Verlust, Missbrauch, Veränderung oder Offenlegung einzusetzen.",
+        "Keine Übertragung über das Internet und keine elektronische Speicherung kann vollständig sicher garantiert werden.",
       ],
     },
 
     changes: {
       title: "Änderungen dieser Erklärung",
       paragraphs: [
-        "Diese Datenschutzerklärung kann von Zeit zu Zeit aktualisiert werden, um Änderungen an Website, Services, Technologien oder geltenden Anforderungen zu berücksichtigen.",
-        "Bei wesentlichen Änderungen werden die aktualisierte Fassung und das Änderungsdatum auf dieser Seite veröffentlicht.",
+        "Diese Datenschutzerklärung kann aktualisiert werden, wenn sich unsere Website, Services, eingesetzten Technologien, Verarbeitungsvorgänge oder rechtliche Anforderungen ändern.",
+        "Die jeweils aktuelle Fassung sowie das Datum der letzten Aktualisierung werden auf dieser Seite veröffentlicht.",
       ],
     },
 
     contact: {
-      title: "Datenschutzanfragen",
+      title: "Datenschutz- und KVKK-Anfragen",
       paragraphs: [
-        "Fragen zu dieser Datenschutzerklärung oder Anfragen zu personenbezogenen Daten können gerichtet werden an:",
+        "Fragen zu dieser Datenschutzerklärung sowie Anträge bezüglich personenbezogener Daten können an den unten angegebenen Verantwortlichen gerichtet werden. Anträge werden entsprechend dem anwendbaren Verfahren und den gesetzlichen Fristen bearbeitet.",
       ],
     },
 
-    registrationLabel: "Registrierungs- / Unternehmensnummer",
-    taxLabel: "Steuernummer",
+    registrationLabel:
+      "Registrierungs- / Unternehmensnummer",
     privacyContactLabel: "Datenschutzkontakt",
 
     cookieButton: "Cookie-Einstellungen öffnen",
@@ -185,12 +215,16 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
     returnToWebsite: "Zur Website zurückkehren",
   },
 
+  /* =======================================================
+     ENGLISH
+     ======================================================= */
+
   en: {
     legalPrivacy: "Legal · Privacy",
     title: "Privacy Policy",
     heroLead: "Your privacy matters to us.",
     heroDescription:
-      "This Privacy Policy explains how personal information may be collected, used and protected when you interact with the LIDYA JEWELRY website and our services.",
+      "This Privacy Policy explains how personal information may be collected, used, shared and protected when you interact with the LIDYA JEWELRY website and our services.",
     lastUpdated: "Last updated",
     lastUpdatedValue: "August 2026",
 
@@ -205,7 +239,7 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
     controller: {
       title: "Data controller",
       paragraphs: [
-        "The operator responsible for the processing of personal information through this website is:",
+        "The operator responsible for processing personal information through this website is:",
       ],
     },
 
@@ -213,24 +247,24 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
       title: "Information we may collect",
       paragraphs: [
         "Depending on how you use the website or contact us, we may receive information such as your name, telephone number, email address, the content of your enquiry, requested service or appointment details and other information that you choose to provide.",
-        "Technical information may also be processed as part of normal website operation, including IP address, browser type, device information, requested pages, timestamps, security logs and similar technical data generated by the hosting infrastructure.",
-        "Cookie preferences selected through the website are stored locally in your browser so that the site can remember your choices.",
+        "Technical information may also be processed as part of normal website operation, including IP address, browser type, device information, requested pages, timestamps, security logs and similar technical information generated by hosting or security infrastructure.",
+        "Cookie preferences selected through the website may be stored locally in your browser so that the website can remember your choices.",
       ],
     },
 
     use: {
       title: "How we use personal information",
       paragraphs: [
-        "Personal information may be used to respond to enquiries, arrange appointments, communicate about jewellery or watch services, process service requests, provide customer support and maintain the security and operation of the website.",
-        "Where optional analytics or marketing technologies are introduced, they will only be used in accordance with the cookie choices made through the website.",
+        "Personal information may be used to respond to enquiries, arrange appointments, communicate about jewellery or watch services, process service requests, provide customer support and maintain the security and proper operation of the website.",
+        "Where analytics or marketing technologies require consent, they are intended to be activated only after the relevant consent has been provided.",
       ],
     },
 
     legalBasis: {
       title: "Legal basis for processing",
       paragraphs: [
-        "The legal basis for processing depends on the context in which information is provided. Processing may be necessary to respond to a request, take steps connected with a service or appointment, comply with legal obligations, protect legitimate business and security interests, or act on your consent where consent is required.",
-        "Optional analytics and marketing technologies are intended to operate only after the relevant consent has been given.",
+        "As a business operating in Türkiye, LIDYA processes personal data in accordance with Turkish Personal Data Protection Law No. 6698 (KVKK) and other applicable legislation.",
+        "Depending on the circumstances, processing may be based on steps necessary to establish or perform a contract, compliance with a legal obligation, establishment, exercise or protection of a right, the legitimate interests of the data controller provided that the fundamental rights and freedoms of the data subject are not harmed, or explicit consent where consent is required.",
       ],
     },
 
@@ -239,68 +273,67 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
       paragraphs: [
         "We do not sell personal information.",
         "Information may be shared with service providers where reasonably necessary for website hosting, technical operation, communications, security, professional advice or another service requested by you.",
-        "Information may also be disclosed where required by law, regulation, court order or another valid legal obligation.",
+        "Information may also be disclosed where required by applicable law, regulation, an authorised public body, court order or another binding legal obligation.",
       ],
     },
 
     international: {
       title: "External and international services",
       paragraphs: [
-        "The website contains links to third-party services, including WhatsApp, Instagram and Facebook. When you choose to follow one of these links, your interaction is governed by the privacy practices and terms of the relevant third-party provider.",
-        "Some service providers may process information in countries other than the country in which you are located. Where applicable, appropriate safeguards should be used in accordance with relevant data protection requirements.",
+        "The website may contain links to third-party services such as WhatsApp, Instagram and Facebook. When you choose to use one of those services, your interaction may also be governed by the privacy practices and terms of the relevant third-party provider.",
+        "Certain service providers may process personal data outside Türkiye or outside the country in which you are located. International transfers are intended to be made only in accordance with applicable data protection requirements.",
       ],
     },
 
     retention: {
       title: "How long information is kept",
       paragraphs: [
-        "Personal information is intended to be retained only for as long as reasonably necessary for the purpose for which it was collected, to maintain relevant business records, resolve enquiries or disputes, meet legal obligations and protect legitimate interests.",
-        "Exact retention periods may vary depending on the type of information and the nature of the relationship with the customer.",
+        "Personal information is generally retained only for as long as necessary for the purpose of processing, the customer or business relationship, applicable legal retention obligations, resolution of enquiries or disputes and the establishment, exercise or defence of legal rights.",
+        "Exact retention periods may vary according to the category of personal data, the purpose of processing and applicable legal requirements.",
       ],
     },
 
     cookies: {
       title: "Cookies and consent",
       paragraphs: [
-        "The website uses necessary browser technologies required for core functionality. Optional analytics and marketing categories are controlled through the website's cookie consent interface.",
-        "Your current cookie preferences can be changed at any time through the Cookie Settings link available in the website footer.",
+        "The website may use necessary browser technologies required for core functionality. Optional analytics or marketing technologies are controlled through the website's cookie settings where consent is required.",
+        "You can change your cookie choices through the website's Cookie Settings interface.",
       ],
     },
 
     rights: {
       title: "Your privacy rights",
       paragraphs: [
-        "Depending on the law applicable to you, you may have rights relating to your personal information, including rights to request access, correction, deletion, restriction, portability, objection to certain processing and withdrawal of consent.",
-        "Where processing is based on consent, withdrawing consent does not affect the lawfulness of processing carried out before the withdrawal.",
-        "You may also have the right to contact or lodge a complaint with the data protection authority applicable to your jurisdiction.",
+        "Under Article 11 of Turkish Personal Data Protection Law No. 6698 (KVKK), data subjects may request information about whether their personal data is processed, obtain information concerning that processing and its purposes, and learn the third parties to whom personal data has been transferred domestically or abroad.",
+        "Where the legal conditions are met, you may also request correction of incomplete or inaccurate personal data, erasure or destruction of personal data and notification of certain correction or deletion operations to recipients of the data.",
+        "You may object to a result arising against you through analysis exclusively by automated systems and may claim compensation where you suffer damage as a result of unlawful processing. Additional rights may apply under other applicable data protection laws.",
       ],
     },
 
     security: {
       title: "Data security",
       paragraphs: [
-        "Reasonable technical and organisational measures are intended to be used to protect personal information against unauthorised access, loss, misuse, alteration or disclosure.",
-        "No internet transmission or electronic storage method can be guaranteed to be completely secure, and users should take appropriate care when sending sensitive information electronically.",
+        "We intend to use appropriate technical and organisational measures to protect personal information against unauthorised access, loss, misuse, alteration or disclosure.",
+        "No method of transmission over the internet or electronic storage can be guaranteed to be completely secure.",
       ],
     },
 
     changes: {
       title: "Changes to this policy",
       paragraphs: [
-        "This Privacy Policy may be updated from time to time to reflect changes to the website, services, technologies or applicable requirements.",
-        "When material changes are made, the updated version and revision date will be published on this page.",
+        "This Privacy Policy may be updated from time to time to reflect changes to our website, services, technologies, processing activities or applicable legal requirements.",
+        "The current version and date of the latest update will be published on this page.",
       ],
     },
 
     contact: {
-      title: "Privacy enquiries",
+      title: "Privacy and KVKK requests",
       paragraphs: [
-        "Questions about this Privacy Policy or requests concerning personal information can be directed to:",
+        "Questions about this Privacy Policy and requests concerning personal data may be submitted to the data controller using the details below. Requests will be handled in accordance with the applicable procedure and statutory response periods.",
       ],
     },
 
     registrationLabel: "Registration / company number",
-    taxLabel: "Tax number",
     privacyContactLabel: "Privacy contact",
 
     cookieButton: "Open cookie settings",
@@ -310,137 +343,144 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
     returnToWebsite: "Return to website",
   },
 
+  /* =======================================================
+     TURKISH
+     ======================================================= */
+
   tr: {
     legalPrivacy: "Yasal · Gizlilik",
-    title: "Gizlilik Politikası",
+    title: "Gizlilik ve Kişisel Verilerin Korunması",
     heroLead: "Gizliliğiniz bizim için önemlidir.",
     heroDescription:
-      "Bu Gizlilik Politikası, LIDYA JEWELRY web sitesi ve hizmetlerimizle etkileşim kurduğunuzda kişisel bilgilerin nasıl toplanabileceğini, kullanılabileceğini ve korunabileceğini açıklar.",
+      "Bu politika, LIDYA JEWELRY web sitesi ve hizmetlerimizle etkileşim kurduğunuzda kişisel verilerin nasıl işlenebileceğini ve korunabileceğini açıklar.",
     lastUpdated: "Son güncelleme",
     lastUpdatedValue: "Ağustos 2026",
 
     introduction: "Giriş",
     introLead:
-      "Kişisel bilgileri özenli, şeffaf ve saygılı bir şekilde işlemeyi amaçlıyoruz.",
+      "Kişisel verileri dikkatli, şeffaf ve saygılı bir şekilde işlemeyi amaçlıyoruz.",
     introText:
-      "Bu politika, talepler, randevu istekleri, servis iletişimleri, çerez tercihleri ve e-posta ile WhatsApp gibi bağlantılı iletişim hizmetleriyle etkileşimler dahil olmak üzere bu web sitesi üzerinden işlenen bilgiler için geçerlidir.",
+      "Bu politika; web sitesi üzerinden gerçekleştirilen talepler, randevu istekleri, servis iletişimleri, çerez tercihleri ve e-posta veya WhatsApp gibi bağlantılı iletişim hizmetleri aracılığıyla gerçekleştirilen işlemler için geçerlidir.",
 
     contents: "İçindekiler",
 
     controller: {
       title: "Veri sorumlusu",
       paragraphs: [
-        "Bu web sitesi üzerinden kişisel bilgilerin işlenmesinden sorumlu işletmeci:",
+        "Bu web sitesi üzerinden kişisel verilerin işlenmesinden sorumlu veri sorumlusu:",
       ],
     },
 
     data: {
-      title: "Toplayabileceğimiz bilgiler",
+      title: "İşleyebileceğimiz kişisel veriler",
       paragraphs: [
-        "Web sitesini nasıl kullandığınıza veya bizimle nasıl iletişime geçtiğinize bağlı olarak adınız, telefon numaranız, e-posta adresiniz, talebinizin içeriği, talep edilen servis veya randevu bilgileri ve paylaşmayı tercih ettiğiniz diğer bilgileri alabiliriz.",
-        "Web sitesinin normal çalışması kapsamında IP adresi, tarayıcı türü, cihaz bilgileri, istenen sayfalar, zaman damgaları, güvenlik kayıtları ve barındırma altyapısı tarafından oluşturulan benzer teknik veriler de işlenebilir.",
-        "Web sitesi üzerinden seçtiğiniz çerez tercihleri, sitenin seçimlerinizi hatırlayabilmesi için tarayıcınızda yerel olarak saklanır.",
+        "Web sitesini kullanımınıza veya bizimle iletişime geçme şeklinize bağlı olarak adınız, telefon numaranız, e-posta adresiniz, talebinizin içeriği, hizmet veya randevu bilgileri ve gönüllü olarak sağladığınız diğer bilgiler işlenebilir.",
+        "Web sitesinin normal çalışması kapsamında IP adresi, tarayıcı türü, cihaz bilgileri, ziyaret edilen sayfalar, zaman kayıtları, güvenlik kayıtları ve hosting veya güvenlik altyapısının oluşturduğu benzer teknik bilgiler de işlenebilir.",
+        "Web sitesinde seçilen çerez tercihleri, seçimlerinizin hatırlanabilmesi amacıyla tarayıcınızda yerel olarak saklanabilir.",
       ],
     },
 
     use: {
-      title: "Kişisel bilgileri nasıl kullanıyoruz",
+      title: "Kişisel verileri hangi amaçlarla kullanıyoruz",
       paragraphs: [
-        "Kişisel bilgiler; taleplere yanıt vermek, randevular düzenlemek, mücevher veya saat hizmetleri hakkında iletişim kurmak, servis taleplerini işlemek, müşteri desteği sağlamak ve web sitesinin güvenliğini ve işleyişini sürdürmek amacıyla kullanılabilir.",
-        "İsteğe bağlı analiz veya pazarlama teknolojileri kullanıma sunulursa, yalnızca web sitesi üzerinden yaptığınız çerez tercihlerine uygun olarak kullanılacaktır.",
+        "Kişisel veriler taleplere yanıt vermek, randevu düzenlemek, mücevher veya saat hizmetleri hakkında iletişim kurmak, servis taleplerini yönetmek, müşteri desteği sunmak ve web sitesinin güvenliğini ve düzgün çalışmasını sağlamak amacıyla işlenebilir.",
+        "Açık rıza gerektiren analiz veya pazarlama teknolojileri, ilgili rıza verilmeden etkinleştirilmemelidir.",
       ],
     },
 
     legalBasis: {
-      title: "İşlemenin hukuki dayanağı",
+      title: "Kişisel veri işlemenin hukuki sebepleri",
       paragraphs: [
-        "İşlemenin hukuki dayanağı, bilgilerin hangi bağlamda sağlandığına bağlıdır. İşleme; bir talebe yanıt vermek, bir servis veya randevuyla ilgili adımlar atmak, yasal yükümlülüklere uymak, meşru ticari ve güvenlik çıkarlarını korumak veya onay gerektiğinde onayınıza dayanmak için gerekli olabilir.",
-        "İsteğe bağlı analiz ve pazarlama teknolojilerinin yalnızca ilgili onay verildikten sonra çalışması amaçlanmaktadır.",
+        "LIDYA, kişisel verileri başta 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) olmak üzere uygulanabilir mevzuata uygun olarak işler.",
+        "İşlemenin niteliğine göre hukuki sebep; bir sözleşmenin kurulması veya ifasıyla doğrudan ilgili olması, veri sorumlusunun hukuki yükümlülüğünü yerine getirmesi, bir hakkın tesisi, kullanılması veya korunması, ilgili kişinin temel hak ve özgürlüklerine zarar vermemek kaydıyla veri sorumlusunun meşru menfaati veya gerekli olduğu durumlarda açık rıza olabilir.",
       ],
     },
 
     sharing: {
-      title: "Bilgiler ne zaman paylaşılabilir",
+      title: "Kişisel verilerin aktarılması",
       paragraphs: [
-        "Kişisel bilgileri satmıyoruz.",
-        "Bilgiler; web sitesi barındırma, teknik işletim, iletişim, güvenlik, profesyonel danışmanlık veya sizin talep ettiğiniz başka bir hizmet için makul ölçüde gerekli olduğunda hizmet sağlayıcılarla paylaşılabilir.",
-        "Bilgiler ayrıca kanun, düzenleme, mahkeme kararı veya başka geçerli bir hukuki yükümlülük gerektirdiğinde açıklanabilir.",
+        "Kişisel verileri satmıyoruz.",
+        "Kişisel veriler; hosting, teknik altyapı, iletişim, güvenlik, profesyonel danışmanlık veya talep ettiğiniz hizmetlerin sağlanması için gerekli olduğu ölçüde hizmet sağlayıcılarla paylaşılabilir.",
+        "Veriler ayrıca yürürlükteki mevzuat, yetkili kamu kurumlarının talepleri, mahkeme kararları veya diğer bağlayıcı hukuki yükümlülükler doğrultusunda aktarılabilir.",
       ],
     },
 
     international: {
-      title: "Harici ve uluslararası hizmetler",
+      title: "Harici hizmetler ve yurt dışı aktarımlar",
       paragraphs: [
-        "Web sitesi WhatsApp, Instagram ve Facebook dahil olmak üzere üçüncü taraf hizmetlere bağlantılar içerir. Bu bağlantılardan birini takip ettiğinizde etkileşiminiz ilgili üçüncü taraf sağlayıcının gizlilik uygulamaları ve şartlarına tabidir.",
-        "Bazı hizmet sağlayıcılar bilgileri bulunduğunuz ülkeden farklı ülkelerde işleyebilir. Uygulanabilir olduğu durumlarda ilgili veri koruma gerekliliklerine uygun koruma önlemleri kullanılmalıdır.",
+        "Web sitesi WhatsApp, Instagram ve Facebook gibi üçüncü taraf hizmetlere bağlantılar içerebilir. Bu hizmetleri kullandığınızda ilgili sağlayıcının gizlilik politikaları ve koşulları da geçerli olabilir.",
+        "Bazı hizmet sağlayıcılar kişisel verileri Türkiye dışında işleyebilir. Yurt dışına aktarımlar, uygulanabilir KVKK hükümleri ve diğer veri koruma gereklilikleri doğrultusunda gerçekleştirilmelidir.",
       ],
     },
 
     retention: {
-      title: "Bilgilerin saklanma süresi",
+      title: "Saklama süreleri",
       paragraphs: [
-        "Kişisel bilgilerin yalnızca toplandıkları amaç için makul ölçüde gerekli olduğu süre boyunca, ilgili ticari kayıtları tutmak, talepleri veya uyuşmazlıkları çözmek, yasal yükümlülükleri yerine getirmek ve meşru çıkarları korumak amacıyla saklanması hedeflenmektedir.",
-        "Kesin saklama süreleri, bilgi türüne ve müşteri ilişkisinin niteliğine göre değişebilir.",
+        "Kişisel veriler yalnızca işleme amacı, müşteri veya ticari ilişki, yasal saklama yükümlülükleri, uyuşmazlıkların çözümü ve hakların tesisi, kullanılması veya korunması için gerekli olduğu süre boyunca saklanır.",
+        "Saklama süreleri kişisel veri kategorisine, işleme amacına ve uygulanabilir yasal yükümlülüklere göre değişebilir.",
       ],
     },
 
     cookies: {
-      title: "Çerezler ve onay",
+      title: "Çerezler ve açık rıza",
       paragraphs: [
-        "Web sitesi temel işlevler için gerekli tarayıcı teknolojilerini kullanır. İsteğe bağlı analiz ve pazarlama kategorileri web sitesindeki çerez onay arayüzünden yönetilir.",
-        "Mevcut çerez tercihlerinizi web sitesinin alt kısmında bulunan Çerez Ayarları bağlantısından istediğiniz zaman değiştirebilirsiniz.",
+        "Web sitesi temel işlevler için gerekli tarayıcı teknolojilerini kullanabilir. Açık rıza gerektiren isteğe bağlı analiz veya pazarlama teknolojileri çerez ayarları üzerinden yönetilir.",
+        "Çerez tercihlerinizi web sitesinin Çerez Ayarları bölümünden değiştirebilirsiniz.",
       ],
     },
 
     rights: {
-      title: "Gizlilik haklarınız",
+      title: "KVKK kapsamındaki haklarınız",
       paragraphs: [
-        "Size uygulanan hukuka bağlı olarak kişisel bilgilerinizle ilgili erişim, düzeltme, silme, kısıtlama, taşınabilirlik, belirli işlemelere itiraz ve onayı geri çekme gibi haklara sahip olabilirsiniz.",
-        "İşleme onaya dayanıyorsa, onayın geri çekilmesi geri çekilmeden önce gerçekleştirilen işlemenin hukuka uygunluğunu etkilemez.",
-        "Ayrıca bulunduğunuz yargı alanında yetkili veri koruma makamına başvurma veya şikayette bulunma hakkınız olabilir.",
+        "6698 sayılı KVKK'nın 11. maddesi kapsamında kişisel verilerinizin işlenip işlenmediğini öğrenme, işlenmişse buna ilişkin bilgi talep etme, işlenme amacını ve amacına uygun kullanılıp kullanılmadığını öğrenme ve kişisel verilerin aktarıldığı üçüncü kişileri bilme hakkına sahip olabilirsiniz.",
+        "Kanuni şartların oluşması halinde eksik veya yanlış işlenen kişisel verilerin düzeltilmesini, kişisel verilerin silinmesini veya yok edilmesini ve bu işlemlerin verilerin aktarıldığı üçüncü kişilere bildirilmesini talep edebilirsiniz.",
+        "İşlenen verilerin münhasıran otomatik sistemler aracılığıyla analiz edilmesi sonucu aleyhinize bir sonucun ortaya çıkmasına itiraz edebilir ve kişisel verilerin kanuna aykırı işlenmesi sebebiyle zarara uğramanız halinde zararın giderilmesini talep edebilirsiniz.",
       ],
     },
 
     security: {
-      title: "Veri güvenliği",
+      title: "Kişisel veri güvenliği",
       paragraphs: [
-        "Kişisel bilgileri yetkisiz erişim, kayıp, kötüye kullanım, değiştirme veya açıklamaya karşı korumak için makul teknik ve organizasyonel önlemler kullanılması amaçlanmaktadır.",
-        "Hiçbir internet iletimi veya elektronik depolama yöntemi tamamen güvenli olarak garanti edilemez. Kullanıcılar hassas bilgileri elektronik olarak gönderirken uygun özeni göstermelidir.",
+        "Kişisel verileri yetkisiz erişime, kayba, kötüye kullanıma, değiştirmeye veya açıklamaya karşı korumak için uygun teknik ve idari tedbirlerin uygulanması amaçlanmaktadır.",
+        "İnternet üzerinden yapılan hiçbir aktarım veya elektronik saklama yöntemi mutlak güvenlik garantisi veremez.",
       ],
     },
 
     changes: {
-      title: "Bu politikadaki değişiklikler",
+      title: "Politikadaki değişiklikler",
       paragraphs: [
-        "Bu Gizlilik Politikası, web sitesindeki, hizmetlerdeki, teknolojilerdeki veya uygulanabilir gerekliliklerdeki değişiklikleri yansıtmak için zaman zaman güncellenebilir.",
-        "Önemli değişiklikler yapıldığında güncel sürüm ve revizyon tarihi bu sayfada yayımlanacaktır.",
+        "Bu politika web sitesi, hizmetler, teknolojiler, veri işleme faaliyetleri veya uygulanabilir mevzuattaki değişiklikleri yansıtmak üzere güncellenebilir.",
+        "Güncel sürüm ve son güncelleme tarihi bu sayfada yayımlanacaktır.",
       ],
     },
 
     contact: {
-      title: "Gizlilik talepleri",
+      title: "KVKK başvuruları ve gizlilik talepleri",
       paragraphs: [
-        "Bu Gizlilik Politikası hakkındaki sorular veya kişisel bilgilere ilişkin talepler şu adrese yöneltilebilir:",
+        "Bu politika hakkındaki sorularınız ve KVKK kapsamındaki kişisel veri başvurularınız aşağıda belirtilen veri sorumlusuna iletilebilir. Başvurular yürürlükteki usul ve yasal süreler doğrultusunda değerlendirilir.",
       ],
     },
 
     registrationLabel: "Kayıt / şirket numarası",
-    taxLabel: "Vergi numarası",
-    privacyContactLabel: "Gizlilik iletişimi",
+    privacyContactLabel: "KVKK / gizlilik iletişimi",
 
     cookieButton: "Çerez ayarlarını aç",
 
-    privacyContact: "Gizlilik iletişimi",
-    bottomPolicy: "Gizlilik Politikası",
+    privacyContact: "KVKK / gizlilik iletişimi",
+    bottomPolicy: "Gizlilik ve KVKK Politikası",
     returnToWebsite: "Web sitesine dön",
   },
+
+  /* =======================================================
+     SLOVAK
+     ======================================================= */
 
   sk: {
     legalPrivacy: "Právne · Súkromie",
     title: "Zásady ochrany osobných údajov",
     heroLead: "Na vašom súkromí nám záleží.",
     heroDescription:
-      "Tieto zásady vysvetľujú, ako môžu byť osobné údaje zhromažďované, používané a chránené pri používaní webovej stránky LIDYA JEWELRY a našich služieb.",
+      "Tieto zásady vysvetľujú, ako môžu byť osobné údaje spracúvané a chránené pri používaní webovej stránky LIDYA JEWELRY a našich služieb.",
     lastUpdated: "Posledná aktualizácia",
     lastUpdatedValue: "August 2026",
 
@@ -448,7 +488,7 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
     introLead:
       "Osobné údaje sa snažíme spracúvať starostlivo, transparentne a s rešpektom.",
     introText:
-      "Tieto zásady sa vzťahujú na informácie spracúvané prostredníctvom tejto webovej stránky vrátane otázok, žiadostí o termín, servisnej komunikácie, nastavení cookies a komunikácie prostredníctvom prepojených služieb, ako sú e-mail a WhatsApp.",
+      "Tieto zásady sa vzťahujú na informácie spracúvané prostredníctvom tejto webovej stránky vrátane otázok, žiadostí o termín, servisnej komunikácie, nastavení cookies a komunikácie cez prepojené služby, ako sú e-mail a WhatsApp.",
 
     contents: "Obsah",
 
@@ -460,27 +500,27 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
     },
 
     data: {
-      title: "Údaje, ktoré môžeme zhromažďovať",
+      title: "Údaje, ktoré môžeme spracúvať",
       paragraphs: [
-        "V závislosti od spôsobu používania webovej stránky alebo kontaktovania našej spoločnosti môžeme získať údaje, ako sú vaše meno, telefónne číslo, e-mailová adresa, obsah vašej požiadavky, údaje o požadovanom servise alebo termíne a ďalšie informácie, ktoré sa rozhodnete poskytnúť.",
-        "V rámci bežnej prevádzky webovej stránky môžu byť spracúvané aj technické údaje vrátane IP adresy, typu prehliadača, údajov o zariadení, navštívených stránok, časových údajov, bezpečnostných záznamov a podobných technických údajov vytvorených hostingovou infraštruktúrou.",
-        "Nastavenia cookies vybrané prostredníctvom webovej stránky sa ukladajú lokálne vo vašom prehliadači, aby si stránka mohla zapamätať vaše rozhodnutia.",
+        "V závislosti od spôsobu používania webovej stránky alebo kontaktovania našej spoločnosti môžeme spracúvať vaše meno, telefónne číslo, e-mailovú adresu, obsah požiadavky, informácie o požadovanej službe alebo termíne a ďalšie údaje, ktoré nám dobrovoľne poskytnete.",
+        "Pri bežnej prevádzke webovej stránky môžu byť spracúvané technické údaje, napríklad IP adresa, typ prehliadača, informácie o zariadení, navštívené stránky, časové údaje a bezpečnostné záznamy.",
+        "Nastavenia cookies môžu byť uložené lokálne v prehliadači, aby si stránka zapamätala vaše rozhodnutia.",
       ],
     },
 
     use: {
-      title: "Ako používame osobné údaje",
+      title: "Ako osobné údaje používame",
       paragraphs: [
-        "Osobné údaje môžu byť použité na odpovedanie na otázky, dohodnutie termínov, komunikáciu o servise šperkov alebo hodiniek, spracovanie servisných požiadaviek, poskytovanie zákazníckej podpory a zabezpečenie bezpečnosti a fungovania webovej stránky.",
-        "Ak budú zavedené voliteľné analytické alebo marketingové technológie, budú používané iba v súlade s nastaveniami cookies zvolenými prostredníctvom webovej stránky.",
+        "Údaje môžeme používať na odpovedanie na otázky, dohodnutie termínov, komunikáciu o šperkoch a hodinkách, spracovanie servisných požiadaviek, zákaznícku podporu a zabezpečenie bezpečnej prevádzky webovej stránky.",
+        "Analytické alebo marketingové technológie, pri ktorých je potrebný súhlas, majú byť aktivované až po jeho udelení.",
       ],
     },
 
     legalBasis: {
       title: "Právny základ spracúvania",
       paragraphs: [
-        "Právny základ spracúvania závisí od okolností, za ktorých boli údaje poskytnuté. Spracúvanie môže byť potrebné na odpoveď na požiadavku, vykonanie krokov súvisiacich so službou alebo termínom, splnenie zákonných povinností, ochranu oprávnených obchodných a bezpečnostných záujmov alebo na základe vášho súhlasu, ak je súhlas potrebný.",
-        "Voliteľné analytické a marketingové technológie majú byť používané až po udelení príslušného súhlasu.",
+        "LIDYA ako spoločnosť pôsobiaca v Türkiye spracúva osobné údaje najmä podľa tureckého zákona č. 6698 o ochrane osobných údajov (KVKK) a ďalších uplatniteľných právnych predpisov.",
+        "Právnym základom môže byť podľa okolností uzatvorenie alebo plnenie zmluvy, splnenie zákonnej povinnosti, vznik, výkon alebo ochrana práva, oprávnený záujem prevádzkovateľa pri zachovaní základných práv dotknutej osoby alebo výslovný súhlas, ak je potrebný.",
       ],
     },
 
@@ -488,69 +528,68 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
       title: "Kedy môžu byť údaje zdieľané",
       paragraphs: [
         "Osobné údaje nepredávame.",
-        "Údaje môžu byť zdieľané s poskytovateľmi služieb, ak je to primerane potrebné pre hosting webovej stránky, technickú prevádzku, komunikáciu, bezpečnosť, odborné poradenstvo alebo inú službu, ktorú ste si vyžiadali.",
-        "Údaje môžu byť poskytnuté aj vtedy, ak to vyžaduje zákon, právny predpis, súdne rozhodnutie alebo iná platná právna povinnosť.",
+        "Údaje môžu byť poskytované poskytovateľom služieb v rozsahu potrebnom pre hosting, technickú prevádzku, komunikáciu, bezpečnosť, odborné služby alebo službu vyžiadanú zákazníkom.",
+        "Údaje môžu byť poskytnuté aj v prípade povinnosti vyplývajúcej zo zákona, rozhodnutia príslušného orgánu alebo súdu.",
       ],
     },
 
     international: {
-      title: "Externé a medzinárodné služby",
+      title: "Externé služby a medzinárodné prenosy",
       paragraphs: [
-        "Webová stránka obsahuje odkazy na služby tretích strán vrátane WhatsApp, Instagram a Facebook. Ak sa rozhodnete použiť niektorý z týchto odkazov, vaša interakcia sa riadi zásadami ochrany osobných údajov a podmienkami príslušného poskytovateľa.",
-        "Niektorí poskytovatelia služieb môžu spracúvať údaje v krajinách odlišných od krajiny, v ktorej sa nachádzate. Tam, kde je to potrebné, by mali byť použité primerané ochranné opatrenia v súlade s príslušnými požiadavkami na ochranu údajov.",
+        "Web môže obsahovať odkazy na služby tretích strán vrátane WhatsApp, Instagram a Facebook. Pri ich používaní sa môžu uplatňovať aj zásady príslušného poskytovateľa.",
+        "Niektorí poskytovatelia môžu spracúvať údaje mimo Türkiye alebo mimo krajiny, v ktorej sa nachádzate. Takéto prenosy majú prebiehať v súlade s uplatniteľnými pravidlami ochrany údajov.",
       ],
     },
 
     retention: {
       title: "Ako dlho údaje uchovávame",
       paragraphs: [
-        "Osobné údaje majú byť uchovávané iba tak dlho, ako je primerane potrebné na účel, na ktorý boli zhromaždené, na vedenie príslušných obchodných záznamov, riešenie otázok alebo sporov, plnenie zákonných povinností a ochranu oprávnených záujmov.",
-        "Konkrétne lehoty uchovávania sa môžu líšiť podľa typu informácií a povahy vzťahu so zákazníkom.",
+        "Údaje uchovávame iba počas obdobia potrebného na účel spracúvania, obchodný alebo zákaznícky vzťah, splnenie zákonných povinností, riešenie sporov alebo ochranu práv.",
+        "Konkrétna lehota závisí od kategórie údajov, účelu ich spracúvania a zákonných požiadaviek.",
       ],
     },
 
     cookies: {
       title: "Cookies a súhlas",
       paragraphs: [
-        "Webová stránka používa nevyhnutné technológie prehliadača potrebné na základné fungovanie. Voliteľné analytické a marketingové kategórie sú riadené prostredníctvom rozhrania na správu súhlasu s cookies.",
-        "Aktuálne nastavenia cookies môžete kedykoľvek zmeniť prostredníctvom odkazu Nastavenia cookies v pätičke webovej stránky.",
+        "Web môže používať nevyhnutné technológie potrebné na základné fungovanie. Voliteľné analytické alebo marketingové technológie sa riadia prostredníctvom nastavení cookies, ak sa na ne vyžaduje súhlas.",
+        "Svoje nastavenia cookies môžete zmeniť cez rozhranie Nastavenia cookies.",
       ],
     },
 
     rights: {
-      title: "Vaše práva na ochranu súkromia",
+      title: "Vaše práva",
       paragraphs: [
-        "V závislosti od právnych predpisov, ktoré sa na vás vzťahujú, môžete mať práva týkajúce sa vašich osobných údajov, vrátane práva na prístup, opravu, vymazanie, obmedzenie spracúvania, prenosnosť údajov, námietku proti určitým druhom spracúvania a odvolanie súhlasu.",
-        "Ak je spracúvanie založené na súhlase, jeho odvolanie nemá vplyv na zákonnosť spracúvania vykonaného pred odvolaním.",
-        "Môžete mať tiež právo obrátiť sa na príslušný orgán na ochranu osobných údajov alebo podať sťažnosť.",
+        "Podľa článku 11 tureckého zákona č. 6698 (KVKK) môžete požiadať o informáciu, či sú vaše osobné údaje spracúvané, o informácie o ich spracúvaní a účeloch a o informácie o tretích osobách, ktorým boli údaje poskytnuté.",
+        "Pri splnení zákonných podmienok môžete žiadať opravu nesprávnych alebo neúplných údajov, ich vymazanie alebo zničenie a oznámenie určitých opráv či vymazania príjemcom údajov.",
+        "Môžete namietať proti nepriaznivému výsledku založenému výlučne na automatizovanom spracúvaní a v prípade škody spôsobenej nezákonným spracúvaním požadovať náhradu škody.",
       ],
     },
 
     security: {
       title: "Bezpečnosť údajov",
       paragraphs: [
-        "Na ochranu osobných údajov pred neoprávneným prístupom, stratou, zneužitím, zmenou alebo zverejnením majú byť používané primerané technické a organizačné opatrenia.",
-        "Žiadny spôsob prenosu údajov cez internet ani elektronického uchovávania nemožno zaručiť ako úplne bezpečný. Používatelia by preto mali byť opatrní pri elektronickom posielaní citlivých informácií.",
+        "Na ochranu osobných údajov sa snažíme používať primerané technické a organizačné opatrenia.",
+        "Žiadny elektronický prenos alebo spôsob elektronického uchovávania nemožno zaručiť ako úplne bezpečný.",
       ],
     },
 
     changes: {
       title: "Zmeny týchto zásad",
       paragraphs: [
-        "Tieto zásady ochrany osobných údajov môžu byť z času na čas aktualizované tak, aby zohľadňovali zmeny webovej stránky, služieb, technológií alebo príslušných požiadaviek.",
-        "Pri významných zmenách bude na tejto stránke zverejnená aktualizovaná verzia spolu s dátumom revízie.",
+        "Tieto zásady môžeme aktualizovať v dôsledku zmien webovej stránky, služieb, technológií, spracovateľských činností alebo právnych požiadaviek.",
+        "Aktuálna verzia a dátum poslednej aktualizácie budú zverejnené na tejto stránke.",
       ],
     },
 
     contact: {
-      title: "Otázky týkajúce sa súkromia",
+      title: "Žiadosti podľa KVKK a otázky o súkromí",
       paragraphs: [
-        "Otázky k týmto zásadám alebo požiadavky týkajúce sa osobných údajov môžete smerovať na:",
+        "Otázky týkajúce sa týchto zásad a žiadosti súvisiace s osobnými údajmi môžete smerovať na prevádzkovateľa uvedeného nižšie. Žiadosti budú spracované podľa príslušného postupu a zákonných lehôt.",
       ],
     },
 
     registrationLabel: "Registračné / firemné číslo",
-    taxLabel: "Daňové číslo",
     privacyContactLabel: "Kontakt pre ochranu súkromia",
 
     cookieButton: "Otvoriť nastavenia cookies",
@@ -560,12 +599,16 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
     returnToWebsite: "Späť na web",
   },
 
+  /* =======================================================
+     CZECH
+     ======================================================= */
+
   cs: {
     legalPrivacy: "Právní · Soukromí",
     title: "Zásady ochrany osobních údajů",
     heroLead: "Na vašem soukromí nám záleží.",
     heroDescription:
-      "Tyto zásady vysvětlují, jak mohou být osobní údaje shromažďovány, používány a chráněny při používání webové stránky LIDYA JEWELRY a našich služeb.",
+      "Tyto zásady vysvětlují, jak mohou být osobní údaje zpracovávány a chráněny při používání webu LIDYA JEWELRY a našich služeb.",
     lastUpdated: "Poslední aktualizace",
     lastUpdatedValue: "Srpen 2026",
 
@@ -573,39 +616,39 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
     introLead:
       "Osobní údaje se snažíme zpracovávat pečlivě, transparentně a s respektem.",
     introText:
-      "Tyto zásady se vztahují na informace zpracovávané prostřednictvím této webové stránky, včetně dotazů, žádostí o termín, servisní komunikace, nastavení cookies a komunikace prostřednictvím propojených služeb, jako jsou e-mail a WhatsApp.",
+      "Tyto zásady se vztahují na informace zpracovávané prostřednictvím této webové stránky, včetně dotazů, žádostí o termín, servisní komunikace, nastavení cookies a komunikace prostřednictvím služeb jako e-mail a WhatsApp.",
 
     contents: "Obsah",
 
     controller: {
       title: "Správce osobních údajů",
       paragraphs: [
-        "Provozovatel odpovědný za zpracování osobních údajů prostřednictvím této webové stránky je:",
+        "Správce odpovědný za zpracování osobních údajů prostřednictvím této webové stránky je:",
       ],
     },
 
     data: {
-      title: "Údaje, které můžeme shromažďovat",
+      title: "Údaje, které můžeme zpracovávat",
       paragraphs: [
-        "Podle způsobu používání webové stránky nebo kontaktování naší společnosti můžeme získat údaje, jako jsou vaše jméno, telefonní číslo, e-mailová adresa, obsah vašeho dotazu, údaje o požadovaném servisu nebo termínu a další informace, které se rozhodnete poskytnout.",
-        "V rámci běžného provozu webové stránky mohou být zpracovávány také technické údaje včetně IP adresy, typu prohlížeče, údajů o zařízení, navštívených stránek, časových údajů, bezpečnostních záznamů a podobných technických údajů vytvořených hostingovou infrastrukturou.",
-        "Nastavení cookies zvolené prostřednictvím webové stránky se ukládá lokálně ve vašem prohlížeči, aby si stránka mohla zapamatovat vaše volby.",
+        "Můžeme zpracovávat vaše jméno, telefonní číslo, e-mailovou adresu, obsah požadavku, údaje o požadované službě nebo termínu a další informace, které nám dobrovolně poskytnete.",
+        "V rámci běžného provozu mohou být zpracovávány technické údaje, například IP adresa, typ prohlížeče, údaje o zařízení, navštívené stránky, časové údaje a bezpečnostní záznamy.",
+        "Nastavení cookies může být uloženo lokálně v prohlížeči.",
       ],
     },
 
     use: {
-      title: "Jak používáme osobní údaje",
+      title: "Jak osobní údaje používáme",
       paragraphs: [
-        "Osobní údaje mohou být používány k odpovídání na dotazy, sjednávání termínů, komunikaci o servisu šperků nebo hodinek, zpracování servisních požadavků, poskytování zákaznické podpory a zajištění bezpečnosti a fungování webové stránky.",
-        "Pokud budou zavedeny volitelné analytické nebo marketingové technologie, budou používány pouze v souladu s nastaveními cookies zvolenými prostřednictvím webové stránky.",
+        "Údaje můžeme používat k odpovídání na dotazy, sjednávání termínů, komunikaci o službách, zpracování servisních požadavků, zákaznické podpoře a zabezpečení provozu webu.",
+        "Analytické nebo marketingové technologie vyžadující souhlas budou aktivovány až po jeho udělení.",
       ],
     },
 
     legalBasis: {
       title: "Právní základ zpracování",
       paragraphs: [
-        "Právní základ zpracování závisí na okolnostech, za kterých byly údaje poskytnuty. Zpracování může být nezbytné pro odpověď na požadavek, provedení kroků souvisejících se službou nebo termínem, splnění zákonných povinností, ochranu oprávněných obchodních a bezpečnostních zájmů nebo na základě vašeho souhlasu, pokud je souhlas vyžadován.",
-        "Volitelné analytické a marketingové technologie mají být používány až po udělení příslušného souhlasu.",
+        "LIDYA jako společnost působící v Türkiye zpracovává osobní údaje zejména podle tureckého zákona č. 6698 o ochraně osobních údajů (KVKK) a dalších použitelných právních předpisů.",
+        "Právním základem může být podle okolností uzavření nebo plnění smlouvy, zákonná povinnost, vznik, výkon nebo ochrana práva, oprávněný zájem správce při respektování základních práv dotčené osoby nebo výslovný souhlas, pokud je vyžadován.",
       ],
     },
 
@@ -613,69 +656,68 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
       title: "Kdy mohou být údaje sdíleny",
       paragraphs: [
         "Osobní údaje neprodáváme.",
-        "Údaje mohou být sdíleny s poskytovateli služeb, pokud je to přiměřeně nezbytné pro hosting webové stránky, technický provoz, komunikaci, bezpečnost, odborné poradenství nebo jinou vámi požadovanou službu.",
-        "Údaje mohou být také poskytnuty, pokud to vyžaduje zákon, právní předpis, soudní rozhodnutí nebo jiná platná právní povinnost.",
+        "Údaje mohou být poskytovány nezbytným poskytovatelům technických, hostingových, komunikačních, bezpečnostních nebo odborných služeb.",
+        "Údaje mohou být poskytnuty také tehdy, pokud to vyžaduje platná právní povinnost.",
       ],
     },
 
     international: {
       title: "Externí a mezinárodní služby",
       paragraphs: [
-        "Webová stránka obsahuje odkazy na služby třetích stran včetně WhatsApp, Instagram a Facebook. Pokud se rozhodnete některý z těchto odkazů použít, vaše interakce se řídí zásadami ochrany osobních údajů a podmínkami příslušného poskytovatele.",
-        "Někteří poskytovatelé služeb mohou zpracovávat údaje v jiných zemích než v zemi, kde se nacházíte. Tam, kde je to nutné, by měla být použita vhodná ochranná opatření v souladu s příslušnými požadavky na ochranu údajů.",
+        "Web může obsahovat odkazy na služby třetích stran, například WhatsApp, Instagram a Facebook.",
+        "Mezinárodní přenosy osobních údajů mají probíhat pouze v souladu s použitelnými pravidly ochrany údajů.",
       ],
     },
 
     retention: {
-      title: "Jak dlouho údaje uchováváme",
+      title: "Doba uchovávání",
       paragraphs: [
-        "Osobní údaje mají být uchovávány pouze po dobu přiměřeně nezbytnou pro účel, pro který byly shromážděny, pro vedení relevantních obchodních záznamů, řešení dotazů nebo sporů, plnění zákonných povinností a ochranu oprávněných zájmů.",
-        "Konkrétní doby uchovávání se mohou lišit podle typu informací a povahy vztahu se zákazníkem.",
+        "Údaje jsou uchovávány pouze po dobu potřebnou k účelu zpracování, plnění právních povinností, vedení obchodního vztahu, řešení sporů nebo ochraně práv.",
+        "Konkrétní doba závisí na typu údajů a právních požadavcích.",
       ],
     },
 
     cookies: {
       title: "Cookies a souhlas",
       paragraphs: [
-        "Webová stránka používá nezbytné technologie prohlížeče potřebné pro základní funkce. Volitelné analytické a marketingové kategorie jsou řízeny prostřednictvím rozhraní pro správu souhlasu s cookies.",
-        "Aktuální nastavení cookies můžete kdykoli změnit prostřednictvím odkazu Nastavení cookies v patičce webové stránky.",
+        "Web může využívat nezbytné technologie potřebné k základnímu fungování. Volitelné analytické nebo marketingové technologie se řídí prostřednictvím nastavení cookies.",
+        "Nastavení cookies můžete kdykoli změnit.",
       ],
     },
 
     rights: {
-      title: "Vaše práva na ochranu soukromí",
+      title: "Vaše práva",
       paragraphs: [
-        "V závislosti na právních předpisech, které se na vás vztahují, můžete mít práva týkající se vašich osobních údajů, včetně práva na přístup, opravu, výmaz, omezení zpracování, přenositelnost, námitku proti určitým typům zpracování a odvolání souhlasu.",
-        "Pokud je zpracování založeno na souhlasu, jeho odvolání nemá vliv na zákonnost zpracování provedeného před odvoláním.",
-        "Můžete mít také právo obrátit se na příslušný úřad pro ochranu osobních údajů nebo podat stížnost.",
+        "Podle článku 11 tureckého zákona č. 6698 (KVKK) můžete získat informace o tom, zda a jak jsou vaše osobní údaje zpracovávány, za jakým účelem a komu byly předány.",
+        "Při splnění zákonných podmínek můžete požadovat opravu, výmaz nebo zničení osobních údajů a informování příslušných příjemců.",
+        "Můžete také namítat proti nepříznivému výsledku založenému výhradně na automatizovaném zpracování a v zákonem stanovených případech požadovat náhradu škody.",
       ],
     },
 
     security: {
       title: "Bezpečnost údajů",
       paragraphs: [
-        "K ochraně osobních údajů před neoprávněným přístupem, ztrátou, zneužitím, změnou nebo zveřejněním mají být používána přiměřená technická a organizační opatření.",
-        "Žádný způsob přenosu přes internet ani elektronického ukládání nelze zaručit jako zcela bezpečný. Uživatelé by proto měli být opatrní při elektronickém posílání citlivých informací.",
+        "Používáme nebo zamýšlíme používat přiměřená technická a organizační bezpečnostní opatření.",
+        "Žádný způsob elektronického přenosu nebo ukládání nelze zaručit jako absolutně bezpečný.",
       ],
     },
 
     changes: {
       title: "Změny těchto zásad",
       paragraphs: [
-        "Tyto zásady ochrany osobních údajů mohou být čas od času aktualizovány tak, aby odrážely změny webové stránky, služeb, technologií nebo příslušných požadavků.",
-        "Při významných změnách bude na této stránce zveřejněna aktualizovaná verze spolu s datem revize.",
+        "Tyto zásady mohou být průběžně aktualizovány.",
+        "Aktuální verze a datum poslední aktualizace budou zveřejněny na této stránce.",
       ],
     },
 
     contact: {
-      title: "Dotazy týkající se soukromí",
+      title: "Žádosti podle KVKK a dotazy",
       paragraphs: [
-        "Dotazy k těmto zásadám nebo požadavky týkající se osobních údajů můžete směřovat na:",
+        "Dotazy a žádosti týkající se osobních údajů můžete zaslat správci uvedenému níže. Budou vyřízeny v souladu s platným postupem a zákonnými lhůtami.",
       ],
     },
 
     registrationLabel: "Registrační / firemní číslo",
-    taxLabel: "Daňové číslo",
     privacyContactLabel: "Kontakt pro ochranu soukromí",
 
     cookieButton: "Otevřít nastavení cookies",
@@ -685,12 +727,16 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
     returnToWebsite: "Zpět na web",
   },
 
+  /* =======================================================
+     HUNGARIAN
+     ======================================================= */
+
   hu: {
     legalPrivacy: "Jogi · Adatvédelem",
     title: "Adatvédelmi szabályzat",
     heroLead: "Fontos számunkra az Ön adatainak védelme.",
     heroDescription:
-      "Ez az Adatvédelmi szabályzat ismerteti, hogyan gyűjthetünk, használhatunk és védhetünk személyes adatokat a LIDYA JEWELRY weboldal és szolgáltatásaink használata során.",
+      "Ez a szabályzat ismerteti, hogyan kezelhetjük és védhetjük személyes adatait a LIDYA JEWELRY weboldal és szolgáltatásaink használata során.",
     lastUpdated: "Utolsó frissítés",
     lastUpdatedValue: "2026. augusztus",
 
@@ -698,109 +744,108 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
     introLead:
       "A személyes adatokat gondosan, átláthatóan és tisztelettel kívánjuk kezelni.",
     introText:
-      "Ez a szabályzat a weboldalon keresztül kezelt információkra vonatkozik, beleértve a megkereséseket, időpontkéréseket, szervizkommunikációt, cookie-beállításokat és az olyan kapcsolódó kommunikációs szolgáltatásokkal való interakciókat, mint az e-mail és a WhatsApp.",
+      "A szabályzat kiterjed a megkeresésekre, időpontkérésekre, szolgáltatási kommunikációra, cookie-beállításokra és az e-mailhez vagy WhatsApphoz hasonló kapcsolódó szolgáltatásokra.",
 
     contents: "Tartalom",
 
     controller: {
       title: "Adatkezelő",
       paragraphs: [
-        "A weboldalon keresztül kezelt személyes adatokért felelős üzemeltető:",
+        "A weboldalon keresztül kezelt személyes adatokért felelős adatkezelő:",
       ],
     },
 
     data: {
-      title: "Milyen adatokat gyűjthetünk",
+      title: "Kezelhető adatok",
       paragraphs: [
-        "A weboldal használatától vagy a kapcsolatfelvétel módjától függően olyan adatokat kaphatunk, mint az Ön neve, telefonszáma, e-mail-címe, megkeresésének tartalma, a kért szolgáltatás vagy időpont részletei, valamint az Ön által önként megadott egyéb információk.",
-        "A weboldal normál működésének részeként technikai adatok is kezelhetők, például IP-cím, böngészőtípus, eszközinformációk, megnyitott oldalak, időbélyegek, biztonsági naplók és a tárhely-infrastruktúra által létrehozott hasonló technikai adatok.",
-        "A weboldalon kiválasztott cookie-beállításokat a böngésző helyileg tárolja, hogy a webhely megjegyezhesse az Ön választásait.",
+        "Kezelhetjük nevét, telefonszámát, e-mail-címét, megkeresésének tartalmát, szolgáltatási vagy időpontadatait és az Ön által önként megadott további információkat.",
+        "Technikai adatok, például IP-cím, böngészőtípus, eszközinformációk és biztonsági naplók szintén kezelhetők.",
+        "A cookie-beállítások helyben tárolhatók a böngészőben.",
       ],
     },
 
     use: {
-      title: "Hogyan használjuk a személyes adatokat",
+      title: "Az adatok felhasználása",
       paragraphs: [
-        "A személyes adatokat felhasználhatjuk megkeresések megválaszolására, időpontok egyeztetésére, ékszer- vagy óraszervizzel kapcsolatos kommunikációra, szervizigények feldolgozására, ügyféltámogatás nyújtására, valamint a weboldal biztonságának és működésének fenntartására.",
-        "Ha opcionális analitikai vagy marketingtechnológiákat vezetünk be, azokat kizárólag a weboldalon megadott cookie-beállításoknak megfelelően használjuk.",
+        "Az adatokat megkeresések megválaszolására, időpontok szervezésére, szolgáltatási kommunikációra, ügyféltámogatásra és a weboldal biztonságos működtetésére használhatjuk.",
+        "Hozzájárulást igénylő elemzési vagy marketingtechnológia csak a szükséges hozzájárulás után aktiválható.",
       ],
     },
 
     legalBasis: {
       title: "Az adatkezelés jogalapja",
       paragraphs: [
-        "Az adatkezelés jogalapja az adat megadásának körülményeitől függ. Az adatkezelés szükséges lehet egy megkeresés megválaszolásához, szolgáltatáshoz vagy időponthoz kapcsolódó lépések megtételéhez, jogi kötelezettségek teljesítéséhez, jogos üzleti és biztonsági érdekek védelméhez vagy az Ön hozzájárulása alapján történő eljáráshoz, ha hozzájárulás szükséges.",
-        "Az opcionális analitikai és marketingtechnológiák használata csak a megfelelő hozzájárulás megadása után történhet.",
+        "A Türkiye területén működő LIDYA a személyes adatokat különösen a 6698. számú török személyesadat-védelmi törvény (KVKK) és más alkalmazandó jogszabályok szerint kezeli.",
+        "A jogalap lehet többek között szerződés létrehozása vagy teljesítése, jogi kötelezettség, jog érvényesítése vagy védelme, jogos érdek, illetve szükség esetén kifejezett hozzájárulás.",
       ],
     },
 
     sharing: {
-      title: "Mikor oszthatók meg az adatok",
+      title: "Adatok megosztása",
       paragraphs: [
         "Személyes adatokat nem értékesítünk.",
-        "Az adatok megoszthatók szolgáltatókkal, ha ez ésszerűen szükséges a weboldal tárhelyszolgáltatásához, műszaki működéséhez, kommunikációhoz, biztonsághoz, szakmai tanácsadáshoz vagy más, Ön által kért szolgáltatáshoz.",
-        "Az adatok jogszabály, hatósági előírás, bírósági végzés vagy más érvényes jogi kötelezettség esetén is kiadhatók.",
+        "Az adatokat szükség esetén technikai, hosting-, kommunikációs, biztonsági vagy szakmai szolgáltatókkal oszthatjuk meg.",
+        "Jogi kötelezettség esetén az adatok hatóságoknak vagy más jogosult szerveknek is átadhatók.",
       ],
     },
 
     international: {
-      title: "Külső és nemzetközi szolgáltatások",
+      title: "Nemzetközi szolgáltatások",
       paragraphs: [
-        "A weboldal harmadik fél szolgáltatásaira mutató linkeket tartalmaz, beleértve a WhatsAppot, Instagramot és Facebookot. Ha ilyen linket követ, az interakcióra az adott szolgáltató adatvédelmi gyakorlata és feltételei vonatkoznak.",
-        "Egyes szolgáltatók az Ön tartózkodási helyétől eltérő országokban is kezelhetnek adatokat. Ilyen esetben a vonatkozó adatvédelmi követelményeknek megfelelő biztosítékokat kell alkalmazni.",
+        "A weboldal harmadik felek szolgáltatásaira, például WhatsAppra, Instagramra vagy Facebookra mutató linkeket tartalmazhat.",
+        "Nemzetközi adattovábbításra csak az alkalmazandó adatvédelmi követelményekkel összhangban kerülhet sor.",
       ],
     },
 
     retention: {
-      title: "Az adatok megőrzési ideje",
+      title: "Adatmegőrzés",
       paragraphs: [
-        "A személyes adatokat csak addig kívánjuk megőrizni, ameddig az adatgyűjtés céljához ésszerűen szükséges, ideértve a megfelelő üzleti nyilvántartások fenntartását, megkeresések vagy viták rendezését, jogi kötelezettségek teljesítését és jogos érdekek védelmét.",
-        "A pontos megőrzési idők az adat típusától és az ügyfélkapcsolat jellegétől függően eltérhetnek.",
+        "Az adatokat csak a szükséges ideig őrizzük meg.",
+        "A pontos időtartam az adat típusától, céljától és a jogi kötelezettségektől függ.",
       ],
     },
 
     cookies: {
       title: "Cookie-k és hozzájárulás",
       paragraphs: [
-        "A weboldal a működéshez szükséges böngészőtechnológiákat használ. Az opcionális analitikai és marketingkategóriák a weboldal cookie-hozzájárulási felületén kezelhetők.",
-        "A jelenlegi cookie-beállításait bármikor megváltoztathatja a weboldal láblécében található Cookie-beállítások linken keresztül.",
+        "A weboldal a működéshez szükséges technológiákat használhat. A hozzájárulást igénylő opcionális technológiák a cookie-beállításokon keresztül vezérelhetők.",
+        "Cookie-beállításait bármikor módosíthatja.",
       ],
     },
 
     rights: {
-      title: "Az Ön adatvédelmi jogai",
+      title: "Az Ön jogai",
       paragraphs: [
-        "Az Önre alkalmazandó jogszabályoktól függően személyes adataival kapcsolatban joga lehet többek között hozzáférést, helyesbítést, törlést, korlátozást vagy adathordozhatóságot kérni, bizonyos adatkezelések ellen tiltakozni, illetve hozzájárulását visszavonni.",
-        "Ha az adatkezelés hozzájáruláson alapul, annak visszavonása nem érinti a visszavonás előtt végzett adatkezelés jogszerűségét.",
-        "Jogában állhat továbbá az illetékes adatvédelmi hatósághoz fordulni vagy panaszt benyújtani.",
+        "A KVKK 11. cikke alapján tájékoztatást kérhet arról, hogy személyes adatait kezelik-e, milyen célból és kinek továbbították.",
+        "A törvényi feltételek fennállása esetén kérheti a hibás adatok helyesbítését, törlését vagy megsemmisítését.",
+        "Tiltakozhat a kizárólag automatizált elemzésen alapuló, Önre hátrányos eredmény ellen, és jogellenes adatkezelés esetén kártérítést követelhet.",
       ],
     },
 
     security: {
       title: "Adatbiztonság",
       paragraphs: [
-        "A személyes adatok jogosulatlan hozzáférés, elvesztés, visszaélés, módosítás vagy nyilvánosságra hozatal elleni védelmére megfelelő technikai és szervezési intézkedéseket kívánunk alkalmazni.",
-        "Semmilyen internetes adattovábbítási vagy elektronikus tárolási módszer nem garantálható teljesen biztonságosnak. A felhasználóknak ezért megfelelő körültekintéssel kell eljárniuk érzékeny információk elektronikus továbbításakor.",
+        "Megfelelő technikai és szervezési intézkedésekkel törekszünk az adatok védelmére.",
+        "Teljes elektronikus biztonság nem garantálható.",
       ],
     },
 
     changes: {
-      title: "A szabályzat módosításai",
+      title: "Módosítások",
       paragraphs: [
-        "Ez az Adatvédelmi szabályzat időről időre frissíthető a weboldal, a szolgáltatások, a technológiák vagy az alkalmazandó követelmények változásainak megfelelően.",
-        "Lényeges változtatások esetén a frissített változat és a módosítás dátuma ezen az oldalon kerül közzétételre.",
+        "A szabályzat időről időre frissíthető.",
+        "Az aktuális változat ezen az oldalon érhető el.",
       ],
     },
 
     contact: {
-      title: "Adatvédelmi kérdések",
+      title: "KVKK- és adatvédelmi kérelmek",
       paragraphs: [
-        "Az Adatvédelmi szabályzattal kapcsolatos kérdések vagy személyes adatokkal kapcsolatos kérelmek az alábbi címre küldhetők:",
+        "Adatvédelmi kérdéseit és kérelmeit az alább megadott adatkezelőhöz intézheti.",
       ],
     },
 
-    registrationLabel: "Cégjegyzék- / regisztrációs szám",
-    taxLabel: "Adószám",
+    registrationLabel: "Cég- / regisztrációs szám",
     privacyContactLabel: "Adatvédelmi kapcsolat",
 
     cookieButton: "Cookie-beállítások megnyitása",
@@ -810,122 +855,125 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
     returnToWebsite: "Vissza a weboldalra",
   },
 
+  /* =======================================================
+     POLISH
+     ======================================================= */
+
   pl: {
     legalPrivacy: "Informacje prawne · Prywatność",
     title: "Polityka prywatności",
     heroLead: "Twoja prywatność jest dla nas ważna.",
     heroDescription:
-      "Niniejsza Polityka prywatności wyjaśnia, w jaki sposób dane osobowe mogą być zbierane, wykorzystywane i chronione podczas korzystania ze strony LIDYA JEWELRY i naszych usług.",
+      "Niniejsza polityka wyjaśnia sposób przetwarzania i ochrony danych osobowych podczas korzystania ze strony LIDYA JEWELRY.",
     lastUpdated: "Ostatnia aktualizacja",
     lastUpdatedValue: "Sierpień 2026",
 
     introduction: "Wprowadzenie",
     introLead:
-      "Dążymy do przetwarzania danych osobowych z należytą starannością, przejrzystością i szacunkiem.",
+      "Dane osobowe traktujemy z należytą starannością, przejrzystością i szacunkiem.",
     introText:
-      "Polityka dotyczy informacji przetwarzanych za pośrednictwem tej strony, w tym zapytań, próśb o spotkanie, komunikacji serwisowej, preferencji dotyczących cookies oraz interakcji z powiązanymi usługami komunikacyjnymi, takimi jak e-mail i WhatsApp.",
+      "Polityka obejmuje zapytania, prośby o spotkanie, komunikację serwisową, ustawienia cookies i korzystanie z powiązanych usług komunikacyjnych.",
 
     contents: "Spis treści",
 
     controller: {
       title: "Administrator danych",
       paragraphs: [
-        "Podmiot odpowiedzialny za przetwarzanie danych osobowych za pośrednictwem tej strony to:",
+        "Administratorem odpowiedzialnym za przetwarzanie danych poprzez tę stronę jest:",
       ],
     },
 
     data: {
-      title: "Informacje, które możemy gromadzić",
+      title: "Dane, które możemy przetwarzać",
       paragraphs: [
-        "W zależności od sposobu korzystania ze strony lub kontaktowania się z nami możemy otrzymywać informacje, takie jak imię i nazwisko, numer telefonu, adres e-mail, treść zapytania, szczegóły dotyczące wymaganej usługi lub spotkania oraz inne informacje, które zdecydujesz się przekazać.",
-        "W ramach normalnego działania strony mogą być również przetwarzane dane techniczne, w tym adres IP, typ przeglądarki, informacje o urządzeniu, odwiedzane strony, znaczniki czasu, logi bezpieczeństwa oraz podobne dane techniczne generowane przez infrastrukturę hostingową.",
-        "Preferencje dotyczące cookies wybrane na stronie są przechowywane lokalnie w przeglądarce, aby strona mogła zapamiętać Twoje wybory.",
+        "Możemy przetwarzać imię i nazwisko, telefon, e-mail, treść zapytania, dane dotyczące usługi lub spotkania oraz informacje przekazane dobrowolnie.",
+        "Mogą być również przetwarzane dane techniczne, takie jak adres IP, urządzenie, przeglądarka i logi bezpieczeństwa.",
+        "Preferencje cookies mogą być zapisane lokalnie w przeglądarce.",
       ],
     },
 
     use: {
-      title: "Jak wykorzystujemy dane osobowe",
+      title: "Jak wykorzystujemy dane",
       paragraphs: [
-        "Dane osobowe mogą być wykorzystywane do odpowiadania na zapytania, umawiania spotkań, komunikacji dotyczącej serwisu biżuterii lub zegarków, obsługi zgłoszeń serwisowych, zapewniania wsparcia klienta oraz utrzymania bezpieczeństwa i prawidłowego działania strony.",
-        "Jeżeli zostaną wprowadzone opcjonalne technologie analityczne lub marketingowe, będą używane wyłącznie zgodnie z preferencjami dotyczącymi cookies wybranymi na stronie.",
+        "Dane mogą służyć do obsługi zapytań, spotkań, usług, wsparcia klienta oraz bezpieczeństwa strony.",
+        "Technologie wymagające zgody będą aktywowane dopiero po jej uzyskaniu.",
       ],
     },
 
     legalBasis: {
-      title: "Podstawa prawna przetwarzania",
+      title: "Podstawa prawna",
       paragraphs: [
-        "Podstawa prawna przetwarzania zależy od kontekstu, w którym dane zostały przekazane. Przetwarzanie może być konieczne w celu odpowiedzi na zapytanie, podjęcia działań związanych z usługą lub spotkaniem, wypełnienia obowiązków prawnych, ochrony uzasadnionych interesów biznesowych i bezpieczeństwa albo działania na podstawie zgody, jeśli jest ona wymagana.",
-        "Opcjonalne technologie analityczne i marketingowe mają działać dopiero po udzieleniu odpowiedniej zgody.",
+        "LIDYA jako podmiot działający w Türkiye przetwarza dane przede wszystkim zgodnie z turecką ustawą nr 6698 o ochronie danych osobowych (KVKK) oraz innymi mającymi zastosowanie przepisami.",
+        "Podstawą może być m.in. zawarcie lub wykonanie umowy, obowiązek prawny, ustalenie lub ochrona prawa, uzasadniony interes administratora albo wyraźna zgoda, gdy jest wymagana.",
       ],
     },
 
     sharing: {
-      title: "Kiedy informacje mogą być udostępniane",
+      title: "Udostępnianie danych",
       paragraphs: [
         "Nie sprzedajemy danych osobowych.",
-        "Informacje mogą być udostępniane usługodawcom, jeśli jest to rozsądnie konieczne do hostingu strony, działania technicznego, komunikacji, bezpieczeństwa, profesjonalnego doradztwa lub innej usługi zamówionej przez użytkownika.",
-        "Informacje mogą być również ujawniane, jeśli wymaga tego prawo, regulacja, nakaz sądowy lub inny ważny obowiązek prawny.",
+        "Dane mogą być przekazywane niezbędnym dostawcom usług technicznych, hostingowych, komunikacyjnych, bezpieczeństwa i profesjonalnych.",
+        "Dane mogą być ujawniane, jeżeli wymaga tego prawo.",
       ],
     },
 
     international: {
-      title: "Usługi zewnętrzne i międzynarodowe",
+      title: "Usługi międzynarodowe",
       paragraphs: [
-        "Strona zawiera linki do usług stron trzecich, w tym WhatsApp, Instagram i Facebook. Po przejściu do jednej z tych usług interakcja podlega zasadom prywatności i warunkom danego dostawcy.",
-        "Niektórzy dostawcy usług mogą przetwarzać dane w krajach innych niż kraj, w którym się znajdujesz. Tam, gdzie jest to wymagane, powinny być stosowane odpowiednie zabezpieczenia zgodne z obowiązującymi przepisami o ochronie danych.",
+        "Strona może zawierać linki do WhatsApp, Instagram, Facebook i innych usług stron trzecich.",
+        "Przekazywanie danych za granicę odbywa się zgodnie z mającymi zastosowanie wymogami ochrony danych.",
       ],
     },
 
     retention: {
-      title: "Jak długo przechowujemy informacje",
+      title: "Okres przechowywania",
       paragraphs: [
-        "Dane osobowe mają być przechowywane tylko tak długo, jak jest to rozsądnie konieczne do celu, w jakim zostały zebrane, prowadzenia odpowiednich dokumentów biznesowych, rozwiązywania zapytań lub sporów, wypełniania obowiązków prawnych oraz ochrony uzasadnionych interesów.",
-        "Dokładne okresy przechowywania mogą się różnić w zależności od rodzaju informacji i charakteru relacji z klientem.",
+        "Dane są przechowywane przez okres wymagany do realizacji celu i obowiązków prawnych.",
+        "Dokładny okres zależy od rodzaju danych i celu przetwarzania.",
       ],
     },
 
     cookies: {
       title: "Cookies i zgoda",
       paragraphs: [
-        "Strona korzysta z niezbędnych technologii przeglądarki wymaganych do podstawowego działania. Opcjonalne kategorie analityczne i marketingowe są kontrolowane za pomocą panelu zgody na cookies.",
-        "Aktualne preferencje dotyczące cookies można w każdej chwili zmienić za pomocą linku Ustawienia cookies dostępnego w stopce strony.",
+        "Strona może stosować technologie niezbędne do działania. Opcjonalne technologie wymagające zgody są kontrolowane poprzez ustawienia cookies.",
+        "Ustawienia cookies można zmienić w dowolnym momencie.",
       ],
     },
 
     rights: {
-      title: "Twoje prawa dotyczące prywatności",
+      title: "Twoje prawa",
       paragraphs: [
-        "W zależności od obowiązującego prawa możesz mieć prawa dotyczące swoich danych osobowych, w tym prawo do dostępu, sprostowania, usunięcia, ograniczenia przetwarzania, przenoszenia danych, sprzeciwu wobec określonego przetwarzania oraz wycofania zgody.",
-        "Jeżeli przetwarzanie odbywa się na podstawie zgody, jej wycofanie nie wpływa na zgodność z prawem przetwarzania dokonanego przed wycofaniem.",
-        "Możesz także mieć prawo skontaktować się z właściwym organem ochrony danych lub złożyć do niego skargę.",
+        "Na podstawie art. 11 tureckiej ustawy nr 6698 (KVKK) możesz uzyskać informacje o przetwarzaniu swoich danych, jego celu i odbiorcach danych.",
+        "W odpowiednich przypadkach możesz żądać poprawienia, usunięcia lub zniszczenia danych.",
+        "Możesz sprzeciwić się niekorzystnemu wynikowi opartemu wyłącznie na analizie automatycznej oraz dochodzić odszkodowania w przypadku szkody wynikającej z niezgodnego z prawem przetwarzania.",
       ],
     },
 
     security: {
       title: "Bezpieczeństwo danych",
       paragraphs: [
-        "W celu ochrony danych osobowych przed nieuprawnionym dostępem, utratą, nadużyciem, zmianą lub ujawnieniem mają być stosowane odpowiednie środki techniczne i organizacyjne.",
-        "Żaden sposób transmisji przez internet ani elektronicznego przechowywania nie może być zagwarantowany jako całkowicie bezpieczny. Użytkownicy powinni zachować odpowiednią ostrożność podczas elektronicznego przesyłania poufnych informacji.",
+        "Stosujemy odpowiednie środki techniczne i organizacyjne.",
+        "Nie można zagwarantować całkowitego bezpieczeństwa transmisji elektronicznej.",
       ],
     },
 
     changes: {
-      title: "Zmiany niniejszej polityki",
+      title: "Zmiany polityki",
       paragraphs: [
-        "Niniejsza Polityka prywatności może być okresowo aktualizowana w celu uwzględnienia zmian na stronie, w usługach, technologiach lub obowiązujących wymaganiach.",
-        "W przypadku istotnych zmian zaktualizowana wersja oraz data zmiany zostaną opublikowane na tej stronie.",
+        "Polityka może być okresowo aktualizowana.",
+        "Aktualna wersja zostanie opublikowana na tej stronie.",
       ],
     },
 
     contact: {
-      title: "Zapytania dotyczące prywatności",
+      title: "Wnioski KVKK i pytania",
       paragraphs: [
-        "Pytania dotyczące niniejszej Polityki prywatności lub żądania dotyczące danych osobowych można kierować na adres:",
+        "Wnioski dotyczące danych osobowych można kierować do administratora podanego poniżej.",
       ],
     },
 
     registrationLabel: "Numer rejestracyjny / firmowy",
-    taxLabel: "Numer podatkowy",
     privacyContactLabel: "Kontakt ds. prywatności",
 
     cookieButton: "Otwórz ustawienia cookies",
@@ -935,123 +983,126 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
     returnToWebsite: "Powrót do strony",
   },
 
+  /* =======================================================
+     RUSSIAN
+     ======================================================= */
+
   ru: {
     legalPrivacy: "Правовая информация · Конфиденциальность",
     title: "Политика конфиденциальности",
     heroLead: "Ваша конфиденциальность важна для нас.",
     heroDescription:
-      "Настоящая Политика конфиденциальности объясняет, как персональные данные могут собираться, использоваться и защищаться при взаимодействии с веб-сайтом LIDYA JEWELRY и нашими услугами.",
+      "Настоящая политика объясняет порядок обработки и защиты персональных данных при использовании сайта LIDYA JEWELRY.",
     lastUpdated: "Последнее обновление",
     lastUpdatedValue: "Август 2026",
 
     introduction: "Введение",
     introLead:
-      "Мы стремимся обращаться с персональными данными бережно, прозрачно и уважительно.",
+      "Мы стремимся обращаться с персональными данными бережно и прозрачно.",
     introText:
-      "Настоящая политика применяется к информации, обрабатываемой через этот веб-сайт, включая запросы, заявки на встречи, сервисную коммуникацию, настройки cookies и взаимодействие со связанными средствами связи, такими как электронная почта и WhatsApp.",
+      "Политика применяется к запросам, заявкам на встречи, сервисной коммуникации, настройкам cookies и связанным средствам связи.",
 
     contents: "Содержание",
 
     controller: {
       title: "Оператор персональных данных",
       paragraphs: [
-        "Оператором, ответственным за обработку персональных данных через этот веб-сайт, является:",
+        "Оператором, ответственным за обработку персональных данных через сайт, является:",
       ],
     },
 
     data: {
-      title: "Какие данные мы можем собирать",
+      title: "Какие данные могут обрабатываться",
       paragraphs: [
-        "В зависимости от того, как вы используете веб-сайт или связываетесь с нами, мы можем получать такие данные, как ваше имя, номер телефона, адрес электронной почты, содержание вашего запроса, сведения о запрашиваемой услуге или встрече, а также другую информацию, которую вы решите предоставить.",
-        "В рамках обычной работы веб-сайта также могут обрабатываться технические данные, включая IP-адрес, тип браузера, сведения об устройстве, посещённые страницы, временные метки, журналы безопасности и аналогичные технические данные, создаваемые инфраструктурой хостинга.",
-        "Настройки cookies, выбранные через веб-сайт, сохраняются локально в вашем браузере, чтобы сайт мог запомнить ваш выбор.",
+        "Мы можем обрабатывать имя, телефон, электронную почту, содержание запроса, сведения об услуге или встрече и другую добровольно предоставленную информацию.",
+        "Также могут обрабатываться IP-адрес, сведения об устройстве и браузере и технические журналы.",
+        "Настройки cookies могут храниться локально в браузере.",
       ],
     },
 
     use: {
-      title: "Как мы используем персональные данные",
+      title: "Как используются данные",
       paragraphs: [
-        "Персональные данные могут использоваться для ответа на запросы, организации встреч, коммуникации по вопросам ювелирного и часового сервиса, обработки сервисных заявок, поддержки клиентов, а также обеспечения безопасности и работы веб-сайта.",
-        "Если будут использоваться дополнительные аналитические или маркетинговые технологии, они будут применяться только в соответствии с выбранными вами настройками cookies.",
+        "Данные могут использоваться для обработки запросов, организации встреч, предоставления услуг и поддержки, а также для безопасности сайта.",
+        "Технологии, требующие согласия, активируются только после получения соответствующего согласия.",
       ],
     },
 
     legalBasis: {
-      title: "Правовые основания обработки",
+      title: "Правовые основания",
       paragraphs: [
-        "Правовое основание обработки зависит от обстоятельств предоставления данных. Обработка может быть необходима для ответа на запрос, принятия мер в связи с услугой или встречей, исполнения юридических обязанностей, защиты законных деловых интересов и интересов безопасности либо на основании вашего согласия, когда такое согласие требуется.",
-        "Дополнительные аналитические и маркетинговые технологии должны использоваться только после получения соответствующего согласия.",
+        "LIDYA, осуществляющая деятельность в Türkiye, обрабатывает персональные данные прежде всего в соответствии с турецким Законом № 6698 о защите персональных данных (KVKK) и другими применимыми нормами.",
+        "Основанием может быть договор, юридическая обязанность, установление или защита права, законный интерес оператора либо явное согласие, когда оно необходимо.",
       ],
     },
 
     sharing: {
-      title: "Когда данные могут передаваться",
+      title: "Передача данных",
       paragraphs: [
         "Мы не продаём персональные данные.",
-        "Данные могут передаваться поставщикам услуг, если это обоснованно необходимо для хостинга сайта, технической работы, коммуникации, безопасности, профессиональных консультаций или другой запрошенной вами услуги.",
-        "Данные также могут быть раскрыты, если этого требует закон, нормативный акт, судебное решение или иное действительное юридическое обязательство.",
+        "Данные могут передаваться необходимым техническим, хостинговым, коммуникационным и профессиональным поставщикам услуг.",
+        "Передача также возможна в случаях, предусмотренных законом.",
       ],
     },
 
     international: {
-      title: "Внешние и международные сервисы",
+      title: "Международные сервисы",
       paragraphs: [
-        "Веб-сайт содержит ссылки на сторонние сервисы, включая WhatsApp, Instagram и Facebook. При переходе по таким ссылкам ваше взаимодействие регулируется политиками конфиденциальности и условиями соответствующего поставщика.",
-        "Некоторые поставщики услуг могут обрабатывать данные в странах, отличных от страны вашего нахождения. В соответствующих случаях должны применяться надлежащие меры защиты в соответствии с требованиями законодательства о защите данных.",
+        "Сайт может содержать ссылки на WhatsApp, Instagram, Facebook и другие сервисы третьих лиц.",
+        "Международная передача данных осуществляется в соответствии с применимыми требованиями защиты данных.",
       ],
     },
 
     retention: {
-      title: "Срок хранения данных",
+      title: "Срок хранения",
       paragraphs: [
-        "Персональные данные предполагается хранить только столько, сколько разумно необходимо для целей их сбора, ведения соответствующих деловых записей, решения запросов или споров, выполнения юридических обязанностей и защиты законных интересов.",
-        "Точные сроки хранения могут различаться в зависимости от типа данных и характера отношений с клиентом.",
+        "Данные хранятся только в течение необходимого периода.",
+        "Срок зависит от категории данных, цели и юридических обязанностей.",
       ],
     },
 
     cookies: {
       title: "Cookies и согласие",
       paragraphs: [
-        "Веб-сайт использует необходимые технологии браузера для основных функций. Дополнительные аналитические и маркетинговые категории управляются через интерфейс согласия на cookies.",
-        "Текущие настройки cookies можно изменить в любое время через ссылку настроек cookies в нижней части сайта.",
+        "Необходимые технологии могут использоваться для работы сайта. Дополнительные технологии, требующие согласия, управляются через настройки cookies.",
+        "Настройки можно изменить в любое время.",
       ],
     },
 
     rights: {
-      title: "Ваши права в отношении данных",
+      title: "Ваши права",
       paragraphs: [
-        "В зависимости от применимого к вам законодательства вы можете иметь права в отношении своих персональных данных, включая право на доступ, исправление, удаление, ограничение обработки, переносимость данных, возражение против определённых видов обработки и отзыв согласия.",
-        "Если обработка основана на согласии, его отзыв не влияет на законность обработки, осуществлённой до такого отзыва.",
-        "Вы также можете иметь право обратиться или подать жалобу в соответствующий орган по защите данных.",
+        "В соответствии со статьёй 11 Закона № 6698 (KVKK) вы можете получить информацию о том, обрабатываются ли ваши данные, с какой целью и кому они передавались.",
+        "При наличии установленных законом условий можно требовать исправления, удаления или уничтожения данных.",
+        "Можно возражать против неблагоприятного результата исключительно автоматизированного анализа и требовать компенсацию ущерба от незаконной обработки.",
       ],
     },
 
     security: {
-      title: "Безопасность данных",
+      title: "Безопасность",
       paragraphs: [
-        "Предполагается использование разумных технических и организационных мер для защиты персональных данных от несанкционированного доступа, утраты, неправомерного использования, изменения или раскрытия.",
-        "Ни один способ передачи через интернет или электронного хранения не может быть гарантирован как полностью безопасный, поэтому пользователям следует соблюдать осторожность при электронной передаче конфиденциальной информации.",
+        "Для защиты данных применяются соответствующие технические и организационные меры.",
+        "Полная безопасность электронной передачи не может быть гарантирована.",
       ],
     },
 
     changes: {
-      title: "Изменения настоящей политики",
+      title: "Изменения политики",
       paragraphs: [
-        "Настоящая Политика конфиденциальности может время от времени обновляться с учётом изменений веб-сайта, услуг, технологий или применимых требований.",
-        "При существенных изменениях обновлённая версия и дата редакции будут опубликованы на этой странице.",
+        "Политика может обновляться.",
+        "Действующая версия публикуется на этой странице.",
       ],
     },
 
     contact: {
-      title: "Вопросы о конфиденциальности",
+      title: "Запросы KVKK",
       paragraphs: [
-        "Вопросы по настоящей Политике конфиденциальности или запросы, касающиеся персональных данных, можно направлять по адресу:",
+        "Запросы относительно персональных данных можно направлять оператору, указанному ниже.",
       ],
     },
 
     registrationLabel:
       "Регистрационный / корпоративный номер",
-    taxLabel: "Налоговый номер",
     privacyContactLabel:
       "Контакт по вопросам конфиденциальности",
 
@@ -1063,122 +1114,125 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
     returnToWebsite: "Вернуться на сайт",
   },
 
+  /* =======================================================
+     DUTCH
+     ======================================================= */
+
   nl: {
     legalPrivacy: "Juridisch · Privacy",
     title: "Privacybeleid",
     heroLead: "Uw privacy is belangrijk voor ons.",
     heroDescription:
-      "Dit Privacybeleid legt uit hoe persoonsgegevens kunnen worden verzameld, gebruikt en beschermd wanneer u de website van LIDYA JEWELRY en onze diensten gebruikt.",
+      "Dit beleid legt uit hoe persoonsgegevens kunnen worden verwerkt en beschermd bij het gebruik van de website van LIDYA JEWELRY.",
     lastUpdated: "Laatst bijgewerkt",
     lastUpdatedValue: "Augustus 2026",
 
     introduction: "Inleiding",
     introLead:
-      "Wij willen persoonsgegevens zorgvuldig, transparant en respectvol behandelen.",
+      "Wij behandelen persoonsgegevens zorgvuldig en transparant.",
     introText:
-      "Dit beleid is van toepassing op informatie die via deze website wordt verwerkt, waaronder aanvragen, verzoeken om afspraken, servicecommunicatie, cookievoorkeuren en interacties met gekoppelde communicatiediensten zoals e-mail en WhatsApp.",
+      "Dit beleid heeft betrekking op aanvragen, afspraken, servicecommunicatie, cookievoorkeuren en gekoppelde communicatiediensten.",
 
     contents: "Inhoud",
 
     controller: {
       title: "Verwerkingsverantwoordelijke",
       paragraphs: [
-        "De beheerder die verantwoordelijk is voor de verwerking van persoonsgegevens via deze website is:",
+        "De verantwoordelijke voor verwerking via deze website is:",
       ],
     },
 
     data: {
-      title: "Gegevens die wij kunnen verzamelen",
+      title: "Gegevens die wij kunnen verwerken",
       paragraphs: [
-        "Afhankelijk van hoe u de website gebruikt of contact met ons opneemt, kunnen wij gegevens ontvangen zoals uw naam, telefoonnummer, e-mailadres, de inhoud van uw aanvraag, gegevens over de gewenste dienst of afspraak en andere informatie die u vrijwillig verstrekt.",
-        "Als onderdeel van de normale werking van de website kunnen ook technische gegevens worden verwerkt, waaronder IP-adres, browsertype, apparaatinformatie, bezochte pagina's, tijdstempels, beveiligingslogs en vergelijkbare technische gegevens die door de hostinginfrastructuur worden gegenereerd.",
-        "Cookievoorkeuren die via de website worden geselecteerd, worden lokaal in uw browser opgeslagen zodat de website uw keuzes kan onthouden.",
+        "Wij kunnen naam, telefoonnummer, e-mailadres, aanvragen en andere vrijwillig verstrekte gegevens verwerken.",
+        "Ook technische gegevens zoals IP-adres, browser-, apparaat- en beveiligingsinformatie kunnen worden verwerkt.",
+        "Cookievoorkeuren kunnen lokaal worden opgeslagen.",
       ],
     },
 
     use: {
-      title: "Hoe wij persoonsgegevens gebruiken",
+      title: "Gebruik van persoonsgegevens",
       paragraphs: [
-        "Persoonsgegevens kunnen worden gebruikt om aanvragen te beantwoorden, afspraken te regelen, te communiceren over sieraden- of horlogeservices, serviceverzoeken te verwerken, klantenondersteuning te bieden en de veiligheid en werking van de website te waarborgen.",
-        "Wanneer optionele analyse- of marketingtechnologieën worden ingevoerd, worden deze uitsluitend gebruikt in overeenstemming met de cookiekeuzes die via de website zijn gemaakt.",
+        "Gegevens kunnen worden gebruikt voor aanvragen, afspraken, dienstverlening, klantenondersteuning en websitebeveiliging.",
+        "Technologieën waarvoor toestemming vereist is, worden pas na toestemming geactiveerd.",
       ],
     },
 
     legalBasis: {
-      title: "Rechtsgrond voor verwerking",
+      title: "Rechtsgrond",
       paragraphs: [
-        "De rechtsgrond voor verwerking hangt af van de context waarin gegevens worden verstrekt. Verwerking kan noodzakelijk zijn om een verzoek te beantwoorden, stappen te nemen in verband met een dienst of afspraak, wettelijke verplichtingen na te komen, gerechtvaardigde bedrijfs- en veiligheidsbelangen te beschermen of op basis van uw toestemming te handelen wanneer toestemming vereist is.",
-        "Optionele analyse- en marketingtechnologieën zijn bedoeld om pas te worden gebruikt nadat de relevante toestemming is gegeven.",
+        "LIDYA verwerkt als onderneming in Türkiye persoonsgegevens met name overeenkomstig de Turkse Wet nr. 6698 inzake bescherming van persoonsgegevens (KVKK) en andere toepasselijke wetgeving.",
+        "De grondslag kan onder meer contractuele noodzaak, wettelijke verplichting, bescherming van rechten, gerechtvaardigd belang of uitdrukkelijke toestemming zijn.",
       ],
     },
 
     sharing: {
-      title: "Wanneer gegevens kunnen worden gedeeld",
+      title: "Delen van gegevens",
       paragraphs: [
         "Wij verkopen geen persoonsgegevens.",
-        "Gegevens kunnen met dienstverleners worden gedeeld wanneer dit redelijkerwijs noodzakelijk is voor hosting, technische werking, communicatie, beveiliging, professioneel advies of een andere door u gevraagde dienst.",
-        "Gegevens kunnen ook worden verstrekt wanneer dit vereist is door wetgeving, regelgeving, een rechterlijk bevel of een andere geldige juridische verplichting.",
+        "Gegevens kunnen worden gedeeld met noodzakelijke technische en professionele dienstverleners.",
+        "Gegevens kunnen ook worden verstrekt indien de wet dit vereist.",
       ],
     },
 
     international: {
-      title: "Externe en internationale diensten",
+      title: "Internationale diensten",
       paragraphs: [
-        "De website bevat links naar diensten van derden, waaronder WhatsApp, Instagram en Facebook. Wanneer u een dergelijke link volgt, valt uw interactie onder de privacypraktijken en voorwaarden van de betreffende aanbieder.",
-        "Sommige dienstverleners kunnen gegevens verwerken in andere landen dan het land waarin u zich bevindt. Waar van toepassing moeten passende waarborgen worden gebruikt in overeenstemming met relevante gegevensbeschermingsvereisten.",
+        "De website kan links bevatten naar diensten zoals WhatsApp, Instagram en Facebook.",
+        "Internationale doorgifte vindt plaats volgens toepasselijke gegevensbeschermingsregels.",
       ],
     },
 
     retention: {
-      title: "Hoe lang gegevens worden bewaard",
+      title: "Bewaartermijn",
       paragraphs: [
-        "Persoonsgegevens worden in principe alleen bewaard zolang dit redelijkerwijs noodzakelijk is voor het doel waarvoor ze zijn verzameld, voor het bijhouden van relevante bedrijfsadministratie, het afhandelen van vragen of geschillen, het voldoen aan wettelijke verplichtingen en het beschermen van gerechtvaardigde belangen.",
-        "De exacte bewaartermijnen kunnen verschillen afhankelijk van het type gegevens en de aard van de klantrelatie.",
+        "Gegevens worden slechts bewaard zolang dit nodig is.",
+        "De termijn hangt af van doel, gegevenscategorie en wettelijke vereisten.",
       ],
     },
 
     cookies: {
       title: "Cookies en toestemming",
       paragraphs: [
-        "De website gebruikt noodzakelijke browsertechnologieën die vereist zijn voor basisfunctionaliteit. Optionele analyse- en marketingcategorieën worden beheerd via de cookie-toestemmingsinterface van de website.",
-        "Uw huidige cookievoorkeuren kunnen op elk moment worden gewijzigd via de link Cookie-instellingen in de footer van de website.",
+        "Noodzakelijke technologieën kunnen worden gebruikt. Optionele technologieën worden via cookie-instellingen beheerd.",
+        "Uw voorkeuren kunnen worden gewijzigd.",
       ],
     },
 
     rights: {
-      title: "Uw privacyrechten",
+      title: "Uw rechten",
       paragraphs: [
-        "Afhankelijk van de wetgeving die op u van toepassing is, kunt u rechten hebben met betrekking tot uw persoonsgegevens, waaronder het recht op inzage, correctie, verwijdering, beperking, overdraagbaarheid, bezwaar tegen bepaalde verwerking en intrekking van toestemming.",
-        "Wanneer verwerking is gebaseerd op toestemming, heeft intrekking van die toestemming geen invloed op de rechtmatigheid van de verwerking vóór de intrekking.",
-        "U kunt ook het recht hebben om contact op te nemen met of een klacht in te dienen bij de bevoegde gegevensbeschermingsautoriteit.",
+        "Op grond van artikel 11 van de Turkse wet nr. 6698 (KVKK) kunt u informatie vragen over de verwerking, doeleinden en ontvangers van uw persoonsgegevens.",
+        "Onder wettelijke voorwaarden kunt u correctie, verwijdering of vernietiging aanvragen.",
+        "U kunt bezwaar maken tegen nadelige resultaten van uitsluitend geautomatiseerde analyse en onder voorwaarden schadevergoeding vragen.",
       ],
     },
 
     security: {
-      title: "Gegevensbeveiliging",
+      title: "Beveiliging",
       paragraphs: [
-        "Er wordt beoogd redelijke technische en organisatorische maatregelen te gebruiken om persoonsgegevens te beschermen tegen ongeoorloofde toegang, verlies, misbruik, wijziging of openbaarmaking.",
-        "Geen enkele methode van internetoverdracht of elektronische opslag kan als volledig veilig worden gegarandeerd. Gebruikers moeten daarom passende voorzichtigheid betrachten bij het elektronisch verzenden van gevoelige informatie.",
+        "Wij gebruiken passende technische en organisatorische maatregelen.",
+        "Volledige elektronische veiligheid kan niet worden gegarandeerd.",
       ],
     },
 
     changes: {
-      title: "Wijzigingen in dit beleid",
+      title: "Wijzigingen",
       paragraphs: [
-        "Dit Privacybeleid kan van tijd tot tijd worden bijgewerkt om wijzigingen in de website, diensten, technologieën of toepasselijke vereisten weer te geven.",
-        "Wanneer belangrijke wijzigingen worden aangebracht, worden de bijgewerkte versie en revisiedatum op deze pagina gepubliceerd.",
+        "Dit beleid kan worden bijgewerkt.",
+        "De actuele versie wordt hier gepubliceerd.",
       ],
     },
 
     contact: {
-      title: "Privacyvragen",
+      title: "Privacy- en KVKK-verzoeken",
       paragraphs: [
-        "Vragen over dit Privacybeleid of verzoeken met betrekking tot persoonsgegevens kunnen worden gericht aan:",
+        "Verzoeken over persoonsgegevens kunnen worden gericht aan de onderstaande verantwoordelijke.",
       ],
     },
 
     registrationLabel: "Registratie- / bedrijfsnummer",
-    taxLabel: "Belastingnummer",
     privacyContactLabel: "Privacycontact",
 
     cookieButton: "Cookie-instellingen openen",
@@ -1188,247 +1242,253 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
     returnToWebsite: "Terug naar de website",
   },
 
+  /* =======================================================
+     DANISH
+     ======================================================= */
+
   da: {
     legalPrivacy: "Juridisk · Privatliv",
     title: "Privatlivspolitik",
     heroLead: "Dit privatliv er vigtigt for os.",
     heroDescription:
-      "Denne privatlivspolitik forklarer, hvordan personoplysninger kan indsamles, anvendes og beskyttes, når du bruger LIDYA JEWELRYs hjemmeside og vores tjenester.",
+      "Denne politik forklarer, hvordan personoplysninger behandles og beskyttes ved brug af LIDYA JEWELRYs hjemmeside.",
     lastUpdated: "Senest opdateret",
     lastUpdatedValue: "August 2026",
 
     introduction: "Introduktion",
     introLead:
-      "Vi ønsker at behandle personoplysninger omhyggeligt, gennemsigtigt og respektfuldt.",
+      "Vi behandler personoplysninger med omhu og gennemsigtighed.",
     introText:
-      "Denne politik gælder for oplysninger, der behandles via denne hjemmeside, herunder forespørgsler, anmodninger om aftaler, servicekommunikation, cookiepræferencer og interaktion med tilknyttede kommunikationstjenester som e-mail og WhatsApp.",
+      "Politikken gælder forespørgsler, aftaler, servicekommunikation, cookies og tilknyttede kommunikationstjenester.",
 
     contents: "Indhold",
 
     controller: {
       title: "Dataansvarlig",
       paragraphs: [
-        "Den operatør, der er ansvarlig for behandlingen af personoplysninger via denne hjemmeside, er:",
+        "Den dataansvarlige for behandling via hjemmesiden er:",
       ],
     },
 
     data: {
-      title: "Oplysninger vi kan indsamle",
+      title: "Oplysninger vi kan behandle",
       paragraphs: [
-        "Afhængigt af hvordan du bruger hjemmesiden eller kontakter os, kan vi modtage oplysninger som dit navn, telefonnummer, e-mailadresse, indholdet af din forespørgsel, oplysninger om den ønskede service eller aftale samt andre oplysninger, du vælger at give os.",
-        "Som en del af hjemmesidens normale drift kan tekniske oplysninger også blive behandlet, herunder IP-adresse, browsertype, enhedsoplysninger, besøgte sider, tidsstempler, sikkerhedslogs og lignende tekniske data genereret af hostinginfrastrukturen.",
-        "Cookiepræferencer valgt via hjemmesiden gemmes lokalt i din browser, så hjemmesiden kan huske dine valg.",
+        "Vi kan behandle navn, telefonnummer, e-mail, indhold af forespørgsler og andre frivilligt oplyste data.",
+        "Tekniske oplysninger som IP-adresse, browser, enhed og sikkerhedslogs kan også behandles.",
+        "Cookievalg kan gemmes lokalt.",
       ],
     },
 
     use: {
-      title: "Sådan bruger vi personoplysninger",
+      title: "Sådan bruger vi data",
       paragraphs: [
-        "Personoplysninger kan bruges til at besvare forespørgsler, arrangere aftaler, kommunikere om smykke- eller urservice, behandle serviceanmodninger, yde kundesupport og opretholde hjemmesidens sikkerhed og drift.",
-        "Hvis valgfrie analyse- eller marketingteknologier indføres, vil de kun blive brugt i overensstemmelse med de cookievalg, der foretages via hjemmesiden.",
+        "Data bruges til forespørgsler, aftaler, tjenester, support og sikker drift af hjemmesiden.",
+        "Teknologier der kræver samtykke aktiveres først efter samtykke.",
       ],
     },
 
     legalBasis: {
-      title: "Retsgrundlag for behandling",
+      title: "Retsgrundlag",
       paragraphs: [
-        "Retsgrundlaget for behandlingen afhænger af den sammenhæng, hvori oplysningerne gives. Behandling kan være nødvendig for at besvare en anmodning, tage skridt i forbindelse med en service eller aftale, overholde juridiske forpligtelser, beskytte legitime forretnings- og sikkerhedsinteresser eller handle på baggrund af dit samtykke, hvor samtykke er nødvendigt.",
-        "Valgfrie analyse- og marketingteknologier er beregnet til først at blive anvendt, når det relevante samtykke er givet.",
+        "LIDYA behandler som virksomhed i Türkiye personoplysninger i overensstemmelse med den tyrkiske lov nr. 6698 om beskyttelse af personoplysninger (KVKK) og anden gældende lovgivning.",
+        "Grundlaget kan bl.a. være kontrakt, juridisk forpligtelse, beskyttelse af rettigheder, legitim interesse eller udtrykkeligt samtykke.",
       ],
     },
 
     sharing: {
-      title: "Hvornår oplysninger kan deles",
+      title: "Deling af oplysninger",
       paragraphs: [
         "Vi sælger ikke personoplysninger.",
-        "Oplysninger kan deles med tjenesteudbydere, hvor det med rimelighed er nødvendigt for hosting, teknisk drift, kommunikation, sikkerhed, professionel rådgivning eller en anden tjeneste, du har anmodet om.",
-        "Oplysninger kan også videregives, hvis det kræves ved lov, regulering, retskendelse eller anden gyldig juridisk forpligtelse.",
+        "Data kan deles med nødvendige tekniske og professionelle tjenesteudbydere.",
+        "Data kan videregives, hvis loven kræver det.",
       ],
     },
 
     international: {
-      title: "Eksterne og internationale tjenester",
+      title: "Internationale tjenester",
       paragraphs: [
-        "Hjemmesiden indeholder links til tredjepartstjenester, herunder WhatsApp, Instagram og Facebook. Når du vælger at følge et sådant link, er din interaktion underlagt den relevante tredjeparts privatlivspraksis og vilkår.",
-        "Nogle tjenesteudbydere kan behandle oplysninger i andre lande end det land, hvor du befinder dig. Hvor det er relevant, bør passende sikkerhedsforanstaltninger anvendes i overensstemmelse med gældende databeskyttelseskrav.",
+        "Hjemmesiden kan linke til WhatsApp, Instagram, Facebook og andre tredjepartstjenester.",
+        "International overførsel skal ske i overensstemmelse med gældende databeskyttelsesregler.",
       ],
     },
 
     retention: {
-      title: "Hvor længe oplysninger opbevares",
+      title: "Opbevaring",
       paragraphs: [
-        "Personoplysninger tilstræbes kun opbevaret så længe, som det med rimelighed er nødvendigt for det formål, de blev indsamlet til, for at vedligeholde relevante forretningsoptegnelser, løse forespørgsler eller tvister, opfylde juridiske forpligtelser og beskytte legitime interesser.",
-        "De præcise opbevaringsperioder kan variere afhængigt af typen af oplysninger og karakteren af kundeforholdet.",
+        "Oplysninger opbevares kun så længe det er nødvendigt.",
+        "Perioden afhænger af datatype, formål og juridiske krav.",
       ],
     },
 
     cookies: {
       title: "Cookies og samtykke",
       paragraphs: [
-        "Hjemmesiden bruger nødvendige browserteknologier, som kræves for grundlæggende funktionalitet. Valgfrie analyse- og marketingkategorier styres via hjemmesidens cookie-samtykkeinterface.",
-        "Dine aktuelle cookiepræferencer kan til enhver tid ændres via linket til cookieindstillinger i hjemmesidens footer.",
+        "Nødvendige teknologier kan anvendes. Valgfrie teknologier styres via cookieindstillinger.",
+        "Dine valg kan ændres.",
       ],
     },
 
     rights: {
-      title: "Dine privatlivsrettigheder",
+      title: "Dine rettigheder",
       paragraphs: [
-        "Afhængigt af den lovgivning, der gælder for dig, kan du have rettigheder vedrørende dine personoplysninger, herunder ret til adgang, rettelse, sletning, begrænsning, dataportabilitet, indsigelse mod visse behandlinger og tilbagetrækning af samtykke.",
-        "Hvor behandlingen er baseret på samtykke, påvirker en tilbagetrækning af samtykket ikke lovligheden af behandling foretaget før tilbagetrækningen.",
-        "Du kan også have ret til at kontakte eller indgive en klage til den relevante databeskyttelsesmyndighed.",
+        "Efter artikel 11 i tyrkisk lov nr. 6698 (KVKK) kan du anmode om oplysninger om behandlingen, formålet og modtagere.",
+        "Når betingelserne er opfyldt, kan du kræve rettelse, sletning eller destruktion.",
+        "Du kan gøre indsigelse mod negative resultater af udelukkende automatiseret analyse og i relevante tilfælde kræve erstatning.",
       ],
     },
 
     security: {
       title: "Datasikkerhed",
       paragraphs: [
-        "Der tilstræbes anvendt rimelige tekniske og organisatoriske foranstaltninger til at beskytte personoplysninger mod uautoriseret adgang, tab, misbrug, ændring eller offentliggørelse.",
-        "Ingen metode til internetoverførsel eller elektronisk lagring kan garanteres fuldstændig sikker. Brugere bør derfor udvise passende forsigtighed ved elektronisk fremsendelse af følsomme oplysninger.",
+        "Vi anvender passende tekniske og organisatoriske sikkerhedsforanstaltninger.",
+        "Fuld elektronisk sikkerhed kan ikke garanteres.",
       ],
     },
 
     changes: {
-      title: "Ændringer af denne politik",
+      title: "Ændringer",
       paragraphs: [
-        "Denne privatlivspolitik kan fra tid til anden blive opdateret for at afspejle ændringer i hjemmesiden, tjenesterne, teknologierne eller gældende krav.",
-        "Ved væsentlige ændringer offentliggøres den opdaterede version og revisionsdato på denne side.",
+        "Politikken kan blive opdateret.",
+        "Den aktuelle version offentliggøres her.",
       ],
     },
 
     contact: {
-      title: "Forespørgsler om privatliv",
+      title: "KVKK- og privatlivsanmodninger",
       paragraphs: [
-        "Spørgsmål om denne privatlivspolitik eller anmodninger vedrørende personoplysninger kan sendes til:",
+        "Anmodninger vedrørende personoplysninger kan sendes til den dataansvarlige nedenfor.",
       ],
     },
 
     registrationLabel: "Registrerings- / virksomhedsnummer",
-    taxLabel: "Skattenummer",
-    privacyContactLabel: "Kontakt vedrørende privatliv",
+    privacyContactLabel: "Privatlivskontakt",
 
     cookieButton: "Åbn cookieindstillinger",
 
-    privacyContact: "Kontakt vedrørende privatliv",
+    privacyContact: "Privatlivskontakt",
     bottomPolicy: "Privatlivspolitik",
     returnToWebsite: "Tilbage til hjemmesiden",
   },
+
+  /* =======================================================
+     FINNISH
+     ======================================================= */
 
   fi: {
     legalPrivacy: "Lakiasiat · Tietosuoja",
     title: "Tietosuojakäytäntö",
     heroLead: "Yksityisyytesi on meille tärkeää.",
     heroDescription:
-      "Tässä tietosuojakäytännössä kerrotaan, miten henkilötietoja voidaan kerätä, käyttää ja suojata käyttäessäsi LIDYA JEWELRY -verkkosivustoa ja palveluitamme.",
+      "Tässä käytännössä kerrotaan, miten henkilötietoja käsitellään ja suojataan LIDYA JEWELRY -verkkosivustolla.",
     lastUpdated: "Viimeksi päivitetty",
     lastUpdatedValue: "Elokuu 2026",
 
     introduction: "Johdanto",
     introLead:
-      "Pyrimme käsittelemään henkilötietoja huolellisesti, avoimesti ja kunnioittavasti.",
+      "Käsittelemme henkilötietoja huolellisesti ja avoimesti.",
     introText:
-      "Tämä käytäntö koskee tämän verkkosivuston kautta käsiteltäviä tietoja, mukaan lukien tiedustelut, ajanvarauspyynnöt, palveluviestintä, evästeasetukset sekä vuorovaikutus linkitettyjen viestintäpalvelujen, kuten sähköpostin ja WhatsAppin, kanssa.",
+      "Käytäntö koskee tiedusteluja, ajanvarauksia, palveluviestintää, evästeitä ja linkitettyjä viestintäpalveluja.",
 
     contents: "Sisältö",
 
     controller: {
       title: "Rekisterinpitäjä",
       paragraphs: [
-        "Tämän verkkosivuston kautta käsiteltävistä henkilötiedoista vastaava toimija on:",
+        "Verkkosivuston kautta tapahtuvan henkilötietojen käsittelyn rekisterinpitäjä on:",
       ],
     },
 
     data: {
-      title: "Tietoja, joita voimme kerätä",
+      title: "Käsiteltävät tiedot",
       paragraphs: [
-        "Riippuen siitä, miten käytät verkkosivustoa tai otat meihin yhteyttä, voimme saada tietoja kuten nimesi, puhelinnumerosi, sähköpostiosoitteesi, tiedustelusi sisällön, pyydettyyn palveluun tai ajanvaraukseen liittyvät tiedot sekä muita tietoja, jotka päätät antaa.",
-        "Verkkosivuston normaalin toiminnan yhteydessä voidaan käsitellä myös teknisiä tietoja, kuten IP-osoitetta, selaintyyppiä, laitetietoja, vierailtuja sivuja, aikaleimoja, turvallisuuslokeja ja muita hosting-infrastruktuurin tuottamia teknisiä tietoja.",
-        "Verkkosivustolla valitut evästeasetukset tallennetaan paikallisesti selaimeesi, jotta sivusto voi muistaa valintasi.",
+        "Voimme käsitellä nimeä, puhelinnumeroa, sähköpostia, tiedustelun sisältöä ja muita vapaaehtoisesti annettuja tietoja.",
+        "Myös IP-osoite, selain-, laite- ja turvallisuustiedot voivat tulla käsitellyiksi.",
+        "Evästevalinnat voidaan tallentaa paikallisesti.",
       ],
     },
 
     use: {
-      title: "Miten käytämme henkilötietoja",
+      title: "Tietojen käyttö",
       paragraphs: [
-        "Henkilötietoja voidaan käyttää tiedusteluihin vastaamiseen, ajanvarausten järjestämiseen, koru- tai kellopalveluihin liittyvään viestintään, palvelupyyntöjen käsittelyyn, asiakastuen tarjoamiseen sekä verkkosivuston turvallisuuden ja toiminnan ylläpitämiseen.",
-        "Jos valinnaisia analytiikka- tai markkinointiteknologioita otetaan käyttöön, niitä käytetään vain verkkosivustolla tehtyjen evästevalintojen mukaisesti.",
+        "Tietoja käytetään tiedusteluihin, ajanvarauksiin, palveluihin, asiakastukeen ja sivuston turvalliseen toimintaan.",
+        "Suostumusta vaativat teknologiat aktivoidaan vasta suostumuksen jälkeen.",
       ],
     },
 
     legalBasis: {
       title: "Käsittelyn oikeusperuste",
       paragraphs: [
-        "Käsittelyn oikeusperuste riippuu siitä, missä yhteydessä tiedot annetaan. Käsittely voi olla tarpeen pyynnön käsittelemiseksi, palveluun tai ajanvaraukseen liittyvien toimien suorittamiseksi, lakisääteisten velvoitteiden täyttämiseksi, oikeutettujen liiketoiminta- ja turvallisuusetujen suojaamiseksi tai suostumuksesi perusteella silloin, kun suostumus vaaditaan.",
-        "Valinnaisten analytiikka- ja markkinointiteknologioiden on tarkoitus toimia vasta asianmukaisen suostumuksen jälkeen.",
+        "Türkiye-alueella toimiva LIDYA käsittelee henkilötietoja erityisesti Turkin henkilötietojen suojaa koskevan lain nro 6698 (KVKK) ja muun sovellettavan lainsäädännön mukaisesti.",
+        "Peruste voi olla sopimus, lakisääteinen velvoite, oikeuden perustaminen tai suojaaminen, rekisterinpitäjän oikeutettu etu tai tarvittaessa nimenomainen suostumus.",
       ],
     },
 
     sharing: {
-      title: "Milloin tietoja voidaan jakaa",
+      title: "Tietojen jakaminen",
       paragraphs: [
         "Emme myy henkilötietoja.",
-        "Tietoja voidaan jakaa palveluntarjoajien kanssa silloin, kun se on kohtuudella tarpeen verkkosivuston hostingia, teknistä toimintaa, viestintää, turvallisuutta, ammatillista neuvontaa tai muuta pyytämääsi palvelua varten.",
-        "Tietoja voidaan myös luovuttaa, jos laki, määräys, tuomioistuimen päätös tai muu pätevä oikeudellinen velvoite sitä edellyttää.",
+        "Tietoja voidaan jakaa tarpeellisten teknisten ja ammatillisten palveluntarjoajien kanssa.",
+        "Tietoja voidaan luovuttaa lain niin edellyttäessä.",
       ],
     },
 
     international: {
-      title: "Ulkoiset ja kansainväliset palvelut",
+      title: "Kansainväliset palvelut",
       paragraphs: [
-        "Verkkosivusto sisältää linkkejä kolmansien osapuolten palveluihin, kuten WhatsAppiin, Instagramiin ja Facebookiin. Kun siirryt tällaisen linkin kautta, vuorovaikutukseesi sovelletaan kyseisen palveluntarjoajan tietosuojakäytäntöjä ja ehtoja.",
-        "Jotkin palveluntarjoajat voivat käsitellä tietoja muissa maissa kuin siinä, jossa itse sijaitset. Tarvittaessa tulee käyttää asianmukaisia suojatoimia sovellettavien tietosuojavaatimusten mukaisesti.",
+        "Sivusto voi sisältää linkkejä WhatsAppiin, Instagramiin ja Facebookiin.",
+        "Kansainväliset siirrot tehdään sovellettavien tietosuojavaatimusten mukaisesti.",
       ],
     },
 
     retention: {
-      title: "Tietojen säilytysaika",
+      title: "Säilytysaika",
       paragraphs: [
-        "Henkilötietoja on tarkoitus säilyttää vain niin kauan kuin on kohtuudella tarpeen niiden alkuperäiseen tarkoitukseen, asianmukaisten liiketoimintatietojen ylläpitämiseen, tiedustelujen tai riitojen ratkaisemiseen, lakisääteisten velvoitteiden täyttämiseen ja oikeutettujen etujen suojaamiseen.",
-        "Tarkat säilytysajat voivat vaihdella tietotyypin ja asiakassuhteen luonteen mukaan.",
+        "Tietoja säilytetään vain tarpeellisen ajan.",
+        "Aika riippuu tietotyypistä, tarkoituksesta ja oikeudellisista velvoitteista.",
       ],
     },
 
     cookies: {
       title: "Evästeet ja suostumus",
       paragraphs: [
-        "Verkkosivusto käyttää perustoimintojen kannalta välttämättömiä selaimeen liittyviä teknologioita. Valinnaisia analytiikka- ja markkinointikategorioita hallitaan verkkosivuston evästesuostumusrajapinnan kautta.",
-        "Voit muuttaa nykyisiä evästeasetuksiasi milloin tahansa verkkosivuston alatunnisteessa olevan Evästeasetukset-linkin kautta.",
+        "Välttämättömiä teknologioita voidaan käyttää. Valinnaiset teknologiat hallitaan evästeasetuksissa.",
+        "Valintoja voidaan muuttaa.",
       ],
     },
 
     rights: {
-      title: "Tietosuojaoikeutesi",
+      title: "Oikeutesi",
       paragraphs: [
-        "Sinua koskevasta lainsäädännöstä riippuen sinulla voi olla henkilötietoihisi liittyviä oikeuksia, kuten oikeus pyytää pääsyä tietoihin, niiden korjaamista, poistamista, käsittelyn rajoittamista, siirrettävyyttä, vastustaa tiettyä käsittelyä sekä peruuttaa suostumus.",
-        "Jos käsittely perustuu suostumukseen, suostumuksen peruuttaminen ei vaikuta ennen peruuttamista suoritetun käsittelyn lainmukaisuuteen.",
-        "Sinulla voi myös olla oikeus ottaa yhteyttä toimivaltaiseen tietosuojaviranomaiseen tai tehdä sille valitus.",
+        "Turkin lain nro 6698 (KVKK) 11 artiklan mukaisesti voit pyytää tietoa henkilötietojesi käsittelystä, tarkoituksesta ja vastaanottajista.",
+        "Lakisääteisten ehtojen täyttyessä voit pyytää tietojen oikaisua, poistamista tai tuhoamista.",
+        "Voit vastustaa yksinomaan automatisoidusta analyysista aiheutuvaa haitallista tulosta ja tietyissä tilanteissa vaatia vahingonkorvausta.",
       ],
     },
 
     security: {
       title: "Tietoturva",
       paragraphs: [
-        "Henkilötietojen suojaamiseksi luvattomalta käytöltä, katoamiselta, väärinkäytöltä, muuttamiselta tai luovuttamiselta pyritään käyttämään kohtuullisia teknisiä ja organisatorisia toimenpiteitä.",
-        "Mikään internetin kautta tapahtuva tiedonsiirto tai sähköinen tallennusmenetelmä ei ole täysin turvallinen. Käyttäjien tulee siksi noudattaa asianmukaista varovaisuutta lähettäessään arkaluonteisia tietoja sähköisesti.",
+        "Käytämme asianmukaisia teknisiä ja organisatorisia turvatoimia.",
+        "Täydellistä sähköistä turvallisuutta ei voida taata.",
       ],
     },
 
     changes: {
-      title: "Muutokset tähän käytäntöön",
+      title: "Muutokset",
       paragraphs: [
-        "Tätä tietosuojakäytäntöä voidaan päivittää ajoittain verkkosivuston, palvelujen, teknologioiden tai sovellettavien vaatimusten muutosten huomioimiseksi.",
-        "Merkittävistä muutoksista julkaistaan päivitetty versio ja päivityspäivä tällä sivulla.",
+        "Käytäntöä voidaan päivittää.",
+        "Ajantasainen versio julkaistaan tällä sivulla.",
       ],
     },
 
     contact: {
-      title: "Tietosuojaa koskevat yhteydenotot",
+      title: "KVKK- ja tietosuojapyynnöt",
       paragraphs: [
-        "Tätä tietosuojakäytäntöä koskevat kysymykset tai henkilötietoihin liittyvät pyynnöt voidaan osoittaa:",
+        "Henkilötietoja koskevat pyynnöt voidaan osoittaa alla olevalle rekisterinpitäjälle.",
       ],
     },
 
     registrationLabel: "Rekisteri- / yritysnumero",
-    taxLabel: "Veronumero",
     privacyContactLabel: "Tietosuojayhteyshenkilö",
 
     cookieButton: "Avaa evästeasetukset",
@@ -1438,122 +1498,125 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
     returnToWebsite: "Takaisin verkkosivustolle",
   },
 
+  /* =======================================================
+     SWEDISH
+     ======================================================= */
+
   sv: {
     legalPrivacy: "Juridiskt · Integritet",
     title: "Integritetspolicy",
     heroLead: "Din integritet är viktig för oss.",
     heroDescription:
-      "Denna integritetspolicy förklarar hur personuppgifter kan samlas in, användas och skyddas när du använder LIDYA JEWELRYs webbplats och våra tjänster.",
+      "Denna policy beskriver hur personuppgifter behandlas och skyddas när du använder LIDYA JEWELRYs webbplats.",
     lastUpdated: "Senast uppdaterad",
     lastUpdatedValue: "Augusti 2026",
 
     introduction: "Introduktion",
     introLead:
-      "Vi strävar efter att hantera personuppgifter med omsorg, transparens och respekt.",
+      "Vi behandlar personuppgifter omsorgsfullt och transparent.",
     introText:
-      "Denna policy gäller information som behandlas via webbplatsen, inklusive förfrågningar, bokningsförfrågningar, servicekommunikation, cookieinställningar och interaktion med länkade kommunikationstjänster som e-post och WhatsApp.",
+      "Policyn omfattar förfrågningar, bokningar, servicekommunikation, cookies och länkade kommunikationstjänster.",
 
     contents: "Innehåll",
 
     controller: {
       title: "Personuppgiftsansvarig",
       paragraphs: [
-        "Den operatör som ansvarar för behandlingen av personuppgifter via denna webbplats är:",
+        "Personuppgiftsansvarig för behandling genom webbplatsen är:",
       ],
     },
 
     data: {
-      title: "Information vi kan samla in",
+      title: "Uppgifter vi kan behandla",
       paragraphs: [
-        "Beroende på hur du använder webbplatsen eller kontaktar oss kan vi få information såsom ditt namn, telefonnummer, e-postadress, innehållet i din förfrågan, uppgifter om önskad tjänst eller bokning samt annan information som du väljer att lämna.",
-        "Som en del av webbplatsens normala drift kan även teknisk information behandlas, inklusive IP-adress, webbläsartyp, enhetsinformation, besökta sidor, tidsstämplar, säkerhetsloggar och liknande tekniska data som genereras av hostinginfrastrukturen.",
-        "Cookieinställningar som väljs via webbplatsen lagras lokalt i din webbläsare så att webbplatsen kan komma ihåg dina val.",
+        "Vi kan behandla namn, telefonnummer, e-post, förfrågningar och andra frivilligt lämnade uppgifter.",
+        "Tekniska data som IP-adress, webbläsare, enhet och säkerhetsloggar kan också behandlas.",
+        "Cookieval kan sparas lokalt.",
       ],
     },
 
     use: {
-      title: "Hur vi använder personuppgifter",
+      title: "Hur uppgifterna används",
       paragraphs: [
-        "Personuppgifter kan användas för att besvara förfrågningar, ordna bokningar, kommunicera om smyckes- eller klockservice, behandla serviceärenden, tillhandahålla kundsupport och upprätthålla webbplatsens säkerhet och funktion.",
-        "Om valfria analys- eller marknadsföringstekniker införs kommer de endast att användas i enlighet med de cookieval som görs via webbplatsen.",
+        "Uppgifter används för förfrågningar, bokningar, tjänster, kundsupport och säker drift av webbplatsen.",
+        "Teknik som kräver samtycke aktiveras först efter samtycke.",
       ],
     },
 
     legalBasis: {
-      title: "Rättslig grund för behandling",
+      title: "Rättslig grund",
       paragraphs: [
-        "Den rättsliga grunden för behandling beror på sammanhanget i vilket informationen lämnas. Behandling kan vara nödvändig för att besvara en begäran, vidta åtgärder i samband med en tjänst eller bokning, uppfylla juridiska skyldigheter, skydda legitima affärs- och säkerhetsintressen eller agera på grundval av ditt samtycke när samtycke krävs.",
-        "Valfria analys- och marknadsföringstekniker är avsedda att användas först efter att relevant samtycke har lämnats.",
+        "LIDYA, som bedriver verksamhet i Türkiye, behandlar personuppgifter främst enligt den turkiska lagen nr 6698 om skydd av personuppgifter (KVKK) och annan tillämplig lagstiftning.",
+        "Grunden kan bland annat vara avtal, rättslig skyldighet, skydd av rättigheter, berättigat intresse eller uttryckligt samtycke.",
       ],
     },
 
     sharing: {
-      title: "När information kan delas",
+      title: "Delning av uppgifter",
       paragraphs: [
         "Vi säljer inte personuppgifter.",
-        "Information kan delas med tjänsteleverantörer när det rimligen är nödvändigt för hosting, teknisk drift, kommunikation, säkerhet, professionell rådgivning eller annan tjänst som du har begärt.",
-        "Information kan också lämnas ut om det krävs enligt lag, förordning, domstolsbeslut eller annan giltig rättslig skyldighet.",
+        "Uppgifter kan delas med nödvändiga tekniska och professionella leverantörer.",
+        "Uppgifter kan lämnas ut när lagen kräver det.",
       ],
     },
 
     international: {
-      title: "Externa och internationella tjänster",
+      title: "Internationella tjänster",
       paragraphs: [
-        "Webbplatsen innehåller länkar till tredjepartstjänster, inklusive WhatsApp, Instagram och Facebook. När du följer en sådan länk styrs din interaktion av den relevanta tredjepartsleverantörens integritetspraxis och villkor.",
-        "Vissa tjänsteleverantörer kan behandla information i andra länder än det land där du befinner dig. Där det är tillämpligt bör lämpliga skyddsåtgärder användas i enlighet med relevanta dataskyddskrav.",
+        "Webbplatsen kan länka till WhatsApp, Instagram och Facebook.",
+        "Internationell överföring sker enligt tillämpliga dataskyddsregler.",
       ],
     },
 
     retention: {
-      title: "Hur länge information sparas",
+      title: "Lagringstid",
       paragraphs: [
-        "Personuppgifter är avsedda att sparas endast så länge som rimligen är nödvändigt för det syfte de samlades in för, för att upprätthålla relevanta affärsregister, hantera förfrågningar eller tvister, uppfylla rättsliga skyldigheter och skydda legitima intressen.",
-        "Exakta lagringstider kan variera beroende på typen av information och kundrelationens karaktär.",
+        "Personuppgifter sparas endast så länge de behövs.",
+        "Tiden beror på kategori, ändamål och rättsliga krav.",
       ],
     },
 
     cookies: {
       title: "Cookies och samtycke",
       paragraphs: [
-        "Webbplatsen använder nödvändiga webbläsartekniker som krävs för grundläggande funktionalitet. Valfria analys- och marknadsföringskategorier styrs via webbplatsens cookie-samtyckesgränssnitt.",
-        "Dina aktuella cookieinställningar kan när som helst ändras via länken Cookieinställningar i webbplatsens sidfot.",
+        "Nödvändig teknik kan användas. Valfria tekniker hanteras via cookieinställningarna.",
+        "Inställningarna kan ändras.",
       ],
     },
 
     rights: {
-      title: "Dina integritetsrättigheter",
+      title: "Dina rättigheter",
       paragraphs: [
-        "Beroende på den lag som gäller för dig kan du ha rättigheter avseende dina personuppgifter, inklusive rätt till tillgång, rättelse, radering, begränsning, dataportabilitet, invändning mot viss behandling och återkallande av samtycke.",
-        "När behandling baseras på samtycke påverkar ett återkallande av samtycket inte lagligheten av behandling som utförts före återkallandet.",
-        "Du kan också ha rätt att kontakta eller lämna in ett klagomål till relevant dataskyddsmyndighet.",
+        "Enligt artikel 11 i turkisk lag nr 6698 (KVKK) kan du begära information om behandling, ändamål och mottagare.",
+        "När lagens villkor är uppfyllda kan du begära rättelse, radering eller förstöring.",
+        "Du kan invända mot negativa resultat från uteslutande automatiserad analys och i vissa fall kräva ersättning.",
       ],
     },
 
     security: {
       title: "Datasäkerhet",
       paragraphs: [
-        "Rimliga tekniska och organisatoriska åtgärder är avsedda att användas för att skydda personuppgifter mot obehörig åtkomst, förlust, missbruk, ändring eller utlämnande.",
-        "Ingen metod för överföring via internet eller elektronisk lagring kan garanteras vara helt säker. Användare bör därför vara försiktiga när känslig information skickas elektroniskt.",
+        "Vi använder lämpliga tekniska och organisatoriska säkerhetsåtgärder.",
+        "Fullständig elektronisk säkerhet kan inte garanteras.",
       ],
     },
 
     changes: {
-      title: "Ändringar av denna policy",
+      title: "Ändringar",
       paragraphs: [
-        "Denna integritetspolicy kan uppdateras från tid till annan för att återspegla förändringar av webbplatsen, tjänsterna, tekniken eller tillämpliga krav.",
-        "Vid väsentliga ändringar publiceras den uppdaterade versionen och revisionsdatumet på denna sida.",
+        "Policyn kan uppdateras.",
+        "Den aktuella versionen publiceras här.",
       ],
     },
 
     contact: {
-      title: "Integritetsfrågor",
+      title: "KVKK- och integritetsbegäranden",
       paragraphs: [
-        "Frågor om denna integritetspolicy eller begäranden som gäller personuppgifter kan skickas till:",
+        "Begäranden om personuppgifter kan skickas till den personuppgiftsansvarige nedan.",
       ],
     },
 
     registrationLabel: "Registrerings- / företagsnummer",
-    taxLabel: "Skattenummer",
     privacyContactLabel: "Integritetskontakt",
 
     cookieButton: "Öppna cookieinställningar",
@@ -1563,122 +1626,125 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
     returnToWebsite: "Tillbaka till webbplatsen",
   },
 
+  /* =======================================================
+     FRENCH
+     ======================================================= */
+
   fr: {
     legalPrivacy: "Mentions légales · Confidentialité",
     title: "Politique de confidentialité",
     heroLead: "Votre vie privée compte pour nous.",
     heroDescription:
-      "Cette Politique de confidentialité explique comment les données personnelles peuvent être collectées, utilisées et protégées lorsque vous utilisez le site LIDYA JEWELRY et nos services.",
+      "Cette politique explique comment les données personnelles peuvent être traitées et protégées lorsque vous utilisez le site LIDYA JEWELRY.",
     lastUpdated: "Dernière mise à jour",
     lastUpdatedValue: "Août 2026",
 
     introduction: "Introduction",
     introLead:
-      "Nous souhaitons traiter les données personnelles avec soin, transparence et respect.",
+      "Nous souhaitons traiter les données avec soin et transparence.",
     introText:
-      "Cette politique s’applique aux informations traitées via ce site, notamment les demandes, demandes de rendez-vous, communications de service, préférences relatives aux cookies et interactions avec des services de communication liés tels que l’e-mail et WhatsApp.",
+      "Cette politique couvre les demandes, rendez-vous, communications, cookies et services de communication liés.",
 
     contents: "Sommaire",
 
     controller: {
       title: "Responsable du traitement",
       paragraphs: [
-        "L’exploitant responsable du traitement des données personnelles via ce site est :",
+        "Le responsable du traitement via ce site est :",
       ],
     },
 
     data: {
-      title: "Informations que nous pouvons collecter",
+      title: "Données pouvant être traitées",
       paragraphs: [
-        "Selon la manière dont vous utilisez le site ou nous contactez, nous pouvons recevoir des informations telles que votre nom, votre numéro de téléphone, votre adresse e-mail, le contenu de votre demande, des informations relatives au service ou au rendez-vous demandé, ainsi que toute autre information que vous choisissez de fournir.",
-        "Des informations techniques peuvent également être traitées dans le cadre du fonctionnement normal du site, notamment l’adresse IP, le type de navigateur, les informations sur l’appareil, les pages consultées, les horodatages, les journaux de sécurité et d’autres données techniques similaires générées par l’infrastructure d’hébergement.",
-        "Les préférences relatives aux cookies sélectionnées via le site sont enregistrées localement dans votre navigateur afin que le site puisse mémoriser vos choix.",
+        "Nous pouvons traiter votre nom, téléphone, e-mail, demandes et autres informations fournies volontairement.",
+        "Des informations techniques telles que l'adresse IP, le navigateur, l'appareil et les journaux de sécurité peuvent également être traitées.",
+        "Les préférences cookies peuvent être enregistrées localement.",
       ],
     },
 
     use: {
-      title: "Comment nous utilisons les données personnelles",
+      title: "Utilisation des données",
       paragraphs: [
-        "Les données personnelles peuvent être utilisées pour répondre aux demandes, organiser des rendez-vous, communiquer au sujet des services de joaillerie ou d’horlogerie, traiter les demandes de service, assurer l’assistance clientèle et maintenir la sécurité et le fonctionnement du site.",
-        "Lorsque des technologies facultatives d’analyse ou de marketing sont introduites, elles ne sont utilisées que conformément aux choix de cookies effectués via le site.",
+        "Les données peuvent servir à traiter les demandes, rendez-vous, services, assistance et sécurité du site.",
+        "Les technologies nécessitant un consentement ne sont activées qu'après celui-ci.",
       ],
     },
 
     legalBasis: {
-      title: "Base juridique du traitement",
+      title: "Base juridique",
       paragraphs: [
-        "La base juridique du traitement dépend du contexte dans lequel les informations sont fournies. Le traitement peut être nécessaire pour répondre à une demande, prendre des mesures liées à un service ou à un rendez-vous, respecter des obligations légales, protéger des intérêts commerciaux et de sécurité légitimes ou agir sur la base de votre consentement lorsque celui-ci est requis.",
-        "Les technologies facultatives d’analyse et de marketing sont destinées à fonctionner uniquement après obtention du consentement correspondant.",
+        "LIDYA, exerçant ses activités en Türkiye, traite les données personnelles notamment conformément à la loi turque n° 6698 sur la protection des données personnelles (KVKK) et aux autres lois applicables.",
+        "La base peut notamment être un contrat, une obligation légale, l'établissement ou la protection d'un droit, l'intérêt légitime du responsable ou le consentement explicite lorsqu'il est requis.",
       ],
     },
 
     sharing: {
-      title: "Quand les informations peuvent être partagées",
+      title: "Partage des données",
       paragraphs: [
         "Nous ne vendons pas les données personnelles.",
-        "Les informations peuvent être partagées avec des prestataires lorsque cela est raisonnablement nécessaire pour l’hébergement, le fonctionnement technique, les communications, la sécurité, les conseils professionnels ou un autre service que vous avez demandé.",
-        "Les informations peuvent également être divulguées lorsqu’une loi, une réglementation, une décision judiciaire ou une autre obligation légale valable l’exige.",
+        "Les données peuvent être communiquées aux prestataires techniques ou professionnels nécessaires.",
+        "Elles peuvent également être divulguées lorsqu'une obligation légale l'exige.",
       ],
     },
 
     international: {
-      title: "Services externes et internationaux",
+      title: "Services internationaux",
       paragraphs: [
-        "Le site contient des liens vers des services tiers, notamment WhatsApp, Instagram et Facebook. Lorsque vous suivez l’un de ces liens, votre interaction est régie par les pratiques de confidentialité et les conditions du prestataire concerné.",
-        "Certains prestataires peuvent traiter des informations dans des pays différents de celui où vous vous trouvez. Lorsque cela s’applique, des garanties appropriées doivent être utilisées conformément aux exigences pertinentes en matière de protection des données.",
+        "Le site peut inclure des liens vers WhatsApp, Instagram, Facebook ou d'autres tiers.",
+        "Les transferts internationaux sont effectués conformément aux règles applicables.",
       ],
     },
 
     retention: {
-      title: "Durée de conservation des informations",
+      title: "Conservation",
       paragraphs: [
-        "Les données personnelles sont destinées à être conservées uniquement pendant la durée raisonnablement nécessaire à la finalité pour laquelle elles ont été collectées, au maintien de documents professionnels pertinents, au traitement de demandes ou de litiges, au respect d’obligations légales et à la protection d’intérêts légitimes.",
-        "Les durées précises de conservation peuvent varier selon la nature des informations et de la relation avec le client.",
+        "Les données sont conservées uniquement pendant la durée nécessaire.",
+        "La durée dépend de leur catégorie, de la finalité et des obligations légales.",
       ],
     },
 
     cookies: {
       title: "Cookies et consentement",
       paragraphs: [
-        "Le site utilise les technologies de navigateur nécessaires à son fonctionnement de base. Les catégories facultatives d’analyse et de marketing sont contrôlées via l’interface de consentement aux cookies du site.",
-        "Vos préférences actuelles en matière de cookies peuvent être modifiées à tout moment via le lien Paramètres des cookies disponible dans le pied de page du site.",
+        "Les technologies nécessaires peuvent être utilisées. Les technologies facultatives sont contrôlées via les paramètres de cookies.",
+        "Vos choix peuvent être modifiés.",
       ],
     },
 
     rights: {
-      title: "Vos droits en matière de confidentialité",
+      title: "Vos droits",
       paragraphs: [
-        "Selon la législation qui vous est applicable, vous pouvez disposer de droits concernant vos données personnelles, notamment des droits d’accès, de rectification, d’effacement, de limitation, de portabilité, d’opposition à certains traitements et de retrait du consentement.",
-        "Lorsque le traitement repose sur le consentement, son retrait n’affecte pas la licéité du traitement effectué avant ce retrait.",
-        "Vous pouvez également avoir le droit de contacter ou de déposer une réclamation auprès de l’autorité de protection des données compétente.",
+        "En vertu de l'article 11 de la loi turque n° 6698 (KVKK), vous pouvez demander des informations sur le traitement, ses finalités et les destinataires de vos données.",
+        "Lorsque les conditions légales sont réunies, vous pouvez demander la rectification, l'effacement ou la destruction des données.",
+        "Vous pouvez contester certains résultats issus exclusivement d'une analyse automatisée et demander réparation en cas de dommage résultant d'un traitement illicite.",
       ],
     },
 
     security: {
-      title: "Sécurité des données",
+      title: "Sécurité",
       paragraphs: [
-        "Des mesures techniques et organisationnelles raisonnables sont destinées à protéger les données personnelles contre l’accès non autorisé, la perte, l’utilisation abusive, la modification ou la divulgation.",
-        "Aucune méthode de transmission sur Internet ou de stockage électronique ne peut être garantie comme totalement sécurisée. Les utilisateurs doivent donc faire preuve de prudence lorsqu’ils transmettent électroniquement des informations sensibles.",
+        "Nous appliquons des mesures techniques et organisationnelles appropriées.",
+        "Une sécurité électronique absolue ne peut être garantie.",
       ],
     },
 
     changes: {
-      title: "Modifications de cette politique",
+      title: "Modifications",
       paragraphs: [
-        "Cette Politique de confidentialité peut être mise à jour de temps à autre pour refléter les changements apportés au site, aux services, aux technologies ou aux exigences applicables.",
-        "En cas de modification importante, la version mise à jour et la date de révision seront publiées sur cette page.",
+        "Cette politique peut être mise à jour.",
+        "La version actuelle sera publiée ici.",
       ],
     },
 
     contact: {
-      title: "Demandes relatives à la confidentialité",
+      title: "Demandes KVKK et confidentialité",
       paragraphs: [
-        "Les questions concernant cette Politique de confidentialité ou les demandes relatives aux données personnelles peuvent être adressées à :",
+        "Les demandes relatives aux données personnelles peuvent être adressées au responsable ci-dessous.",
       ],
     },
 
-    registrationLabel: "Numéro d’immatriculation / société",
-    taxLabel: "Numéro fiscal",
+    registrationLabel: "Numéro d'immatriculation / société",
     privacyContactLabel: "Contact confidentialité",
 
     cookieButton: "Ouvrir les paramètres des cookies",
@@ -1688,122 +1754,125 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
     returnToWebsite: "Retour au site",
   },
 
+  /* =======================================================
+     ITALIAN
+     ======================================================= */
+
   it: {
     legalPrivacy: "Informazioni legali · Privacy",
     title: "Informativa sulla privacy",
     heroLead: "La vostra privacy è importante per noi.",
     heroDescription:
-      "Questa Informativa sulla privacy spiega come i dati personali possono essere raccolti, utilizzati e protetti quando interagite con il sito LIDYA JEWELRY e con i nostri servizi.",
+      "Questa informativa descrive come i dati personali possono essere trattati e protetti utilizzando il sito LIDYA JEWELRY.",
     lastUpdated: "Ultimo aggiornamento",
     lastUpdatedValue: "Agosto 2026",
 
     introduction: "Introduzione",
     introLead:
-      "Vogliamo trattare i dati personali con attenzione, trasparenza e rispetto.",
+      "Trattiamo i dati personali con attenzione e trasparenza.",
     introText:
-      "Questa informativa si applica alle informazioni trattate tramite il sito, incluse richieste, appuntamenti, comunicazioni di servizio, preferenze relative ai cookie e interazioni con servizi di comunicazione collegati come e-mail e WhatsApp.",
+      "L'informativa riguarda richieste, appuntamenti, comunicazioni, cookie e servizi collegati.",
 
     contents: "Contenuti",
 
     controller: {
       title: "Titolare del trattamento",
       paragraphs: [
-        "Il soggetto responsabile del trattamento dei dati personali attraverso questo sito è:",
+        "Il titolare responsabile del trattamento tramite il sito è:",
       ],
     },
 
     data: {
-      title: "Informazioni che possiamo raccogliere",
+      title: "Dati che possiamo trattare",
       paragraphs: [
-        "A seconda di come utilizzate il sito o ci contattate, possiamo ricevere informazioni come nome, numero di telefono, indirizzo e-mail, contenuto della richiesta, dettagli del servizio o appuntamento richiesto e altre informazioni che scegliete di fornire.",
-        "Nell’ambito del normale funzionamento del sito possono essere trattate anche informazioni tecniche, tra cui indirizzo IP, tipo di browser, informazioni sul dispositivo, pagine visitate, timestamp, registri di sicurezza e dati tecnici simili generati dall’infrastruttura di hosting.",
-        "Le preferenze relative ai cookie selezionate attraverso il sito vengono memorizzate localmente nel browser affinché il sito possa ricordare le vostre scelte.",
+        "Possiamo trattare nome, telefono, e-mail, richieste e altre informazioni fornite volontariamente.",
+        "Possono essere trattati anche indirizzo IP, browser, dispositivo e registri di sicurezza.",
+        "Le preferenze cookie possono essere memorizzate localmente.",
       ],
     },
 
     use: {
-      title: "Come utilizziamo i dati personali",
+      title: "Utilizzo dei dati",
       paragraphs: [
-        "I dati personali possono essere utilizzati per rispondere alle richieste, organizzare appuntamenti, comunicare in merito ai servizi di gioielleria o orologeria, elaborare richieste di assistenza, fornire supporto al cliente e mantenere la sicurezza e il funzionamento del sito.",
-        "Qualora vengano introdotte tecnologie opzionali di analisi o marketing, esse saranno utilizzate esclusivamente in conformità alle preferenze sui cookie selezionate tramite il sito.",
+        "I dati possono essere utilizzati per richieste, appuntamenti, servizi, assistenza e sicurezza del sito.",
+        "Le tecnologie che richiedono consenso vengono attivate solo dopo il consenso.",
       ],
     },
 
     legalBasis: {
-      title: "Base giuridica del trattamento",
+      title: "Base giuridica",
       paragraphs: [
-        "La base giuridica del trattamento dipende dal contesto in cui vengono fornite le informazioni. Il trattamento può essere necessario per rispondere a una richiesta, adottare misure relative a un servizio o appuntamento, rispettare obblighi legali, proteggere legittimi interessi commerciali e di sicurezza o agire sulla base del vostro consenso quando richiesto.",
-        "Le tecnologie opzionali di analisi e marketing sono destinate a funzionare solo dopo che sia stato fornito il relativo consenso.",
+        "LIDYA, operante in Türkiye, tratta i dati personali principalmente ai sensi della legge turca n. 6698 sulla protezione dei dati personali (KVKK) e delle altre norme applicabili.",
+        "La base può comprendere contratto, obbligo legale, esercizio o tutela di un diritto, interesse legittimo o consenso esplicito quando richiesto.",
       ],
     },
 
     sharing: {
-      title: "Quando le informazioni possono essere condivise",
+      title: "Condivisione dei dati",
       paragraphs: [
         "Non vendiamo dati personali.",
-        "Le informazioni possono essere condivise con fornitori di servizi quando ciò è ragionevolmente necessario per hosting, funzionamento tecnico, comunicazioni, sicurezza, consulenza professionale o altro servizio richiesto.",
-        "Le informazioni possono inoltre essere divulgate quando richiesto da legge, regolamento, ordine del tribunale o altro valido obbligo legale.",
+        "I dati possono essere condivisi con fornitori tecnici e professionali necessari.",
+        "Possono essere comunicati quando richiesto dalla legge.",
       ],
     },
 
     international: {
-      title: "Servizi esterni e internazionali",
+      title: "Servizi internazionali",
       paragraphs: [
-        "Il sito contiene collegamenti a servizi di terze parti, tra cui WhatsApp, Instagram e Facebook. Quando scegliete di seguire uno di questi collegamenti, la vostra interazione è disciplinata dalle pratiche sulla privacy e dalle condizioni del relativo fornitore.",
-        "Alcuni fornitori possono trattare informazioni in Paesi diversi da quello in cui vi trovate. Ove applicabile, devono essere adottate adeguate misure di protezione conformemente ai requisiti pertinenti in materia di protezione dei dati.",
+        "Il sito può contenere collegamenti a WhatsApp, Instagram e Facebook.",
+        "I trasferimenti internazionali avvengono secondo le regole applicabili.",
       ],
     },
 
     retention: {
-      title: "Per quanto tempo vengono conservate le informazioni",
+      title: "Conservazione",
       paragraphs: [
-        "I dati personali sono destinati a essere conservati solo per il tempo ragionevolmente necessario alla finalità per la quale sono stati raccolti, al mantenimento di registrazioni commerciali pertinenti, alla risoluzione di richieste o controversie, all’adempimento di obblighi legali e alla protezione di interessi legittimi.",
-        "I periodi esatti di conservazione possono variare in base al tipo di informazione e alla natura del rapporto con il cliente.",
+        "I dati vengono conservati solo per il periodo necessario.",
+        "La durata dipende dal tipo di dato, dalla finalità e dagli obblighi legali.",
       ],
     },
 
     cookies: {
       title: "Cookie e consenso",
       paragraphs: [
-        "Il sito utilizza tecnologie del browser necessarie alle funzionalità di base. Le categorie opzionali di analisi e marketing vengono controllate tramite l’interfaccia di consenso ai cookie del sito.",
-        "Le preferenze correnti relative ai cookie possono essere modificate in qualsiasi momento tramite il collegamento Impostazioni cookie disponibile nel footer del sito.",
+        "Le tecnologie necessarie possono essere utilizzate. Quelle opzionali sono controllate tramite le impostazioni cookie.",
+        "Le preferenze possono essere modificate.",
       ],
     },
 
     rights: {
-      title: "I vostri diritti sulla privacy",
+      title: "I vostri diritti",
       paragraphs: [
-        "A seconda della legge applicabile, potete avere diritti relativi ai vostri dati personali, inclusi diritti di accesso, rettifica, cancellazione, limitazione, portabilità, opposizione a determinati trattamenti e revoca del consenso.",
-        "Qualora il trattamento sia basato sul consenso, la revoca del consenso non pregiudica la liceità del trattamento effettuato prima della revoca.",
-        "Potreste inoltre avere il diritto di contattare o presentare un reclamo all’autorità competente per la protezione dei dati.",
+        "Ai sensi dell'articolo 11 della legge turca n. 6698 (KVKK), potete chiedere informazioni sul trattamento, sulle finalità e sui destinatari dei vostri dati.",
+        "Quando ricorrono le condizioni previste dalla legge potete chiedere rettifica, cancellazione o distruzione.",
+        "Potete opporvi a risultati negativi derivanti esclusivamente da analisi automatizzate e, ove previsto, chiedere il risarcimento del danno.",
       ],
     },
 
     security: {
-      title: "Sicurezza dei dati",
+      title: "Sicurezza",
       paragraphs: [
-        "Si intende adottare misure tecniche e organizzative ragionevoli per proteggere i dati personali da accesso non autorizzato, perdita, uso improprio, modifica o divulgazione.",
-        "Nessun metodo di trasmissione via Internet o archiviazione elettronica può essere garantito come completamente sicuro. Gli utenti devono quindi prestare adeguata attenzione nell’invio elettronico di informazioni sensibili.",
+        "Applichiamo misure tecniche e organizzative adeguate.",
+        "Non può essere garantita la sicurezza elettronica assoluta.",
       ],
     },
 
     changes: {
-      title: "Modifiche a questa informativa",
+      title: "Modifiche",
       paragraphs: [
-        "Questa Informativa sulla privacy può essere aggiornata periodicamente per riflettere modifiche al sito, ai servizi, alle tecnologie o ai requisiti applicabili.",
-        "In caso di modifiche sostanziali, la versione aggiornata e la data di revisione saranno pubblicate su questa pagina.",
+        "L'informativa può essere aggiornata.",
+        "La versione corrente sarà pubblicata qui.",
       ],
     },
 
     contact: {
-      title: "Richieste relative alla privacy",
+      title: "Richieste KVKK e privacy",
       paragraphs: [
-        "Le domande relative a questa Informativa sulla privacy o le richieste riguardanti i dati personali possono essere indirizzate a:",
+        "Le richieste relative ai dati personali possono essere inviate al titolare indicato di seguito.",
       ],
     },
 
     registrationLabel: "Numero di registrazione / società",
-    taxLabel: "Numero fiscale",
     privacyContactLabel: "Contatto privacy",
 
     cookieButton: "Apri impostazioni cookie",
@@ -1813,122 +1882,125 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
     returnToWebsite: "Torna al sito",
   },
 
+  /* =======================================================
+     SPANISH
+     ======================================================= */
+
   es: {
     legalPrivacy: "Legal · Privacidad",
     title: "Política de privacidad",
     heroLead: "Su privacidad es importante para nosotros.",
     heroDescription:
-      "Esta Política de privacidad explica cómo pueden recopilarse, utilizarse y protegerse los datos personales cuando utiliza el sitio web de LIDYA JEWELRY y nuestros servicios.",
+      "Esta política explica cómo pueden tratarse y protegerse sus datos personales al utilizar el sitio web de LIDYA JEWELRY.",
     lastUpdated: "Última actualización",
     lastUpdatedValue: "Agosto de 2026",
 
     introduction: "Introducción",
     introLead:
-      "Nuestro objetivo es tratar los datos personales con cuidado, transparencia y respeto.",
+      "Tratamos los datos personales con cuidado y transparencia.",
     introText:
-      "Esta política se aplica a la información tratada a través de este sitio web, incluidas consultas, solicitudes de cita, comunicaciones de servicio, preferencias de cookies e interacciones con servicios de comunicación vinculados como correo electrónico y WhatsApp.",
+      "Esta política cubre consultas, citas, comunicaciones, cookies y servicios de comunicación vinculados.",
 
     contents: "Contenido",
 
     controller: {
       title: "Responsable del tratamiento",
       paragraphs: [
-        "El operador responsable del tratamiento de datos personales a través de este sitio web es:",
+        "El responsable del tratamiento de datos a través de este sitio es:",
       ],
     },
 
     data: {
-      title: "Información que podemos recopilar",
+      title: "Datos que podemos tratar",
       paragraphs: [
-        "Dependiendo de cómo utilice el sitio web o se ponga en contacto con nosotros, podemos recibir información como su nombre, número de teléfono, dirección de correo electrónico, contenido de su consulta, detalles del servicio o cita solicitados y cualquier otra información que decida proporcionar.",
-        "Como parte del funcionamiento normal del sitio también pueden tratarse datos técnicos, incluidos la dirección IP, el tipo de navegador, información del dispositivo, páginas visitadas, marcas de tiempo, registros de seguridad y otros datos técnicos similares generados por la infraestructura de alojamiento.",
-        "Las preferencias de cookies seleccionadas a través del sitio se almacenan localmente en su navegador para que el sitio pueda recordar sus elecciones.",
+        "Podemos tratar nombre, teléfono, correo electrónico, consultas y otra información proporcionada voluntariamente.",
+        "También pueden tratarse dirección IP, navegador, dispositivo y registros de seguridad.",
+        "Las preferencias de cookies pueden almacenarse localmente.",
       ],
     },
 
     use: {
-      title: "Cómo utilizamos los datos personales",
+      title: "Uso de los datos",
       paragraphs: [
-        "Los datos personales pueden utilizarse para responder consultas, organizar citas, comunicarse sobre servicios de joyería o relojería, procesar solicitudes de servicio, proporcionar atención al cliente y mantener la seguridad y el funcionamiento del sitio.",
-        "Cuando se introduzcan tecnologías opcionales de análisis o marketing, solo se utilizarán de acuerdo con las opciones de cookies seleccionadas a través del sitio.",
+        "Los datos pueden utilizarse para consultas, citas, servicios, atención al cliente y seguridad del sitio.",
+        "Las tecnologías que requieran consentimiento se activarán únicamente después de obtenerlo.",
       ],
     },
 
     legalBasis: {
-      title: "Base jurídica del tratamiento",
+      title: "Base jurídica",
       paragraphs: [
-        "La base jurídica del tratamiento depende del contexto en el que se proporcionen los datos. El tratamiento puede ser necesario para responder a una solicitud, adoptar medidas relacionadas con un servicio o cita, cumplir obligaciones legales, proteger intereses legítimos empresariales y de seguridad o actuar sobre la base de su consentimiento cuando este sea necesario.",
-        "Las tecnologías opcionales de análisis y marketing están destinadas a funcionar únicamente después de haberse otorgado el consentimiento correspondiente.",
+        "LIDYA, como empresa que opera en Türkiye, trata los datos personales principalmente de acuerdo con la Ley turca n.º 6698 de Protección de Datos Personales (KVKK) y demás legislación aplicable.",
+        "La base puede incluir contrato, obligación legal, establecimiento o protección de derechos, interés legítimo o consentimiento expreso cuando sea necesario.",
       ],
     },
 
     sharing: {
-      title: "Cuándo pueden compartirse los datos",
+      title: "Compartir datos",
       paragraphs: [
         "No vendemos datos personales.",
-        "Los datos pueden compartirse con proveedores de servicios cuando sea razonablemente necesario para alojamiento web, funcionamiento técnico, comunicaciones, seguridad, asesoramiento profesional u otro servicio solicitado por usted.",
-        "Los datos también pueden divulgarse cuando lo exijan la ley, una regulación, una orden judicial u otra obligación legal válida.",
+        "Los datos pueden compartirse con proveedores técnicos y profesionales necesarios.",
+        "También pueden divulgarse cuando exista una obligación legal.",
       ],
     },
 
     international: {
-      title: "Servicios externos e internacionales",
+      title: "Servicios internacionales",
       paragraphs: [
-        "El sitio contiene enlaces a servicios de terceros, incluidos WhatsApp, Instagram y Facebook. Cuando decide seguir uno de esos enlaces, su interacción se rige por las prácticas de privacidad y los términos del proveedor correspondiente.",
-        "Algunos proveedores pueden tratar información en países distintos de aquel en el que usted se encuentra. Cuando corresponda, deberán utilizarse garantías adecuadas de conformidad con los requisitos aplicables de protección de datos.",
+        "El sitio puede contener enlaces a WhatsApp, Instagram, Facebook y otros servicios.",
+        "Las transferencias internacionales se realizan conforme a los requisitos aplicables.",
       ],
     },
 
     retention: {
-      title: "Durante cuánto tiempo conservamos los datos",
+      title: "Conservación",
       paragraphs: [
-        "Los datos personales están destinados a conservarse únicamente durante el tiempo razonablemente necesario para la finalidad para la que fueron recopilados, mantener registros empresariales pertinentes, resolver consultas o disputas, cumplir obligaciones legales y proteger intereses legítimos.",
-        "Los períodos exactos de conservación pueden variar según el tipo de información y la naturaleza de la relación con el cliente.",
+        "Los datos se conservan únicamente durante el período necesario.",
+        "El período depende del tipo de datos, finalidad y obligaciones legales.",
       ],
     },
 
     cookies: {
       title: "Cookies y consentimiento",
       paragraphs: [
-        "El sitio utiliza tecnologías del navegador necesarias para la funcionalidad básica. Las categorías opcionales de análisis y marketing se controlan mediante la interfaz de consentimiento de cookies del sitio.",
-        "Sus preferencias actuales de cookies pueden modificarse en cualquier momento mediante el enlace Configuración de cookies disponible en el pie de página del sitio.",
+        "Pueden utilizarse tecnologías necesarias. Las tecnologías opcionales se controlan mediante la configuración de cookies.",
+        "Las preferencias pueden modificarse.",
       ],
     },
 
     rights: {
-      title: "Sus derechos de privacidad",
+      title: "Sus derechos",
       paragraphs: [
-        "Dependiendo de la legislación aplicable, puede tener derechos relativos a sus datos personales, incluidos derechos de acceso, rectificación, supresión, limitación, portabilidad, oposición a determinados tratamientos y retirada del consentimiento.",
-        "Cuando el tratamiento se base en el consentimiento, retirarlo no afecta a la licitud del tratamiento efectuado antes de dicha retirada.",
-        "También puede tener derecho a contactar o presentar una reclamación ante la autoridad de protección de datos correspondiente.",
+        "Conforme al artículo 11 de la Ley turca n.º 6698 (KVKK), puede solicitar información sobre el tratamiento, su finalidad y los destinatarios de sus datos.",
+        "Cuando se cumplan las condiciones legales puede solicitar la rectificación, eliminación o destrucción de sus datos.",
+        "Puede oponerse a resultados adversos derivados exclusivamente del análisis automatizado y, cuando corresponda, reclamar una indemnización por daños.",
       ],
     },
 
     security: {
-      title: "Seguridad de los datos",
+      title: "Seguridad",
       paragraphs: [
-        "Se pretende utilizar medidas técnicas y organizativas razonables para proteger los datos personales contra accesos no autorizados, pérdidas, usos indebidos, modificaciones o divulgaciones.",
-        "Ningún método de transmisión por Internet o almacenamiento electrónico puede garantizarse como completamente seguro. Los usuarios deben por ello tener la debida precaución al enviar información sensible por vía electrónica.",
+        "Aplicamos medidas técnicas y organizativas apropiadas.",
+        "No puede garantizarse una seguridad electrónica absoluta.",
       ],
     },
 
     changes: {
-      title: "Cambios en esta política",
+      title: "Cambios",
       paragraphs: [
-        "Esta Política de privacidad puede actualizarse periódicamente para reflejar cambios en el sitio web, los servicios, las tecnologías o los requisitos aplicables.",
-        "Cuando se realicen cambios importantes, la versión actualizada y la fecha de revisión se publicarán en esta página.",
+        "Esta política puede actualizarse.",
+        "La versión actual se publicará aquí.",
       ],
     },
 
     contact: {
-      title: "Consultas sobre privacidad",
+      title: "Solicitudes KVKK y privacidad",
       paragraphs: [
-        "Las preguntas sobre esta Política de privacidad o las solicitudes relativas a datos personales pueden dirigirse a:",
+        "Las solicitudes relativas a datos personales pueden dirigirse al responsable indicado a continuación.",
       ],
     },
 
     registrationLabel: "Número de registro / empresa",
-    taxLabel: "Número fiscal",
     privacyContactLabel: "Contacto de privacidad",
 
     cookieButton: "Abrir configuración de cookies",
@@ -1939,10 +2011,15 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
   },
 };
 
+/* =========================================================
+   COMPONENT
+   ========================================================= */
+
 export default function PrivacyContent() {
   const { locale } = useLanguage();
 
-  const copy = PRIVACY_COPY[locale] ?? PRIVACY_COPY.en;
+  const copy =
+    PRIVACY_COPY[locale] ?? PRIVACY_COPY.en;
 
   const openCookieSettings = () => {
     window.dispatchEvent(
@@ -2018,7 +2095,10 @@ export default function PrivacyContent() {
       <Header />
 
       <main className="bg-[#F7F4EE] text-plum-dark">
-        {/* HERO */}
+        {/* =================================================
+            HERO
+            ================================================= */}
+
         <section className="relative overflow-hidden bg-plum-dark pb-20 pt-36 text-brand-white md:pb-24 md:pt-40 lg:pb-28 lg:pt-44">
           <div className="pointer-events-none absolute -left-40 top-0 h-[520px] w-[520px] rounded-full bg-gold/8 blur-3xl" />
 
@@ -2033,14 +2113,18 @@ export default function PrivacyContent() {
 
                 <h1
                   className="mt-6 max-w-[900px] font-display text-5xl leading-[0.92] tracking-[-0.035em] md:text-6xl lg:text-7xl"
-                  style={{ color: "#F5EFE6" }}
+                  style={{
+                    color: "#F5EFE6",
+                  }}
                 >
                   {copy.title}
                 </h1>
 
                 <p
                   className="mt-6 max-w-[780px] font-display text-2xl italic leading-tight md:text-3xl"
-                  style={{ color: "#E8D8B5" }}
+                  style={{
+                    color: "#E8D8B5",
+                  }}
                 >
                   {copy.heroLead}
                 </p>
@@ -2064,7 +2148,10 @@ export default function PrivacyContent() {
           </div>
         </section>
 
-        {/* INTRO */}
+        {/* =================================================
+            INTRO
+            ================================================= */}
+
         <section className="border-b border-plum-dark/10 bg-ivory py-14 md:py-16">
           <div className="mx-auto max-w-[1180px] px-6 md:px-10 lg:px-16">
             <div className="grid gap-8 lg:grid-cols-12">
@@ -2077,7 +2164,9 @@ export default function PrivacyContent() {
               <div className="lg:col-span-9">
                 <p
                   className="max-w-[850px] font-display text-2xl leading-snug md:text-3xl"
-                  style={{ color: "#1B0B20" }}
+                  style={{
+                    color: "#1B0B20",
+                  }}
                 >
                   {copy.introLead}
                 </p>
@@ -2090,11 +2179,15 @@ export default function PrivacyContent() {
           </div>
         </section>
 
-        {/* CONTENT */}
+        {/* =================================================
+            CONTENT
+            ================================================= */}
+
         <section className="bg-brand-white py-16 md:py-20 lg:py-24">
           <div className="mx-auto max-w-[1180px] px-6 md:px-10 lg:px-16">
             <div className="grid gap-12 lg:grid-cols-12">
-              {/* SIDE NAV */}
+              {/* SIDE NAVIGATION */}
+
               <aside className="lg:col-span-3">
                 <div className="lg:sticky lg:top-28">
                   <span className="text-[0.58rem] font-semibold uppercase tracking-[0.24em] text-gold">
@@ -2106,7 +2199,7 @@ export default function PrivacyContent() {
                       <a
                         key={section.id}
                         href={`#${section.id}`}
-                        className="transition-colors hover:text-gold"
+                        className="transition-colors duration-300 hover:text-gold"
                       >
                         {section.number} ·{" "}
                         {section.copy.title}
@@ -2116,9 +2209,13 @@ export default function PrivacyContent() {
                 </div>
               </aside>
 
-              {/* LEGAL COPY */}
+              {/* LEGAL CONTENT */}
+
               <div className="space-y-16 lg:col-span-9">
-                {/* 01 CONTROLLER */}
+                {/* =========================================
+                    01 CONTROLLER
+                    ========================================= */}
+
                 <LegalSection
                   id="controller"
                   number="01"
@@ -2142,20 +2239,24 @@ export default function PrivacyContent() {
                       {COMPANY_REGISTRATION_NUMBER}
                     </p>
 
-                    <p className="mt-2">
-                      {copy.taxLabel}: {TAX_NUMBER}
-                    </p>
-
-                    <p className="mt-2">
-                      {copy.privacyContactLabel}:{" "}
-                      <span className="text-plum-dark">
-                        {PRIVACY_EMAIL}
-                      </span>
-                    </p>
+                    {PRIVACY_EMAIL && (
+                      <p className="mt-2">
+                        {copy.privacyContactLabel}:{" "}
+                        <a
+                          href={`mailto:${PRIVACY_EMAIL}`}
+                          className="text-plum-dark transition-colors duration-300 hover:text-gold"
+                        >
+                          {PRIVACY_EMAIL}
+                        </a>
+                      </p>
+                    )}
                   </div>
                 </LegalSection>
 
-                {/* 02 - 07 */}
+                {/* =========================================
+                    02 - 07
+                    ========================================= */}
+
                 {sections
                   .slice(1, 7)
                   .map((section) => (
@@ -2180,7 +2281,10 @@ export default function PrivacyContent() {
                     </LegalSection>
                   ))}
 
-                {/* 08 COOKIES */}
+                {/* =========================================
+                    08 COOKIES
+                    ========================================= */}
+
                 <LegalSection
                   id="cookies"
                   number="08"
@@ -2202,13 +2306,32 @@ export default function PrivacyContent() {
                   <button
                     type="button"
                     onClick={openCookieSettings}
-                    className="mt-6 border border-plum-dark/20 px-5 py-3 text-[0.58rem] font-semibold uppercase tracking-[0.18em] text-plum-dark/70 transition-all duration-300 hover:border-gold hover:bg-gold hover:text-plum-dark"
+                    className="
+                      mt-6
+                      border
+                      border-plum-dark/20
+                      px-5
+                      py-3
+                      text-[0.58rem]
+                      font-semibold
+                      uppercase
+                      tracking-[0.18em]
+                      text-plum-dark/70
+                      transition-all
+                      duration-300
+                      hover:border-gold
+                      hover:bg-gold
+                      hover:text-plum-dark
+                    "
                   >
                     {copy.cookieButton}
                   </button>
                 </LegalSection>
 
-                {/* 09 - 11 */}
+                {/* =========================================
+                    09 - 11
+                    ========================================= */}
+
                 {sections
                   .slice(8, 11)
                   .map((section) => (
@@ -2233,13 +2356,18 @@ export default function PrivacyContent() {
                     </LegalSection>
                   ))}
 
-                {/* 12 CONTACT */}
+                {/* =========================================
+                    12 CONTACT
+                    ========================================= */}
+
                 <LegalSection
                   id="contact"
                   number="12"
                   title={copy.contact.title}
                 >
-                  <p>{copy.contact.paragraphs[0]}</p>
+                  <p>
+                    {copy.contact.paragraphs[0]}
+                  </p>
 
                   <div className="mt-6 border border-plum-dark/10 bg-ivory p-6 md:p-8">
                     <span className="block text-[0.56rem] font-semibold uppercase tracking-[0.22em] text-gold">
@@ -2250,21 +2378,40 @@ export default function PrivacyContent() {
                       {LEGAL_COMPANY_NAME}
                     </p>
 
-                    <p className="mt-3 text-sm text-grey">
-                      {PRIVACY_EMAIL}
-                    </p>
-
-                    <p className="mt-1 text-sm text-grey">
+                    <p className="mt-3 text-sm leading-6 text-grey">
                       {REGISTERED_ADDRESS}
                     </p>
+
+                    <p className="mt-2 text-sm text-grey">
+                      {copy.registrationLabel}:{" "}
+                      {COMPANY_REGISTRATION_NUMBER}
+                    </p>
+
+                    {PRIVACY_EMAIL && (
+                      <a
+                        href={`mailto:${PRIVACY_EMAIL}`}
+                        className="mt-4 inline-block text-sm text-plum-dark transition-colors duration-300 hover:text-gold"
+                      >
+                        {PRIVACY_EMAIL}
+                      </a>
+                    )}
                   </div>
+
+                  {!PRIVACY_EMAIL && (
+                    <p className="mt-5 text-xs leading-6 text-grey/70">
+                      {REGISTERED_ADDRESS}
+                    </p>
+                  )}
                 </LegalSection>
               </div>
             </div>
           </div>
         </section>
 
-        {/* LEGAL NOTE */}
+        {/* =================================================
+            LEGAL FOOT NOTE
+            ================================================= */}
+
         <section className="border-t border-plum-dark/10 bg-ivory py-12">
           <div className="mx-auto max-w-[1180px] px-6 md:px-10 lg:px-16">
             <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
@@ -2282,7 +2429,7 @@ export default function PrivacyContent() {
 
               <Link
                 href="/"
-                className="inline-flex items-center gap-4 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-plum-dark/60 transition-colors hover:text-gold"
+                className="inline-flex items-center gap-4 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-plum-dark/60 transition-colors duration-300 hover:text-gold"
               >
                 {copy.returnToWebsite}
                 <span>→</span>
@@ -2297,6 +2444,10 @@ export default function PrivacyContent() {
     </>
   );
 }
+
+/* =========================================================
+   LEGAL SECTION COMPONENT
+   ========================================================= */
 
 type LegalSectionProps = {
   id: string;
@@ -2326,7 +2477,9 @@ function LegalSection({
 
       <h2
         className="mt-5 font-display text-3xl leading-tight md:text-4xl"
-        style={{ color: "#1B0B20" }}
+        style={{
+          color: "#1B0B20",
+        }}
       >
         {title}
       </h2>
