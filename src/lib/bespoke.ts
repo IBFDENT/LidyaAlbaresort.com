@@ -212,7 +212,8 @@ export type BespokeStep = {
 export const PHASE_1_STEPS: BespokeStep[] = [
   {
     image: "/images/bespoke/step-01.jpg",
-    imageAlt: "Client discussing their jewellery design with our designer",
+    imageAlt:
+      "Client discussing their jewellery design with our designer",
     title: {
       de: "Beratung",
       en: "Consultation",
@@ -290,7 +291,8 @@ export const PHASE_1_STEPS: BespokeStep[] = [
 
   {
     image: "/images/bespoke/step-03.jpg",
-    imageAlt: "3D CAD render of a ring design on a computer screen",
+    imageAlt:
+      "3D CAD render of a ring design on a computer screen",
     title: {
       de: "CAD-Design",
       en: "CAD Design",
@@ -370,7 +372,8 @@ export const PHASE_2_STEPS: BespokeStep[] = [
 
   {
     image: "/images/bespoke/step-05.jpg",
-    imageAlt: "Molten metal being poured during the casting process",
+    imageAlt:
+      "Molten metal being poured during the casting process",
     title: {
       de: "Guss",
       en: "Casting",
@@ -409,7 +412,8 @@ export const PHASE_2_STEPS: BespokeStep[] = [
 
   {
     image: "/images/bespoke/step-06.jpg",
-    imageAlt: "Jeweller shaping the prongs of a ring to hold a stone",
+    imageAlt:
+      "Jeweller shaping the prongs of a ring to hold a stone",
     title: {
       de: "Fassung vorbereiten",
       en: "Shaping the Setting",
@@ -448,7 +452,8 @@ export const PHASE_2_STEPS: BespokeStep[] = [
 
   {
     image: "/images/bespoke/step-07.jpg",
-    imageAlt: "Jeweller carefully setting a diamond into a ring with tweezers",
+    imageAlt:
+      "Jeweller carefully setting a diamond into a ring with tweezers",
     title: {
       de: "Stein fassen",
       en: "Setting the Stone",
@@ -568,7 +573,8 @@ export const PHASE_3_STEPS: BespokeStep[] = [
 
   {
     image: "/images/bespoke/step-10.jpg",
-    imageAlt: "Jeweller applying final finishing touches to a ring",
+    imageAlt:
+      "Jeweller applying final finishing touches to a ring",
     title: {
       de: "Letzter Schliff",
       en: "Final Finishing",
@@ -607,7 +613,8 @@ export const PHASE_3_STEPS: BespokeStep[] = [
 
   {
     image: "/images/bespoke/step-11.jpg",
-    imageAlt: "Finished ring presented in an open velvet box with ribbon",
+    imageAlt:
+      "Finished ring presented in an open velvet box with ribbon",
     title: {
       de: "Präsentation",
       en: "Presentation",
@@ -645,8 +652,9 @@ export const PHASE_3_STEPS: BespokeStep[] = [
   },
 
   {
-    image: "/images/bespoke/step-12.jpg",
-    imageAlt: "The finished ring being handed over to the client in its box",
+    image: "/images/bespoke/step-12.png",
+    imageAlt:
+      "The finished ring being handed over to the client in its box",
     title: {
       de: "Übergabe",
       en: "Delivery",
