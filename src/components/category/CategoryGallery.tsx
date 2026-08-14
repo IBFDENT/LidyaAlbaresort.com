@@ -5,6 +5,8 @@ type GalleryItem = {
   image: string;
   caption: string;
   alt: string;
+  objectPosition?: string;
+  scale?: number;
 };
 
 type CategoryGalleryProps = {
@@ -153,12 +155,15 @@ export default function CategoryGallery({
                       ease-[cubic-bezier(0.22,1,0.36,1)]
                       group-hover:scale-[1.035]
                     "
+                    style={{
+                      objectPosition:
+                        item.objectPosition ?? "50% 50%",
+                      transform: `scale(${item.scale ?? 1})`,
+                    }}
                   />
 
-                  {/* subtle hover overlay */}
                   <div className="absolute inset-0 bg-plum-dark/0 transition-colors duration-700 group-hover:bg-plum-dark/[0.05]" />
 
-                  {/* GOLD BOTTOM LINE */}
                   <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-gold transition-all duration-700 group-hover:w-full" />
                 </div>
 

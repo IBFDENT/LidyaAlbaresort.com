@@ -259,12 +259,7 @@ function WatchIcon() {
         strokeWidth="1.5"
       />
 
-      <circle
-        cx="24"
-        cy="24"
-        r="1.7"
-        fill="currentColor"
-      />
+      <circle cx="24" cy="24" r="1.7" fill="currentColor" />
 
       <path
         d="M24 24V16M24 24l6 4"
@@ -279,9 +274,7 @@ function WatchIcon() {
 export default function WatchesCinematicHero() {
   const { locale } = useLanguage();
 
-  const copy =
-    WATCHES_HERO_COPY[locale] ??
-    WATCHES_HERO_COPY.en;
+  const copy = WATCHES_HERO_COPY[locale] ?? WATCHES_HERO_COPY.en;
 
   const sectionRef = useRef<HTMLElement | null>(null);
   const imageWrapRef = useRef<HTMLDivElement | null>(null);
@@ -320,9 +313,7 @@ export default function WatchesCinematicHero() {
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
-    const finePointer = window.matchMedia(
-      "(pointer: fine)"
-    ).matches;
+    const finePointer = window.matchMedia("(pointer: fine)").matches;
 
     if (reducedMotion || !finePointer) {
       setLoaded(true);
@@ -333,26 +324,13 @@ export default function WatchesCinematicHero() {
       const rect = section.getBoundingClientRect();
 
       const x =
-        ((event.clientX - rect.left) /
-          Math.max(rect.width, 1) -
-          0.5) *
-        2;
+        ((event.clientX - rect.left) / Math.max(rect.width, 1) - 0.5) * 2;
 
       const y =
-        ((event.clientY - rect.top) /
-          Math.max(rect.height, 1) -
-          0.5) *
-        2;
+        ((event.clientY - rect.top) / Math.max(rect.height, 1) - 0.5) * 2;
 
-      pointerTarget.current.x = Math.max(
-        -1,
-        Math.min(1, x)
-      );
-
-      pointerTarget.current.y = Math.max(
-        -1,
-        Math.min(1, y)
-      );
+      pointerTarget.current.x = Math.max(-1, Math.min(1, x));
+      pointerTarget.current.y = Math.max(-1, Math.min(1, y));
     };
 
     const resetPointer = () => {
@@ -362,36 +340,23 @@ export default function WatchesCinematicHero() {
 
     const updateScroll = () => {
       const rect = section.getBoundingClientRect();
-
-      const total = Math.max(
-        section.offsetHeight,
-        1
-      );
+      const total = Math.max(section.offsetHeight, 1);
 
       scrollTarget.current = Math.max(
         0,
-        Math.min(
-          1,
-          Math.abs(Math.min(rect.top, 0)) / total
-        )
+        Math.min(1, Math.abs(Math.min(rect.top, 0)) / total)
       );
     };
 
     const animate = () => {
       pointerCurrent.current.x +=
-        (pointerTarget.current.x -
-          pointerCurrent.current.x) *
-        0.045;
+        (pointerTarget.current.x - pointerCurrent.current.x) * 0.045;
 
       pointerCurrent.current.y +=
-        (pointerTarget.current.y -
-          pointerCurrent.current.y) *
-        0.045;
+        (pointerTarget.current.y - pointerCurrent.current.y) * 0.045;
 
       scrollCurrent.current +=
-        (scrollTarget.current -
-          scrollCurrent.current) *
-        0.065;
+        (scrollTarget.current - scrollCurrent.current) * 0.065;
 
       const x = pointerCurrent.current.x;
       const y = pointerCurrent.current.y;
@@ -420,62 +385,37 @@ export default function WatchesCinematicHero() {
         radial-gradient(
           circle at ${glowX}% ${glowY}%,
           rgba(255,255,255,0.035) 0%,
-          rgba(200,169,106,0.015) 24%,
+          rgba(230,201,143,0.025) 24%,
           rgba(255,255,255,0) 48%
         )
       `;
 
-      frameRef.current =
-        requestAnimationFrame(animate);
+      frameRef.current = requestAnimationFrame(animate);
     };
 
-    section.addEventListener(
-      "pointermove",
-      updatePointer
-    );
+    section.addEventListener("pointermove", updatePointer);
+    section.addEventListener("pointerleave", resetPointer);
 
-    section.addEventListener(
-      "pointerleave",
-      resetPointer
-    );
-
-    window.addEventListener(
-      "scroll",
-      updateScroll,
-      {
-        passive: true,
-      }
-    );
+    window.addEventListener("scroll", updateScroll, {
+      passive: true,
+    });
 
     updateScroll();
 
-    frameRef.current =
-      requestAnimationFrame(animate);
+    frameRef.current = requestAnimationFrame(animate);
 
     const loadTimer = window.setTimeout(() => {
       setLoaded(true);
     }, 60);
 
     return () => {
-      section.removeEventListener(
-        "pointermove",
-        updatePointer
-      );
+      section.removeEventListener("pointermove", updatePointer);
+      section.removeEventListener("pointerleave", resetPointer);
 
-      section.removeEventListener(
-        "pointerleave",
-        resetPointer
-      );
-
-      window.removeEventListener(
-        "scroll",
-        updateScroll
-      );
+      window.removeEventListener("scroll", updateScroll);
 
       if (frameRef.current !== null) {
-        cancelAnimationFrame(
-          frameRef.current
-        );
+        cancelAnimationFrame(frameRef.current);
       }
 
       window.clearTimeout(loadTimer);
@@ -502,9 +442,7 @@ export default function WatchesCinematicHero() {
       <div
         ref={imageWrapRef}
         className={`absolute inset-[-3%] will-change-transform transition-[opacity,filter,transform] duration-[1800ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
-          loaded
-            ? "opacity-100 blur-0"
-            : "opacity-0 blur-[2px]"
+          loaded ? "opacity-100 blur-0" : "opacity-0 blur-[2px]"
         }`}
         style={{
           transform: loaded
@@ -527,20 +465,13 @@ export default function WatchesCinematicHero() {
         />
       </div>
 
-      {/*
-        DÔLEŽITÉ:
-        Pôvodné veľké svetlé radial-gradient overlaye
-        sú odstránené, takže stred obrázka už nebude
-        mliečny / vyblednutý.
-      */}
-
       {/* VERY SUBTLE GLOBAL TONE */}
       <div
         className="
           pointer-events-none
           absolute
           inset-0
-          bg-[#F7F3EB]/[0.015]
+          bg-[#160914]/[0.035]
         "
       />
 
@@ -551,13 +482,13 @@ export default function WatchesCinematicHero() {
           absolute
           inset-0
           bg-gradient-to-t
-          from-[#F7F3EB]/[0.04]
+          from-[#100711]/15
           via-transparent
           to-transparent
         "
       />
 
-      {/* INTERACTIVE LIGHT - VERY SUBTLE */}
+      {/* INTERACTIVE LIGHT */}
       <div
         ref={glowRef}
         className="
@@ -573,7 +504,7 @@ export default function WatchesCinematicHero() {
           pointer-events-none
           absolute
           inset-0
-          bg-[radial-gradient(circle_at_center,transparent_62%,rgba(35,18,28,0.04)_100%)]
+          bg-[radial-gradient(circle_at_center,transparent_62%,rgba(18,7,16,0.12)_100%)]
         "
       />
 
@@ -633,7 +564,8 @@ export default function WatchesCinematicHero() {
                   shrink-0
                   items-center
                   justify-center
-                  text-[#A98242]
+                  text-[#E6C98F]
+                  drop-shadow-[0_1px_5px_rgba(0,0,0,0.25)]
                   md:h-10
                   md:w-10
                 "
@@ -647,7 +579,8 @@ export default function WatchesCinematicHero() {
                   font-semibold
                   uppercase
                   tracking-[0.3em]
-                  text-[#8D6B35]
+                  text-[#E6C98F]
+                  drop-shadow-[0_1px_5px_rgba(0,0,0,0.3)]
                   md:text-[0.66rem]
                   md:tracking-[0.34em]
                 "
@@ -666,7 +599,7 @@ export default function WatchesCinematicHero() {
                 text-[2.85rem]
                 leading-[0.92]
                 tracking-[-0.04em]
-                text-[#1B0B20]
+                drop-shadow-[0_2px_14px_rgba(0,0,0,0.32)]
                 sm:text-[3.2rem]
                 md:mt-7
                 md:text-6xl
@@ -675,6 +608,9 @@ export default function WatchesCinematicHero() {
                 lg:max-w-[760px]
                 lg:text-[5.6rem]
               "
+              style={{
+                color: "#FFFFFF",
+              }}
             >
               <span className="block overflow-hidden">
                 <span
@@ -685,6 +621,7 @@ export default function WatchesCinematicHero() {
                   }`}
                   style={{
                     transitionDelay: "240ms",
+                    color: "#FFFFFF",
                   }}
                 >
                   {copy.title1}
@@ -700,6 +637,7 @@ export default function WatchesCinematicHero() {
                   }`}
                   style={{
                     transitionDelay: "340ms",
+                    color: "#FFFFFF",
                   }}
                 >
                   {copy.title2}
@@ -726,7 +664,8 @@ export default function WatchesCinematicHero() {
                 text-[0.8rem]
                 font-medium
                 leading-[1.65rem]
-                text-[#352E2B]
+                text-white/90
+                drop-shadow-[0_1px_6px_rgba(0,0,0,0.3)]
                 md:text-base
                 md:leading-7
                 lg:mx-0
@@ -752,7 +691,7 @@ export default function WatchesCinematicHero() {
                 className="
                   h-px
                   w-10
-                  bg-[#A98242]
+                  bg-[#E6C98F]
                   md:w-12
                 "
               />
@@ -763,7 +702,8 @@ export default function WatchesCinematicHero() {
                   font-semibold
                   uppercase
                   tracking-[0.21em]
-                  text-[#3B2A37]/75
+                  text-[#F0D9A7]
+                  drop-shadow-[0_1px_5px_rgba(0,0,0,0.3)]
                   md:text-[0.58rem]
                   md:tracking-[0.24em]
                 "
@@ -776,7 +716,7 @@ export default function WatchesCinematicHero() {
 
         {/* BOTTOM STATEMENT */}
         <div
-          className={`border-t border-[#1B0B20]/10 py-7 text-center transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:py-12 lg:mt-4 lg:py-16 lg:text-left ${
+          className={`border-t border-white/15 py-7 text-center transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:py-12 lg:mt-4 lg:py-16 lg:text-left ${
             loaded
               ? "translate-y-0 opacity-100"
               : "translate-y-5 opacity-0"
@@ -802,7 +742,8 @@ export default function WatchesCinematicHero() {
                   font-semibold
                   uppercase
                   tracking-[0.27em]
-                  text-[#8D6B35]
+                  text-[#E6C98F]
+                  drop-shadow-[0_1px_5px_rgba(0,0,0,0.3)]
                   md:text-[0.62rem]
                   md:tracking-[0.3em]
                 "
@@ -820,7 +761,8 @@ export default function WatchesCinematicHero() {
                   text-[1.7rem]
                   italic
                   leading-[1.12]
-                  text-[#1B0B20]
+                  text-white
+                  drop-shadow-[0_2px_12px_rgba(0,0,0,0.25)]
                   md:text-4xl
                   md:leading-tight
                   lg:mx-0
@@ -831,7 +773,7 @@ export default function WatchesCinematicHero() {
 
                 <span
                   style={{
-                    color: "#A98242",
+                    color: "#E6C98F",
                   }}
                 >
                   {" "}

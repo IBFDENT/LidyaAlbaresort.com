@@ -14,16 +14,32 @@ import type { Locale } from "@/lib/i18n";
    ========================================================= */
 
 const LEGAL_COMPANY_NAME =
-
   "LİDYA GOLD BAZAAR KUYUMCULUK TİCARET VE PAZARLAMA LİMİTED ŞİRKETİ";
 
 const REGISTERED_ADDRESS =
-
   "Aşağı Hisar Mh. Antalya Cd. No:50/2, Manavgat, Antalya, Türkiye";
 
 const COMPANY_REGISTRATION_NUMBER = "1850";
 
 const TAX_NUMBER = "6080068522";
+
+const TAX_NUMBER_LABELS: Record<Locale, string> = {
+  de: "Steuernummer",
+  en: "Tax number",
+  tr: "Vergi numarası",
+  sk: "Daňové číslo",
+  cs: "Daňové číslo",
+  hu: "Adószám",
+  pl: "Numer podatkowy",
+  ru: "Налоговый номер",
+  nl: "Belastingnummer",
+  da: "Skattenummer",
+  fi: "Veronumero",
+  sv: "Skattenummer",
+  fr: "Numéro fiscal",
+  it: "Numero fiscale",
+  es: "Número fiscal",
+};
 
 /**
  * Privacy email is intentionally empty until the official
@@ -71,7 +87,6 @@ type PrivacyCopy = {
   contact: SectionCopy;
 
   registrationLabel: string;
-  taxNumberLabel: string;
   privacyContactLabel: string;
 
   cookieButton: string;
@@ -86,10 +101,6 @@ type PrivacyCopy = {
    ========================================================= */
 
 const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
-  /* =======================================================
-     GERMAN
-     ======================================================= */
-
   de: {
     legalPrivacy: "Rechtliches · Datenschutz",
     title: "Datenschutzerklärung",
@@ -215,10 +226,6 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
     returnToWebsite: "Zur Website zurückkehren",
   },
 
-  /* =======================================================
-     ENGLISH
-     ======================================================= */
-
   en: {
     legalPrivacy: "Legal · Privacy",
     title: "Privacy Policy",
@@ -342,10 +349,6 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
     bottomPolicy: "Privacy Policy",
     returnToWebsite: "Return to website",
   },
-
-  /* =======================================================
-     TURKISH
-     ======================================================= */
 
   tr: {
     legalPrivacy: "Yasal · Gizlilik",
@@ -471,10 +474,6 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
     returnToWebsite: "Web sitesine dön",
   },
 
-  /* =======================================================
-     SLOVAK
-     ======================================================= */
-
   sk: {
     legalPrivacy: "Právne · Súkromie",
     title: "Zásady ochrany osobných údajov",
@@ -598,10 +597,6 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
     bottomPolicy: "Zásady ochrany osobných údajov",
     returnToWebsite: "Späť na web",
   },
-
-  /* =======================================================
-     CZECH
-     ======================================================= */
 
   cs: {
     legalPrivacy: "Právní · Soukromí",
@@ -727,10 +722,6 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
     returnToWebsite: "Zpět na web",
   },
 
-  /* =======================================================
-     HUNGARIAN
-     ======================================================= */
-
   hu: {
     legalPrivacy: "Jogi · Adatvédelem",
     title: "Adatvédelmi szabályzat",
@@ -855,10 +846,6 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
     returnToWebsite: "Vissza a weboldalra",
   },
 
-  /* =======================================================
-     POLISH
-     ======================================================= */
-
   pl: {
     legalPrivacy: "Informacje prawne · Prywatność",
     title: "Polityka prywatności",
@@ -982,10 +969,6 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
     bottomPolicy: "Polityka prywatności",
     returnToWebsite: "Powrót do strony",
   },
-
-  /* =======================================================
-     RUSSIAN
-     ======================================================= */
 
   ru: {
     legalPrivacy: "Правовая информация · Конфиденциальность",
@@ -1114,10 +1097,6 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
     returnToWebsite: "Вернуться на сайт",
   },
 
-  /* =======================================================
-     DUTCH
-     ======================================================= */
-
   nl: {
     legalPrivacy: "Juridisch · Privacy",
     title: "Privacybeleid",
@@ -1241,10 +1220,6 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
     bottomPolicy: "Privacybeleid",
     returnToWebsite: "Terug naar de website",
   },
-
-  /* =======================================================
-     DANISH
-     ======================================================= */
 
   da: {
     legalPrivacy: "Juridisk · Privatliv",
@@ -1370,10 +1345,6 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
     returnToWebsite: "Tilbage til hjemmesiden",
   },
 
-  /* =======================================================
-     FINNISH
-     ======================================================= */
-
   fi: {
     legalPrivacy: "Lakiasiat · Tietosuoja",
     title: "Tietosuojakäytäntö",
@@ -1497,10 +1468,6 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
     bottomPolicy: "Tietosuojakäytäntö",
     returnToWebsite: "Takaisin verkkosivustolle",
   },
-
-  /* =======================================================
-     SWEDISH
-     ======================================================= */
 
   sv: {
     legalPrivacy: "Juridiskt · Integritet",
@@ -1626,10 +1593,6 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
     returnToWebsite: "Tillbaka till webbplatsen",
   },
 
-  /* =======================================================
-     FRENCH
-     ======================================================= */
-
   fr: {
     legalPrivacy: "Mentions légales · Confidentialité",
     title: "Politique de confidentialité",
@@ -1754,10 +1717,6 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
     returnToWebsite: "Retour au site",
   },
 
-  /* =======================================================
-     ITALIAN
-     ======================================================= */
-
   it: {
     legalPrivacy: "Informazioni legali · Privacy",
     title: "Informativa sulla privacy",
@@ -1881,10 +1840,6 @@ const PRIVACY_COPY: Record<Locale, PrivacyCopy> = {
     bottomPolicy: "Informativa sulla privacy",
     returnToWebsite: "Torna al sito",
   },
-
-  /* =======================================================
-     SPANISH
-     ======================================================= */
 
   es: {
     legalPrivacy: "Legal · Privacidad",
@@ -2021,6 +1976,10 @@ export default function PrivacyContent() {
   const copy =
     PRIVACY_COPY[locale] ?? PRIVACY_COPY.en;
 
+  const taxNumberLabel =
+    TAX_NUMBER_LABELS[locale] ??
+    TAX_NUMBER_LABELS.en;
+
   const openCookieSettings = () => {
     window.dispatchEvent(
       new Event("open-cookie-settings")
@@ -2095,10 +2054,6 @@ export default function PrivacyContent() {
       <Header />
 
       <main className="bg-[#F7F4EE] text-plum-dark">
-        {/* =================================================
-            HERO
-            ================================================= */}
-
         <section className="relative overflow-hidden bg-plum-dark pb-20 pt-36 text-brand-white md:pb-24 md:pt-40 lg:pb-28 lg:pt-44">
           <div className="pointer-events-none absolute -left-40 top-0 h-[520px] w-[520px] rounded-full bg-gold/8 blur-3xl" />
 
@@ -2148,10 +2103,6 @@ export default function PrivacyContent() {
           </div>
         </section>
 
-        {/* =================================================
-            INTRO
-            ================================================= */}
-
         <section className="border-b border-plum-dark/10 bg-ivory py-14 md:py-16">
           <div className="mx-auto max-w-[1180px] px-6 md:px-10 lg:px-16">
             <div className="grid gap-8 lg:grid-cols-12">
@@ -2179,15 +2130,9 @@ export default function PrivacyContent() {
           </div>
         </section>
 
-        {/* =================================================
-            CONTENT
-            ================================================= */}
-
         <section className="bg-brand-white py-16 md:py-20 lg:py-24">
           <div className="mx-auto max-w-[1180px] px-6 md:px-10 lg:px-16">
             <div className="grid gap-12 lg:grid-cols-12">
-              {/* SIDE NAVIGATION */}
-
               <aside className="lg:col-span-3">
                 <div className="lg:sticky lg:top-28">
                   <span className="text-[0.58rem] font-semibold uppercase tracking-[0.24em] text-gold">
@@ -2209,13 +2154,7 @@ export default function PrivacyContent() {
                 </div>
               </aside>
 
-              {/* LEGAL CONTENT */}
-
               <div className="space-y-16 lg:col-span-9">
-                {/* =========================================
-                    01 CONTROLLER
-                    ========================================= */}
-
                 <LegalSection
                   id="controller"
                   number="01"
@@ -2239,6 +2178,11 @@ export default function PrivacyContent() {
                       {COMPANY_REGISTRATION_NUMBER}
                     </p>
 
+                    <p className="mt-2">
+                      {taxNumberLabel}:{" "}
+                      {TAX_NUMBER}
+                    </p>
+
                     {PRIVACY_EMAIL && (
                       <p className="mt-2">
                         {copy.privacyContactLabel}:{" "}
@@ -2252,10 +2196,6 @@ export default function PrivacyContent() {
                     )}
                   </div>
                 </LegalSection>
-
-                {/* =========================================
-                    02 - 07
-                    ========================================= */}
 
                 {sections
                   .slice(1, 7)
@@ -2280,10 +2220,6 @@ export default function PrivacyContent() {
                       )}
                     </LegalSection>
                   ))}
-
-                {/* =========================================
-                    08 COOKIES
-                    ========================================= */}
 
                 <LegalSection
                   id="cookies"
@@ -2328,10 +2264,6 @@ export default function PrivacyContent() {
                   </button>
                 </LegalSection>
 
-                {/* =========================================
-                    09 - 11
-                    ========================================= */}
-
                 {sections
                   .slice(8, 11)
                   .map((section) => (
@@ -2355,10 +2287,6 @@ export default function PrivacyContent() {
                       )}
                     </LegalSection>
                   ))}
-
-                {/* =========================================
-                    12 CONTACT
-                    ========================================= */}
 
                 <LegalSection
                   id="contact"
@@ -2387,6 +2315,11 @@ export default function PrivacyContent() {
                       {COMPANY_REGISTRATION_NUMBER}
                     </p>
 
+                    <p className="mt-2 text-sm text-grey">
+                      {taxNumberLabel}:{" "}
+                      {TAX_NUMBER}
+                    </p>
+
                     {PRIVACY_EMAIL && (
                       <a
                         href={`mailto:${PRIVACY_EMAIL}`}
@@ -2407,10 +2340,6 @@ export default function PrivacyContent() {
             </div>
           </div>
         </section>
-
-        {/* =================================================
-            LEGAL FOOT NOTE
-            ================================================= */}
 
         <section className="border-t border-plum-dark/10 bg-ivory py-12">
           <div className="mx-auto max-w-[1180px] px-6 md:px-10 lg:px-16">

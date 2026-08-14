@@ -9,6 +9,7 @@ import type { Locale } from "@/lib/i18n";
 const CATEGORY_LINKS: Partial<Record<string, string>> = {
   pearls: "/pearls",
   wedding: "/wedding-rings",
+  signature: "/signature-style",
   brilliants: "/brilliants",
   design: "/design",
   bespoke: "/bespoke",

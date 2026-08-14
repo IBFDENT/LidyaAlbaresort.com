@@ -3,6 +3,7 @@ export type NavLabelKey =
   | "collections"
   | "pearls"
   | "wedding"
+  | "signature"
   | "diamonds"
   | "design"
   | "bespoke"
@@ -53,6 +54,10 @@ export const NAV_ITEMS: NavItem[] = [
       {
         href: "/wedding-rings",
         labelKey: "wedding",
+      },
+      {
+        href: "/signature-style",
+        labelKey: "signature",
       },
       {
         href: "/brilliants",
