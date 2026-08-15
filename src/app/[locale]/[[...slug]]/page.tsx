@@ -40,7 +40,7 @@ import {
 } from "@/lib/international-seo";
 import type { Locale } from "@/lib/i18n";
 
-const pages: Record<PublicRoute, React.ComponentType> = {
+const pages: Record<PublicRoute, unknown> = {
   "/": HomePage,
   "/about": AboutPage,
   "/bespoke": BespokePage,
@@ -71,53 +71,34 @@ const pages: Record<PublicRoute, React.ComponentType> = {
   "/wedding-rings": WeddingRingsPage,
 };
 
-type RouteParams = Promise<{ locale: string; slug?: string[] }>;
+type RouteParams = Promise<{ locale:string; slug?:string[] }>;
 
-export async function generateMetadata({ params }: { params: RouteParams }): Promise<Metadata> {
-  const { locale: rawLocale, slug } = await params;
-  if (!isLocale(rawLocale)) return { robots: { index: false, follow: false } };
+type RenderablePage = () => React.ReactNode | Promise<React.ReactNode>;
+
+export async function generateMetadata({ params }: { params:RouteParams }): Promise<Metadata> {
+  const { locale:rawLocale, slug } = await params;
+  if (!isLocale(rawLocale)) return { robots:{ index:false, follow:false } };
   const locale = rawLocale as Locale;
   const path = normalizePublicPath(slug);
-  if (!path) return { robots: { index: false, follow: false } };
-
+  if (!path) return { robots:{ index:false, follow:false } };
   const { title, description } = internationalSeoCopy(locale, path);
   const canonical = localizedUrl(locale, path);
   const indexingEnabled = process.env.SEO_INDEXING_ENABLED === "true";
 
   return {
-    title: { absolute: title },
-    description,
-    alternates: {
-      canonical,
-      languages: languageAlternates(path),
-    },
-    robots: indexingEnabled
-      ? { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 } }
-      : { index: false, follow: false, nocache: true },
-    openGraph: {
-      title,
-      description,
-      url: canonical,
-      type: "website",
-      locale: OG_LOCALE[locale],
-      alternateLocale: Object.values(OG_LOCALE).filter((value) => value !== OG_LOCALE[locale]),
-      siteName: "LIDYA Jewellery",
-      images: [{ url: "/images/hero.jpg", width: 1200, height: 630, alt: title }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: ["/images/hero.jpg"],
-    },
+    title:{ absolute:title }, description,
+    alternates:{ canonical, languages:languageAlternates(path) },
+    robots:indexingEnabled ? { index:true, follow:true, googleBot:{ index:true, follow:true, "max-image-preview":"large", "max-snippet":-1, "max-video-preview":-1 } } : { index:false, follow:false, nocache:true },
+    openGraph:{ title, description, url:canonical, type:"website", locale:OG_LOCALE[locale], alternateLocale:Object.values(OG_LOCALE).filter((value)=>value!==OG_LOCALE[locale]), siteName:"LIDYA Jewellery", images:[{ url:"/images/hero.jpg", width:1200, height:630, alt:title }] },
+    twitter:{ card:"summary_large_image", title, description, images:["/images/hero.jpg"] },
   };
 }
 
-export default async function LocalizedPublicPage({ params }: { params: RouteParams }) {
+export default async function LocalizedPublicPage({ params }: { params:RouteParams }) {
   const { locale, slug } = await params;
   if (!isLocale(locale)) notFound();
   const path = normalizePublicPath(slug);
   if (!path) notFound();
-  const Page = pages[path];
-  return <Page />;
+  const Page = pages[path] as RenderablePage;
+  return Page();
 }
