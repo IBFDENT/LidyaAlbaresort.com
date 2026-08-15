@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
 import Services from "@/components/Services";
+import PublicCmsSection from "@/components/PublicCmsSection";
 
 export default function ServicesPage() {
   return (
@@ -10,6 +11,7 @@ export default function ServicesPage() {
 
       <main className="bg-brand-white pt-[72px] md:pt-[80px]">
         <Services />
+        <PublicCmsSection section="services" eyebrow="LIDYA Service" title="Current service information" />
       </main>
 
       <Footer />
