@@ -22,22 +22,22 @@ const navItems: NavItem[] = [
   { id: "jewellery", label: "Šperky", icon: "◇", href: "/admin/products" },
   { id: "watches", label: "Hodinky", icon: "◉", href: "/admin/products" },
   { id: "collections", label: "Kolekcie", icon: "✦", href: "/admin/collections" },
-  { id: "investment", label: "Investície", icon: "◆" },
-  { id: "services", label: "Servis", icon: "⌁" },
-  { id: "travel", label: "Hotel & transfer", icon: "↗" },
-  { id: "content", label: "Obsah webu", icon: "▤" },
-  { id: "media", label: "Médiá", icon: "▧" },
-  { id: "languages", label: "Jazyky", icon: "◎" },
-  { id: "seo", label: "SEO", icon: "⌕" },
-  { id: "messages", label: "Dopyty", icon: "✉" },
-  { id: "settings", label: "Nastavenia", icon: "⚙" },
+  { id: "investment", label: "Investície", icon: "◆", href: "/admin/manage/investment" },
+  { id: "services", label: "Servis", icon: "⌁", href: "/admin/manage/services" },
+  { id: "travel", label: "Hotel & transfer", icon: "↗", href: "/admin/manage/travel" },
+  { id: "content", label: "Obsah webu", icon: "▤", href: "/admin/manage/content" },
+  { id: "media", label: "Médiá", icon: "▧", href: "/admin/manage/media" },
+  { id: "languages", label: "Jazyky", icon: "◎", href: "/admin/manage/languages" },
+  { id: "seo", label: "SEO", icon: "⌕", href: "/admin/manage/seo" },
+  { id: "messages", label: "Dopyty", icon: "✉", href: "/admin/manage/messages" },
+  { id: "settings", label: "Nastavenia", icon: "⚙", href: "/admin/manage/settings" },
 ];
 
 const categoryCards = [
-  ["Jewellery", "Prstene, náhrdelníky, náramky, náušnice, perly, svadobné a brilianty", "Produkty"],
-  ["Watches", "Men, Women, Sport, Children, Gold, Brilliants, Diamonds", "Produkty"],
-  ["Investment", "Investičné zlato a certifikované investičné diamanty", "2 kategórie"],
-  ["Bespoke", "Šperky a hodinky na mieru, výrobný proces a odovzdanie", "Aktívne"],
+  ["Jewellery", "Prstene, náhrdelníky, náramky, náušnice, perly, svadobné a brilianty", "Produkty", "/admin/products"],
+  ["Watches", "Men, Women, Sport, Children, Gold, Brilliants, Diamonds", "Produkty", "/admin/products"],
+  ["Investment", "Investičné zlato a certifikované investičné diamanty", "2 kategórie", "/admin/manage/investment"],
+  ["Bespoke", "Šperky a hodinky na mieru, výrobný proces a odovzdanie", "Aktívne", "/admin/manage/services"],
 ];
 
 function StatCard({ label, value, note }: { label: string; value: string; note: string }) {
@@ -147,7 +147,7 @@ export default function AdminPage() {
             <div className="mb-7">
               <p className="text-[10px] uppercase tracking-[0.28em] text-[#c8a96a]">Secure control centre</p>
               <h1 className="mt-2 text-3xl md:text-4xl">{active === "overview" ? "LIDYA Admin Dashboard" : activeLabel}</h1>
-              <p className="mt-2 max-w-3xl text-sm leading-6 text-white/45">Administrácia je teraz chránená serverovou Supabase autentifikáciou a rolami admin/staff.</p>
+              <p className="mt-2 max-w-3xl text-sm leading-6 text-white/45">Administrácia je chránená serverovou Supabase autentifikáciou a rolami admin/staff. Všetky položky menu sú napojené na funkčné administračné moduly.</p>
             </div>
 
             {search && <div className="mb-5 rounded-xl border border-[#c8a96a]/15 bg-[#c8a96a]/5 px-4 py-3 text-xs text-white/55">Hľadanie: <span className="text-[#e8d8b5]">{search}</span></div>}
@@ -166,8 +166,8 @@ export default function AdminPage() {
                   <Link href="/admin/products" className="rounded-full border border-[#c8a96a]/30 px-4 py-2 text-xs text-[#e8d8b5]">Správa produktov →</Link>
                 </div>
                 <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                  {categoryCards.map(([title, text, meta]) => (
-                    <Link key={title} href={title === "Jewellery" || title === "Watches" ? "/admin/products" : "#"} className="rounded-xl border border-white/8 bg-black/15 p-4 transition hover:border-[#c8a96a]/35 hover:bg-[#c8a96a]/5">
+                  {categoryCards.map(([title, text, meta, href]) => (
+                    <Link key={title} href={href} className="rounded-xl border border-white/8 bg-black/15 p-4 transition hover:border-[#c8a96a]/35 hover:bg-[#c8a96a]/5">
                       <div className="flex items-center justify-between"><span className="text-base text-white/90">{title}</span><span className="text-xs text-[#c8a96a]">↗</span></div>
                       <p className="mt-2 text-xs leading-5 text-white/40">{text}</p>
                       <p className="mt-4 text-[10px] uppercase tracking-[0.18em] text-white/25">{meta}</p>
