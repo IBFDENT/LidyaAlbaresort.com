@@ -3,13 +3,16 @@ import { NextResponse } from "next/server";
 export const CLIENT_ACCESS_COOKIE = "lidya_client_access";
 export const CLIENT_REFRESH_COOKIE = "lidya_client_refresh";
 
-export function getSupabaseAuthConfig() {
-  const url = process.env.SUPABASE_URL;
-  const anonKey = process.env.SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+const DEFAULT_SUPABASE_URL = "https://xhvqngmijcrnrrjqwels.supabase.co";
+const DEFAULT_SUPABASE_ANON_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhodnFuZ21pamNybnJyanF3ZWxzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODYwMzUzNjIsImV4cCI6MjEwMTYxMTM2Mn0.MRtl07KTPBA5CaiX0KaYmZBB9ta_3mzOJOIHheQoPeM";
 
-  if (!url || !anonKey) {
-    throw new Error("Supabase auth environment variables are not configured.");
-  }
+export function getSupabaseAuthConfig() {
+  const url = process.env.SUPABASE_URL || DEFAULT_SUPABASE_URL;
+  const anonKey =
+    process.env.SUPABASE_ANON_KEY ||
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+    DEFAULT_SUPABASE_ANON_KEY;
 
   return { url: url.replace(/\/$/, ""), anonKey };
 }
