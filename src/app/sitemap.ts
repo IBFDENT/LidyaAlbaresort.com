@@ -1,44 +1,48 @@
 import type { MetadataRoute } from "next";
+import { languageAlternates, localizedUrl, PUBLIC_ROUTES, SEO_LOCALES, type PublicRoute } from "@/lib/international-seo";
 
-const baseUrl = "https://www.lidyaalbaresort.com";
-
-const routes: Array<{ path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"] }> = [
-  { path: "/", priority: 1, changeFrequency: "weekly" },
-  { path: "/collections", priority: 0.95, changeFrequency: "weekly" },
-  { path: "/pearls", priority: 0.85, changeFrequency: "monthly" },
-  { path: "/wedding-rings", priority: 0.85, changeFrequency: "monthly" },
-  { path: "/signature-style", priority: 0.85, changeFrequency: "monthly" },
-  { path: "/brilliants", priority: 0.9, changeFrequency: "monthly" },
-  { path: "/diamonds", priority: 0.9, changeFrequency: "monthly" },
-  { path: "/design", priority: 0.8, changeFrequency: "monthly" },
-  { path: "/bespoke", priority: 0.9, changeFrequency: "monthly" },
-  { path: "/watches", priority: 0.95, changeFrequency: "weekly" },
-  { path: "/watches/mens", priority: 0.82, changeFrequency: "monthly" },
-  { path: "/watches/womens", priority: 0.82, changeFrequency: "monthly" },
-  { path: "/watches/childrens", priority: 0.76, changeFrequency: "monthly" },
-  { path: "/watches/sport", priority: 0.82, changeFrequency: "monthly" },
-  { path: "/watches/sport/mens", priority: 0.78, changeFrequency: "monthly" },
-  { path: "/watches/sport/womens", priority: 0.78, changeFrequency: "monthly" },
-  { path: "/watches/gold", priority: 0.82, changeFrequency: "monthly" },
-  { path: "/watches/brilliants", priority: 0.82, changeFrequency: "monthly" },
-  { path: "/watches/diamonds", priority: 0.82, changeFrequency: "monthly" },
-  { path: "/watches/bespoke", priority: 0.82, changeFrequency: "monthly" },
-  { path: "/investment-gold", priority: 0.9, changeFrequency: "monthly" },
-  { path: "/investment-diamonds", priority: 0.9, changeFrequency: "monthly" },
-  { path: "/services", priority: 0.85, changeFrequency: "monthly" },
-  { path: "/boutiques", priority: 0.8, changeFrequency: "monthly" },
-  { path: "/about", priority: 0.75, changeFrequency: "monthly" },
-  { path: "/contact", priority: 0.85, changeFrequency: "monthly" },
-  { path: "/privacy", priority: 0.25, changeFrequency: "yearly" },
-  { path: "/terms", priority: 0.25, changeFrequency: "yearly" },
-];
+const routeConfig: Record<PublicRoute, { priority:number; changeFrequency:MetadataRoute.Sitemap[number]["changeFrequency"] }> = {
+  "/":{priority:1,changeFrequency:"weekly"},
+  "/collections":{priority:.95,changeFrequency:"weekly"},
+  "/pearls":{priority:.85,changeFrequency:"monthly"},
+  "/wedding-rings":{priority:.85,changeFrequency:"monthly"},
+  "/signature-style":{priority:.85,changeFrequency:"monthly"},
+  "/brilliants":{priority:.9,changeFrequency:"monthly"},
+  "/diamonds":{priority:.9,changeFrequency:"monthly"},
+  "/design":{priority:.8,changeFrequency:"monthly"},
+  "/bespoke":{priority:.9,changeFrequency:"monthly"},
+  "/watches":{priority:.95,changeFrequency:"weekly"},
+  "/watches/mens":{priority:.82,changeFrequency:"monthly"},
+  "/watches/womens":{priority:.82,changeFrequency:"monthly"},
+  "/watches/childrens":{priority:.76,changeFrequency:"monthly"},
+  "/watches/sport":{priority:.82,changeFrequency:"monthly"},
+  "/watches/sport/mens":{priority:.78,changeFrequency:"monthly"},
+  "/watches/sport/womens":{priority:.78,changeFrequency:"monthly"},
+  "/watches/gold":{priority:.82,changeFrequency:"monthly"},
+  "/watches/brilliants":{priority:.82,changeFrequency:"monthly"},
+  "/watches/diamonds":{priority:.82,changeFrequency:"monthly"},
+  "/watches/bespoke":{priority:.82,changeFrequency:"monthly"},
+  "/investment-gold":{priority:.9,changeFrequency:"monthly"},
+  "/investment-diamonds":{priority:.9,changeFrequency:"monthly"},
+  "/services":{priority:.85,changeFrequency:"monthly"},
+  "/boutiques":{priority:.8,changeFrequency:"monthly"},
+  "/about":{priority:.75,changeFrequency:"monthly"},
+  "/contact":{priority:.85,changeFrequency:"monthly"},
+  "/privacy":{priority:.25,changeFrequency:"yearly"},
+  "/terms":{priority:.25,changeFrequency:"yearly"},
+};
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
-  return routes.map(({ path, priority, changeFrequency }) => ({
-    url: `${baseUrl}${path === "/" ? "" : path}`,
-    lastModified,
-    changeFrequency,
-    priority,
-  }));
+  return PUBLIC_ROUTES.flatMap((path) => {
+    const config = routeConfig[path];
+    const languages = languageAlternates(path);
+    return SEO_LOCALES.map((locale) => ({
+      url:localizedUrl(locale, path),
+      lastModified,
+      changeFrequency:config.changeFrequency,
+      priority:config.priority,
+      alternates:{ languages },
+    }));
+  });
 }
