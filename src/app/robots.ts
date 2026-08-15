@@ -1,13 +1,24 @@
 import type { MetadataRoute } from "next";
 
+const baseUrl = "https://www.lidyaalbaresort.com";
+
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: {
-      userAgent: "*",
-      allow: "/",
-      disallow: ["/admin/", "/client/", "/api/"],
-    },
-    sitemap: "https://www.lidyaalbaresort.com/sitemap.xml",
-    host: "https://www.lidyaalbaresort.com",
+    rules: [
+      {
+        userAgent: "*",
+        allow: "/",
+        disallow: [
+          "/admin",
+          "/admin/",
+          "/client",
+          "/client/",
+          "/api/",
+          "/_next/",
+        ],
+      },
+    ],
+    sitemap: `${baseUrl}/sitemap.xml`,
+    host: baseUrl,
   };
 }
