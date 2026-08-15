@@ -23,15 +23,31 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "LIDYA JEWELRY — Since 1989 | Handcrafted Fine Jewellery",
+  metadataBase: new URL("https://www.lidyaalbaresort.com"),
+  title: "LIDYA Jewellery | Fine Jewellery & Watches in Antalya",
   description:
-    "LIDYA JEWELRY — handcrafted jewellery, timeless design and personal service since 1989. Boutiques in Manavgat and the Alba hotels, Antalya.",
-
+    "Discover LIDYA Jewellery at Alba Resort in Antalya, Turkey — fine jewellery, diamonds, gold, watches, bespoke design and personal service since 1989.",
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
-    title: "LIDYA JEWELRY — Jewellery of lasting value",
+    title: "LIDYA Jewellery | Jewellery of Lasting Value",
     description:
-      "Handcrafted jewellery, timeless design and personal service since 1989.",
+      "Fine jewellery, diamonds, gold, watches and bespoke design at Alba Resort in Antalya, Turkey.",
     type: "website",
+    url: "/",
+    siteName: "LIDYA Jewellery",
   },
 };
 
@@ -47,9 +63,7 @@ export default function RootLayout({
       >
         <LanguageProvider>
           <SiteProtection />
-
           {children}
-
           <CookieConsent />
         </LanguageProvider>
       </body>
