@@ -46,26 +46,51 @@ const locations = [
     detail: "Çolaklı, Tilkiler Mevkii, Erhan Demir Blv. No:4, P.K:07600 Manavgat / Türkiye",
     href: "/boutiques",
     external: false,
+    type: "boutique" as const,
   },
   {
     name: "Hotel Alba Resort",
     detail: "Çolaklı Mahallesi, Tilkiler Mevkii, Erhan Demir Bulvarı No:3, Manavgat / Antalya / Türkiye",
     href: "https://www.albahotels.com.tr/en/resort-en/",
     external: true,
+    type: "hotel" as const,
   },
   {
     name: "Hotel Alba Royal",
     detail: "Çolaklı, Tilkiler Mevkii, Erhan Demir Blv. No:4, Manavgat / Antalya / Türkiye",
     href: "https://www.albahotels.com.tr/en/royal-en/",
     external: true,
+    type: "hotel" as const,
   },
   {
     name: "Hotel Alba Queen",
     detail: "Çolaklı, Tilkiler Mevkii, Erhan Demir Blv. No:3-1, Manavgat / Antalya / Türkiye",
     href: "https://www.albahotels.com.tr/en/queen-en/",
     external: true,
+    type: "hotel" as const,
   },
 ];
+
+function LocationIcon({ type }: { type: "boutique" | "hotel" }) {
+  if (type === "boutique") {
+    return (
+      <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">
+        <path d="M4 10h16" />
+        <path d="M6 10v9h12v-9" />
+        <path d="M5 10 7 5h10l2 5" />
+        <path d="M9 19v-5h6v5" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">
+      <path d="M5 20V5h14v15" />
+      <path d="M9 8h2M13 8h2M9 12h2M13 12h2M9 16h2M13 16h2" />
+      <path d="M3 20h18" />
+    </svg>
+  );
+}
 
 export default function Contact() {
   const { locale } = useLanguage();
@@ -133,27 +158,46 @@ export default function Contact() {
             <div className="relative overflow-hidden bg-plum-dark px-7 py-10 text-brand-white md:px-9">
               <span className="text-[0.62rem] font-semibold uppercase tracking-[0.26em] text-gold">Visit us</span>
               <h3 className="mt-4 font-display text-4xl text-[#F5EFE6] md:text-5xl">{t.boutiques}</h3>
+
               <div className="mt-8 border-t border-brand-white/12">
-                {locations.map((location) => (
+                {locations.map((location, index) => (
                   <a
                     key={location.name}
                     href={location.href}
                     target={location.external ? "_blank" : undefined}
                     rel={location.external ? "noopener noreferrer" : undefined}
-                    className="group block border-b border-brand-white/12 py-5"
+                    className="group flex items-center justify-between gap-5 border-b border-brand-white/12 py-5 transition-colors duration-300 hover:bg-brand-white/[0.025]"
                   >
-                    <div className="flex items-center justify-between gap-5">
-                      <h4 className="font-display text-xl text-[#F5EFE6] transition-colors duration-300 group-hover:text-gold">
-                        {location.name}
-                      </h4>
-                      <span className="shrink-0 text-lg text-gold transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">↗</span>
+                    <div className="flex min-w-0 items-start gap-4">
+                      <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-gold/35 text-gold">
+                        <LocationIcon type={location.type} />
+                      </div>
+
+                      <div className="min-w-0">
+                        <div className="mb-1 flex items-center gap-3">
+                          <span className="text-[0.56rem] font-semibold tracking-[0.22em] text-gold/80">
+                            {String(index + 1).padStart(2, "0")}
+                          </span>
+                          <h4
+                            className="font-display text-lg transition-colors duration-300 group-hover:text-gold-light md:text-xl"
+                            style={{ color: "#F5EFE6" }}
+                          >
+                            {location.name}
+                          </h4>
+                        </div>
+                        <p className="text-[0.72rem] leading-5 text-brand-white/45 transition-colors duration-300 group-hover:text-brand-white/65">
+                          {location.detail}
+                        </p>
+                      </div>
                     </div>
-                    <p className="mt-2 text-[0.72rem] leading-5 text-brand-white/45 transition-colors duration-300 group-hover:text-brand-white/65">
-                      {location.detail}
-                    </p>
+
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-brand-white/15 text-gold transition-all duration-300 group-hover:translate-x-1 group-hover:border-gold group-hover:bg-gold group-hover:text-plum-dark" aria-hidden="true">
+                      ↗
+                    </span>
                   </a>
                 ))}
               </div>
+
               <div className="mt-8 border-t border-brand-white/12 pt-8">
                 <p className="font-display text-2xl italic text-[#E8D8B5]">Private consultation</p>
                 <p className="mt-3 text-sm leading-6 text-brand-white/50">For jewellery, service, bespoke requests and appointments, contact us securely at our official address.</p>
