@@ -1,7 +1,16 @@
+"use client";
+
 import Image from "next/image";
 import ProtectedEmail from "@/components/ProtectedEmail";
+import { usePublicCmsEntry } from "@/lib/usePublicCms";
 
 export default function MaintenanceMode() {
+  const cms = usePublicCmsEntry("content", "maintenance");
+  const eyebrow = String(cms?.metadata?.meta1 || "Since 1989 · Alba Resort · Antalya");
+  const footerNote = String(cms?.metadata?.meta2 || "Full website launching soon");
+  const title = cms?.title || "We are refining your LIDYA experience.";
+  const body = cms?.body || "Our new online experience is currently being prepared. LIDYA Jewellery continues to welcome clients for fine jewellery, diamonds, gold, luxury watches, bespoke jewellery and jewellery service in Side, Manavgat and Antalya, Turkey.";
+
   return (
     <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#120513] px-6 py-16 text-[#f7f0e8]">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_15%,rgba(203,169,101,0.16),transparent_34%),radial-gradient(circle_at_15%_85%,rgba(92,24,86,0.35),transparent_36%)]" />
@@ -9,7 +18,7 @@ export default function MaintenanceMode() {
 
       <section className="relative z-10 mx-auto w-full max-w-5xl text-center">
         <p className="text-[0.62rem] font-semibold uppercase tracking-[0.5em] text-[#d2b06c]">
-          Since 1989 · Alba Resort · Antalya
+          {eyebrow}
         </p>
 
         <div className="mx-auto mt-8 flex justify-center">
@@ -29,13 +38,10 @@ export default function MaintenanceMode() {
         <div className="mx-auto my-10 h-px w-24 bg-[#d2b06c]/65" />
 
         <h2 className="font-display text-3xl font-light sm:text-4xl md:text-5xl">
-          We are refining your LIDYA experience.
+          {title}
         </h2>
         <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[#f7f0e8]/65 sm:text-base">
-          Our new online experience is currently being prepared. LIDYA Jewellery
-          continues to welcome clients for fine jewellery, diamonds, gold,
-          luxury watches, bespoke jewellery and jewellery service in Side,
-          Manavgat and Antalya, Turkey.
+          {body}
         </p>
 
         <div className="mx-auto mt-10 grid max-w-3xl gap-3 text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-[#f7f0e8]/55 sm:grid-cols-3">
@@ -60,7 +66,7 @@ export default function MaintenanceMode() {
         </div>
 
         <p className="mt-12 text-[0.58rem] uppercase tracking-[0.28em] text-[#f7f0e8]/30">
-          Full website launching soon
+          {footerNote}
         </p>
       </section>
     </main>
