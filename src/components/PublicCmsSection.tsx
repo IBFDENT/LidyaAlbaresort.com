@@ -21,24 +21,29 @@ export default function PublicCmsSection({ section, eyebrow = "LIDYA", title }: 
         </div>
 
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {entries.map((entry) => (
-            <article key={entry.id} className="border border-plum-dark/10 bg-white p-6 md:p-8">
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <h3 className="font-display text-2xl text-plum-dark">{entry.title}</h3>
-                  {entry.subtitle && <p className="mt-2 text-sm text-plum-dark/55">{entry.subtitle}</p>}
+          {entries.map((entry) => {
+            const meta1 = entry.metadata?.meta1 == null ? "" : String(entry.metadata.meta1);
+            const meta2 = entry.metadata?.meta2 == null ? "" : String(entry.metadata.meta2);
+
+            return (
+              <article key={entry.id} className="border border-plum-dark/10 bg-white p-6 md:p-8">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <h3 className="font-display text-2xl text-plum-dark">{entry.title}</h3>
+                    {entry.subtitle && <p className="mt-2 text-sm text-plum-dark/55">{entry.subtitle}</p>}
+                  </div>
+                  <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-gold" />
                 </div>
-                <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-gold" />
-              </div>
-              {entry.body && <p className="mt-5 whitespace-pre-line text-sm leading-7 text-plum-dark/60">{entry.body}</p>}
-              {(entry.metadata?.meta1 || entry.metadata?.meta2) && (
-                <div className="mt-6 border-t border-plum-dark/10 pt-4 text-[0.68rem] uppercase tracking-[0.16em] text-plum-dark/40">
-                  {entry.metadata?.meta1 && <p>{String(entry.metadata.meta1)}</p>}
-                  {entry.metadata?.meta2 && <p className="mt-2">{String(entry.metadata.meta2)}</p>}
-                </div>
-              )}
-            </article>
-          ))}
+                {entry.body && <p className="mt-5 whitespace-pre-line text-sm leading-7 text-plum-dark/60">{entry.body}</p>}
+                {(meta1 || meta2) && (
+                  <div className="mt-6 border-t border-plum-dark/10 pt-4 text-[0.68rem] uppercase tracking-[0.16em] text-plum-dark/40">
+                    {meta1 && <p>{meta1}</p>}
+                    {meta2 && <p className="mt-2">{meta2}</p>}
+                  </div>
+                )}
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>
