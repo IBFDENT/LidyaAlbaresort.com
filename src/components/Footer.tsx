@@ -18,7 +18,9 @@ export default function Footer() {
       <div className="pointer-events-none absolute -left-40 top-10 h-[480px] w-[480px] rounded-full bg-gold/8 blur-3xl" />
       <div className="relative mx-auto max-w-[1440px] px-5 sm:px-6 md:px-10 lg:px-16 xl:px-20">
         <div className="border-b border-brand-white/12 py-16 text-center md:py-20 lg:text-left">
-          <Image src="/images/logo.png" alt="LIDYA JEWELRY" width={520} height={220} className="mx-auto h-[96px] w-auto object-contain brightness-[3.2] saturate-0 md:h-[112px] lg:mx-0" />
+          <Link href="/" aria-label="LIDYA Jewellery — Home" className="inline-block">
+            <Image src="/images/logo.png" alt="LIDYA Jewellery" width={520} height={220} className="mx-auto h-[96px] w-auto object-contain md:h-[112px] lg:mx-0" />
+          </Link>
           <p className="mt-8 font-display text-4xl italic text-[#F5EFE6] md:text-5xl">Jewellery of lasting value.</p>
           <p className="mt-2 font-display text-3xl italic text-[#E8D8B5] md:text-4xl">Since 1989.</p>
         </div>
