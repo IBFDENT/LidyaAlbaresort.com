@@ -17,7 +17,12 @@ type Enquiry = {
   selected_services: string[];
   source: string;
   confirmation_email_sent: boolean;
+  confirmation_email_sent_at: string | null;
   confirmation_email_error: string | null;
+  admin_notification_email_sent: boolean;
+  admin_notification_email_sent_at: string | null;
+  admin_notification_email_error: string | null;
+  email_last_attempt_at: string | null;
   created_at: string;
 };
 
@@ -41,6 +46,7 @@ export default function AdminEnquiriesPage() {
   const [search, setSearch] = useState("");
   const [type, setType] = useState("all");
   const [status, setStatus] = useState("all");
+  const [retryingId, setRetryingId] = useState<string | null>(null);
 
   async function load() {
     setLoading(true);
@@ -71,7 +77,7 @@ export default function AdminEnquiriesPage() {
       if (type !== "all" && item.type !== type) return false;
       if (status !== "all" && item.status !== status) return false;
       if (!q) return true;
-      return [item.name, item.email, item.phone || "", item.subject || "", item.message || "", ...(item.selected_services || [])]
+      return [item.name, item.email, item.phone || "", item.subject || "", item.message || "", item.source || "", ...(item.selected_services || [])]
         .join(" ")
         .toLowerCase()
         .includes(q);
@@ -82,7 +88,7 @@ export default function AdminEnquiriesPage() {
     all: items.length,
     new: items.filter((item) => item.status === "new").length,
     service: items.filter((item) => item.type === "service").length,
-    appointment: items.filter((item) => item.type === "appointment").length,
+    failedEmail: items.filter((item) => !item.confirmation_email_sent || !item.admin_notification_email_sent).length,
   }), [items]);
 
   async function changeStatus(id: string, nextStatus: Enquiry["status"]) {
@@ -97,6 +103,26 @@ export default function AdminEnquiriesPage() {
       return;
     }
     setItems((current) => current.map((item) => item.id === id ? { ...item, status: nextStatus } : item));
+  }
+
+  async function retryEmails(id: string) {
+    setRetryingId(id);
+    setMessage("");
+    try {
+      const response = await fetch(`/api/admin/enquiries/${id}/resend`, { method: "POST" });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || "E-maily sa nepodarilo odoslať.");
+      if (data.enquiry) {
+        setItems((current) => current.map((item) => item.id === id ? { ...item, ...data.enquiry } : item));
+      }
+      setMessage(data.confirmationEmailSent && data.adminNotificationSent
+        ? "E-mailové doručenie je v poriadku: zákazník aj LIDYA dostali správu."
+        : "Opakované odoslanie prebehlo, ale aspoň jeden e-mail stále zlyháva.");
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "E-maily sa nepodarilo odoslať.");
+    } finally {
+      setRetryingId(null);
+    }
   }
 
   async function remove(id: string) {
@@ -117,19 +143,19 @@ export default function AdminEnquiriesPage() {
           <div>
             <p className="text-xs uppercase tracking-[0.34em] text-[#c8a96a]">Client relations</p>
             <h1 className="mt-2 text-4xl md:text-5xl">Dopyty & požiadavky</h1>
-            <p className="mt-2 max-w-3xl text-sm text-white/45">Servisné požiadavky, privátne termíny a všeobecné dopyty z verejného webu.</p>
+            <p className="mt-2 max-w-3xl text-sm text-white/45">Servisné požiadavky, privátne termíny a všeobecné dopyty z verejného webu vrátane kontroly e-mailového doručenia.</p>
           </div>
           <Link href="/admin" className="rounded-full border border-white/10 px-4 py-2 text-xs text-white/60">← Dashboard</Link>
         </div>
 
-        {message && <div className="mt-5 rounded-xl border border-red-300/20 bg-red-300/5 px-4 py-3 text-sm text-red-100/80">{message}</div>}
+        {message && <div className="mt-5 rounded-xl border border-[#c8a96a]/20 bg-[#c8a96a]/5 px-4 py-3 text-sm text-[#e8d8b5]">{message}</div>}
 
         <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {[
             ["Všetky", stats.all],
             ["Nové", stats.new],
             ["Servis", stats.service],
-            ["Privátne termíny", stats.appointment],
+            ["Email vyžaduje kontrolu", stats.failedEmail],
           ].map(([label, value]) => (
             <div key={String(label)} className="rounded-2xl border border-[#c8a96a]/15 bg-white/[0.035] p-5">
               <p className="text-[10px] uppercase tracking-[0.22em] text-[#c8a96a]/70">{label}</p>
@@ -157,45 +183,58 @@ export default function AdminEnquiriesPage() {
           </div>
 
           <div className="mt-5 space-y-4">
-            {filtered.map((item) => (
-              <article key={item.id} className="rounded-xl border border-white/8 bg-black/15 p-5">
-                <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-                  <div className="min-w-0 flex-1">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <h2 className="text-lg text-white/90">{item.name}</h2>
-                      <span className="rounded-full border border-[#c8a96a]/25 px-2 py-1 text-[9px] uppercase tracking-[0.14em] text-[#c8a96a]">{typeLabels[item.type]}</span>
-                      <span className="rounded-full border border-white/10 px-2 py-1 text-[9px] uppercase tracking-[0.14em] text-white/40">{statusLabels[item.status]}</span>
-                    </div>
-                    <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-xs text-white/45">
-                      <a href={`mailto:${item.email}`} className="hover:text-[#c8a96a]">{item.email}</a>
-                      {item.phone && <a href={`tel:${item.phone}`} className="hover:text-[#c8a96a]">{item.phone}</a>}
-                      <span>{new Date(item.created_at).toLocaleString("sk-SK")}</span>
-                      <span>Ref. {item.id.slice(0, 8).toUpperCase()}</span>
-                    </div>
-                    {item.subject && <p className="mt-4 text-sm text-white/70"><strong>Predmet:</strong> {item.subject}</p>}
-                    {item.message && <p className="mt-3 whitespace-pre-line text-sm leading-6 text-white/50">{item.message}</p>}
-                    {item.selected_services?.length > 0 && (
-                      <div className="mt-4 flex flex-wrap gap-2">
-                        {item.selected_services.map((service) => <span key={service} className="rounded-full bg-white/[0.05] px-3 py-1 text-[10px] text-white/50">{service}</span>)}
+            {filtered.map((item) => {
+              const emailOk = item.confirmation_email_sent && item.admin_notification_email_sent;
+              return (
+                <article key={item.id} className="rounded-xl border border-white/8 bg-black/15 p-5">
+                  <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+                    <div className="min-w-0 flex-1">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <h2 className="text-lg text-white/90">{item.name}</h2>
+                        <span className="rounded-full border border-[#c8a96a]/25 px-2 py-1 text-[9px] uppercase tracking-[0.14em] text-[#c8a96a]">{typeLabels[item.type]}</span>
+                        <span className="rounded-full border border-white/10 px-2 py-1 text-[9px] uppercase tracking-[0.14em] text-white/40">{statusLabels[item.status]}</span>
                       </div>
-                    )}
-                    <p className={`mt-4 text-[10px] uppercase tracking-[0.15em] ${item.confirmation_email_sent ? "text-emerald-300/70" : "text-amber-300/70"}`}>
-                      {item.confirmation_email_sent ? "Potvrdzujúci email odoslaný" : `Email neodoslaný${item.confirmation_email_error ? ` · ${item.confirmation_email_error}` : ""}`}
-                    </p>
-                  </div>
+                      <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-xs text-white/45">
+                        <a href={`mailto:${item.email}`} className="hover:text-[#c8a96a]">{item.email}</a>
+                        {item.phone && <a href={`tel:${item.phone}`} className="hover:text-[#c8a96a]">{item.phone}</a>}
+                        <span>{new Date(item.created_at).toLocaleString("sk-SK")}</span>
+                        <span>Ref. {item.id.slice(0, 8).toUpperCase()}</span>
+                        <span>Zdroj: {item.source || "website"}</span>
+                      </div>
+                      {item.subject && <p className="mt-4 text-sm text-white/70"><strong>Predmet:</strong> {item.subject}</p>}
+                      {item.message && <p className="mt-3 whitespace-pre-line text-sm leading-6 text-white/50">{item.message}</p>}
+                      {item.selected_services?.length > 0 && (
+                        <div className="mt-4 flex flex-wrap gap-2">
+                          {item.selected_services.map((service) => <span key={service} className="rounded-full bg-white/[0.05] px-3 py-1 text-[10px] text-white/50">{service}</span>)}
+                        </div>
+                      )}
 
-                  <div className="flex shrink-0 flex-col gap-2 sm:flex-row lg:flex-col">
-                    <select value={item.status} onChange={(e) => void changeStatus(item.id, e.target.value as Enquiry["status"])} className="rounded-lg border border-white/10 bg-[#1b0b20] px-3 py-2 text-xs outline-none">
-                      <option value="new">Nové</option>
-                      <option value="in_progress">Rieši sa</option>
-                      <option value="resolved">Vyriešené</option>
-                      <option value="archived">Archív</option>
-                    </select>
-                    <button onClick={() => void remove(item.id)} className="rounded-lg border border-red-300/15 px-3 py-2 text-xs text-red-300/60 hover:text-red-200">Zmazať</button>
+                      <div className="mt-5 grid gap-2 sm:grid-cols-2">
+                        <div className={`rounded-lg border px-3 py-2 text-xs ${item.confirmation_email_sent ? "border-emerald-300/15 bg-emerald-300/5 text-emerald-200/75" : "border-amber-300/15 bg-amber-300/5 text-amber-200/75"}`}>
+                          <strong>Zákazník:</strong> {item.confirmation_email_sent ? " potvrdenie odoslané" : " potvrdenie neodoslané"}
+                          {!item.confirmation_email_sent && item.confirmation_email_error && <p className="mt-1 break-words text-[10px] opacity-70">{item.confirmation_email_error}</p>}
+                        </div>
+                        <div className={`rounded-lg border px-3 py-2 text-xs ${item.admin_notification_email_sent ? "border-emerald-300/15 bg-emerald-300/5 text-emerald-200/75" : "border-amber-300/15 bg-amber-300/5 text-amber-200/75"}`}>
+                          <strong>LIDYA:</strong> {item.admin_notification_email_sent ? " notifikácia odoslaná" : " notifikácia neodoslaná"}
+                          {!item.admin_notification_email_sent && item.admin_notification_email_error && <p className="mt-1 break-words text-[10px] opacity-70">{item.admin_notification_email_error}</p>}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex shrink-0 flex-col gap-2 sm:flex-row lg:flex-col">
+                      <select value={item.status} onChange={(e) => void changeStatus(item.id, e.target.value as Enquiry["status"])} className="rounded-lg border border-white/10 bg-[#1b0b20] px-3 py-2 text-xs outline-none">
+                        <option value="new">Nové</option>
+                        <option value="in_progress">Rieši sa</option>
+                        <option value="resolved">Vyriešené</option>
+                        <option value="archived">Archív</option>
+                      </select>
+                      {!emailOk && <button disabled={retryingId === item.id} onClick={() => void retryEmails(item.id)} className="rounded-lg border border-[#c8a96a]/25 px-3 py-2 text-xs text-[#e8d8b5] disabled:opacity-50">{retryingId === item.id ? "Odosielam…" : "Zopakovať email"}</button>}
+                      <button onClick={() => void remove(item.id)} className="rounded-lg border border-red-300/15 px-3 py-2 text-xs text-red-300/60 hover:text-red-200">Zmazať</button>
+                    </div>
                   </div>
-                </div>
-              </article>
-            ))}
+                </article>
+              );
+            })}
             {!loading && filtered.length === 0 && <p className="py-12 text-center text-sm text-white/30">Žiadne dopyty.</p>}
             {loading && <p className="py-12 text-center text-sm text-white/30">Načítavam dopyty…</p>}
           </div>
