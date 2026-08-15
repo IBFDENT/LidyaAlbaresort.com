@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { sendEnquiryEmails } from "@/lib/enquiry-email";
+import { requireClientRequest } from "@/lib/client-user";
 import { supabaseRest } from "@/lib/supabaseAdmin";
 
 export const dynamic = "force-dynamic";
@@ -45,16 +46,17 @@ export async function POST(request: NextRequest) {
   try {
     const payload = (await request.json()) as Payload;
 
-    // Honeypot field. Bots commonly fill hidden website/company fields.
     if (payload.website) {
       return NextResponse.json({ success: true }, { status: 200 });
     }
 
+    const signedInClient = await requireClientRequest(request);
     const type = payload.type && ["general", "service", "appointment"].includes(payload.type)
       ? payload.type
       : "general";
     const name = clean(payload.name, 140);
-    const email = clean(payload.email, 254).toLowerCase();
+    const submittedEmail = clean(payload.email, 254).toLowerCase();
+    const email = signedInClient?.email?.trim().toLowerCase() || submittedEmail;
     const phone = clean(payload.phone, 80);
     const locale = clean(payload.locale, 12);
     const subject = clean(payload.subject, 240);
@@ -80,6 +82,7 @@ export async function POST(request: NextRequest) {
     const rows = await supabaseRest<EnquiryRow[]>("enquiries", {
       method: "POST",
       body: {
+        user_id: signedInClient?.id || null,
         type,
         status: "new",
         name,
