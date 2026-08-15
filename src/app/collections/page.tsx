@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Collections from "@/components/Collections";
 import PublicCollectionsCms from "@/components/PublicCollectionsCms";
+import PublicProductsCms from "@/components/PublicProductsCms";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
 
@@ -13,6 +14,7 @@ export default function CollectionsPage() {
         <div className="h-[88px] bg-plum-dark" aria-hidden="true" />
         <Collections />
         <PublicCollectionsCms />
+        <PublicProductsCms />
       </main>
 
       <Footer />
