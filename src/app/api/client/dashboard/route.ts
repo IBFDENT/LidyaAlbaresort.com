@@ -34,10 +34,10 @@ export async function GET(request: NextRequest) {
     const user = await requireClientRequest(request);
     if (!user?.email) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-    const email = user.email.toLowerCase();
+    const email = user.email.toLowerCase().replace(/[%_,()]/g, "");
     const [enquiries, favorites] = await Promise.all([
       supabaseRest<Enquiry[]>("enquiries", {
-        query: `select=id,type,status,subject,message,selected_services,created_at&email=ilike.${encodeURIComponent(email)}&order=created_at.desc`,
+        query: `select=id,type,status,subject,message,selected_services,created_at&or=(user_id.eq.${user.id},email.ilike.${encodeURIComponent(email)})&order=created_at.desc`,
       }),
       supabaseRest<Favorite[]>("client_favorites", {
         query: `select=id,product_id,created_at,products(id,name,category,collection,image_url,price,currency)&user_id=eq.${user.id}&order=created_at.desc`,
