@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
+import { requireAdminRequest } from "@/lib/admin-auth";
 import { supabaseRest } from "@/lib/supabaseAdmin";
 
 export const dynamic = "force-dynamic";
@@ -29,6 +30,9 @@ function normalizeSlug(value: string) {
 
 export async function GET(request: NextRequest) {
   try {
+    const admin = await requireAdminRequest(request);
+    if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const search = request.nextUrl.searchParams.get("search")?.trim();
     const category = request.nextUrl.searchParams.get("category")?.trim();
     const filters = ["select=*", "order=sort_order.asc,updated_at.desc"];
@@ -55,6 +59,9 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
+    const admin = await requireAdminRequest(request);
+    if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const payload = (await request.json()) as ProductPayload;
 
     if (!payload.name?.trim() || !payload.category?.trim()) {
