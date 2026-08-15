@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import PublicCmsSection from "@/components/PublicCmsSection";
 import InvestmentGoldContent from "./InvestmentGoldContent";
 
 export const metadata: Metadata = {
@@ -8,5 +9,10 @@ export const metadata: Metadata = {
 };
 
 export default function InvestmentGoldPage() {
-  return <InvestmentGoldContent />;
+  return (
+    <>
+      <InvestmentGoldContent />
+      <PublicCmsSection section="investment" eyebrow="LIDYA Investment" title="Current investment information" />
+    </>
+  );
 }
