@@ -21,7 +21,7 @@ const navItems: NavItem[] = [
   { id: "overview", label: "Prehľad", icon: "◈" },
   { id: "jewellery", label: "Šperky", icon: "◇", href: "/admin/products" },
   { id: "watches", label: "Hodinky", icon: "◉", href: "/admin/products" },
-  { id: "collections", label: "Kolekcie", icon: "✦" },
+  { id: "collections", label: "Kolekcie", icon: "✦", href: "/admin/collections" },
   { id: "investment", label: "Investície", icon: "◆" },
   { id: "services", label: "Servis", icon: "⌁" },
   { id: "travel", label: "Hotel & transfer", icon: "↗" },
