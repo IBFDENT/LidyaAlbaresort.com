@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
+import { requireAdminRequest } from "@/lib/admin-auth";
 import { supabaseRest } from "@/lib/supabaseAdmin";
 
 type ProductPayload = {
@@ -30,6 +31,9 @@ export async function PATCH(
   context: { params: Promise<{ id: string }> }
 ) {
   try {
+    const admin = await requireAdminRequest(request);
+    if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const { id } = await context.params;
     const payload = (await request.json()) as ProductPayload;
     const update: Record<string, unknown> = {
@@ -69,10 +73,13 @@ export async function PATCH(
 }
 
 export async function DELETE(
-  _request: NextRequest,
+  request: NextRequest,
   context: { params: Promise<{ id: string }> }
 ) {
   try {
+    const admin = await requireAdminRequest(request);
+    if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const { id } = await context.params;
     await supabaseRest<void>("products", {
       method: "DELETE",
