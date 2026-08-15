@@ -41,10 +41,30 @@ const copy: Partial<Record<Locale, { title: string; intro: string; boutiques: st
 };
 
 const locations = [
-  ["LIDYA JEWELLERY — Manavgat", "Çolaklı, Tilkiler Mevkii, Erhan Demir Blv. No:4, P.K:07600 Manavgat / Türkiye"],
-  ["Hotel Alba Resort", "Çolaklı Mahallesi, Manavgat / Antalya / Türkiye"],
-  ["Hotel Alba Royal", "Çolaklı Mahallesi, Manavgat / Antalya / Türkiye"],
-  ["Hotel Alba Queen", "Çolaklı Mahallesi, Manavgat / Antalya / Türkiye"],
+  {
+    name: "LIDYA JEWELLERY — Manavgat",
+    detail: "Çolaklı, Tilkiler Mevkii, Erhan Demir Blv. No:4, P.K:07600 Manavgat / Türkiye",
+    href: "/boutiques",
+    external: false,
+  },
+  {
+    name: "Hotel Alba Resort",
+    detail: "Çolaklı Mahallesi, Tilkiler Mevkii, Erhan Demir Bulvarı No:3, Manavgat / Antalya / Türkiye",
+    href: "https://www.albahotels.com.tr/en/resort-en/",
+    external: true,
+  },
+  {
+    name: "Hotel Alba Royal",
+    detail: "Çolaklı, Tilkiler Mevkii, Erhan Demir Blv. No:4, Manavgat / Antalya / Türkiye",
+    href: "https://www.albahotels.com.tr/en/royal-en/",
+    external: true,
+  },
+  {
+    name: "Hotel Alba Queen",
+    detail: "Çolaklı, Tilkiler Mevkii, Erhan Demir Blv. No:3-1, Manavgat / Antalya / Türkiye",
+    href: "https://www.albahotels.com.tr/en/queen-en/",
+    external: true,
+  },
 ];
 
 export default function Contact() {
@@ -53,6 +73,27 @@ export default function Contact() {
 
   return (
     <section id="contact" className="relative scroll-mt-28 overflow-hidden bg-ivory py-20 md:py-24 lg:py-28">
+      <style jsx global>{`
+        .site-header {
+          background: rgba(247, 243, 236, 0.97) !important;
+          box-shadow: 0 1px 0 rgba(27, 11, 32, 0.08) !important;
+          backdrop-filter: blur(18px);
+        }
+        .site-header nav {
+          color: #1b0b20 !important;
+        }
+        .site-header a[href="/contact"] {
+          color: #1b0b20 !important;
+          border-color: rgba(27, 11, 32, 0.4) !important;
+        }
+        .site-header a[href="/contact"]:hover {
+          color: #c9a45c !important;
+        }
+        .site-header img[alt="LIDYA JEWELRY"] {
+          filter: none !important;
+        }
+      `}</style>
+
       <div className="pointer-events-none absolute -left-44 top-10 h-[400px] w-[400px] rounded-full bg-gold/5 blur-3xl" />
       <div className="relative mx-auto max-w-[1440px] px-5 sm:px-6 md:px-10 lg:px-16 xl:px-20">
         <div className="grid gap-10 lg:grid-cols-12">
@@ -93,11 +134,24 @@ export default function Contact() {
               <span className="text-[0.62rem] font-semibold uppercase tracking-[0.26em] text-gold">Visit us</span>
               <h3 className="mt-4 font-display text-4xl text-[#F5EFE6] md:text-5xl">{t.boutiques}</h3>
               <div className="mt-8 border-t border-brand-white/12">
-                {locations.map(([name, detail]) => (
-                  <div key={name} className="border-b border-brand-white/12 py-5">
-                    <h4 className="font-display text-xl text-[#F5EFE6]">{name}</h4>
-                    <p className="mt-2 text-[0.72rem] leading-5 text-brand-white/45">{detail}</p>
-                  </div>
+                {locations.map((location) => (
+                  <a
+                    key={location.name}
+                    href={location.href}
+                    target={location.external ? "_blank" : undefined}
+                    rel={location.external ? "noopener noreferrer" : undefined}
+                    className="group block border-b border-brand-white/12 py-5"
+                  >
+                    <div className="flex items-center justify-between gap-5">
+                      <h4 className="font-display text-xl text-[#F5EFE6] transition-colors duration-300 group-hover:text-gold">
+                        {location.name}
+                      </h4>
+                      <span className="shrink-0 text-lg text-gold transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">↗</span>
+                    </div>
+                    <p className="mt-2 text-[0.72rem] leading-5 text-brand-white/45 transition-colors duration-300 group-hover:text-brand-white/65">
+                      {location.detail}
+                    </p>
+                  </a>
                 ))}
               </div>
               <div className="mt-8 border-t border-brand-white/12 pt-8">
