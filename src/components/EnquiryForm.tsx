@@ -5,12 +5,12 @@ import { FormEvent, useEffect, useMemo, useState } from "react";
 import { useLanguage } from "@/components/LanguageProvider";
 
 type EnquiryType = "general" | "service" | "appointment";
-type Props = { defaultType?: EnquiryType; showTypeSelector?: boolean };
+type Props = { defaultType?: EnquiryType; showTypeSelector?: boolean; source?: string };
 
 const SERVICE_OPTIONS = ["Jewellery cleaning & polishing", "Repairs & adjustments", "Stone & diamond setting", "Bespoke & redesign", "Watch service", "Gold exchange"];
 const TYPE_LABELS: Record<EnquiryType, string> = { general: "General enquiry", service: "Service request", appointment: "Private appointment" };
 
-export default function EnquiryForm({ defaultType = "general", showTypeSelector = true }: Props) {
+export default function EnquiryForm({ defaultType = "general", showTypeSelector = true, source = "website" }: Props) {
   const { locale } = useLanguage();
   const [type, setType] = useState<EnquiryType>(defaultType);
   const [name, setName] = useState(""); const [email, setEmail] = useState(""); const [phone, setPhone] = useState("");
@@ -35,7 +35,7 @@ export default function EnquiryForm({ defaultType = "general", showTypeSelector 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault(); setSubmitting(true); setFeedback(""); setSuccess(false);
     try {
-      const response = await fetch("/api/enquiries", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ type, name, email, phone, locale, subject, message, preferredContact: "LIDYA team", selectedServices: type === "service" && service ? [service] : [], source: type === "service" ? "services-page" : "contact-page", consent, website }) });
+      const response = await fetch("/api/enquiries", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ type, name, email, phone, locale, subject, message, preferredContact: "LIDYA team", selectedServices: type === "service" && service ? [service] : [], source, consent, website }) });
       const data = await response.json(); if (!response.ok) throw new Error(data.error || "The request could not be sent.");
       setSuccess(true); setFeedback(data.confirmationEmailSent ? `Thank you. Your request has been received and a confirmation email has been sent. Reference: ${data.reference}.` : `Thank you. Your request has been received. Reference: ${data.reference}.`);
       if (!signedIn) { setName(""); setEmail(""); setPhone(""); }
@@ -44,7 +44,7 @@ export default function EnquiryForm({ defaultType = "general", showTypeSelector 
     finally { setSubmitting(false); }
   }
 
-  return <section className="bg-[#120817] py-20 text-[#fffdf9] md:py-28"><div className="mx-auto max-w-[1180px] px-6 md:px-10 lg:px-16"><div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+  return <section id="enquiry" className="scroll-mt-24 bg-[#120817] py-20 text-[#fffdf9] md:py-28"><div className="mx-auto max-w-[1180px] px-6 md:px-10 lg:px-16"><div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
     <div><p className="text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-[#c8a96a]">LIDYA Client Care</p><h2 className="mt-4 font-display text-4xl leading-tight md:text-5xl">{heading}</h2><p className="mt-5 max-w-md text-sm leading-7 text-white/50">Your request is stored securely in the LIDYA administration system. Signed-in clients can follow its live status in Client Centre.</p><div className="mt-8 border-l border-[#c8a96a]/40 pl-5 text-sm leading-7 text-white/45"><p>Alba Resort · Antalya · Türkiye</p><p>Personal service since 1989</p></div></div>
     <form onSubmit={submit} className="rounded-2xl border border-[#c8a96a]/15 bg-white/[0.035] p-5 md:p-7">
       {showTypeSelector && <div className="grid gap-2 sm:grid-cols-3">{(Object.keys(TYPE_LABELS) as EnquiryType[]).map((item)=><button key={item} type="button" onClick={()=>setType(item)} className={`rounded-xl border px-3 py-3 text-xs transition ${type===item?"border-[#c8a96a] bg-[#c8a96a]/12 text-[#e8d8b5]":"border-white/10 text-white/45 hover:border-white/20"}`}>{TYPE_LABELS[item]}</button>)}</div>}
