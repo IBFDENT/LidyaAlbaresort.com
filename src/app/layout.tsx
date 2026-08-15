@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
 
 import CookieConsent from "@/components/CookieConsent";
+import EmailProtection from "@/components/EmailProtection";
 import { LanguageProvider } from "@/components/LanguageProvider";
 import SiteProtection from "@/components/SiteProtection";
 
@@ -63,6 +64,7 @@ export default function RootLayout({
       >
         <LanguageProvider>
           <SiteProtection />
+          <EmailProtection />
           {children}
           <CookieConsent />
         </LanguageProvider>
