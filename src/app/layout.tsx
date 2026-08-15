@@ -46,7 +46,6 @@ export async function generateMetadata(): Promise<Metadata> {
 
   const title = entry?.title || fallbackTitle;
   const description = entry?.subtitle || entry?.body || fallbackDescription;
-  const canonical = String(entry?.metadata?.meta1 || "/");
   const keywordsFromCms = String(entry?.metadata?.meta2 || "").split(",").map((v)=>v.trim()).filter(Boolean);
   const verification = process.env.GOOGLE_SITE_VERIFICATION?.trim();
 
@@ -60,7 +59,6 @@ export async function generateMetadata(): Promise<Metadata> {
     publisher: "LIDYA Jewellery",
     category: "Fine Jewellery",
     keywords: keywordsFromCms.length ? keywordsFromCms : fallbackKeywords,
-    alternates: { canonical },
     icons: {
       icon: [{ url: "/icon.png", type: "image/png" }],
       apple: [{ url: "/apple-icon.png", type: "image/png" }],
@@ -81,7 +79,6 @@ export async function generateMetadata(): Promise<Metadata> {
       description,
       type: "website",
       locale: "en_GB",
-      url: canonical,
       siteName: "LIDYA Jewellery",
       images: [{ url: "/images/hero.jpg", width: 1200, height: 630, alt: "LIDYA Jewellery — Alba Resort, Antalya" }],
     },
