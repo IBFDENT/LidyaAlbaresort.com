@@ -17,6 +17,8 @@ type Product = {
 
 export default function PublicProductsCms() {
   const [products, setProducts] = useState<Product[]>([]);
+  const [saved, setSaved] = useState<Record<string, boolean>>({});
+  const [busy, setBusy] = useState<string | null>(null);
 
   useEffect(() => {
     fetch("/api/public/products", { cache: "no-store" })
@@ -29,6 +31,25 @@ export default function PublicProductsCms() {
       .catch(() => setProducts([]));
   }, []);
 
+  async function saveFavorite(productId: string) {
+    setBusy(productId);
+    try {
+      const response = await fetch("/api/client/favorites", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ productId }),
+      });
+      if (response.status === 401) {
+        window.location.href = `/client/login?next=${encodeURIComponent(window.location.pathname)}`;
+        return;
+      }
+      if (!response.ok) throw new Error("Unable to save favorite");
+      setSaved((current) => ({ ...current, [productId]: true }));
+    } finally {
+      setBusy(null);
+    }
+  }
+
   if (!products.length) return null;
 
   return (
@@ -38,30 +59,18 @@ export default function PublicProductsCms() {
           <p className="text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-gold">LIDYA Selection</p>
           <h2 className="mt-4 font-display text-4xl text-plum-dark md:text-5xl">Latest published pieces</h2>
         </div>
-
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {products.map((product) => (
             <article key={product.id} className="overflow-hidden border border-plum-dark/10 bg-white">
-              {product.image_url && (
-                <div className="relative aspect-square overflow-hidden bg-plum-dark/5">
-                  <Image
-                    src={product.image_url}
-                    alt={product.name}
-                    fill
-                    sizes="(min-width: 1280px) 25vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                    className="object-cover"
-                  />
-                </div>
-              )}
+              {product.image_url && <div className="relative aspect-square overflow-hidden bg-plum-dark/5"><Image src={product.image_url} alt={product.name} fill sizes="(min-width: 1280px) 25vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" className="object-cover" /></div>}
               <div className="p-5">
-                <div className="flex items-center justify-between gap-3">
-                  <span className="text-[0.6rem] uppercase tracking-[0.18em] text-gold">{product.category}</span>
-                  {product.featured && <span className="text-[0.58rem] uppercase tracking-[0.14em] text-plum-dark/35">Featured</span>}
-                </div>
+                <div className="flex items-center justify-between gap-3"><span className="text-[0.6rem] uppercase tracking-[0.18em] text-gold">{product.category}</span>{product.featured && <span className="text-[0.58rem] uppercase tracking-[0.14em] text-plum-dark/35">Featured</span>}</div>
                 <h3 className="mt-3 font-display text-2xl text-plum-dark">{product.name}</h3>
                 {product.collection && <p className="mt-1 text-xs text-plum-dark/40">{product.collection}</p>}
                 {product.description && <p className="mt-3 line-clamp-3 text-sm leading-6 text-plum-dark/55">{product.description}</p>}
-                {product.price != null && <p className="mt-4 text-sm font-medium text-plum-dark">{product.price.toLocaleString()} {product.currency}</p>}
+                <div className="mt-4 flex items-center justify-between gap-3">{product.price != null ? <p className="text-sm font-medium text-plum-dark">{product.price.toLocaleString()} {product.currency}</p> : <span />}
+                  <button type="button" disabled={busy === product.id || saved[product.id]} onClick={() => saveFavorite(product.id)} className="text-[0.6rem] font-semibold uppercase tracking-[0.15em] text-plum-dark/55 hover:text-gold disabled:text-gold">{saved[product.id] ? "Saved" : busy === product.id ? "Saving…" : "Save"}</button>
+                </div>
               </div>
             </article>
           ))}
