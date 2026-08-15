@@ -32,6 +32,7 @@ type EnquiryRow = {
   message: string | null;
   preferred_contact: string | null;
   selected_services: string[];
+  source: string;
 };
 
 function clean(value: unknown, max = 5000) {
@@ -71,6 +72,10 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Please provide your name and a valid email address." }, { status: 400 });
     }
 
+    if (!message) {
+      return NextResponse.json({ error: "Please enter your message." }, { status: 400 });
+    }
+
     if (!payload.consent) {
       return NextResponse.json({ error: "Consent is required to submit the request." }, { status: 400 });
     }
@@ -90,7 +95,7 @@ export async function POST(request: NextRequest) {
         phone: phone || null,
         locale: locale || null,
         subject: subject || null,
-        message: message || null,
+        message,
         preferred_contact: preferredContact || null,
         selected_services: selectedServices,
         source,
@@ -102,6 +107,7 @@ export async function POST(request: NextRequest) {
     const enquiry = rows[0];
     if (!enquiry) throw new Error("The request could not be created.");
 
+    const attemptedAt = new Date().toISOString();
     const emailResult = await sendEnquiryEmails({
       id: enquiry.id,
       type: enquiry.type,
@@ -113,22 +119,29 @@ export async function POST(request: NextRequest) {
       message: enquiry.message,
       preferredContact: enquiry.preferred_contact,
       selectedServices: enquiry.selected_services,
+      source: enquiry.source,
     });
 
     await supabaseRest<void>("enquiries", {
       method: "PATCH",
       query: `id=eq.${encodeURIComponent(enquiry.id)}`,
       body: {
-        confirmation_email_sent: emailResult.sent,
-        confirmation_email_error: emailResult.sent ? null : emailResult.error || "Email not sent.",
-        updated_at: new Date().toISOString(),
+        confirmation_email_sent: emailResult.client.sent,
+        confirmation_email_sent_at: emailResult.client.sent ? attemptedAt : null,
+        confirmation_email_error: emailResult.client.sent ? null : emailResult.client.error || "Confirmation email not sent.",
+        admin_notification_email_sent: emailResult.admin.sent,
+        admin_notification_email_sent_at: emailResult.admin.sent ? attemptedAt : null,
+        admin_notification_email_error: emailResult.admin.sent ? null : emailResult.admin.error || "Admin notification email not sent.",
+        email_last_attempt_at: attemptedAt,
+        updated_at: attemptedAt,
       },
     });
 
     return NextResponse.json({
       success: true,
       reference: enquiry.id.slice(0, 8).toUpperCase(),
-      confirmationEmailSent: emailResult.sent,
+      confirmationEmailSent: emailResult.client.sent,
+      adminNotificationSent: emailResult.admin.sent,
     }, { status: 201 });
   } catch (error) {
     return NextResponse.json(
