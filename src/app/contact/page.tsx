@@ -11,7 +11,7 @@ export default function ContactPage() {
 
       <main>
         <Contact />
-        <EnquiryForm defaultType="appointment" showTypeSelector />
+        <EnquiryForm defaultType="appointment" showTypeSelector source="contact-page" />
       </main>
 
       <Footer />
