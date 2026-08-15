@@ -1,11 +1,20 @@
+import Header from "@/components/Header";
+import Collections from "@/components/Collections";
+import Footer from "@/components/Footer";
+import FloatingActions from "@/components/FloatingActions";
+
 export default function CollectionsPage() {
   return (
-    <main className="min-h-screen bg-ivory pt-32">
-      <section className="mx-auto max-w-[1200px] px-6 py-20 md:px-10 lg:px-16">
-        <h1 className="text-5xl text-plum-dark md:text-6xl">
-          Collections
-        </h1>
-      </section>
-    </main>
+    <>
+      <Header />
+
+      <main className="bg-ivory">
+        <div className="h-[88px] bg-plum-dark" aria-hidden="true" />
+        <Collections />
+      </main>
+
+      <Footer />
+      <FloatingActions />
+    </>
   );
 }
