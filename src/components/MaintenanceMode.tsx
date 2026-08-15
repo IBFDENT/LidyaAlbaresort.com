@@ -1,3 +1,4 @@
+import Image from "next/image";
 import ProtectedEmail from "@/components/ProtectedEmail";
 
 export default function MaintenanceMode() {
@@ -11,9 +12,16 @@ export default function MaintenanceMode() {
           Since 1989 · Alba Resort · Antalya
         </p>
 
-        <h1 className="mt-8 font-display text-6xl font-light tracking-[0.04em] text-[#d2b06c] sm:text-7xl md:text-8xl">
-          LIDYA
-        </h1>
+        <div className="mx-auto mt-8 flex justify-center">
+          <Image
+            src="/images/lidya-logo.png"
+            alt="LIDYA Jewellery"
+            width={720}
+            height={280}
+            priority
+            className="h-auto w-[240px] object-contain sm:w-[300px] md:w-[360px]"
+          />
+        </div>
         <p className="mt-1 font-display text-4xl italic text-[#f7f0e8] sm:text-5xl md:text-6xl">
           Jewellery
         </p>
