@@ -84,7 +84,9 @@ export async function generateMetadata({ params }: { params:RouteParams }): Prom
   const { title, description } = internationalSeoCopy(locale, path);
   const canonical = localizedUrl(locale, path);
   const shareImage = shareCardUrl(locale, path);
-  const indexingEnabled = process.env.SEO_INDEXING_ENABLED === "true";
+  // Production public pages should be indexable by default. Setting the env var
+  // explicitly to "false" remains an emergency kill switch.
+  const indexingEnabled = process.env.SEO_INDEXING_ENABLED !== "false";
 
   return {
     title:{ absolute:title },
@@ -99,7 +101,7 @@ export async function generateMetadata({ params }: { params:RouteParams }): Prom
       locale:OG_LOCALE[locale],
       alternateLocale:Object.values(OG_LOCALE).filter((value)=>value!==OG_LOCALE[locale]),
       siteName:"LIDYA Jewellery",
-      images:[{ url:shareImage, width:1200, height:630, alt:title }],
+      images:[{ url:shareImage, width:1200, height:630, alt:title, type:"image/png" }],
     },
     twitter:{ card:"summary_large_image", title, description, images:[shareImage] },
   };
