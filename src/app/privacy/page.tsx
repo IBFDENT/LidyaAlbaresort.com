@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import CookieDisclosure from "@/components/CookieDisclosure";
 import PrivacyContent from "./PrivacyContent";
 
 export const metadata: Metadata = {
@@ -8,5 +9,10 @@ export const metadata: Metadata = {
 };
 
 export default function PrivacyPage() {
-  return <PrivacyContent />;
+  return (
+    <>
+      <PrivacyContent />
+      <CookieDisclosure />
+    </>
+  );
 }
