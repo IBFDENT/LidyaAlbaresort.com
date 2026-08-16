@@ -2,9 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 import { NAV_ITEMS, type NavItem } from "@/lib/nav";
+import { LOCALES } from "@/lib/i18n";
 import { useLanguage } from "@/components/LanguageProvider";
 import LanguageSwitcher from "./LanguageSwitcher";
 
@@ -118,13 +120,20 @@ function DesktopNavItem({
 
 export default function Header({ tone = "auto" }: { tone?: HeaderTone }) {
   const { dictionary: dict } = useLanguage();
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [mobileSubOpen, setMobileSubOpen] = useState<number | null>(null);
 
+  const pathSegments = pathname.split("/").filter(Boolean);
+  const isLocalizedHomepage =
+    pathSegments.length === 0 ||
+    (pathSegments.length === 1 && LOCALES.some((locale) => locale === pathSegments[0]));
+  const heroMode = tone === "hero" || (tone === "auto" && isLocalizedHomepage);
+
   useEffect(() => {
     const updateHeaderState = () => {
-      if (tone === "hero") {
+      if (heroMode) {
         const hero = document.getElementById("home");
         if (!hero) {
           setScrolled(false);
@@ -149,7 +158,7 @@ export default function Header({ tone = "auto" }: { tone?: HeaderTone }) {
       window.removeEventListener("resize", updateHeaderState);
       window.removeEventListener("pageshow", updateHeaderState);
     };
-  }, [tone]);
+  }, [heroMode]);
 
   useEffect(() => {
     if (!menuOpen) {
@@ -181,13 +190,15 @@ export default function Header({ tone = "auto" }: { tone?: HeaderTone }) {
   };
 
   const headerOnLightBackground = tone === "light" || menuOpen || scrolled;
-  const heroHeader = tone === "hero" && !headerOnLightBackground;
+  const heroHeader = heroMode && !headerOnLightBackground;
 
   return (
     <>
       <style jsx global>{`
         .site-header[data-hero-active="true"] {
           background: transparent !important;
+          background-color: transparent !important;
+          background-image: none !important;
           box-shadow: none !important;
           backdrop-filter: none !important;
           -webkit-backdrop-filter: none !important;
@@ -221,6 +232,17 @@ export default function Header({ tone = "auto" }: { tone?: HeaderTone }) {
             ? "bg-ivory/95 py-3 shadow-[0_1px_0_rgba(27,11,32,0.08)] backdrop-blur-xl transition-[background-color,box-shadow,padding] duration-300"
             : "bg-transparent py-5 shadow-none"
         }`}
+        style={
+          heroHeader
+            ? {
+                background: "transparent",
+                backgroundColor: "transparent",
+                backdropFilter: "none",
+                WebkitBackdropFilter: "none",
+                boxShadow: "none",
+              }
+            : undefined
+        }
       >
         <div className="mx-auto flex max-w-[1440px] items-center justify-between px-5 sm:px-6 md:px-10 lg:px-16 xl:px-20">
           <Link
