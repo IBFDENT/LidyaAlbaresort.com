@@ -43,6 +43,37 @@ export const OG_LOCALE: Record<Locale, string> = {
   fi: "fi_FI", sv: "sv_SE", fr: "fr_FR", it: "it_IT", es: "es_ES",
 };
 
+export const SHARE_IMAGE: Record<PublicRoute, string> = {
+  "/": "/images/hero.jpg",
+  "/collections": "/images/collections/signature.jpg",
+  "/pearls": "/images/pearls/hero-pearls.png",
+  "/wedding-rings": "/images/wedding-rings/hero-weddingsrings.png",
+  "/signature-style": "/images/signature-style/imagesignature-style-hero.png",
+  "/brilliants": "/images/brilliants/hero-brilliants.png",
+  "/diamonds": "/images/diamonds/diamonds-herou.png",
+  "/design": "/images/design/hero-design.png",
+  "/bespoke": "/images/bespoke/hero-bespoke.png",
+  "/watches": "/images/watches/watches-hero.png",
+  "/watches/mens": "/images/watches/men-category/men-hero.png",
+  "/watches/womens": "/images/watches/woman-category/woman-hero.png",
+  "/watches/childrens": "/images/watches/children-category/children-hero.png",
+  "/watches/sport": "/images/watches/sport-category/sport-watch-hero.png",
+  "/watches/sport/mens": "/images/watches/sport-category/sport-man/men-hero1.png",
+  "/watches/sport/womens": "/images/watches/sport-category/sport-woman/woman-hero.png",
+  "/watches/gold": "/images/watches/gold-category/gold-hero.png",
+  "/watches/brilliants": "/images/watches/brilliant-category/brilliant-watch-hero.png",
+  "/watches/diamonds": "/images/watches/diamond-category/diamond-watch-hero.png",
+  "/watches/bespoke": "/images/watches/bespoke-category/bespoke-cover-category.png",
+  "/investment-gold": "/images/investment-gold/investment-gold-hero.png",
+  "/investment-diamonds": "/images/diamonds/diamonds-herou.png",
+  "/services": "/images/services-intro.png",
+  "/boutiques": "/images/boutiques/manavgat.jpg",
+  "/about": "/images/craftsmanship.jpg",
+  "/contact": "/images/boutiques/manavgat.jpg",
+  "/privacy": "/images/hero.jpg",
+  "/terms": "/images/hero.jpg",
+};
+
 const genericDescription: Record<Locale, string> = {
   en: "Discover LIDYA Jewellery at Alba Resort in Antalya, Türkiye — fine jewellery, diamonds, gold, luxury watches, bespoke design and personal service since 1989.",
   de: "Entdecken Sie LIDYA Jewellery im Alba Resort in Antalya, Türkiye — edlen Schmuck, Diamanten, Gold, Luxusuhren, Maßanfertigungen und persönlichen Service seit 1989.",
@@ -95,6 +126,11 @@ export function localizedUrl(locale: Locale, path: string) {
 export function languageAlternates(path: string) {
   const entries = Object.fromEntries(LOCALES.map((locale) => [locale, localizedUrl(locale, path)]));
   return { ...entries, "x-default": localizedUrl(DEFAULT_LOCALE, path) };
+}
+
+export function shareCardUrl(locale: Locale, path: PublicRoute) {
+  const params = new URLSearchParams({ locale, path });
+  return `${SITE_URL}/api/og?${params.toString()}`;
 }
 
 function routeTitle(locale: Locale, path: PublicRoute) {
