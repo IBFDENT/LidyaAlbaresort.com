@@ -1,5 +1,5 @@
 export const COOKIE_CONSENT_STORAGE_KEY = "lidya-cookie-consent";
-export const COOKIE_CONSENT_VERSION = "1.0";
+export const COOKIE_CONSENT_VERSION = "1.1";
 export const COOKIE_CONSENT_UPDATED_EVENT = "cookie-consent-updated";
 export const COOKIE_CONSENT_READY_EVENT = "cookie-consent-ready";
 
