@@ -17,6 +17,11 @@ const serviceContacts = {
     phone: "905378278599",
     email: "vierakocaker@hotmail.com",
   },
+  benny: {
+    name: "Benny",
+    phone: "905376694584",
+    email: "info@lidyaalbaresort.com",
+  },
 };
 
 type ContactKey = keyof typeof serviceContacts;
@@ -1837,7 +1842,7 @@ ${copy.messageThanks}`;
           )}
         </div>
 
-                {/* SERVICES */}
+        {/* SERVICES */}
         <div className="border-t border-plum-dark/10">
           {SERVICE_GROUPS.map((group) => {
             const translation =
@@ -2043,6 +2048,10 @@ ${copy.messageThanks}`;
 
                     <option value="vierka">
                       Vierka
+                    </option>
+
+                    <option value="benny">
+                      Benny
                     </option>
                   </select>
                 </div>
