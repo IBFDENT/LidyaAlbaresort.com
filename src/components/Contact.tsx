@@ -7,7 +7,7 @@ import type { Locale } from "@/lib/i18n";
 
 const contacts = [
   {
-    name: "Zafer | Victor |",
+    name: "Zafer\n| Victor |",
     languages: "Türkçe · English",
     phone: "+90 532 567 27 77",
     phoneHref: "tel:+905325672777",
@@ -108,7 +108,7 @@ export default function Contact() {
                         <Image src={contact.image} alt={contact.name} fill sizes="92px" className={`object-cover ${contact.imagePosition}`} />
                       </div>
                       <div className="min-w-0">
-                        <h3 className="font-display text-3xl text-plum-dark">{contact.name}</h3>
+                        <h3 className="whitespace-pre-line font-display text-3xl text-plum-dark">{contact.name}</h3>
                         <p className="mt-1 whitespace-nowrap text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-gold/90">{contact.languages}</p>
                       </div>
                     </div>
