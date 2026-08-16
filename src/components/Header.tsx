@@ -123,11 +123,20 @@ export default function Header({ tone = "auto" }: { tone?: HeaderTone }) {
   const [mobileSubOpen, setMobileSubOpen] = useState<number | null>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => {
+      const threshold = tone === "hero" ? Math.max(window.innerHeight - 110, 120) : 40;
+      setScrolled(window.scrollY > threshold);
+    };
+
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    window.addEventListener("resize", onScroll);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [tone]);
 
   useEffect(() => {
     if (!menuOpen) {
