@@ -7,7 +7,7 @@ import PublicCmsSection from "@/components/PublicCmsSection";
 export default function BoutiquesPage() {
   return (
     <>
-      <Header />
+      <Header tone="light" />
 
       <main className="bg-ivory pt-[92px] md:pt-[100px]">
         <Boutiques />
