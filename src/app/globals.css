@@ -123,7 +123,7 @@ h4 {
 }
 
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/diamonds"]::before {
-  background-image: url("/images/home-materials/diamonds.svg");
+  background-image: url("/images/collections/diamonds.jpg");
   background-position: center;
 }
 
