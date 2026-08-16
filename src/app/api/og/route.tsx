@@ -21,8 +21,9 @@ export async function GET(request: Request) {
   const rawPath = url.searchParams.get("path") || "/";
   const locale = isLocale(rawLocale) ? rawLocale : DEFAULT_LOCALE;
   const path = isPublicRoute(rawPath) ? rawPath : "/";
-  const { title, description } = internationalSeoCopy(locale, path);
+  const { title } = internationalSeoCopy(locale, path);
   const background = `${SITE_URL}${SHARE_IMAGE[path]}`;
+  const cleanTitle = title.replace(" | LIDYA Jewellery", "").replace("LIDYA Jewellery | ", "");
 
   return new ImageResponse(
     (
@@ -34,7 +35,7 @@ export async function GET(request: Request) {
           position: "relative",
           overflow: "hidden",
           background: "#16091c",
-          color: "#f7f1e8",
+          color: "#fffaf3",
           fontFamily: "Arial, Helvetica, sans-serif",
         }}
       >
@@ -49,6 +50,17 @@ export async function GET(request: Request) {
             width: "1200px",
             height: "630px",
             objectFit: "cover",
+            objectPosition: path === "/" ? "54% center" : "center",
+          }}
+        />
+
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            display: "flex",
+            background:
+              "linear-gradient(90deg, rgba(13,5,17,0.97) 0%, rgba(17,7,22,0.94) 34%, rgba(17,7,22,0.82) 52%, rgba(17,7,22,0.30) 74%, rgba(17,7,22,0.10) 100%)",
           }}
         />
         <div
@@ -57,38 +69,40 @@ export async function GET(request: Request) {
             inset: 0,
             display: "flex",
             background:
-              "linear-gradient(90deg, rgba(20,7,24,0.94) 0%, rgba(20,7,24,0.82) 42%, rgba(20,7,24,0.30) 72%, rgba(20,7,24,0.12) 100%)",
+              "linear-gradient(180deg, rgba(8,3,11,0.18) 0%, rgba(8,3,11,0.03) 46%, rgba(8,3,11,0.38) 100%)",
           }}
         />
+
         <div
           style={{
             position: "absolute",
-            left: 64,
-            top: 46,
+            left: 58,
+            top: 48,
             display: "flex",
             alignItems: "center",
-            gap: 18,
           }}
         >
           <div
             style={{
               display: "flex",
-              fontSize: 42,
-              fontWeight: 700,
+              fontSize: 43,
+              fontWeight: 800,
               letterSpacing: "2px",
               color: "#d2aa62",
+              textShadow: "0 3px 14px rgba(0,0,0,0.35)",
             }}
           >
             LIDYA
           </div>
-          <div style={{ width: 54, height: 1, background: "#d2aa62", display: "flex" }} />
+          <div style={{ width: 48, height: 1, margin: "0 18px", background: "#d2aa62", display: "flex" }} />
           <div
             style={{
               display: "flex",
-              fontSize: 14,
-              letterSpacing: "5px",
+              fontSize: 13,
+              fontWeight: 700,
+              letterSpacing: "4px",
               textTransform: "uppercase",
-              color: "rgba(247,241,232,0.78)",
+              color: "rgba(255,250,243,0.92)",
             }}
           >
             Jewellery · Since 1989
@@ -98,20 +112,24 @@ export async function GET(request: Request) {
         <div
           style={{
             position: "absolute",
-            left: 64,
-            bottom: 62,
-            width: 670,
+            left: 58,
+            bottom: 52,
+            width: 640,
             display: "flex",
             flexDirection: "column",
+            padding: "30px 34px 28px",
+            borderLeft: "3px solid #d2aa62",
+            background: "rgba(18,7,23,0.72)",
+            boxShadow: "0 22px 60px rgba(0,0,0,0.28)",
           }}
         >
           <div
             style={{
               display: "flex",
-              marginBottom: 18,
+              marginBottom: 15,
               fontSize: 13,
-              fontWeight: 700,
-              letterSpacing: "4px",
+              fontWeight: 800,
+              letterSpacing: "3.4px",
               textTransform: "uppercase",
               color: "#d2aa62",
             }}
@@ -121,33 +139,35 @@ export async function GET(request: Request) {
           <div
             style={{
               display: "flex",
-              fontSize: 46,
+              maxWidth: 565,
+              fontSize: cleanTitle.length > 42 ? 39 : 46,
               lineHeight: 1.08,
-              fontWeight: 600,
-              letterSpacing: "-1.5px",
+              fontWeight: 750,
+              letterSpacing: "-1.2px",
               color: "#fffaf3",
+              textShadow: "0 3px 18px rgba(0,0,0,0.55)",
             }}
           >
-            {title.replace(" | LIDYA Jewellery", "").replace("LIDYA Jewellery | ", "")}
+            {cleanTitle}
           </div>
           <div
             style={{
               display: "flex",
               marginTop: 18,
-              maxWidth: 620,
-              fontSize: 20,
-              lineHeight: 1.42,
-              color: "rgba(247,241,232,0.78)",
+              fontSize: 16,
+              fontWeight: 600,
+              letterSpacing: "0.4px",
+              color: "rgba(255,250,243,0.88)",
             }}
           >
-            {description.length > 170 ? `${description.slice(0, 167)}…` : description}
+            Fine jewellery · Diamonds · Watches · Bespoke service
           </div>
           <div
             style={{
               display: "flex",
-              marginTop: 24,
+              marginTop: 18,
               fontSize: 16,
-              letterSpacing: "1px",
+              fontWeight: 700,
               color: "#d2aa62",
             }}
           >
@@ -158,16 +178,17 @@ export async function GET(request: Request) {
         <div
           style={{
             position: "absolute",
-            right: 46,
-            bottom: 42,
+            right: 42,
+            bottom: 38,
             display: "flex",
             padding: "10px 14px",
-            border: "1px solid rgba(210,170,98,0.65)",
-            background: "rgba(20,7,24,0.58)",
+            border: "1px solid rgba(210,170,98,0.72)",
+            background: "rgba(17,7,22,0.78)",
             fontSize: 12,
+            fontWeight: 700,
             letterSpacing: "3px",
             textTransform: "uppercase",
-            color: "#f7f1e8",
+            color: "#fffaf3",
           }}
         >
           {locale}
