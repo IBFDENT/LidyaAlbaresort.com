@@ -22,7 +22,7 @@ export const metadata = pageMetadata({
 export default function Home() {
   return (
     <>
-      <Header />
+      <Header tone="hero" />
 
       <main>
         <Hero />
