@@ -8,7 +8,7 @@ import EnquiryForm from "@/components/EnquiryForm";
 export default function ServicesPage() {
   return (
     <>
-      <Header />
+      <Header tone="light" />
 
       <main className="bg-brand-white pt-[72px] md:pt-[80px]">
         <Services />
