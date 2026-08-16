@@ -119,37 +119,37 @@ function DesktopNavItem({
 export default function Header({ tone = "auto" }: { tone?: HeaderTone }) {
   const { dictionary: dict } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
-  const [heroVisible, setHeroVisible] = useState(tone === "hero");
   const [menuOpen, setMenuOpen] = useState(false);
   const [mobileSubOpen, setMobileSubOpen] = useState<number | null>(null);
 
   useEffect(() => {
-    if (tone === "hero") {
-      setScrolled(false);
-      setHeroVisible(true);
+    const updateHeaderState = () => {
+      if (tone === "hero") {
+        const hero = document.getElementById("home");
+        const heroHeight = hero?.offsetHeight ?? window.innerHeight;
+        const switchPoint = Math.max(heroHeight - 96, 320);
 
-      const hero = document.getElementById("home");
-      if (!hero) return;
+        setScrolled(window.scrollY >= switchPoint);
+        return;
+      }
 
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          setHeroVisible(entry.isIntersecting);
-        },
-        {
-          root: null,
-          threshold: 0,
-          rootMargin: "0px 0px -82% 0px",
-        },
-      );
+      setScrolled(window.scrollY > 40);
+    };
 
-      observer.observe(hero);
-      return () => observer.disconnect();
-    }
+    updateHeaderState();
 
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("scroll", updateHeaderState, { passive: true });
+    window.addEventListener("resize", updateHeaderState);
+    window.addEventListener("pageshow", updateHeaderState);
+
+    const frame = window.requestAnimationFrame(updateHeaderState);
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", updateHeaderState);
+      window.removeEventListener("resize", updateHeaderState);
+      window.removeEventListener("pageshow", updateHeaderState);
+    };
   }, [tone]);
 
   useEffect(() => {
@@ -181,18 +181,15 @@ export default function Header({ tone = "auto" }: { tone?: HeaderTone }) {
     setMobileSubOpen(null);
   };
 
-  const headerOnLightBackground =
-    tone === "light" ||
-    menuOpen ||
-    (tone === "hero" ? !heroVisible : scrolled);
+  const headerOnLightBackground = tone === "light" || menuOpen || scrolled;
   const heroHeader = tone === "hero" && !headerOnLightBackground;
 
   return (
     <header
-      className={`site-header fixed left-0 right-0 top-0 z-50 transition-all duration-500 ${
+      className={`site-header fixed left-0 right-0 top-0 z-50 transition-[background-color,box-shadow,backdrop-filter,padding] duration-500 ${
         headerOnLightBackground
           ? "bg-ivory/95 py-3 shadow-[0_1px_0_rgba(27,11,32,0.08)] backdrop-blur-xl"
-          : "bg-transparent py-5"
+          : "bg-transparent py-5 shadow-none backdrop-blur-0"
       }`}
     >
       <div className="mx-auto flex max-w-[1440px] items-center justify-between px-5 sm:px-6 md:px-10 lg:px-16 xl:px-20">
