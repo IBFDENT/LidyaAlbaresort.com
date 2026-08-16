@@ -1,15 +1,19 @@
 import type { MetadataRoute } from "next";
 
-const baseUrl = "https://www.lidyaalbaresort.com";
+import { SITE_URL } from "@/lib/international-seo";
 
 export default function robots(): MetadataRoute.Robots {
   const indexingEnabled = process.env.SEO_INDEXING_ENABLED === "true";
 
   if (!indexingEnabled) {
     return {
-      rules: [{ userAgent: "*", disallow: "/" }],
-      sitemap: `${baseUrl}/sitemap.xml`,
-      host: baseUrl,
+      rules: [
+        {
+          userAgent: "*",
+          disallow: "/",
+        },
+      ],
+      sitemap: `${SITE_URL}/sitemap.xml`,
     };
   }
 
@@ -27,7 +31,6 @@ export default function robots(): MetadataRoute.Robots {
         ],
       },
     ],
-    sitemap: `${baseUrl}/sitemap.xml`,
-    host: baseUrl,
+    sitemap: `${SITE_URL}/sitemap.xml`,
   };
 }
