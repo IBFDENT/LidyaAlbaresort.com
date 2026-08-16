@@ -115,20 +115,20 @@ export default function Hero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[61%_center]"
+          className="object-cover object-[47%_center]"
           onError={() => {
             if (heroSrc !== "/images/hero.jpg") setHeroSrc("/images/hero.jpg");
           }}
         />
       </div>
 
-      <div className="absolute inset-0 bg-[#100913]/10" />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#100913]/98 via-[#100913]/70 via-[40%] to-[#100913]/8" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#100913]/66 via-transparent to-[#100913]/28" />
-      <div className="absolute inset-y-0 left-0 w-[54%] bg-[linear-gradient(90deg,rgba(9,5,11,0.72)_0%,rgba(16,9,19,0.36)_68%,transparent_100%)]" />
+      <div className="absolute inset-0 bg-[#100913]/6" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#100913]/82 via-[#100913]/50 via-[46%] to-[#100913]/4" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#100913]/58 via-transparent to-[#100913]/22" />
+      <div className="absolute inset-y-0 left-0 w-[64%] bg-[linear-gradient(90deg,rgba(9,5,11,0.46)_0%,rgba(16,9,19,0.22)_62%,transparent_100%)]" />
       <div ref={glowRef} className="pointer-events-none absolute inset-0" />
       <div className="hero-glint pointer-events-none absolute inset-0 opacity-25" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_44%,rgba(14,7,16,0.23)_100%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_48%,rgba(14,7,16,0.18)_100%)]" />
 
       <div
         ref={contentRef}
