@@ -4,12 +4,12 @@ import { useEffect } from "react";
 
 export default function ServiceSelectionAutoScroll() {
   useEffect(() => {
-    const servicesSection = document.getElementById("services");
-    if (!servicesSection) return;
-
     let highlightTimer: number | undefined;
 
     const handleServiceClick = (event: MouseEvent) => {
+      const servicesSection = document.getElementById("services");
+      if (!servicesSection) return;
+
       const target = event.target as HTMLElement | null;
       const button = target?.closest("button");
 
@@ -43,10 +43,10 @@ export default function ServiceSelectionAutoScroll() {
       }, 90);
     };
 
-    servicesSection.addEventListener("click", handleServiceClick);
+    document.addEventListener("click", handleServiceClick);
 
     return () => {
-      servicesSection.removeEventListener("click", handleServiceClick);
+      document.removeEventListener("click", handleServiceClick);
       if (highlightTimer) window.clearTimeout(highlightTimer);
     };
   }, []);
