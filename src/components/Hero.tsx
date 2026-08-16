@@ -19,7 +19,9 @@ export default function Hero() {
   const scrollTarget = useRef(0);
   const scrollCurrent = useRef(0);
 
-  const [loaded, setLoaded] = useState(false);
+  // Keep the hero visible in the server-rendered HTML as well. This prevents
+  // blank first paint in slower/in-app mobile browsers when hydration is delayed.
+  const [loaded, setLoaded] = useState(true);
   const [heroSrc, setHeroSrc] = useState("/images/hero.png");
 
   useEffect(() => {
@@ -81,14 +83,11 @@ export default function Hero() {
     updateScroll();
     frameRef.current = requestAnimationFrame(animate);
 
-    const loadTimer = window.setTimeout(() => setLoaded(true), 80);
-
     return () => {
       section.removeEventListener("pointermove", updatePointer);
       section.removeEventListener("pointerleave", resetPointer);
       window.removeEventListener("scroll", updateScroll);
       if (frameRef.current !== null) cancelAnimationFrame(frameRef.current);
-      window.clearTimeout(loadTimer);
     };
   }, []);
 
