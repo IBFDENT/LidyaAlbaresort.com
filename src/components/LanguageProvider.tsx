@@ -5,6 +5,7 @@ import { dictionaries, LOCALE, LOCALES, type Locale } from "@/lib/i18n";
 
 const LanguageContext = createContext<{ locale:Locale; setLocale:(locale:Locale)=>void; dictionary:(typeof dictionaries)[Locale] } | undefined>(undefined);
 const STORAGE_KEY = "lidya-locale";
+const MANUAL_STORAGE_KEY = "lidya-locale-manual";
 
 function stripLocalePrefix(pathname: string) {
   const parts = pathname.split("/").filter(Boolean);
@@ -26,8 +27,10 @@ export function LanguageProvider({ children, initialLocale = LOCALE }: { childre
     if (!LOCALES.includes(newLocale)) return;
     setLocaleState(newLocale);
     localStorage.setItem(STORAGE_KEY, newLocale);
+    localStorage.setItem(MANUAL_STORAGE_KEY, newLocale);
     document.documentElement.lang = newLocale;
     document.cookie = `${STORAGE_KEY}=${newLocale}; Path=/; Max-Age=31536000; SameSite=Lax`;
+    document.cookie = `${MANUAL_STORAGE_KEY}=${newLocale}; Path=/; Max-Age=31536000; SameSite=Lax`;
     window.dispatchEvent(new CustomEvent("lidya-language-change", { detail:{ locale:newLocale } }));
 
     const basePath = stripLocalePrefix(window.location.pathname);
