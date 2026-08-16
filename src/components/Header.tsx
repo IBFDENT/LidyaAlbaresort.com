@@ -126,10 +126,13 @@ export default function Header({ tone = "auto" }: { tone?: HeaderTone }) {
     const updateHeaderState = () => {
       if (tone === "hero") {
         const hero = document.getElementById("home");
-        const heroHeight = hero?.offsetHeight ?? window.innerHeight;
-        const switchPoint = Math.max(heroHeight - 96, 320);
+        if (!hero) {
+          setScrolled(false);
+          return;
+        }
 
-        setScrolled(window.scrollY >= switchPoint);
+        const heroBottom = hero.getBoundingClientRect().bottom;
+        setScrolled(heroBottom <= 84);
         return;
       }
 
@@ -137,15 +140,11 @@ export default function Header({ tone = "auto" }: { tone?: HeaderTone }) {
     };
 
     updateHeaderState();
-
     window.addEventListener("scroll", updateHeaderState, { passive: true });
     window.addEventListener("resize", updateHeaderState);
     window.addEventListener("pageshow", updateHeaderState);
 
-    const frame = window.requestAnimationFrame(updateHeaderState);
-
     return () => {
-      window.cancelAnimationFrame(frame);
       window.removeEventListener("scroll", updateHeaderState);
       window.removeEventListener("resize", updateHeaderState);
       window.removeEventListener("pageshow", updateHeaderState);
@@ -185,192 +184,224 @@ export default function Header({ tone = "auto" }: { tone?: HeaderTone }) {
   const heroHeader = tone === "hero" && !headerOnLightBackground;
 
   return (
-    <header
-      className={`site-header fixed left-0 right-0 top-0 z-50 transition-[background-color,box-shadow,backdrop-filter,padding] duration-500 ${
-        headerOnLightBackground
-          ? "bg-ivory/95 py-3 shadow-[0_1px_0_rgba(27,11,32,0.08)] backdrop-blur-xl"
-          : "bg-transparent py-5 shadow-none backdrop-blur-0"
-      }`}
-    >
-      <div className="mx-auto flex max-w-[1440px] items-center justify-between px-5 sm:px-6 md:px-10 lg:px-16 xl:px-20">
-        <Link
-          href="/"
-          aria-label="LIDYA JEWELRY — Home"
-          className="shrink-0"
-          onClick={closeMobileMenu}
-        >
-          <Image
-            src="/images/logo.png"
-            alt="LIDYA JEWELRY"
-            width={220}
-            height={90}
-            priority
-            className={`w-auto object-contain transition-all duration-500 ${
-              headerOnLightBackground
-                ? "h-[39px] sm:h-[42px]"
-                : heroHeader
-                  ? "h-[42px] drop-shadow-[0_2px_16px_rgba(0,0,0,0.28)] sm:h-[46px]"
-                  : "h-[42px] brightness-[2.8] saturate-0 sm:h-[46px]"
-            }`}
-          />
-        </Link>
+    <>
+      <style jsx global>{`
+        .site-header[data-hero-active="true"] {
+          background: transparent !important;
+          box-shadow: none !important;
+          backdrop-filter: none !important;
+          -webkit-backdrop-filter: none !important;
+        }
 
-        <nav
-          className={`hidden items-center gap-7 text-[0.68rem] font-semibold uppercase tracking-[0.14em] xl:flex ${
-            headerOnLightBackground ? "text-plum-dark" : "text-brand-white"
-          }`}
-        >
-          {NAV_ITEMS.map((item, index) => (
-            <DesktopNavItem
-              key={`${item.href}-${item.labelKey}-${index}`}
-              item={item}
-              dict={dict}
-            />
-          ))}
-        </nav>
+        .site-header[data-hero-active="true"] nav:not(.mobile-header-nav) {
+          color: #f5efe6 !important;
+        }
 
-        <div className="flex items-center gap-3 sm:gap-4">
-          <LanguageSwitcher />
+        .site-header[data-hero-active="true"] > div:first-of-type a[href="/contact"] {
+          color: #f5efe6 !important;
+          border-color: rgba(245, 239, 230, 0.55) !important;
+          background: transparent !important;
+        }
 
-          <Link
-            href="/contact"
-            className={`hidden items-center justify-center border px-6 py-3 text-[0.64rem] font-semibold uppercase tracking-[0.2em] transition-all duration-500 lg:inline-flex ${
-              headerOnLightBackground
-                ? "border-plum-dark/40 text-plum-dark hover:bg-plum-dark hover:text-brand-white"
-                : "border-brand-white/55 text-brand-white hover:border-gold hover:bg-gold hover:text-plum-dark"
-            }`}
-          >
-            {dict.nav.book}
-          </Link>
+        .site-header[data-hero-active="true"] > div:first-of-type a[href="/contact"]:hover {
+          color: #1b0b20 !important;
+          border-color: #c8a96a !important;
+          background: #c8a96a !important;
+        }
 
-          <button
-            type="button"
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-            aria-expanded={menuOpen}
-            onClick={() => {
-              setMenuOpen((value) => !value);
-              if (menuOpen) setMobileSubOpen(null);
-            }}
-            className="relative flex h-10 w-10 items-center justify-center xl:hidden"
-          >
-            <span className="relative block h-[18px] w-[28px]">
-              <span
-                className={`absolute left-0 top-0 h-[1.5px] w-full origin-center transition-all duration-300 ${
-                  headerOnLightBackground ? "bg-plum-dark" : "bg-brand-white"
-                } ${menuOpen ? "top-[8px] rotate-45" : ""}`}
-              />
-              <span
-                className={`absolute left-0 top-[8px] h-[1.5px] w-full transition-all duration-300 ${
-                  headerOnLightBackground ? "bg-plum-dark" : "bg-brand-white"
-                } ${menuOpen ? "scale-x-0 opacity-0" : "scale-x-100 opacity-100"}`}
-              />
-              <span
-                className={`absolute bottom-0 left-0 h-[1.5px] w-full origin-center transition-all duration-300 ${
-                  headerOnLightBackground ? "bg-plum-dark" : "bg-brand-white"
-                } ${menuOpen ? "bottom-[8px] -rotate-45" : ""}`}
-              />
-            </span>
-          </button>
-        </div>
-      </div>
+        .site-header[data-hero-active="true"] img[alt="LIDYA JEWELRY"] {
+          filter: none !important;
+        }
+      `}</style>
 
-      <div
-        className={`overflow-hidden transition-all duration-500 xl:hidden ${
-          menuOpen ? "max-h-[calc(100dvh-64px)] opacity-100" : "max-h-0 opacity-0"
+      <header
+        data-hero-active={heroHeader ? "true" : "false"}
+        className={`site-header fixed left-0 right-0 top-0 z-50 ${
+          headerOnLightBackground
+            ? "bg-ivory/95 py-3 shadow-[0_1px_0_rgba(27,11,32,0.08)] backdrop-blur-xl transition-[background-color,box-shadow,padding] duration-300"
+            : "bg-transparent py-5 shadow-none"
         }`}
       >
-        <nav className="mt-3 max-h-[calc(100dvh-76px)] overflow-y-auto border-t border-plum-dark/10 bg-ivory px-5 pb-10 pt-4 text-center text-plum-dark shadow-[0_18px_45px_-25px_rgba(27,11,32,0.3)] sm:px-6 md:px-10 lg:px-16">
-          <div className="mx-auto max-w-[720px]">
+        <div className="mx-auto flex max-w-[1440px] items-center justify-between px-5 sm:px-6 md:px-10 lg:px-16 xl:px-20">
+          <Link
+            href="/"
+            aria-label="LIDYA JEWELRY — Home"
+            className="shrink-0"
+            onClick={closeMobileMenu}
+          >
+            <Image
+              src="/images/logo.png"
+              alt="LIDYA JEWELRY"
+              width={220}
+              height={90}
+              priority
+              className={`w-auto object-contain ${
+                headerOnLightBackground
+                  ? "h-[39px] sm:h-[42px]"
+                  : heroHeader
+                    ? "h-[42px] drop-shadow-[0_2px_16px_rgba(0,0,0,0.28)] sm:h-[46px]"
+                    : "h-[42px] brightness-[2.8] saturate-0 sm:h-[46px]"
+              }`}
+            />
+          </Link>
+
+          <nav
+            className={`hidden items-center gap-7 text-[0.68rem] font-semibold uppercase tracking-[0.14em] xl:flex ${
+              headerOnLightBackground ? "text-plum-dark" : "text-brand-white"
+            }`}
+          >
             {NAV_ITEMS.map((item, index) => (
-              <div
-                key={`mobile-${item.href}-${item.labelKey}-${index}`}
-                className="border-b border-plum-dark/10 last:border-b-0"
-              >
-                {item.children?.length ? (
-                  <>
-                    <div className="flex items-center justify-center py-5">
-                      <Link
-                        href={item.href}
-                        onClick={closeMobileMenu}
-                        className="text-[0.72rem] font-semibold uppercase tracking-[0.16em] transition-colors hover:text-gold"
-                      >
-                        {dict.nav[item.labelKey]}
-                      </Link>
+              <DesktopNavItem
+                key={`${item.href}-${item.labelKey}-${index}`}
+                item={item}
+                dict={dict}
+              />
+            ))}
+          </nav>
 
-                      <button
-                        type="button"
-                        aria-label={`Open ${dict.nav[item.labelKey]} submenu`}
-                        aria-expanded={mobileSubOpen === index}
-                        onClick={() =>
-                          setMobileSubOpen((current) => (current === index ? null : index))
-                        }
-                        className="ml-3 flex h-8 w-8 items-center justify-center"
-                      >
-                        <svg
-                          viewBox="0 0 12 8"
-                          width="10"
-                          height="7"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="1.4"
-                          className={`transition-transform duration-300 ${
-                            mobileSubOpen === index ? "rotate-180" : ""
-                          }`}
-                          aria-hidden="true"
+          <div className="flex items-center gap-3 sm:gap-4">
+            <LanguageSwitcher />
+
+            <Link
+              href="/contact"
+              className={`hidden items-center justify-center border px-6 py-3 text-[0.64rem] font-semibold uppercase tracking-[0.2em] transition-colors duration-300 lg:inline-flex ${
+                headerOnLightBackground
+                  ? "border-plum-dark/40 text-plum-dark hover:bg-plum-dark hover:text-brand-white"
+                  : "border-brand-white/55 text-brand-white hover:border-gold hover:bg-gold hover:text-plum-dark"
+              }`}
+            >
+              {dict.nav.book}
+            </Link>
+
+            <button
+              type="button"
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={menuOpen}
+              onClick={() => {
+                setMenuOpen((value) => !value);
+                if (menuOpen) setMobileSubOpen(null);
+              }}
+              className="relative flex h-10 w-10 items-center justify-center xl:hidden"
+            >
+              <span className="relative block h-[18px] w-[28px]">
+                <span
+                  className={`absolute left-0 top-0 h-[1.5px] w-full origin-center transition-all duration-300 ${
+                    headerOnLightBackground ? "bg-plum-dark" : "bg-brand-white"
+                  } ${menuOpen ? "top-[8px] rotate-45" : ""}`}
+                />
+                <span
+                  className={`absolute left-0 top-[8px] h-[1.5px] w-full transition-all duration-300 ${
+                    headerOnLightBackground ? "bg-plum-dark" : "bg-brand-white"
+                  } ${menuOpen ? "scale-x-0 opacity-0" : "scale-x-100 opacity-100"}`}
+                />
+                <span
+                  className={`absolute bottom-0 left-0 h-[1.5px] w-full origin-center transition-all duration-300 ${
+                    headerOnLightBackground ? "bg-plum-dark" : "bg-brand-white"
+                  } ${menuOpen ? "bottom-[8px] -rotate-45" : ""}`}
+                />
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <div
+          className={`overflow-hidden transition-all duration-500 xl:hidden ${
+            menuOpen ? "max-h-[calc(100dvh-64px)] opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <nav className="mobile-header-nav mt-3 max-h-[calc(100dvh-76px)] overflow-y-auto border-t border-plum-dark/10 bg-ivory px-5 pb-10 pt-4 text-center text-plum-dark shadow-[0_18px_45px_-25px_rgba(27,11,32,0.3)] sm:px-6 md:px-10 lg:px-16">
+            <div className="mx-auto max-w-[720px]">
+              {NAV_ITEMS.map((item, index) => (
+                <div
+                  key={`mobile-${item.href}-${item.labelKey}-${index}`}
+                  className="border-b border-plum-dark/10 last:border-b-0"
+                >
+                  {item.children?.length ? (
+                    <>
+                      <div className="flex items-center justify-center py-5">
+                        <Link
+                          href={item.href}
+                          onClick={closeMobileMenu}
+                          className="text-[0.72rem] font-semibold uppercase tracking-[0.16em] transition-colors hover:text-gold"
                         >
-                          <path d="M1 1.5L6 6.5L11 1.5" />
-                        </svg>
-                      </button>
-                    </div>
+                          {dict.nav[item.labelKey]}
+                        </Link>
 
-                    <div
-                      className={`grid transition-all duration-300 ${
-                        mobileSubOpen === index
-                          ? "grid-rows-[1fr] pb-4 opacity-100"
-                          : "grid-rows-[0fr] opacity-0"
-                      }`}
-                    >
-                      <div className="overflow-hidden">
-                        <div className="mx-auto max-w-[420px] border-y border-gold/20 py-2">
-                          {item.children.map((child, childIndex) => (
-                            <Link
-                              key={`${child.href}-${childIndex}`}
-                              href={child.href}
-                              className="block py-3 text-center text-[0.68rem] font-medium uppercase tracking-[0.14em] text-plum-dark/60 transition-colors hover:text-gold"
-                              onClick={closeMobileMenu}
-                            >
-                              {dict.nav[child.labelKey]}
-                            </Link>
-                          ))}
+                        <button
+                          type="button"
+                          aria-label={`Open ${dict.nav[item.labelKey]} submenu`}
+                          aria-expanded={mobileSubOpen === index}
+                          onClick={() =>
+                            setMobileSubOpen((current) => (current === index ? null : index))
+                          }
+                          className="ml-3 flex h-8 w-8 items-center justify-center"
+                        >
+                          <svg
+                            viewBox="0 0 12 8"
+                            width="10"
+                            height="7"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="1.4"
+                            className={`transition-transform duration-300 ${
+                              mobileSubOpen === index ? "rotate-180" : ""
+                            }`}
+                            aria-hidden="true"
+                          >
+                            <path d="M1 1.5L6 6.5L11 1.5" />
+                          </svg>
+                        </button>
+                      </div>
+
+                      <div
+                        className={`grid transition-all duration-300 ${
+                          mobileSubOpen === index
+                            ? "grid-rows-[1fr] pb-4 opacity-100"
+                            : "grid-rows-[0fr] opacity-0"
+                        }`}
+                      >
+                        <div className="overflow-hidden">
+                          <div className="mx-auto max-w-[420px] border-y border-gold/20 py-2">
+                            {item.children.map((child, childIndex) => (
+                              <Link
+                                key={`${child.href}-${childIndex}`}
+                                href={child.href}
+                                className="block py-3 text-center text-[0.68rem] font-medium uppercase tracking-[0.14em] text-plum-dark/60 transition-colors hover:text-gold"
+                                onClick={closeMobileMenu}
+                              >
+                                {dict.nav[child.labelKey]}
+                              </Link>
+                            ))}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </>
-                ) : (
-                  <Link
-                    href={item.href}
-                    className="block py-5 text-center text-[0.72rem] font-semibold uppercase tracking-[0.16em] transition-colors hover:text-gold"
-                    onClick={closeMobileMenu}
-                  >
-                    {dict.nav[item.labelKey]}
-                  </Link>
-                )}
-              </div>
-            ))}
+                    </>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      className="block py-5 text-center text-[0.72rem] font-semibold uppercase tracking-[0.16em] transition-colors hover:text-gold"
+                      onClick={closeMobileMenu}
+                    >
+                      {dict.nav[item.labelKey]}
+                    </Link>
+                  )}
+                </div>
+              ))}
 
-            <div className="pt-7">
-              <Link
-                href="/contact"
-                onClick={closeMobileMenu}
-                className="mx-auto inline-flex min-h-[52px] w-full max-w-[300px] items-center justify-center gap-5 bg-gold px-7 text-[0.64rem] font-semibold uppercase tracking-[0.2em] text-plum-dark transition-colors hover:bg-gold-light"
-              >
-                {dict.nav.book}
-                <span>→</span>
-              </Link>
+              <div className="pt-7">
+                <Link
+                  href="/contact"
+                  onClick={closeMobileMenu}
+                  className="mx-auto inline-flex min-h-[52px] w-full max-w-[300px] items-center justify-center gap-5 bg-gold px-7 text-[0.64rem] font-semibold uppercase tracking-[0.2em] text-plum-dark transition-colors hover:bg-gold-light"
+                >
+                  {dict.nav.book}
+                  <span>→</span>
+                </Link>
+              </div>
             </div>
-          </div>
-        </nav>
-      </div>
-    </header>
+          </nav>
+        </div>
+      </header>
+    </>
   );
 }
