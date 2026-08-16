@@ -8,7 +8,7 @@ import { NAV_ITEMS, type NavItem } from "@/lib/nav";
 import { useLanguage } from "@/components/LanguageProvider";
 import LanguageSwitcher from "./LanguageSwitcher";
 
-type HeaderTone = "auto" | "light";
+type HeaderTone = "auto" | "light" | "hero";
 
 function DesktopNavItem({
   item,
@@ -158,11 +158,8 @@ export default function Header({ tone = "auto" }: { tone?: HeaderTone }) {
     setMobileSubOpen(null);
   };
 
-  // Light pages (for example Services and Boutiques) must never use the
-  // transparent white-on-hero state. The explicit tone keeps the header
-  // readable from the first pixel while preserving the cinematic overlay
-  // behaviour on image/dark hero pages.
   const headerOnLightBackground = tone === "light" || scrolled || menuOpen;
+  const heroHeader = tone === "hero" && !headerOnLightBackground;
 
   return (
     <header
@@ -188,7 +185,9 @@ export default function Header({ tone = "auto" }: { tone?: HeaderTone }) {
             className={`w-auto object-contain transition-all duration-500 ${
               headerOnLightBackground
                 ? "h-[39px] sm:h-[42px]"
-                : "h-[42px] brightness-[2.8] saturate-0 sm:h-[46px]"
+                : heroHeader
+                  ? "h-[42px] drop-shadow-[0_2px_16px_rgba(0,0,0,0.28)] sm:h-[46px]"
+                  : "h-[42px] brightness-[2.8] saturate-0 sm:h-[46px]"
             }`}
           />
         </Link>
@@ -215,7 +214,7 @@ export default function Header({ tone = "auto" }: { tone?: HeaderTone }) {
             className={`hidden items-center justify-center border px-6 py-3 text-[0.64rem] font-semibold uppercase tracking-[0.2em] transition-all duration-500 lg:inline-flex ${
               headerOnLightBackground
                 ? "border-plum-dark/40 text-plum-dark hover:bg-plum-dark hover:text-brand-white"
-                : "border-brand-white/45 text-brand-white hover:border-gold hover:bg-gold hover:text-plum-dark"
+                : "border-brand-white/55 text-brand-white hover:border-gold hover:bg-gold hover:text-plum-dark"
             }`}
           >
             {dict.nav.book}
