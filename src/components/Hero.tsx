@@ -20,6 +20,7 @@ export default function Hero() {
   const scrollCurrent = useRef(0);
 
   const [loaded, setLoaded] = useState(false);
+  const [heroSrc, setHeroSrc] = useState("/images/hero.png");
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -109,12 +110,15 @@ export default function Hero() {
         }}
       >
         <Image
-          src="/images/hero.jpg"
+          src={heroSrc}
           alt="LIDYA Jewellery boutique"
           fill
           priority
           sizes="100vw"
           className="object-cover object-[61%_center]"
+          onError={() => {
+            if (heroSrc !== "/images/hero.jpg") setHeroSrc("/images/hero.jpg");
+          }}
         />
       </div>
 
