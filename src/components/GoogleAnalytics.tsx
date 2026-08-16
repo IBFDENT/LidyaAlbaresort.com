@@ -1,15 +1,14 @@
 "use client";
 
 import Script from "next/script";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import {
   COOKIE_CONSENT_READY_EVENT,
-  hasAnalyticsConsent,
+  readCookieConsent,
   type CookieConsentRecord,
 } from "@/lib/cookie-consent";
 
-const GA_MEASUREMENT_ID =
-  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() || "G-CEQD4H76NZ";
+const GA_MEASUREMENT_ID = "G-CEQD4H76NZ";
 
 declare global {
   interface Window {
@@ -18,21 +17,32 @@ declare global {
   }
 }
 
-function updateGoogleConsent(analytics: boolean, marketing: boolean) {
-  if (typeof window === "undefined" || !window.gtag) return;
+function ensureGtag() {
+  if (typeof window === "undefined") return null;
 
-  window.gtag("consent", "update", {
+  window.dataLayer = window.dataLayer || [];
+  if (!window.gtag) {
+    window.gtag = (...args: unknown[]) => {
+      window.dataLayer?.push(args);
+    };
+  }
+
+  return window.gtag;
+}
+
+function applyConsent(analytics: boolean, marketing: boolean, sendPageView = false) {
+  const gtag = ensureGtag();
+  if (!gtag) return;
+
+  gtag("consent", "update", {
     analytics_storage: analytics ? "granted" : "denied",
     ad_storage: marketing ? "granted" : "denied",
     ad_user_data: marketing ? "granted" : "denied",
     ad_personalization: marketing ? "granted" : "denied",
   });
 
-  // A page_view may have been evaluated while analytics consent was denied.
-  // Send one immediately after the visitor grants analytics consent so GA4
-  // Realtime receives the current visit without requiring a reload.
-  if (analytics) {
-    window.gtag("event", "page_view", {
+  if (analytics && sendPageView) {
+    gtag("event", "page_view", {
       page_title: document.title,
       page_location: window.location.href,
       page_path: `${window.location.pathname}${window.location.search}`,
@@ -40,27 +50,55 @@ function updateGoogleConsent(analytics: boolean, marketing: boolean) {
   }
 }
 
+function applyStoredConsent(sendPageView = false) {
+  const consent = readCookieConsent();
+  applyConsent(Boolean(consent?.analytics), Boolean(consent?.marketing), sendPageView);
+}
+
 export default function GoogleAnalytics() {
+  const handleGoogleTagLoad = useCallback(() => {
+    const gtag = ensureGtag();
+    if (!gtag) return;
+
+    gtag("js", new Date());
+
+    const consent = readCookieConsent();
+    applyConsent(Boolean(consent?.analytics), Boolean(consent?.marketing), false);
+
+    gtag("config", GA_MEASUREMENT_ID, {
+      send_page_view: Boolean(consent?.analytics),
+    });
+
+    if (consent?.analytics) {
+      window.setTimeout(() => {
+        applyStoredConsent(true);
+      }, 300);
+    }
+  }, []);
+
   useEffect(() => {
     const handleConsentReady = (event: Event) => {
       const consent = (event as CustomEvent<CookieConsentRecord>).detail;
       if (!consent) return;
-      updateGoogleConsent(Boolean(consent.analytics), Boolean(consent.marketing));
+
+      applyConsent(Boolean(consent.analytics), Boolean(consent.marketing), Boolean(consent.analytics));
+
+      if (consent.analytics) {
+        window.setTimeout(() => applyStoredConsent(true), 250);
+      }
     };
 
     window.addEventListener(COOKIE_CONSENT_READY_EVENT, handleConsentReady);
 
-    // Cover a consent choice that already existed before hydration.
-    if (hasAnalyticsConsent()) {
-      updateGoogleConsent(true, false);
-    }
+    // Always re-apply the persisted choice after hydration. This closes the
+    // race where the cookie runtime can emit its ready event before this
+    // component has attached its listener.
+    applyStoredConsent(false);
 
     return () => {
       window.removeEventListener(COOKIE_CONSENT_READY_EVENT, handleConsentReady);
     };
   }, []);
-
-  if (!GA_MEASUREMENT_ID) return null;
 
   return (
     <>
@@ -74,25 +112,17 @@ export default function GoogleAnalytics() {
             ad_storage: 'denied',
             ad_user_data: 'denied',
             ad_personalization: 'denied',
-            wait_for_update: 500
+            wait_for_update: 2000
           });
         `}
       </Script>
+
       <Script
         id="lidya-google-tag"
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
         strategy="afterInteractive"
+        onLoad={handleGoogleTagLoad}
       />
-      <Script id="lidya-google-analytics-config" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          window.gtag = window.gtag || function(){dataLayer.push(arguments);};
-          window.gtag('js', new Date());
-          window.gtag('config', '${GA_MEASUREMENT_ID}', {
-            send_page_view: true
-          });
-        `}
-      </Script>
     </>
   );
 }
