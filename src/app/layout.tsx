@@ -71,7 +71,7 @@ const organizationSchema = {
   address:{ "@type":"PostalAddress", streetAddress:"Çolaklı, Tilkiler Mevkii, Erhan Demir Blv. No:4", postalCode:"07600", addressLocality:"Manavgat", addressRegion:"Antalya", addressCountry:"TR" },
   areaServed:["Antalya","Manavgat","Side","Türkiye"], sameAs:["https://www.instagram.com/tanirzafer","https://www.facebook.com/lidyaalbajewellery/"]
 };
-const websiteSchema = { "@context":"https://schema.org", "@type":"WebSite", "@id":`${SITE_URL}/#website`, url:SITE_URL, name:"LIDYA Jewellery", publisher:{ "@id":`${SITE_URL}/#organization" }, inLanguage:["en","de","tr","sk","cs","hu","pl","ru","nl","da","fi","sv","fr","it","es"] };
+const websiteSchema = { "@context":"https://schema.org", "@type":"WebSite", "@id":`${SITE_URL}/#website`, url:SITE_URL, name:"LIDYA Jewellery", publisher:{ "@id":`${SITE_URL}/#organization` }, inLanguage:["en","de","tr","sk","cs","hu","pl","ru","nl","da","fi","sv","fr","it","es"] };
 
 export default async function RootLayout({ children }: Readonly<{ children:React.ReactNode }>) {
   const requestHeaders = await headers();
