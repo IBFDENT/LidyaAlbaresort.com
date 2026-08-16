@@ -123,18 +123,35 @@ export default function Header({ tone = "auto" }: { tone?: HeaderTone }) {
   const [mobileSubOpen, setMobileSubOpen] = useState<number | null>(null);
 
   useEffect(() => {
-    const onScroll = () => {
-      const threshold = tone === "hero" ? Math.max(window.innerHeight - 110, 120) : 40;
-      setScrolled(window.scrollY > threshold);
+    const updateHeaderState = () => {
+      if (tone === "hero") {
+        const hero = document.getElementById("home");
+
+        if (hero) {
+          const rect = hero.getBoundingClientRect();
+          setScrolled(rect.bottom <= 92);
+          return;
+        }
+
+        setScrolled(window.scrollY > Math.max(window.innerHeight - 110, 120));
+        return;
+      }
+
+      setScrolled(window.scrollY > 40);
     };
 
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    updateHeaderState();
+    window.addEventListener("scroll", updateHeaderState, { passive: true });
+    window.addEventListener("resize", updateHeaderState);
+
+    const frame = window.requestAnimationFrame(updateHeaderState);
+    const timer = window.setTimeout(updateHeaderState, 350);
 
     return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      window.cancelAnimationFrame(frame);
+      window.clearTimeout(timer);
+      window.removeEventListener("scroll", updateHeaderState);
+      window.removeEventListener("resize", updateHeaderState);
     };
   }, [tone]);
 
