@@ -7,7 +7,7 @@ import type { Locale } from "@/lib/i18n";
 
 const contacts = [
   {
-    name: "Zafer (Victor)",
+    name: "Zafer | Victor |",
     languages: "Türkçe · English",
     phone: "+90 532 567 27 77",
     phoneHref: "tel:+905325672777",
