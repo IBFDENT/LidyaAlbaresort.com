@@ -65,3 +65,143 @@ h4 {
 .btn-magnetic:hover {
   transform: translateY(-2px);
 }
+
+/* Homepage — compact luxury materials editorial */
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/gold"],
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/diamonds"],
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/design"],
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/pearls"] {
+  position: relative;
+  min-height: 310px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 1.75rem 1.7rem;
+  background: #171019;
+  isolation: isolate;
+  transition: transform 0.65s var(--ease-lidya), box-shadow 0.65s var(--ease-lidya);
+}
+
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/gold"]::before,
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/diamonds"]::before,
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/design"]::before,
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/pearls"]::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 36% 0;
+  z-index: -2;
+  transform: scale(1.02);
+  transition: transform 1s var(--ease-lidya), filter 1s var(--ease-lidya);
+}
+
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/gold"]::after,
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/diamonds"]::after,
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/design"]::after,
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/pearls"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, transparent 25%, rgba(18, 10, 21, 0.12) 52%, rgba(18, 10, 21, 0.96) 75%);
+  pointer-events: none;
+}
+
+/* Gold — warm molten metal */
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/gold"]::before {
+  background:
+    radial-gradient(circle at 27% 28%, rgba(255,244,187,0.98) 0 8%, transparent 9%),
+    radial-gradient(circle at 72% 38%, rgba(255,222,119,0.9) 0 11%, transparent 12%),
+    linear-gradient(125deg, #7f5210 0%, #d4a13b 18%, #fff0a8 34%, #b67816 49%, #f3cf6d 67%, #8d5a10 84%, #e6bd55 100%);
+  filter: saturate(1.06) contrast(1.04);
+}
+
+/* Diamonds — faceted cool light */
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/diamonds"]::before {
+  background:
+    linear-gradient(145deg, transparent 0 22%, rgba(255,255,255,0.9) 22% 24%, transparent 24% 55%, rgba(207,223,232,0.75) 55% 57%, transparent 57%),
+    linear-gradient(35deg, transparent 0 28%, rgba(255,255,255,0.55) 28% 30%, transparent 30% 66%, rgba(190,212,226,0.6) 66% 68%, transparent 68%),
+    conic-gradient(from 35deg at 50% 50%, #8998a4, #f8fbfd, #b7c6cf, #ffffff, #7c8b96, #e8f0f4, #9cabb6, #ffffff);
+  filter: brightness(1.08) contrast(1.08);
+}
+
+/* Precious stones — restrained ruby, sapphire and emerald jewel tones */
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/design"]::before {
+  background:
+    radial-gradient(circle at 22% 43%, #ff4266 0 8%, #8e1830 9% 16%, transparent 17%),
+    radial-gradient(circle at 52% 28%, #4d88ff 0 9%, #183a88 10% 18%, transparent 19%),
+    radial-gradient(circle at 78% 50%, #39a870 0 8%, #0d5d3b 9% 17%, transparent 18%),
+    linear-gradient(130deg, #251022, #34172c 45%, #111c24 100%);
+}
+
+/* Pearls — ivory nacre and champagne iridescence */
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/pearls"]::before {
+  background:
+    radial-gradient(circle at 25% 36%, #fffdf5 0 11%, #eadfcf 12% 16%, transparent 17%),
+    radial-gradient(circle at 50% 48%, #fffaf0 0 13%, #d9c7b7 14% 19%, transparent 20%),
+    radial-gradient(circle at 76% 32%, #ffffff 0 10%, #e3d8cf 11% 16%, transparent 17%),
+    linear-gradient(135deg, #cdbcae 0%, #faf4e8 34%, #d9e4e5 57%, #f1dce0 78%, #bca99b 100%);
+  filter: saturate(0.82) brightness(1.04);
+}
+
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/gold"] > span,
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/diamonds"] > span,
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/design"] > span,
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/pearls"] > span {
+  position: absolute;
+  top: 1.15rem;
+  left: 1.2rem;
+  font-size: 1.9rem;
+  line-height: 1;
+  color: rgba(255,255,255,0.86);
+  text-shadow: 0 2px 18px rgba(0,0,0,0.22);
+}
+
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/gold"] h3,
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/diamonds"] h3,
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/design"] h3,
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/pearls"] h3 {
+  position: relative;
+  z-index: 2;
+  margin-top: 0;
+  color: #fffaf2;
+  font-size: clamp(1.75rem, 2vw, 2.35rem);
+  text-align: left;
+}
+
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/gold"] p,
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/diamonds"] p,
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/design"] p,
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/pearls"] p {
+  position: relative;
+  z-index: 2;
+  max-width: 17rem;
+  margin-top: 0.45rem;
+  color: rgba(255,253,249,0.62);
+  text-align: left;
+}
+
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/gold"]:hover,
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/diamonds"]:hover,
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/design"]:hover,
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/pearls"]:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 22px 55px -24px rgba(27, 11, 32, 0.46);
+}
+
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/gold"]:hover::before,
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/diamonds"]:hover::before,
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/design"]:hover::before,
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/pearls"]:hover::before {
+  transform: scale(1.07);
+  filter: brightness(1.09) saturate(1.04);
+}
+
+@media (max-width: 767px) {
+  .bg-\[\#f2ede5\] .grid.gap-px > a[href="/gold"],
+  .bg-\[\#f2ede5\] .grid.gap-px > a[href="/diamonds"],
+  .bg-\[\#f2ede5\] .grid.gap-px > a[href="/design"],
+  .bg-\[\#f2ede5\] .grid.gap-px > a[href="/pearls"] {
+    min-height: 285px;
+  }
+}
