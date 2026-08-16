@@ -3,17 +3,70 @@ import { ADMIN_ACCESS_COOKIE, ADMIN_REFRESH_COOKIE } from "@/lib/admin-auth";
 import { DEFAULT_LOCALE, isLocale, PUBLIC_ROUTES } from "@/lib/international-seo";
 
 const LOCALE_COOKIE = "lidya-locale";
+const MANUAL_LOCALE_COOKIE = "lidya-locale-manual";
+
+const COUNTRY_LOCALE: Record<string, string> = {
+  DE: "de",
+  AT: "de",
+  SK: "sk",
+  CZ: "cs",
+  TR: "tr",
+  HU: "hu",
+  PL: "pl",
+  RU: "ru",
+  NL: "nl",
+  DK: "da",
+  FI: "fi",
+  SE: "sv",
+  FR: "fr",
+  IT: "it",
+  ES: "es",
+  GB: "en",
+  IE: "en",
+  US: "en",
+  CA: "en",
+  AU: "en",
+  NZ: "en",
+};
 
 function isPublicPath(pathname: string) {
   return (PUBLIC_ROUTES as readonly string[]).includes(pathname);
 }
 
-function preferredLocale(request: NextRequest) {
-  const saved = request.cookies.get(LOCALE_COOKIE)?.value;
-  if (saved && isLocale(saved)) return saved;
+function browserLocale(request: NextRequest) {
   const accepted = request.headers.get("accept-language")?.toLowerCase() || "";
-  const candidate = accepted.split(",").map((part) => part.trim().split(";")[0].split("-")[0]).find((code) => isLocale(code));
-  return candidate && isLocale(candidate) ? candidate : DEFAULT_LOCALE;
+  const candidate = accepted
+    .split(",")
+    .map((part) => part.trim().split(";")[0].split("-")[0])
+    .find((code) => isLocale(code));
+
+  return candidate && isLocale(candidate) ? candidate : null;
+}
+
+function countryLocale(request: NextRequest) {
+  const country = request.headers.get("x-vercel-ip-country")?.toUpperCase();
+  if (!country) return null;
+
+  const candidate = COUNTRY_LOCALE[country];
+  return candidate && isLocale(candidate) ? candidate : null;
+}
+
+function preferredLocale(request: NextRequest) {
+  // A language explicitly selected by the visitor always wins.
+  const manual = request.cookies.get(MANUAL_LOCALE_COOKIE)?.value;
+  if (manual && isLocale(manual)) return manual;
+
+  // For a first visit to the bare domain, prefer the visitor's country.
+  // Example: a visitor in Germany opens lidyaalbaresort.com -> /de.
+  const byCountry = countryLocale(request);
+  if (byCountry) return byCountry;
+
+  // If Vercel cannot determine the country, use the browser preference.
+  const byBrowser = browserLocale(request);
+  if (byBrowser) return byBrowser;
+
+  // Final safe fallback for international traffic.
+  return DEFAULT_LOCALE;
 }
 
 export function proxy(request: NextRequest) {
