@@ -119,40 +119,37 @@ function DesktopNavItem({
 export default function Header({ tone = "auto" }: { tone?: HeaderTone }) {
   const { dictionary: dict } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
+  const [heroVisible, setHeroVisible] = useState(tone === "hero");
   const [menuOpen, setMenuOpen] = useState(false);
   const [mobileSubOpen, setMobileSubOpen] = useState<number | null>(null);
 
   useEffect(() => {
-    const updateHeaderState = () => {
-      if (tone === "hero") {
-        const hero = document.getElementById("home");
+    if (tone === "hero") {
+      setScrolled(false);
+      setHeroVisible(true);
 
-        if (hero) {
-          const rect = hero.getBoundingClientRect();
-          setScrolled(rect.bottom <= 92);
-          return;
-        }
+      const hero = document.getElementById("home");
+      if (!hero) return;
 
-        setScrolled(window.scrollY > Math.max(window.innerHeight - 110, 120));
-        return;
-      }
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          setHeroVisible(entry.isIntersecting);
+        },
+        {
+          root: null,
+          threshold: 0,
+          rootMargin: "0px 0px -82% 0px",
+        },
+      );
 
-      setScrolled(window.scrollY > 40);
-    };
+      observer.observe(hero);
+      return () => observer.disconnect();
+    }
 
-    updateHeaderState();
-    window.addEventListener("scroll", updateHeaderState, { passive: true });
-    window.addEventListener("resize", updateHeaderState);
-
-    const frame = window.requestAnimationFrame(updateHeaderState);
-    const timer = window.setTimeout(updateHeaderState, 350);
-
-    return () => {
-      window.cancelAnimationFrame(frame);
-      window.clearTimeout(timer);
-      window.removeEventListener("scroll", updateHeaderState);
-      window.removeEventListener("resize", updateHeaderState);
-    };
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, [tone]);
 
   useEffect(() => {
@@ -184,7 +181,10 @@ export default function Header({ tone = "auto" }: { tone?: HeaderTone }) {
     setMobileSubOpen(null);
   };
 
-  const headerOnLightBackground = tone === "light" || scrolled || menuOpen;
+  const headerOnLightBackground =
+    tone === "light" ||
+    menuOpen ||
+    (tone === "hero" ? !heroVisible : scrolled);
   const heroHeader = tone === "hero" && !headerOnLightBackground;
 
   return (
