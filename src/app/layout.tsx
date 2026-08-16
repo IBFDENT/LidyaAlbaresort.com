@@ -3,6 +3,7 @@ import { headers } from "next/headers";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
 
 import CookieConsent from "@/components/CookieConsent";
+import CookieConsentRuntime from "@/components/CookieConsentRuntime";
 import EmailProtection from "@/components/EmailProtection";
 import { LanguageProvider } from "@/components/LanguageProvider";
 import SiteProtection from "@/components/SiteProtection";
@@ -67,5 +68,5 @@ export default async function RootLayout({ children }: Readonly<{ children:React
   const headerLocale = requestHeaders.get("x-lidya-locale") || "";
   const locale = isLocale(headerLocale) ? headerLocale : DEFAULT_LOCALE;
 
-  return <html lang={locale}><body className={`${cormorant.variable} ${manrope.variable} antialiased`}><script type="application/ld+json" dangerouslySetInnerHTML={{ __html:JSON.stringify(organizationSchema) }}/><script type="application/ld+json" dangerouslySetInnerHTML={{ __html:JSON.stringify(websiteSchema) }}/><LanguageProvider initialLocale={locale}><SiteProtection/><EmailProtection/>{children}<CookieConsent/></LanguageProvider></body></html>;
+  return <html lang={locale}><body className={`${cormorant.variable} ${manrope.variable} antialiased`}><script type="application/ld+json" dangerouslySetInnerHTML={{ __html:JSON.stringify(organizationSchema) }}/><script type="application/ld+json" dangerouslySetInnerHTML={{ __html:JSON.stringify(websiteSchema) }}/><LanguageProvider initialLocale={locale}><SiteProtection/><EmailProtection/>{children}<CookieConsentRuntime/><CookieConsent/></LanguageProvider></body></html>;
 }
