@@ -1,7 +1,17 @@
 import type { Metadata } from "next";
+import {
+  DEFAULT_LOCALE,
+  PUBLIC_ROUTES,
+  SITE_URL,
+  shareCardUrl,
+  type PublicRoute,
+} from "@/lib/international-seo";
 
-const SITE_URL = "https://www.lidyaalbaresort.com";
 const indexingEnabled = process.env.SEO_INDEXING_ENABLED === "true";
+
+function asPublicRoute(path: string): PublicRoute | null {
+  return (PUBLIC_ROUTES as readonly string[]).includes(path) ? (path as PublicRoute) : null;
+}
 
 export function pageMetadata(input: {
   title: string;
@@ -13,7 +23,8 @@ export function pageMetadata(input: {
 }): Metadata {
   const path = input.path === "/" ? "/" : `/${input.path.replace(/^\/+|\/+$/g, "")}`;
   const canonical = `${SITE_URL}${path === "/" ? "" : path}`;
-  const image = input.image || "/images/hero.jpg";
+  const publicRoute = asPublicRoute(path);
+  const image = publicRoute ? shareCardUrl(DEFAULT_LOCALE, publicRoute) : input.image || "/images/hero.jpg";
   const noIndex = input.noIndex === true || !indexingEnabled;
 
   return {
@@ -28,7 +39,7 @@ export function pageMetadata(input: {
       url: canonical,
       type: "website",
       siteName: "LIDYA Jewellery",
-      images: [{ url: image, alt: input.title }],
+      images: [{ url: image, width:1200, height:630, alt: input.title }],
     },
     twitter: {
       card: "summary_large_image",
