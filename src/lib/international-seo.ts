@@ -3,6 +3,7 @@ import { dictionaries, LOCALES, type Locale } from "@/lib/i18n";
 export const SITE_URL = "https://www.lidyaalbaresort.com";
 export const DEFAULT_LOCALE: Locale = "en";
 export const SEO_LOCALES = LOCALES;
+export const SHARE_CARD_VERSION = "2026-08-16-v3";
 
 export const PUBLIC_ROUTES = [
   "/",
@@ -44,7 +45,7 @@ export const OG_LOCALE: Record<Locale, string> = {
 };
 
 export const SHARE_IMAGE: Record<PublicRoute, string> = {
-  "/": "/images/hero.jpg",
+  "/": "/images/hero.png",
   "/collections": "/images/collections/signature.jpg",
   "/pearls": "/images/pearls/hero-pearls.png",
   "/wedding-rings": "/images/wedding-rings/hero-weddingsrings.png",
@@ -70,8 +71,8 @@ export const SHARE_IMAGE: Record<PublicRoute, string> = {
   "/boutiques": "/images/boutiques/manavgat.jpg",
   "/about": "/images/craftsmanship.jpg",
   "/contact": "/images/boutiques/manavgat.jpg",
-  "/privacy": "/images/hero.jpg",
-  "/terms": "/images/hero.jpg",
+  "/privacy": "/images/hero.png",
+  "/terms": "/images/hero.png",
 };
 
 const genericDescription: Record<Locale, string> = {
@@ -129,7 +130,7 @@ export function languageAlternates(path: string) {
 }
 
 export function shareCardUrl(locale: Locale, path: PublicRoute) {
-  const params = new URLSearchParams({ locale, path });
+  const params = new URLSearchParams({ locale, path, v: SHARE_CARD_VERSION });
   return `${SITE_URL}/api/og?${params.toString()}`;
 }
 
