@@ -27,6 +27,17 @@ function updateGoogleConsent(analytics: boolean, marketing: boolean) {
     ad_user_data: marketing ? "granted" : "denied",
     ad_personalization: marketing ? "granted" : "denied",
   });
+
+  // A page_view may have been evaluated while analytics consent was denied.
+  // Send one immediately after the visitor grants analytics consent so GA4
+  // Realtime receives the current visit without requiring a reload.
+  if (analytics) {
+    window.gtag("event", "page_view", {
+      page_title: document.title,
+      page_location: window.location.href,
+      page_path: `${window.location.pathname}${window.location.search}`,
+    });
+  }
 }
 
 export default function GoogleAnalytics() {
