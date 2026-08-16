@@ -9,7 +9,7 @@ import HomeTopNavigation from "@/components/HomeTopNavigation";
 import { LanguageProvider } from "@/components/LanguageProvider";
 import ServiceSelectionAutoScroll from "@/components/ServiceSelectionAutoScroll";
 import SiteProtection from "@/components/SiteProtection";
-import { DEFAULT_LOCALE, isLocale, SITE_URL } from "@/lib/international-seo";
+import { DEFAULT_LOCALE, isLocale, shareCardUrl, SITE_URL } from "@/lib/international-seo";
 import { supabaseRest } from "@/lib/supabaseAdmin";
 
 import "./globals.css";
@@ -36,7 +36,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const description = entry?.subtitle || entry?.body || fallbackDescription;
   const keywordsFromCms = String(entry?.metadata?.meta2 || "").split(",").map((v)=>v.trim()).filter(Boolean);
   const verification = process.env.GOOGLE_SITE_VERIFICATION?.trim();
-  const indexingEnabled = process.env.SEO_INDEXING_ENABLED === "true";
+  const indexingEnabled = process.env.SEO_INDEXING_ENABLED !== "false";
+  const shareImage = shareCardUrl(DEFAULT_LOCALE, "/");
 
   return {
     metadataBase:new URL(SITE_URL),
@@ -50,8 +51,15 @@ export async function generateMetadata(): Promise<Metadata> {
     keywords:keywordsFromCms.length ? keywordsFromCms : fallbackKeywords,
     icons:{ icon:[{ url:"/icon.png", type:"image/png" }], apple:[{ url:"/apple-icon.png", type:"image/png" }] },
     robots:indexingEnabled ? { index:true, follow:true, googleBot:{ index:true, follow:true, "max-image-preview":"large", "max-snippet":-1, "max-video-preview":-1 } } : { index:false, follow:false, nocache:true },
-    openGraph:{ title, description, type:"website", locale:"en_GB", siteName:"LIDYA Jewellery", images:[{ url:"/images/hero.jpg", width:1200, height:630, alt:"LIDYA Jewellery — Alba Resort, Antalya" }] },
-    twitter:{ card:"summary_large_image", title, description, images:["/images/hero.jpg"] },
+    openGraph:{
+      title,
+      description,
+      type:"website",
+      locale:"en_GB",
+      siteName:"LIDYA Jewellery",
+      images:[{ url:shareImage, width:1200, height:630, alt:"LIDYA Jewellery — Alba Resort, Antalya", type:"image/png" }],
+    },
+    twitter:{ card:"summary_large_image", title, description, images:[shareImage] },
     verification:verification ? { google:verification } : undefined,
     referrer:"origin-when-cross-origin",
   };
@@ -59,11 +67,11 @@ export async function generateMetadata(): Promise<Metadata> {
 
 const organizationSchema = {
   "@context":"https://schema.org", "@type":["JewelryStore","LocalBusiness"], "@id":`${SITE_URL}/#organization`, name:"LIDYA Jewellery", alternateName:"LIDYA Jewellery Alba Resort", url:SITE_URL,
-  logo:`${SITE_URL}/images/lidya-logo.png`, image:`${SITE_URL}/images/hero.jpg`, description:fallbackDescription, foundingDate:"1989", email:"info@lidyaalbaresort.com",
+  logo:`${SITE_URL}/images/lidya-logo.png`, image:`${SITE_URL}/images/hero.png`, description:fallbackDescription, foundingDate:"1989", email:"info@lidyaalbaresort.com",
   address:{ "@type":"PostalAddress", streetAddress:"Çolaklı, Tilkiler Mevkii, Erhan Demir Blv. No:4", postalCode:"07600", addressLocality:"Manavgat", addressRegion:"Antalya", addressCountry:"TR" },
   areaServed:["Antalya","Manavgat","Side","Türkiye"], sameAs:["https://www.instagram.com/tanirzafer","https://www.facebook.com/lidyaalbajewellery/"]
 };
-const websiteSchema = { "@context":"https://schema.org", "@type":"WebSite", "@id":`${SITE_URL}/#website`, url:SITE_URL, name:"LIDYA Jewellery", publisher:{ "@id":`${SITE_URL}/#organization` }, inLanguage:["en","de","tr","sk","cs","hu","pl","ru","nl","da","fi","sv","fr","it","es"] };
+const websiteSchema = { "@context":"https://schema.org", "@type":"WebSite", "@id":`${SITE_URL}/#website`, url:SITE_URL, name:"LIDYA Jewellery", publisher:{ "@id":`${SITE_URL}/#organization" }, inLanguage:["en","de","tr","sk","cs","hu","pl","ru","nl","da","fi","sv","fr","it","es"] };
 
 export default async function RootLayout({ children }: Readonly<{ children:React.ReactNode }>) {
   const requestHeaders = await headers();
