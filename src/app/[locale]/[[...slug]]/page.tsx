@@ -13,6 +13,7 @@ import DesignPage from "@/app/design/page";
 import DiamondsPage from "@/app/diamonds/page";
 import InvestmentDiamondsPage from "@/app/investment-diamonds/page";
 import InvestmentGoldPage from "@/app/investment-gold/page";
+import MaterialsPage from "@/app/materials/page";
 import PearlsPage from "@/app/pearls/page";
 import PrivacyPage from "@/app/privacy/page";
 import PrivateVisitPage from "@/app/private-visit/page";
@@ -56,6 +57,7 @@ const pages: Record<PublicRoute, unknown> = {
   "/diamonds": DiamondsPage,
   "/investment-diamonds": InvestmentDiamondsPage,
   "/investment-gold": InvestmentGoldPage,
+  "/materials": MaterialsPage,
   "/pearls": PearlsPage,
   "/privacy": PrivacyPage,
   "/private-visit": PrivateVisitPage,
