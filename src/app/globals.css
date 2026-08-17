@@ -94,17 +94,17 @@ h1,h2,h3,h4 { font-family: var(--font-display); font-weight: 500; letter-spacing
   position:relative; overflow:hidden; isolation:isolate; background:#f8f5ef;
 }
 #collections + section + section::before {
-  content:""; position:absolute; z-index:-2; top:0; right:0; width:68%; height:100%;
+  content:""; position:absolute; z-index:0; top:0; right:0; width:68%; height:100%;
   background-image:url("/images/home-services/bespoke-care-atelier.svg");
   background-position:62% 52%; background-size:cover; background-repeat:no-repeat;
   filter:saturate(.86) contrast(.98) brightness(1.03); transform:scale(1.02);
 }
 #collections + section + section::after {
-  content:""; position:absolute; z-index:-1; inset:0;
+  content:""; position:absolute; z-index:1; inset:0;
   background:linear-gradient(90deg,#f8f5ef 0%,#f8f5ef 31%,rgba(248,245,239,.98) 43%,rgba(248,245,239,.84) 60%,rgba(248,245,239,.68) 100%);
   pointer-events:none;
 }
-#collections + section + section > div { position:relative; z-index:1; }
+#collections + section + section > div { position:relative; z-index:2; }
 #collections + section + section .lg\:col-span-5 { padding:1.25rem 0; }
 #collections + section + section .lg\:col-span-7 > a {
   position:relative; min-height:220px; border-color:rgba(200,169,106,.35); background:rgba(255,253,249,.72);
