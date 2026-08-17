@@ -1,0 +1,190 @@
+import type { Locale } from "@/lib/i18n";
+
+export type FooterCopy = {
+  tagline: string;
+  since: string;
+  privateList: string;
+  privateListTitle: string;
+  privateListLead: string;
+  emailAddress: string;
+  joining: string;
+  joinPrivateList: string;
+  consentPrefix: string;
+  privacyPolicy: string;
+  navigate: string;
+  boutiques: string;
+  experiences: string;
+  privateVisit: string;
+  myLidya: string;
+  clientCentre: string;
+  signInRegister: string;
+  serviceRequests: string;
+  appointments: string;
+  contact: string;
+  contactLead: string;
+  legal: string;
+  privacy: string;
+  terms: string;
+  cookieSettings: string;
+  privateAppointment: string;
+  newsletterEnterEmail: string;
+  newsletterConsentError: string;
+  newsletterUnable: string;
+  newsletterDuplicate: string;
+  newsletterWelcome: string;
+  staffLogin: string;
+  allRightsReserved: string;
+};
+
+export const FOOTER_COPY: Record<Locale, FooterCopy> = {
+  en: {
+    tagline: "Jewellery of lasting value.", since: "Since 1989.", privateList: "The LIDYA Private List",
+    privateListTitle: "Private previews. New collections. Personal invitations.", privateListLead: "Receive selected collection previews, jewellery stories, investment insights and private LIDYA invitations.",
+    emailAddress: "Email address", joining: "Joining...", joinPrivateList: "Join the Private List",
+    consentPrefix: "I agree to receive LIDYA news, collection previews and private invitations by email. I can unsubscribe at any time. See our", privacyPolicy: "Privacy Policy",
+    navigate: "Navigate", boutiques: "Boutiques", experiences: "LIDYA Experience", privateVisit: "Private Visit Concierge", myLidya: "My LIDYA",
+    clientCentre: "Client Centre", signInRegister: "Sign in / Register", serviceRequests: "Service Requests", appointments: "Appointments",
+    contact: "Contact", contactLead: "One official address for jewellery, service, bespoke work and private appointments.", legal: "Legal", privacy: "Privacy", terms: "Terms", cookieSettings: "Cookie Settings", privateAppointment: "Private appointment",
+    newsletterEnterEmail: "Please enter your email address.", newsletterConsentError: "Please confirm that you agree to receive LIDYA news and invitations.", newsletterUnable: "Unable to subscribe.", newsletterDuplicate: "You are already on the LIDYA Private List.", newsletterWelcome: "Welcome to the LIDYA Private List.", staffLogin: "Staff Login", allRightsReserved: "All rights reserved."
+  },
+  sk: {
+    tagline: "Šperky s trvalou hodnotou.", since: "Od roku 1989.", privateList: "Súkromný zoznam LIDYA",
+    privateListTitle: "Súkromné ukážky. Nové kolekcie. Osobné pozvania.", privateListLead: "Dostávajte vybrané ukážky kolekcií, príbehy o šperkoch, investičné postrehy a súkromné pozvania LIDYA.",
+    emailAddress: "E-mailová adresa", joining: "Prihlasujem...", joinPrivateList: "Pridať sa do súkromného zoznamu",
+    consentPrefix: "Súhlasím so zasielaním noviniek LIDYA, ukážok kolekcií a súkromných pozvaní e-mailom. Odber môžem kedykoľvek zrušiť. Pozrite si naše", privacyPolicy: "Zásady ochrany súkromia",
+    navigate: "Navigácia", boutiques: "Butiky", experiences: "LIDYA Experience", privateVisit: "Súkromná návšteva Concierge", myLidya: "Moja LIDYA",
+    clientCentre: "Klientske centrum", signInRegister: "Prihlásenie / Registrácia", serviceRequests: "Servisné požiadavky", appointments: "Termíny",
+    contact: "Kontakt", contactLead: "Jedna oficiálna adresa pre šperky, servis, výrobu na mieru a súkromné stretnutia.", legal: "Právne", privacy: "Súkromie", terms: "Podmienky", cookieSettings: "Nastavenia cookies", privateAppointment: "Súkromný termín",
+    newsletterEnterEmail: "Zadajte svoju e-mailovú adresu.", newsletterConsentError: "Potvrďte súhlas so zasielaním noviniek a pozvaní LIDYA.", newsletterUnable: "Prihlásenie na odber sa nepodarilo.", newsletterDuplicate: "Už ste v súkromnom zozname LIDYA.", newsletterWelcome: "Vitajte v súkromnom zozname LIDYA.", staffLogin: "Prihlásenie personálu", allRightsReserved: "Všetky práva vyhradené."
+  },
+  de: {
+    tagline: "Schmuck von bleibendem Wert.", since: "Seit 1989.", privateList: "Die LIDYA Private List",
+    privateListTitle: "Private Vorschauen. Neue Kollektionen. Persönliche Einladungen.", privateListLead: "Erhalten Sie ausgewählte Kollektionsvorschauen, Schmuckgeschichten, Investment-Einblicke und private LIDYA Einladungen.",
+    emailAddress: "E-Mail-Adresse", joining: "Wird angemeldet...", joinPrivateList: "Private List beitreten",
+    consentPrefix: "Ich möchte LIDYA Neuigkeiten, Kollektionsvorschauen und private Einladungen per E-Mail erhalten. Ich kann mich jederzeit abmelden. Siehe unsere", privacyPolicy: "Datenschutzerklärung",
+    navigate: "Navigation", boutiques: "Boutiquen", experiences: "LIDYA Experience", privateVisit: "Private Visit Concierge", myLidya: "Mein LIDYA",
+    clientCentre: "Kundencenter", signInRegister: "Anmelden / Registrieren", serviceRequests: "Serviceanfragen", appointments: "Termine",
+    contact: "Kontakt", contactLead: "Eine offizielle Adresse für Schmuck, Service, Maßanfertigungen und private Termine.", legal: "Rechtliches", privacy: "Datenschutz", terms: "Bedingungen", cookieSettings: "Cookie-Einstellungen", privateAppointment: "Privater Termin",
+    newsletterEnterEmail: "Bitte geben Sie Ihre E-Mail-Adresse ein.", newsletterConsentError: "Bitte bestätigen Sie Ihr Einverständnis mit LIDYA Neuigkeiten und Einladungen.", newsletterUnable: "Anmeldung nicht möglich.", newsletterDuplicate: "Sie sind bereits auf der LIDYA Private List.", newsletterWelcome: "Willkommen auf der LIDYA Private List.", staffLogin: "Mitarbeiter-Login", allRightsReserved: "Alle Rechte vorbehalten."
+  },
+  tr: {
+    tagline: "Kalıcı değere sahip mücevherler.", since: "1989'dan beri.", privateList: "LIDYA Özel Listesi",
+    privateListTitle: "Özel ön gösterimler. Yeni koleksiyonlar. Kişisel davetler.", privateListLead: "Seçili koleksiyon ön gösterimleri, mücevher hikâyeleri, yatırım içgörüleri ve özel LIDYA davetleri alın.",
+    emailAddress: "E-posta adresi", joining: "Kaydediliyor...", joinPrivateList: "Özel Listeye Katıl",
+    consentPrefix: "LIDYA haberlerini, koleksiyon ön gösterimlerini ve özel davetleri e-posta ile almayı kabul ediyorum. İstediğim zaman abonelikten çıkabilirim.", privacyPolicy: "Gizlilik Politikası",
+    navigate: "Gezinme", boutiques: "Butikler", experiences: "LIDYA Experience", privateVisit: "Özel Ziyaret Concierge", myLidya: "LIDYA'm",
+    clientCentre: "Müşteri Merkezi", signInRegister: "Giriş / Kayıt", serviceRequests: "Servis Talepleri", appointments: "Randevular",
+    contact: "İletişim", contactLead: "Mücevher, servis, kişiye özel üretim ve özel randevular için tek resmi adres.", legal: "Yasal", privacy: "Gizlilik", terms: "Koşullar", cookieSettings: "Çerez Ayarları", privateAppointment: "Özel randevu",
+    newsletterEnterEmail: "Lütfen e-posta adresinizi girin.", newsletterConsentError: "LIDYA haberleri ve davetlerini almayı kabul ettiğinizi onaylayın.", newsletterUnable: "Abonelik gerçekleştirilemedi.", newsletterDuplicate: "Zaten LIDYA Özel Listesi'ndesiniz.", newsletterWelcome: "LIDYA Özel Listesi'ne hoş geldiniz.", staffLogin: "Personel Girişi", allRightsReserved: "Tüm hakları saklıdır."
+  },
+  ru: {
+    tagline: "Украшения непреходящей ценности.", since: "С 1989 года.", privateList: "Закрытый список LIDYA",
+    privateListTitle: "Закрытые показы. Новые коллекции. Персональные приглашения.", privateListLead: "Получайте избранные анонсы коллекций, истории об украшениях, инвестиционные материалы и персональные приглашения LIDYA.",
+    emailAddress: "Электронная почта", joining: "Подключаем...", joinPrivateList: "Вступить в закрытый список",
+    consentPrefix: "Я согласен получать новости LIDYA, анонсы коллекций и персональные приглашения по электронной почте. Отписаться можно в любое время. См.", privacyPolicy: "Политику конфиденциальности",
+    navigate: "Навигация", boutiques: "Бутики", experiences: "LIDYA Experience", privateVisit: "Консьерж частного визита", myLidya: "Моя LIDYA",
+    clientCentre: "Клиентский центр", signInRegister: "Войти / Регистрация", serviceRequests: "Заявки на сервис", appointments: "Встречи",
+    contact: "Контакты", contactLead: "Единый официальный адрес для украшений, сервиса, индивидуальных заказов и частных встреч.", legal: "Правовая информация", privacy: "Конфиденциальность", terms: "Условия", cookieSettings: "Настройки cookie", privateAppointment: "Частная встреча",
+    newsletterEnterEmail: "Введите адрес электронной почты.", newsletterConsentError: "Подтвердите согласие на получение новостей и приглашений LIDYA.", newsletterUnable: "Не удалось оформить подписку.", newsletterDuplicate: "Вы уже в закрытом списке LIDYA.", newsletterWelcome: "Добро пожаловать в закрытый список LIDYA.", staffLogin: "Вход для персонала", allRightsReserved: "Все права защищены."
+  },
+  pl: {
+    tagline: "Biżuteria o trwałej wartości.", since: "Od 1989 roku.", privateList: "Prywatna lista LIDYA",
+    privateListTitle: "Prywatne premiery. Nowe kolekcje. Osobiste zaproszenia.", privateListLead: "Otrzymuj wybrane zapowiedzi kolekcji, historie o biżuterii, informacje inwestycyjne i prywatne zaproszenia LIDYA.",
+    emailAddress: "Adres e-mail", joining: "Dołączanie...", joinPrivateList: "Dołącz do prywatnej listy",
+    consentPrefix: "Zgadzam się otrzymywać e-mailem wiadomości LIDYA, zapowiedzi kolekcji i prywatne zaproszenia. Mogę zrezygnować w każdej chwili. Zobacz naszą", privacyPolicy: "Politykę prywatności",
+    navigate: "Nawigacja", boutiques: "Butiki", experiences: "LIDYA Experience", privateVisit: "Concierge prywatnej wizyty", myLidya: "Moja LIDYA",
+    clientCentre: "Centrum klienta", signInRegister: "Logowanie / Rejestracja", serviceRequests: "Zlecenia serwisowe", appointments: "Spotkania",
+    contact: "Kontakt", contactLead: "Jeden oficjalny adres dla biżuterii, serwisu, zamówień indywidualnych i prywatnych spotkań.", legal: "Informacje prawne", privacy: "Prywatność", terms: "Warunki", cookieSettings: "Ustawienia cookies", privateAppointment: "Prywatne spotkanie",
+    newsletterEnterEmail: "Podaj adres e-mail.", newsletterConsentError: "Potwierdź zgodę na wiadomości i zaproszenia LIDYA.", newsletterUnable: "Nie udało się zapisać.", newsletterDuplicate: "Jesteś już na prywatnej liście LIDYA.", newsletterWelcome: "Witamy na prywatnej liście LIDYA.", staffLogin: "Logowanie personelu", allRightsReserved: "Wszelkie prawa zastrzeżone."
+  },
+  ar: {
+    tagline: "مجوهرات ذات قيمة دائمة.", since: "منذ عام 1989.", privateList: "قائمة LIDYA الخاصة",
+    privateListTitle: "معاينات خاصة. مجموعات جديدة. دعوات شخصية.", privateListLead: "احصل على معاينات مختارة للمجموعات وقصص المجوهرات ورؤى استثمارية ودعوات LIDYA الخاصة.",
+    emailAddress: "البريد الإلكتروني", joining: "جارٍ الانضمام...", joinPrivateList: "انضم إلى القائمة الخاصة",
+    consentPrefix: "أوافق على تلقي أخبار LIDYA ومعاينات المجموعات والدعوات الخاصة عبر البريد الإلكتروني. يمكنني إلغاء الاشتراك في أي وقت. راجع", privacyPolicy: "سياسة الخصوصية",
+    navigate: "التنقل", boutiques: "البوتيكات", experiences: "تجربة LIDYA", privateVisit: "خدمة الزيارة الخاصة", myLidya: "LIDYA الخاصة بي",
+    clientCentre: "مركز العملاء", signInRegister: "تسجيل الدخول / التسجيل", serviceRequests: "طلبات الخدمة", appointments: "المواعيد",
+    contact: "اتصل بنا", contactLead: "عنوان رسمي واحد للمجوهرات والخدمة والتصميم حسب الطلب والمواعيد الخاصة.", legal: "قانوني", privacy: "الخصوصية", terms: "الشروط", cookieSettings: "إعدادات ملفات الارتباط", privateAppointment: "موعد خاص",
+    newsletterEnterEmail: "يرجى إدخال بريدك الإلكتروني.", newsletterConsentError: "يرجى تأكيد موافقتك على تلقي أخبار ودعوات LIDYA.", newsletterUnable: "تعذر الاشتراك.", newsletterDuplicate: "أنت بالفعل ضمن قائمة LIDYA الخاصة.", newsletterWelcome: "مرحبًا بك في قائمة LIDYA الخاصة.", staffLogin: "دخول الموظفين", allRightsReserved: "جميع الحقوق محفوظة."
+  },
+  cs: {
+    tagline: "Šperky s trvalou hodnotou.", since: "Od roku 1989.", privateList: "Soukromý seznam LIDYA",
+    privateListTitle: "Soukromé náhledy. Nové kolekce. Osobní pozvánky.", privateListLead: "Získejte vybrané náhledy kolekcí, příběhy o špercích, investiční postřehy a soukromé pozvánky LIDYA.",
+    emailAddress: "E-mailová adresa", joining: "Přihlašování...", joinPrivateList: "Přidat se na soukromý seznam",
+    consentPrefix: "Souhlasím se zasíláním novinek LIDYA, náhledů kolekcí a soukromých pozvánek e-mailem. Odběr mohu kdykoli zrušit. Viz naše", privacyPolicy: "Zásady ochrany soukromí",
+    navigate: "Navigace", boutiques: "Butiky", experiences: "LIDYA Experience", privateVisit: "Concierge soukromé návštěvy", myLidya: "Moje LIDYA",
+    clientCentre: "Klientské centrum", signInRegister: "Přihlášení / Registrace", serviceRequests: "Servisní požadavky", appointments: "Termíny",
+    contact: "Kontakt", contactLead: "Jedna oficiální adresa pro šperky, servis, zakázkovou výrobu a soukromé schůzky.", legal: "Právní", privacy: "Soukromí", terms: "Podmínky", cookieSettings: "Nastavení cookies", privateAppointment: "Soukromá schůzka",
+    newsletterEnterEmail: "Zadejte e-mailovou adresu.", newsletterConsentError: "Potvrďte souhlas se zasíláním novinek a pozvánek LIDYA.", newsletterUnable: "Přihlášení k odběru se nezdařilo.", newsletterDuplicate: "Již jste na soukromém seznamu LIDYA.", newsletterWelcome: "Vítejte na soukromém seznamu LIDYA.", staffLogin: "Přihlášení personálu", allRightsReserved: "Všechna práva vyhrazena."
+  },
+  uk: {
+    tagline: "Прикраси незмінної цінності.", since: "З 1989 року.", privateList: "Приватний список LIDYA",
+    privateListTitle: "Приватні покази. Нові колекції. Особисті запрошення.", privateListLead: "Отримуйте вибрані анонси колекцій, історії про прикраси, інвестиційні матеріали та приватні запрошення LIDYA.",
+    emailAddress: "Електронна пошта", joining: "Приєднання...", joinPrivateList: "Приєднатися до приватного списку",
+    consentPrefix: "Я погоджуюся отримувати новини LIDYA, анонси колекцій і приватні запрошення електронною поштою. Відписатися можна будь-коли. Див.", privacyPolicy: "Політику конфіденційності",
+    navigate: "Навігація", boutiques: "Бутики", experiences: "LIDYA Experience", privateVisit: "Консьєрж приватного візиту", myLidya: "Моя LIDYA",
+    clientCentre: "Клієнтський центр", signInRegister: "Вхід / Реєстрація", serviceRequests: "Сервісні запити", appointments: "Зустрічі",
+    contact: "Контакти", contactLead: "Єдина офіційна адреса для прикрас, сервісу, індивідуальних замовлень і приватних зустрічей.", legal: "Правова інформація", privacy: "Конфіденційність", terms: "Умови", cookieSettings: "Налаштування cookies", privateAppointment: "Приватна зустріч",
+    newsletterEnterEmail: "Введіть адресу електронної пошти.", newsletterConsentError: "Підтвердьте згоду на отримання новин і запрошень LIDYA.", newsletterUnable: "Не вдалося оформити підписку.", newsletterDuplicate: "Ви вже у приватному списку LIDYA.", newsletterWelcome: "Ласкаво просимо до приватного списку LIDYA.", staffLogin: "Вхід для персоналу", allRightsReserved: "Усі права захищені."
+  },
+  ro: {
+    tagline: "Bijuterii cu valoare durabilă.", since: "Din 1989.", privateList: "Lista privată LIDYA",
+    privateListTitle: "Previzualizări private. Colecții noi. Invitații personale.", privateListLead: "Primește selecții din colecții, povești despre bijuterii, informații de investiții și invitații private LIDYA.",
+    emailAddress: "Adresă de e-mail", joining: "Se înregistrează...", joinPrivateList: "Alătură-te listei private",
+    consentPrefix: "Sunt de acord să primesc prin e-mail noutăți LIDYA, previzualizări de colecții și invitații private. Mă pot dezabona oricând. Vezi", privacyPolicy: "Politica de confidențialitate",
+    navigate: "Navigare", boutiques: "Boutique-uri", experiences: "Experiența LIDYA", privateVisit: "Concierge pentru vizită privată", myLidya: "LIDYA mea",
+    clientCentre: "Centrul clienților", signInRegister: "Autentificare / Înregistrare", serviceRequests: "Solicitări de service", appointments: "Programări",
+    contact: "Contact", contactLead: "O singură adresă oficială pentru bijuterii, service, lucrări personalizate și întâlniri private.", legal: "Juridic", privacy: "Confidențialitate", terms: "Termeni", cookieSettings: "Setări cookie", privateAppointment: "Programare privată",
+    newsletterEnterEmail: "Introdu adresa de e-mail.", newsletterConsentError: "Confirmă acordul pentru noutățile și invitațiile LIDYA.", newsletterUnable: "Abonarea nu a reușit.", newsletterDuplicate: "Ești deja pe lista privată LIDYA.", newsletterWelcome: "Bine ai venit pe lista privată LIDYA.", staffLogin: "Autentificare personal", allRightsReserved: "Toate drepturile rezervate."
+  },
+  hu: {
+    tagline: "Maradandó értékű ékszerek.", since: "1989 óta.", privateList: "LIDYA Privát Lista",
+    privateListTitle: "Privát előzetesek. Új kollekciók. Személyes meghívók.", privateListLead: "Kapjon válogatott kollekció-előzeteseket, ékszertörténeteket, befektetési betekintéseket és privát LIDYA meghívókat.",
+    emailAddress: "E-mail-cím", joining: "Csatlakozás...", joinPrivateList: "Csatlakozás a privát listához",
+    consentPrefix: "Hozzájárulok, hogy e-mailben LIDYA híreket, kollekció-előzeteseket és privát meghívókat kapjak. Bármikor leiratkozhatok. Lásd", privacyPolicy: "Adatvédelmi irányelveinket",
+    navigate: "Navigáció", boutiques: "Butikok", experiences: "LIDYA Experience", privateVisit: "Privát látogatás concierge", myLidya: "Saját LIDYA",
+    clientCentre: "Ügyfélközpont", signInRegister: "Belépés / Regisztráció", serviceRequests: "Szervizkérelmek", appointments: "Időpontok",
+    contact: "Kapcsolat", contactLead: "Egy hivatalos cím ékszerekhez, szervizhez, egyedi munkákhoz és privát találkozókhoz.", legal: "Jogi", privacy: "Adatvédelem", terms: "Feltételek", cookieSettings: "Cookie-beállítások", privateAppointment: "Privát időpont",
+    newsletterEnterEmail: "Adja meg e-mail-címét.", newsletterConsentError: "Erősítse meg, hogy hozzájárul a LIDYA hírek és meghívók fogadásához.", newsletterUnable: "A feliratkozás nem sikerült.", newsletterDuplicate: "Már szerepel a LIDYA Privát Listán.", newsletterWelcome: "Üdvözöljük a LIDYA Privát Listán.", staffLogin: "Személyzeti belépés", allRightsReserved: "Minden jog fenntartva."
+  },
+  fr: {
+    tagline: "Des bijoux d'une valeur durable.", since: "Depuis 1989.", privateList: "La Liste Privée LIDYA",
+    privateListTitle: "Aperçus privés. Nouvelles collections. Invitations personnelles.", privateListLead: "Recevez une sélection d'aperçus de collections, d'histoires joaillières, d'analyses d'investissement et d'invitations privées LIDYA.",
+    emailAddress: "Adresse e-mail", joining: "Inscription...", joinPrivateList: "Rejoindre la Liste Privée",
+    consentPrefix: "J'accepte de recevoir par e-mail les actualités LIDYA, les aperçus de collections et les invitations privées. Je peux me désabonner à tout moment. Voir notre", privacyPolicy: "Politique de confidentialité",
+    navigate: "Navigation", boutiques: "Boutiques", experiences: "Expérience LIDYA", privateVisit: "Conciergerie de visite privée", myLidya: "Mon LIDYA",
+    clientCentre: "Espace client", signInRegister: "Connexion / Inscription", serviceRequests: "Demandes de service", appointments: "Rendez-vous",
+    contact: "Contact", contactLead: "Une adresse officielle unique pour la joaillerie, le service, le sur-mesure et les rendez-vous privés.", legal: "Mentions légales", privacy: "Confidentialité", terms: "Conditions", cookieSettings: "Paramètres des cookies", privateAppointment: "Rendez-vous privé",
+    newsletterEnterEmail: "Veuillez saisir votre adresse e-mail.", newsletterConsentError: "Veuillez confirmer votre accord pour recevoir les actualités et invitations LIDYA.", newsletterUnable: "Impossible de s'abonner.", newsletterDuplicate: "Vous êtes déjà sur la Liste Privée LIDYA.", newsletterWelcome: "Bienvenue sur la Liste Privée LIDYA.", staffLogin: "Connexion équipe", allRightsReserved: "Tous droits réservés."
+  },
+  it: {
+    tagline: "Gioielli dal valore duraturo.", since: "Dal 1989.", privateList: "La Lista Privata LIDYA",
+    privateListTitle: "Anteprime private. Nuove collezioni. Inviti personali.", privateListLead: "Ricevi anteprime selezionate delle collezioni, storie di gioielli, approfondimenti sugli investimenti e inviti privati LIDYA.",
+    emailAddress: "Indirizzo e-mail", joining: "Iscrizione...", joinPrivateList: "Unisciti alla Lista Privata",
+    consentPrefix: "Accetto di ricevere via e-mail notizie LIDYA, anteprime delle collezioni e inviti privati. Posso annullare l'iscrizione in qualsiasi momento. Consulta la nostra", privacyPolicy: "Informativa sulla privacy",
+    navigate: "Navigazione", boutiques: "Boutique", experiences: "Esperienza LIDYA", privateVisit: "Concierge per visita privata", myLidya: "Il mio LIDYA",
+    clientCentre: "Centro clienti", signInRegister: "Accedi / Registrati", serviceRequests: "Richieste di assistenza", appointments: "Appuntamenti",
+    contact: "Contatti", contactLead: "Un unico indirizzo ufficiale per gioielli, assistenza, lavori su misura e appuntamenti privati.", legal: "Note legali", privacy: "Privacy", terms: "Termini", cookieSettings: "Impostazioni cookie", privateAppointment: "Appuntamento privato",
+    newsletterEnterEmail: "Inserisci il tuo indirizzo e-mail.", newsletterConsentError: "Conferma il consenso a ricevere notizie e inviti LIDYA.", newsletterUnable: "Impossibile effettuare l'iscrizione.", newsletterDuplicate: "Sei già nella Lista Privata LIDYA.", newsletterWelcome: "Benvenuto nella Lista Privata LIDYA.", staffLogin: "Accesso staff", allRightsReserved: "Tutti i diritti riservati."
+  },
+  es: {
+    tagline: "Joyas de valor duradero.", since: "Desde 1989.", privateList: "La Lista Privada LIDYA",
+    privateListTitle: "Avances privados. Nuevas colecciones. Invitaciones personales.", privateListLead: "Recibe avances seleccionados de colecciones, historias de joyería, perspectivas de inversión e invitaciones privadas de LIDYA.",
+    emailAddress: "Correo electrónico", joining: "Uniéndote...", joinPrivateList: "Unirse a la Lista Privada",
+    consentPrefix: "Acepto recibir por correo noticias de LIDYA, avances de colecciones e invitaciones privadas. Puedo darme de baja en cualquier momento. Consulta nuestra", privacyPolicy: "Política de privacidad",
+    navigate: "Navegación", boutiques: "Boutiques", experiences: "Experiencia LIDYA", privateVisit: "Conserjería de visita privada", myLidya: "Mi LIDYA",
+    clientCentre: "Centro de clientes", signInRegister: "Iniciar sesión / Registrarse", serviceRequests: "Solicitudes de servicio", appointments: "Citas",
+    contact: "Contacto", contactLead: "Una única dirección oficial para joyería, servicio, trabajos a medida y citas privadas.", legal: "Legal", privacy: "Privacidad", terms: "Términos", cookieSettings: "Configuración de cookies", privateAppointment: "Cita privada",
+    newsletterEnterEmail: "Introduce tu correo electrónico.", newsletterConsentError: "Confirma que aceptas recibir noticias e invitaciones de LIDYA.", newsletterUnable: "No se pudo completar la suscripción.", newsletterDuplicate: "Ya estás en la Lista Privada LIDYA.", newsletterWelcome: "Bienvenido a la Lista Privada LIDYA.", staffLogin: "Acceso del personal", allRightsReserved: "Todos los derechos reservados."
+  },
+  nl: {
+    tagline: "Juwelen met blijvende waarde.", since: "Sinds 1989.", privateList: "De LIDYA Privélijst",
+    privateListTitle: "Privépreviews. Nieuwe collecties. Persoonlijke uitnodigingen.", privateListLead: "Ontvang geselecteerde collectiepreviews, juwelenverhalen, investeringsinzichten en privé-uitnodigingen van LIDYA.",
+    emailAddress: "E-mailadres", joining: "Bezig met aanmelden...", joinPrivateList: "Word lid van de Privélijst",
+    consentPrefix: "Ik ga akkoord met het ontvangen van LIDYA-nieuws, collectiepreviews en privé-uitnodigingen per e-mail. Ik kan me op elk moment afmelden. Bekijk ons", privacyPolicy: "Privacybeleid",
+    navigate: "Navigatie", boutiques: "Boetieks", experiences: "LIDYA Experience", privateVisit: "Private Visit Concierge", myLidya: "Mijn LIDYA",
+    clientCentre: "Klantenportaal", signInRegister: "Inloggen / Registreren", serviceRequests: "Serviceaanvragen", appointments: "Afspraken",
+    contact: "Contact", contactLead: "Eén officieel adres voor juwelen, service, maatwerk en privéafspraken.", legal: "Juridisch", privacy: "Privacy", terms: "Voorwaarden", cookieSettings: "Cookie-instellingen", privateAppointment: "Privéafspraak",
+    newsletterEnterEmail: "Voer uw e-mailadres in.", newsletterConsentError: "Bevestig dat u akkoord gaat met LIDYA-nieuws en uitnodigingen.", newsletterUnable: "Aanmelden is niet gelukt.", newsletterDuplicate: "U staat al op de LIDYA Privélijst.", newsletterWelcome: "Welkom op de LIDYA Privélijst.", staffLogin: "Medewerkerslogin", allRightsReserved: "Alle rechten voorbehouden."
+  }
+};
