@@ -3,7 +3,7 @@ import { dictionaries, LOCALES, type Locale } from "@/lib/i18n";
 export const SITE_URL = "https://www.lidyaalbaresort.com";
 export const DEFAULT_LOCALE: Locale = "en";
 export const SEO_LOCALES = LOCALES;
-export const SHARE_CARD_VERSION = "2026-08-16-v3";
+export const SHARE_CARD_VERSION = "2026-08-17-v1";
 
 export const PUBLIC_ROUTES = [
   "/",
@@ -32,6 +32,7 @@ export const PUBLIC_ROUTES = [
   "/boutiques",
   "/about",
   "/contact",
+  "/private-visit",
   "/privacy",
   "/terms",
 ] as const;
@@ -71,6 +72,7 @@ export const SHARE_IMAGE: Record<PublicRoute, string> = {
   "/boutiques": "/images/boutiques/manavgat.jpg",
   "/about": "/images/craftsmanship.jpg",
   "/contact": "/images/boutiques/manavgat.jpg",
+  "/private-visit": "/images/transfer/transfer-hero.png",
   "/privacy": "/images/hero.png",
   "/terms": "/images/hero.png",
 };
@@ -163,6 +165,7 @@ function routeTitle(locale: Locale, path: PublicRoute) {
     "/boutiques": nav.boutiques,
     "/about": nav.about,
     "/contact": nav.contact,
+    "/private-visit": "Private Visit Concierge",
     "/privacy": legalTitles[locale].privacy,
     "/terms": legalTitles[locale].terms,
   };
