@@ -1,0 +1,42 @@
+/* Production hotfix: homepage Bespoke & Care first card */
+.bg-ivory.py-20.md\:py-28 .grid.gap-4.sm\:grid-cols-3 > a[href="/bespoke"] {
+  min-height: 230px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  overflow: hidden;
+  background: #1b0b20 !important;
+}
+
+.bg-ivory.py-20.md\:py-28 .grid.gap-4.sm\:grid-cols-3 > a[href="/bespoke"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url("/images/bespoke/hero-bespoke.png?v=20260817-1052") !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  pointer-events: none;
+}
+
+.bg-ivory.py-20.md\:py-28 .grid.gap-4.sm\:grid-cols-3 > a[href="/bespoke"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(27,11,32,0.03) 25%, rgba(27,11,32,0.72) 100%);
+  pointer-events: none;
+}
+
+.bg-ivory.py-20.md\:py-28 .grid.gap-4.sm\:grid-cols-3 > a[href="/bespoke"] > span,
+.bg-ivory.py-20.md\:py-28 .grid.gap-4.sm\:grid-cols-3 > a[href="/bespoke"] > h3 {
+  position: relative;
+  z-index: 2;
+}
+
+.bg-ivory.py-20.md\:py-28 .grid.gap-4.sm\:grid-cols-3 > a[href="/bespoke"] > h3 {
+  color: #fffdf9 !important;
+  text-shadow: 0 2px 18px rgba(27, 11, 32, 0.6);
+}
