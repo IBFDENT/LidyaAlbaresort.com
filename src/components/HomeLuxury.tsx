@@ -7,34 +7,12 @@ import { BOUTIQUES, COLLECTIONS, MATERIALS, localized } from "@/lib/content";
 import type { Locale } from "@/lib/i18n";
 
 type HomeCopy = {
-  collectionsEyebrow: string;
-  collectionsTitle: string;
-  exploreCollections: string;
-  materialsEyebrow: string;
-  materialsTitle: string;
-  materialsIntro: string;
-  discoverMaterials: string;
-  servicesEyebrow: string;
-  servicesTitle: string;
-  servicesIntro: string;
-  bespoke: string;
-  care: string;
-  watch: string;
-  exploreServices: string;
-  aboutEyebrow: string;
-  aboutTitle: string;
-  aboutP1: string;
-  aboutP2: string;
-  discoverLidya: string;
-  visitEyebrow: string;
-  visitTitle: string;
-  visitIntro: string;
-  concierge: string;
-  conciergeIntro: string;
-  hotel: string;
-  transfer: string;
-  appointment: string;
-  planVisit: string;
+  collectionsEyebrow: string; collectionsTitle: string; exploreCollections: string;
+  materialsEyebrow: string; materialsTitle: string; materialsIntro: string; discoverMaterials: string;
+  servicesEyebrow: string; servicesTitle: string; servicesIntro: string; bespoke: string; care: string; watch: string; exploreServices: string;
+  aboutEyebrow: string; aboutTitle: string; aboutP1: string; aboutP2: string; discoverLidya: string;
+  visitEyebrow: string; visitTitle: string; visitIntro: string; concierge: string; conciergeIntro: string;
+  hotel: string; transfer: string; appointment: string; planVisit: string;
 };
 
 const COPY: Record<Locale, HomeCopy> = {
@@ -57,6 +35,11 @@ const COPY: Record<Locale, HomeCopy> = {
 
 const collectionLinks: Record<string,string> = { pearls:"/pearls", wedding:"/wedding-rings", signature:"/signature-style", brilliants:"/brilliants" };
 const boutiqueLinks: Record<string,string> = { manavgat:"/boutiques", resort:"https://www.albahotels.com.tr/en/resort-en/", royal:"https://www.albahotels.com.tr/en/royal-en/", queen:"https://www.albahotels.com.tr/en/queen-en/" };
+const serviceImages = [
+  { src: "/images/home-services/bespoke-jewellery.png", key: "bespoke" as const },
+  { src: "/images/home-services/jewellery-care.png", key: "care" as const },
+  { src: "/images/home-services/watch-service.png", key: "watch" as const },
+];
 
 function ArrowLink({href,label}:{href:string;label:string}) { return <Link href={href} className="inline-flex items-center gap-3 text-[0.62rem] font-semibold uppercase tracking-[0.22em] text-plum-dark transition-colors hover:text-gold"><span>{label}</span><span aria-hidden>→</span></Link>; }
 
@@ -71,7 +54,7 @@ export default function HomeLuxury() {
 
     <section className="bg-[#f2ede5] py-20 md:py-24"><div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20"><div className="mx-auto mb-12 max-w-3xl text-center"><span className="text-[0.66rem] font-semibold uppercase tracking-[0.32em] text-gold">{copy.materialsEyebrow}</span><h2 className="mt-4 font-display text-4xl text-plum-dark md:text-5xl">{copy.materialsTitle}</h2><p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-grey md:text-base">{copy.materialsIntro}</p></div><div className="grid gap-px overflow-hidden border border-plum-dark/10 bg-plum-dark/10 sm:grid-cols-2 lg:grid-cols-4">{featuredMaterials.map(item=><div key={item.id} className="group bg-ivory p-8 text-center transition-colors hover:bg-white md:p-10"><span className="font-display text-5xl text-gold">{item.icon}</span><h3 className="mt-6 font-display text-2xl text-plum-dark">{localized(item.name,locale)}</h3><p className="mt-3 text-sm leading-6 text-grey">{localized(item.description,locale)}</p></div>)}</div><div className="mt-9 text-center"><ArrowLink href="/materials" label={copy.discoverMaterials}/></div></div></section>
 
-    <section className="bg-ivory py-20 md:py-28"><div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20"><div className="grid gap-12 lg:grid-cols-12 lg:items-end"><div className="lg:col-span-5"><span className="text-[0.66rem] font-semibold uppercase tracking-[0.32em] text-gold">{copy.servicesEyebrow}</span><h2 className="mt-4 font-display text-4xl leading-tight text-plum-dark md:text-5xl">{copy.servicesTitle}</h2><p className="mt-5 text-sm leading-7 text-grey md:text-base">{copy.servicesIntro}</p><div className="mt-8"><ArrowLink href="/services" label={copy.exploreServices}/></div></div><div className="grid gap-4 sm:grid-cols-3 lg:col-span-7"><Link href="/bespoke" className="border border-plum-dark/10 p-7 transition-all hover:border-gold hover:bg-white"><span className="text-[0.6rem] uppercase tracking-[0.25em] text-gold">01</span><h3 className="mt-8 font-display text-3xl text-plum-dark">{copy.bespoke}</h3></Link><Link href="/services" className="border border-plum-dark/10 p-7 transition-all hover:border-gold hover:bg-white"><span className="text-[0.6rem] uppercase tracking-[0.25em] text-gold">02</span><h3 className="mt-8 font-display text-3xl text-plum-dark">{copy.care}</h3></Link><Link href="/services" className="border border-plum-dark/10 p-7 transition-all hover:border-gold hover:bg-white"><span className="text-[0.6rem] uppercase tracking-[0.25em] text-gold">03</span><h3 className="mt-8 font-display text-3xl text-plum-dark">{copy.watch}</h3></Link></div></div></div></section>
+    <section className="bg-ivory py-20 md:py-28"><div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 xl:px-20"><div className="grid gap-12 lg:grid-cols-12 lg:items-end"><div className="lg:col-span-5"><span className="text-[0.66rem] font-semibold uppercase tracking-[0.32em] text-gold">{copy.servicesEyebrow}</span><h2 className="mt-4 font-display text-4xl leading-tight text-plum-dark md:text-5xl">{copy.servicesTitle}</h2><p className="mt-5 text-sm leading-7 text-grey md:text-base">{copy.servicesIntro}</p><div className="mt-8"><ArrowLink href="/services" label={copy.exploreServices}/></div></div><div className="grid gap-4 sm:grid-cols-3 lg:col-span-7">{serviceImages.map(item=><div key={item.key} className="relative min-h-[260px] overflow-hidden bg-plum-dark md:min-h-[300px]"><Image src={item.src} alt={copy[item.key]} fill sizes="(min-width:1024px) 23vw,(min-width:640px) 33vw,100vw" className="object-cover" priority={false}/></div>)}</div></div></div></section>
 
     <section id="about" className="bg-plum-dark py-20 text-brand-white md:py-28"><div className="mx-auto grid max-w-[1440px] gap-10 px-6 md:px-10 lg:grid-cols-12 lg:items-center lg:px-16 xl:px-20"><div className="relative min-h-[430px] overflow-hidden lg:col-span-7 lg:min-h-[540px]"><Image src="/images/craftsmanship.jpg" alt="LIDYA craftsmanship" fill sizes="(min-width:1024px) 58vw,100vw" className="object-cover"/><div className="absolute inset-0 bg-gradient-to-t from-plum-dark/35 to-transparent"/></div><div className="text-center lg:col-span-5 lg:text-left"><span className="text-[0.66rem] font-semibold uppercase tracking-[0.32em] text-gold">{copy.aboutEyebrow}</span><h2 className="mt-4 font-display text-5xl leading-tight text-[#F5EFE6]">{copy.aboutTitle}</h2><p className="mt-6 text-sm leading-7 text-brand-white/65 md:text-base">{copy.aboutP1}</p><p className="mt-4 text-sm leading-7 text-brand-white/65 md:text-base">{copy.aboutP2}</p><Link href="/about" className="mt-8 inline-flex items-center gap-3 text-[0.62rem] font-semibold uppercase tracking-[0.22em] text-gold hover:text-[#E8D8B5]">{copy.discoverLidya}<span>→</span></Link></div></div></section>
 
