@@ -14,6 +14,7 @@ import InvestmentDiamondsPage from "@/app/investment-diamonds/page";
 import InvestmentGoldPage from "@/app/investment-gold/page";
 import PearlsPage from "@/app/pearls/page";
 import PrivacyPage from "@/app/privacy/page";
+import PrivateVisitPage from "@/app/private-visit/page";
 import ServicesPage from "@/app/services/page";
 import SignatureStylePage from "@/app/signature-style/page";
 import TermsPage from "@/app/terms/page";
@@ -55,6 +56,7 @@ const pages: Record<PublicRoute, unknown> = {
   "/investment-gold": InvestmentGoldPage,
   "/pearls": PearlsPage,
   "/privacy": PrivacyPage,
+  "/private-visit": PrivateVisitPage,
   "/services": ServicesPage,
   "/signature-style": SignatureStylePage,
   "/terms": TermsPage,
@@ -84,8 +86,6 @@ export async function generateMetadata({ params }: { params:RouteParams }): Prom
   const { title, description } = internationalSeoCopy(locale, path);
   const canonical = localizedUrl(locale, path);
   const shareImage = shareCardUrl(locale, path);
-  // Production public pages should be indexable by default. Setting the env var
-  // explicitly to "false" remains an emergency kill switch.
   const indexingEnabled = process.env.SEO_INDEXING_ENABLED !== "false";
 
   return {
