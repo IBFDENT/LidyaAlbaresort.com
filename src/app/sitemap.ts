@@ -45,6 +45,7 @@ const routeConfig: Record<PublicRoute, SitemapEntryConfig> = {
   "/terms": { priority: 0.25, changeFrequency: "yearly" },
 };
 
+/** Keep public routes and SEO route config in lockstep. */
 export default function sitemap(): MetadataRoute.Sitemap {
   return SEO_LOCALES.flatMap((locale) =>
     PUBLIC_ROUTES.map((path) => {
