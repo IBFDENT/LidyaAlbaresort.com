@@ -37,6 +37,7 @@ const routeConfig: Record<PublicRoute, SitemapEntryConfig> = {
   "/investment-diamonds": { priority: 0.9, changeFrequency: "monthly" },
   "/services": { priority: 0.85, changeFrequency: "monthly" },
   "/private-visit": { priority: 0.85, changeFrequency: "monthly" },
+  "/coppa-beach-club": { priority: 0.65, changeFrequency: "monthly" },
   "/boutiques": { priority: 0.8, changeFrequency: "monthly" },
   "/about": { priority: 0.75, changeFrequency: "monthly" },
   "/contact": { priority: 0.85, changeFrequency: "monthly" },
@@ -44,20 +45,10 @@ const routeConfig: Record<PublicRoute, SitemapEntryConfig> = {
   "/terms": { priority: 0.25, changeFrequency: "yearly" },
 };
 
-/**
- * Production XML sitemap.
- *
- * Keep this route intentionally simple and dependency-light: every public
- * route is emitted once for every supported locale. hreflang alternates are
- * already declared in each page's metadata, so duplicating hundreds of
- * xhtml:link nodes in the sitemap is unnecessary and can make crawler
- * diagnostics harder.
- */
 export default function sitemap(): MetadataRoute.Sitemap {
   return SEO_LOCALES.flatMap((locale) =>
     PUBLIC_ROUTES.map((path) => {
       const config = routeConfig[path];
-
       return {
         url: localizedUrl(locale, path),
         changeFrequency: config.changeFrequency,
