@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Contact from "@/components/Contact";
+import PrivateVisitPromo from "@/components/PrivateVisitPromo";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
 import EnquiryForm from "@/components/EnquiryForm";
@@ -11,6 +12,7 @@ export default function ContactPage() {
 
       <main>
         <Contact />
+        <PrivateVisitPromo />
         <EnquiryForm defaultType="appointment" showTypeSelector source="contact-page" />
       </main>
 
