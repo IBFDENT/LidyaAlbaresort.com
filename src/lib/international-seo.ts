@@ -8,6 +8,7 @@ export const SHARE_CARD_VERSION = "2026-08-17-v2";
 export const PUBLIC_ROUTES = [
   "/",
   "/collections",
+  "/materials",
   "/pearls",
   "/wedding-rings",
   "/signature-style",
@@ -49,6 +50,7 @@ export const OG_LOCALE: Record<Locale, string> = {
 export const SHARE_IMAGE: Record<PublicRoute, string> = {
   "/": "/images/hero.png",
   "/collections": "/images/collections/signature.jpg",
+  "/materials": "/images/home-materials/gold.webp",
   "/pearls": "/images/pearls/hero-pearls.png",
   "/wedding-rings": "/images/wedding-rings/hero-weddingsrings.png",
   "/signature-style": "/images/signature-style/imagesignature-style-hero.png",
@@ -115,6 +117,12 @@ const legalTitles: Record<Locale, { privacy: string; terms: string; home: string
   es:{privacy:"Política de privacidad",terms:"Términos y condiciones",home:"Joyería, diamantes y relojes en Antalya"},
 };
 
+const materialTitles: Record<Locale, string> = {
+  en:"Materials", de:"Materialien", tr:"Malzemeler", sk:"Materiály", cs:"Materiály",
+  hu:"Anyagok", pl:"Materiały", ru:"Материалы", nl:"Materialen", da:"Materialer",
+  fi:"Materiaalit", sv:"Material", fr:"Matières", it:"Materiali", es:"Materiales",
+};
+
 export function isLocale(value: string): value is Locale {
   return (LOCALES as readonly string[]).includes(value);
 }
@@ -143,6 +151,7 @@ function routeTitle(locale: Locale, path: PublicRoute) {
   const titles: Partial<Record<PublicRoute, string>> = {
     "/": legalTitles[locale].home,
     "/collections": nav.collections,
+    "/materials": materialTitles[locale],
     "/pearls": nav.pearls,
     "/wedding-rings": nav.wedding,
     "/signature-style": nav.signature,
