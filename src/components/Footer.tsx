@@ -75,6 +75,7 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Primary footer navigation, including LIDYA Experience. */}
         <div className="grid gap-12 py-14 text-center md:grid-cols-2 lg:grid-cols-[1fr_1.15fr_1.05fr_1fr_1.35fr_.8fr] lg:gap-8 lg:text-left">
           <div>
             <h5 className="text-[0.62rem] font-semibold uppercase tracking-[0.24em] text-gold">Navigate</h5>
