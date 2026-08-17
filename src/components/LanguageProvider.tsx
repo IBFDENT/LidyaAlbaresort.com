@@ -6,6 +6,7 @@ import { dictionaries, LOCALE, LOCALES, type Locale } from "@/lib/i18n";
 const LanguageContext = createContext<{ locale:Locale; setLocale:(locale:Locale)=>void; dictionary:(typeof dictionaries)[Locale] } | undefined>(undefined);
 const STORAGE_KEY = "lidya-locale";
 const MANUAL_STORAGE_KEY = "lidya-locale-manual";
+const SCROLL_STORAGE_KEY = "lidya-language-scroll-y";
 
 function stripLocalePrefix(pathname: string) {
   const parts = pathname.split("/").filter(Boolean);
@@ -21,10 +22,21 @@ export function LanguageProvider({ children, initialLocale = LOCALE }: { childre
     localStorage.setItem(STORAGE_KEY, initialLocale);
     document.documentElement.lang = initialLocale;
     document.cookie = `${STORAGE_KEY}=${initialLocale}; Path=/; Max-Age=31536000; SameSite=Lax`;
+
+    const savedScrollY = sessionStorage.getItem(SCROLL_STORAGE_KEY);
+    if (savedScrollY !== null) {
+      sessionStorage.removeItem(SCROLL_STORAGE_KEY);
+      const scrollY = Number(savedScrollY);
+      if (Number.isFinite(scrollY)) {
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => window.scrollTo({ top: scrollY, left: 0, behavior: "auto" }));
+        });
+      }
+    }
   }, [initialLocale]);
 
   function setLocale(newLocale: Locale) {
-    if (!LOCALES.includes(newLocale)) return;
+    if (!LOCALES.includes(newLocale) || newLocale === locale) return;
     setLocaleState(newLocale);
     localStorage.setItem(STORAGE_KEY, newLocale);
     localStorage.setItem(MANUAL_STORAGE_KEY, newLocale);
@@ -35,7 +47,10 @@ export function LanguageProvider({ children, initialLocale = LOCALE }: { childre
 
     const basePath = stripLocalePrefix(window.location.pathname);
     const nextPath = `/${newLocale}${basePath === "/" ? "" : basePath}`;
-    if (nextPath !== window.location.pathname) window.location.assign(`${nextPath}${window.location.search}${window.location.hash}`);
+    if (nextPath !== window.location.pathname) {
+      sessionStorage.setItem(SCROLL_STORAGE_KEY, String(window.scrollY));
+      window.location.assign(`${nextPath}${window.location.search}${window.location.hash}`);
+    }
   }
 
   const value = useMemo(() => ({ locale, setLocale, dictionary:dictionaries[locale] }), [locale]);
