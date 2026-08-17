@@ -8,6 +8,7 @@ import BoutiquesPage from "@/app/boutiques/page";
 import BrilliantsPage from "@/app/brilliants/page";
 import CollectionsPage from "@/app/collections/page";
 import ContactPage from "@/app/contact/page";
+import CoppaBeachClubPage from "@/app/coppa-beach-club/page";
 import DesignPage from "@/app/design/page";
 import DiamondsPage from "@/app/diamonds/page";
 import InvestmentDiamondsPage from "@/app/investment-diamonds/page";
@@ -50,6 +51,7 @@ const pages: Record<PublicRoute, unknown> = {
   "/brilliants": BrilliantsPage,
   "/collections": CollectionsPage,
   "/contact": ContactPage,
+  "/coppa-beach-club": CoppaBeachClubPage,
   "/design": DesignPage,
   "/diamonds": DiamondsPage,
   "/investment-diamonds": InvestmentDiamondsPage,
