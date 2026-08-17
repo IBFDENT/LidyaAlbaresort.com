@@ -1,4 +1,4 @@
-/* Homepage Bespoke & Care first card — force the intended atelier image as the card background. */
+/* Homepage Bespoke & Care first card — use the real bespoke hero image as the full card background. */
 .bg-ivory.py-20.md\:py-28 .grid.gap-4.sm\:grid-cols-3 > a[href="/bespoke"] {
   min-height: 230px;
   display: flex;
@@ -14,7 +14,7 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  background-image: url("/images/home-services/bespoke-care-atelier.svg?v=20260817-1048-final") !important;
+  background-image: url("/images/bespoke/hero-bespoke.png?v=20260817-1101-final") !important;
   background-size: cover !important;
   background-position: center center !important;
   background-repeat: no-repeat !important;
