@@ -36,6 +36,7 @@ const routeConfig: Record<PublicRoute, SitemapEntryConfig> = {
   "/investment-gold": { priority: 0.9, changeFrequency: "monthly" },
   "/investment-diamonds": { priority: 0.9, changeFrequency: "monthly" },
   "/services": { priority: 0.85, changeFrequency: "monthly" },
+  "/private-visit": { priority: 0.85, changeFrequency: "monthly" },
   "/boutiques": { priority: 0.8, changeFrequency: "monthly" },
   "/about": { priority: 0.75, changeFrequency: "monthly" },
   "/contact": { priority: 0.85, changeFrequency: "monthly" },
