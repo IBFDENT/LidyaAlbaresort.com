@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @theme {
+  /* Brand palette — carried over from the original demo (index_6_2.html) */
   --color-plum: #32113f;
   --color-plum-dark: #1b0b20;
   --color-gold: #c8a96a;
@@ -9,160 +10,219 @@
   --color-brand-white: #fffdf9;
   --color-ink: #171717;
   --color-grey: #8a8682;
+
   --font-display: var(--font-cormorant);
   --font-body: var(--font-manrope);
+
   --shadow-soft: 0 20px 60px -20px rgba(27, 11, 32, 0.25);
   --shadow-card: 0 12px 30px -14px rgba(27, 11, 32, 0.18);
+
   --ease-lidya: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-body { background: var(--color-ivory); color: var(--color-ink); font-family: var(--font-body); }
-h1,h2,h3,h4 { font-family: var(--font-display); font-weight: 500; letter-spacing: 0.01em; color: var(--color-plum-dark); }
-.site-header { transition: all 0.5s var(--ease-lidya); }
-.hero-glint { background: radial-gradient(600px circle at 30% 40%, rgba(200,169,106,.25), transparent 60%); mix-blend-mode: screen; }
-.cat-card img { transition: transform .9s var(--ease-lidya); }
-.cat-card:hover img { transform: scale(1.08); }
-.btn-magnetic { transition: transform .35s var(--ease-lidya), background-color .35s var(--ease-lidya); }
-.btn-magnetic:hover { transform: translateY(-2px); }
+body {
+  background: var(--color-ivory);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--color-plum-dark);
+}
+
+/* Header blur-on-scroll transition */
+.site-header {
+  transition: all 0.5s var(--ease-lidya);
+}
+
+/* Hero ambient glow behind the headline */
+.hero-glint {
+  background: radial-gradient(
+    600px circle at 30% 40%,
+    rgba(200, 169, 106, 0.25),
+    transparent 60%
+  );
+  mix-blend-mode: screen;
+}
+
+/* Collection card image zoom on hover */
+.cat-card img {
+  transition: transform 0.9s var(--ease-lidya);
+}
+.cat-card:hover img {
+  transform: scale(1.08);
+}
+
+.btn-magnetic {
+  transition: transform 0.35s var(--ease-lidya), background-color 0.35s var(--ease-lidya);
+}
+.btn-magnetic:hover {
+  transform: translateY(-2px);
+}
 
 /* Homepage — real-material luxury editorial cards */
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/gold"],
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/diamonds"],
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/design"],
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/pearls"] {
-  position: relative; min-height: 360px; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end;
-  padding: 0 1.65rem 1.7rem; background: #1b0b20; isolation: isolate;
-  transition: transform .65s var(--ease-lidya), box-shadow .65s var(--ease-lidya);
+  position: relative;
+  min-height: 360px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 1.65rem 1.7rem;
+  background: #1b0b20;
+  isolation: isolate;
+  transition: transform 0.65s var(--ease-lidya), box-shadow 0.65s var(--ease-lidya);
 }
+
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/gold"]::before,
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/diamonds"]::before,
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/design"]::before,
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/pearls"]::before {
-  content:""; position:absolute; inset:0 0 37% 0; z-index:-2; background-position:center; background-size:cover; background-repeat:no-repeat;
-  transform:scale(1.005); transition:transform 1.1s var(--ease-lidya), filter 1.1s var(--ease-lidya);
+  content: "";
+  position: absolute;
+  inset: 0 0 37% 0;
+  z-index: -2;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transform: scale(1.005);
+  transition: transform 1.1s var(--ease-lidya), filter 1.1s var(--ease-lidya);
 }
+
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/gold"]::after,
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/diamonds"]::after,
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/design"]::after,
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/pearls"]::after {
-  content:""; position:absolute; inset:0; z-index:-1;
-  background:linear-gradient(180deg,transparent 0 51%,rgba(27,11,32,.1) 57%,rgba(27,11,32,.98) 66%,#1b0b20 100%); pointer-events:none;
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    180deg,
+    transparent 0 51%,
+    rgba(27, 11, 32, 0.1) 57%,
+    rgba(27, 11, 32, 0.98) 66%,
+    #1b0b20 100%
+  );
+  pointer-events: none;
 }
-.bg-\[\#f2ede5\] .grid.gap-px > a[href="/gold"]::before { background-image:url("/images/home-materials/gold.svg"); }
-.bg-\[\#f2ede5\] .grid.gap-px > a[href="/diamonds"]::before { background-image:url("/images/collections/diamonds.jpg"); }
-.bg-\[\#f2ede5\] .grid.gap-px > a[href="/design"]::before { background-image:url("/images/home-materials/gems.svg"); }
-.bg-\[\#f2ede5\] .grid.gap-px > a[href="/pearls"]::before { background-image:url("/images/home-materials/pearls.svg"); }
+
+/* User-supplied real material photography */
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/gold"]::before {
+  background-image: url("/images/home-materials/gold.svg");
+  background-position: center;
+}
+
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/diamonds"]::before {
+  background-image: url("/images/collections/diamonds.jpg");
+  background-position: center;
+}
+
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/design"]::before {
+  background-image: url("/images/home-materials/gems.svg");
+  background-position: center;
+}
+
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/pearls"]::before {
+  background-image: url("/images/home-materials/pearls.svg");
+  background-position: center;
+}
+
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/gold"] > span,
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/diamonds"] > span,
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/design"] > span,
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/pearls"] > span {
-  position:relative; z-index:2; order:0; width:2rem; height:2rem; display:flex; align-items:center; justify-content:center;
-  margin:0 auto .45rem; font-size:1.35rem; line-height:1; color:#c8a96a; text-shadow:none;
+  position: relative;
+  z-index: 2;
+  order: 0;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.45rem;
+  font-size: 1.35rem;
+  line-height: 1;
+  color: #c8a96a;
+  text-shadow: none;
 }
+
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/gold"] h3,
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/diamonds"] h3,
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/design"] h3,
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/pearls"] h3 {
-  position:relative; z-index:2; margin-top:0; color:#fffaf2; font-family:var(--font-display); font-size:clamp(1.75rem,2vw,2.25rem); line-height:1.05; text-align:center;
+  position: relative;
+  z-index: 2;
+  margin-top: 0;
+  color: #fffaf2;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 2vw, 2.25rem);
+  line-height: 1.05;
+  text-align: center;
 }
+
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/gold"] h3::after,
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/diamonds"] h3::after,
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/design"] h3::after,
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/pearls"] h3::after {
-  content:""; display:block; width:1.65rem; height:1px; margin:.8rem auto 0; background:#c8a96a;
+  content: "";
+  display: block;
+  width: 1.65rem;
+  height: 1px;
+  margin: 0.8rem auto 0;
+  background: #c8a96a;
 }
+
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/gold"] p,
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/diamonds"] p,
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/design"] p,
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/pearls"] p {
-  position:relative; z-index:2; max-width:18rem; margin:.75rem auto 0; color:rgba(255,253,249,.64); font-size:.76rem; line-height:1.65; text-align:center;
+  position: relative;
+  z-index: 2;
+  max-width: 18rem;
+  margin: 0.75rem auto 0;
+  color: rgba(255, 253, 249, 0.64);
+  font-size: 0.76rem;
+  line-height: 1.65;
+  text-align: center;
 }
+
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/gold"]:hover,
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/diamonds"]:hover,
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/design"]:hover,
-.bg-\[\#f2ede5\] .grid.gap-px > a[href="/pearls"]:hover { transform:translateY(-4px); box-shadow:0 24px 60px -26px rgba(27,11,32,.5); }
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/pearls"]:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 60px -26px rgba(27,11,32,0.5);
+}
+
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/gold"]:hover::before,
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/diamonds"]:hover::before,
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/design"]:hover::before,
-.bg-\[\#f2ede5\] .grid.gap-px > a[href="/pearls"]:hover::before { transform:scale(1.045); filter:brightness(1.03) saturate(1.03); }
+.bg-\[\#f2ede5\] .grid.gap-px > a[href="/pearls"]:hover::before {
+  transform: scale(1.045);
+  filter: brightness(1.03) saturate(1.03);
+}
 
-/* Visit LIDYA boutique cards */
-#boutiques .grid.gap-3 > a h3 { color:#fffdf9 !important; text-shadow:0 2px 18px rgba(27,11,32,.55); }
+/* Visit LIDYA boutique cards — force luxury white overlay titles */
+#boutiques .grid.gap-3 > a h3 {
+  color: #fffdf9 !important;
+  text-shadow: 0 2px 18px rgba(27, 11, 32, 0.55);
+}
 
-/* Homepage Bespoke & Care — exact atelier image, no gradients */
-#collections + section + section {
-  position:relative;
-  overflow:hidden;
-  isolation:isolate;
-  background:#f8f5ef;
-}
-#collections + section + section::before {
-  content:"";
-  position:absolute;
-  z-index:0;
-  top:0;
-  right:0;
-  width:64%;
-  height:100%;
-  background-image:url("/images/home-services/bespoke-care-atelier.svg");
-  background-position:center center;
-  background-size:cover;
-  background-repeat:no-repeat;
-}
-#collections + section + section::after { display:none !important; content:none !important; }
-#collections + section + section > div { position:relative; z-index:2; }
-#collections + section + section .lg\:col-span-5 {
-  padding:1.25rem 1.5rem 1.25rem 0;
-  background:rgba(248,245,239,.96);
-}
-#collections + section + section .lg\:col-span-7 > a {
-  position:relative;
-  min-height:220px;
-  border-color:rgba(200,169,106,.45);
-  background:rgba(255,253,249,.94);
-  box-shadow:0 18px 50px -34px rgba(27,11,32,.45);
-  backdrop-filter:none;
-  -webkit-backdrop-filter:none;
-  transition:transform .55s var(--ease-lidya), border-color .55s var(--ease-lidya), background-color .55s var(--ease-lidya), box-shadow .55s var(--ease-lidya);
-}
-#collections + section + section .lg\:col-span-7 > a > span { display:none !important; }
-#collections + section + section .lg\:col-span-7 > a h3 { margin-top:2.35rem; line-height:1.08; }
-#collections + section + section .lg\:col-span-7 > a::after {
-  content:"";
-  position:absolute;
-  left:1.75rem;
-  bottom:1.45rem;
-  width:2.25rem;
-  height:1px;
-  background:#c8a96a;
-  opacity:.6;
-  transition:opacity .45s ease, width .45s ease;
-}
-#collections + section + section .lg\:col-span-7 > a:hover {
-  transform:translateY(-6px);
-  border-color:rgba(200,169,106,.78);
-  background:#fffdf9;
-  box-shadow:0 28px 70px -38px rgba(27,11,32,.52);
-}
-#collections + section + section .lg\:col-span-7 > a:hover::after { opacity:1; width:4rem; }
-
-@media (max-width:1023px) {
-  #collections + section + section::before {
-    width:100%;
-    right:0;
-    opacity:.42;
-    background-position:center center;
-  }
-  #collections + section + section .lg\:col-span-5 {
-    padding:1.25rem;
-    background:rgba(248,245,239,.92);
-  }
-}
-@media (max-width:767px) {
+@media (max-width: 767px) {
   .bg-\[\#f2ede5\] .grid.gap-px > a[href="/gold"],
   .bg-\[\#f2ede5\] .grid.gap-px > a[href="/diamonds"],
   .bg-\[\#f2ede5\] .grid.gap-px > a[href="/design"],
-  .bg-\[\#f2ede5\] .grid.gap-px > a[href="/pearls"] { min-height:340px; }
-  #collections + section + section::before { opacity:.34; }
-  #collections + section + section .lg\:col-span-7 > a { min-height:170px; background:rgba(255,253,249,.96); }
+  .bg-\[\#f2ede5\] .grid.gap-px > a[href="/pearls"] {
+    min-height: 340px;
+  }
 }
