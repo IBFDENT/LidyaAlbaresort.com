@@ -218,6 +218,26 @@ h4 {
   text-shadow: 0 2px 18px rgba(27, 11, 32, 0.55);
 }
 
+/* Private Visit Concierge — only this box uses the transfer image. */
+#boutiques > div > .mt-5.grid.gap-5 {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: #f2ede5;
+  background-image: url("/images/transfer/transfer.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#boutiques > div > .mt-5.grid.gap-5::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(248, 245, 239, 0.62);
+}
+
 @media (max-width: 767px) {
   .bg-\[\#f2ede5\] .grid.gap-px > a[href="/gold"],
   .bg-\[\#f2ede5\] .grid.gap-px > a[href="/diamonds"],
