@@ -118,22 +118,22 @@ h4 {
 
 /* User-supplied real material photography */
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/gold"]::before {
-  background-image: url("/images/home-materials/gold.webp");
+  background-image: url("/images/materials/gold.png");
   background-position: center;
 }
 
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/diamonds"]::before {
-  background-image: url("/images/home-materials/diamond.webp");
+  background-image: url("/images/materials/diamond.png");
   background-position: center;
 }
 
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/design"]::before {
-  background-image: url("/images/home-materials/stones.webp");
+  background-image: url("/images/materials/stones.png");
   background-position: center;
 }
 
 .bg-\[\#f2ede5\] .grid.gap-px > a[href="/pearls"]::before {
-  background-image: url("/images/home-materials/perly.webp");
+  background-image: url("/images/materials/perly.png");
   background-position: center;
 }
 
@@ -289,19 +289,19 @@ h4 {
 }
 
 .bg-\[\#f2ede5\] .grid.gap-px > div:nth-child(1)::before {
-  background-image: url("/images/home-materials/gold.webp");
+  background-image: url("/images/materials/gold.png");
 }
 
 .bg-\[\#f2ede5\] .grid.gap-px > div:nth-child(2)::before {
-  background-image: url("/images/home-materials/diamond.webp");
+  background-image: url("/images/materials/diamond.png");
 }
 
 .bg-\[\#f2ede5\] .grid.gap-px > div:nth-child(3)::before {
-  background-image: url("/images/home-materials/stones.webp");
+  background-image: url("/images/materials/stones.png");
 }
 
 .bg-\[\#f2ede5\] .grid.gap-px > div:nth-child(4)::before {
-  background-image: url("/images/home-materials/perly.webp");
+  background-image: url("/images/materials/perly.png");
 }
 
 .bg-\[\#f2ede5\] .grid.gap-px > div > span {
