@@ -212,6 +212,12 @@ h4 {
   filter: brightness(1.03) saturate(1.03);
 }
 
+/* Visit LIDYA boutique cards — force luxury white overlay titles */
+#boutiques .grid.gap-3 > a h3 {
+  color: #fffdf9 !important;
+  text-shadow: 0 2px 18px rgba(27, 11, 32, 0.55);
+}
+
 @media (max-width: 767px) {
   .bg-\[\#f2ede5\] .grid.gap-px > a[href="/gold"],
   .bg-\[\#f2ede5\] .grid.gap-px > a[href="/diamonds"],
