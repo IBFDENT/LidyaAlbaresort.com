@@ -15,6 +15,7 @@ type SitemapEntryConfig = {
 const routeConfig: Record<PublicRoute, SitemapEntryConfig> = {
   "/": { priority: 1, changeFrequency: "weekly" },
   "/collections": { priority: 0.95, changeFrequency: "weekly" },
+  "/materials": { priority: 0.88, changeFrequency: "monthly" },
   "/pearls": { priority: 0.85, changeFrequency: "monthly" },
   "/wedding-rings": { priority: 0.85, changeFrequency: "monthly" },
   "/signature-style": { priority: 0.85, changeFrequency: "monthly" },
