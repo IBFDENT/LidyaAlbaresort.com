@@ -1,0 +1,1 @@
+Deployment trigger for homepage materials card restoration. The production homepage should use the existing gold.webp, diamond.webp, stones.webp and perly.webp assets while only the Discover our materials CTA links to /materials.
