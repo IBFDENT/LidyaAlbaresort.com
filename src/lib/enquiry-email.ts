@@ -42,7 +42,7 @@ function escapeHtml(value: string) {
     .replace(/'/g, "&#039;");
 }
 
-async function sendResendEmail(input: {
+export async function sendResendEmail(input: {
   to: string | string[];
   subject: string;
   html: string;
@@ -51,7 +51,7 @@ async function sendResendEmail(input: {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) return { sent: false, error: "RESEND_API_KEY is not configured." };
 
-  const from = process.env.LIDYA_FROM_EMAIL || "LIDYA Jewellery <onboarding@resend.dev>";
+  const from = process.env.LIDYA_FROM_EMAIL || "LIDYA Jewellery <info@lidyaalbaresort.com>";
 
   try {
     const response = await fetch("https://api.resend.com/emails", {
