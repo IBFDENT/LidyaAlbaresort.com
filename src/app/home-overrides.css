@@ -1,0 +1,4 @@
+/* Homepage collection cards: keep collection names bright over photography. */
+#collections .group h3 {
+  color: #fffdf9 !important;
+}
