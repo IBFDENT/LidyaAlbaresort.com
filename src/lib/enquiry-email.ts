@@ -1,4 +1,4 @@
-import { escapeEmailHtml, renderLidyaEmail } from "@/lib/lidya-email-template";
+import { renderLidyaEmail } from "@/lib/lidya-email-template";
 
 type EnquiryEmailPayload = {
   id: string;
@@ -166,7 +166,7 @@ export async function sendEnquiryEmails(
       { label: "Locale", value: payload.locale || "unknown" },
       { label: "Source", value: payload.source || "website" },
     ],
-    note: `Reply directly to this email to answer ${escapeEmailHtml(payload.email)}.`,
+    note: `Reply directly to this email to answer ${payload.email}.`,
   });
 
   const adminResult = shouldSendAdmin
