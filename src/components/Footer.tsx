@@ -59,7 +59,7 @@ export default function Footer() {
           <div className="grid items-end gap-8 lg:grid-cols-[1fr_1.25fr] lg:gap-16">
             <div className="text-center lg:text-left">
               <p className="text-[0.62rem] font-semibold uppercase tracking-[0.28em] text-gold">{c.privateList}</p>
-              <h4 className="mt-4 font-display text-3xl italic text-[#F5EFE6] md:text-4xl">{c.privateListTitle}</h4>
+              <h4 className="mt-4 font-display text-3xl italic text-white md:text-4xl">{c.privateListTitle}</h4>
               <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-brand-white/55 lg:mx-0">{c.privateListLead}</p>
             </div>
             <form onSubmit={handleNewsletterSubmit} className="w-full">
