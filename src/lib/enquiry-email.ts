@@ -1,3 +1,5 @@
+import { escapeEmailHtml, renderLidyaEmail } from "@/lib/lidya-email-template";
+
 type EnquiryEmailPayload = {
   id: string;
   type: "general" | "service" | "appointment";
@@ -33,14 +35,41 @@ const TYPE_LABELS: Record<EnquiryEmailPayload["type"], string> = {
   appointment: "Private appointment",
 };
 
-function escapeHtml(value: string) {
-  return value
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
-}
+const CLIENT_COPY: Record<EnquiryEmailPayload["type"], {
+  eyebrow: string;
+  title: (name: string) => string;
+  intro: string;
+  body: string[];
+  subject: (reference: string) => string;
+}> = {
+  general: {
+    eyebrow: "Private Client Care",
+    title: (name) => `Thank you, ${name}.`,
+    intro: "Your message has reached LIDYA Jewellery and has been safely recorded in our private client system.",
+    body: [
+      "A member of the LIDYA team will review your enquiry personally and contact you with the attention it deserves.",
+    ],
+    subject: (reference) => `LIDYA — We received your enquiry · ${reference}`,
+  },
+  service: {
+    eyebrow: "Jewellery & Watch Service",
+    title: () => "Your piece deserves personal attention.",
+    intro: "We have received your service request and a member of the LIDYA team will review the details personally.",
+    body: [
+      "From inspection and care to restoration and specialist work, every request is handled individually before the next step is confirmed with you.",
+    ],
+    subject: (reference) => `LIDYA — Service request received · ${reference}`,
+  },
+  appointment: {
+    eyebrow: "Private Appointment",
+    title: () => "Your private appointment request is with us.",
+    intro: "We have received your request for a private LIDYA appointment at Alba Resort.",
+    body: [
+      "Our team will contact you personally to confirm the most suitable time and any details that will help us prepare for your visit.",
+    ],
+    subject: (reference) => `LIDYA — Private appointment request · ${reference}`,
+  },
+};
 
 export async function sendResendEmail(input: {
   to: string | string[];
@@ -90,47 +119,55 @@ export async function sendEnquiryEmails(
   const reference = payload.id.slice(0, 8).toUpperCase();
   const typeLabel = TYPE_LABELS[payload.type];
   const services = payload.selectedServices?.filter(Boolean) || [];
+  const clientCopy = CLIENT_COPY[payload.type];
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://lidyaalbaresort.com";
 
-  const clientHtml = `
-    <div style="font-family:Arial,sans-serif;background:#f7f3ec;padding:32px;color:#1b0b20">
-      <div style="max-width:640px;margin:0 auto;background:#fff;padding:36px;border:1px solid #e5dccd">
-        <p style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#a98242;margin:0 0 16px">LIDYA Jewellery · Since 1989</p>
-        <h1 style="font-size:28px;font-weight:500;margin:0 0 18px">Thank you, ${escapeHtml(payload.name)}.</h1>
-        <p style="line-height:1.7;color:#5c5360">We have received your ${typeLabel.toLowerCase()}. A member of the LIDYA team will review it and contact you personally.</p>
-        <div style="margin:26px 0;padding:18px;background:#f7f3ec">
-          <p style="margin:0 0 8px"><strong>Reference:</strong> ${reference}</p>
-          <p style="margin:0 0 8px"><strong>Request:</strong> ${typeLabel}</p>
-          ${payload.subject ? `<p style="margin:0 0 8px"><strong>Subject:</strong> ${escapeHtml(payload.subject)}</p>` : ""}
-          ${services.length ? `<p style="margin:0"><strong>Services:</strong> ${services.map(escapeHtml).join(", ")}</p>` : ""}
-        </div>
-        <p style="line-height:1.7;color:#5c5360">Your reference confirms that the request has been stored in our system. If your request is urgent, you can also contact LIDYA directly by telephone or WhatsApp through the website.</p>
-        <p style="margin-top:28px;color:#a98242">LIDYA Jewellery · Alba Resort · Antalya</p>
-      </div>
-    </div>`;
+  const clientHtml = renderLidyaEmail({
+    preheader: `${typeLabel} ${reference} has been received by LIDYA Jewellery.`,
+    eyebrow: clientCopy.eyebrow,
+    title: clientCopy.title(payload.name),
+    intro: clientCopy.intro,
+    body: clientCopy.body,
+    details: [
+      { label: "Reference", value: reference },
+      { label: "Request", value: typeLabel },
+      { label: "Subject", value: payload.subject },
+      { label: "Services", value: services.length ? services.join(", ") : null },
+      { label: "Preferred contact", value: payload.preferredContact },
+    ],
+    cta: { label: "Visit LIDYA", href: siteUrl },
+    closing: "Personal service, considered in every detail.",
+    note: "Your reference confirms that the request has been stored in our system. If your request is urgent, please contact LIDYA directly by telephone or WhatsApp through the website.",
+  });
 
   const clientResult = shouldSendClient
     ? await sendResendEmail({
         to: payload.email,
-        subject: `LIDYA — We received your ${typeLabel.toLowerCase()} · ${reference}`,
+        subject: clientCopy.subject(reference),
         html: clientHtml,
       })
     : { sent: true };
 
   const notificationEmail = process.env.LIDYA_NOTIFICATION_EMAIL || "info@lidyaalbaresort.com";
-  const adminHtml = `
-    <div style="font-family:Arial,sans-serif;padding:28px;color:#1b0b20">
-      <h2>New ${typeLabel}</h2>
-      <p><strong>Reference:</strong> ${reference}</p>
-      <p><strong>Name:</strong> ${escapeHtml(payload.name)}</p>
-      <p><strong>Email:</strong> ${escapeHtml(payload.email)}</p>
-      ${payload.phone ? `<p><strong>Phone:</strong> ${escapeHtml(payload.phone)}</p>` : ""}
-      ${payload.preferredContact ? `<p><strong>Preferred contact:</strong> ${escapeHtml(payload.preferredContact)}</p>` : ""}
-      ${payload.subject ? `<p><strong>Subject:</strong> ${escapeHtml(payload.subject)}</p>` : ""}
-      ${services.length ? `<p><strong>Services:</strong> ${services.map(escapeHtml).join(", ")}</p>` : ""}
-      ${payload.message ? `<p><strong>Message:</strong><br>${escapeHtml(payload.message).replace(/\n/g, "<br>")}</p>` : ""}
-      <p><strong>Locale:</strong> ${escapeHtml(payload.locale || "unknown")}</p>
-      <p><strong>Source:</strong> ${escapeHtml(payload.source || "website")}</p>
-    </div>`;
+  const adminHtml = renderLidyaEmail({
+    preheader: `New ${typeLabel.toLowerCase()} from ${payload.name}.`,
+    eyebrow: "LIDYA Client Desk · Internal",
+    title: `New ${typeLabel.toLowerCase()}`,
+    intro: `${payload.name} has submitted a new request through the LIDYA website.`,
+    details: [
+      { label: "Reference", value: reference },
+      { label: "Client", value: payload.name },
+      { label: "Email", value: payload.email },
+      { label: "Phone", value: payload.phone },
+      { label: "Preferred contact", value: payload.preferredContact },
+      { label: "Subject", value: payload.subject },
+      { label: "Services", value: services.length ? services.join(", ") : null },
+      { label: "Message", value: payload.message },
+      { label: "Locale", value: payload.locale || "unknown" },
+      { label: "Source", value: payload.source || "website" },
+    ],
+    note: `Reply directly to this email to answer ${escapeEmailHtml(payload.email)}.`,
+  });
 
   const adminResult = shouldSendAdmin
     ? await sendResendEmail({
