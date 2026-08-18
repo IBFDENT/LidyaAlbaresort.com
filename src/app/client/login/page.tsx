@@ -47,7 +47,14 @@ export default function ClientLoginPage() {
           <p className="mt-3 text-sm text-white/45">Vstup do vášho súkromného klientského účtu.</p>
         </div>
 
-        {confirmed && <div className="mt-6 rounded-xl border border-emerald-400/20 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-200">Email bol potvrdený. Teraz sa môžete prihlásiť.</div>}
+        {confirmed && (
+          <div className="mt-7 rounded-2xl border border-[#c8a96a]/30 bg-[#c8a96a]/10 px-5 py-5 text-center shadow-[0_0_40px_rgba(200,169,106,0.08)]">
+            <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full border border-[#c8a96a]/40 bg-[#c8a96a]/10 text-lg text-[#e8d8b5]">✓</div>
+            <p className="mt-4 text-[10px] uppercase tracking-[0.32em] text-[#c8a96a]">Welcome to LIDYA</p>
+            <h2 className="mt-2 text-xl text-[#fffdf9]">Your email has been confirmed.</h2>
+            <p className="mt-2 text-sm leading-6 text-white/50">Váš klientský účet je aktívny. Teraz sa môžete bezpečne prihlásiť.</p>
+          </div>
+        )}
 
         <form onSubmit={submit} className="mt-7 space-y-4">
           <label className="block">
