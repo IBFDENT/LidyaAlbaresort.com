@@ -66,6 +66,10 @@ export default function ClientLoginPage() {
             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3.5 outline-none focus:border-[#c8a96a]/70" required />
           </label>
 
+          <div className="flex justify-end">
+            <Link href="/client/forgot-password" className="text-xs tracking-wide text-[#c8a96a] transition hover:text-[#e8d8b5]">Forgot password?</Link>
+          </div>
+
           {error && <div className="rounded-xl border border-red-400/20 bg-red-400/10 px-4 py-3 text-sm text-red-200">{error}</div>}
 
           <button disabled={loading} className="w-full rounded-xl bg-[#c8a96a] px-5 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#120817] disabled:opacity-50">
