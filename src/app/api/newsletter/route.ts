@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { sendResendEmail } from "@/lib/enquiry-email";
+import { renderLidyaEmail } from "@/lib/lidya-email-template";
 import { supabaseRest } from "@/lib/supabaseAdmin";
 
 function isValidEmail(value: string) {
@@ -8,16 +9,21 @@ function isValidEmail(value: string) {
 }
 
 function welcomeEmailHtml() {
-  return `
-    <div style="font-family:Arial,sans-serif;background:#f7f3ec;padding:32px;color:#1b0b20">
-      <div style="max-width:640px;margin:0 auto;background:#fff;padding:36px;border:1px solid #e5dccd">
-        <p style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#a98242;margin:0 0 16px">LIDYA Jewellery · Private List</p>
-        <h1 style="font-size:30px;font-weight:500;margin:0 0 18px">Welcome to the private list.</h1>
-        <p style="line-height:1.8;color:#5c5360">You are now part of the LIDYA private list. From time to time, we will send selected collection previews, jewellery stories, investment insights and private invitations.</p>
-        <p style="line-height:1.8;color:#5c5360">We keep communication selective and personal — in the same spirit as LIDYA Jewellery since 1989.</p>
-        <p style="margin-top:28px;color:#a98242">LIDYA Jewellery · Alba Resort · Antalya</p>
-      </div>
-    </div>`;
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://lidyaalbaresort.com";
+
+  return renderLidyaEmail({
+    preheader: "Welcome to the LIDYA Private List — private previews, invitations and stories from Alba Resort.",
+    eyebrow: "The Private List",
+    title: "Welcome to a quieter side of LIDYA.",
+    intro: "You are now part of the LIDYA Private List — created for clients who prefer to discover exceptional pieces before the wider world does.",
+    body: [
+      "From time to time, we will share selected collection previews, jewellery stories, investment insights and private invitations from Alba Resort.",
+      "Communication will remain considered, selective and personal — in the same spirit in which LIDYA has served its clients since 1989.",
+    ],
+    cta: { label: "Discover LIDYA", href: siteUrl },
+    closing: "Welcome to LIDYA.",
+    note: "You are receiving this message because you joined the LIDYA Private List through our website.",
+  });
 }
 
 async function sendWelcomeEmail(email: string) {
