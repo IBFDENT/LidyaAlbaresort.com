@@ -3,23 +3,33 @@
 import Link from "next/link";
 import { FormEvent, useState } from "react";
 
+import TurnstileWidget from "@/components/TurnstileWidget";
+
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState("");
+  const [captchaToken, setCaptchaToken] = useState("");
+  const [captchaKey, setCaptchaKey] = useState(0);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
   async function submit(event: FormEvent) {
     event.preventDefault();
-    setLoading(true);
     setMessage("");
     setError("");
+
+    if (!captchaToken) {
+      setError("Complete the security verification first.");
+      return;
+    }
+
+    setLoading(true);
 
     try {
       const response = await fetch("/api/client/recover", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, captchaToken }),
       });
       const payload = await response.json();
       if (!response.ok) {
@@ -31,6 +41,8 @@ export default function ForgotPasswordPage() {
       setError("Password recovery is temporarily unavailable.");
     } finally {
       setLoading(false);
+      setCaptchaToken("");
+      setCaptchaKey((current) => current + 1);
     }
   }
 
@@ -51,10 +63,12 @@ export default function ForgotPasswordPage() {
             <input type="email" value={email} onChange={(event) => setEmail(event.target.value)} autoComplete="email" className="w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3.5 outline-none transition focus:border-[#c8a96a]/70" required />
           </label>
 
+          <TurnstileWidget key={captchaKey} onTokenChange={setCaptchaToken} />
+
           {message && <div className="rounded-xl border border-[#c8a96a]/25 bg-[#c8a96a]/10 px-4 py-4 text-sm leading-6 text-[#ead8b7]">{message}</div>}
           {error && <div className="rounded-xl border border-red-400/20 bg-red-400/10 px-4 py-3 text-sm text-red-200">{error}</div>}
 
-          <button disabled={loading} className="w-full rounded-xl bg-[#c8a96a] px-5 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#120817] transition hover:bg-[#e8d8b5] disabled:opacity-50">
+          <button disabled={loading || !captchaToken} className="w-full rounded-xl bg-[#c8a96a] px-5 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#120817] transition hover:bg-[#e8d8b5] disabled:cursor-not-allowed disabled:opacity-50">
             {loading ? "Sending..." : "Send recovery link"}
           </button>
         </form>
