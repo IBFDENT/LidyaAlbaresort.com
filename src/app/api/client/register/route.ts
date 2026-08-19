@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
     const { url, anonKey } = getSupabaseAuthConfig();
     const redirectTo = `${request.nextUrl.origin}/client/login?confirmed=1`;
 
-    const authResponse = await fetch(`${url}/auth/v1/signup`, {
+    const authResponse = await fetch(`${url}/auth/v1/signup?redirect_to=${encodeURIComponent(redirectTo)}`, {
       method: "POST",
       headers: {
         apikey: anonKey,
