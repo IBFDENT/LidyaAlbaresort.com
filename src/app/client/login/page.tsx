@@ -3,9 +3,13 @@
 import Link from "next/link";
 import { FormEvent, useEffect, useState } from "react";
 
+import TurnstileWidget from "@/components/TurnstileWidget";
+
 export default function ClientLoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [captchaToken, setCaptchaToken] = useState("");
+  const [captchaKey, setCaptchaKey] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [confirmed, setConfirmed] = useState(false);
@@ -16,14 +20,20 @@ export default function ClientLoginPage() {
 
   async function submit(event: FormEvent) {
     event.preventDefault();
-    setLoading(true);
     setError("");
+
+    if (!captchaToken) {
+      setError("Dokončite bezpečnostné overenie.");
+      return;
+    }
+
+    setLoading(true);
 
     try {
       const response = await fetch("/api/client/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email, password, captchaToken }),
       });
       const payload = await response.json();
       if (!response.ok) {
@@ -35,6 +45,8 @@ export default function ClientLoginPage() {
       setError("Prihlásenie momentálne nie je dostupné.");
     } finally {
       setLoading(false);
+      setCaptchaToken("");
+      setCaptchaKey((current) => current + 1);
     }
   }
 
@@ -70,9 +82,11 @@ export default function ClientLoginPage() {
             <Link href="/client/forgot-password" className="text-xs tracking-wide text-[#c8a96a] transition hover:text-[#e8d8b5]">Forgot password?</Link>
           </div>
 
+          <TurnstileWidget key={captchaKey} onTokenChange={setCaptchaToken} />
+
           {error && <div className="rounded-xl border border-red-400/20 bg-red-400/10 px-4 py-3 text-sm text-red-200">{error}</div>}
 
-          <button disabled={loading} className="w-full rounded-xl bg-[#c8a96a] px-5 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#120817] disabled:opacity-50">
+          <button disabled={loading || !captchaToken} className="w-full rounded-xl bg-[#c8a96a] px-5 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#120817] disabled:cursor-not-allowed disabled:opacity-50">
             {loading ? "Prihlasujem..." : "Prihlásiť sa"}
           </button>
         </form>
