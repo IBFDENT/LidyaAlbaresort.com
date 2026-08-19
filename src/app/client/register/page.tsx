@@ -3,23 +3,33 @@
 import Link from "next/link";
 import { FormEvent, useState } from "react";
 
+import TurnstileWidget from "@/components/TurnstileWidget";
+
 export default function ClientRegisterPage() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", password: "" });
+  const [captchaToken, setCaptchaToken] = useState("");
+  const [captchaKey, setCaptchaKey] = useState(0);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
   async function submit(event: FormEvent) {
     event.preventDefault();
-    setLoading(true);
     setError("");
     setMessage("");
+
+    if (!captchaToken) {
+      setError("Dokončite bezpečnostné overenie.");
+      return;
+    }
+
+    setLoading(true);
 
     try {
       const response = await fetch("/api/client/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, captchaToken }),
       });
       const payload = await response.json();
 
@@ -36,6 +46,8 @@ export default function ClientRegisterPage() {
       setError("Registrácia momentálne nie je dostupná.");
     } finally {
       setLoading(false);
+      setCaptchaToken("");
+      setCaptchaKey((current) => current + 1);
     }
   }
 
@@ -68,10 +80,12 @@ export default function ClientRegisterPage() {
             </label>
           ))}
 
+          <TurnstileWidget key={captchaKey} onTokenChange={setCaptchaToken} />
+
           {message && <div className="rounded-xl border border-emerald-400/20 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-200">{message}</div>}
           {error && <div className="rounded-xl border border-red-400/20 bg-red-400/10 px-4 py-3 text-sm text-red-200">{error}</div>}
 
-          <button disabled={loading} className="w-full rounded-xl bg-[#c8a96a] px-5 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#120817] disabled:opacity-50">
+          <button disabled={loading || !captchaToken} className="w-full rounded-xl bg-[#c8a96a] px-5 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#120817] disabled:cursor-not-allowed disabled:opacity-50">
             {loading ? "Vytváram účet..." : "Vytvoriť účet"}
           </button>
         </form>
