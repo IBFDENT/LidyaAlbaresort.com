@@ -13,9 +13,12 @@ export default function ClientLoginPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [confirmed, setConfirmed] = useState(false);
+  const [confirmationError, setConfirmationError] = useState("");
 
   useEffect(() => {
-    setConfirmed(new URLSearchParams(window.location.search).get("confirmed") === "1");
+    const params = new URLSearchParams(window.location.search);
+    setConfirmed(params.get("confirmed") === "1");
+    setConfirmationError(params.get("confirmation_error") || "");
   }, []);
 
   async function submit(event: FormEvent) {
@@ -50,6 +53,14 @@ export default function ClientLoginPage() {
     }
   }
 
+  const confirmationErrorText = confirmationError === "expired"
+    ? "Potvrdzovací odkaz už bol použitý alebo jeho platnosť vypršala. Ak je účet už potvrdený, môžete sa prihlásiť."
+    : confirmationError === "unavailable"
+      ? "Potvrdenie účtu je momentálne nedostupné. Skúste to prosím znova."
+      : confirmationError
+        ? "Potvrdzovací odkaz nie je platný. Ak je účet už potvrdený, môžete sa prihlásiť."
+        : "";
+
   return (
     <main className="min-h-screen bg-[#120817] px-5 py-12 text-[#fffdf9]">
       <div className="mx-auto max-w-md rounded-[2rem] border border-[#c8a96a]/20 bg-white/[0.04] p-7 shadow-2xl md:p-10">
@@ -65,6 +76,12 @@ export default function ClientLoginPage() {
             <p className="mt-4 text-[10px] uppercase tracking-[0.32em] text-[#c8a96a]">Welcome to LIDYA</p>
             <h2 className="mt-2 text-xl text-[#fffdf9]">Your email has been confirmed.</h2>
             <p className="mt-2 text-sm leading-6 text-white/50">Váš klientský účet je aktívny. Teraz sa môžete bezpečne prihlásiť.</p>
+          </div>
+        )}
+
+        {confirmationErrorText && (
+          <div className="mt-7 rounded-2xl border border-[#c8a96a]/25 bg-[#c8a96a]/[0.07] px-5 py-4 text-center text-sm leading-6 text-[#e8d8b5]">
+            {confirmationErrorText}
           </div>
         )}
 
