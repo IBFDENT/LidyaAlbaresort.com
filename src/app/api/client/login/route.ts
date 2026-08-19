@@ -6,9 +6,14 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const email = String(body.email || "").trim().toLowerCase();
     const password = String(body.password || "");
+    const captchaToken = String(body.captchaToken || "").trim();
 
     if (!email || !password) {
       return NextResponse.json({ error: "Zadajte email a heslo." }, { status: 400 });
+    }
+
+    if (!captchaToken) {
+      return NextResponse.json({ error: "Bezpečnostné overenie chýba." }, { status: 400 });
     }
 
     const { url, anonKey } = getSupabaseAuthConfig();
@@ -19,7 +24,13 @@ export async function POST(request: NextRequest) {
         Authorization: `Bearer ${anonKey}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({
+        email,
+        password,
+        gotrue_meta_security: {
+          captcha_token: captchaToken,
+        },
+      }),
       cache: "no-store",
     });
 
