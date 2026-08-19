@@ -4,7 +4,13 @@ import { CLIENT_ACCESS_COOKIE, getSupabaseAuthConfig } from "@/lib/client-auth";
 export type AuthenticatedClient = {
   id: string;
   email?: string;
-  user_metadata?: { full_name?: string; phone?: string };
+  phone?: string;
+  user_metadata?: {
+    full_name?: string;
+    phone?: string;
+    avatar_url?: string;
+    preferred_language?: string;
+  };
 };
 
 export async function requireClientRequest(request: NextRequest): Promise<AuthenticatedClient | null> {
