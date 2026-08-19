@@ -8,12 +8,17 @@ export async function POST(request: NextRequest) {
     const email = String(body.email || "").trim().toLowerCase();
     const password = String(body.password || "");
     const phone = String(body.phone || "").trim();
+    const captchaToken = String(body.captchaToken || "").trim();
 
     if (!name || !email || password.length < 8) {
       return NextResponse.json(
         { error: "Vyplňte meno, platný email a heslo s minimálne 8 znakmi." },
         { status: 400 }
       );
+    }
+
+    if (!captchaToken) {
+      return NextResponse.json({ error: "Bezpečnostné overenie chýba." }, { status: 400 });
     }
 
     const { url, anonKey } = getSupabaseAuthConfig();
@@ -29,13 +34,13 @@ export async function POST(request: NextRequest) {
       body: JSON.stringify({
         email,
         password,
-        options: {
-          emailRedirectTo: redirectTo,
-          data: {
-            full_name: name,
-            phone,
-            role: "client",
-          },
+        data: {
+          full_name: name,
+          phone,
+          role: "client",
+        },
+        gotrue_meta_security: {
+          captcha_token: captchaToken,
         },
       }),
       cache: "no-store",
